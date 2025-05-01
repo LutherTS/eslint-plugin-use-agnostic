@@ -1,0 +1,39 @@
+{
+  "name": "eslint-plugin-use-agnostic",
+  "version": "0.1.0",
+  "description": "eslint-plugin-use-agnostic highlights problematic server-client imports in projects made with the Fullstack React Architecture (Next.js App Router, etc.) based on each of their modules' derived effective directives through detailed import rule violations, thanks to the introduction of its very own 'use agnostic' directive.",
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin",
+    "react",
+    "nextjs",
+    "next-js",
+    "remix",
+    "reactrouter",
+    "react-router"
+  ],
+  "license": "MIT",
+  "author": "Luther Tchofo Safo <luther@tchofo-safo-portfolio.me>",
+  "files": [
+    "library"
+  ],
+  "exports": {
+    ".": "./library/index.js"
+  },
+  "main": "library/index.js",
+  "dependencies": {
+    "tsconfig-paths": "^4.2.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/utils": "^8.31.1",
+    "eslint": ">=9.0.0"
+  },
+  "peerDependencies": {
+    "eslint": ">=9.0.0"
+  },
+  "engines": {
+    "node": ">=18.18.0 <18.99 || >=20.9.0 <21.0.0 || >=21.1.0"
+  },
+  "type": "module"
+}
