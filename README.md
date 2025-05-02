@@ -52,3 +52,33 @@ And don't forget the VS Code settings via `./.vscode/settings.json`:
   ]
 }
 ```
+
+## How it works
+
+In the beginning, there were not two kinds of modules in the Fullstack React Architecture (server vs. client), there were three:
+
+- Server Modules
+- Client Modules
+- and Shared Modules, now Agnostic Modules
+
+Shared Modules, which I've now renamed as Agnostic Modules, are still here today. In fact, the React team originally anticipated that most modules used in conjection with React Server Components would be Agnostic Modules. The problem is that Agnostic Modules are never surfaced between the current trifecta of 'use server', 'use client', and the lack of a directive:
+
+- `use server` denotes modules that exclusively export Server Functions
+- `use client` denotes modules that exclusively export code that is meant to be executed on the client
+- and the lack of a directive implies that a module is server-first... until it isn't
+
+This means that while `use server` denotes some special Server Modules but not all, and `use client` denotes all Client Modules regardless of their range of behaviors, the lack of a directive denotes both Server Modules that do possess server-side code, and Agnostic Modules that possess code that is neither server nor client and can safely run in both environments.
+
+With the `use agnostic` directive, taking advantage of its being innocuous and entirely ignored by React at this time, it now becomes possible to manually distinguish between Server Modules, which are to remain unmarked by any directive to fullfill the server-first promise, and Agnostic Modules, which the `use agnostic` directive now allows to identify; with `eslint-plugin-use-agnostic` linting your project accordingly.
+
+But it doesn't end there. With React Components into the mix, the reality is that not all Server, Client, and Agnostic Modules are born the same. For example, though a Server Module made of Server Components cannot import client-side code, it can actually import and compose with Client Components. This is where a new distinction intervenes, one that particularly takes into account the file extensions of the modules at hand to establish a list of 7 known modules in the Fullstack React Architecture:
+
+- Server Logics Modules, which **DO NOT** export React Components, and **DO NOT** use a JSX file extension
+- Server Components Modules, which **ONLY** export React Components (Server Components), and **ONLY** use a JSX file extension
+- Server Functions Modules, which **ONLY** export Server Functions, and **DO NOT** use a JSX file extension
+- Client Logics Modules, which **DO NOT** export React Components, and **DO NOT** use a JSX file extension
+- Client Components Modules, which **ONLY** export React Components (Client Components), and **ONLY** use a JSX file extension
+- Agnostic Logics Modules, which **DO NOT** export React Components, and **DO NOT** use a JSX file extension
+- Agnostic Components Modules, which **ONLY** export React Components (Agnostic Components), and **ONLY** use a JSX file extension
+
+With this list established, it thus becomes possible to recognize static import violations between these 7 known modules that `eslint-plugin-use-agnostic` can now highlight for you in your code editor and in the CLI.
