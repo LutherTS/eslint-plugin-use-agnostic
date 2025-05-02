@@ -88,7 +88,7 @@ const makeIntroForSpecificViolationMessage = (
   );
 
 const SUGGEST_USE_AGNOSTIC =
-  "If the module you're trying to import does not possess any server-side code however, please mark it with the plugin's own and eponymous 'use agnostic' directive to signal its compatibility across all environments.";
+  "If the module you're trying to import does not possess any server-side code however, please mark it with this plugin's own and eponymous 'use agnostic' directive to signal its compatibility across all environments.";
 
 export const effectiveDirectives_BlockedImports = Object.freeze({
   [USE_SERVER_LOGICS]: [
