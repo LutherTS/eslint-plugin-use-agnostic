@@ -91,6 +91,6 @@ Aliased import paths are resolved only if your ESLint config file and your `tsco
 
 It is up to you to confirm that your Agnostic Modules are indeed agnostic, meaning that they do not have neither server- nor client-side code. `eslint-plugin-use-agnostic`, at least at this time, does not do this verification for you.
 
-It is also up to you to ensure, as outlined above, that **you do not mix** exporting React components with exporting other logics within the same module. Separating exporting React components from their own modules ending with a JSX extension, from other logics from modules that don't end with a JSX extension, is crucial for distinguishing between Logics Modules and Client Modules.
+It is also up to you to ensure, as outlined above, that **you do not mix** exporting React components with exporting other logics within the same module. Separating exporting React components from their own modules ending with a JSX extension, from other logics from modules that don't end with a JSX extension, is crucial for distinguishing between Logics Modules and Components Modules.
 
 The import rules are designed to be as permissive as possible, allowing for more obscure use cases as long as they are non-breaking. However, it is still your responsibility as a developer to, within a file, not mix in incompatible ways code that cannot compose.
