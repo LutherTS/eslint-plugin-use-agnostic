@@ -11,7 +11,11 @@
     "next-js",
     "remix",
     "reactrouter",
-    "react-router"
+    "react-router",
+    "fullstack",
+    "server",
+    "client",
+    "agnostic"
   ],
   "license": "MIT",
   "author": "Luther Tchofo Safo <luther@tchofo-safo-portfolio.me>",
