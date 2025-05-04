@@ -105,12 +105,12 @@ I believe the core issue hindering the comprehension of React Server Components 
 
 React can easily understand that a 'use client' module is, from a primordial standpoint, a Client Module. And it can also understand that a 'use server' module is a Server Module, albeit a special one.
 
-But not having a directive to distinguish between 1. non-special Server Module that are never meant to be imported on the client, even as references; and 2. actual Agnostic Modules, the Shared Modules that are still here at the at the heart of this system and are able to run anywhere; that creates a confusion that is detrimental to every single stackholder in the RSC ecosystem:
+But not having a directive to distinguish between 1. non-special Server Modules that are never meant to be imported on the client, even as references; and 2. actual Agnostic Modules, the Shared Modules that are still here at the at the heart of this system and are able to run anywhere; that creates a confusion that is detrimental to every single stackholder in the RSC ecosystem:
 
 - Developers are confused and have no idea what "Server" or "Client" means, since React doesn't make it crystal clear.
 - LLMs are confused, because even they can't understand what 'use server' and 'use client' mean and therefore cannot explain it to developers facing their own specific concerns.
-- and if LLMs are confused, I can't even imagine what that must mean for AI tools and agents.
+- and if LLMs are confused, I can't even imagine what that must mean for AI tools and AI agents.
 
-This is what the 'use agnostic' directive solves. It clearly marks a module to be an Agnostic Module. And if a module that used to lack a directive can now be marked as an Agnostic Module, that allows modules without a directive to finally, truly be Server Modules by default. And eslint-plugin-use-agnostic can work from there.
+This is what the 'use agnostic' directive solves. It clearly marks a module to be an Agnostic Module. And if a module that used to lack a directive can now be marked as an Agnostic Module, this allows modules without a directive to finally, truly be Server Modules by default. And eslint-plugin-use-agnostic can work from there.
 
 A lot more work needs to be done, and a lot of it unfortunately can only be optimized deeper into React's innerworkings. But if the introduction of 'use agnostic' can already create such powerful static analysis, imagine what it could produce if only it were incorporated into React as an official directive of the Fullstack React Architecture.
