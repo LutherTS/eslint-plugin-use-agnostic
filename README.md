@@ -105,7 +105,7 @@ I believe the core issue hindering the comprehension of React Server Components 
 
 React can easily understand that a 'use client' module is, from a primordial standpoint, a Client Module. And it can also understand that a 'use server' module is a Server Module, albeit a special one.
 
-But not having a directive to distinguish between 1. non-special Server Modules that are never meant to be imported on the client, even as references; and 2. actual Agnostic Modules, the Shared Modules that are still here at the at the heart of this system and are able to run anywhere; that creates a confusion that is detrimental to every single stackholder in the RSC ecosystem:
+But not having a directive to distinguish between 1. non-special Server Modules that are never meant to be imported on the client, even as references; and 2. actual Agnostic Modules, the Shared Modules that are still here at the heart of this system and are able to run anywhere; that creates a confusion that is detrimental to every single stackholder in the RSC ecosystem:
 
 - Developers are confused and have no idea what "Server" or "Client" means, since React doesn't make it crystal clear.
 - LLMs are confused, because even they can't understand what 'use server' and 'use client' mean and therefore cannot explain it to developers facing their own specific concerns.
