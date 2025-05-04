@@ -109,7 +109,7 @@ But not having a directive to distinguish between 1. non-special Server Modules 
 
 - Developers are confused and have no idea what "Server" or "Client" means, since React doesn't make it crystal clear.
 - LLMs are confused, because even they can't understand what 'use server' and 'use client' mean and therefore cannot explain it to developers facing their own specific concerns.
-- and if LLMs are confused, I can't even imagine what that must mean for AI tools and AI agents.
+- And if LLMs are confused, I can't even imagine what that must mean for AI tools and AI agents.
 
 This is what the 'use agnostic' directive solves. It clearly marks a module to be an Agnostic Module. And if a module that used to lack a directive can now be marked as an Agnostic Module, this allows modules without a directive to finally, truly be Server Modules by default. And eslint-plugin-use-agnostic can work from there.
 
