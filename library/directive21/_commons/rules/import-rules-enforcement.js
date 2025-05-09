@@ -18,7 +18,7 @@ import {
   currentFileFlow,
   importsFlow,
   allExportsFlow,
-} from "../../utilities/flows.js";
+} from "../utilities/flows.js";
 
 /** @type {import('@typescript-eslint/utils').TSESLint.RuleModule<typeof reExportNotSameMessageId | typeof importBreaksCommentedImportRulesMessageId | typeof noCommentedDirective | typeof commentedDirectiveVerificationFailed | typeof importNotStrategized | typeof exportNotStrategized, []>} */
 const rule = {
