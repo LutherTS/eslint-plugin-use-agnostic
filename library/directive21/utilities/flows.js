@@ -39,6 +39,14 @@ import {
   getStrategizedDirective,
 } from "./helpers.js";
 
+// TEST START
+import fs from "fs";
+// import { SourceCode } from "eslint";
+import { Linter } from "eslint";
+import tseslint from "typescript-eslint";
+import { defineConfig } from "eslint/config";
+// TEST END
+
 /* currentFileFlow */
 
 /**
@@ -118,6 +126,8 @@ const importedFileFlow = (context, node) => {
     context.cwd
   );
 
+  // console.log({ node, resolvedImportPath });
+
   // does not operate on paths it did not resolve
   if (resolvedImportPath === null) return { skip: true };
   // does not operate on non-JS files
@@ -139,17 +149,241 @@ const importedFileFlow = (context, node) => {
   }
 
   /* GETTING THE CORRECT DIRECTIVE INTERPRETATION OF STRATEGY FOR AGNOSTIC STRATEGIES MODULES IMPORTS. 
-  (The Directive-First Architecture does not check whether the export and import Strategies are the same at this time, meaning a @clientLogics strategy could be wrongly imported and interpreted as a @serverLogics strategy. However, Strategy exports are plan to be linting in the future within their own Agnostic Strategies Modules to ensure they respect import rules within their own scopes. It may also become possible to check whether the export and import Strategies are the same in the future when identifiers are defined and the same, especially for components modules where a convention could be to for all non-type export to be named and PascalCase.) */
+  (The Directive-First Architecture does not check whether the export and import Strategies are the same at this time, meaning a @clientLogics strategy could be wrongly imported and interpreted as a @serverLogics strategy. 
+  
+  NOW IT WILL TRY TO.
+  
+  However, Strategy exports are planned to be linting in the future within their own Agnostic Strategies Modules to ensure they respect import rules within their own scopes. It may also become possible to check whether the export and import Strategies are the same in the future when identifiers are defined and the same, especially for components modules where a convention could be to for all non-type export to be named and PascalCase.) */
   if (importedFileCommentedDirective === USE_AGNOSTIC_STRATEGIES) {
-    importedFileCommentedDirective = getStrategizedDirective(context, node);
+    const importingFileCommentedDirective = getStrategizedDirective(
+      context,
+      node
+    );
+    // FOR NOW
+    importedFileCommentedDirective = importingFileCommentedDirective;
 
-    if (importedFileCommentedDirective === null) {
+    if (importingFileCommentedDirective === null) {
       context.report({
         node,
         messageId: importNotStrategized,
       });
       return { skip: true };
     }
+
+    // TEST START
+
+    // OK!
+    /* Let's recap: 
+    We have the importingFileCommentedDirective. 
+    Now we need to look at each the node's specifiers to address whether they have their match(es) on the importedFile. 
+    For that, we immediately begin by creating a common instance of Linter:
+    `const linter = new Linter();`
+    We'll also need to immediately instantiate a messagesIds array that goes with it.
+    Right below there will be instantiated the following arrays: 
+    - importSpecifierLintMessages
+    - importDefaultSpecifierLintMessages
+    - importNamespaceSpecifierLintMessages
+    Which will hold the linting messages, if any from each specifier type.
+    Now, for each specifier...
+    `node.specifiers.forEach((e) => {`
+    ...we'll be addressing each of the specifier depending on their type:
+    - "ImportSpecifier"
+    - "ImportDefaultSpecifier"
+    - "ImportNamespaceSpecifier"
+    The kicker is, we're thus going to need a nested plugin to operate on the linter, with three rules for each specifier:
+    - "ImportSpecifier" - verify-specifier-import-export-same-strategy
+    - "ImportDefaultSpecifier" - verify-default-import-export-same-strategy
+    - "ImportNamespaceSpecifier" - verify-export-include-some-import-strategy
+    If there is an issue, each rules will report and that will be captured within the right LintMessages array
+    - importSpecifierLintMessages = linter.verify( ... )
+    - importDefaultSpecifierLintMessages = linter.verify( ... )
+    - importNamespaceSpecifierLintMessages = linter.verify( ... )
+    Then, if these array aren't empty, then push into the messagesIds the id, already on the top rule enforce-commented-directives-import-rules, that corresponds, without needing to surface any further details:
+    - If there's a report on ImportSpecifier, that means the strategy weren't matching. Push the idea of the "strategies weren't matching, ImportSpecifier ver." message.
+    - If there's a report on ImportDefaultSpecifier, that means the strategy weren't matching. Push the idea of the "strategies weren't matching, ImportDefaultSpecifier ver." message.
+    - If there's a report on ImportNamespaceSpecifier, that means none of the strategy was exported in the imported file. Push the "none of the strategy were exported" message.
+    We now have the messagesIds array. If it is empty, we do nothing, everything's fine. If it isn't, for each of its ids, we report the full node, with the id as messageId.
+
+    And that's it. This is how we do a nested lint, then surface the errors so that they can be correctly shown on the parent rule.
+    And so... The first thing first will be to create the plugin, and to create the three rules, and to not forget that each rule takes the importingFileCommentedDirective as its option, and also the name of the import in the case of ImportSpecifier.
+    */
+
+    // Get identifier name from node.
+    // console.log({ nodeSpecifiers: node.specifiers });
+    node.specifiers.forEach((e) => {
+      switch (e.type) {
+        case "ImportSpecifier":
+          {
+            console.log("ImportSpecifier");
+            // console.log({ ImportSpecifier: e });
+            console.log({ ImportSpecifier: e.imported.name });
+            if (!e.imported.name) {
+              console.log("This ImportSpecifier has no name.");
+              break;
+            }
+          }
+          break;
+        case "ImportDefaultSpecifier":
+          {
+            console.log("ImportDefaultSpecifier");
+            console.log({ ImportDefaultSpecifier: e });
+          }
+          break;
+        case "ImportNamespaceSpecifier":
+          {
+            console.log("ImportNamespaceSpecifier");
+            console.log({ ImportNamespaceSpecifier: e });
+            // So here is what I want to do here.
+            // import /* @agnosticComponents */ * as AgnosticComponents_Locals from "./components";
+            // I want this line above to only import @agnosticComponents strategies from "./components". This is a feature that will ought to be tackled at the framework level, but this is the ultimate feature that makes it so that you could import all @agnosticComponents or all @clientComponents all the way to the root level of the application, safely.
+            // Now, here, what I want to do, is simply to scan all exported namespaces, and find if any of them have the relevant strategy. If not, I can warn.
+            // So that means it is still important to handle the ImportNamespaceSpecifier case.
+            // And so, whereas it doesn't matter if no name was found on the imported file for ImportSpecifier, here it will warn if no same strategy is found on the exports.
+          }
+          break;
+
+        default:
+          break;
+      }
+    });
+
+    // Find identifier in code.
+
+    // Now we need the real importedFileCommentedDirective
+
+    // IF THE IMPORT IS STRATEGIZED...
+    // NOW WE CAN START LOOKING INTO LINTING THE IMPORT FILE DYNAMICALLY.
+
+    // console.log("If the import is strategized...");
+    // const eslint = new ESLint({
+    //   overrideConfigFile: true,
+    // });
+
+    // ...and that shit is async, of course, it has to.
+    // const results = eslint.lintFiles(filePaths);
+    // so I'm going to have to do it manually in a synchronous way.
+
+    const importedFileContent = fs.readFileSync(resolvedImportPath, "utf8");
+    // const lines = SourceCode.splitLines(importedFileContent);
+    // console.log({ lines });
+
+    const linter = new Linter();
+
+    const myPlugin = {
+      rules: {
+        "extract-ast": {
+          meta: {
+            schema: [
+              {
+                enum: ["option1", "option2", "option3"],
+              },
+            ],
+            messages: {
+              test: "This is a test.",
+            },
+          },
+          create: (context) => {
+            const options = context.options;
+            // console.log({ options });
+            // console.log(context.sourceCode.ast);
+            // console.log(context.sourceCode.ast.body);
+            // This is effectively reporting into nothingness, since this rule is virtual. If I am to report, I am to do so in the parent rule. ACTUALLY! Capturing this is the results (messages of linter.verify) makes this surface.
+            context.report({
+              loc: {
+                start: { line: 1, column: 0 },
+                end: { line: 1, column: context.sourceCode.lines[0].length },
+              },
+              messageId: "test",
+            });
+            return {};
+          },
+          //   ({
+          //   Program(node) {
+          //     // ast = node; // Capture the AST
+          //     console.log({ node });
+          //   },
+          // }),
+        },
+      },
+    };
+
+    const messages = linter.verify(
+      importedFileContent,
+      // Let me get this straight.
+      // That's a config.
+      // That takes a plugin.
+      // Which takes rules.
+      // So the hierarchy is: config > plugin > rule.
+      // But it may be circular.
+      // this package is a plugin, with configs that utilize the plugin's rules
+      // this package has configs and rules
+      // the configs utilize its rules
+      // now this one rule has a nested config, which has its nested plugin...
+      // ...What this means as a whole is, I'm going to need to come up with a new file structure.
+      // Here... Voilà.
+      // _commons will house the top configs in a configs folder.
+      // configs/agnostic20.js, configs/directive21.js
+      // Then in this case, directive21 will have its own configs folder.
+      // There it will have "cross strategy check" config. But also:
+      // - constants
+      // - rules (especially)
+      // - utilities
+      // Meaning agnostic20 and directive21 are the configs of common
+      // "cross strategy check" config is the config of directive21
+      // ... if needed we can keep on nesting.
+      // What if I remove commons, since the library is a plugin?
+      // library/constants, library/rules, library/utilities, library/configs
+      // library/configs/agnostic20.js, library/configs/directive21.js
+      // library/agnostic20, library/directive21
+      // library/directive21/constants, library/directive21/rules, library/directive21/utilities, library/directive21/configs,
+      // library/directive21/configs/acrossStrategies.js,
+      // library/directive21/acrossStrategies
+      // library/directive21/acrossStrategies/constants, library/directive21/acrossStrategies/rules, library/directive21/acrossStrategies/utilities
+
+      // No need for a plugins folder. The plugin will be defined at library/directive21/configs/acrossStrategies.js (since that's the only place where it matters within the config), and imported in library/directive21/utilities/flows.js.
+      // Actually it will be: {plugins: {rule1name: rule1, rule2name: rule2, rule3name: rule3}, ... }
+      // But plugin needs a name.
+      // So there will indeed be library/directive21/acrossStrategies/plugins
+
+      // Ou alors, _commons remains, but all folders have their _commons.
+      // library/directive21/_commons, library/directive21/acrossStrategies, library/directive21/acrossStrategies/_commons, library/directive21/acrossStrategies/config.js
+      // And therefore all should also have an index.js. Let's keep config.js to make explicit that the folders are for configs.
+      // No config folder, but indeed a folder for plugins.
+
+      // ...Il est 20:00, ce sera pour une autre fois. :D
+      // And I'm actually done so it's OK.
+      // library,
+      // library/index.js,
+      // library/_commons, library/agnostic20, library/directive21
+      // library/agnostic20/config.js, library/directive21/config.js
+      // library/agnostic20/_commons, library/directive21/_commons, library/directive21/strategies
+      // library/directive21/acrossStrategies/config.js
+      // library/directive21/acrossStrategies/_commons
+      // library/directive21/acrossStrategies/_commons/constants, library/directive21/acrossStrategies/_commons/plugins, library/directive21/acrossStrategies/_commons/rules, library/directive21/acrossStrategies/_commons/utilities,
+      // library/directive21/acrossStrategies
+      // (And its a rare time where I use camelCase for folder names, because here they actually represent JavaScript entities.)
+      defineConfig({
+        plugins: {
+          myPlugin, // plugin ID is the object key
+        },
+        rules: {
+          "myPlugin/extract-ast": ["warn", "option3"],
+        },
+        languageOptions: {
+          // for compatibility with .ts and .tsx
+          parser: tseslint.parser,
+        },
+        // rules: {
+        //   "extract-ast": "warn",
+        // },
+      })
+    );
+    // console.log(ast);
+
+    console.log({ messages });
+
+    // Since I'm doing so nested linting, I need to manually included the tseslint.parser as a dependency.
+    // TEST END
   }
 
   return { importedFileCommentedDirective };

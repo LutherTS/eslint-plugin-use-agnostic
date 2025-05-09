@@ -31,7 +31,8 @@
     "url": "git+https://github.com/LutherTS/eslint-plugin-use-agnostic.git"
   },
   "dependencies": {
-    "tsconfig-paths": "^4.2.0"
+    "tsconfig-paths": "^4.2.0",
+    "typescript-eslint": "^8.32.0"
   },
   "devDependencies": {
     "@typescript-eslint/utils": "^8.31.1",
