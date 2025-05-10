@@ -29,7 +29,6 @@ const rule = {
         "Enforces import rules based on the file's commented directive. ",
     },
     schema: [],
-    // currentFileCommentedDirective, importedFileCommentedDirective, commentedDirectiveMessage, specificViolationMessage, specificFailure
     messages: {
       [reExportNotSameMessageId]: `The commented directives of this file (or Strategy) and this re-export are dissimilar.
 Here, "{{ ${currentFileCommentedDirective} }}" and "{{ ${importedFileCommentedDirective} }}" are not the same. Please re-export only from modules that have the same commented directive as the current module. `,

@@ -45,6 +45,7 @@ import fs from "fs";
 import { Linter } from "eslint";
 import tseslint from "typescript-eslint";
 import { defineConfig } from "eslint/config";
+import { makeCrossingStrategiesConfig } from "../../crossingStrategies/config.js";
 // TEST END
 
 /* currentFileFlow */
@@ -170,15 +171,17 @@ const importedFileFlow = (context, node) => {
       return { skip: true };
     }
 
+    importingFileCommentedDirective;
     // TEST START
 
     // OK!
     /* Let's recap: 
-    We have the importingFileCommentedDirective. 
-    Now we need to look at each the node's specifiers to address whether they have their match(es) on the importedFile. 
+    We have the, valid, importingFileCommentedDirective. 
+    Now we need to look at each of the node's specifiers to address whether they have their match(es) on the importedFile. 
     For that, we immediately begin by creating a common instance of Linter:
     `const linter = new Linter();`
     We'll also need to immediately instantiate a messagesIds array that goes with it.
+
     Right below there will be instantiated the following arrays: 
     - importSpecifierLintMessages
     - importDefaultSpecifierLintMessages
@@ -206,43 +209,89 @@ const importedFileFlow = (context, node) => {
 
     And that's it. This is how we do a nested lint, then surface the errors so that they can be correctly shown on the parent rule.
     And so... The first thing first will be to create the plugin, and to create the three rules, and to not forget that each rule takes the importingFileCommentedDirective as its option, and also the name of the import in the case of ImportSpecifier.
+
+    Don't forget I'll also have to do something similar in the end for re-exports from "use agnostic strategies".
     */
+
+    // -- start
+
+    const linter = new Linter({ configType: "flat" });
+    const importedFileCode = fs.readFileSync(resolvedImportPath, "utf8");
+
+    let messageIds = [];
+    let importSpecifierLintMessages = [];
+    let importDefaultSpecifierLintMessages = [];
+    let importNamespaceSpecifierLintMessages = [];
+
+    // -- end
 
     // Get identifier name from node.
     // console.log({ nodeSpecifiers: node.specifiers });
     node.specifiers.forEach((e) => {
       switch (e.type) {
         case "ImportSpecifier":
-          {
-            console.log("ImportSpecifier");
-            // console.log({ ImportSpecifier: e });
-            console.log({ ImportSpecifier: e.imported.name });
-            if (!e.imported.name) {
-              console.log("This ImportSpecifier has no name.");
-              break;
-            }
+          console.log("ImportSpecifier");
+
+          const importedName = e.imported.name;
+          if (typeof importedName !== "string") {
+            console.error(
+              "An ImportSpecifier cannot have no name. This error should never be printed."
+            );
+            break;
           }
+          console.log({ importedName });
+          // run linter with verify-specifier-import-export-same-strategy rule
+          // using importingFileCommentedDirective as option 1 and importedName as option 2
+
+          linter.verify(
+            importedFileCode,
+            makeCrossingStrategiesConfig(
+              "specifiers",
+              importingFileCommentedDirective,
+              importedName
+            )
+          );
+
           break;
         case "ImportDefaultSpecifier":
-          {
-            console.log("ImportDefaultSpecifier");
-            console.log({ ImportDefaultSpecifier: e });
-          }
+          console.log("ImportDefaultSpecifier");
+          // run linter with verify-default-import-export-same-strategy rule
+          // using importingFileCommentedDirective as option 1
+
+          linter.verify(
+            importedFileCode,
+            makeCrossingStrategiesConfig(
+              "defaults",
+              importingFileCommentedDirective
+            )
+          );
+
           break;
         case "ImportNamespaceSpecifier":
-          {
-            console.log("ImportNamespaceSpecifier");
-            console.log({ ImportNamespaceSpecifier: e });
-            // So here is what I want to do here.
-            // import /* @agnosticComponents */ * as AgnosticComponents_Locals from "./components";
-            // I want this line above to only import @agnosticComponents strategies from "./components". This is a feature that will ought to be tackled at the framework level, but this is the ultimate feature that makes it so that you could import all @agnosticComponents or all @clientComponents all the way to the root level of the application, safely.
-            // Now, here, what I want to do, is simply to scan all exported namespaces, and find if any of them have the relevant strategy. If not, I can warn.
-            // So that means it is still important to handle the ImportNamespaceSpecifier case.
-            // And so, whereas it doesn't matter if no name was found on the imported file for ImportSpecifier, here it will warn if no same strategy is found on the exports.
-          }
+          console.log("ImportNamespaceSpecifier");
+          // run linter with verify-namespace-import-export-some-strategy rule
+          // using importingFileCommentedDirective as option 1
+
+          linter.verify(
+            importedFileCode,
+            makeCrossingStrategiesConfig(
+              "namespaces",
+              importingFileCommentedDirective
+            )
+          );
+
+          // So here is what I want to do here.
+          // import /* @agnosticComponents */ * as AgnosticComponents_Locals from "./components";
+          // I want this line above to only import @agnosticComponents strategies from "./components". This is a feature that will ought to be tackled at the framework level, but this is the ultimate feature that makes it so that you could import all @agnosticComponents or all @clientComponents all the way to the root level of the application, safely.
+          // Now, here, what I want to do, is simply to scan all exported namespaces, and find if any of them have the relevant strategy. If not, I can warn.
+          // So that means it is still important to handle the ImportNamespaceSpecifier case.
+          // And so, whereas it doesn't matter if no name was found on the imported file for ImportSpecifier, here it will warn if no same strategy is found on the exports.
           break;
 
         default:
+          console.error(
+            "An ImportDeclaration node type can only be 'ImportSpecifier', 'ImportDefaultSpecifier', or 'ImportNamespaceSpecifier'. This error should never be printed."
+          );
           break;
       }
     });
@@ -255,132 +304,119 @@ const importedFileFlow = (context, node) => {
     // NOW WE CAN START LOOKING INTO LINTING THE IMPORT FILE DYNAMICALLY.
 
     // console.log("If the import is strategized...");
-    // const eslint = new ESLint({
-    //   overrideConfigFile: true,
-    // });
 
-    // ...and that shit is async, of course, it has to.
-    // const results = eslint.lintFiles(filePaths);
-    // so I'm going to have to do it manually in a synchronous way.
+    // const myPlugin = {
+    //   rules: {
+    //     "extract-ast": {
+    //       meta: {
+    //         schema: [
+    //           {
+    //             enum: ["option1", "option2", "option3"],
+    //           },
+    //         ],
+    //         messages: {
+    //           test: "This is a test.",
+    //         },
+    //       },
+    //       create: (context) => {
+    //         const options = context.options;
+    //         // console.log({ options });
+    //         // console.log(context.sourceCode.ast);
+    //         // console.log(context.sourceCode.ast.body);
+    //         // This is effectively reporting into nothingness, since this rule is virtual. If I am to report, I am to do so in the parent rule. ACTUALLY! Capturing this is the results (messages of linter.verify) makes this surface.
+    //         context.report({
+    //           loc: {
+    //             start: { line: 1, column: 0 },
+    //             end: { line: 1, column: context.sourceCode.lines[0].length },
+    //           },
+    //           messageId: "test",
+    //         });
+    //         return {};
+    //       },
+    //       //   ({
+    //       //   Program(node) {
+    //       //     // ast = node; // Capture the AST
+    //       //     console.log({ node });
+    //       //   },
+    //       // }),
+    //     },
+    //   },
+    // };
 
-    const importedFileContent = fs.readFileSync(resolvedImportPath, "utf8");
-    // const lines = SourceCode.splitLines(importedFileContent);
-    // console.log({ lines });
+    // const messages = linter.verify(
+    //   importedFileCode,
+    //   // Let me get this straight.
+    //   // That's a config.
+    //   // That takes a plugin.
+    //   // Which takes rules.
+    //   // So the hierarchy is: config > plugin > rule.
+    //   // But it may be circular.
+    //   // this package is a plugin, with configs that utilize the plugin's rules
+    //   // this package has configs and rules
+    //   // the configs utilize its rules
+    //   // now this one rule has a nested config, which has its nested plugin...
+    //   // ...What this means as a whole is, I'm going to need to come up with a new file structure.
+    //   // Here... Voilà.
+    //   // _commons will house the top configs in a configs folder.
+    //   // configs/agnostic20.js, configs/directive21.js
+    //   // Then in this case, directive21 will have its own configs folder.
+    //   // There it will have "cross strategy check" config. But also:
+    //   // - constants
+    //   // - rules (especially)
+    //   // - utilities
+    //   // Meaning agnostic20 and directive21 are the configs of common
+    //   // "cross strategy check" config is the config of directive21
+    //   // ... if needed we can keep on nesting.
+    //   // What if I remove commons, since the library is a plugin?
+    //   // library/constants, library/rules, library/utilities, library/configs
+    //   // library/configs/agnostic20.js, library/configs/directive21.js
+    //   // library/agnostic20, library/directive21
+    //   // library/directive21/constants, library/directive21/rules, library/directive21/utilities, library/directive21/configs,
+    //   // library/directive21/configs/acrossStrategies.js,
+    //   // library/directive21/acrossStrategies
+    //   // library/directive21/acrossStrategies/constants, library/directive21/acrossStrategies/rules, library/directive21/acrossStrategies/utilities
 
-    const linter = new Linter();
+    //   // No need for a plugins folder. The plugin will be defined at library/directive21/configs/acrossStrategies.js (since that's the only place where it matters within the config), and imported in library/directive21/utilities/flows.js.
+    //   // Actually it will be: {plugins: {rule1name: rule1, rule2name: rule2, rule3name: rule3}, ... }
+    //   // But plugin needs a name.
+    //   // So there will indeed be library/directive21/acrossStrategies/plugins
 
-    const myPlugin = {
-      rules: {
-        "extract-ast": {
-          meta: {
-            schema: [
-              {
-                enum: ["option1", "option2", "option3"],
-              },
-            ],
-            messages: {
-              test: "This is a test.",
-            },
-          },
-          create: (context) => {
-            const options = context.options;
-            // console.log({ options });
-            // console.log(context.sourceCode.ast);
-            // console.log(context.sourceCode.ast.body);
-            // This is effectively reporting into nothingness, since this rule is virtual. If I am to report, I am to do so in the parent rule. ACTUALLY! Capturing this is the results (messages of linter.verify) makes this surface.
-            context.report({
-              loc: {
-                start: { line: 1, column: 0 },
-                end: { line: 1, column: context.sourceCode.lines[0].length },
-              },
-              messageId: "test",
-            });
-            return {};
-          },
-          //   ({
-          //   Program(node) {
-          //     // ast = node; // Capture the AST
-          //     console.log({ node });
-          //   },
-          // }),
-        },
-      },
-    };
+    //   // Ou alors, _commons remains, but all folders have their _commons.
+    //   // library/directive21/_commons, library/directive21/acrossStrategies, library/directive21/acrossStrategies/_commons, library/directive21/acrossStrategies/config.js
+    //   // And therefore all should also have an index.js. Let's keep config.js to make explicit that the folders are for configs.
+    //   // No config folder, but indeed a folder for plugins.
 
-    const messages = linter.verify(
-      importedFileContent,
-      // Let me get this straight.
-      // That's a config.
-      // That takes a plugin.
-      // Which takes rules.
-      // So the hierarchy is: config > plugin > rule.
-      // But it may be circular.
-      // this package is a plugin, with configs that utilize the plugin's rules
-      // this package has configs and rules
-      // the configs utilize its rules
-      // now this one rule has a nested config, which has its nested plugin...
-      // ...What this means as a whole is, I'm going to need to come up with a new file structure.
-      // Here... Voilà.
-      // _commons will house the top configs in a configs folder.
-      // configs/agnostic20.js, configs/directive21.js
-      // Then in this case, directive21 will have its own configs folder.
-      // There it will have "cross strategy check" config. But also:
-      // - constants
-      // - rules (especially)
-      // - utilities
-      // Meaning agnostic20 and directive21 are the configs of common
-      // "cross strategy check" config is the config of directive21
-      // ... if needed we can keep on nesting.
-      // What if I remove commons, since the library is a plugin?
-      // library/constants, library/rules, library/utilities, library/configs
-      // library/configs/agnostic20.js, library/configs/directive21.js
-      // library/agnostic20, library/directive21
-      // library/directive21/constants, library/directive21/rules, library/directive21/utilities, library/directive21/configs,
-      // library/directive21/configs/acrossStrategies.js,
-      // library/directive21/acrossStrategies
-      // library/directive21/acrossStrategies/constants, library/directive21/acrossStrategies/rules, library/directive21/acrossStrategies/utilities
+    //   // ...Il est 20:00, ce sera pour une autre fois. :D
+    //   // And I'm actually done so it's OK.
+    //   // library,
+    //   // library/index.js,
+    //   // library/_commons, library/agnostic20, library/directive21
+    //   // library/agnostic20/config.js, library/directive21/config.js
+    //   // library/agnostic20/_commons, library/directive21/_commons, library/directive21/strategies
+    //   // library/directive21/acrossStrategies/config.js
+    //   // library/directive21/acrossStrategies/_commons
+    //   // library/directive21/acrossStrategies/_commons/constants, library/directive21/acrossStrategies/_commons/plugins, library/directive21/acrossStrategies/_commons/rules, library/directive21/acrossStrategies/_commons/utilities,
+    //   // library/directive21/acrossStrategies
+    //   // (And its a rare time where I use camelCase for folder names, because here they actually represent JavaScript entities.)
+    //   defineConfig({
+    //     plugins: {
+    //       myPlugin, // plugin ID is the object key
+    //     },
+    //     rules: {
+    //       "myPlugin/extract-ast": ["warn", "option3"],
+    //     },
+    //     languageOptions: {
+    //       // for compatibility with .ts and .tsx
+    //       parser: tseslint.parser,
+    //     },
+    //     // rules: {
+    //     //   "extract-ast": "warn",
+    //     // },
+    //   })
+    // );
+    // // console.log(ast);
 
-      // No need for a plugins folder. The plugin will be defined at library/directive21/configs/acrossStrategies.js (since that's the only place where it matters within the config), and imported in library/directive21/utilities/flows.js.
-      // Actually it will be: {plugins: {rule1name: rule1, rule2name: rule2, rule3name: rule3}, ... }
-      // But plugin needs a name.
-      // So there will indeed be library/directive21/acrossStrategies/plugins
-
-      // Ou alors, _commons remains, but all folders have their _commons.
-      // library/directive21/_commons, library/directive21/acrossStrategies, library/directive21/acrossStrategies/_commons, library/directive21/acrossStrategies/config.js
-      // And therefore all should also have an index.js. Let's keep config.js to make explicit that the folders are for configs.
-      // No config folder, but indeed a folder for plugins.
-
-      // ...Il est 20:00, ce sera pour une autre fois. :D
-      // And I'm actually done so it's OK.
-      // library,
-      // library/index.js,
-      // library/_commons, library/agnostic20, library/directive21
-      // library/agnostic20/config.js, library/directive21/config.js
-      // library/agnostic20/_commons, library/directive21/_commons, library/directive21/strategies
-      // library/directive21/acrossStrategies/config.js
-      // library/directive21/acrossStrategies/_commons
-      // library/directive21/acrossStrategies/_commons/constants, library/directive21/acrossStrategies/_commons/plugins, library/directive21/acrossStrategies/_commons/rules, library/directive21/acrossStrategies/_commons/utilities,
-      // library/directive21/acrossStrategies
-      // (And its a rare time where I use camelCase for folder names, because here they actually represent JavaScript entities.)
-      defineConfig({
-        plugins: {
-          myPlugin, // plugin ID is the object key
-        },
-        rules: {
-          "myPlugin/extract-ast": ["warn", "option3"],
-        },
-        languageOptions: {
-          // for compatibility with .ts and .tsx
-          parser: tseslint.parser,
-        },
-        // rules: {
-        //   "extract-ast": "warn",
-        // },
-      })
-    );
-    // console.log(ast);
-
-    console.log({ messages });
+    // console.log({ messages });
 
     // Since I'm doing so nested linting, I need to manually included the tseslint.parser as a dependency.
     // TEST END

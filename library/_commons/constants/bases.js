@@ -1,5 +1,6 @@
-// plugin name
+/* plugin name */
 export const useAgnosticPluginName = "use-agnostic";
+export const strategiesPluginName = "strategies";
 
 /* config names */
 // agnostic20
@@ -14,6 +15,14 @@ export const enforceEffectiveDirectivesRuleName =
 // directive21
 export const enforceCommentedDirectivesRuleName =
   "enforce-commented-directives-import-rules";
+
+// crossingStrategies
+export const verifySpecifierImportRuleName =
+  "verify-specifier-import-export-same-strategy";
+export const verifyDefaultImportRuleName =
+  "verify-default-import-export-same-strategy";
+export const verifyNamespaceImportRuleName =
+  "verify-namespace-import-export-some-strategy";
 
 /* messageIds */
 export const reExportNotSameMessageId = "re-export-not-same-directive";
