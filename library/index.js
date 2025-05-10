@@ -5,8 +5,8 @@ import {
   enforceCommentedDirectivesRuleName,
 } from "./_commons/constants/bases.js";
 
-import enforceEffectiveDirectivesImportRules from "./agnostic20/_commons/rules/import-rules-enforcement.js";
-import enforceCommentedDirectivesImportRules from "./directive21/_commons/rules/import-rules-enforcement.js";
+import enforceEffectiveDirectivesImportRules from "./agnostic20/_commons/rules/import-rules.js";
+import enforceCommentedDirectivesImportRules from "./directive21/_commons/rules/import-rules.js";
 
 import { makeAgnostic20Config } from "./agnostic20/config.js";
 import { makeDirective21Config } from "./directive21/config.js";

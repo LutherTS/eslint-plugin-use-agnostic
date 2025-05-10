@@ -193,7 +193,7 @@ const importedFileFlow = (context, node) => {
     The kicker is, we're thus going to need a nested plugin to operate on the linter, with three rules for each specifier:
     - "ImportSpecifier" - verify-specifier-import-export-same-strategy
     - "ImportDefaultSpecifier" - verify-default-import-export-same-strategy
-    - "ImportNamespaceSpecifier" - verify-export-include-some-import-strategy
+    - "ImportNamespaceSpecifier" - verify-namespace-import-some-strategy
     If there is an issue, each rules will report and that will be captured within the right LintMessages array
     - importSpecifierLintMessages = linter.verify( ... )
     - importDefaultSpecifierLintMessages = linter.verify( ... )
