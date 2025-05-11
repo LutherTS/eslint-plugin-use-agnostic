@@ -5,7 +5,7 @@ import {
   commentedDirectiveVerificationFailed,
   importNotStrategized,
   exportNotStrategized,
-} from "../../_commons/constants/bases.js";
+} from "../../../_commons/constants/bases.js";
 import {
   USE_SERVER_LOGICS,
   USE_CLIENT_LOGICS,
@@ -30,7 +30,7 @@ import {
   isImportBlocked as commonsIsImportBlocked,
   makeMessageFromResolvedDirective,
   findSpecificViolationMessage as commonsFindSpecificViolationMessage,
-} from "../../_commons/utilities/helpers.js";
+} from "../../../_commons/utilities/helpers.js";
 
 /* getCommentedDirectiveFromCurrentModule */
 

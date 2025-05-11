@@ -2,7 +2,7 @@ import {
   reExportNotSameMessageId,
   importBreaksEffectiveImportRulesMessageId,
   useServerJSXMessageId,
-} from "../../_commons/constants/bases.js";
+} from "../../../_commons/constants/bases.js";
 import {
   currentFileEffectiveDirective,
   importedFileEffectiveDirective,
@@ -25,7 +25,6 @@ const rule = {
         "Enforces import rules based on the file's effective directive. ",
     },
     schema: [],
-    // currentFileEffectiveDirective, importedFileEffectiveDirective, effectiveDirectiveMessage, specificViolationMessage
     messages: {
       [reExportNotSameMessageId]: `The effective directives of this file and this re-export are dissimilar.
 Here, "{{ ${currentFileEffectiveDirective} }}" and "{{ ${importedFileEffectiveDirective} }}" are not the same. Please re-export only from modules that have the same effective directive as the current module. `,

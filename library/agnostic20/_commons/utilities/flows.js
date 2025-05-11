@@ -5,7 +5,7 @@ import {
   useServerJSXMessageId,
   importBreaksEffectiveImportRulesMessageId,
   reExportNotSameMessageId,
-} from "../../_commons/constants/bases.js";
+} from "../../../_commons/constants/bases.js";
 import {
   USE_SERVER_LOGICS,
   USE_SERVER_COMPONENTS,
@@ -20,7 +20,7 @@ import {
   specificViolationMessage,
 } from "../constants/bases.js";
 
-import { resolveImportPath } from "../../_commons/utilities/helpers.js";
+import { resolveImportPath } from "../../../_commons/utilities/helpers.js";
 import {
   getDirectiveFromCurrentModule,
   getDirectiveFromImportedModule,

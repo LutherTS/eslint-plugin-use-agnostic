@@ -8,7 +8,7 @@ import {
   commentedDirectiveVerificationFailed,
   importNotStrategized,
   exportNotStrategized,
-} from "../../_commons/constants/bases.js";
+} from "../../../_commons/constants/bases.js";
 import {
   USE_SERVER_LOGICS,
   USE_CLIENT_LOGICS,
@@ -28,7 +28,7 @@ import {
   specificFailure,
 } from "../constants/bases.js";
 
-import { resolveImportPath } from "../../_commons/utilities/helpers.js";
+import { resolveImportPath } from "../../../_commons/utilities/helpers.js";
 import {
   getCommentedDirectiveFromCurrentModule,
   getVerifiedCommentedDirective,
@@ -139,11 +139,21 @@ const importedFileFlow = (context, node) => {
   }
 
   /* GETTING THE CORRECT DIRECTIVE INTERPRETATION OF STRATEGY FOR AGNOSTIC STRATEGIES MODULES IMPORTS. 
-  (The Directive-First Architecture does not check whether the export and import Strategies are the same at this time, meaning a @clientLogics strategy could be wrongly imported and interpreted as a @serverLogics strategy. However, Strategy exports are plan to be linting in the future within their own Agnostic Strategies Modules to ensure they respect import rules within their own scopes. It may also become possible to check whether the export and import Strategies are the same in the future when identifiers are defined and the same, especially for components modules where a convention could be to for all non-type export to be named and PascalCase.) */
+  (The Directive-First Architecture does not check whether the export and import Strategies are the same at this time, meaning a @clientLogics strategy could be wrongly imported and interpreted as a @serverLogics strategy.
+  
+  After a short attempt, this feature is currently cancelled, mainly since the amount of work it will require will not be able to be transferred in a future where commented strategies will actually be real syntax.
+  
+  However, Strategy exports are planned to be linting in the future within their own Agnostic Strategies Modules to ensure they respect import rules within their own scopes. It may also become possible to check whether the export and import Strategies are the same in the future when identifiers are defined and the same, especially for components modules where a convention could be to for all non-type export to be named and PascalCase.) */
   if (importedFileCommentedDirective === USE_AGNOSTIC_STRATEGIES) {
-    importedFileCommentedDirective = getStrategizedDirective(context, node);
+    const importingFileCommentedDirective = getStrategizedDirective(
+      context,
+      node
+    );
 
-    if (importedFileCommentedDirective === null) {
+    // FOR NOW, we consider the importingFileCommentedDirective (which is strategized) and the importedFileCommentedDirective (which should be strategized on its own imported file) to be same, given the limitation highlighted above.
+    importedFileCommentedDirective = importingFileCommentedDirective;
+
+    if (importingFileCommentedDirective === null) {
       context.report({
         node,
         messageId: importNotStrategized,

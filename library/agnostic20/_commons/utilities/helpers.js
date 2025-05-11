@@ -8,7 +8,7 @@ import {
   JS,
   MJS,
   CJS,
-} from "../../_commons/constants/bases.js";
+} from "../../../_commons/constants/bases.js";
 import {
   NO_DIRECTIVE,
   USE_SERVER,
@@ -32,7 +32,7 @@ import {
   isImportBlocked as commonsIsImportBlocked,
   makeMessageFromResolvedDirective,
   findSpecificViolationMessage as commonsFindSpecificViolationMessage,
-} from "../../_commons/utilities/helpers.js";
+} from "../../../_commons/utilities/helpers.js";
 
 /* getDirectiveFromCurrentModule */
 

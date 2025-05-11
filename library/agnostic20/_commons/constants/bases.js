@@ -13,9 +13,9 @@ import {
   CLIENT_COMPONENTS_MODULE as COMMONS_CLIENT_COMPONENTS_MODULE,
   AGNOSTIC_LOGICS_MODULE as COMMONS_AGNOSTIC_LOGICS_MODULE,
   AGNOSTIC_COMPONENTS_MODULE as COMMONS_AGNOSTIC_COMPONENTS_MODULE,
-} from "../../_commons/constants/bases.js";
+} from "../../../_commons/constants/bases.js";
 
-import { makeIntroForSpecificViolationMessage as commonsMakeIntroForSpecificViolationMessage } from "../../_commons/utilities/helpers.js";
+import { makeIntroForSpecificViolationMessage as commonsMakeIntroForSpecificViolationMessage } from "../../../_commons/utilities/helpers.js";
 
 // directives
 export const NO_DIRECTIVE = null;

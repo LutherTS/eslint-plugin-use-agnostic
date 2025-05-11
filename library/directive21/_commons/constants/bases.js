@@ -19,9 +19,9 @@ import {
   CLIENT_CONTEXTS_MODULE as COMMONS_CLIENT_CONTEXTS_MODULE,
   AGNOSTIC_CONDITIONS_MODULE as COMMONS_AGNOSTIC_CONDITIONS_MODULE,
   AGNOSTIC_STRATEGIES_MODULE as COMMONS_AGNOSTIC_STRATEGIES_MODULE,
-} from "../../_commons/constants/bases.js";
+} from "../../../_commons/constants/bases.js";
 
-import { makeIntroForSpecificViolationMessage as commonsMakeIntroForSpecificViolationMessage } from "../../_commons/utilities/helpers.js";
+import { makeIntroForSpecificViolationMessage as commonsMakeIntroForSpecificViolationMessage } from "../../../_commons/utilities/helpers.js";
 
 // commented directives
 export const USE_SERVER_LOGICS = COMMONS_USE_SERVER_LOGICS;
