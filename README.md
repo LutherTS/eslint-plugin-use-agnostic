@@ -16,7 +16,6 @@ npm install eslint@^9.0.0 eslint-plugin-use-agnostic --save-dev
 // eslint.config.js
 
 import { defineConfig, globalIgnores } from "eslint/config";
-import tseslint from "typescript-eslint"; // for compatibility with TypeScript, not included as a devDependency
 
 import useAgnostic, {
   useAgnosticPluginName,
@@ -32,9 +31,6 @@ export default defineConfig([
       [useAgnosticPluginName]: useAgnostic,
     },
     extends: [`${useAgnosticPluginName}/${agnostic20ConfigName}`],
-    languageOptions: {
-      parser: tseslint.parser, // for compatibility with .ts and .tsx
-    },
   },
 ]);
 ```
