@@ -1,4 +1,5 @@
 import { defineConfig } from "eslint/config";
+import tseslint from "typescript-eslint";
 
 import {
   directive21ConfigName,
@@ -19,12 +20,10 @@ export const makeDirective21Config = (plugin) => ({
         [`${useAgnosticPluginName}/${enforceCommentedDirectivesRuleName}`]:
           "warn",
       },
+      languageOptions: {
+        // for compatibility with .ts and .tsx
+        parser: tseslint.parser,
+      },
     },
   ]),
 });
-
-/* Notes
-I might have separated the config itself (the array) from the object.
-Or since this is for the config of the plugin, I could just manually create the config itself without the plugin argument below.
-Or, I can just create the inner config on the file itself.
-*/

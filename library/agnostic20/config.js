@@ -1,4 +1,5 @@
 import { defineConfig } from "eslint/config";
+import tseslint from "typescript-eslint";
 
 import {
   agnostic20ConfigName,
@@ -18,6 +19,10 @@ export const makeAgnostic20Config = (plugin) => ({
       rules: {
         [`${useAgnosticPluginName}/${enforceEffectiveDirectivesRuleName}`]:
           "warn",
+      },
+      languageOptions: {
+        // for compatibility with .ts and .tsx
+        parser: tseslint.parser,
       },
     },
   ]),

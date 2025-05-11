@@ -1,5 +1,7 @@
-/* plugin name */
+/* plugin names */
+// use-agnostic
 export const useAgnosticPluginName = "use-agnostic";
+// crossingStrategies
 export const strategiesPluginName = "strategies";
 
 /* config names */
