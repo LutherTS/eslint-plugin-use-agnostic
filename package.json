@@ -30,6 +30,9 @@
     "type": "git",
     "url": "git+https://github.com/LutherTS/eslint-plugin-use-agnostic.git"
   },
+  "scripts": {
+    "test": "node tests/agnostic20/import-rules.test.js"
+  },
   "dependencies": {
     "tsconfig-paths": "^4.2.0",
     "typescript-eslint": "^8.32.0"
