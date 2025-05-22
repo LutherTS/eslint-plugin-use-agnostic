@@ -1,15 +1,15 @@
 import { RuleTester } from "eslint";
 
-import { enforceCommentedDirectivesRuleName } from "../../library/_commons/constants/bases.js";
-
-import enforceCommentedDirectivesImportRules from "../../library/directive21/_commons/rules/import-rules.js";
-
 import { validPath21, invalidPath21 } from "../_commons/constants/bases.js";
 
 import {
   readValidFilesRecursively,
   readInvalidFilesRecursively21,
 } from "../_commons/utilities/helpers.js";
+
+import { enforceCommentedDirectivesRuleName } from "../../library/_commons/constants/bases.js";
+
+import enforceCommentedDirectivesImportRules from "../../library/directive21/_commons/rules/import-rules.js";
 
 const validFiles = readValidFilesRecursively(validPath21);
 const invalidFiles = readInvalidFilesRecursively21(invalidPath21);
