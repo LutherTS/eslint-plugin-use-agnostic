@@ -1,4 +1,4 @@
-// "use client components"
+// "use agnostic components"
 
 // ...Importing a Prime Agnostic Logics Module.
 import agnosticLogics from "../../../../../imported/javascript/agnostic-logics.js";

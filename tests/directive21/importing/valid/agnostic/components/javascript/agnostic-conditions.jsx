@@ -1,4 +1,4 @@
-// "use client components"
+// "use agnostic components"
 
 // ...Importing a Special Agnostic Conditions Module.
 import agnosticConditions from "../../../../../imported/javascript/agnostic-conditions.jsx";

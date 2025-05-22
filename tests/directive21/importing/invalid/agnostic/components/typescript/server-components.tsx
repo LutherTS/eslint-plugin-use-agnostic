@@ -1,4 +1,4 @@
-// "use client components"
+// "use agnostic components"
 
 // ...Importing a Lineal Server Components Module.
 import serverComponents from "../../../../../imported/typescript/server-components.tsx";

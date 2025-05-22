@@ -1,4 +1,4 @@
-// "use client components"
+// "use agnostic components"
 
 // ...Importing a Special Client Contexts Module.
 import clientContexts from "../../../../../imported/typescript/client-contexts.tsx";

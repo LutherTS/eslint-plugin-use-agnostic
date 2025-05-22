@@ -1,53 +1,18 @@
-import fs from "fs";
-import path from "path";
-
 import { RuleTester } from "eslint";
 
-import {
-  enforceCommentedDirectivesRuleName,
-  importBreaksCommentedImportRulesMessageId,
-} from "../../library/_commons/constants/bases.js";
+import { enforceCommentedDirectivesRuleName } from "../../library/_commons/constants/bases.js";
 
 import enforceCommentedDirectivesImportRules from "../../library/directive21/_commons/rules/import-rules.js";
 
-const validPath = "./tests/directive21/importing/valid";
-const invalidPath = "./tests/directive21/importing/invalid";
+import { validPath21, invalidPath21 } from "../_commons/constants/bases.js";
 
-const readFilesRecursively = (folderPath) =>
-  fs.readdirSync(folderPath).reduce((allFiles, item) => {
-    const fullPath = path.join(folderPath, item);
-    const stats = fs.statSync(fullPath);
+import {
+  readValidFilesRecursively,
+  readInvalidFilesRecursively21,
+} from "../_commons/utilities/helpers.js";
 
-    if (stats.isDirectory()) {
-      return allFiles.concat(readFilesRecursively(fullPath));
-    } else if (stats.isFile()) {
-      return allFiles.concat(fullPath);
-    } else {
-      return allFiles;
-    }
-  }, []);
-
-const readValidFilesRecursively = (folderPath) =>
-  readFilesRecursively(folderPath).map((e) => ({
-    name: e,
-    filename: e,
-    code: fs.readFileSync(e, "utf8"),
-  }));
-
-const readInvalidFilesRecursively = (folderPath) =>
-  readFilesRecursively(folderPath).map((e) => ({
-    name: e,
-    filename: e,
-    code: fs.readFileSync(e, "utf8"),
-    // errors: 2,
-    errors: [
-      { messageId: importBreaksCommentedImportRulesMessageId },
-      { messageId: importBreaksCommentedImportRulesMessageId },
-    ],
-  }));
-
-const validFiles = readValidFilesRecursively(validPath);
-const invalidFiles = readInvalidFilesRecursively(invalidPath);
+const validFiles = readValidFilesRecursively(validPath21);
+const invalidFiles = readInvalidFilesRecursively21(invalidPath21);
 
 const ruleTester = new RuleTester();
 
@@ -63,4 +28,4 @@ ruleTester.run(
   }
 );
 
-console.log("All tests passed.");
+console.log("All directive21 tests passed.");

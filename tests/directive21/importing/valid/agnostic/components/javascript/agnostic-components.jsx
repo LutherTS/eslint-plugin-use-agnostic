@@ -1,4 +1,4 @@
-// "use client components"
+// "use agnostic components"
 
 // ...Importing a Lineal Agnostic Components Module.
 import agnosticComponents from "../../../../../imported/javascript/agnostic-components.jsx";

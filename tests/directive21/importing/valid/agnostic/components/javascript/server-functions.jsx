@@ -1,4 +1,4 @@
-// "use client components"
+// "use agnostic components"
 
 // ...Importing a Special Server Functions Module.
 import serverFunctions from "../../../../../imported/javascript/server-functions.js";

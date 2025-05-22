@@ -1,4 +1,4 @@
-// "use client components"
+// "use agnostic components"
 
 // ...Importing a Prime Client Logics Module.
 import clientLogics from "../../../../../imported/javascript/client-logics.js";
