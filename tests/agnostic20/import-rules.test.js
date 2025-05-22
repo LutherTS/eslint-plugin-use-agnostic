@@ -1,50 +1,18 @@
-import fs from "fs";
-import path from "path";
-
 import { RuleTester } from "eslint";
 
+import { validPath20, invalidPath20 } from "../_commons/constants/bases.js";
+
 import {
-  enforceEffectiveDirectivesRuleName,
-  importBreaksEffectiveImportRulesMessageId,
-} from "../../library/_commons/constants/bases.js";
+  readValidFilesRecursively,
+  readInvalidFilesRecursively20,
+} from "../_commons/utilities/helpers.js";
+
+import { enforceEffectiveDirectivesRuleName } from "../../library/_commons/constants/bases.js";
 
 import enforceEffectiveDirectivesImportRules from "../../library/agnostic20/_commons/rules/import-rules.js";
 
-const validPath = "./tests/agnostic20/importing/valid";
-const invalidPath = "./tests/agnostic20/importing/invalid";
-
-const readFilesRecursively = (folderPath) =>
-  fs.readdirSync(folderPath).reduce((allFiles, item) => {
-    const fullPath = path.join(folderPath, item);
-    const stats = fs.statSync(fullPath);
-
-    if (stats.isDirectory()) {
-      return allFiles.concat(readFilesRecursively(fullPath));
-    } else if (stats.isFile()) {
-      return allFiles.concat(fullPath);
-    } else {
-      return allFiles;
-    }
-  }, []);
-
-const readValidFilesRecursively = (folderPath) =>
-  readFilesRecursively(folderPath).map((e) => ({
-    name: e,
-    filename: e,
-    code: fs.readFileSync(e, "utf8"),
-  }));
-
-const readInvalidFilesRecursively = (folderPath) =>
-  readFilesRecursively(folderPath).map((e) => ({
-    name: e,
-    filename: e,
-    code: fs.readFileSync(e, "utf8"),
-    // errors: 1,
-    errors: [{ messageId: importBreaksEffectiveImportRulesMessageId }],
-  }));
-
-const validFiles = readValidFilesRecursively(validPath);
-const invalidFiles = readInvalidFilesRecursively(invalidPath);
+const validFiles = readValidFilesRecursively(validPath20);
+const invalidFiles = readInvalidFilesRecursively20(invalidPath20);
 
 const ruleTester = new RuleTester();
 
@@ -60,4 +28,4 @@ ruleTester.run(
   }
 );
 
-console.log("All tests passed.");
+console.log("All agnostic20 tests passed.");
