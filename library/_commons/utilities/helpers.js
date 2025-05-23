@@ -97,6 +97,18 @@ export const getImportedFileFirstLine = (resolvedImportPath) => {
   return importedFileFirstLine;
 };
 
+/* highlightFirstLineOfCode */
+
+/**
+ * Gets the coordinates for the first line of code of a file.
+ * @param {import('@typescript-eslint/utils').TSESLint.RuleContext} context An ESLint rule's `context` object.
+ * @returns The `context.report` `loc`-compatible coordinates for the first line of code of a file.
+ */
+export const highlightFirstLineOfCode = (context) => ({
+  start: { line: 1, column: 0 },
+  end: { line: 1, column: context.sourceCode.lines[0].length },
+});
+
 /* isImportBlocked */
 
 /**
@@ -110,7 +122,7 @@ export const isImportBlocked = (
   // Note: "Blocked" here is preferred over "not allowed" because a specific message will be shared for each of the blocked situations, explaining their reasons and the solutions needed.
   resolvedDirectives_blockedImports,
   currentFileResolvedDirective,
-  importedFileResolvedDirective,
+  importedFileResolvedDirective
 ) =>
   resolvedDirectives_blockedImports[currentFileResolvedDirective]
     .map((e) => e.blockedImport)
@@ -123,12 +135,12 @@ export const isImportBlocked = (
  * @param {Readonly<{"use server logics": SERVER_LOGICS_MODULE; "use client logics": CLIENT_LOGICS_MODULE; "use agnostic logics": AGNOSTIC_LOGICS_MODULE; "use server components": SERVER_COMPONENTS_MODULE; "use client components": CLIENT_COMPONENTS_MODULE; "use agnostic components": AGNOSTIC_COMPONENTS_MODULE; "use server functions": SERVER_FUNCTIONS_MODULE; "use client contexts": CLIENT_CONTEXTS_MODULE; "use agnostic conditions": AGNOSTIC_CONDITIONS_MODULE; "use agnostic strategies": AGNOSTIC_STRATEGIES_MODULE;}>} resolvedDirectives_ResolvedModules The resolved modules object, either for agnostic20 or for directive21.
  * @param {USE_SERVER_LOGICS | USE_CLIENT_LOGICS | USE_AGNOSTIC_LOGICS | USE_SERVER_COMPONENTS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_CONTEXTS | USE_AGNOSTIC_CONDITIONS | USE_AGNOSTIC_STRATEGIES} currentFileResolvedDirective The current file's "resolved" directive.
  * @param {USE_SERVER_LOGICS | USE_CLIENT_LOGICS | USE_AGNOSTIC_LOGICS | USE_SERVER_COMPONENTS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_CONTEXTS | USE_AGNOSTIC_CONDITIONS} importedFileResolvedDirective The imported file's "resolved" directive.
- * @returns {string} Returns "[Current file 'resolved' modules] are not allowed to import [imported file 'resolved' modules]".
+ * @returns {string} Returns "[Current file 'resolved' modules] are not allowed to import [imported file 'resolved' modules]."
  */
 export const makeIntroForSpecificViolationMessage = (
   resolvedDirectives_ResolvedModules,
   currentFileResolvedDirective,
-  importedFileResolvedDirective,
+  importedFileResolvedDirective
 ) =>
   `${resolvedDirectives_ResolvedModules[currentFileResolvedDirective]}s ${ARE_NOT_ALLOWED_TO_IMPORT} ${resolvedDirectives_ResolvedModules[importedFileResolvedDirective]}s.`;
 
@@ -144,14 +156,14 @@ export const makeIntroForSpecificViolationMessage = (
 export const makeMessageFromResolvedDirective = (
   resolvedDirectives_ResolvedModules,
   resolvedDirectives_blockedImports,
-  resolvedDirective,
+  resolvedDirective
 ) => {
   const effectiveModule = resolvedDirectives_ResolvedModules[resolvedDirective];
   const effectiveModulesString = effectiveModule + "s"; // plural
 
   const blockedImports =
     resolvedDirectives_blockedImports[resolvedDirective].map(
-      (e) => e.blockedImport,
+      (e) => e.blockedImport
     ) || [];
 
   if (blockedImports.length === 0) {
@@ -159,7 +171,7 @@ export const makeMessageFromResolvedDirective = (
   }
 
   const blockedEffectiveModules = blockedImports.map(
-    (e) => resolvedDirectives_ResolvedModules[e] + "s", // plural
+    (e) => resolvedDirectives_ResolvedModules[e] + "s" // plural
   );
 
   const blockedEffectiveModulesString =
@@ -184,8 +196,8 @@ export const makeMessageFromResolvedDirective = (
 export const findSpecificViolationMessage = (
   resolvedDirectives_blockedImports,
   currentFileResolvedDirective,
-  importedFileResolvedDirective,
+  importedFileResolvedDirective
 ) =>
   resolvedDirectives_blockedImports[currentFileResolvedDirective].find(
-    (e) => e.blockedImport === importedFileResolvedDirective,
+    (e) => e.blockedImport === importedFileResolvedDirective
   ).message;

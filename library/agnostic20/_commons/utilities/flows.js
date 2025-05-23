@@ -20,7 +20,10 @@ import {
   specificViolationMessage,
 } from "../constants/bases.js";
 
-import { resolveImportPath } from "../../../_commons/utilities/helpers.js";
+import {
+  resolveImportPath,
+  highlightFirstLineOfCode,
+} from "../../../_commons/utilities/helpers.js";
 import {
   getDirectiveFromCurrentModule,
   getDirectiveFromImportedModule,
@@ -61,10 +64,7 @@ export const currentFileFlow = (context) => {
     currentFileExtension.endsWith("x")
   ) {
     context.report({
-      loc: {
-        start: { line: 1, column: 0 },
-        end: { line: 1, column: context.sourceCode.lines[0].length },
-      },
+      loc: highlightFirstLineOfCode(context),
       messageId: useServerJSXMessageId,
     });
     return { skip: true };
@@ -91,9 +91,6 @@ export const currentFileFlow = (context) => {
 
 /**
  * The flow that is shared between import and re-export traversals to obtain the import file's effective directive.
- * @param {string} currentDir Directory of the file containing the import (from `path.dirname(context.filename)`).
- * @param {string} importPath The import specifier (e.g., `@/components/Button` or `./utils`).
- * @param {string} cwd Project root (from `context.cwd`). Caveat: only as an assumption currently.
  * @param {Readonly<import('@typescript-eslint/utils').TSESLint.RuleContext<typeof reExportNotSameMessageId | typeof importBreaksEffectiveImportRulesMessageId | typeof useServerJSXMessageId, []>>} context The ESLint rule's `context` object.
  * @param {import('@typescript-eslint/types').TSESTree.ImportDeclaration} node The ESLint `node` of the rule's current traversal.
  * @returns {{skip: true; importedFileEffectiveDirective: undefined; resolvedImportPath: undefined;} | {skip: undefined; importedFileEffectiveDirective: USE_SERVER_LOGICS | USE_SERVER_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_LOGICS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_LOGICS | USE_AGNOSTIC_COMPONENTS; resolvedImportPath: string;}} Returns either an object with `skip: true` to disregard or one with the non-null `importedFileEffectiveDirective`.
@@ -202,9 +199,9 @@ export const reExportsFlow = (context, node, currentFileEffectiveDirective) => {
       node,
       messageId: reExportNotSameMessageId,
       data: {
-        // currentFileEffectiveDirective
+        // currentFileEffectiveDirective:
         currentFileEffectiveDirective,
-        // importedFileEffectiveDirective
+        // importedFileEffectiveDirective:
         importedFileEffectiveDirective,
       },
     });

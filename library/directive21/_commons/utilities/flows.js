@@ -28,7 +28,10 @@ import {
   specificFailure,
 } from "../constants/bases.js";
 
-import { resolveImportPath } from "../../../_commons/utilities/helpers.js";
+import {
+  resolveImportPath,
+  highlightFirstLineOfCode,
+} from "../../../_commons/utilities/helpers.js";
 import {
   getCommentedDirectiveFromCurrentModule,
   getVerifiedCommentedDirective,
@@ -37,6 +40,7 @@ import {
   makeMessageFromCommentedDirective,
   findSpecificViolationMessage,
   getStrategizedDirective,
+  addressDirectiveIfAgnosticStrategies,
 } from "./helpers.js";
 
 /* currentFileFlow */
@@ -67,10 +71,7 @@ export const currentFileFlow = (context) => {
   // reports if there is no directive or no valid directive (same, but eventually no directive could have defaults)
   if (!commentedDirective) {
     context.report({
-      loc: {
-        start: { line: 1, column: 0 },
-        end: { line: 1, column: context.sourceCode.lines[0].length },
-      },
+      loc: highlightFirstLineOfCode(context),
       messageId: noCommentedDirective,
     });
     return { skip: true };
@@ -84,10 +85,7 @@ export const currentFileFlow = (context) => {
   // reports if the verification failed
   if (!verifiedCommentedDirective) {
     context.report({
-      loc: {
-        start: { line: 1, column: 0 },
-        end: { line: 1, column: context.sourceCode.lines[0].length },
-      },
+      loc: highlightFirstLineOfCode(context),
       messageId: commentedDirectiveVerificationFailed,
       data: {
         [specificFailure]:
@@ -139,10 +137,11 @@ const importedFileFlow = (context, node) => {
   }
 
   /* GETTING THE CORRECT DIRECTIVE INTERPRETATION OF STRATEGY FOR AGNOSTIC STRATEGIES MODULES IMPORTS. 
-  (The Directive-First Architecture does not check whether the export and import Strategies are the same at this time, meaning a @clientLogics strategy could be wrongly imported and interpreted as a @serverLogics strategy.
+  (The Directive-First Architecture does not check whether the export and import Strategies are the same at this time, meaning an @clientLogics strategy could be wrongly imported and interpreted as an @serverLogics strategy.
   
-  After a short attempt, this feature is currently cancelled, mainly since the amount of work it will require will not be able to be transferred in a future where commented strategies will actually be real syntax.
+  After a short attempt, this feature is currently canceled, mainly since the amount of work it will require will not be able to be transferred in a future where commented strategies will actually be real syntax.
   
+  // (Consequently, details below are currently at the stage of wishful thinking.)
   However, Strategy exports are planned to be linting in the future within their own Agnostic Strategies Modules to ensure they respect import rules within their own scopes. It may also become possible to check whether the export and import Strategies are the same in the future when identifiers are defined and the same, especially for components modules where a convention could be to for all non-type export to be named and PascalCase.) */
   if (importedFileCommentedDirective === USE_AGNOSTIC_STRATEGIES) {
     const importingFileCommentedDirective = getStrategizedDirective(
@@ -222,27 +221,29 @@ export const allExportsFlow = (
   // does not operate on `export type`
   if (node.exportKind === "type") return;
 
-  if (node.source) {
+  // regular exports scenarios
+  if (!node.source) {
+    addressDirectiveIfAgnosticStrategies(
+      context,
+      node,
+      currentFileCommentedDirective
+    );
+  }
+  // re-exports scenarios
+  else {
     const result = importedFileFlow(context, node);
 
     if (result.skip) return;
     const { importedFileCommentedDirective } = result;
 
-    // ignores if this is NOT an Agnostic Strategies Module
-    // verifies current node export strategy if "use agnostic strategies"
-    if (currentFileCommentedDirective === USE_AGNOSTIC_STRATEGIES) {
-      const exportStrategizedDirective = getStrategizedDirective(context, node);
+    const addressedDirective = addressDirectiveIfAgnosticStrategies(
+      context,
+      node,
+      currentFileCommentedDirective
+    );
 
-      if (exportStrategizedDirective === null) {
-        context.report({
-          node,
-          messageId: exportNotStrategized,
-        });
-        return;
-      }
-
-      currentFileCommentedDirective = exportStrategizedDirective;
-    }
+    if (!addressedDirective) return;
+    else currentFileCommentedDirective = addressedDirective;
 
     if (currentFileCommentedDirective !== importedFileCommentedDirective) {
       context.report({
@@ -255,24 +256,6 @@ export const allExportsFlow = (
           importedFileCommentedDirective,
         },
       });
-      return;
-    }
-  } else {
-    // ignores if this is NOT an Agnostic Strategies Module
-    // verifies current node export strategy if "use agnostic strategies"
-    if (currentFileCommentedDirective === USE_AGNOSTIC_STRATEGIES) {
-      const exportStrategizedDirective = getStrategizedDirective(context, node);
-
-      if (exportStrategizedDirective === null) {
-        context.report({
-          node,
-          messageId: exportNotStrategized,
-        });
-        return;
-      }
-
-      // just to emphasize that this is the same short flow from above
-      currentFileCommentedDirective = exportStrategizedDirective;
     }
   }
 };
