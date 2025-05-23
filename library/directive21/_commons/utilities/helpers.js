@@ -190,9 +190,11 @@ export const getCommentedDirectiveFromImportedModule = (resolvedImportPath) => {
   const importedFileFirstLine = getImportedFileFirstLine(resolvedImportPath);
 
   // sees if the first line includes any of the directives and finds the directive that it includes
+  /** @type {USE_SERVER_LOGICS | USE_CLIENT_LOGICS | USE_AGNOSTIC_LOGICS | USE_SERVER_COMPONENTS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_CONTEXTS | USE_AGNOSTIC_CONDITIONS | USE_AGNOSTIC_STRATEGIES | ""} */
   let includedDirective = "";
-  const lengthOne = directivesArray.length;
-  for (let i = 0; i < lengthOne; i++) {
+  const firstLength = directivesArray.length;
+
+  for (let i = 0; i < firstLength; i++) {
     const directive = directivesArray[i];
     if (importedFileFirstLine.includes(directive)) {
       includedDirective = directive;
@@ -203,12 +205,14 @@ export const getCommentedDirectiveFromImportedModule = (resolvedImportPath) => {
   // returns null early if there is none of the directives in the first line
   if (includedDirective === "") return null;
 
+  /** @type {USE_SERVER_LOGICS | USE_CLIENT_LOGICS | USE_AGNOSTIC_LOGICS | USE_SERVER_COMPONENTS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_CONTEXTS | USE_AGNOSTIC_CONDITIONS | USE_AGNOSTIC_STRATEGIES | ""} */
   let importFileDirective = "";
-  const lengthTwo =
-    // sucks for that any but, I'm working in JS here
-    commentedDirectives_4RawImplementations[includedDirective].length;
-  for (let i = 0; i < lengthTwo; i++) {
-    const raw = commentedDirectives_4RawImplementations[includedDirective][i];
+  const rawImplementations =
+    commentedDirectives_4RawImplementations[includedDirective];
+  const secondLength = rawImplementations.length;
+
+  for (let i = 0; i < secondLength; i++) {
+    const raw = rawImplementations[i];
     if (raw === importedFileFirstLine) {
       importFileDirective = includedDirective;
       break;
@@ -289,3 +293,33 @@ export const findSpecificViolationMessage = (
     currentFileCommentedDirective,
     importedFileCommentedDirective
   );
+
+/* addressDirectiveIfAgnosticStrategies */
+
+/**
+ * Verifies the current node's export strategy if `"use agnostic strategies"` by reporting `exportNotStrategized` in case an export is not strategized in an Agnostic Strategies Module.
+ * @param {Readonly<import('@typescript-eslint/utils').TSESLint.RuleContext<typeof reExportNotSameMessageId | typeof importBreaksCommentedImportRulesMessageId | typeof noCommentedDirective | typeof commentedDirectiveVerificationFailed | typeof importNotStrategized | typeof exportNotStrategized, []>>} context The ESLint rule's `context` object.
+ * @param {import('@typescript-eslint/types').TSESTree.ExportNamedDeclaration | import('@typescript-eslint/types').TSESTree.ExportAllDeclaration | import('@typescript-eslint/types').TSESTree.ExportDefaultDeclaration} node The ESLint `node` of the rule's current traversal.
+ * @param {USE_SERVER_LOGICS | USE_CLIENT_LOGICS | USE_AGNOSTIC_LOGICS | USE_SERVER_COMPONENTS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_CONTEXTS | USE_AGNOSTIC_CONDITIONS | USE_AGNOSTIC_STRATEGIES} currentFileCommentedDirective The current file's commented directive.
+ * @returns The commented directive, the addressed strategy (as a commented directive) or null in case of failure.
+ */
+export const addressDirectiveIfAgnosticStrategies = (
+  context,
+  node,
+  currentFileCommentedDirective
+) => {
+  // ignores if not addressing an Agnostic Strategies Module
+  if (currentFileCommentedDirective !== USE_AGNOSTIC_STRATEGIES)
+    return currentFileCommentedDirective;
+
+  const exportStrategizedDirective = getStrategizedDirective(context, node);
+
+  if (exportStrategizedDirective === null) {
+    context.report({
+      node,
+      messageId: exportNotStrategized,
+    });
+  }
+
+  return exportStrategizedDirective; // null indicates failure
+};

@@ -86,27 +86,29 @@ export const directivesSet = new Set([
 
 /* from the getCommentedDirectiveFromImportedModule utility */
 
+/** @type {readonly [USE_SERVER_LOGICS, USE_CLIENT_LOGICS, USE_AGNOSTIC_LOGICS, USE_SERVER_COMPONENTS, USE_CLIENT_COMPONENTS, USE_AGNOSTIC_COMPONENTS, USE_SERVER_FUNCTIONS, USE_CLIENT_CONTEXTS, USE_AGNOSTIC_CONDITIONS, USE_AGNOSTIC_STRATEGIES]} */
 export const directivesArray = Array.from(directivesSet);
 
 /* commentedDirectives_4RawImplementations */
 
-// make all four accepted commented directive implementations
-const makeRawCommentedDirectiveV1of4 = (directive) => `// '${directive}'`;
-const makeRawCommentedDirectiveV2of4 = (directive) => `// "${directive}"`;
-const makeRawCommentedDirectiveV3of4 = (directive) => `/* '${directive}' */`;
-const makeRawCommentedDirectiveV4of4 = (directive) => `/* "${directive}" */`;
+// all formatting styles as an array of [prefix, quote, suffix]
+const commentStyles = [
+  [`// `, `'`, ``], // V1: `// 'directive'`
+  [`// `, `"`, ``], // V2: `// "directive"`
+  [`/* `, `'`, ` */`], // V3: `/* 'directive' */`
+  [`/* `, `"`, ` */`], // V4: `/* "directive" */`
+];
 
 /**
  * Makes the array of all four accepted commented directive implementations on a directive basis.
- * @param {USE_SERVER_LOGICS | USE_CLIENT_LOGICS | USE_AGNOSTIC_LOGICS | USE_SERVER_COMPONENTS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_CONTEXTS | USE_AGNOSTIC_CONDITIONS | USE_AGNOSTIC_STRATEGIES} directive
- * @returns
+ * @param {USE_SERVER_LOGICS | USE_CLIENT_LOGICS | USE_AGNOSTIC_LOGICS | USE_SERVER_COMPONENTS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_CONTEXTS | USE_AGNOSTIC_CONDITIONS | USE_AGNOSTIC_STRATEGIES} directive The commented directive.
+ * @returns {string[]} The array of formatted commented directives.
  */
-const make4RawImplementations = (directive) => [
-  makeRawCommentedDirectiveV1of4(directive),
-  makeRawCommentedDirectiveV2of4(directive),
-  makeRawCommentedDirectiveV3of4(directive),
-  makeRawCommentedDirectiveV4of4(directive),
-];
+const make4RawImplementations = (directive) =>
+  commentStyles.map(
+    ([prefix, quote, suffix]) =>
+      `${prefix}${quote}${directive}${quote}${suffix}`
+  );
 
 // mapped commented directives to their 4 raw implementations
 export const commentedDirectives_4RawImplementations = Object.freeze({
@@ -152,7 +154,7 @@ export const commentedStrategies_CommentedDirectives = Object.freeze({
  * Makes the intro for each specific import rule violation messages.
  * @param {USE_SERVER_LOGICS | USE_CLIENT_LOGICS | USE_AGNOSTIC_LOGICS | USE_SERVER_COMPONENTS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_CONTEXTS | USE_AGNOSTIC_CONDITIONS | USE_AGNOSTIC_STRATEGIES} currentFileCommentedDirective The current file's commented directive.
  * @param {USE_SERVER_LOGICS | USE_CLIENT_LOGICS | USE_AGNOSTIC_LOGICS | USE_SERVER_COMPONENTS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_CONTEXTS | USE_AGNOSTIC_CONDITIONS} importedFileCommentedDirective The imported file's commented directive.
- * @returns {string} Returns "[Current file commented modules] are not allowed to import [imported file commented modules]".
+ * @returns {string} Returns "[Current file commented modules] are not allowed to import [imported file commented modules]."
  */
 const makeIntroForSpecificViolationMessage = (
   currentFileCommentedDirective,

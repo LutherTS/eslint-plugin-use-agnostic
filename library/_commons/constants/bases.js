@@ -1,7 +1,7 @@
 /* plugin names */
 // use-agnostic
 export const useAgnosticPluginName = "use-agnostic";
-// crossingStrategies
+// crossingStrategies (canceled)
 export const strategiesPluginName = "strategies";
 
 /* config names */
@@ -18,7 +18,7 @@ export const enforceEffectiveDirectivesRuleName =
 export const enforceCommentedDirectivesRuleName =
   "enforce-commented-directives-import-rules";
 
-// crossingStrategies
+// crossingStrategies (canceled)
 export const verifySpecifierImportRuleName =
   "verify-specifier-import-export-same-strategy";
 export const verifyDefaultImportRuleName =
@@ -44,6 +44,8 @@ export const exportNotStrategized =
   "export-from-use-agnostic-strategies-not-strategized";
 
 // all "resolved" directives (from AIA/agnostic20 & DFA/directive21)
+// - AIA: Agnostic-Included Architecture (agnostic20)
+// - DFA: Directive-First Architecture (directive21)
 export const USE_SERVER_LOGICS = "use server logics";
 export const USE_CLIENT_LOGICS = "use client logics";
 export const USE_AGNOSTIC_LOGICS = "use agnostic logics";
