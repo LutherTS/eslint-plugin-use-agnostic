@@ -101,7 +101,7 @@ export const effectiveDirectives_BlockedImports = Object.freeze({
       message: `${makeIntroForSpecificViolationMessage(
         USE_SERVER_LOGICS,
         USE_CLIENT_LOGICS
-      )} Client logic should never leak to the server.`,
+      )} Client Logics should never leak to the server.`,
     },
     {
       blockedImport: USE_CLIENT_COMPONENTS,
@@ -122,7 +122,7 @@ export const effectiveDirectives_BlockedImports = Object.freeze({
       message: `${makeIntroForSpecificViolationMessage(
         USE_SERVER_COMPONENTS,
         USE_CLIENT_LOGICS
-      )} Client logic should never leak to the server.`,
+      )} Client Logics should never leak to the server.`,
     },
     // USE_CLIENT_COMPONENTS allowed, because Client Components can be nested inside Server Components either to wrap some of the tree with client state accessible through child Client Components and pass through Server Components, or to create client boundaries when the root of the application is planted on the server.
     // USE_AGNOSTIC_LOGICS allowed, because Agnostic Logics can run safely on the server just like they can on the client.
@@ -135,7 +135,7 @@ export const effectiveDirectives_BlockedImports = Object.freeze({
       message: `${makeIntroForSpecificViolationMessage(
         USE_SERVER_FUNCTIONS,
         USE_SERVER_COMPONENTS
-      )} Server Functions have no business working with React Components.`,
+      )} Server Components aren't allowed because Server Functions have no business working with React Components.`,
     },
     // USE_SERVER_FUNCTIONS allowed, because Server Functions, even though they don't need to import one another and the same results can be generated via Server Logics for the outcome of a single Server Function, can still compose with one another. (Perhaps a preferrable use case for this has been found or could be found either today or in the future.)
     {
@@ -143,14 +143,14 @@ export const effectiveDirectives_BlockedImports = Object.freeze({
       message: `${makeIntroForSpecificViolationMessage(
         USE_SERVER_FUNCTIONS,
         USE_CLIENT_LOGICS
-      )} Client logic should never leak to the server.`,
+      )} Client Logics should never leak to the server.`,
     },
     {
       blockedImport: USE_CLIENT_COMPONENTS,
       message: `${makeIntroForSpecificViolationMessage(
         USE_SERVER_FUNCTIONS,
         USE_CLIENT_COMPONENTS
-      )} Server Functions have no business working with React Components.`,
+      )} Client Components aren't allowed because Server Functions have no business working with React Components.`,
     },
     // USE_AGNOSTIC_LOGICS allowed, because Agnostic Logics can run safely on the server just like they can on the client.
     {
@@ -158,7 +158,7 @@ export const effectiveDirectives_BlockedImports = Object.freeze({
       message: `${makeIntroForSpecificViolationMessage(
         USE_SERVER_FUNCTIONS,
         USE_AGNOSTIC_COMPONENTS
-      )} Server Functions have no business working with React Components.`,
+      )} Agnostic Components aren't allowed because Server Functions have no business working with React Components.`,
     },
   ],
   [USE_CLIENT_LOGICS]: [
@@ -167,7 +167,7 @@ export const effectiveDirectives_BlockedImports = Object.freeze({
       message: `${makeIntroForSpecificViolationMessage(
         USE_CLIENT_LOGICS,
         USE_SERVER_LOGICS
-      )} Server logic should never leak to the client. 
+      )} Server Logics should never leak to the client. 
 ${SUGGEST_USE_AGNOSTIC}`,
     },
     {
@@ -190,7 +190,7 @@ ${SUGGEST_USE_AGNOSTIC}`,
       message: `${makeIntroForSpecificViolationMessage(
         USE_CLIENT_COMPONENTS,
         USE_SERVER_LOGICS
-      )} Server logic should never leak to the client. 
+      )} Server Logics should never leak to the client. 
 ${SUGGEST_USE_AGNOSTIC}`,
     },
     {
@@ -229,7 +229,7 @@ ${SUGGEST_USE_AGNOSTIC}`,
       message: `${makeIntroForSpecificViolationMessage(
         USE_AGNOSTIC_LOGICS,
         USE_SERVER_FUNCTIONS
-      )} Though Server Functions can be tinkered with on the server and on the client, use cases on both environments are not compatible.`,
+      )} Server Functions can be modified on the server and on the client, but their use cases on both environments are not one-to-one compatible, since they're being addressed as they are on the server and addressed as references on the client.`,
     },
     {
       blockedImport: USE_CLIENT_LOGICS,

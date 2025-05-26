@@ -5,4 +5,4 @@
 import serverLogics from "../../../../../imported/javascript/server.js";
 
 // Invalid.
-// Server logic should never leak to the client.
+// Server Logics should never leak to the client.

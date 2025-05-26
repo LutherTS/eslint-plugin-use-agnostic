@@ -5,4 +5,4 @@
 import clientComponents from "../../../../../imported/javascript/client.jsx";
 
 // Invalid.
-// Server Functions have no business working with React Components.
+// Client Components aren't allowed because Server Functions have no business working with React Components.

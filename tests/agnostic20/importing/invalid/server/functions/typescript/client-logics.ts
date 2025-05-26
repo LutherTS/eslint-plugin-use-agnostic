@@ -5,4 +5,4 @@
 import clientLogics from "../../../../../imported/typescript/client.ts";
 
 // Invalid.
-// Client logic should never leak to the server.
+// Client Logics should never leak to the server.

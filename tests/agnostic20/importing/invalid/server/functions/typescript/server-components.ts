@@ -5,4 +5,4 @@
 import serverComponents from "../../../../../imported/typescript/server.tsx";
 
 // Invalid.
-// Server Functions have no business working with React Components.
+// Server Components aren't allowed because Server Functions have no business working with React Components.
