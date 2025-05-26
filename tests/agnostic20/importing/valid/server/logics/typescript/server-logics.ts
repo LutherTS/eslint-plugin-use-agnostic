@@ -2,3 +2,6 @@
 
 // ...Importing a Server Logics Module.
 import serverLogics from "../../../../../imported/typescript/server.ts";
+
+// Valid.
+// Server Logics can compose with one another.

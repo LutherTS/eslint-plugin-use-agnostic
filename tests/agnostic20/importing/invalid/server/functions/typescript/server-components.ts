@@ -3,3 +3,6 @@
 
 // ...Importing a Server Components Module.
 import serverComponents from "../../../../../imported/typescript/server.tsx";
+
+// Invalid.
+// Server Functions have no business working with React Components.

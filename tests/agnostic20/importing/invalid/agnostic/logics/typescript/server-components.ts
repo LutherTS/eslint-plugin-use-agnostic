@@ -3,3 +3,6 @@
 
 // ...Importing a Server Components Module.
 import serverComponents from "../../../../../imported/typescript/server.tsx";
+
+// Invalid.
+// Server Components cannot be tinkered with on both the server and the client.

@@ -3,3 +3,6 @@
 
 // ...Importing a Agnostic Components Module.
 import agnosticComponents from "../../../../../imported/javascript/agnostic.jsx";
+
+// Valid.
+// Agnostic Components can compose with one another.
