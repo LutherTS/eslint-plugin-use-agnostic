@@ -7,3 +7,6 @@ import serverComponents from "../../../../../imported/typescript/server-componen
 import {
   /* @serverComponents */ serverComponentsStrategized,
 } from "../../../../../imported/typescript/agnostic-strategies.tsx";
+
+// Invalid.
+// Lineal Server Components may only pass through Client Contexts Components via the children prop within Server Components Modules.

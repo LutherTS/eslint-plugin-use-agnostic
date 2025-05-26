@@ -7,3 +7,6 @@ import clientLogics from "../../../../../imported/javascript/client-logics.js";
 import {
   /* @clientLogics */ clientLogicsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
+
+// Valid.
+// Prime Client Logics can compose with one another.

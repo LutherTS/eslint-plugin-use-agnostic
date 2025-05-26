@@ -7,3 +7,6 @@ import agnosticComponents from "../../../../../imported/javascript/agnostic-comp
 import {
   /* @agnosticComponents */ agnosticComponentsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
+
+// Valid.
+// Lineal Agnostic Components can compose with one another.

@@ -7,3 +7,6 @@ import clientComponents from "../../../../../imported/typescript/client-componen
 import {
   /* @clientComponents */ clientComponentsStrategized,
 } from "../../../../../imported/typescript/agnostic-strategies.tsx";
+
+// Valid.
+// Lineal Client Components can create client boundaries within (Special) Client Contexts Components.

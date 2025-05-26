@@ -5,4 +5,4 @@
 import serverComponents from "../../../../../imported/typescript/server.tsx";
 
 // Invalid.
-// Unlike Client Components, Server Components cannot make silos of their own once on the client, and can therefore not be executed from the client.
+// Server Components, unlike Client Components, cannot make silos of their own once on the opposing environment (the client in this case), and therefore cannot be executed from the client, making them unable to execute agnostically from both the server and the client.

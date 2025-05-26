@@ -7,3 +7,6 @@ import agnosticComponents from "../../../../../imported/typescript/agnostic-comp
 import {
   /* @agnosticComponents */ agnosticComponentsStrategized,
 } from "../../../../../imported/typescript/agnostic-strategies.tsx";
+
+// Valid.
+// Lineal Agnostic Components can compose with one another.

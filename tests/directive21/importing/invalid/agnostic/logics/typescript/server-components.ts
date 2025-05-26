@@ -7,3 +7,6 @@ import serverComponents from "../../../../../imported/typescript/server-componen
 import {
   /* @serverComponents */ serverComponentsStrategized,
 } from "../../../../../imported/typescript/agnostic-strategies.tsx";
+
+// Invalid.
+// Lineal Server Components cannot be tinkered with on both the server and the client.

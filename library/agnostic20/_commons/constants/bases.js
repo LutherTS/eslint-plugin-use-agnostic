@@ -116,7 +116,7 @@ export const effectiveDirectives_BlockedImports = Object.freeze({
   [USE_SERVER_COMPONENTS]: [
     // USE_SERVER_LOGICS allowed, because Server Logics, being logic from the server, can safely support Server Components.
     // USE_SERVER_COMPONENTS allowed, because Server Components can compose with one another, assuming thanks to the inclusion of the 'use agnostic' directive that they are actual Server Components.
-    // USE_SERVER_FUNCTIONS allowed, because Server Functions can be passed to imported Client Components within Server Components Modules, even though indeed Server Components Modules can make their own Server Functions through inline 'use server' directives.
+    // USE_SERVER_FUNCTIONS allowed, because Server Functions can be passed to imported Client Components within Server Components Modules, even though indeed Server Components Modules and Server Components can make their own Server Functions through inline 'use server' directives.
     {
       blockedImport: USE_CLIENT_LOGICS,
       message: `${makeIntroForSpecificViolationMessage(
@@ -262,7 +262,7 @@ ${SUGGEST_USE_AGNOSTIC}`,
       message: `${makeIntroForSpecificViolationMessage(
         USE_AGNOSTIC_COMPONENTS,
         USE_SERVER_COMPONENTS
-      )} Unlike Client Components, Server Components cannot make silos of their own once on the client, and can therefore not be executed from the client. 
+      )} Server Components, unlike Client Components, cannot make silos of their own once on the opposing environment (the client in this case), and therefore cannot be executed from the client, making them unable to execute agnostically from both the server and the client. 
 ${SUGGEST_USE_AGNOSTIC}`,
     },
     // USE_SERVER_FUNCTIONS allowed, because Server Functions can be passed to Client Components as props when Client Components are also legally imported into Agnostic Components Modules.

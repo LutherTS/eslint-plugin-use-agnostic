@@ -7,3 +7,6 @@ import clientLogics from "../../../../../imported/javascript/client-logics.js";
 import {
   /* @clientLogics */ clientLogicsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
+
+// Valid.
+// Prime Client Logics, being logic from the client, can safely support (Special) Client Contexts Components, like any Client Components.

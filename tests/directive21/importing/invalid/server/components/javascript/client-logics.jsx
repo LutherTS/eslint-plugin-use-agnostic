@@ -7,3 +7,6 @@ import clientLogics from "../../../../../imported/javascript/client-logics.js";
 import {
   /* @clientLogics */ clientLogicsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
+
+// Invalid.
+// Prime Client Logics should never leak to the server.

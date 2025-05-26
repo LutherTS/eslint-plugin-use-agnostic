@@ -7,3 +7,6 @@ import serverLogics from "../../../../../imported/typescript/server-logics.ts";
 import {
   /* @serverLogics */ serverLogicsStrategized,
 } from "../../../../../imported/typescript/agnostic-strategies.tsx";
+
+// Invalid.
+// Prime Server Logics cannot run on both the server and the client.

@@ -7,3 +7,6 @@ import clientContexts from "../../../../../imported/typescript/client-contexts.t
 import {
   /* @clientContexts */ clientContextsStrategized,
 } from "../../../../../imported/typescript/agnostic-strategies.tsx";
+
+// Invalid.
+// (Special) Client Contexts Components cannot be used as component arguments for (Special) Agnostic Conditions Components since they only take Lineal Components as arguments in their making.

@@ -7,3 +7,6 @@ import clientContexts from "../../../../../imported/javascript/client-contexts.j
 import {
   /* @clientContexts */ clientContextsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
+
+// Valid.
+// (Special) Client Contexts Components can compose with one another.

@@ -7,3 +7,6 @@ import agnosticConditions from "../../../../../imported/javascript/agnostic-cond
 import {
   /* @agnosticConditions */ agnosticConditionsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
+
+// Invalid.
+// (Special) Agnostic Conditions Components aren't allowed because (Special) Server Functions have no business working with React Components.
