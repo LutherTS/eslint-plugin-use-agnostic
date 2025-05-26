@@ -3,3 +3,6 @@
 
 // ...Importing a Agnostic Logics Module.
 import agnosticLogics from "../../../../../imported/javascript/agnostic.js";
+
+// Valid.
+// Agnostic Logics can compose with one another.

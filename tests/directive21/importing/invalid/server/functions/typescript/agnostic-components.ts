@@ -7,3 +7,6 @@ import agnosticComponents from "../../../../../imported/typescript/agnostic-comp
 import {
   /* @agnosticComponents */ agnosticComponentsStrategized,
 } from "../../../../../imported/typescript/agnostic-strategies.tsx";
+
+// Invalid.
+// Lineal Agnostic Components aren't allowed because (Special) Server Functions have no business working with React Components.

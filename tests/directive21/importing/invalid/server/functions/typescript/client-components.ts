@@ -7,3 +7,6 @@ import clientComponents from "../../../../../imported/typescript/client-componen
 import {
   /* @clientComponents */ clientComponentsStrategized,
 } from "../../../../../imported/typescript/agnostic-strategies.tsx";
+
+// Invalid.
+// Lineal Client Components aren't allowed because (Special) Server Functions have no business working with React Components.

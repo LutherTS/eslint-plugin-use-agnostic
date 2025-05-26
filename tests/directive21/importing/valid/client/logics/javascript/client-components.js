@@ -7,3 +7,6 @@ import clientComponents from "../../../../../imported/javascript/client-componen
 import {
   /* @clientComponents */ clientComponentsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
+
+// Valid.
+// Lineal Client Components, like any Client Components, are OK to be composed with Prime Client Logics as long as the Prime Client Logics Module, by convention, does not export React components.

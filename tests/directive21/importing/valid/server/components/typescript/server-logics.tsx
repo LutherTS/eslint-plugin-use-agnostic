@@ -7,3 +7,6 @@ import serverLogics from "../../../../../imported/typescript/server-logics.ts";
 import {
   /* @serverLogics */ serverLogicsStrategized,
 } from "../../../../../imported/typescript/agnostic-strategies.tsx";
+
+// Valid.
+// Prime Server Logics, being logic from the server, can safely support Lineal Server Components.

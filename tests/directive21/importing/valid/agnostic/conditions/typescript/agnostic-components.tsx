@@ -7,3 +7,6 @@ import agnosticComponents from "../../../../../imported/typescript/agnostic-comp
 import {
   /* @agnosticComponents */ agnosticComponentsStrategized,
 } from "../../../../../imported/typescript/agnostic-strategies.tsx";
+
+// Valid.
+// Lineal Agnostic Components can take the place of `ComponentForServer` and/or `ComponentForClient` components to form (Special) Agnostic Conditions Components.

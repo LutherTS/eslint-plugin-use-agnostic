@@ -7,3 +7,6 @@ import agnosticLogics from "../../../../../imported/javascript/agnostic-logics.j
 import {
   /* @agnosticLogics */ agnosticLogicsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
+
+// Valid.
+// Prime Agnostic Logics can run safely on the client just like they can on the server.

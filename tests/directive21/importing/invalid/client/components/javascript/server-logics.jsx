@@ -7,3 +7,6 @@ import serverLogics from "../../../../../imported/javascript/server-logics.js";
 import {
   /* @serverLogics */ serverLogicsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
+
+// Invalid.
+// Prime Server Logics should never leak to the client.

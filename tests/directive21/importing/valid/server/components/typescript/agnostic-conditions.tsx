@@ -7,3 +7,6 @@ import agnosticConditions from "../../../../../imported/typescript/agnostic-cond
 import {
   /* @agnosticConditions */ agnosticConditionsStrategized,
 } from "../../../../../imported/typescript/agnostic-strategies.tsx";
+
+// Valid.
+// (Special) Agnostic Conditions Components, as if they were Lineal Agnostic Components themselves, can render safely on the server just like they can on the client.

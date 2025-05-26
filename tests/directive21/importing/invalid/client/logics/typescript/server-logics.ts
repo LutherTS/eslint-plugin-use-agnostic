@@ -7,3 +7,6 @@ import serverLogics from "../../../../../imported/typescript/server-logics.ts";
 import {
   /* @serverLogics */ serverLogicsStrategized,
 } from "../../../../../imported/typescript/agnostic-strategies.tsx";
+
+// Invalid.
+// Prime Server Logics should never leak to the client.

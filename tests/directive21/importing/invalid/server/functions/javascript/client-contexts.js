@@ -7,3 +7,6 @@ import clientContexts from "../../../../../imported/javascript/client-contexts.j
 import {
   /* @clientContexts */ clientContextsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
+
+// Invalid.
+// (Special) Client Contexts Components aren't allowed because (Special) Server Functions have no business working with React Components.

@@ -7,3 +7,6 @@ import serverFunctions from "../../../../../imported/typescript/server-functions
 import {
   /* @serverFunctions */ serverFunctionsStrategized,
 } from "../../../../../imported/typescript/agnostic-strategies.tsx";
+
+// Valid.
+// (Special) Server Functions are specifically triggered by Client Components.

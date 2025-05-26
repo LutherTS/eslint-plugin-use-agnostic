@@ -3,3 +3,6 @@
 
 // ...Importing a Agnostic Components Module.
 import agnosticComponents from "../../../../../imported/typescript/agnostic.tsx";
+
+// Valid.
+// Agnostic Components can render safely on the client just like they can on the server.

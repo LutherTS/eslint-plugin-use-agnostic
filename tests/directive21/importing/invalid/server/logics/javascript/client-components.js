@@ -7,3 +7,6 @@ import clientComponents from "../../../../../imported/javascript/client-componen
 import {
   /* @clientComponents */ clientComponentsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
+
+// Invalid.
+// Lineal Client Components, like any Client Components, cannot be tinkered with on the server.

@@ -7,3 +7,6 @@ import serverComponents from "../../../../../imported/typescript/server-componen
 import {
   /* @serverComponents */ serverComponentsStrategized,
 } from "../../../../../imported/typescript/agnostic-strategies.tsx";
+
+// Invalid.
+// Lineal Server Components aren't allowed because (Special) Server Functions have no business working with React Components.

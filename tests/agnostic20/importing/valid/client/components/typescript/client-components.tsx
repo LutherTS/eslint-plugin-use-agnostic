@@ -3,3 +3,6 @@
 
 // ...Importing a Client Components Module.
 import clientComponents from "../../../../../imported/typescript/client.tsx";
+
+// Valid.
+// Client Components can compose with one another.

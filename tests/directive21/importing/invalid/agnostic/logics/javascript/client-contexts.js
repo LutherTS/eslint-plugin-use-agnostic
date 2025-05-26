@@ -7,3 +7,6 @@ import clientContexts from "../../../../../imported/javascript/client-contexts.j
 import {
   /* @clientContexts */ clientContextsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
+
+// Invalid.
+// (Special) Client Contexts Components, like any Client Components, cannot be tinkered with on both the server and the client.

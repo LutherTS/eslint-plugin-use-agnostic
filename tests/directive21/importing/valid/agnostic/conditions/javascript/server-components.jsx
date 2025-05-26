@@ -7,3 +7,6 @@ import serverComponents from "../../../../../imported/javascript/server-componen
 import {
   /* @serverComponents */ serverComponentsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
+
+// Valid.
+// Lineal Server Components are to be paired as `ComponentForServer` components with `ComponentForClient` components to form (Special) Agnostic Conditions Components.

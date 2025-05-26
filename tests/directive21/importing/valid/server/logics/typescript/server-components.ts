@@ -7,3 +7,6 @@ import serverComponents from "../../../../../imported/typescript/server-componen
 import {
   /* @serverComponents */ serverComponentsStrategized,
 } from "../../../../../imported/typescript/agnostic-strategies.tsx";
+
+// Valid.
+// Lineal Server Components are OK to be composed with Prime Server Logics as long as the Prime Server Logics Module, by convention, does not export React components.

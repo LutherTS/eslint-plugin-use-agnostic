@@ -7,3 +7,6 @@ import agnosticLogics from "../../../../../imported/typescript/agnostic-logics.t
 import {
   /* @agnosticLogics */ agnosticLogicsStrategized,
 } from "../../../../../imported/typescript/agnostic-strategies.tsx";
+
+// Valid.
+// Prime Agnostic Logics, being environment-agnostic logic, can safely support Agnostic Components.

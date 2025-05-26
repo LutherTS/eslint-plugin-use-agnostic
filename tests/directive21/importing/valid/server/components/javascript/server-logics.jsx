@@ -7,3 +7,6 @@ import serverLogics from "../../../../../imported/javascript/server-logics.js";
 import {
   /* @serverLogics */ serverLogicsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
+
+// Valid.
+// Prime Server Logics, being logic from the server, can safely support Lineal Server Components.

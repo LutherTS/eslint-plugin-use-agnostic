@@ -7,3 +7,6 @@ import agnosticConditions from "../../../../../imported/javascript/agnostic-cond
 import {
   /* @agnosticConditions */ agnosticConditionsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
+
+// Valid.
+// (Special) Agnostic Conditions Components, despite not being Lineal Components themselves, output components that can only be Lineal and compatible with their attributed rendering environments, making them acceptable arguments in the making of Agnostic Conditions Components.

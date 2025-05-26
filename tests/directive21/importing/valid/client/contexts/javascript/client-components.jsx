@@ -7,3 +7,6 @@ import clientComponents from "../../../../../imported/javascript/client-componen
 import {
   /* @clientComponents */ clientComponentsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
+
+// Valid.
+// Lineal Client Components can create client boundaries within (Special) Client Contexts Components.

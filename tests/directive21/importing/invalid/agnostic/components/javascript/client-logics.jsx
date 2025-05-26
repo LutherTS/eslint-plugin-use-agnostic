@@ -7,3 +7,6 @@ import clientLogics from "../../../../../imported/javascript/client-logics.js";
 import {
   /* @clientLogics */ clientLogicsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
+
+// Invalid.
+// Prime Client Logics cannot run on both the server and the client.

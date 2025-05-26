@@ -7,3 +7,6 @@ import clientContexts from "../../../../../imported/typescript/client-contexts.t
 import {
   /* @clientContexts */ clientContextsStrategized,
 } from "../../../../../imported/typescript/agnostic-strategies.tsx";
+
+// Valid.
+// (Special) Client Contexts Components can compose with one another.
