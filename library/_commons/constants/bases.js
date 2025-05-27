@@ -17,7 +17,6 @@ export const enforceEffectiveDirectivesRuleName =
 // directive21
 export const enforceCommentedDirectivesRuleName =
   "enforce-commented-directives-import-rules";
-
 // crossingStrategies (canceled)
 export const verifySpecifierImportRuleName =
   "verify-specifier-import-export-same-strategy";
@@ -69,8 +68,7 @@ export const CLIENT_CONTEXTS_MODULE = "Client Contexts Module";
 export const AGNOSTIC_CONDITIONS_MODULE = "Agnostic Conditions Module";
 export const AGNOSTIC_STRATEGIES_MODULE = "Agnostic Strategies Module";
 
-/* from the resolveImportPath utility */
-
+// JavaScript/TypeScript extensions
 export const TSX = ".tsx";
 export const TS = ".ts";
 export const JSX = ".jsx";
@@ -78,8 +76,9 @@ export const JS = ".js";
 export const MJS = ".mjs";
 export const CJS = ".cjs";
 
+// JavaScript/TypeScript extensions array
+/** @type {readonly [TSX, TS, JSX, JS, MJS, CJS]} */
 export const EXTENSIONS = [TSX, TS, JSX, JS, MJS, CJS]; // In priority order
 
-/* from the isImportBlocked utility */
-
+// message strings
 export const ARE_NOT_ALLOWED_TO_IMPORT = "are not allowed to import";

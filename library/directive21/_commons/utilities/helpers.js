@@ -17,8 +17,8 @@ import {
   USE_CLIENT_CONTEXTS,
   USE_AGNOSTIC_CONDITIONS,
   USE_AGNOSTIC_STRATEGIES,
-  directivesSet,
   directivesArray,
+  strategiesArray,
   commentedDirectives_4RawImplementations,
   commentedStrategies_CommentedDirectives,
   commentedDirectives_BlockedImports,
@@ -33,55 +33,6 @@ import {
 } from "../../../_commons/utilities/helpers.js";
 
 /* getCommentedDirectiveFromCurrentModule */
-
-/**
- * Gets the commented directive of the current module.
- *
- * Accepted directives for the default Directive-First Architecture are (single or double quotes included):
- * - `'use server logics'`, `"use server logics"` denoting a Server Logics Module.
- * - `'use client logics'`, `"use client logics"` denoting a Client Logics Module.
- * - `'use agnostic logics'`, `"use agnostic logics"` denoting an Agnostic Logics Module.
- * - `'use server components'`, `"use server components"` denoting a Server Components Module.
- * - `'use client components'`, `"use client components"` denoting a Client Components Module.
- * - `'use agnostic components'`, `"use agnostic components"` denoting an Agnostic Components Module.
- * - `'use agnostic logics'`, `"use agnostic logics"` denoting an Agnostic Logics Module.
- * - `'use server functions'`, `"use server functions"` denoting a Server Functions Module.
- * - `'use client contexts'`, `"use client contexts"` denoting a Client Contexts Module.
- * - `'use agnostic conditions'`, `"use agnostic conditions"` denoting an Agnostic Conditions Module.
- * - `'use agnostic strategies'`, `"use agnostic strategies"` denoting an Agnostic Strategies Module.
- * @param {Readonly<import('@typescript-eslint/utils').TSESLint.RuleContext<typeof reExportNotSameMessageId | typeof importBreaksCommentedImportRulesMessageId | typeof noCommentedDirective | typeof commentedDirectiveVerificationFailed | typeof importNotStrategized | typeof exportNotStrategized, []>>} context The ESLint rule's `context` object.
- * @returns {USE_SERVER_LOGICS | USE_CLIENT_LOGICS | USE_AGNOSTIC_LOGICS | USE_SERVER_COMPONENTS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_CONTEXTS | USE_AGNOSTIC_CONDITIONS | USE_AGNOSTIC_STRATEGIES | null} The commented directive, or lack thereof via `null`. Given the strictness of this architecture, the lack of a directive is considered a mistake. (Though rules may provide the opportunity to declare a default, and configs with preset defaults may be provided.)
- */
-export const getCommentedDirectiveFromCurrentModule = (context) => {
-  // gets the first comment from the source code
-  const firstComment = context.sourceCode.getAllComments()[0];
-
-  // returns null early if there is no first comment
-  if (!firstComment) return null;
-
-  // returns null early if the first comment is not on the first line and the first column
-  if (firstComment.loc.start.line !== 1 || firstComment.loc.start.column !== 0)
-    return null;
-
-  // gets the trimmed raw value of the first comment
-  const rawValue = firstComment.value.trim();
-
-  // checks if the raw value is single- or double-quoted (or neither)
-  const isSingleQuoted = detectQuoteType(rawValue);
-
-  // returns null early if the raw value (trimmed prior) is neither single- nor double-quoted
-  if (isSingleQuoted === null) return null;
-
-  // Obtains the value depending on whether the raw value is single- or double-quoted. (Note: The same string is returned if, for some impossible reason, the raw value does not correspond in terms of quote types. It does not matter because the check coming next will always fail to null if that's the case.)
-  const value = isSingleQuoted
-    ? stripSingleQuotes(rawValue)
-    : stripDoubleQuotes(rawValue);
-
-  // certifies the directive or lack thereof from the obtained value
-  const commentedDirective = directivesSet.has(value) ? value : null;
-
-  return commentedDirective;
-};
 
 /**
  * Detects whether a string is single- or double-quoted.
@@ -122,6 +73,56 @@ const stripDoubleQuotes = (string) => {
   return string;
 };
 
+/**
+ * Gets the commented directive of the current module.
+ *
+ * Accepted directives for the default Directive-First Architecture are (single or double quotes included):
+ * - `'use server logics'`, `"use server logics"` denoting a Server Logics Module.
+ * - `'use client logics'`, `"use client logics"` denoting a Client Logics Module.
+ * - `'use agnostic logics'`, `"use agnostic logics"` denoting an Agnostic Logics Module.
+ * - `'use server components'`, `"use server components"` denoting a Server Components Module.
+ * - `'use client components'`, `"use client components"` denoting a Client Components Module.
+ * - `'use agnostic components'`, `"use agnostic components"` denoting an Agnostic Components Module.
+ * - `'use agnostic logics'`, `"use agnostic logics"` denoting an Agnostic Logics Module.
+ * - `'use server functions'`, `"use server functions"` denoting a Server Functions Module.
+ * - `'use client contexts'`, `"use client contexts"` denoting a Client Contexts Module.
+ * - `'use agnostic conditions'`, `"use agnostic conditions"` denoting an Agnostic Conditions Module.
+ * - `'use agnostic strategies'`, `"use agnostic strategies"` denoting an Agnostic Strategies Module.
+ * @param {Readonly<import('@typescript-eslint/utils').TSESLint.RuleContext<typeof reExportNotSameMessageId | typeof importBreaksCommentedImportRulesMessageId | typeof noCommentedDirective | typeof commentedDirectiveVerificationFailed | typeof importNotStrategized | typeof exportNotStrategized, []>>} context The ESLint rule's `context` object.
+ * @returns The commented directive, or lack thereof via `null`. Given the strictness of this architecture, the lack of a directive is considered a mistake. (Though rules may provide the opportunity to declare a default, and configs with preset defaults may become provided.)
+ */
+export const getCommentedDirectiveFromCurrentModule = (context) => {
+  // gets the first comment from the source code
+  const firstComment = context.sourceCode.getAllComments()[0];
+
+  // returns null early if there is no first comment
+  if (!firstComment) return null;
+
+  // returns null early if the first comment is not on the first line and the first column
+  if (firstComment.loc.start.line !== 1 || firstComment.loc.start.column !== 0)
+    return null;
+
+  // gets the trimmed raw value of the first comment
+  const rawValue = firstComment.value.trim();
+
+  // checks if the raw value is single- or double-quoted (or neither)
+  const isSingleQuoted = detectQuoteType(rawValue);
+
+  // returns null early if the raw value (trimmed prior) is neither single- nor double-quoted
+  if (isSingleQuoted === null) return null;
+
+  // Obtains the value depending on whether the raw value is single- or double-quoted. (Note: The same string is returned if, for some impossible reason, the raw value does not correspond in terms of quote types. It does not matter because the check coming next will always fail to null if that's the case.)
+  const value = isSingleQuoted
+    ? stripSingleQuotes(rawValue)
+    : stripDoubleQuotes(rawValue);
+
+  // certifies the directive or lack thereof from the obtained value
+  const commentedDirective =
+    directivesArray.find((directive) => directive === value) ?? null;
+
+  return commentedDirective;
+};
+
 /* getVerifiedCommentedDirective */
 
 /**
@@ -138,7 +139,7 @@ const stripDoubleQuotes = (string) => {
  * - `'use agnostic strategies'`: Agnostic Strategies Modules may export JSX.
  * @param {USE_SERVER_LOGICS | USE_CLIENT_LOGICS | USE_AGNOSTIC_LOGICS | USE_SERVER_COMPONENTS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_CONTEXTS | USE_AGNOSTIC_CONDITIONS | USE_AGNOSTIC_STRATEGIES} directive The commented directive as written on top of the file (cannot be `null` at that stage).
  * @param {TSX | TS | JSX | JS | MJS | CJS} extension The JavaScript (TypeScript) extension of the file.
- * @returns {USE_SERVER_LOGICS | USE_CLIENT_LOGICS | USE_AGNOSTIC_LOGICS | USE_SERVER_COMPONENTS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_CONTEXTS | USE_AGNOSTIC_CONDITIONS | USE_AGNOSTIC_STRATEGIES | null} The verified commented directive, from which imports rules are applied. Returns `null` if the verification failed, upon which an error will be reported depending on the commented directive, since the error logic here is strictly binary.
+ * @returns The verified commented directive, from which imports rules are applied. Returns `null` if the verification failed, upon which an error will be reported depending on the commented directive, since the error logic here is strictly binary.
  */
 export const getVerifiedCommentedDirective = (directive, extension) => {
   // I could use a map, but because this is in JS with JSDoc, a manual solution is peculiarly more typesafe.
@@ -183,7 +184,7 @@ export const getVerifiedCommentedDirective = (directive, extension) => {
  * - `'use agnostic conditions'`, `"use agnostic conditions"` denoting an Agnostic Conditions Module.
  * - `'use agnostic strategies'`, `"use agnostic strategies"` denoting an Agnostic Strategies Module.
  * @param {string} resolvedImportPath The resolved path of the import.
- * @returns {USE_SERVER_LOGICS | USE_CLIENT_LOGICS | USE_AGNOSTIC_LOGICS | USE_SERVER_COMPONENTS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_CONTEXTS | USE_AGNOSTIC_CONDITIONS | USE_AGNOSTIC_STRATEGIES | null} The commented directive, or lack thereof via `null`. Given the strictness of this architecture, the lack of a directive is considered a mistake. (Though rules may provide the opportunity to declare a default, and configs with preset defaults may be provided.)
+ * @returns {USE_SERVER_LOGICS | USE_CLIENT_LOGICS | USE_AGNOSTIC_LOGICS | USE_SERVER_COMPONENTS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_CONTEXTS | USE_AGNOSTIC_CONDITIONS | USE_AGNOSTIC_STRATEGIES | null} The commented directive, or lack thereof via `null`. Given the strictness of this architecture, the lack of a directive is considered a mistake. (Though rules may provide the opportunity to declare a default, and configs with preset defaults may become provided.)
  */
 export const getCommentedDirectiveFromImportedModule = (resolvedImportPath) => {
   // gets the first line of the code of the import
@@ -231,7 +232,7 @@ export const getCommentedDirectiveFromImportedModule = (resolvedImportPath) => {
  * Gets the interpreted directive from a specified commented Strategy (such as `@serverLogics`) nested inside the import declaration for an import from an Agnostic Strategies Module.
  * @param {Readonly<import('@typescript-eslint/utils').TSESLint.RuleContext<typeof reExportNotSameMessageId | typeof importBreaksCommentedImportRulesMessageId | typeof noCommentedDirective | typeof commentedDirectiveVerificationFailed | typeof importNotStrategized | typeof exportNotStrategized, []>>} context The ESLint rule's `context` object.
  * @param {import('@typescript-eslint/types').TSESTree.ImportDeclaration} node The ESLint `node` of the rule's current traversal.
- * @returns {USE_SERVER_LOGICS | USE_CLIENT_LOGICS | USE_AGNOSTIC_LOGICS | USE_SERVER_COMPONENTS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_CONTEXTS | USE_AGNOSTIC_CONDITIONS | null} Returns the interpreted directive, a.k.a. strategized directive, or lack thereof via `null`.
+ * @returns The interpreted directive, a.k.a. strategized directive, or lack thereof via `null`.
  */
 export const getStrategizedDirective = (context, node) => {
   const firstNestedComment = context.sourceCode.getCommentsInside(node)[0];
@@ -239,9 +240,17 @@ export const getStrategizedDirective = (context, node) => {
   // returns null early if there is no nested comments
   if (!firstNestedComment) return null;
 
-  const strategy = firstNestedComment.value.trim() || null;
+  const rawStrategy = firstNestedComment.value.trim() || "";
 
-  return commentedStrategies_CommentedDirectives[strategy] || null;
+  const strategy =
+    strategiesArray.find((strategy) => strategy === rawStrategy) ?? null;
+
+  // returns null early if no strategy was identified
+  if (!strategy) return null;
+
+  const commentedDirective = commentedStrategies_CommentedDirectives[strategy];
+
+  return commentedDirective;
 };
 
 /* isImportBlocked */

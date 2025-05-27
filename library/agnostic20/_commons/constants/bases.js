@@ -23,6 +23,14 @@ export const USE_SERVER = "use server";
 export const USE_CLIENT = "use client";
 export const USE_AGNOSTIC = "use agnostic";
 
+// directives array
+/** @type {readonly [USE_SERVER, USE_CLIENT, USE_AGNOSTIC]} */
+export const directivesArray = [USE_SERVER, USE_CLIENT, USE_AGNOSTIC];
+
+// directives set
+/** @type {ReadonlySet<USE_SERVER | USE_CLIENT | USE_AGNOSTIC>} */
+export const directivesSet = new Set(directivesArray); // no longer used exported to satisfy static type inference
+
 // effective directives
 export const USE_SERVER_LOGICS = COMMONS_USE_SERVER_LOGICS;
 export const USE_SERVER_COMPONENTS = COMMONS_USE_SERVER_COMPONENTS;
@@ -53,22 +61,10 @@ export const effectiveDirectives_EffectiveModules = Object.freeze({
 });
 
 // message placeholders
-
 export const currentFileEffectiveDirective = "currentFileEffectiveDirective";
 export const importedFileEffectiveDirective = "importedFileEffectiveDirective";
 export const effectiveDirectiveMessage = "effectiveDirectiveMessage";
 export const specificViolationMessage = "specificViolationMessage";
-
-/* from the getDirectiveFromCurrentModule utility */
-
-export const directivesSet = new Set([USE_SERVER, USE_CLIENT, USE_AGNOSTIC]);
-
-/* from the getDirectiveFromImportedModule utility */
-
-/** @type {readonly [USE_SERVER, USE_CLIENT, USE_AGNOSTIC]} */
-export const directivesArray = Array.from(directivesSet);
-
-/* from the isImportBlocked utility */
 
 /* effectiveDirectives_BlockedImports */
 
@@ -76,7 +72,7 @@ export const directivesArray = Array.from(directivesSet);
  * Makes the intro for each specific import rule violation messages.
  * @param {USE_SERVER_LOGICS | USE_SERVER_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_LOGICS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_LOGICS | USE_AGNOSTIC_COMPONENTS} currentFileEffectiveDirective The current file's effective directive.
  * @param {USE_SERVER_LOGICS | USE_SERVER_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_LOGICS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_LOGICS | USE_AGNOSTIC_COMPONENTS} importedFileEffectiveDirective The imported file's effective directive.
- * @returns {string} Returns "[Current file effective modules] are not allowed to import [imported file effective modules]."
+ * @returns "[Current file effective modules] are not allowed to import [imported file effective modules]."
  */
 const makeIntroForSpecificViolationMessage = (
   currentFileEffectiveDirective,

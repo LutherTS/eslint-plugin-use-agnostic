@@ -48,5 +48,6 @@
   "engines": {
     "node": ">=18.18.0 <18.99 || >=20.9.0 <21.0.0 || >=21.1.0"
   },
-  "type": "module"
+  "type": "module",
+  "types": "types/index.d.ts"
 }
