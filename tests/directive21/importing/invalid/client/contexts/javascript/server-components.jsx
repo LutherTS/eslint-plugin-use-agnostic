@@ -9,4 +9,4 @@ import {
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
 // Invalid.
-// Lineal Server Components may only pass through Client Contexts Components via the children prop within Server Components Modules.
+// Lineal Server Components may only pass through (Special) Client Contexts Components via the children prop within Server Components Modules.

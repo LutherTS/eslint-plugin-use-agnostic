@@ -7,6 +7,7 @@ import {
   reExportNotSameMessageId,
 } from "../../../_commons/constants/bases.js";
 import {
+  USE_SERVER,
   USE_SERVER_LOGICS,
   USE_SERVER_COMPONENTS,
   USE_SERVER_FUNCTIONS,
@@ -38,7 +39,7 @@ import {
 /**
  * The flow that begins the import rules enforcement rule, retrieving the valid directive of the current file before comparing it to upcoming valid directives of the files it imports.
  * @param {Readonly<import('@typescript-eslint/utils').TSESLint.RuleContext<typeof reExportNotSameMessageId | typeof importBreaksEffectiveImportRulesMessageId | typeof useServerJSXMessageId, []>>} context The ESLint rule's `context` object.
- * @returns {{skip: true; currentFileEffectiveDirective: undefined;} | {skip: undefined; currentFileEffectiveDirective: USE_SERVER_LOGICS | USE_SERVER_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_LOGICS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_LOGICS | USE_AGNOSTIC_COMPONENTS;}} Returns either an object with `skip: true` to disregard or one with the non-null `currentFileEffectiveDirective`.
+ * @returns {{skip: true; currentFileEffectiveDirective: undefined;} | {skip: undefined; currentFileEffectiveDirective: USE_SERVER_LOGICS | USE_SERVER_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_LOGICS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_LOGICS | USE_AGNOSTIC_COMPONENTS;}} Either an object with `skip: true` to disregard or one with the non-null `currentFileEffectiveDirective`.
  */
 export const currentFileFlow = (context) => {
   // GETTING THE EXTENSION OF THE CURRENT FILE
@@ -60,7 +61,7 @@ export const currentFileFlow = (context) => {
 
   // reports if a file marked "use server" has a JSX extension
   if (
-    currentFileDirective === "use server" &&
+    currentFileDirective === USE_SERVER &&
     currentFileExtension.endsWith("x")
   ) {
     context.report({
@@ -82,9 +83,7 @@ export const currentFileFlow = (context) => {
     return { skip: true };
   }
 
-  return {
-    currentFileEffectiveDirective,
-  };
+  return { currentFileEffectiveDirective };
 };
 
 /* importedFileFlow */
@@ -93,7 +92,7 @@ export const currentFileFlow = (context) => {
  * The flow that is shared between import and re-export traversals to obtain the import file's effective directive.
  * @param {Readonly<import('@typescript-eslint/utils').TSESLint.RuleContext<typeof reExportNotSameMessageId | typeof importBreaksEffectiveImportRulesMessageId | typeof useServerJSXMessageId, []>>} context The ESLint rule's `context` object.
  * @param {import('@typescript-eslint/types').TSESTree.ImportDeclaration} node The ESLint `node` of the rule's current traversal.
- * @returns {{skip: true; importedFileEffectiveDirective: undefined; resolvedImportPath: undefined;} | {skip: undefined; importedFileEffectiveDirective: USE_SERVER_LOGICS | USE_SERVER_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_LOGICS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_LOGICS | USE_AGNOSTIC_COMPONENTS; resolvedImportPath: string;}} Returns either an object with `skip: true` to disregard or one with the non-null `importedFileEffectiveDirective`.
+ * @returns {{skip: true; importedFileEffectiveDirective: undefined;} | {skip: undefined; importedFileEffectiveDirective: USE_SERVER_LOGICS | USE_SERVER_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_LOGICS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_LOGICS | USE_AGNOSTIC_COMPONENTS;}} Either an object with `skip: true` to disregard or one with the non-null `importedFileEffectiveDirective`.
  */
 const importedFileFlow = (context, node) => {
   // finds the full path of the import
@@ -130,9 +129,7 @@ const importedFileFlow = (context, node) => {
 
   // For now skipping on both "does not operate" (which should ignore) and "fails" albeit with console.error (which should crash).
 
-  return {
-    importedFileEffectiveDirective,
-  };
+  return { importedFileEffectiveDirective };
 };
 
 /* importsFlow */
@@ -141,7 +138,7 @@ const importedFileFlow = (context, node) => {
  * @param {Readonly<import('@typescript-eslint/utils').TSESLint.RuleContext<typeof reExportNotSameMessageId | typeof importBreaksEffectiveImportRulesMessageId | typeof useServerJSXMessageId, []>>} context The ESLint rule's `context` object.
  * @param {import('@typescript-eslint/types').TSESTree.ImportDeclaration} node The ESLint `node` of the rule's current traversal.
  * @param {USE_SERVER_LOGICS | USE_SERVER_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_LOGICS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_LOGICS | USE_AGNOSTIC_COMPONENTS} currentFileEffectiveDirective The current file's effective directive.
- * @returns Returns early if the flow needs to be interrupted.
+ * @returns Early if the flow needs to be interrupted.
  */
 export const importsFlow = (context, node, currentFileEffectiveDirective) => {
   // does not operate on `import type`
@@ -180,7 +177,7 @@ export const importsFlow = (context, node, currentFileEffectiveDirective) => {
  * @param {Readonly<import('@typescript-eslint/utils').TSESLint.RuleContext<typeof reExportNotSameMessageId | typeof importBreaksEffectiveImportRulesMessageId | typeof useServerJSXMessageId, []>>} context The ESLint rule's `context` object.
  * @param {import('@typescript-eslint/types').TSESTree.ExportNamedDeclaration | import('@typescript-eslint/types').TSESTree.ExportAllDeclaration} node The ESLint `node` of the rule's current traversal.
  * @param {USE_SERVER_LOGICS | USE_SERVER_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_LOGICS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_LOGICS | USE_AGNOSTIC_COMPONENTS} currentFileEffectiveDirective The current file's effective directive.
- * @returns Returns early if the flow needs to be interrupted.
+ * @returns Early if the flow needs to be interrupted.
  */
 export const reExportsFlow = (context, node, currentFileEffectiveDirective) => {
   // does not operate on `export type`

@@ -1,13 +1,13 @@
 import {
-  useServerJSXMessageId,
-  importBreaksEffectiveImportRulesMessageId,
-  reExportNotSameMessageId,
   TSX,
   TS,
   JSX,
   JS,
   MJS,
   CJS,
+  useServerJSXMessageId,
+  importBreaksEffectiveImportRulesMessageId,
+  reExportNotSameMessageId,
 } from "../../../_commons/constants/bases.js";
 import {
   NO_DIRECTIVE,
@@ -22,7 +22,6 @@ import {
   USE_AGNOSTIC_LOGICS,
   USE_AGNOSTIC_COMPONENTS,
   effectiveDirectives_EffectiveModules,
-  directivesSet,
   directivesArray,
   effectiveDirectives_BlockedImports,
 } from "../constants/bases.js";
@@ -43,7 +42,7 @@ import {
  * - `'use server'` denotes a Server Functions Module.
  * - `'use agnostic'` denotes an Agnostic Module (formerly Shared Module).
  * @param {Readonly<import('@typescript-eslint/utils').TSESLint.RuleContext<typeof reExportNotSameMessageId | typeof importBreaksEffectiveImportRulesMessageId | typeof useServerJSXMessageId, []>>} context The ESLint rule's `context` object.
- * @returns {NO_DIRECTIVE | USE_SERVER | USE_CLIENT | USE_AGNOSTIC} The directive, or lack thereof via `null`. The lack of a directive is considered server-by-default.
+ * @returns The directive, or lack thereof via `null`. The lack of a directive is considered server-by-default.
  */
 export const getDirectiveFromCurrentModule = (context) => {
   // the AST body to check for the top-of-the-file directive
@@ -63,7 +62,8 @@ export const getDirectiveFromCurrentModule = (context) => {
   if (value === null) return value;
 
   // the value to be exactly 'use client', 'use server' or 'use agnostic' in order not to be considered null by default, or server-by-default
-  const currentFileDirective = directivesSet.has(value) ? value : null;
+  const currentFileDirective =
+    directivesArray.find((directive) => directive === value) ?? null;
 
   return currentFileDirective;
 };
@@ -81,7 +81,7 @@ export const getDirectiveFromCurrentModule = (context) => {
  * - `'use agnostic components'` denotes an Agnostic Components Module.
  * @param {NO_DIRECTIVE | USE_SERVER | USE_CLIENT | USE_AGNOSTIC} directive The directive as written on top of the file (`null` if no valid directive).
  * @param {TSX | TS | JSX | JS | MJS | CJS} extension The JavaScript (TypeScript) extension of the file.
- * @returns {USE_SERVER_LOGICS | USE_SERVER_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_LOGICS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_LOGICS | USE_AGNOSTIC_COMPONENTS | null} The effective directive, from which imports rules are applied.
+ * @returns The effective directive, from which imports rules are applied.
  */
 export const getEffectiveDirective = (directive, extension) => {
   // I could use a map, but because this is in JS with JSDoc, a manual solution is peculiarly more typesafe.
@@ -112,7 +112,7 @@ export const getEffectiveDirective = (directive, extension) => {
  * - `'use agnostic'` denotes an Agnostic Module (formerly Shared Module).
  * - `null` denotes a server-by-default module, ideally a Server Module.
  * @param {string} resolvedImportPath The resolved path of the import.
- * @returns {USE_SERVER | USE_CLIENT | USE_AGNOSTIC | NO_DIRECTIVE} The directive, or lack thereof via `null`. The lack of a directive is considered server-by-default.
+ * @returns The directive, or lack thereof via `null`. The lack of a directive is considered server-by-default.
  */
 export const getDirectiveFromImportedModule = (resolvedImportPath) => {
   // gets the first line of the code of the import
@@ -141,7 +141,7 @@ export const getDirectiveFromImportedModule = (resolvedImportPath) => {
  * Returns a boolean deciding if an imported file's effective directive is incompatible with the current file's effective directive.
  * @param {USE_SERVER_LOGICS | USE_SERVER_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_LOGICS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_LOGICS | USE_AGNOSTIC_COMPONENTS} currentFileEffectiveDirective The current file's effective directive.
  * @param {USE_SERVER_LOGICS | USE_SERVER_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_LOGICS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_LOGICS | USE_AGNOSTIC_COMPONENTS} importedFileEffectiveDirective The imported file's effective directive.
- * @returns {boolean} Returns `true` if the import is blocked, as established in `effectiveDirectives_BlockedImports`.
+ * @returns `true` if the import is blocked, as established in `effectiveDirectives_BlockedImports`.
  */
 export const isImportBlocked = (
   currentFileEffectiveDirective,
@@ -158,7 +158,7 @@ export const isImportBlocked = (
 /**
  * Lists in an message the effective modules incompatible with an effective module based on its effective directive.
  * @param {USE_SERVER_LOGICS | USE_SERVER_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_LOGICS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_LOGICS | USE_AGNOSTIC_COMPONENTS} effectiveDirective The effective directive of the effective module.
- * @returns {string} The message listing the incompatible effective modules.
+ * @returns The message listing the incompatible effective modules.
  */
 export const makeMessageFromEffectiveDirective = (effectiveDirective) =>
   makeMessageFromResolvedDirective(
@@ -173,7 +173,7 @@ export const makeMessageFromEffectiveDirective = (effectiveDirective) =>
  * Finds the `message` for the specific violation of effective directives import rules based on `effectiveDirectives_BlockedImports`.
  * @param {USE_SERVER_LOGICS | USE_SERVER_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_LOGICS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_LOGICS | USE_AGNOSTIC_COMPONENTS} currentFileEffectiveDirective The current file's effective directive.
  * @param {USE_SERVER_LOGICS | USE_SERVER_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_LOGICS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_LOGICS | USE_AGNOSTIC_COMPONENTS} importedFileEffectiveDirective The imported file's effective directive.
- * @returns {string} The corresponding `message`.
+ * @returns The corresponding `message`.
  */
 export const findSpecificViolationMessage = (
   currentFileEffectiveDirective,
