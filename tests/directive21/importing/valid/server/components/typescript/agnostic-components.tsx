@@ -1,12 +1,12 @@
 // "use server components"
 
 // ...Importing a Lineal Agnostic Components Module.
-import agnosticComponents from "../../../../../imported/typescript/agnostic-components.tsx";
+import agnosticComponents from "../../../../../imported/typescript/agnostic-components";
 
 // ...Importing Lineal Agnostic Components via Special Agnostic Strategy.
 import {
   /* @agnosticComponents */ agnosticComponentsStrategized,
-} from "../../../../../imported/typescript/agnostic-strategies.tsx";
+} from "../../../../../imported/typescript/agnostic-strategies";
 
 // Valid.
 // Lineal Agnostic Components can render safely on the server just like they can on the client.
