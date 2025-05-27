@@ -24,7 +24,11 @@
     "types/index.d.ts"
   ],
   "exports": {
-    ".": "./library/index.js"
+    ".": {
+      "import": "./library/index.js",
+      "require": "./library/index.js",
+      "types": "./types/index.d.ts"
+    }
   },
   "main": "library/index.js",
   "repository": {
