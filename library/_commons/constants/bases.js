@@ -1,3 +1,7 @@
+/**
+ * @typedef {import('../../../types/_commons/typedefs').Extensions} Extensions
+ */
+
 /* plugin names */
 // use-agnostic
 export const useAgnosticPluginName = "use-agnostic";
@@ -77,7 +81,8 @@ export const MJS = ".mjs";
 export const CJS = ".cjs";
 
 // JavaScript/TypeScript extensions array
-/** @type {readonly [TSX, TS, JSX, JS, MJS, CJS]} */
+// /** @type {readonly [TSX, TS, JSX, JS, MJS, CJS]} */
+/** @type {Extensions} */
 export const EXTENSIONS = [TSX, TS, JSX, JS, MJS, CJS]; // In priority order
 
 // message strings

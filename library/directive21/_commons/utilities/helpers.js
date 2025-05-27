@@ -20,9 +20,9 @@ import {
   directivesArray,
   strategiesArray,
   commentedDirectives_4RawImplementations,
-  commentedStrategies_CommentedDirectives,
-  commentedDirectives_BlockedImports,
-  commentedDirectives_CommentedModules,
+  commentedStrategies_commentedDirectives,
+  commentedDirectives_blockedImports,
+  commentedDirectives_commentedModules,
 } from "../constants/bases.js";
 
 import {
@@ -248,7 +248,7 @@ export const getStrategizedDirective = (context, node) => {
   // returns null early if no strategy was identified
   if (!strategy) return null;
 
-  const commentedDirective = commentedStrategies_CommentedDirectives[strategy];
+  const commentedDirective = commentedStrategies_commentedDirectives[strategy];
 
   return commentedDirective;
 };
@@ -266,7 +266,7 @@ export const isImportBlocked = (
   importedFileCommentedDirective
 ) =>
   commonsIsImportBlocked(
-    commentedDirectives_BlockedImports,
+    commentedDirectives_blockedImports,
     currentFileCommentedDirective,
     importedFileCommentedDirective
   );
@@ -280,8 +280,8 @@ export const isImportBlocked = (
  */
 export const makeMessageFromCommentedDirective = (commentedDirective) =>
   makeMessageFromResolvedDirective(
-    commentedDirectives_CommentedModules,
-    commentedDirectives_BlockedImports,
+    commentedDirectives_commentedModules,
+    commentedDirectives_blockedImports,
     commentedDirective
   );
 
@@ -298,7 +298,7 @@ export const findSpecificViolationMessage = (
   importedFileCommentedDirective
 ) =>
   commonsFindSpecificViolationMessage(
-    commentedDirectives_BlockedImports,
+    commentedDirectives_blockedImports,
     currentFileCommentedDirective,
     importedFileCommentedDirective
   );

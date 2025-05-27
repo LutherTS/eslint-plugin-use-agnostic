@@ -50,7 +50,7 @@ const AGNOSTIC_LOGICS_MODULE = COMMONS_AGNOSTIC_LOGICS_MODULE;
 const AGNOSTIC_COMPONENTS_MODULE = COMMONS_AGNOSTIC_COMPONENTS_MODULE;
 
 // mapping effective directives with effective modules
-export const effectiveDirectives_EffectiveModules = Object.freeze({
+export const effectiveDirectives_effectiveModules = Object.freeze({
   [USE_SERVER_LOGICS]: SERVER_LOGICS_MODULE,
   [USE_SERVER_COMPONENTS]: SERVER_COMPONENTS_MODULE,
   [USE_SERVER_FUNCTIONS]: SERVER_FUNCTIONS_MODULE,
@@ -79,7 +79,7 @@ const makeIntroForSpecificViolationMessage = (
   importedFileEffectiveDirective
 ) =>
   commonsMakeIntroForSpecificViolationMessage(
-    effectiveDirectives_EffectiveModules,
+    effectiveDirectives_effectiveModules,
     currentFileEffectiveDirective,
     importedFileEffectiveDirective
   );
@@ -87,7 +87,7 @@ const makeIntroForSpecificViolationMessage = (
 const SUGGEST_USE_AGNOSTIC =
   "If the module you're trying to import does not possess any server-side code however, please mark it with this plugin's own and eponymous 'use agnostic' directive to signal its compatibility across all environments.";
 
-export const effectiveDirectives_BlockedImports = Object.freeze({
+export const effectiveDirectives_blockedImports = Object.freeze({
   [USE_SERVER_LOGICS]: [
     // USE_SERVER_LOGICS allowed, because Server Logics can compose with one another.
     // USE_SERVER_COMPONENTS allowed, because Server Components are OK to be composed with Server Logics as long as the Server Logics Module, by convention, does not export React components.

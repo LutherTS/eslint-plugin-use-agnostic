@@ -20,7 +20,7 @@ import {
   USE_CLIENT_CONTEXTS,
   USE_AGNOSTIC_CONDITIONS,
   USE_AGNOSTIC_STRATEGIES,
-  commentedDirectives_VerificationReports,
+  commentedDirectives_verificationReports,
   // currentFileCommentedDirective,
   // importedFileCommentedDirective,
   commentedDirectiveMessage,
@@ -89,7 +89,7 @@ export const currentFileFlow = (context) => {
       messageId: commentedDirectiveVerificationFailed,
       data: {
         [specificFailure]:
-          commentedDirectives_VerificationReports[commentedDirective],
+          commentedDirectives_verificationReports[commentedDirective],
       },
     });
     return { skip: true };

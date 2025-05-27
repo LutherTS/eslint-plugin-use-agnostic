@@ -21,9 +21,9 @@ import {
   USE_CLIENT_COMPONENTS,
   USE_AGNOSTIC_LOGICS,
   USE_AGNOSTIC_COMPONENTS,
-  effectiveDirectives_EffectiveModules,
+  effectiveDirectives_effectiveModules,
   directivesArray,
-  effectiveDirectives_BlockedImports,
+  effectiveDirectives_blockedImports,
 } from "../constants/bases.js";
 
 import {
@@ -148,7 +148,7 @@ export const isImportBlocked = (
   importedFileEffectiveDirective
 ) =>
   commonsIsImportBlocked(
-    effectiveDirectives_BlockedImports,
+    effectiveDirectives_blockedImports,
     currentFileEffectiveDirective,
     importedFileEffectiveDirective
   );
@@ -162,8 +162,8 @@ export const isImportBlocked = (
  */
 export const makeMessageFromEffectiveDirective = (effectiveDirective) =>
   makeMessageFromResolvedDirective(
-    effectiveDirectives_EffectiveModules,
-    effectiveDirectives_BlockedImports,
+    effectiveDirectives_effectiveModules,
+    effectiveDirectives_blockedImports,
     effectiveDirective
   );
 
@@ -180,7 +180,7 @@ export const findSpecificViolationMessage = (
   importedFileEffectiveDirective
 ) =>
   commonsFindSpecificViolationMessage(
-    effectiveDirectives_BlockedImports,
+    effectiveDirectives_blockedImports,
     currentFileEffectiveDirective,
     importedFileEffectiveDirective
   );

@@ -67,7 +67,7 @@ const AGNOSTIC_CONDITIONS_MODULE = COMMONS_AGNOSTIC_CONDITIONS_MODULE;
 const AGNOSTIC_STRATEGIES_MODULE = COMMONS_AGNOSTIC_STRATEGIES_MODULE;
 
 // mapping commented directives with commented modules
-export const commentedDirectives_CommentedModules = Object.freeze({
+export const commentedDirectives_commentedModules = Object.freeze({
   [USE_SERVER_LOGICS]: SERVER_LOGICS_MODULE,
   [USE_CLIENT_LOGICS]: CLIENT_LOGICS_MODULE,
   [USE_AGNOSTIC_LOGICS]: AGNOSTIC_LOGICS_MODULE,
@@ -110,7 +110,7 @@ export const strategiesArray = [
 export const strategiesSet = new Set(strategiesArray); // no longer used exported to satisfy static type inference
 
 // mapped commented strategies to their commented directives
-export const commentedStrategies_CommentedDirectives = Object.freeze({
+export const commentedStrategies_commentedDirectives = Object.freeze({
   [AT_SERVER_LOGICS]: USE_SERVER_LOGICS,
   [AT_CLIENT_LOGICS]: USE_CLIENT_LOGICS,
   [AT_AGNOSTIC_LOGICS]: USE_AGNOSTIC_LOGICS,
@@ -163,7 +163,7 @@ export const commentedDirectives_4RawImplementations = Object.freeze({
   [USE_AGNOSTIC_STRATEGIES]: make4RawImplementations(USE_AGNOSTIC_STRATEGIES),
 });
 
-/* commentedDirectives_VerificationReports */
+/* commentedDirectives_verificationReports */
 
 const MODULES_MARKED_WITH_THE_ = "modules marked with the";
 const _DIRECTIVE_MUST_HAVE_A_NON_JSX_FILE_EXTENSION =
@@ -171,7 +171,7 @@ const _DIRECTIVE_MUST_HAVE_A_NON_JSX_FILE_EXTENSION =
 const _DIRECTIVE_MUST_HAVE_A_JSX_FILE_EXTENSION =
   "directive must have a JSX file extension";
 
-export const commentedDirectives_VerificationReports = Object.freeze({
+export const commentedDirectives_verificationReports = Object.freeze({
   // somehow doing it by hand is better for type inference in raw JS
   [USE_SERVER_LOGICS]: `${MODULES_MARKED_WITH_THE_} "${USE_SERVER_LOGICS}" ${_DIRECTIVE_MUST_HAVE_A_NON_JSX_FILE_EXTENSION}.`,
   [USE_CLIENT_LOGICS]: `${MODULES_MARKED_WITH_THE_} "${USE_CLIENT_LOGICS}" ${_DIRECTIVE_MUST_HAVE_A_NON_JSX_FILE_EXTENSION}.`,
@@ -185,7 +185,7 @@ export const commentedDirectives_VerificationReports = Object.freeze({
   [USE_AGNOSTIC_STRATEGIES]: `${MODULES_MARKED_WITH_THE_} "${USE_AGNOSTIC_STRATEGIES}" directive are free to have the file extension of their choosing. (This is not a problem and should never surface.)`,
 });
 
-/* commentedDirectives_BlockedImports */
+/* commentedDirectives_blockedImports */
 
 /**
  * Makes the intro for each specific import rule violation messages.
@@ -198,12 +198,12 @@ const makeIntroForSpecificViolationMessage = (
   importedFileCommentedDirective
 ) =>
   commonsMakeIntroForSpecificViolationMessage(
-    commentedDirectives_CommentedModules,
+    commentedDirectives_commentedModules,
     currentFileCommentedDirective,
     importedFileCommentedDirective
   );
 
-export const commentedDirectives_BlockedImports = Object.freeze({
+export const commentedDirectives_blockedImports = Object.freeze({
   [USE_SERVER_LOGICS]: [
     // USE_SERVER_LOGICS allowed, because Prime Server Logics can compose with one another.
     {
