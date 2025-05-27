@@ -20,7 +20,8 @@
   "license": "MIT",
   "author": "Luther Tchofo Safo <luther@tchofo-safo-portfolio.me>",
   "files": [
-    "library"
+    "library",
+    "types/index.d.ts"
   ],
   "exports": {
     ".": "./library/index.js"
