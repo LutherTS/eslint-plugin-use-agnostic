@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-use-agnostic",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "Highlights problematic server-client imports in projects made with the Fullstack React Architecture.",
   "keywords": [
     "eslint",
@@ -20,7 +20,8 @@
   "license": "MIT",
   "author": "Luther Tchofo Safo <luther@tchofo-safo-portfolio.me>",
   "files": [
-    "library"
+    "library",
+    "types/index.d.ts"
   ],
   "exports": {
     ".": "./library/index.js"
