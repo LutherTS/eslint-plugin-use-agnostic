@@ -1,10 +1,6 @@
 import {
-  reExportNotSameMessageId,
-  importBreaksCommentedImportRulesMessageId,
-  noCommentedDirective,
-  commentedDirectiveVerificationFailed,
-  importNotStrategized,
   exportNotStrategized,
+  commentedDirectives_commentedModules,
 } from "../../../_commons/constants/bases.js";
 import {
   USE_SERVER_LOGICS,
@@ -20,9 +16,8 @@ import {
   directivesArray,
   strategiesArray,
   commentedDirectives_4RawImplementations,
-  commentedStrategies_CommentedDirectives,
-  commentedDirectives_BlockedImports,
-  commentedDirectives_CommentedModules,
+  commentedStrategies_commentedDirectives,
+  commentedDirectives_blockedImports,
 } from "../constants/bases.js";
 
 import {
@@ -31,6 +26,17 @@ import {
   makeMessageFromResolvedDirective,
   findSpecificViolationMessage as commonsFindSpecificViolationMessage,
 } from "../../../_commons/utilities/helpers.js";
+
+/**
+ * @typedef {import('../../../../types/directive21/_commons/typedefs.js').Context} Context
+ * @typedef {import('../../../../types/directive21/_commons/typedefs.js').CommentedDirective} CommentedDirective
+ * @typedef {import('../../../../types/directive21/_commons/typedefs.js').CommentedDirectiveWithoutUseAgnosticStrategies} CommentedDirectiveWithoutUseAgnosticStrategies
+ * @typedef {import('../../../../types/directive21/_commons/typedefs.js').Extension} Extension
+ * @typedef {import('../../../../types/directive21/_commons/typedefs.js').ImportDeclaration} ImportDeclaration
+ * @typedef {import('../../../../types/directive21/_commons/typedefs.js').ExportNamedDeclaration} ExportNamedDeclaration
+ * @typedef {import('../../../../types/directive21/_commons/typedefs.js').ExportAllDeclaration} ExportAllDeclaration
+ * @typedef {import('../../../../types/directive21/_commons/typedefs.js').ExportDefaultDeclaration} ExportDefaultDeclaration
+ */
 
 /* getCommentedDirectiveFromCurrentModule */
 
@@ -88,7 +94,7 @@ const stripDoubleQuotes = (string) => {
  * - `'use client contexts'`, `"use client contexts"` denoting a Client Contexts Module.
  * - `'use agnostic conditions'`, `"use agnostic conditions"` denoting an Agnostic Conditions Module.
  * - `'use agnostic strategies'`, `"use agnostic strategies"` denoting an Agnostic Strategies Module.
- * @param {Readonly<import('@typescript-eslint/utils').TSESLint.RuleContext<typeof reExportNotSameMessageId | typeof importBreaksCommentedImportRulesMessageId | typeof noCommentedDirective | typeof commentedDirectiveVerificationFailed | typeof importNotStrategized | typeof exportNotStrategized, []>>} context The ESLint rule's `context` object.
+ * @param {Context} context The ESLint rule's `context` object.
  * @returns The commented directive, or lack thereof via `null`. Given the strictness of this architecture, the lack of a directive is considered a mistake. (Though rules may provide the opportunity to declare a default, and configs with preset defaults may become provided.)
  */
 export const getCommentedDirectiveFromCurrentModule = (context) => {
@@ -137,8 +143,8 @@ export const getCommentedDirectiveFromCurrentModule = (context) => {
  * - `'use client contexts'`: Client Contexts Modules ONLY export JSX.
  * - `'use agnostic conditions'`: Agnostic Conditions Modules ONLY export JSX.
  * - `'use agnostic strategies'`: Agnostic Strategies Modules may export JSX.
- * @param {USE_SERVER_LOGICS | USE_CLIENT_LOGICS | USE_AGNOSTIC_LOGICS | USE_SERVER_COMPONENTS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_CONTEXTS | USE_AGNOSTIC_CONDITIONS | USE_AGNOSTIC_STRATEGIES} directive The commented directive as written on top of the file (cannot be `null` at that stage).
- * @param {TSX | TS | JSX | JS | MJS | CJS} extension The JavaScript (TypeScript) extension of the file.
+ * @param {CommentedDirective} directive The commented directive as written on top of the file (cannot be `null` at that stage).
+ * @param {Extension} extension The JavaScript (TypeScript) extension of the file.
  * @returns The verified commented directive, from which imports rules are applied. Returns `null` if the verification failed, upon which an error will be reported depending on the commented directive, since the error logic here is strictly binary.
  */
 export const getVerifiedCommentedDirective = (directive, extension) => {
@@ -184,54 +190,34 @@ export const getVerifiedCommentedDirective = (directive, extension) => {
  * - `'use agnostic conditions'`, `"use agnostic conditions"` denoting an Agnostic Conditions Module.
  * - `'use agnostic strategies'`, `"use agnostic strategies"` denoting an Agnostic Strategies Module.
  * @param {string} resolvedImportPath The resolved path of the import.
- * @returns {USE_SERVER_LOGICS | USE_CLIENT_LOGICS | USE_AGNOSTIC_LOGICS | USE_SERVER_COMPONENTS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_CONTEXTS | USE_AGNOSTIC_CONDITIONS | USE_AGNOSTIC_STRATEGIES | null} The commented directive, or lack thereof via `null`. Given the strictness of this architecture, the lack of a directive is considered a mistake. (Though rules may provide the opportunity to declare a default, and configs with preset defaults may become provided.)
+ * @returns The commented directive, or lack thereof via `null`. Given the strictness of this architecture, the lack of a directive is considered a mistake. (Though rules may provide the opportunity to declare a default, and configs with preset defaults may become provided.)
  */
 export const getCommentedDirectiveFromImportedModule = (resolvedImportPath) => {
   // gets the first line of the code of the import
   const importedFileFirstLine = getImportedFileFirstLine(resolvedImportPath);
 
-  // sees if the first line includes any of the directives and finds the directive that it includes
-  /** @type {USE_SERVER_LOGICS | USE_CLIENT_LOGICS | USE_AGNOSTIC_LOGICS | USE_SERVER_COMPONENTS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_CONTEXTS | USE_AGNOSTIC_CONDITIONS | USE_AGNOSTIC_STRATEGIES | ""} */
-  let includedDirective = "";
-  const firstLength = directivesArray.length;
+  // sees if the first line includes any of the directives and finds the directive that it includes, with USE_AGNOSTIC_LOGICS as a default
+  const includedDirective = directivesArray.reduce((acc, curr) => {
+    if (importedFileFirstLine.includes(curr)) return curr;
+    else return acc;
+  }, USE_AGNOSTIC_LOGICS);
 
-  for (let i = 0; i < firstLength; i++) {
-    const directive = directivesArray[i];
-    if (importedFileFirstLine.includes(directive)) {
-      includedDirective = directive;
-      break;
-    }
-  }
-
-  // returns null early if there is none of the directives in the first line
-  if (includedDirective === "") return null;
-
-  /** @type {USE_SERVER_LOGICS | USE_CLIENT_LOGICS | USE_AGNOSTIC_LOGICS | USE_SERVER_COMPONENTS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_CONTEXTS | USE_AGNOSTIC_CONDITIONS | USE_AGNOSTIC_STRATEGIES | ""} */
-  let importFileDirective = "";
-  const rawImplementations =
-    commentedDirectives_4RawImplementations[includedDirective];
-  const secondLength = rawImplementations.length;
-
-  for (let i = 0; i < secondLength; i++) {
-    const raw = rawImplementations[i];
-    if (raw === importedFileFirstLine) {
-      importFileDirective = includedDirective;
-      break;
-    }
-  }
-
-  // returns null early if despite the presence of the directive it is not properly implemented
-  if (importFileDirective === "") return null;
-
-  return importFileDirective;
+  // sees if the first line is strictly equal to one of the four raw implementations of the commented directive and returns that directive if true or null if false
+  if (
+    commentedDirectives_4RawImplementations[includedDirective].some(
+      (raw) => raw === importedFileFirstLine
+    )
+  )
+    return includedDirective;
+  else return null;
 };
 
 /* getStrategizedDirective */
 
 /**
  * Gets the interpreted directive from a specified commented Strategy (such as `@serverLogics`) nested inside the import declaration for an import from an Agnostic Strategies Module.
- * @param {Readonly<import('@typescript-eslint/utils').TSESLint.RuleContext<typeof reExportNotSameMessageId | typeof importBreaksCommentedImportRulesMessageId | typeof noCommentedDirective | typeof commentedDirectiveVerificationFailed | typeof importNotStrategized | typeof exportNotStrategized, []>>} context The ESLint rule's `context` object.
- * @param {import('@typescript-eslint/types').TSESTree.ImportDeclaration} node The ESLint `node` of the rule's current traversal.
+ * @param {Context} context The ESLint rule's `context` object.
+ * @param {ImportDeclaration} node The ESLint `node` of the rule's current traversal.
  * @returns The interpreted directive, a.k.a. strategized directive, or lack thereof via `null`.
  */
 export const getStrategizedDirective = (context, node) => {
@@ -248,7 +234,7 @@ export const getStrategizedDirective = (context, node) => {
   // returns null early if no strategy was identified
   if (!strategy) return null;
 
-  const commentedDirective = commentedStrategies_CommentedDirectives[strategy];
+  const commentedDirective = commentedStrategies_commentedDirectives[strategy];
 
   return commentedDirective;
 };
@@ -257,16 +243,16 @@ export const getStrategizedDirective = (context, node) => {
 
 /**
  * Returns a boolean deciding if an imported file's commented directive is incompatible with the current file's commented directive.
- * @param {USE_SERVER_LOGICS | USE_SERVER_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_LOGICS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_LOGICS | USE_AGNOSTIC_COMPONENTS} currentFileCommentedDirective The current file's commented directive.
- * @param {USE_SERVER_LOGICS | USE_SERVER_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_LOGICS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_LOGICS | USE_AGNOSTIC_COMPONENTS} importedFileCommentedDirective The imported file's commented directive.
- * @returns {boolean} Returns `true` if the import is blocked, as established in `commentedDirectives_BlockedImports`.
+ * @param {CommentedDirective} currentFileCommentedDirective The current file's commented directive.
+ * @param {CommentedDirectiveWithoutUseAgnosticStrategies} importedFileCommentedDirective The imported file's commented directive.
+ * @returns `true` if the import is blocked, as established in `commentedDirectives_BlockedImports`.
  */
 export const isImportBlocked = (
   currentFileCommentedDirective,
   importedFileCommentedDirective
 ) =>
   commonsIsImportBlocked(
-    commentedDirectives_BlockedImports,
+    commentedDirectives_blockedImports,
     currentFileCommentedDirective,
     importedFileCommentedDirective
   );
@@ -275,13 +261,13 @@ export const isImportBlocked = (
 
 /**
  * Lists in an message the commented modules incompatible with a commented module based on its commented directive.
- * @param {USE_SERVER_LOGICS | USE_CLIENT_LOGICS | USE_AGNOSTIC_LOGICS | USE_SERVER_COMPONENTS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_CONTEXTS | USE_AGNOSTIC_CONDITIONS | USE_AGNOSTIC_STRATEGIES} commentedDirective The commented directive of the commented module.
- * @returns {string} The message listing the incompatible commented modules.
+ * @param {CommentedDirective} commentedDirective The commented directive of the commented module.
+ * @returns The message listing the incompatible commented modules.
  */
 export const makeMessageFromCommentedDirective = (commentedDirective) =>
   makeMessageFromResolvedDirective(
-    commentedDirectives_CommentedModules,
-    commentedDirectives_BlockedImports,
+    commentedDirectives_commentedModules,
+    commentedDirectives_blockedImports,
     commentedDirective
   );
 
@@ -289,16 +275,16 @@ export const makeMessageFromCommentedDirective = (commentedDirective) =>
 
 /**
  * Finds the `message` for the specific violation of commented directives import rules based on `commentedDirectives_BlockedImports`.
- * @param {USE_SERVER_LOGICS | USE_CLIENT_LOGICS | USE_AGNOSTIC_LOGICS | USE_SERVER_COMPONENTS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_CONTEXTS | USE_AGNOSTIC_CONDITIONS | USE_AGNOSTIC_STRATEGIES} currentFileCommentedDirective The current file's commented directive.
- * @param {USE_SERVER_LOGICS | USE_CLIENT_LOGICS | USE_AGNOSTIC_LOGICS | USE_SERVER_COMPONENTS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_CONTEXTS | USE_AGNOSTIC_CONDITIONS} importedFileCommentedDirective The imported file's commented directive.
- * @returns {string} The corresponding `message`.
+ * @param {CommentedDirective} currentFileCommentedDirective The current file's commented directive.
+ * @param {CommentedDirectiveWithoutUseAgnosticStrategies} importedFileCommentedDirective The imported file's commented directive.
+ * @returns The corresponding `message`.
  */
 export const findSpecificViolationMessage = (
   currentFileCommentedDirective,
   importedFileCommentedDirective
 ) =>
   commonsFindSpecificViolationMessage(
-    commentedDirectives_BlockedImports,
+    commentedDirectives_blockedImports,
     currentFileCommentedDirective,
     importedFileCommentedDirective
   );
@@ -307,9 +293,9 @@ export const findSpecificViolationMessage = (
 
 /**
  * Verifies the current node's export strategy if `"use agnostic strategies"` by reporting `exportNotStrategized` in case an export is not strategized in an Agnostic Strategies Module.
- * @param {Readonly<import('@typescript-eslint/utils').TSESLint.RuleContext<typeof reExportNotSameMessageId | typeof importBreaksCommentedImportRulesMessageId | typeof noCommentedDirective | typeof commentedDirectiveVerificationFailed | typeof importNotStrategized | typeof exportNotStrategized, []>>} context The ESLint rule's `context` object.
- * @param {import('@typescript-eslint/types').TSESTree.ExportNamedDeclaration | import('@typescript-eslint/types').TSESTree.ExportAllDeclaration | import('@typescript-eslint/types').TSESTree.ExportDefaultDeclaration} node The ESLint `node` of the rule's current traversal.
- * @param {USE_SERVER_LOGICS | USE_CLIENT_LOGICS | USE_AGNOSTIC_LOGICS | USE_SERVER_COMPONENTS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_CONTEXTS | USE_AGNOSTIC_CONDITIONS | USE_AGNOSTIC_STRATEGIES} currentFileCommentedDirective The current file's commented directive.
+ * @param {Context} context The ESLint rule's `context` object.
+ * @param {ExportNamedDeclaration | ExportAllDeclaration | ExportDefaultDeclaration} node The ESLint `node` of the rule's current traversal.
+ * @param {CommentedDirective} currentFileCommentedDirective The current file's commented directive.
  * @returns The commented directive, the addressed strategy (as a commented directive) or null in case of failure.
  */
 export const addressDirectiveIfAgnosticStrategies = (

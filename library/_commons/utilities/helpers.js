@@ -3,30 +3,23 @@ import path from "path";
 
 import { loadConfig, createMatchPath } from "tsconfig-paths";
 
-import {
-  USE_SERVER_LOGICS,
-  USE_CLIENT_LOGICS,
-  USE_AGNOSTIC_LOGICS,
-  USE_SERVER_COMPONENTS,
-  USE_CLIENT_COMPONENTS,
-  USE_AGNOSTIC_COMPONENTS,
-  USE_SERVER_FUNCTIONS,
-  USE_CLIENT_CONTEXTS,
-  USE_AGNOSTIC_CONDITIONS,
-  USE_AGNOSTIC_STRATEGIES,
-  SERVER_LOGICS_MODULE,
-  CLIENT_LOGICS_MODULE,
-  AGNOSTIC_LOGICS_MODULE,
-  SERVER_COMPONENTS_MODULE,
-  CLIENT_COMPONENTS_MODULE,
-  AGNOSTIC_COMPONENTS_MODULE,
-  SERVER_FUNCTIONS_MODULE,
-  CLIENT_CONTEXTS_MODULE,
-  AGNOSTIC_CONDITIONS_MODULE,
-  AGNOSTIC_STRATEGIES_MODULE,
-  EXTENSIONS,
-  ARE_NOT_ALLOWED_TO_IMPORT,
-} from "../constants/bases.js";
+import { EXTENSIONS, ARE_NOT_ALLOWED_TO_IMPORT } from "../constants/bases.js";
+
+/**
+ * @typedef {import('../../../types/_commons/typedefs').ResolvedDirective} ResolvedDirective
+ * @typedef {import('../../../types/_commons/typedefs').ResolvedDirectives_ResolvedModules} ResolvedDirectives_ResolvedModules
+ * @typedef {import('../../../types/_commons/typedefs').CurrentFileResolvedDirective} CurrentFileResolvedDirective
+ * @typedef {import('../../../types/_commons/typedefs').Context<string, readonly unknown[]>} Context
+ */
+
+/**
+ * @template {CurrentFileResolvedDirective} T
+ * @typedef {import('../../../types/_commons/typedefs').ImportedFileResolvedDirective<T>} ImportedFileResolvedDirective
+ */
+/**
+ * @template {CurrentFileResolvedDirective} T
+ * @typedef {import('../../../types/_commons/typedefs').ResolvedDirectives_BlockedImports<T>} ResolvedDirectives_BlockedImports
+ */
 
 /* resolveImportPath */
 
@@ -110,7 +103,7 @@ export const getImportedFileFirstLine = (resolvedImportPath) => {
 
 /**
  * Gets the coordinates for the first line of code of a file.
- * @param {import('@typescript-eslint/utils').TSESLint.RuleContext} context An ESLint rule's `context` object.
+ * @param {Context} context An ESLint rule's `context` object.
  * @returns The `context.report` `loc`-compatible coordinates for the first line of code of a file.
  */
 export const highlightFirstLineOfCode = (context) => ({
@@ -122,10 +115,11 @@ export const highlightFirstLineOfCode = (context) => ({
 
 /**
  * Returns a boolean deciding if an imported file's "resolved" directive is incompatible with the current file's "resolved" directive.
- * @param {Readonly<{"use server logics": {blockedImport: string; message: string;}[]; "use client logics": {blockedImport: string; message: string;}[]; "use agnostic logics": {blockedImport: string; message: string;}[]; "use server components": {blockedImport: string; message: string;}[]; "use client components": {blockedImport: string; message: string;}[]; "use agnostic components": {blockedImport: string; message: string;}[]; "use server functions": {blockedImport: string; message: string;}[]; "use client contexts"?: {blockedImport: string; message: string;}[]; "use agnostic conditions"?: {blockedImport: string; message: string;}[]; "use agnostic strategies"?: {blockedImport: string; message: string;}[];}>} resolvedDirectives_blockedImports The blocked imports object, either for agnostic20 or for directive21.
- * @param {USE_SERVER_LOGICS | USE_CLIENT_LOGICS | USE_AGNOSTIC_LOGICS | USE_SERVER_COMPONENTS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_CONTEXTS | USE_AGNOSTIC_CONDITIONS | USE_AGNOSTIC_STRATEGIES} currentFileResolvedDirective The current file's "resolved" directive.
- * @param {USE_SERVER_LOGICS | USE_CLIENT_LOGICS | USE_AGNOSTIC_LOGICS | USE_SERVER_COMPONENTS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_CONTEXTS | USE_AGNOSTIC_CONDITIONS} importedFileResolvedDirective The imported file's "resolved" directive.
- * @returns Returns `true` if the import is blocked, as established in respective `resolvedDirectives_blockedImports`.
+ * @template {CurrentFileResolvedDirective} T
+ * @param {ResolvedDirectives_BlockedImports<T>} resolvedDirectives_blockedImports The blocked imports object, either for agnostic20 or for directive21.
+ * @param {T} currentFileResolvedDirective The current file's "resolved" directive.
+ * @param {ImportedFileResolvedDirective<T>} importedFileResolvedDirective The imported file's "resolved" directive.
+ * @returns `true` if the import is blocked, as established in respective `resolvedDirectives_blockedImports`.
  */
 export const isImportBlocked = (
   // Note: "Blocked" here is preferred over "not allowed" because a specific message will be shared for each of the blocked situations, explaining their reasons and the solutions needed.
@@ -141,33 +135,35 @@ export const isImportBlocked = (
 
 /**
  * Makes the intro for each specific import rule violation messages.
- * @param {Readonly<{"use server logics": SERVER_LOGICS_MODULE; "use client logics": CLIENT_LOGICS_MODULE; "use agnostic logics": AGNOSTIC_LOGICS_MODULE; "use server components": SERVER_COMPONENTS_MODULE; "use client components": CLIENT_COMPONENTS_MODULE; "use agnostic components": AGNOSTIC_COMPONENTS_MODULE; "use server functions": SERVER_FUNCTIONS_MODULE; "use client contexts": CLIENT_CONTEXTS_MODULE; "use agnostic conditions": AGNOSTIC_CONDITIONS_MODULE; "use agnostic strategies": AGNOSTIC_STRATEGIES_MODULE;}>} resolvedDirectives_ResolvedModules The resolved modules object, either for agnostic20 or for directive21.
- * @param {USE_SERVER_LOGICS | USE_CLIENT_LOGICS | USE_AGNOSTIC_LOGICS | USE_SERVER_COMPONENTS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_CONTEXTS | USE_AGNOSTIC_CONDITIONS | USE_AGNOSTIC_STRATEGIES} currentFileResolvedDirective The current file's "resolved" directive.
- * @param {USE_SERVER_LOGICS | USE_CLIENT_LOGICS | USE_AGNOSTIC_LOGICS | USE_SERVER_COMPONENTS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_CONTEXTS | USE_AGNOSTIC_CONDITIONS} importedFileResolvedDirective The imported file's "resolved" directive.
- * @returns Returns "[Current file 'resolved' modules] are not allowed to import [imported file 'resolved' modules]."
+ * @template {CurrentFileResolvedDirective} T
+ * @param {ResolvedDirectives_ResolvedModules} resolvedDirectives_resolvedModules The resolved modules object, either for agnostic20 or for directive21.
+ * @param {CurrentFileResolvedDirective} currentFileResolvedDirective The current file's "resolved" directive.
+ * @param {ImportedFileResolvedDirective<T>} importedFileResolvedDirective The imported file's "resolved" directive.
+ * @returns "[Current file 'resolved' modules] are not allowed to import [imported file 'resolved' modules]."
  */
 export const makeIntroForSpecificViolationMessage = (
-  resolvedDirectives_ResolvedModules,
+  resolvedDirectives_resolvedModules,
   currentFileResolvedDirective,
   importedFileResolvedDirective
 ) =>
-  `${resolvedDirectives_ResolvedModules[currentFileResolvedDirective]}s ${ARE_NOT_ALLOWED_TO_IMPORT} ${resolvedDirectives_ResolvedModules[importedFileResolvedDirective]}s.`;
+  `${resolvedDirectives_resolvedModules[currentFileResolvedDirective]}s ${ARE_NOT_ALLOWED_TO_IMPORT} ${resolvedDirectives_resolvedModules[importedFileResolvedDirective]}s.`;
 
 /* makeMessageFromResolvedDirective */
 
 /**
  * Lists in an message the "resolved" modules incompatible with a "resolved" module based on its "resolved" directive.
- * @param {Readonly<{"use server logics": SERVER_LOGICS_MODULE; "use client logics": CLIENT_LOGICS_MODULE; "use agnostic logics": AGNOSTIC_LOGICS_MODULE; "use server components": SERVER_COMPONENTS_MODULE; "use client components": CLIENT_COMPONENTS_MODULE; "use agnostic components": AGNOSTIC_COMPONENTS_MODULE; "use server functions": SERVER_FUNCTIONS_MODULE; "use client contexts": CLIENT_CONTEXTS_MODULE; "use agnostic conditions": AGNOSTIC_CONDITIONS_MODULE; "use agnostic strategies": AGNOSTIC_STRATEGIES_MODULE;}>} resolvedDirectives_ResolvedModules The resolved modules object, either for agnostic20 or for directive21.
- * @param {Readonly<{"use server logics": {blockedImport: string; message: string;}[]; "use client logics": {blockedImport: string; message: string;}[]; "use agnostic logics": {blockedImport: string; message: string;}[]; "use server components": {blockedImport: string; message: string;}[]; "use client components": {blockedImport: string; message: string;}[]; "use agnostic components": {blockedImport: string; message: string;}[]; "use server functions": {blockedImport: string; message: string;}[]; "use client contexts"?: {blockedImport: string; message: string;}[]; "use agnostic conditions"?: {blockedImport: string; message: string;}[]; "use agnostic strategies"?: {blockedImport: string; message: string;}[];}>} resolvedDirectives_blockedImports The blocked imports object, either for agnostic20 or for directive21.
- * @param {USE_SERVER_LOGICS | USE_CLIENT_LOGICS | USE_AGNOSTIC_LOGICS | USE_SERVER_COMPONENTS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_CONTEXTS | USE_AGNOSTIC_CONDITIONS | USE_AGNOSTIC_STRATEGIES} resolvedDirective The "resolved" directive of the "resolved" module.
+ * @template {CurrentFileResolvedDirective} T
+ * @param {ResolvedDirectives_ResolvedModules} resolvedDirectives_resolvedModules The resolved modules object, either for agnostic20 or for directive21.
+ * @param {ResolvedDirectives_BlockedImports<T>} resolvedDirectives_blockedImports The blocked imports object, either for agnostic20 or for directive21.
+ * @param {T} resolvedDirective The "resolved" directive of the "resolved" module.
  * @returns The message listing the incompatible "resolved" modules.
  */
 export const makeMessageFromResolvedDirective = (
-  resolvedDirectives_ResolvedModules,
+  resolvedDirectives_resolvedModules,
   resolvedDirectives_blockedImports,
   resolvedDirective
 ) => {
-  const effectiveModule = resolvedDirectives_ResolvedModules[resolvedDirective];
+  const effectiveModule = resolvedDirectives_resolvedModules[resolvedDirective];
   const effectiveModulesString = effectiveModule + "s"; // plural
 
   const blockedImports =
@@ -180,7 +176,7 @@ export const makeMessageFromResolvedDirective = (
   }
 
   const blockedEffectiveModules = blockedImports.map(
-    (e) => resolvedDirectives_ResolvedModules[e] + "s" // plural
+    (e) => resolvedDirectives_resolvedModules[e] + "s" // plural
   );
 
   const blockedEffectiveModulesString =
@@ -197,9 +193,10 @@ export const makeMessageFromResolvedDirective = (
 
 /**
  * Finds the `message` for the specific violation of "resolved" directives import rules based on `resolvedDirectives_blockedImports`.
- * @param {Readonly<{"use server logics": {blockedImport: string; message: string;}[]; "use client logics": {blockedImport: string; message: string;}[]; "use agnostic logics": {blockedImport: string; message: string;}[]; "use server components": {blockedImport: string; message: string;}[]; "use client components": {blockedImport: string; message: string;}[]; "use agnostic components": {blockedImport: string; message: string;}[]; "use server functions": {blockedImport: string; message: string;}[]; "use client contexts"?: {blockedImport: string; message: string;}[]; "use agnostic conditions"?: {blockedImport: string; message: string;}[]; "use agnostic strategies"?: {blockedImport: string; message: string;}[];}>} resolvedDirectives_blockedImports The blocked imports object, either for agnostic20 or for directive21.
- * @param {USE_SERVER_LOGICS | USE_CLIENT_LOGICS | USE_AGNOSTIC_LOGICS | USE_SERVER_COMPONENTS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_CONTEXTS | USE_AGNOSTIC_CONDITIONS | USE_AGNOSTIC_STRATEGIES} currentFileResolvedDirective The current file's "resolved" directive.
- * @param {USE_SERVER_LOGICS | USE_CLIENT_LOGICS | USE_AGNOSTIC_LOGICS | USE_SERVER_COMPONENTS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_CONTEXTS | USE_AGNOSTIC_CONDITIONS} importedFileResolvedDirective The imported file's "resolved" directive.
+ * @template {CurrentFileResolvedDirective} T
+ * @param {ResolvedDirectives_BlockedImports<T>} resolvedDirectives_blockedImports The blocked imports object, either for agnostic20 or for directive21.
+ * @param {T} currentFileResolvedDirective The current file's "resolved" directive.
+ * @param {ImportedFileResolvedDirective<T>} importedFileResolvedDirective The imported file's "resolved" directive.
  * @returns The corresponding `message`.
  */
 export const findSpecificViolationMessage = (

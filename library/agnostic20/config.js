@@ -8,8 +8,12 @@ import {
 } from "../_commons/constants/bases.js";
 
 /**
+ * @typedef {import('../../types/agnostic20/_commons/typedefs.js').Plugin} Plugin
+ */
+
+/**
  * Makes the agnostic20 config for the use-agnostic ESLint plugin.
- * @param {import('eslint').ESLint.Plugin} plugin The use-agnostic ESLint plugin itself.
+ * @param {Plugin} plugin The use-agnostic ESLint plugin itself.
  * @returns The agnostic20 config's name as a key and its config as its value.
  */
 export const makeAgnostic20Config = (plugin) => ({

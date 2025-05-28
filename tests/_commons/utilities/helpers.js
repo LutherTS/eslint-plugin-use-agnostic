@@ -9,10 +9,13 @@ import {
 /**
  * Reads file paths at any depths within a provided directory.
  * @param {string} folderPath The provided directory.
- * @returns {string[]} All files at any depths within the provided directory.
+ * @returns {string[]} All files at any depths within the provided directory. (Return type made explicit due to recursion falling back by default to any.)
  */
-const readFilesRecursively = (folderPath) =>
-  fs.readdirSync(folderPath).reduce((allFiles, item) => {
+const readFilesRecursively = (folderPath) => {
+  /** @type {string[]} */
+  const initialValue = [];
+
+  const results = fs.readdirSync(folderPath).reduce((allFiles, item) => {
     const fullPath = path.join(folderPath, item);
     const stats = fs.statSync(fullPath);
 
@@ -23,7 +26,10 @@ const readFilesRecursively = (folderPath) =>
     } else {
       return allFiles;
     }
-  }, []);
+  }, initialValue);
+
+  return results;
+};
 
 /**
  * Reads file paths at any depths within a provided valid files directory.

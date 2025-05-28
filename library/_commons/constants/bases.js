@@ -1,3 +1,7 @@
+/**
+ * @typedef {import('../../../types/_commons/typedefs').Extensions} Extensions
+ */
+
 /* plugin names */
 // use-agnostic
 export const useAgnosticPluginName = "use-agnostic";
@@ -45,6 +49,7 @@ export const exportNotStrategized =
 // all "resolved" directives (from AIA/agnostic20 & DFA/directive21)
 // - AIA: Agnostic-Included Architecture (agnostic20)
 // - DFA: Directive-First Architecture (directive21)
+// agnostic20
 export const USE_SERVER_LOGICS = "use server logics";
 export const USE_CLIENT_LOGICS = "use client logics";
 export const USE_AGNOSTIC_LOGICS = "use agnostic logics";
@@ -52,11 +57,13 @@ export const USE_SERVER_COMPONENTS = "use server components";
 export const USE_CLIENT_COMPONENTS = "use client components";
 export const USE_AGNOSTIC_COMPONENTS = "use agnostic components";
 export const USE_SERVER_FUNCTIONS = "use server functions";
+// and directive21
 export const USE_CLIENT_CONTEXTS = "use client contexts";
 export const USE_AGNOSTIC_CONDITIONS = "use agnostic conditions";
 export const USE_AGNOSTIC_STRATEGIES = "use agnostic strategies";
 
 // all "resolved" modules (from AIA/agnostic20 & DFA/directive21)
+// agnostic20
 export const SERVER_LOGICS_MODULE = "Server Logics Module";
 export const CLIENT_LOGICS_MODULE = "Client Logics Module";
 export const AGNOSTIC_LOGICS_MODULE = "Agnostic Logics Module";
@@ -64,9 +71,29 @@ export const SERVER_COMPONENTS_MODULE = "Server Components Module";
 export const CLIENT_COMPONENTS_MODULE = "Client Components Module";
 export const AGNOSTIC_COMPONENTS_MODULE = "Agnostic Components Module";
 export const SERVER_FUNCTIONS_MODULE = "Server Functions Module";
+// and directive21
 export const CLIENT_CONTEXTS_MODULE = "Client Contexts Module";
 export const AGNOSTIC_CONDITIONS_MODULE = "Agnostic Conditions Module";
 export const AGNOSTIC_STRATEGIES_MODULE = "Agnostic Strategies Module";
+
+// all mappings of "resolved" directives with "resolved" modules
+// agnostic20
+export const effectiveDirectives_effectiveModules = Object.freeze({
+  [USE_SERVER_LOGICS]: SERVER_LOGICS_MODULE,
+  [USE_SERVER_COMPONENTS]: SERVER_COMPONENTS_MODULE,
+  [USE_SERVER_FUNCTIONS]: SERVER_FUNCTIONS_MODULE,
+  [USE_CLIENT_LOGICS]: CLIENT_LOGICS_MODULE,
+  [USE_CLIENT_COMPONENTS]: CLIENT_COMPONENTS_MODULE,
+  [USE_AGNOSTIC_LOGICS]: AGNOSTIC_LOGICS_MODULE,
+  [USE_AGNOSTIC_COMPONENTS]: AGNOSTIC_COMPONENTS_MODULE,
+});
+// and directive21
+export const commentedDirectives_commentedModules = Object.freeze({
+  [USE_CLIENT_CONTEXTS]: CLIENT_CONTEXTS_MODULE,
+  [USE_AGNOSTIC_CONDITIONS]: AGNOSTIC_CONDITIONS_MODULE,
+  [USE_AGNOSTIC_STRATEGIES]: AGNOSTIC_STRATEGIES_MODULE,
+  ...effectiveDirectives_effectiveModules,
+});
 
 // JavaScript/TypeScript extensions
 export const TSX = ".tsx";
@@ -77,8 +104,14 @@ export const MJS = ".mjs";
 export const CJS = ".cjs";
 
 // JavaScript/TypeScript extensions array
-/** @type {readonly [TSX, TS, JSX, JS, MJS, CJS]} */
+// /** @type {readonly [TSX, TS, JSX, JS, MJS, CJS]} */
+/** @type {Extensions} */
 export const EXTENSIONS = [TSX, TS, JSX, JS, MJS, CJS]; // In priority order
 
 // message strings
 export const ARE_NOT_ALLOWED_TO_IMPORT = "are not allowed to import";
+
+// skipping object for flows
+export const skip = Object.freeze({
+  skip: true,
+});

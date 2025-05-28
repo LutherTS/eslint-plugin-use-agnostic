@@ -16,7 +16,11 @@ import {
   reExportsFlow,
 } from "../utilities/flows.js";
 
-/** @type {import('@typescript-eslint/utils').TSESLint.RuleModule<typeof reExportNotSameMessageId | typeof importBreaksEffectiveImportRulesMessageId | typeof useServerJSXMessageId, []>} */
+/**
+ * @typedef {import('../../../../types/agnostic20/_commons/typedefs.js').Rule} Rule
+ */
+
+/** @type {Rule} */
 const rule = {
   meta: {
     type: "problem",

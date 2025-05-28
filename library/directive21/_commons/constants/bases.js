@@ -9,19 +9,18 @@ import {
   USE_CLIENT_CONTEXTS as COMMONS_USE_CLIENT_CONTEXTS,
   USE_AGNOSTIC_CONDITIONS as COMMONS_USE_AGNOSTIC_CONDITIONS,
   USE_AGNOSTIC_STRATEGIES as COMMONS_USE_AGNOSTIC_STRATEGIES,
-  SERVER_LOGICS_MODULE as COMMONS_SERVER_LOGICS_MODULE,
-  CLIENT_LOGICS_MODULE as COMMONS_CLIENT_LOGICS_MODULE,
-  AGNOSTIC_LOGICS_MODULE as COMMONS_AGNOSTIC_LOGICS_MODULE,
-  SERVER_COMPONENTS_MODULE as COMMONS_SERVER_COMPONENTS_MODULE,
-  CLIENT_COMPONENTS_MODULE as COMMONS_CLIENT_COMPONENTS_MODULE,
-  AGNOSTIC_COMPONENTS_MODULE as COMMONS_AGNOSTIC_COMPONENTS_MODULE,
-  SERVER_FUNCTIONS_MODULE as COMMONS_SERVER_FUNCTIONS_MODULE,
-  CLIENT_CONTEXTS_MODULE as COMMONS_CLIENT_CONTEXTS_MODULE,
-  AGNOSTIC_CONDITIONS_MODULE as COMMONS_AGNOSTIC_CONDITIONS_MODULE,
-  AGNOSTIC_STRATEGIES_MODULE as COMMONS_AGNOSTIC_STRATEGIES_MODULE,
+  commentedDirectives_commentedModules,
 } from "../../../_commons/constants/bases.js";
 
 import { makeIntroForSpecificViolationMessage as commonsMakeIntroForSpecificViolationMessage } from "../../../_commons/utilities/helpers.js";
+
+/**
+ * @typedef {import('../../../../types/directive21/_commons/typedefs.js').CommentedDirective} CommentedDirective
+ * @typedef {import('../../../../types/directive21/_commons/typedefs.js').CommentedDirectiveWithoutUseAgnosticStrategies} CommentedDirectiveWithoutUseAgnosticStrategies
+ * @typedef {import('../../../../types/directive21/_commons/typedefs.js').CommentedDirectives} CommentedDirectives
+ * @typedef {import('../../../../types/directive21/_commons/typedefs.js').CommentedStrategy} CommentedStrategy
+ * @typedef {import('../../../../types/directive21/_commons/typedefs.js').CommentedStrategies} CommentedStrategies
+ */
 
 // commented directives
 export const USE_SERVER_LOGICS = COMMONS_USE_SERVER_LOGICS;
@@ -36,7 +35,7 @@ export const USE_AGNOSTIC_CONDITIONS = COMMONS_USE_AGNOSTIC_CONDITIONS;
 export const USE_AGNOSTIC_STRATEGIES = COMMONS_USE_AGNOSTIC_STRATEGIES;
 
 // commented directives array
-/** @type {readonly [USE_SERVER_LOGICS, USE_CLIENT_LOGICS, USE_AGNOSTIC_LOGICS, USE_SERVER_COMPONENTS, USE_CLIENT_COMPONENTS, USE_AGNOSTIC_COMPONENTS, USE_SERVER_FUNCTIONS, USE_CLIENT_CONTEXTS, USE_AGNOSTIC_CONDITIONS, USE_AGNOSTIC_STRATEGIES]} */
+/** @type {CommentedDirectives} */
 export const directivesArray = [
   USE_SERVER_LOGICS,
   USE_CLIENT_LOGICS,
@@ -51,48 +50,22 @@ export const directivesArray = [
 ];
 
 // commented directives set
-/** @type {ReadonlySet<USE_SERVER_LOGICS | USE_CLIENT_LOGICS | USE_AGNOSTIC_LOGICS | USE_SERVER_COMPONENTS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_CONTEXTS | USE_AGNOSTIC_CONDITIONS | USE_AGNOSTIC_STRATEGIES>} */
+/** @type {ReadonlySet<CommentedDirective>} */
 export const directivesSet = new Set(directivesArray); // no longer used exported to satisfy static type inference
 
-// commented modules
-const SERVER_LOGICS_MODULE = COMMONS_SERVER_LOGICS_MODULE;
-const CLIENT_LOGICS_MODULE = COMMONS_CLIENT_LOGICS_MODULE;
-const AGNOSTIC_LOGICS_MODULE = COMMONS_AGNOSTIC_LOGICS_MODULE;
-const SERVER_COMPONENTS_MODULE = COMMONS_SERVER_COMPONENTS_MODULE;
-const CLIENT_COMPONENTS_MODULE = COMMONS_CLIENT_COMPONENTS_MODULE;
-const AGNOSTIC_COMPONENTS_MODULE = COMMONS_AGNOSTIC_COMPONENTS_MODULE;
-const SERVER_FUNCTIONS_MODULE = COMMONS_SERVER_FUNCTIONS_MODULE;
-const CLIENT_CONTEXTS_MODULE = COMMONS_CLIENT_CONTEXTS_MODULE;
-const AGNOSTIC_CONDITIONS_MODULE = COMMONS_AGNOSTIC_CONDITIONS_MODULE;
-const AGNOSTIC_STRATEGIES_MODULE = COMMONS_AGNOSTIC_STRATEGIES_MODULE;
-
-// mapping commented directives with commented modules
-export const commentedDirectives_CommentedModules = Object.freeze({
-  [USE_SERVER_LOGICS]: SERVER_LOGICS_MODULE,
-  [USE_CLIENT_LOGICS]: CLIENT_LOGICS_MODULE,
-  [USE_AGNOSTIC_LOGICS]: AGNOSTIC_LOGICS_MODULE,
-  [USE_SERVER_COMPONENTS]: SERVER_COMPONENTS_MODULE,
-  [USE_CLIENT_COMPONENTS]: CLIENT_COMPONENTS_MODULE,
-  [USE_AGNOSTIC_COMPONENTS]: AGNOSTIC_COMPONENTS_MODULE,
-  [USE_SERVER_FUNCTIONS]: SERVER_FUNCTIONS_MODULE,
-  [USE_CLIENT_CONTEXTS]: CLIENT_CONTEXTS_MODULE,
-  [USE_AGNOSTIC_CONDITIONS]: AGNOSTIC_CONDITIONS_MODULE,
-  [USE_AGNOSTIC_STRATEGIES]: AGNOSTIC_STRATEGIES_MODULE,
-});
-
 // commented strategies
-const AT_SERVER_LOGICS = "@serverLogics";
-const AT_CLIENT_LOGICS = "@clientLogics";
-const AT_AGNOSTIC_LOGICS = "@agnosticLogics";
-const AT_SERVER_COMPONENTS = "@serverComponents";
-const AT_CLIENT_COMPONENTS = "@clientComponents";
-const AT_AGNOSTIC_COMPONENTS = "@agnosticComponents";
-const AT_SERVER_FUNCTIONS = "@serverFunctions";
-const AT_CLIENT_CONTEXTS = "@clientContexts";
-const AT_AGNOSTIC_CONDITIONS = "@agnosticConditions";
+export const AT_SERVER_LOGICS = "@serverLogics";
+export const AT_CLIENT_LOGICS = "@clientLogics";
+export const AT_AGNOSTIC_LOGICS = "@agnosticLogics";
+export const AT_SERVER_COMPONENTS = "@serverComponents";
+export const AT_CLIENT_COMPONENTS = "@clientComponents";
+export const AT_AGNOSTIC_COMPONENTS = "@agnosticComponents";
+export const AT_SERVER_FUNCTIONS = "@serverFunctions";
+export const AT_CLIENT_CONTEXTS = "@clientContexts";
+export const AT_AGNOSTIC_CONDITIONS = "@agnosticConditions";
 
 // commented strategies array
-/** @type {readonly [AT_SERVER_LOGICS, AT_CLIENT_LOGICS, AT_AGNOSTIC_LOGICS, AT_SERVER_COMPONENTS, AT_CLIENT_COMPONENTS, AT_AGNOSTIC_COMPONENTS, AT_SERVER_FUNCTIONS, AT_CLIENT_CONTEXTS, AT_AGNOSTIC_CONDITIONS]} */
+/** @type {CommentedStrategies} */
 export const strategiesArray = [
   AT_SERVER_LOGICS,
   AT_CLIENT_LOGICS,
@@ -106,11 +79,11 @@ export const strategiesArray = [
 ];
 
 // commented strategies set
-/** @type {ReadonlySet<AT_SERVER_LOGICS | AT_CLIENT_LOGICS | AT_AGNOSTIC_LOGICS | AT_SERVER_COMPONENTS | AT_CLIENT_COMPONENTS | AT_AGNOSTIC_COMPONENTS | AT_SERVER_FUNCTIONS | AT_CLIENT_CONTEXTS | AT_AGNOSTIC_CONDITIONS>} */
+/** @type {ReadonlySet<CommentedStrategy>} */
 export const strategiesSet = new Set(strategiesArray); // no longer used exported to satisfy static type inference
 
 // mapped commented strategies to their commented directives
-export const commentedStrategies_CommentedDirectives = Object.freeze({
+export const commentedStrategies_commentedDirectives = Object.freeze({
   [AT_SERVER_LOGICS]: USE_SERVER_LOGICS,
   [AT_CLIENT_LOGICS]: USE_CLIENT_LOGICS,
   [AT_AGNOSTIC_LOGICS]: USE_AGNOSTIC_LOGICS,
@@ -141,7 +114,7 @@ const commentStyles = [
 
 /**
  * Makes the array of all four accepted commented directive implementations on a directive basis.
- * @param {USE_SERVER_LOGICS | USE_CLIENT_LOGICS | USE_AGNOSTIC_LOGICS | USE_SERVER_COMPONENTS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_CONTEXTS | USE_AGNOSTIC_CONDITIONS | USE_AGNOSTIC_STRATEGIES} directive The commented directive.
+ * @param {CommentedDirective} directive The commented directive.
  * @returns The array of formatted commented directives.
  */
 const make4RawImplementations = (directive) =>
@@ -163,7 +136,7 @@ export const commentedDirectives_4RawImplementations = Object.freeze({
   [USE_AGNOSTIC_STRATEGIES]: make4RawImplementations(USE_AGNOSTIC_STRATEGIES),
 });
 
-/* commentedDirectives_VerificationReports */
+/* commentedDirectives_verificationReports */
 
 const MODULES_MARKED_WITH_THE_ = "modules marked with the";
 const _DIRECTIVE_MUST_HAVE_A_NON_JSX_FILE_EXTENSION =
@@ -171,7 +144,7 @@ const _DIRECTIVE_MUST_HAVE_A_NON_JSX_FILE_EXTENSION =
 const _DIRECTIVE_MUST_HAVE_A_JSX_FILE_EXTENSION =
   "directive must have a JSX file extension";
 
-export const commentedDirectives_VerificationReports = Object.freeze({
+export const commentedDirectives_verificationReports = Object.freeze({
   // somehow doing it by hand is better for type inference in raw JS
   [USE_SERVER_LOGICS]: `${MODULES_MARKED_WITH_THE_} "${USE_SERVER_LOGICS}" ${_DIRECTIVE_MUST_HAVE_A_NON_JSX_FILE_EXTENSION}.`,
   [USE_CLIENT_LOGICS]: `${MODULES_MARKED_WITH_THE_} "${USE_CLIENT_LOGICS}" ${_DIRECTIVE_MUST_HAVE_A_NON_JSX_FILE_EXTENSION}.`,
@@ -185,12 +158,12 @@ export const commentedDirectives_VerificationReports = Object.freeze({
   [USE_AGNOSTIC_STRATEGIES]: `${MODULES_MARKED_WITH_THE_} "${USE_AGNOSTIC_STRATEGIES}" directive are free to have the file extension of their choosing. (This is not a problem and should never surface.)`,
 });
 
-/* commentedDirectives_BlockedImports */
+/* commentedDirectives_blockedImports */
 
 /**
  * Makes the intro for each specific import rule violation messages.
- * @param {USE_SERVER_LOGICS | USE_CLIENT_LOGICS | USE_AGNOSTIC_LOGICS | USE_SERVER_COMPONENTS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_CONTEXTS | USE_AGNOSTIC_CONDITIONS | USE_AGNOSTIC_STRATEGIES} currentFileCommentedDirective The current file's commented directive.
- * @param {USE_SERVER_LOGICS | USE_CLIENT_LOGICS | USE_AGNOSTIC_LOGICS | USE_SERVER_COMPONENTS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_CONTEXTS | USE_AGNOSTIC_CONDITIONS} importedFileCommentedDirective The imported file's commented directive.
+ * @param {CommentedDirective} currentFileCommentedDirective The current file's commented directive.
+ * @param {CommentedDirectiveWithoutUseAgnosticStrategies} importedFileCommentedDirective The imported file's commented directive.
  * @returns "[Current file commented modules] are not allowed to import [imported file commented modules]."
  */
 const makeIntroForSpecificViolationMessage = (
@@ -198,12 +171,12 @@ const makeIntroForSpecificViolationMessage = (
   importedFileCommentedDirective
 ) =>
   commonsMakeIntroForSpecificViolationMessage(
-    commentedDirectives_CommentedModules,
+    commentedDirectives_commentedModules,
     currentFileCommentedDirective,
     importedFileCommentedDirective
   );
 
-export const commentedDirectives_BlockedImports = Object.freeze({
+export const commentedDirectives_blockedImports = Object.freeze({
   [USE_SERVER_LOGICS]: [
     // USE_SERVER_LOGICS allowed, because Prime Server Logics can compose with one another.
     {

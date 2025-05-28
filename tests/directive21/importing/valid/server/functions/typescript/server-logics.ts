@@ -1,12 +1,12 @@
 // "use server functions"
 
 // ...Importing a Prime Server Logics Module.
-import serverLogics from "../../../../../imported/typescript/server-logics.ts";
+import serverLogics from "../../../../../imported/typescript/server-logics";
 
 // ...Importing Prime Server Logics via Special Agnostic Strategy.
 import {
   /* @serverLogics */ serverLogicsStrategized,
-} from "../../../../../imported/typescript/agnostic-strategies.tsx";
+} from "../../../../../imported/typescript/agnostic-strategies";
 
 // Valid.
 // Prime Server Logics, being logic from the server, can safely support (Special) Server Functions.
