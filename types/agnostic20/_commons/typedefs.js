@@ -20,10 +20,11 @@ import {
  *
  * @typedef {import("../../_commons/typedefs.js").EffectiveDirective} EffectiveDirective
  *
- * @typedef {USE_SERVER | USE_CLIENT | USE_AGNOSTIC} Directive
- * @typedef {readonly [USE_SERVER, USE_CLIENT, USE_AGNOSTIC]} Directives
+ * @typedef {typeof USE_SERVER | typeof USE_CLIENT | typeof USE_AGNOSTIC} Directive
+ * @typedef {readonly [typeof USE_SERVER, typeof USE_CLIENT, typeof USE_AGNOSTIC]} Directives
  *
- * @typedef {reExportNotSameMessageId | importBreaksEffectiveImportRulesMessageId | useServerJSXMessageId} RuleMessageId
- * @typedef {import('@typescript-eslint/utils').TSESLint.RuleModule<RuleMessageId, []>} Rule
- * @typedef {import('@typescript-eslint/utils').TSESLint.RuleContext<RuleMessageId, []>} Context
+ * @typedef {typeof reExportNotSameMessageId | typeof importBreaksEffectiveImportRulesMessageId | typeof useServerJSXMessageId} RuleMessageId
+ * @typedef {[]} RuleOptions
+ * @typedef {import("../../_commons/typedefs.js").Rule<RuleMessageId, RuleOptions>} Rule
+ * @typedef {import("../../_commons/typedefs.js").Context<RuleMessageId, RuleOptions>} Context
  */

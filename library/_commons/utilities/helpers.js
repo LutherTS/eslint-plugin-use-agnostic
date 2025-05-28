@@ -109,7 +109,7 @@ export const highlightFirstLineOfCode = (context) => ({
  * @param {ResolvedDirectives_BlockedImports} resolvedDirectives_blockedImports The blocked imports object, either for agnostic20 or for directive21.
  * @param {ResolvedDirective} currentFileResolvedDirective The current file's "resolved" directive.
  * @param {ResolvedDirectiveWithoutUseAgnosticStrategies} importedFileResolvedDirective The imported file's "resolved" directive.
- * @returns Returns `true` if the import is blocked, as established in respective `resolvedDirectives_blockedImports`.
+ * @returns `true` if the import is blocked, as established in respective `resolvedDirectives_blockedImports`.
  */
 export const isImportBlocked = (
   // Note: "Blocked" here is preferred over "not allowed" because a specific message will be shared for each of the blocked situations, explaining their reasons and the solutions needed.
@@ -128,7 +128,7 @@ export const isImportBlocked = (
  * @param {ResolvedDirectives_ResolvedModules} resolvedDirectives_resolvedModules The resolved modules object, either for agnostic20 or for directive21.
  * @param {ResolvedDirective} currentFileResolvedDirective The current file's "resolved" directive.
  * @param {ResolvedDirectiveWithoutUseAgnosticStrategies} importedFileResolvedDirective The imported file's "resolved" directive.
- * @returns Returns "[Current file 'resolved' modules] are not allowed to import [imported file 'resolved' modules]."
+ * @returns "[Current file 'resolved' modules] are not allowed to import [imported file 'resolved' modules]."
  */
 export const makeIntroForSpecificViolationMessage = (
   resolvedDirectives_resolvedModules,

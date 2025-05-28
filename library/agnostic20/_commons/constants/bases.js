@@ -66,6 +66,31 @@ export const effectiveDirectives_effectiveModules = Object.freeze({
   [USE_AGNOSTIC_COMPONENTS]: AGNOSTIC_COMPONENTS_MODULE,
 });
 
+// mapping directives with effective directives
+/** @type {Readonly<Record<Directive | null, { logics: EffectiveDirective | null, components: EffectiveDirective | null, functions: EffectiveDirective | null }>>} */
+export const directives_effectiveDirectives = Object.freeze({
+  [NO_DIRECTIVE]: {
+    logics: USE_SERVER_LOGICS,
+    components: USE_SERVER_COMPONENTS,
+    functions: null,
+  },
+  [USE_SERVER]: {
+    logics: null,
+    components: null,
+    functions: USE_SERVER_FUNCTIONS,
+  },
+  [USE_CLIENT]: {
+    logics: USE_CLIENT_LOGICS,
+    components: USE_CLIENT_COMPONENTS,
+    functions: null,
+  },
+  [USE_AGNOSTIC]: {
+    logics: USE_AGNOSTIC_LOGICS,
+    components: USE_AGNOSTIC_COMPONENTS,
+    functions: null,
+  },
+});
+
 // message placeholders
 export const currentFileEffectiveDirective = "currentFileEffectiveDirective";
 export const importedFileEffectiveDirective = "importedFileEffectiveDirective";

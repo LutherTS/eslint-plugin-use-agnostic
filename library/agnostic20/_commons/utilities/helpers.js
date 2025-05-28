@@ -11,6 +11,7 @@ import {
   USE_AGNOSTIC_COMPONENTS,
   effectiveDirectives_effectiveModules,
   directivesArray,
+  directives_effectiveDirectives,
   effectiveDirectives_blockedImports,
 } from "../constants/bases.js";
 
@@ -95,6 +96,23 @@ export const getEffectiveDirective = (directive, extension) => {
     return USE_AGNOSTIC_COMPONENTS;
 
   return null; // default error, should be unreachable
+};
+// directives_effectiveDirectives
+/**
+ * @param {Directive | null} directive
+ * @param {Extension} extension
+ * @returns
+ */
+export const trueGetEffectiveDirective = (directive, extension) => {
+  const type = extension.endsWith("x")
+    ? "components"
+    : directive === USE_SERVER
+    ? "functions"
+    : "logics";
+
+  const a = directives_effectiveDirectives[directive];
+
+  return directives_effectiveDirectives[directive]?.[type] ?? null;
 };
 
 /* getDirectiveFromImportedModule */

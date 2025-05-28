@@ -5,6 +5,7 @@ import {
   useServerJSXMessageId,
   importBreaksEffectiveImportRulesMessageId,
   reExportNotSameMessageId,
+  skip,
 } from "../../../_commons/constants/bases.js";
 import {
   USE_SERVER,
@@ -37,12 +38,15 @@ import {
 
 /* currentFileFlow */
 
+// {{skip: true; currentFileEffectiveDirective: undefined;} | {skip: undefined; currentFileEffectiveDirective: EffectiveDirective;}}
 /**
  * The flow that begins the import rules enforcement rule, retrieving the valid directive of the current file before comparing it to upcoming valid directives of the files it imports.
  * @param {Context} context The ESLint rule's `context` object.
- * @returns {{skip: true; currentFileEffectiveDirective: undefined;} | {skip: undefined; currentFileEffectiveDirective: EffectiveDirective;}} Either an object with `skip: true` to disregard or one with the non-null `currentFileEffectiveDirective`.
+ * @returns Either an object with `skip: true` to disregard or one with the non-null `currentFileEffectiveDirective`.
  */
 export const currentFileFlow = (context) => {
+  const skipTrue = { ...skip, currentFileEffectiveDirective: undefined };
+
   // GETTING THE EXTENSION OF THE CURRENT FILE
   const currentFileExtension = path.extname(context.filename);
 
@@ -54,7 +58,7 @@ export const currentFileFlow = (context) => {
     console.error(
       "ERROR. Linted files for this rule should only be in JavaScript (TypeScript)."
     );
-    return { skip: true };
+    return skipTrue;
   }
 
   /* GETTING THE DIRECTIVE (or lack thereof) OF THE CURRENT FILE */
@@ -69,7 +73,7 @@ export const currentFileFlow = (context) => {
       loc: highlightFirstLineOfCode(context),
       messageId: useServerJSXMessageId,
     });
-    return { skip: true };
+    return skipTrue;
   }
 
   // GETTING THE EFFECTIVE DIRECTIVE OF THE CURRENT FILE
@@ -81,21 +85,24 @@ export const currentFileFlow = (context) => {
   // fails if one of the seven effective directives has not been obtained
   if (currentFileEffectiveDirective === null) {
     console.error("ERROR. Effective directive should never be null.");
-    return { skip: true };
+    return skipTrue;
   }
 
-  return { currentFileEffectiveDirective };
+  return { skip: undefined, currentFileEffectiveDirective };
 };
 
 /* importedFileFlow */
 
+// {{skip: true; importedFileEffectiveDirective: undefined;} | {skip: undefined; importedFileEffectiveDirective: EffectiveDirective;}}
 /**
  * The flow that is shared between import and re-export traversals to obtain the import file's effective directive.
  * @param {Context} context The ESLint rule's `context` object.
  * @param {ImportDeclaration} node The ESLint `node` of the rule's current traversal.
- * @returns {{skip: true; importedFileEffectiveDirective: undefined;} | {skip: undefined; importedFileEffectiveDirective: EffectiveDirective;}} Either an object with `skip: true` to disregard or one with the non-null `importedFileEffectiveDirective`.
+ * @returns Either an object with `skip: true` to disregard or one with the non-null `importedFileEffectiveDirective`.
  */
 const importedFileFlow = (context, node) => {
+  const skipTrue = { ...skip, importedFileEffectiveDirective: undefined };
+
   // finds the full path of the import
   const resolvedImportPath = resolveImportPath(
     path.dirname(context.filename),
@@ -104,12 +111,12 @@ const importedFileFlow = (context, node) => {
   );
 
   // does not operate on paths it did not resolve
-  if (resolvedImportPath === null) return { skip: true };
+  if (resolvedImportPath === null) return skipTrue;
   // does not operate on non-JS files
   const isImportedFileJS = EXTENSIONS.some((ext) =>
     resolvedImportPath.endsWith(ext)
   );
-  if (!isImportedFileJS) return { skip: true };
+  if (!isImportedFileJS) return skipTrue;
 
   /* GETTING THE DIRECTIVE (or lack thereof) OF THE IMPORTED FILE */
   const importedFileDirective =
@@ -125,12 +132,12 @@ const importedFileFlow = (context, node) => {
   // also fails if one of the seven effective directives has not been obtained
   if (importedFileEffectiveDirective === null) {
     console.error("ERROR. Effective directive should never be null.");
-    return { skip: true };
+    return skipTrue;
   }
 
   // For now skipping on both "does not operate" (which should ignore) and "fails" albeit with console.error (which should crash).
 
-  return { importedFileEffectiveDirective };
+  return { skip: undefined, importedFileEffectiveDirective };
 };
 
 /* importsFlow */

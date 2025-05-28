@@ -87,3 +87,8 @@ export const EXTENSIONS = [TSX, TS, JSX, JS, MJS, CJS]; // In priority order
 
 // message strings
 export const ARE_NOT_ALLOWED_TO_IMPORT = "are not allowed to import";
+
+// skipping object for flows
+export const skip = Object.freeze({
+  skip: true,
+});
