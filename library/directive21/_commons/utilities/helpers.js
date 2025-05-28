@@ -1,4 +1,7 @@
-import { exportNotStrategized } from "../../../_commons/constants/bases.js";
+import {
+  exportNotStrategized,
+  commentedDirectives_commentedModules,
+} from "../../../_commons/constants/bases.js";
 import {
   USE_SERVER_LOGICS,
   USE_CLIENT_LOGICS,
@@ -15,7 +18,6 @@ import {
   commentedDirectives_4RawImplementations,
   commentedStrategies_commentedDirectives,
   commentedDirectives_blockedImports,
-  commentedDirectives_commentedModules,
 } from "../constants/bases.js";
 
 import {
