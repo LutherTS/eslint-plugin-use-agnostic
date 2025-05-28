@@ -17,6 +17,12 @@ import {
 
 import { makeIntroForSpecificViolationMessage as commonsMakeIntroForSpecificViolationMessage } from "../../../_commons/utilities/helpers.js";
 
+/**
+ * @typedef {import('../../../../types/agnostic20/_commons/typedefs.js').Directive} Directive
+ * @typedef {import('../../../../types/agnostic20/_commons/typedefs.js').Directives} Directives
+ * @typedef {import('../../../../types/agnostic20/_commons/typedefs.js').EffectiveDirective} EffectiveDirective
+ */
+
 // directives
 export const NO_DIRECTIVE = null;
 export const USE_SERVER = "use server";
@@ -24,11 +30,11 @@ export const USE_CLIENT = "use client";
 export const USE_AGNOSTIC = "use agnostic";
 
 // directives array
-/** @type {readonly [USE_SERVER, USE_CLIENT, USE_AGNOSTIC]} */
+/** @type {Directives} */
 export const directivesArray = [USE_SERVER, USE_CLIENT, USE_AGNOSTIC];
 
 // directives set
-/** @type {ReadonlySet<USE_SERVER | USE_CLIENT | USE_AGNOSTIC>} */
+/** @type {ReadonlySet<Directive>} */
 export const directivesSet = new Set(directivesArray); // no longer used exported to satisfy static type inference
 
 // effective directives
@@ -70,8 +76,8 @@ export const specificViolationMessage = "specificViolationMessage";
 
 /**
  * Makes the intro for each specific import rule violation messages.
- * @param {USE_SERVER_LOGICS | USE_SERVER_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_LOGICS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_LOGICS | USE_AGNOSTIC_COMPONENTS} currentFileEffectiveDirective The current file's effective directive.
- * @param {USE_SERVER_LOGICS | USE_SERVER_COMPONENTS | USE_SERVER_FUNCTIONS | USE_CLIENT_LOGICS | USE_CLIENT_COMPONENTS | USE_AGNOSTIC_LOGICS | USE_AGNOSTIC_COMPONENTS} importedFileEffectiveDirective The imported file's effective directive.
+ * @param {EffectiveDirective} currentFileEffectiveDirective The current file's effective directive.
+ * @param {EffectiveDirective} importedFileEffectiveDirective The imported file's effective directive.
  * @returns "[Current file effective modules] are not allowed to import [imported file effective modules]."
  */
 const makeIntroForSpecificViolationMessage = (

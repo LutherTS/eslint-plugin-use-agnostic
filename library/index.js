@@ -11,14 +11,19 @@ import enforceCommentedDirectivesImportRules from "./directive21/_commons/rules/
 import { makeAgnostic20Config } from "./agnostic20/config.js";
 import { makeDirective21Config } from "./directive21/config.js";
 
-/** @type {import("tsconfig-paths/lib/filesystem.js").PackageJson} */
-const packageDotJSON = JSON.parse(
+/**
+ * @typedef {import("../types/_commons/typedefs.js").PackageJson} PackageJson
+ * @typedef {import("../types/_commons/typedefs.js").Plugin} Plugin
+ */
+
+/** @type {PackageJson} */
+const packageJSON = JSON.parse(
   fs.readFileSync(new URL("../package.json", import.meta.url), "utf8")
 );
 
-/** @type {import('eslint').ESLint.Plugin} */
+/** @type {Plugin} */
 const plugin = {
-  meta: { ...packageDotJSON },
+  meta: { ...packageJSON },
   configs: {}, // applied below
   rules: {
     [enforceEffectiveDirectivesRuleName]: enforceEffectiveDirectivesImportRules,

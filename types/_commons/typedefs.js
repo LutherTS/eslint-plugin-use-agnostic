@@ -28,6 +28,9 @@ import {
 } from "../../library/_commons/constants/bases";
 
 /**
+ * @typedef {import("tsconfig-paths/lib/filesystem.js").PackageJson} PackageJson
+ * @typedef {import('eslint').ESLint.Plugin} Plugin
+ *
  * @typedef {TSX | TS | JSX | JS | MJS | CJS} Extension
  * @typedef {readonly [TSX, TS, JSX, JS, MJS, CJS]} Extensions
  *
@@ -48,4 +51,8 @@ import {
  * @typedef {Readonly<Record<CommentedDirective, BlockedImports>>} CommentedDirectives_BlockedImports
  *
  * @typedef {EffectiveDirectives_BlockedImports & CommentedDirectives_BlockedImports} ResolvedDirectives_BlockedImports
+ *
+ * @typedef {import('@typescript-eslint/types').TSESTree.ImportDeclaration} ImportDeclaration
+ * @typedef {import('@typescript-eslint/types').TSESTree.ExportNamedDeclaration} ExportNamedDeclaration
+ * @typedef {import('@typescript-eslint/types').TSESTree.ExportAllDeclaration} ExportAllDeclaration
  */

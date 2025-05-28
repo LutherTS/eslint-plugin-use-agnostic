@@ -9,7 +9,6 @@ import { EXTENSIONS, ARE_NOT_ALLOWED_TO_IMPORT } from "../constants/bases.js";
  * @typedef {import('../../../types/_commons/typedefs').ResolvedDirective} ResolvedDirective
  * @typedef {import('../../../types/_commons/typedefs').ResolvedDirectiveWithoutUseAgnosticStrategies} ResolvedDirectiveWithoutUseAgnosticStrategies
  * @typedef {import('../../../types/_commons/typedefs').ResolvedDirectives_ResolvedModules} ResolvedDirectives_ResolvedModules
- *
  * @typedef {import('../../../types/_commons/typedefs').ResolvedDirectives_BlockedImports} ResolvedDirectives_BlockedImports
  */
 
