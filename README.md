@@ -42,20 +42,6 @@ export default defineConfig([
 ]);
 ```
 
-And don't forget the VS Code settings via `./.vscode/settings.json`:
-
-```json
-{
-  "eslint.useFlatConfig": true,
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ]
-}
-```
-
 ## How it works
 
 In the beginning, there were not two kinds of modules in the Fullstack React Architecture (server vs. client). There were three:
