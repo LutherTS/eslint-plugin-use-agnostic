@@ -61,7 +61,7 @@ export const currentFileFlow = (context) => {
     return skipTrue;
   }
 
-  /* GETTING THE DIRECTIVE (or lack thereof) OF THE CURRENT FILE */
+  // GETTING THE DIRECTIVE (or lack thereof) OF THE CURRENT FILE
   const currentFileDirective =
     getDirectiveFromCurrentModule(context) ?? NO_DIRECTIVE;
 
@@ -77,6 +77,7 @@ export const currentFileFlow = (context) => {
     return skipTrue;
   }
 
+  // GETTING THE EFFECTIVE DIRECTIVE (no lack thereof) OF THE CURRENT FILE
   const currentFileEffectiveDirective = getEffectiveDirective(
     currentFileDirective,
     currentFileExtension
@@ -117,13 +118,14 @@ const importedFileFlow = (context, node) => {
   );
   if (!isImportedFileJS) return skipTrue;
 
-  /* GETTING THE DIRECTIVE (or lack thereof) OF THE IMPORTED FILE */
+  // GETTING THE DIRECTIVE (or lack thereof) OF THE IMPORTED FILE
   const importedFileDirective =
     getDirectiveFromImportedModule(resolvedImportPath) ?? NO_DIRECTIVE;
+
   // GETTING THE EXTENSION OF THE IMPORTED FILE
   const importedFileFileExtension = path.extname(resolvedImportPath);
 
-  // GETTING THE EFFECTIVE DIRECTIVE OF THE IMPORTED FILE
+  // GETTING THE EFFECTIVE DIRECTIVE (no lack thereof) OF THE IMPORTED FILE
   const importedFileEffectiveDirective = getEffectiveDirective(
     importedFileDirective,
     importedFileFileExtension
@@ -135,7 +137,7 @@ const importedFileFlow = (context, node) => {
     return skipTrue;
   }
 
-  // For now skipping on both "does not operate" (which should ignore) and "fails" albeit with console.error (which should crash).
+  // For now skipping on both "does not operate" (which should ignore) and "fails" (which should crash) albeit with console.error.
 
   return { skip: undefined, importedFileEffectiveDirective };
 };
