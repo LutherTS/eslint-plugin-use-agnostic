@@ -23,7 +23,7 @@ import {
 import {
   getImportedFileFirstLine,
   isImportBlocked as commonsIsImportBlocked,
-  makeMessageFromResolvedDirective,
+  makeMessageFromCurrentFileResolvedDirective,
   findSpecificViolationMessage as commonsFindSpecificViolationMessage,
 } from "../../../_commons/utilities/helpers.js";
 
@@ -265,7 +265,7 @@ export const isImportBlocked = (
  * @returns The message listing the incompatible commented modules.
  */
 export const makeMessageFromCommentedDirective = (commentedDirective) =>
-  makeMessageFromResolvedDirective(
+  makeMessageFromCurrentFileResolvedDirective(
     commentedDirectives_commentedModules,
     commentedDirectives_blockedImports,
     commentedDirective
