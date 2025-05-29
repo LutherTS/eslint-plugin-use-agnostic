@@ -3,6 +3,7 @@ import { defineConfig, globalIgnores } from "eslint/config";
 import useAgnostic, {
   useAgnosticPluginName,
   agnostic20ConfigName,
+  // enforceEffectiveDirectivesRuleName
 } from "eslint-plugin-use-agnostic";
 
 export default defineConfig([
