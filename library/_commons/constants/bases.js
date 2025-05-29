@@ -104,7 +104,6 @@ export const MJS = ".mjs";
 export const CJS = ".cjs";
 
 // JavaScript/TypeScript extensions array
-// /** @type {readonly [TSX, TS, JSX, JS, MJS, CJS]} */
 /** @type {Extensions} */
 export const EXTENSIONS = [TSX, TS, JSX, JS, MJS, CJS]; // In priority order
 

@@ -1,15 +1,9 @@
 import { effectiveDirectives_effectiveModules } from "../../../_commons/constants/bases.js";
 import {
   USE_SERVER,
-  USE_CLIENT,
-  USE_AGNOSTIC,
-  USE_SERVER_LOGICS,
-  USE_SERVER_COMPONENTS,
-  USE_SERVER_FUNCTIONS,
-  USE_CLIENT_LOGICS,
-  USE_CLIENT_COMPONENTS,
-  USE_AGNOSTIC_LOGICS,
-  USE_AGNOSTIC_COMPONENTS,
+  LOGICS,
+  COMPONENTS,
+  FUNCTIONS,
   directivesArray,
   directives_effectiveDirectives,
   effectiveDirectives_blockedImports,
@@ -18,13 +12,14 @@ import {
 import {
   getImportedFileFirstLine,
   isImportBlocked as commonsIsImportBlocked,
-  makeMessageFromResolvedDirective,
+  makeMessageFromCurrentFileResolvedDirective,
   findSpecificViolationMessage as commonsFindSpecificViolationMessage,
 } from "../../../_commons/utilities/helpers.js";
 
 /**
  * @typedef {import('../../../../types/agnostic20/_commons/typedefs.js').Context} Context
  * @typedef {import('../../../../types/agnostic20/_commons/typedefs.js').Directive} Directive
+ * @typedef {import('../../../../types/agnostic20/_commons/typedefs.js').NoDirective} NoDirective
  * @typedef {import('../../../../types/agnostic20/_commons/typedefs.js').Extension} Extension
  * @typedef {import('../../../../types/agnostic20/_commons/typedefs.js').EffectiveDirective} EffectiveDirective
  */
@@ -75,44 +70,18 @@ export const getDirectiveFromCurrentModule = (context) => {
  * - `'use client components'` denotes a Client Components Module.
  * - `'use agnostic logics'` denotes an Agnostic Logics Module.
  * - `'use agnostic components'` denotes an Agnostic Components Module.
- * @param {Directive | null} directive The directive as written on top of the file (`null` if no valid directive).
+ * @param {Directive | NoDirective} directive The directive as written on top of the file (`"no directive"` if no valid directive).
  * @param {Extension} extension The JavaScript (TypeScript) extension of the file.
  * @returns The effective directive, from which imports rules are applied.
  */
 export const getEffectiveDirective = (directive, extension) => {
-  // I could use a map, but because this is in JS with JSDoc, a manual solution is peculiarly more typesafe.
-  if (directive === null && !extension.endsWith("x")) return USE_SERVER_LOGICS;
-  if (directive === null && extension.endsWith("x"))
-    return USE_SERVER_COMPONENTS;
-  if (directive === USE_SERVER && !extension.endsWith("x"))
-    return USE_SERVER_FUNCTIONS;
-  if (directive === USE_CLIENT && !extension.endsWith("x"))
-    return USE_CLIENT_LOGICS;
-  if (directive === USE_CLIENT && extension.endsWith("x"))
-    return USE_CLIENT_COMPONENTS;
-  if (directive === USE_AGNOSTIC && !extension.endsWith("x"))
-    return USE_AGNOSTIC_LOGICS;
-  if (directive === USE_AGNOSTIC && extension.endsWith("x"))
-    return USE_AGNOSTIC_COMPONENTS;
-
-  return null; // default error, should be unreachable
-};
-// directives_effectiveDirectives
-/**
- * @param {Directive | null} directive
- * @param {Extension} extension
- * @returns
- */
-export const trueGetEffectiveDirective = (directive, extension) => {
-  const type = extension.endsWith("x")
-    ? "components"
+  const moduleKind = extension.endsWith("x")
+    ? COMPONENTS
     : directive === USE_SERVER
-    ? "functions"
-    : "logics";
+    ? FUNCTIONS
+    : LOGICS;
 
-  const a = directives_effectiveDirectives[directive];
-
-  return directives_effectiveDirectives[directive]?.[type] ?? null;
+  return directives_effectiveDirectives[directive][moduleKind];
 };
 
 /* getDirectiveFromImportedModule */
@@ -165,15 +134,17 @@ export const isImportBlocked = (
     importedFileEffectiveDirective
   );
 
-/* makeMessageFromEffectiveDirective */
+/* makeMessageFromCurrentFileEffectiveDirective */
 
 /**
  * Lists in an message the effective modules incompatible with an effective module based on its effective directive.
  * @param {EffectiveDirective} effectiveDirective The effective directive of the effective module.
  * @returns The message listing the incompatible effective modules.
  */
-export const makeMessageFromEffectiveDirective = (effectiveDirective) =>
-  makeMessageFromResolvedDirective(
+export const makeMessageFromCurrentFileEffectiveDirective = (
+  effectiveDirective
+) =>
+  makeMessageFromCurrentFileResolvedDirective(
     effectiveDirectives_effectiveModules,
     effectiveDirectives_blockedImports,
     effectiveDirective

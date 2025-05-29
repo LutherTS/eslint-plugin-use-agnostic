@@ -3,18 +3,11 @@ import {
   commentedDirectives_commentedModules,
 } from "../../../_commons/constants/bases.js";
 import {
-  USE_SERVER_LOGICS,
-  USE_CLIENT_LOGICS,
   USE_AGNOSTIC_LOGICS,
-  USE_SERVER_COMPONENTS,
-  USE_CLIENT_COMPONENTS,
-  USE_AGNOSTIC_COMPONENTS,
-  USE_SERVER_FUNCTIONS,
-  USE_CLIENT_CONTEXTS,
-  USE_AGNOSTIC_CONDITIONS,
   USE_AGNOSTIC_STRATEGIES,
-  directivesArray,
+  commentedDirectivesArray,
   strategiesArray,
+  commentedDirectives_extensionRules,
   commentedDirectives_4RawImplementations,
   commentedStrategies_commentedDirectives,
   commentedDirectives_blockedImports,
@@ -23,7 +16,7 @@ import {
 import {
   getImportedFileFirstLine,
   isImportBlocked as commonsIsImportBlocked,
-  makeMessageFromResolvedDirective,
+  makeMessageFromCurrentFileResolvedDirective,
   findSpecificViolationMessage as commonsFindSpecificViolationMessage,
 } from "../../../_commons/utilities/helpers.js";
 
@@ -124,7 +117,7 @@ export const getCommentedDirectiveFromCurrentModule = (context) => {
 
   // certifies the directive or lack thereof from the obtained value
   const commentedDirective =
-    directivesArray.find((directive) => directive === value) ?? null;
+    commentedDirectivesArray.find((directive) => directive === value) ?? null;
 
   return commentedDirective;
 };
@@ -145,31 +138,17 @@ export const getCommentedDirectiveFromCurrentModule = (context) => {
  * - `'use agnostic strategies'`: Agnostic Strategies Modules may export JSX.
  * @param {CommentedDirective} directive The commented directive as written on top of the file (cannot be `null` at that stage).
  * @param {Extension} extension The JavaScript (TypeScript) extension of the file.
- * @returns The verified commented directive, from which imports rules are applied. Returns `null` if the verification failed, upon which an error will be reported depending on the commented directive, since the error logic here is strictly binary.
+ * @returns {CommentedDirective | null} The verified commented directive, from which imports rules are applied. Returns `null` if the verification failed, upon which an error will be reported depending on the commented directive, since the error logic here is strictly binary.
  */
 export const getVerifiedCommentedDirective = (directive, extension) => {
-  // I could use a map, but because this is in JS with JSDoc, a manual solution is peculiarly more typesafe.
-  if (directive === USE_SERVER_LOGICS && !extension.endsWith("x"))
-    return directive;
-  if (directive === USE_CLIENT_LOGICS && !extension.endsWith("x"))
-    return directive;
-  if (directive === USE_AGNOSTIC_LOGICS && !extension.endsWith("x"))
-    return directive;
-  if (directive === USE_SERVER_COMPONENTS && extension.endsWith("x"))
-    return directive;
-  if (directive === USE_CLIENT_COMPONENTS && extension.endsWith("x"))
-    return directive;
-  if (directive === USE_AGNOSTIC_COMPONENTS && extension.endsWith("x"))
-    return directive;
-  if (directive === USE_SERVER_FUNCTIONS && !extension.endsWith("x"))
-    return directive;
-  if (directive === USE_CLIENT_CONTEXTS && extension.endsWith("x"))
-    return directive;
-  if (directive === USE_AGNOSTIC_CONDITIONS && extension.endsWith("x"))
-    return directive;
-  if (directive === USE_AGNOSTIC_STRATEGIES) return directive;
+  const rule = commentedDirectives_extensionRules[directive];
+  const isExtensionJSX = extension.endsWith("x");
 
-  return null; // verification error
+  if (rule === true && isExtensionJSX) return directive; // requires JSX extension
+  if (rule === false && !isExtensionJSX) return directive; // forbids JSX extension
+  if (rule === null) return directive; // no extension constraint, specifically for "use agnostic strategies"
+
+  return null; // verification failed
 };
 
 /* getCommentedDirectiveFromImportedModule */
@@ -197,7 +176,7 @@ export const getCommentedDirectiveFromImportedModule = (resolvedImportPath) => {
   const importedFileFirstLine = getImportedFileFirstLine(resolvedImportPath);
 
   // sees if the first line includes any of the directives and finds the directive that it includes, with USE_AGNOSTIC_LOGICS as a default
-  const includedDirective = directivesArray.reduce((acc, curr) => {
+  const includedDirective = commentedDirectivesArray.reduce((acc, curr) => {
     if (importedFileFirstLine.includes(curr)) return curr;
     else return acc;
   }, USE_AGNOSTIC_LOGICS);
@@ -221,19 +200,23 @@ export const getCommentedDirectiveFromImportedModule = (resolvedImportPath) => {
  * @returns The interpreted directive, a.k.a. strategized directive, or lack thereof via `null`.
  */
 export const getStrategizedDirective = (context, node) => {
+  // gets the first nested `/* */` comment inside the node
   const firstNestedComment = context.sourceCode.getCommentsInside(node)[0];
 
   // returns null early if there is no nested comments
   if (!firstNestedComment) return null;
 
+  // gets and trims the first nested comment raw
   const rawStrategy = firstNestedComment.value.trim() || "";
 
+  // asserts whether that first nested comment is or isn't a Strategy
   const strategy =
     strategiesArray.find((strategy) => strategy === rawStrategy) ?? null;
 
   // returns null early if no strategy was identified
   if (!strategy) return null;
 
+  // maps the strategy to the its relevant directive
   const commentedDirective = commentedStrategies_commentedDirectives[strategy];
 
   return commentedDirective;
@@ -257,15 +240,17 @@ export const isImportBlocked = (
     importedFileCommentedDirective
   );
 
-/* makeMessageFromCommentedDirective */
+/* makeMessageFromCurrentFileCommentedDirective */
 
 /**
  * Lists in an message the commented modules incompatible with a commented module based on its commented directive.
  * @param {CommentedDirective} commentedDirective The commented directive of the commented module.
  * @returns The message listing the incompatible commented modules.
  */
-export const makeMessageFromCommentedDirective = (commentedDirective) =>
-  makeMessageFromResolvedDirective(
+export const makeMessageFromCurrentFileCommentedDirective = (
+  commentedDirective
+) =>
+  makeMessageFromCurrentFileResolvedDirective(
     commentedDirectives_commentedModules,
     commentedDirectives_blockedImports,
     commentedDirective

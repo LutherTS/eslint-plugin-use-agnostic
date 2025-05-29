@@ -6,7 +6,6 @@ import { loadConfig, createMatchPath } from "tsconfig-paths";
 import { EXTENSIONS, ARE_NOT_ALLOWED_TO_IMPORT } from "../constants/bases.js";
 
 /**
- * @typedef {import('../../../types/_commons/typedefs').ResolvedDirective} ResolvedDirective
  * @typedef {import('../../../types/_commons/typedefs').ResolvedDirectives_ResolvedModules} ResolvedDirectives_ResolvedModules
  * @typedef {import('../../../types/_commons/typedefs').CurrentFileResolvedDirective} CurrentFileResolvedDirective
  * @typedef {import('../../../types/_commons/typedefs').Context<string, readonly unknown[]>} Context
@@ -148,26 +147,27 @@ export const makeIntroForSpecificViolationMessage = (
 ) =>
   `${resolvedDirectives_resolvedModules[currentFileResolvedDirective]}s ${ARE_NOT_ALLOWED_TO_IMPORT} ${resolvedDirectives_resolvedModules[importedFileResolvedDirective]}s.`;
 
-/* makeMessageFromResolvedDirective */
+/* makeMessageFromCurrentFileResolvedDirective */
 
 /**
  * Lists in an message the "resolved" modules incompatible with a "resolved" module based on its "resolved" directive.
  * @template {CurrentFileResolvedDirective} T
  * @param {ResolvedDirectives_ResolvedModules} resolvedDirectives_resolvedModules The resolved modules object, either for agnostic20 or for directive21.
  * @param {ResolvedDirectives_BlockedImports<T>} resolvedDirectives_blockedImports The blocked imports object, either for agnostic20 or for directive21.
- * @param {T} resolvedDirective The "resolved" directive of the "resolved" module.
+ * @param {T} currentFileResolvedDirective The "resolved" directive of the "resolved" module.
  * @returns The message listing the incompatible "resolved" modules.
  */
-export const makeMessageFromResolvedDirective = (
+export const makeMessageFromCurrentFileResolvedDirective = (
   resolvedDirectives_resolvedModules,
   resolvedDirectives_blockedImports,
-  resolvedDirective
+  currentFileResolvedDirective
 ) => {
-  const effectiveModule = resolvedDirectives_resolvedModules[resolvedDirective];
+  const effectiveModule =
+    resolvedDirectives_resolvedModules[currentFileResolvedDirective];
   const effectiveModulesString = effectiveModule + "s"; // plural
 
   const blockedImports =
-    resolvedDirectives_blockedImports[resolvedDirective].map(
+    resolvedDirectives_blockedImports[currentFileResolvedDirective].map(
       (e) => e.blockedImport
     ) || [];
 

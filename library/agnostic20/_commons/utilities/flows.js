@@ -8,6 +8,7 @@ import {
   skip,
 } from "../../../_commons/constants/bases.js";
 import {
+  NO_DIRECTIVE,
   USE_SERVER,
   // currentFileEffectiveDirective,
   // importedFileEffectiveDirective,
@@ -24,7 +25,7 @@ import {
   getDirectiveFromImportedModule,
   getEffectiveDirective,
   isImportBlocked,
-  makeMessageFromEffectiveDirective,
+  makeMessageFromCurrentFileEffectiveDirective,
   findSpecificViolationMessage,
 } from "./helpers.js";
 
@@ -38,7 +39,6 @@ import {
 
 /* currentFileFlow */
 
-// {{skip: true; currentFileEffectiveDirective: undefined;} | {skip: undefined; currentFileEffectiveDirective: EffectiveDirective;}}
 /**
  * The flow that begins the import rules enforcement rule, retrieving the valid directive of the current file before comparing it to upcoming valid directives of the files it imports.
  * @param {Context} context The ESLint rule's `context` object.
@@ -61,8 +61,9 @@ export const currentFileFlow = (context) => {
     return skipTrue;
   }
 
-  /* GETTING THE DIRECTIVE (or lack thereof) OF THE CURRENT FILE */
-  const currentFileDirective = getDirectiveFromCurrentModule(context);
+  // GETTING THE DIRECTIVE (or lack thereof) OF THE CURRENT FILE
+  const currentFileDirective =
+    getDirectiveFromCurrentModule(context) ?? NO_DIRECTIVE;
 
   // reports if a file marked "use server" has a JSX extension
   if (
@@ -76,7 +77,7 @@ export const currentFileFlow = (context) => {
     return skipTrue;
   }
 
-  // GETTING THE EFFECTIVE DIRECTIVE OF THE CURRENT FILE
+  // GETTING THE EFFECTIVE DIRECTIVE (no lack thereof) OF THE CURRENT FILE
   const currentFileEffectiveDirective = getEffectiveDirective(
     currentFileDirective,
     currentFileExtension
@@ -93,7 +94,6 @@ export const currentFileFlow = (context) => {
 
 /* importedFileFlow */
 
-// {{skip: true; importedFileEffectiveDirective: undefined;} | {skip: undefined; importedFileEffectiveDirective: EffectiveDirective;}}
 /**
  * The flow that is shared between import and re-export traversals to obtain the import file's effective directive.
  * @param {Context} context The ESLint rule's `context` object.
@@ -118,12 +118,14 @@ const importedFileFlow = (context, node) => {
   );
   if (!isImportedFileJS) return skipTrue;
 
-  /* GETTING THE DIRECTIVE (or lack thereof) OF THE IMPORTED FILE */
+  // GETTING THE DIRECTIVE (or lack thereof) OF THE IMPORTED FILE
   const importedFileDirective =
-    getDirectiveFromImportedModule(resolvedImportPath);
+    getDirectiveFromImportedModule(resolvedImportPath) ?? NO_DIRECTIVE;
+
   // GETTING THE EXTENSION OF THE IMPORTED FILE
   const importedFileFileExtension = path.extname(resolvedImportPath);
-  // GETTING THE EFFECTIVE DIRECTIVE OF THE IMPORTED FILE
+
+  // GETTING THE EFFECTIVE DIRECTIVE (no lack thereof) OF THE IMPORTED FILE
   const importedFileEffectiveDirective = getEffectiveDirective(
     importedFileDirective,
     importedFileFileExtension
@@ -135,7 +137,7 @@ const importedFileFlow = (context, node) => {
     return skipTrue;
   }
 
-  // For now skipping on both "does not operate" (which should ignore) and "fails" albeit with console.error (which should crash).
+  // For now skipping on both "does not operate" (which should ignore) and "fails" (which should crash) albeit with console.error.
 
   return { skip: undefined, importedFileEffectiveDirective };
 };
@@ -167,9 +169,10 @@ export const importsFlow = (context, node, currentFileEffectiveDirective) => {
       node,
       messageId: importBreaksEffectiveImportRulesMessageId,
       data: {
-        [effectiveDirectiveMessage]: makeMessageFromEffectiveDirective(
-          currentFileEffectiveDirective
-        ),
+        [effectiveDirectiveMessage]:
+          makeMessageFromCurrentFileEffectiveDirective(
+            currentFileEffectiveDirective
+          ),
         [specificViolationMessage]: findSpecificViolationMessage(
           currentFileEffectiveDirective,
           importedFileEffectiveDirective

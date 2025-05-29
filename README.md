@@ -10,7 +10,7 @@
 npm install eslint@^9.0.0 eslint-plugin-use-agnostic --save-dev
 ```
 
-## Setup (using TypeScript and the Flat Config)
+## Setup
 
 ```js
 // eslint.config.js
@@ -20,13 +20,20 @@ import { defineConfig, globalIgnores } from "eslint/config";
 import useAgnostic, {
   useAgnosticPluginName,
   agnostic20ConfigName,
+  // enforceEffectiveDirectivesRuleName
 } from "eslint-plugin-use-agnostic";
 
 export default defineConfig([
   globalIgnores([".next", ".react-router", "node_modules"]),
   {
-    // files: ['**/*.js', '**/*.jsx'], // if you're using vanilla JavaScript
-    files: ["**/*.ts", "**/*.tsx"],
+    files: [
+      "**/*.tsx",
+      "**/*.ts",
+      "**/*.jsx",
+      "**/*.js",
+      "**/*.mjs",
+      "**/*.cjs",
+    ],
     plugins: {
       [useAgnosticPluginName]: useAgnostic,
     },

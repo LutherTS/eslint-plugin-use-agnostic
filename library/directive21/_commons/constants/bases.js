@@ -36,7 +36,7 @@ export const USE_AGNOSTIC_STRATEGIES = COMMONS_USE_AGNOSTIC_STRATEGIES;
 
 // commented directives array
 /** @type {CommentedDirectives} */
-export const directivesArray = [
+export const commentedDirectivesArray = [
   USE_SERVER_LOGICS,
   USE_CLIENT_LOGICS,
   USE_AGNOSTIC_LOGICS,
@@ -51,7 +51,21 @@ export const directivesArray = [
 
 // commented directives set
 /** @type {ReadonlySet<CommentedDirective>} */
-export const directivesSet = new Set(directivesArray); // no longer used exported to satisfy static type inference
+export const commentedDirectivesSet = new Set(commentedDirectivesArray); // no longer used exported to satisfy static type inference
+
+// mapped commented directives to their extension rules
+export const commentedDirectives_extensionRules = {
+  [USE_SERVER_LOGICS]: false, // Must not end with 'x'
+  [USE_CLIENT_LOGICS]: false,
+  [USE_AGNOSTIC_LOGICS]: false,
+  [USE_SERVER_COMPONENTS]: true, // Must end with 'x'
+  [USE_CLIENT_COMPONENTS]: true,
+  [USE_AGNOSTIC_COMPONENTS]: true,
+  [USE_SERVER_FUNCTIONS]: false,
+  [USE_CLIENT_CONTEXTS]: true,
+  [USE_AGNOSTIC_CONDITIONS]: true,
+  [USE_AGNOSTIC_STRATEGIES]: null, // Any extension allowed
+};
 
 // commented strategies
 export const AT_SERVER_LOGICS = "@serverLogics";
@@ -145,7 +159,6 @@ const _DIRECTIVE_MUST_HAVE_A_JSX_FILE_EXTENSION =
   "directive must have a JSX file extension";
 
 export const commentedDirectives_verificationReports = Object.freeze({
-  // somehow doing it by hand is better for type inference in raw JS
   [USE_SERVER_LOGICS]: `${MODULES_MARKED_WITH_THE_} "${USE_SERVER_LOGICS}" ${_DIRECTIVE_MUST_HAVE_A_NON_JSX_FILE_EXTENSION}.`,
   [USE_CLIENT_LOGICS]: `${MODULES_MARKED_WITH_THE_} "${USE_CLIENT_LOGICS}" ${_DIRECTIVE_MUST_HAVE_A_NON_JSX_FILE_EXTENSION}.`,
   [USE_AGNOSTIC_LOGICS]: `${MODULES_MARKED_WITH_THE_} "${USE_AGNOSTIC_LOGICS}" ${_DIRECTIVE_MUST_HAVE_A_NON_JSX_FILE_EXTENSION}.`,

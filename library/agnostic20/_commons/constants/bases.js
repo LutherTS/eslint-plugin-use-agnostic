@@ -15,10 +15,11 @@ import { makeIntroForSpecificViolationMessage as commonsMakeIntroForSpecificViol
  * @typedef {import('../../../../types/agnostic20/_commons/typedefs.js').Directive} Directive
  * @typedef {import('../../../../types/agnostic20/_commons/typedefs.js').Directives} Directives
  * @typedef {import('../../../../types/agnostic20/_commons/typedefs.js').EffectiveDirective} EffectiveDirective
+ * @typedef {import('../../../../types/agnostic20/_commons/typedefs.js').Directives_EffectiveDirectives} Directives_EffectiveDirectives
  */
 
 // directives
-export const NO_DIRECTIVE = null;
+export const NO_DIRECTIVE = "no directive";
 export const USE_SERVER = "use server";
 export const USE_CLIENT = "use client";
 export const USE_AGNOSTIC = "use agnostic";
@@ -40,28 +41,33 @@ export const USE_CLIENT_COMPONENTS = COMMONS_USE_CLIENT_COMPONENTS;
 export const USE_AGNOSTIC_LOGICS = COMMONS_USE_AGNOSTIC_LOGICS;
 export const USE_AGNOSTIC_COMPONENTS = COMMONS_USE_AGNOSTIC_COMPONENTS;
 
+// module kinds
+export const LOGICS = "logics";
+export const COMPONENTS = "components";
+export const FUNCTIONS = "functions";
+
 // mapping directives with effective directives
-/** @type {Readonly<Record<Directive | null, { logics: EffectiveDirective | null, components: EffectiveDirective | null, functions: EffectiveDirective | null }>>} */
+/** @type {Directives_EffectiveDirectives} */
 export const directives_effectiveDirectives = Object.freeze({
   [NO_DIRECTIVE]: {
-    logics: USE_SERVER_LOGICS,
-    components: USE_SERVER_COMPONENTS,
-    functions: null,
+    [LOGICS]: USE_SERVER_LOGICS,
+    [COMPONENTS]: USE_SERVER_COMPONENTS,
+    [FUNCTIONS]: null,
   },
   [USE_SERVER]: {
-    logics: null,
-    components: null,
-    functions: USE_SERVER_FUNCTIONS,
+    [LOGICS]: null,
+    [COMPONENTS]: null,
+    [FUNCTIONS]: USE_SERVER_FUNCTIONS,
   },
   [USE_CLIENT]: {
-    logics: USE_CLIENT_LOGICS,
-    components: USE_CLIENT_COMPONENTS,
-    functions: null,
+    [LOGICS]: USE_CLIENT_LOGICS,
+    [COMPONENTS]: USE_CLIENT_COMPONENTS,
+    [FUNCTIONS]: null,
   },
   [USE_AGNOSTIC]: {
-    logics: USE_AGNOSTIC_LOGICS,
-    components: USE_AGNOSTIC_COMPONENTS,
-    functions: null,
+    [LOGICS]: USE_AGNOSTIC_LOGICS,
+    [COMPONENTS]: USE_AGNOSTIC_COMPONENTS,
+    [FUNCTIONS]: null,
   },
 });
 
