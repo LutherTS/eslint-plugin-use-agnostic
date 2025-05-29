@@ -134,14 +134,16 @@ export const isImportBlocked = (
     importedFileEffectiveDirective
   );
 
-/* makeMessageFromEffectiveDirective */
+/* makeMessageFromCurrentFileEffectiveDirective */
 
 /**
  * Lists in an message the effective modules incompatible with an effective module based on its effective directive.
  * @param {EffectiveDirective} effectiveDirective The effective directive of the effective module.
  * @returns The message listing the incompatible effective modules.
  */
-export const makeMessageFromEffectiveDirective = (effectiveDirective) =>
+export const makeMessageFromCurrentFileEffectiveDirective = (
+  effectiveDirective
+) =>
   makeMessageFromCurrentFileResolvedDirective(
     effectiveDirectives_effectiveModules,
     effectiveDirectives_blockedImports,

@@ -159,7 +159,6 @@ const _DIRECTIVE_MUST_HAVE_A_JSX_FILE_EXTENSION =
   "directive must have a JSX file extension";
 
 export const commentedDirectives_verificationReports = Object.freeze({
-  // somehow doing it by hand is better for type inference in raw JS
   [USE_SERVER_LOGICS]: `${MODULES_MARKED_WITH_THE_} "${USE_SERVER_LOGICS}" ${_DIRECTIVE_MUST_HAVE_A_NON_JSX_FILE_EXTENSION}.`,
   [USE_CLIENT_LOGICS]: `${MODULES_MARKED_WITH_THE_} "${USE_CLIENT_LOGICS}" ${_DIRECTIVE_MUST_HAVE_A_NON_JSX_FILE_EXTENSION}.`,
   [USE_AGNOSTIC_LOGICS]: `${MODULES_MARKED_WITH_THE_} "${USE_AGNOSTIC_LOGICS}" ${_DIRECTIVE_MUST_HAVE_A_NON_JSX_FILE_EXTENSION}.`,

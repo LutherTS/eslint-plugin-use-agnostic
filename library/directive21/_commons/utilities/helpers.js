@@ -3,15 +3,7 @@ import {
   commentedDirectives_commentedModules,
 } from "../../../_commons/constants/bases.js";
 import {
-  USE_SERVER_LOGICS,
-  USE_CLIENT_LOGICS,
   USE_AGNOSTIC_LOGICS,
-  USE_SERVER_COMPONENTS,
-  USE_CLIENT_COMPONENTS,
-  USE_AGNOSTIC_COMPONENTS,
-  USE_SERVER_FUNCTIONS,
-  USE_CLIENT_CONTEXTS,
-  USE_AGNOSTIC_CONDITIONS,
   USE_AGNOSTIC_STRATEGIES,
   commentedDirectivesArray,
   strategiesArray,
@@ -208,19 +200,23 @@ export const getCommentedDirectiveFromImportedModule = (resolvedImportPath) => {
  * @returns The interpreted directive, a.k.a. strategized directive, or lack thereof via `null`.
  */
 export const getStrategizedDirective = (context, node) => {
+  // gets the first nested `/* */` comment inside the node
   const firstNestedComment = context.sourceCode.getCommentsInside(node)[0];
 
   // returns null early if there is no nested comments
   if (!firstNestedComment) return null;
 
+  // gets and trims the first nested comment raw
   const rawStrategy = firstNestedComment.value.trim() || "";
 
+  // asserts whether that first nested comment is or isn't a Strategy
   const strategy =
     strategiesArray.find((strategy) => strategy === rawStrategy) ?? null;
 
   // returns null early if no strategy was identified
   if (!strategy) return null;
 
+  // maps the strategy to the its relevant directive
   const commentedDirective = commentedStrategies_commentedDirectives[strategy];
 
   return commentedDirective;
@@ -244,14 +240,16 @@ export const isImportBlocked = (
     importedFileCommentedDirective
   );
 
-/* makeMessageFromCommentedDirective */
+/* makeMessageFromCurrentFileCommentedDirective */
 
 /**
  * Lists in an message the commented modules incompatible with a commented module based on its commented directive.
  * @param {CommentedDirective} commentedDirective The commented directive of the commented module.
  * @returns The message listing the incompatible commented modules.
  */
-export const makeMessageFromCommentedDirective = (commentedDirective) =>
+export const makeMessageFromCurrentFileCommentedDirective = (
+  commentedDirective
+) =>
   makeMessageFromCurrentFileResolvedDirective(
     commentedDirectives_commentedModules,
     commentedDirectives_blockedImports,

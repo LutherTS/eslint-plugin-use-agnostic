@@ -25,7 +25,7 @@ import {
   getDirectiveFromImportedModule,
   getEffectiveDirective,
   isImportBlocked,
-  makeMessageFromEffectiveDirective,
+  makeMessageFromCurrentFileEffectiveDirective,
   findSpecificViolationMessage,
 } from "./helpers.js";
 
@@ -169,9 +169,10 @@ export const importsFlow = (context, node, currentFileEffectiveDirective) => {
       node,
       messageId: importBreaksEffectiveImportRulesMessageId,
       data: {
-        [effectiveDirectiveMessage]: makeMessageFromEffectiveDirective(
-          currentFileEffectiveDirective
-        ),
+        [effectiveDirectiveMessage]:
+          makeMessageFromCurrentFileEffectiveDirective(
+            currentFileEffectiveDirective
+          ),
         [specificViolationMessage]: findSpecificViolationMessage(
           currentFileEffectiveDirective,
           importedFileEffectiveDirective

@@ -28,7 +28,7 @@ import {
   getVerifiedCommentedDirective,
   getCommentedDirectiveFromImportedModule,
   isImportBlocked,
-  makeMessageFromCommentedDirective,
+  makeMessageFromCurrentFileCommentedDirective,
   findSpecificViolationMessage,
   getStrategizedDirective,
   addressDirectiveIfAgnosticStrategies,
@@ -53,7 +53,7 @@ import {
 export const currentFileFlow = (context) => {
   const skipTrue = { ...skip, verifiedCommentedDirective: undefined };
 
-  // GETTING THE EXTENSION OF THE CURRENT FILE
+  // gets the extension of the current file
   const currentFileExtension = path.extname(context.filename);
 
   // fails if the file is not JavaScript (TypeScript)
@@ -79,6 +79,7 @@ export const currentFileFlow = (context) => {
     return skipTrue;
   }
 
+  // verifies the commented directive from the current file
   const verifiedCommentedDirective = getVerifiedCommentedDirective(
     commentedDirective,
     currentFileExtension
@@ -126,7 +127,7 @@ const importedFileFlow = (context, node) => {
   );
   if (!isImportedFileJS) return skipTrue;
 
-  /* GETTING THE DIRECTIVE (or lack thereof) OF THE IMPORTED FILE */
+  // GETTING THE DIRECTIVE (or lack thereof) OF THE IMPORTED FILE
   let importedFileCommentedDirective =
     getCommentedDirectiveFromImportedModule(resolvedImportPath);
 
@@ -141,18 +142,16 @@ const importedFileFlow = (context, node) => {
   /* GETTING THE CORRECT DIRECTIVE INTERPRETATION OF STRATEGY FOR AGNOSTIC STRATEGIES MODULES IMPORTS. 
   The Directive-First Architecture does not check whether the export and import Strategies are the same at this time, meaning an @clientLogics strategy could be wrongly imported and interpreted as an @serverLogics strategy.
   
-  After a short attempt, this feature is currently canceled, mainly since the amount of work it will require will not be able to be transferred in a future where commented strategies will actually be real syntax.
+  After a short attempt, the feature to address this (crossingStrategies) is currently canceled, mainly since the amount of work it will require will not be able to be transferred in a future where commented strategies will actually be real syntax.
   
   (Consequently, details below are currently at the stage of wishful thinking.)
   Strategy exports are planned to be linting in the future within their own Agnostic Strategies Modules to ensure they respect import rules within their own scopes. It may also become possible to check whether the export and import Strategies are the same in the future when identifiers are defined and the same, especially for components modules where a convention could be for all non-type exports to be named and PascalCase. */
+
   if (importedFileCommentedDirective === USE_AGNOSTIC_STRATEGIES) {
     const importingFileCommentedDirective = getStrategizedDirective(
       context,
       node
     );
-
-    // FOR NOW, we consider the importingFileCommentedDirective (which is strategized) and the importedFileCommentedDirective (which should be strategized on its own imported file) to be same, given the limitation highlighted above.
-    importedFileCommentedDirective = importingFileCommentedDirective;
 
     if (importingFileCommentedDirective === null) {
       context.report({
@@ -161,6 +160,9 @@ const importedFileFlow = (context, node) => {
       });
       return skipTrue;
     }
+
+    // FOR NOW, we consider the importingFileCommentedDirective (which is strategized) and the importedFileCommentedDirective (which should be strategized on its own imported file) to be same, given the limitation highlighted above.
+    importedFileCommentedDirective = importingFileCommentedDirective;
   }
 
   return { skip: undefined, importedFileCommentedDirective };
@@ -194,9 +196,10 @@ export const importsFlow = (context, node, currentFileCommentedDirective) => {
       node,
       messageId: importBreaksCommentedImportRulesMessageId,
       data: {
-        [commentedDirectiveMessage]: makeMessageFromCommentedDirective(
-          currentFileCommentedDirective
-        ),
+        [commentedDirectiveMessage]:
+          makeMessageFromCurrentFileCommentedDirective(
+            currentFileCommentedDirective
+          ),
         [specificViolationMessage]: findSpecificViolationMessage(
           currentFileCommentedDirective,
           importedFileCommentedDirective
@@ -244,7 +247,9 @@ export const allExportsFlow = (
       currentFileCommentedDirective
     );
 
+    // returns early if an address has been made
     if (!addressedDirective) return;
+    // moves on to the re-export check otherwise
     else currentFileCommentedDirective = addressedDirective;
 
     if (currentFileCommentedDirective !== importedFileCommentedDirective) {
