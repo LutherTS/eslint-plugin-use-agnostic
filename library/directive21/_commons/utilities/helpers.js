@@ -13,8 +13,9 @@ import {
   USE_CLIENT_CONTEXTS,
   USE_AGNOSTIC_CONDITIONS,
   USE_AGNOSTIC_STRATEGIES,
-  directivesArray,
+  commentedDirectivesArray,
   strategiesArray,
+  commentedDirectives_extensionRules,
   commentedDirectives_4RawImplementations,
   commentedStrategies_commentedDirectives,
   commentedDirectives_blockedImports,
@@ -124,7 +125,7 @@ export const getCommentedDirectiveFromCurrentModule = (context) => {
 
   // certifies the directive or lack thereof from the obtained value
   const commentedDirective =
-    directivesArray.find((directive) => directive === value) ?? null;
+    commentedDirectivesArray.find((directive) => directive === value) ?? null;
 
   return commentedDirective;
 };
@@ -145,31 +146,17 @@ export const getCommentedDirectiveFromCurrentModule = (context) => {
  * - `'use agnostic strategies'`: Agnostic Strategies Modules may export JSX.
  * @param {CommentedDirective} directive The commented directive as written on top of the file (cannot be `null` at that stage).
  * @param {Extension} extension The JavaScript (TypeScript) extension of the file.
- * @returns The verified commented directive, from which imports rules are applied. Returns `null` if the verification failed, upon which an error will be reported depending on the commented directive, since the error logic here is strictly binary.
+ * @returns {CommentedDirective | null} The verified commented directive, from which imports rules are applied. Returns `null` if the verification failed, upon which an error will be reported depending on the commented directive, since the error logic here is strictly binary.
  */
 export const getVerifiedCommentedDirective = (directive, extension) => {
-  // I could use a map, but because this is in JS with JSDoc, a manual solution is peculiarly more typesafe.
-  if (directive === USE_SERVER_LOGICS && !extension.endsWith("x"))
-    return directive;
-  if (directive === USE_CLIENT_LOGICS && !extension.endsWith("x"))
-    return directive;
-  if (directive === USE_AGNOSTIC_LOGICS && !extension.endsWith("x"))
-    return directive;
-  if (directive === USE_SERVER_COMPONENTS && extension.endsWith("x"))
-    return directive;
-  if (directive === USE_CLIENT_COMPONENTS && extension.endsWith("x"))
-    return directive;
-  if (directive === USE_AGNOSTIC_COMPONENTS && extension.endsWith("x"))
-    return directive;
-  if (directive === USE_SERVER_FUNCTIONS && !extension.endsWith("x"))
-    return directive;
-  if (directive === USE_CLIENT_CONTEXTS && extension.endsWith("x"))
-    return directive;
-  if (directive === USE_AGNOSTIC_CONDITIONS && extension.endsWith("x"))
-    return directive;
-  if (directive === USE_AGNOSTIC_STRATEGIES) return directive;
+  const rule = commentedDirectives_extensionRules[directive];
+  const isExtensionJSX = extension.endsWith("x");
 
-  return null; // verification error
+  if (rule === true && isExtensionJSX) return directive; // requires JSX extension
+  if (rule === false && !isExtensionJSX) return directive; // forbids JSX extension
+  if (rule === null) return directive; // no extension constraint, specifically for "use agnostic strategies"
+
+  return null; // verification failed
 };
 
 /* getCommentedDirectiveFromImportedModule */
@@ -197,7 +184,7 @@ export const getCommentedDirectiveFromImportedModule = (resolvedImportPath) => {
   const importedFileFirstLine = getImportedFileFirstLine(resolvedImportPath);
 
   // sees if the first line includes any of the directives and finds the directive that it includes, with USE_AGNOSTIC_LOGICS as a default
-  const includedDirective = directivesArray.reduce((acc, curr) => {
+  const includedDirective = commentedDirectivesArray.reduce((acc, curr) => {
     if (importedFileFirstLine.includes(curr)) return curr;
     else return acc;
   }, USE_AGNOSTIC_LOGICS);

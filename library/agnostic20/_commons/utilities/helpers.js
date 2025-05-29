@@ -1,15 +1,6 @@
 import { effectiveDirectives_effectiveModules } from "../../../_commons/constants/bases.js";
 import {
   USE_SERVER,
-  USE_CLIENT,
-  USE_AGNOSTIC,
-  USE_SERVER_LOGICS,
-  USE_SERVER_COMPONENTS,
-  USE_SERVER_FUNCTIONS,
-  USE_CLIENT_LOGICS,
-  USE_CLIENT_COMPONENTS,
-  USE_AGNOSTIC_LOGICS,
-  USE_AGNOSTIC_COMPONENTS,
   LOGICS,
   COMPONENTS,
   FUNCTIONS,
