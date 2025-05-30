@@ -63,13 +63,15 @@ export const readInvalidFilesRecursively20 = (folderPath) =>
  * @returns The RuleTester's array of invalid files with needed properties for directive21.
  */
 export const readInvalidFilesRecursively21 = (folderPath) =>
-  readFilesRecursively(folderPath).map((e) => ({
-    name: e,
-    filename: e,
-    code: fs.readFileSync(e, "utf8"),
-    // errors: 2,
-    errors: [
-      { messageId: importBreaksCommentedImportRulesMessageId },
-      { messageId: importBreaksCommentedImportRulesMessageId },
-    ],
-  }));
+  readFilesRecursively(folderPath).map((e) => {
+    const errorsLength = e.includes("javascript") ? 2 : 12;
+
+    return {
+      name: e,
+      filename: e,
+      code: fs.readFileSync(e, "utf8"),
+      errors: Array.from({ length: errorsLength }, () => ({
+        messageId: importBreaksCommentedImportRulesMessageId,
+      })),
+    };
+  });

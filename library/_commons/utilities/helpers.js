@@ -46,7 +46,7 @@ const findExistingPath = (basePath) => {
  * @returns The absolute resolved path or `null` if no path is found.
  */
 export const resolveImportPath = (currentDir, importPath, cwd) => {
-  // --- Step 1: Resolve aliases (if tsconfig.json `paths` exists) ---
+  // Step 1: Resolve baseUrl and aliases (if tsconfig.json `paths` exists)
   const config = loadConfig(cwd);
 
   const resolveTSConfig =
@@ -58,7 +58,7 @@ export const resolveImportPath = (currentDir, importPath, cwd) => {
     ? resolveTSConfig(importPath, undefined, undefined, EXTENSIONS)
     : null;
 
-  // --- Step 2: Resolve relative/absolute paths ---
+  // Step 2: Resolve relative/absolute paths
   const basePath = aliasedPath || path.resolve(currentDir, importPath);
 
   // does not resolve on node_modules
