@@ -1,8 +1,11 @@
 "use agnostic";
 // That's an Agnostic Logics Module.
 
-// ...Importing a Client Logics Module.
+// ...Importing a Client Logics Module (with extension).
 import clientLogics from "../../../../../imported/javascript/client.js";
+
+// ...Importing a Client Logics Module by a folder.
+import clientLogicsFolder from "../../../../../imported/javascript/client-js";
 
 // Invalid.
 // Client Logics cannot run on both the server and the client.

@@ -44,18 +44,46 @@ export const readValidFilesRecursively = (folderPath) =>
   }));
 
 /**
+ * Reads file paths at any depths within a provided invalid files directory.
+ * @param {string} folderPath The provided directory.
+ * @param {number} javaScriptErrorsLength The number of errors expected on JavaScript files.
+ * @param {number} typeScriptErrorsLength The number of errors expected on TypeScript files.
+ * @param {string} messageId The messageId of the errors expected.
+ * @returns The RuleTester's array of invalid files with needed properties.
+ */
+const readInvalidFilesRecursively = (
+  folderPath,
+  javaScriptErrorsLength,
+  typeScriptErrorsLength,
+  messageId
+) =>
+  readFilesRecursively(folderPath).map((e) => {
+    const length = e.includes("javascript")
+      ? javaScriptErrorsLength
+      : typeScriptErrorsLength;
+
+    return {
+      name: e,
+      filename: e,
+      code: fs.readFileSync(e, "utf8"),
+      errors: Array.from({ length }, () => ({
+        messageId,
+      })),
+    };
+  });
+
+/**
  * Reads file paths at any depths within a provided invalid files directory for agnostic20.
  * @param {string} folderPath The provided directory.
  * @returns The RuleTester's array of invalid files with needed properties for agnostic20.
  */
 export const readInvalidFilesRecursively20 = (folderPath) =>
-  readFilesRecursively(folderPath).map((e) => ({
-    name: e,
-    filename: e,
-    code: fs.readFileSync(e, "utf8"),
-    // errors: 1,
-    errors: [{ messageId: importBreaksEffectiveImportRulesMessageId }],
-  }));
+  readInvalidFilesRecursively(
+    folderPath,
+    2,
+    6,
+    importBreaksEffectiveImportRulesMessageId
+  );
 
 /**
  * Reads file paths at any depths within a provided invalid files directory for directive21.
@@ -63,15 +91,9 @@ export const readInvalidFilesRecursively20 = (folderPath) =>
  * @returns The RuleTester's array of invalid files with needed properties for directive21.
  */
 export const readInvalidFilesRecursively21 = (folderPath) =>
-  readFilesRecursively(folderPath).map((e) => {
-    const errorsLength = e.includes("javascript") ? 4 : 18;
-
-    return {
-      name: e,
-      filename: e,
-      code: fs.readFileSync(e, "utf8"),
-      errors: Array.from({ length: errorsLength }, () => ({
-        messageId: importBreaksCommentedImportRulesMessageId,
-      })),
-    };
-  });
+  readInvalidFilesRecursively(
+    folderPath,
+    4,
+    18,
+    importBreaksCommentedImportRulesMessageId
+  );
