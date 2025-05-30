@@ -13,6 +13,13 @@ import clientContextsBaseUrl from "tests/directive21/imported/typescript/client-
 // with extension
 import clientContextsBaseUrlExtension from "tests/directive21/imported/typescript/client-contexts.tsx";
 
+// ...Importing a Special Client Contexts Module by a folder.
+import clientContextsFolder from "../../../../../imported/typescript/client-contexts-tsx";
+// Via alias.
+import clientContextsFolderAlias from "@/tests/directive21/imported/typescript/client-contexts-tsx";
+// Via baseURL.
+import clientContextsFolderBaseUrl from "tests/directive21/imported/typescript/client-contexts-tsx";
+
 // ...Importing Special Client Contexts via Special Agnostic Strategy.
 import {
   /* @clientContexts */ clientContextsStrategized,
@@ -37,6 +44,19 @@ import {
 import {
   /* @clientContexts */ clientContextsStrategized as clientContextsStrategizedBaseUrlExtension,
 } from "tests/directive21/imported/typescript/agnostic-strategies.tsx";
+
+// ...Importing Special Client Contexts via Special Agnostic Strategy by a folder.
+import {
+  /* @clientContexts */ clientContextsStrategized as clientContextsStrategizedFolder,
+} from "../../../../../imported/typescript/agnostic-strategies-tsx";
+// Via alias.
+import {
+  /* @clientContexts */ clientContextsStrategized as clientContextsStrategizedFolderAlias,
+} from "@/tests/directive21/imported/typescript/agnostic-strategies-tsx";
+// Via baseURL.
+import {
+  /* @clientContexts */ clientContextsStrategized as clientContextsStrategizedFolderBaseUrl,
+} from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
 // Valid.
 // (Special) Client Contexts Components can compose with one another.
