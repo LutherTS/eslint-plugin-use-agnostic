@@ -1,8 +1,11 @@
 "use server";
 // That's a Server Functions Module.
 
-// ...Importing a Client Logics Module.
+// ...Importing a Client Logics Module (with extension).
 import clientLogics from "../../../../../imported/javascript/client.js";
+
+// ...Importing a Client Logics Module by a folder.
+import clientLogicsFolder from "../../../../../imported/javascript/client-js";
 
 // Invalid.
 // Client Logics should never leak to the server.

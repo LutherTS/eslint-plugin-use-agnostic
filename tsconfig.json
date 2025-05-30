@@ -2,7 +2,7 @@
   "compilerOptions": {
     "paths": {
       "~/*": ["./library/*"],
-      "@/*": ["./*"]
+      "@/*": ["./*"] // strongly preferred over basedUrl
     },
     "baseUrl": ".",
     "jsx": "react-jsx",

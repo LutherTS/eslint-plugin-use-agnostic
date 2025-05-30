@@ -76,7 +76,7 @@ With this list established, it thus becomes possible to recognize static import 
 
 Only the first line of code in a file is observed for the presence of a directive. If no top-of-the-file directive is present or recognized, the file is considered to not have a directive, defaulting to being understood as a Server Logics Module if it doesn't use a JSX file extension (`.js`, `.ts`) or as a Server Components Module if it does (`.jsx`, `.tsx`).
 
-Aliased import paths are resolved only if your ESLint config file and your `tsconfig.json` file are in the same directory. (At least to my knowledge.)
+Aliased import paths are resolved only if your ESLint config file and your `tsconfig.json` file are in the same directory. At least to my knowledge, since the resolution depends on the `cwd` property from ESLint rules' `context` objects.
 
 It is up to you to confirm that your Agnostic Modules are indeed agnostic, meaning that they have neither server- nor client-side code. `eslint-plugin-use-agnostic`, at least at this time, does not do this verification for you.
 
