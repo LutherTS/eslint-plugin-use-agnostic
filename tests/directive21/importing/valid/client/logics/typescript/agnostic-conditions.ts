@@ -8,6 +8,10 @@ import agnosticConditionsExtension from "../../../../../imported/typescript/agno
 import agnosticConditionsAlias from "@/tests/directive21/imported/typescript/agnostic-conditions";
 // with extension
 import agnosticConditionsAliasExtension from "@/tests/directive21/imported/typescript/agnostic-conditions.tsx";
+// Via baseUrl.
+import agnosticConditionsBaseUrl from "tests/directive21/imported/typescript/agnostic-conditions";
+// with extension
+import agnosticConditionsBaseUrlExtension from "tests/directive21/imported/typescript/agnostic-conditions.tsx";
 
 // ...Importing Special Agnostic Conditions via Special Agnostic Strategy.
 import {
@@ -21,9 +25,18 @@ import {
 import {
   /* @agnosticConditions */ agnosticConditionsStrategized as agnosticConditionsStrategizedAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies";
+// with extension
 import {
   /* @agnosticConditions */ agnosticConditionsStrategized as agnosticConditionsStrategizedAliasExtension,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies.tsx";
+// Via baseUrl.
+import {
+  /* @agnosticConditions */ agnosticConditionsStrategized as agnosticConditionsStrategizedBaseUrl,
+} from "tests/directive21/imported/typescript/agnostic-strategies";
+// with extension
+import {
+  /* @agnosticConditions */ agnosticConditionsStrategized as agnosticConditionsStrategizedBaseUrlExtension,
+} from "tests/directive21/imported/typescript/agnostic-strategies.tsx";
 
 // Valid.
 // (Special) Agnostic Conditions Components are able to safely render on the client, guaranteeing that only their `ComponentForClient` will be effectively involved in Prime Client Logics Modules.

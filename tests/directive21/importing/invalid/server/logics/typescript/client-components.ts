@@ -8,6 +8,10 @@ import clientComponentsExtension from "../../../../../imported/typescript/client
 import clientComponentsAlias from "@/tests/directive21/imported/typescript/client-components";
 // with extension
 import clientComponentsAliasExtension from "@/tests/directive21/imported/typescript/client-components.tsx";
+// Via baseUrl.
+import clientComponentsBaseUrl from "tests/directive21/imported/typescript/client-components";
+// with extension
+import clientComponentsBaseUrlExtension from "tests/directive21/imported/typescript/client-components.tsx";
 
 // ...Importing Lineal Client Components via Special Agnostic Strategy.
 import {
@@ -25,6 +29,14 @@ import {
 import {
   /* @clientComponents */ clientComponentsStrategized as clientComponentsStrategizedAliasExtension,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies.tsx";
+// Via baseUrl.
+import {
+  /* @clientComponents */ clientComponentsStrategized as clientComponentsStrategizedBaseUrl,
+} from "tests/directive21/imported/typescript/agnostic-strategies";
+// with extension
+import {
+  /* @clientComponents */ clientComponentsStrategized as clientComponentsStrategizedBaseUrlExtension,
+} from "tests/directive21/imported/typescript/agnostic-strategies.tsx";
 
 // Invalid.
 // Lineal Client Components, like any Client Components, cannot be tinkered with on the server.

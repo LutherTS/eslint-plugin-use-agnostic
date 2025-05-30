@@ -8,6 +8,10 @@ import serverFunctionsExtension from "../../../../../imported/typescript/server-
 import serverFunctionsAlias from "@/tests/directive21/imported/typescript/server-functions";
 // with extension
 import serverFunctionsAliasExtension from "@/tests/directive21/imported/typescript/server-functions.ts";
+// Via baseUrl.
+import serverFunctionsBaseUrl from "tests/directive21/imported/typescript/server-functions";
+// with extension
+import serverFunctionsBaseUrlExtension from "tests/directive21/imported/typescript/server-functions.ts";
 
 // ...Importing Special Server Functions via Special Agnostic Strategy.
 import {
@@ -25,6 +29,14 @@ import {
 import {
   /* @serverFunctions */ serverFunctionsStrategized as serverFunctionsStrategizedAliasExtension,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies.tsx";
+// Via baseUrl.
+import {
+  /* @serverFunctions */ serverFunctionsStrategized as serverFunctionsStrategizedBaseUrl,
+} from "tests/directive21/imported/typescript/agnostic-strategies";
+// with extension
+import {
+  /* @serverFunctions */ serverFunctionsStrategized as serverFunctionsStrategizedBaseUrlExtension,
+} from "tests/directive21/imported/typescript/agnostic-strategies.tsx";
 
 // Valid.
 // (Special) Server Functions, even though they don't need to import one another and the same results can be generated via Prime Server Logics for the outcome of a single Server Function, can still compose with one another. (Perhaps a preferrable use case for this has been found or could be found either today or in the future.)

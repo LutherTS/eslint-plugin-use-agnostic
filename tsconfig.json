@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
       "~/*": ["./library/*"],
       "@/*": ["./*"]
     },
+    "baseUrl": ".",
     "jsx": "react-jsx",
     "allowImportingTsExtensions": true,
     "noEmit": true

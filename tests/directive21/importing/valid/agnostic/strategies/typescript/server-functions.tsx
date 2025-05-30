@@ -8,6 +8,10 @@ import serverFunctionsExtension from "../../../../../imported/typescript/server-
 import serverFunctionsAlias from "@/tests/directive21/imported/typescript/server-functions";
 // with extension
 import serverFunctionsAliasExtension from "@/tests/directive21/imported/typescript/server-functions.ts";
+// Via baseUrl.
+import serverFunctionsBaseUrl from "tests/directive21/imported/typescript/server-functions";
+// with extension
+import serverFunctionsBaseUrlExtension from "tests/directive21/imported/typescript/server-functions.ts";
 
 // ...Importing Special Server Functions via Special Agnostic Strategy.
 import {
@@ -25,6 +29,14 @@ import {
 import {
   /* @serverFunctions */ serverFunctionsStrategized as serverFunctionsStrategizedAliasExtension,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies.tsx";
+// Via baseUrl.
+import {
+  /* @serverFunctions */ serverFunctionsStrategized as serverFunctionsStrategizedBaseUrl,
+} from "tests/directive21/imported/typescript/agnostic-strategies";
+// with extension
+import {
+  /* @serverFunctions */ serverFunctionsStrategized as serverFunctionsStrategizedBaseUrlExtension,
+} from "tests/directive21/imported/typescript/agnostic-strategies.tsx";
 
 // Valid.
 // (Special) Agnostic Strategies Modules can import all known modules, except themselves since they cannot be imported as they are, only as and via Strategies. (Since Agnostic Strategies Modules cannot be imported as they are, there is no such things as a 'use agnostic strategies' importFileCommentedDirective.)

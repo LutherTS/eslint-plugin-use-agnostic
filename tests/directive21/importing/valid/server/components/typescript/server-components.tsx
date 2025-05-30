@@ -8,6 +8,10 @@ import serverComponentsExtension from "../../../../../imported/typescript/server
 import serverComponentsAlias from "@/tests/directive21/imported/typescript/server-components";
 // with extension
 import serverComponentsAliasExtension from "@/tests/directive21/imported/typescript/server-components.tsx";
+// Via baseUrl.
+import serverComponentsBaseUrl from "tests/directive21/imported/typescript/server-components";
+// with extension
+import serverComponentsBaseUrlExtension from "tests/directive21/imported/typescript/server-components.tsx";
 
 // ...Importing Lineal Server Components via Special Agnostic Strategy.
 import {
@@ -25,6 +29,14 @@ import {
 import {
   /* @serverComponents */ serverComponentsStrategized as serverComponentsStrategizedAliasExtension,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies.tsx";
+// Via baseUrl.
+import {
+  /* @serverComponents */ serverComponentsStrategized as serverComponentsStrategizedBaseUrl,
+} from "tests/directive21/imported/typescript/agnostic-strategies";
+// with extension
+import {
+  /* @serverComponents */ serverComponentsStrategized as serverComponentsStrategizedBaseUrlExtension,
+} from "tests/directive21/imported/typescript/agnostic-strategies.tsx";
 
 // Valid.
 // Lineal Server Components can compose with one another, now that thanks to the inclusion of Agnostic Components they are actual Server Components.

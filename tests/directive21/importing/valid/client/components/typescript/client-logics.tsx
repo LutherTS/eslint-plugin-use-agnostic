@@ -8,6 +8,10 @@ import clientLogicsExtension from "../../../../../imported/typescript/client-log
 import clientLogicsAlias from "@/tests/directive21/imported/typescript/client-logics";
 // with extension
 import clientLogicsAliasExtension from "@/tests/directive21/imported/typescript/client-logics.ts";
+// Via baseURL.
+import clientLogicsBaseUrl from "tests/directive21/imported/typescript/client-logics";
+// with extension
+import clientLogicsBaseUrlExtension from "tests/directive21/imported/typescript/client-logics.ts";
 
 // ...Importing Prime Client Logics via Special Agnostic Strategy.
 import {
@@ -25,6 +29,14 @@ import {
 import {
   /* @clientLogics */ clientLogicsStrategized as clientLogicsStrategizedAliasExtension,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies.tsx";
+// Via baseURL.
+import {
+  /* @clientLogics */ clientLogicsStrategized as clientLogicsStrategizedBaseUrl,
+} from "tests/directive21/imported/typescript/agnostic-strategies";
+// with extension
+import {
+  /* @clientLogics */ clientLogicsStrategized as clientLogicsStrategizedBaseUrlExtension,
+} from "tests/directive21/imported/typescript/agnostic-strategies.tsx";
 
 // Valid.
 // Prime Client Logics, being logic from the client, can safely support Lineal Client Components, like any Client Components.

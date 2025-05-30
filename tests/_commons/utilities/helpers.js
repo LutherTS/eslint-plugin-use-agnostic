@@ -64,7 +64,7 @@ export const readInvalidFilesRecursively20 = (folderPath) =>
  */
 export const readInvalidFilesRecursively21 = (folderPath) =>
   readFilesRecursively(folderPath).map((e) => {
-    const errorsLength = e.includes("javascript") ? 2 : 8;
+    const errorsLength = e.includes("javascript") ? 2 : 12;
 
     return {
       name: e,
