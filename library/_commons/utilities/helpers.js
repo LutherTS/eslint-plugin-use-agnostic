@@ -74,7 +74,7 @@ export const resolveImportPath = (currentDir, importPath, cwd) => {
   // Case 3: Directory import (e.g., `./components` → `./components/index.ts`)
   const indexPath = path.join(basePath, "index");
   const directoryImportPath = findExistingPath(indexPath);
-  if (directoryImportPath) return extensionlessImportPath;
+  if (directoryImportPath) return directoryImportPath;
 
   return null; // not found
 };

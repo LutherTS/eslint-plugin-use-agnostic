@@ -13,6 +13,13 @@ import agnosticLogicsBaseUrl from "tests/directive21/imported/typescript/agnosti
 // with extension
 import agnosticLogicsBaseUrlExtension from "tests/directive21/imported/typescript/agnostic-logics.ts";
 
+// ...Importing a Prime Agnostic Logics Module by a folder.
+import agnosticLogicsFolder from "../../../../../imported/typescript/agnostic-logics-ts";
+// Via alias.
+import agnosticLogicsFolderAlias from "@/tests/directive21/imported/typescript/agnostic-logics-ts";
+// Via baseURL.
+import agnosticLogicsFolderBaseUrl from "tests/directive21/imported/typescript/agnostic-logics-ts";
+
 // ...Importing Prime Agnostic Logics via Special Agnostic Strategy.
 import {
   /* @agnosticLogics */ agnosticLogicsStrategized,
@@ -37,6 +44,19 @@ import {
 import {
   /* @agnosticLogics */ agnosticLogicsStrategized as agnosticLogicsStrategizedBaseUrlExtension,
 } from "tests/directive21/imported/typescript/agnostic-strategies.tsx";
+
+// ...Importing Prime Agnostic Logics via Special Agnostic Strategy by a folder.
+import {
+  /* @agnosticLogics */ agnosticLogicsStrategized as agnosticLogicsStrategizedFolder,
+} from "../../../../../imported/typescript/agnostic-strategies-tsx";
+// Via alias.
+import {
+  /* @agnosticLogics */ agnosticLogicsStrategized as agnosticLogicsStrategizedFolderAlias,
+} from "@/tests/directive21/imported/typescript/agnostic-strategies-tsx";
+// Via baseURL.
+import {
+  /* @agnosticLogics */ agnosticLogicsStrategized as agnosticLogicsStrategizedFolderBaseUrl,
+} from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
 // Valid.
 // Prime Agnostic Logics can run safely on the client just like they can on the server.

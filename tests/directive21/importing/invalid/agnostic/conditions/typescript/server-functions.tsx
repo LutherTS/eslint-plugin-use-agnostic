@@ -13,6 +13,13 @@ import serverFunctionsBaseUrl from "tests/directive21/imported/typescript/server
 // with extension
 import serverFunctionsBaseUrlExtension from "tests/directive21/imported/typescript/server-functions.ts";
 
+// ...Importing a Special Server Functions Module by a folder.
+import serverFunctionsFolder from "../../../../../imported/typescript/server-functions-ts";
+// Via alias.
+import serverFunctionsFolderAlias from "@/tests/directive21/imported/typescript/server-functions-ts";
+// Via baseURL.
+import serverFunctionsFolderBaseUrl from "tests/directive21/imported/typescript/server-functions-ts";
+
 // ...Importing Special Server Functions via Special Agnostic Strategy.
 import {
   /* @serverFunctions */ serverFunctionsStrategized,
@@ -37,6 +44,19 @@ import {
 import {
   /* @serverFunctions */ serverFunctionsStrategized as serverFunctionsStrategizedBaseUrlExtension,
 } from "tests/directive21/imported/typescript/agnostic-strategies.tsx";
+
+// ...Importing Special Server Functions via Special Agnostic Strategy by a folder.
+import {
+  /* @serverFunctions */ serverFunctionsStrategized as serverFunctionsStrategizedFolder,
+} from "../../../../../imported/typescript/agnostic-strategies-tsx";
+// Via alias.
+import {
+  /* @serverFunctions */ serverFunctionsStrategized as serverFunctionsStrategizedFolderAlias,
+} from "@/tests/directive21/imported/typescript/agnostic-strategies-tsx";
+// Via baseURL.
+import {
+  /* @serverFunctions */ serverFunctionsStrategized as serverFunctionsStrategizedFolderBaseUrl,
+} from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
 // Invalid.
 // (Special) Server Functions are not accepted because (Special) Agnostic Conditions Components only take finite, imported components as arguments in their making. As such, assigning props to these components, including Server Functions, is not made within Agnostic Conditions Modules.

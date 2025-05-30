@@ -13,6 +13,13 @@ import clientComponentsBaseUrl from "tests/directive21/imported/typescript/clien
 // with extension
 import clientComponentsBaseUrlExtension from "tests/directive21/imported/typescript/client-components.tsx";
 
+// ...Importing a Lineal Client Components Module by a folder.
+import clientComponentsFolder from "../../../../../imported/typescript/client-components-tsx";
+// Via alias.
+import clientComponentsFolderAlias from "@/tests/directive21/imported/typescript/client-components-tsx";
+// Via baseURL.
+import clientComponentsFolderBaseUrl from "tests/directive21/imported/typescript/client-components-tsx";
+
 // ...Importing Lineal Client Components via Special Agnostic Strategy.
 import {
   /* @clientComponents */ clientComponentsStrategized,
@@ -37,6 +44,19 @@ import {
 import {
   /* @clientComponents */ clientComponentsStrategized as clientComponentsStrategizedBaseUrlExtension,
 } from "tests/directive21/imported/typescript/agnostic-strategies.tsx";
+
+// ...Importing Lineal Client Components via Special Agnostic Strategy by a folder.
+import {
+  /* @clientComponents */ clientComponentsStrategized as clientComponentsStrategizedFolder,
+} from "../../../../../imported/typescript/agnostic-strategies-tsx";
+// Via alias.
+import {
+  /* @clientComponents */ clientComponentsStrategized as clientComponentsStrategizedFolderAlias,
+} from "@/tests/directive21/imported/typescript/agnostic-strategies-tsx";
+// Via baseURL.
+import {
+  /* @clientComponents */ clientComponentsStrategized as clientComponentsStrategizedFolderBaseUrl,
+} from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
 // Valid.
 // (Special) Agnostic Strategies Modules can import all known modules, except themselves since they cannot be imported as they are, only as and via Strategies. (Since Agnostic Strategies Modules cannot be imported as they are, there is no such things as a 'use agnostic strategies' importFileCommentedDirective.)

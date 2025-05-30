@@ -13,6 +13,13 @@ import agnosticConditionsBaseUrl from "tests/directive21/imported/typescript/agn
 // with extension
 import agnosticConditionsBaseUrlExtension from "tests/directive21/imported/typescript/agnostic-conditions.tsx";
 
+// ...Importing a Special Agnostic Conditions Module by a folder.
+import agnosticConditionsFolder from "../../../../../imported/typescript/agnostic-conditions-tsx";
+// Via alias.
+import agnosticConditionsFolderAlias from "@/tests/directive21/imported/typescript/agnostic-conditions-tsx";
+// Via baseURL.
+import agnosticConditionsFolderBaseUrl from "tests/directive21/imported/typescript/agnostic-conditions-tsx";
+
 // ...Importing Special Agnostic Conditions via Special Agnostic Strategy.
 import {
   /* @agnosticConditions */ agnosticConditionsStrategized,
@@ -37,6 +44,19 @@ import {
 import {
   /* @agnosticConditions */ agnosticConditionsStrategized as agnosticConditionsStrategizedBaseUrlExtension,
 } from "tests/directive21/imported/typescript/agnostic-strategies.tsx";
+
+// ...Importing Special Agnostic Conditions via Special Agnostic Strategy by a folder.
+import {
+  /* @agnosticConditions */ agnosticConditionsStrategized as agnosticConditionsStrategizedFolder,
+} from "../../../../../imported/typescript/agnostic-strategies-tsx";
+// Via alias.
+import {
+  /* @agnosticConditions */ agnosticConditionsStrategized as agnosticConditionsStrategizedFolderAlias,
+} from "@/tests/directive21/imported/typescript/agnostic-strategies-tsx";
+// Via baseURL.
+import {
+  /* @agnosticConditions */ agnosticConditionsStrategized as agnosticConditionsStrategizedFolderBaseUrl,
+} from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
 // Valid.
 // (Special) Agnostic Conditions Components, as if they were Lineal Agnostic Components themselves, can render safely on the server just like they can on the client.
