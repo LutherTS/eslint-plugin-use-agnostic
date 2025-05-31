@@ -80,7 +80,7 @@ Aliased import paths are resolved only if your ESLint config file and your `tsco
 
 It is up to you to confirm that your Agnostic Modules are indeed agnostic, meaning that they have neither server- nor client-side code. `eslint-plugin-use-agnostic`, at least at this time, does not do this verification for you.
 
-It is also up to you to ensure, as outlined above, that **you do not mix** exporting React components with exporting other logics within the same module. Separating exporting React components within their own modules ending with a JSX extension, from exporting other logics within modules that don't end with a JSX extension, is crucial for distinguishing between Logics Modules and Components Modules.
+It is also up to you to ensure, as outlined above, that **you do not mix** exporting React components with exporting other logics within the same module. Separating exporting React components within their own modules ending with a JSX file extension, from exporting other logics within modules that don't end with a JSX file extension, is crucial for distinguishing between Components Modules and Logics Modules respectively.
 
 The import rules are designed to be as permissive as possible, allowing for more obscure use cases as long as they are non-breaking. However, it is still your responsibility as a developer to, within a file, not mix in incompatible ways code that cannot compose.
 
@@ -88,11 +88,11 @@ The import rules are designed to be as permissive as possible, allowing for more
 
 I believe the core issue hindering the comprehension of React Server Components is the fact that the Fullstack React Architecture has entirely erased its own roots since the introduction of directives by disregarding the architecture's primordial realities I have detailed above: its Modules. Server Modules. Client Modules. Agnostic Modules.
 
-'use client' may denote to the server that a module's exports are to be imported as client references. But that effectively makes said module a "'use client' module", and it's only natural that a "'use client' module" would behave in a 'use client' way.
+`'use client'` may denote to the server that a module's exports are to be imported as client references. But that effectively makes said module a "`'use client'` module", and it's only natural that a "`'use client'` module" would behave in a `'use client'` way.
 
-'use server' may denote to the client that a module's exports are to be imported as server references. But that effectively makes said module a "'use server' module", and it's only natural that a "'use server' module" would behave in a 'use server' way.
+`'use server'` may denote to the client that a module's exports are to be imported as server references. But that effectively makes said module a "`'use server'` module", and it's only natural that a "`'use server'` module" would behave in a `'use server'` way.
 
-React can easily understand that a 'use client' module is, from a primordial standpoint, a Client Module. And it can also understand that a 'use server' module is a Server Module, albeit a special one.
+React can easily understand that a `'use client'` module is, from a primordial standpoint, a Client Module. And it can also understand that a `'use server'` module is a Server Module, albeit a special one.
 
 But not having a directive to distinguish between 1. non-special Server Modules that are never meant to be imported on the client, even as references; and 2. actual Agnostic Modules, the Shared Modules that are still here at the heart of this system and are able to run anywhere; this creates a confusion that is detrimental to every single stackholder in the RSC ecosystem:
 
@@ -100,6 +100,6 @@ But not having a directive to distinguish between 1. non-special Server Modules 
 - LLMs are confused, because even they can't understand what 'use server' and 'use client' mean and therefore cannot explain it to developers facing their own specific concerns.
 - And if LLMs are confused, I can't even imagine what that must mean for AI tools and AI agents.
 
-This is what the 'use agnostic' directive solves. It clearly marks a module to be an Agnostic Module. And if a module that used to lack a directive can now be marked as an Agnostic Module, this allows modules without a directive to finally, truly be Server Modules by default. And eslint-plugin-use-agnostic can work from there.
+This is what the `'use agnostic'` directive solves. It clearly marks a module to be an Agnostic Module. And if a module that used to lack a directive can now be marked as an Agnostic Module, this allows modules without a directive to finally, truly be Server Modules by default. And `eslint-plugin-use-agnostic` can work from there.
 
-A lot more needs to be done, and a lot of it unfortunately can only be optimized deeper into React's innerworkings. But if the introduction of 'use agnostic' can already create such powerful static analysis, imagine what it could produce if only it were incorporated into React as an official directive of the Fullstack React Architecture.
+A lot more needs to be done, and a lot of it unfortunately can only be optimized deeper into React's innerworkings. But if the introduction of `'use agnostic'` can already create such powerful static analysis, imagine what it could produce if only it were incorporated into React as an official directive of the Fullstack React Architecture.
