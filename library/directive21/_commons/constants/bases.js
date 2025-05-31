@@ -1,4 +1,5 @@
 import {
+  directive21ConfigName,
   USE_SERVER_LOGICS as COMMONS_USE_SERVER_LOGICS,
   USE_CLIENT_LOGICS as COMMONS_USE_CLIENT_LOGICS,
   USE_AGNOSTIC_LOGICS as COMMONS_USE_AGNOSTIC_LOGICS,
@@ -13,6 +14,8 @@ import {
 } from "../../../_commons/constants/bases.js";
 
 import { makeIntroForSpecificViolationMessage as commonsMakeIntroForSpecificViolationMessage } from "../../../_commons/utilities/helpers.js";
+
+import jscommentsConfig from "../../../../comments.config.js";
 
 /**
  * @typedef {import('../../../../types/directive21/_commons/typedefs.js').CommentedDirective} CommentedDirective
@@ -197,7 +200,11 @@ export const commentedDirectives_blockedImports = Object.freeze({
       message: `${makeIntroForSpecificViolationMessage(
         USE_SERVER_LOGICS,
         USE_CLIENT_LOGICS
-      )} Prime Client Logics should never leak to the server.`,
+      )} ${
+        jscommentsConfig[directive21ConfigName][USE_SERVER_LOGICS][
+          USE_CLIENT_LOGICS
+        ]
+      }`,
     },
     // USE_AGNOSTIC_LOGICS allowed, because Prime Agnostic Logics can run safely on the server just like they can on the client.
     // USE_SERVER_COMPONENTS allowed, because Lineal Server Components are OK to be composed with Prime Server Logics as long as the Prime Server Logics Module, by convention, does not export React components.
@@ -206,7 +213,11 @@ export const commentedDirectives_blockedImports = Object.freeze({
       message: `${makeIntroForSpecificViolationMessage(
         USE_SERVER_LOGICS,
         USE_CLIENT_COMPONENTS
-      )} Lineal Client Components, like any Client Components, cannot be tinkered with on the server.`,
+      )} ${
+        jscommentsConfig[directive21ConfigName][USE_SERVER_LOGICS][
+          USE_CLIENT_COMPONENTS
+        ]
+      }`,
     },
     // USE_AGNOSTIC_COMPONENTS allowed, because Lineal Agnostic Components can be composed with any Prime Environment Logics agnostically as long as the Prime Environment Logics Module, by convention, does not export React components.
     // USE_SERVER_FUNCTIONS allowed, because (Special) Server Functions, being able to import one another, can compose and do so via Prime Server Logics, despite this method seeming superfluous at first glance. (Perhaps a preferrable use case for this has been found or could be found either today or in the future.)
@@ -215,7 +226,11 @@ export const commentedDirectives_blockedImports = Object.freeze({
       message: `${makeIntroForSpecificViolationMessage(
         USE_SERVER_LOGICS,
         USE_CLIENT_CONTEXTS
-      )} (Special) Client Contexts Components, like any Client Components, cannot be tinkered with on the server.`,
+      )} ${
+        jscommentsConfig[directive21ConfigName][USE_SERVER_LOGICS][
+          USE_CLIENT_CONTEXTS
+        ]
+      }`,
     },
     // USE_AGNOSTIC_CONDITIONS allowed, because (Special) Agnostic Conditions Components are able to safely render on the server, guaranteeing that only their `ComponentForServer` will be effectively involved in Prime Server Logics Modules.
   ],
@@ -225,7 +240,11 @@ export const commentedDirectives_blockedImports = Object.freeze({
       message: `${makeIntroForSpecificViolationMessage(
         USE_CLIENT_LOGICS,
         USE_SERVER_LOGICS
-      )} Prime Server Logics should never leak to the client.`,
+      )} ${
+        jscommentsConfig[directive21ConfigName][USE_CLIENT_LOGICS][
+          USE_SERVER_LOGICS
+        ]
+      }`,
     },
     // USE_CLIENT_LOGICS allowed, because Prime Client Logics can compose with one another.
     // USE_AGNOSTIC_LOGICS allowed, because Prime Agnostic Logics can run safely on the client just like they can on the server.
@@ -234,7 +253,11 @@ export const commentedDirectives_blockedImports = Object.freeze({
       message: `${makeIntroForSpecificViolationMessage(
         USE_CLIENT_LOGICS,
         USE_SERVER_COMPONENTS
-      )} Lineal Server Components cannot be thinkered with on the client.`,
+      )} ${
+        jscommentsConfig[directive21ConfigName][USE_CLIENT_LOGICS][
+          USE_SERVER_COMPONENTS
+        ]
+      }`,
     },
     // USE_CLIENT_COMPONENTS allowed, because Lineal Client Components, like any Client Components, are OK to be composed with Prime Client Logics as long as the Prime Client Logics Module, by convention, does not export React components.
     // USE_AGNOSTIC_COMPONENTS allowed, because Lineal Agnostic Components can be composed with any Prime Environment Logics agnostically as long as the Prime Environment Logics Module, by convention, does not export React components.
@@ -248,14 +271,22 @@ export const commentedDirectives_blockedImports = Object.freeze({
       message: `${makeIntroForSpecificViolationMessage(
         USE_AGNOSTIC_LOGICS,
         USE_SERVER_LOGICS
-      )} Prime Server Logics cannot run on both the server and the client.`,
+      )} ${
+        jscommentsConfig[directive21ConfigName][USE_AGNOSTIC_LOGICS][
+          USE_SERVER_LOGICS
+        ]
+      }`,
     },
     {
       blockedImport: USE_CLIENT_LOGICS,
       message: `${makeIntroForSpecificViolationMessage(
         USE_AGNOSTIC_LOGICS,
         USE_CLIENT_LOGICS
-      )} Prime Client Logics cannot run on both the server and the client.`,
+      )} ${
+        jscommentsConfig[directive21ConfigName][USE_AGNOSTIC_LOGICS][
+          USE_CLIENT_LOGICS
+        ]
+      }`,
     },
     // USE_AGNOSTIC_LOGICS allowed, because Prime Agnostic Logics can compose with one another.
     {
@@ -263,14 +294,22 @@ export const commentedDirectives_blockedImports = Object.freeze({
       message: `${makeIntroForSpecificViolationMessage(
         USE_AGNOSTIC_LOGICS,
         USE_SERVER_COMPONENTS
-      )} Lineal Server Components cannot be tinkered with on both the server and the client.`,
+      )} ${
+        jscommentsConfig[directive21ConfigName][USE_AGNOSTIC_LOGICS][
+          USE_SERVER_COMPONENTS
+        ]
+      }`,
     },
     {
       blockedImport: USE_CLIENT_COMPONENTS,
       message: `${makeIntroForSpecificViolationMessage(
         USE_AGNOSTIC_LOGICS,
         USE_CLIENT_COMPONENTS
-      )} Lineal Client Components, like any Client Components, cannot be tinkered with on both the server and the client.`,
+      )} ${
+        jscommentsConfig[directive21ConfigName][USE_AGNOSTIC_LOGICS][
+          USE_CLIENT_COMPONENTS
+        ]
+      }`,
     },
     // USE_AGNOSTIC_COMPONENTS allowed, because Lineal Agnostic Components can be composed with any Prime Environment Logics agnostically as long as the Prime Environment Logics Module, by convention, does not export React components.
     {
@@ -278,14 +317,22 @@ export const commentedDirectives_blockedImports = Object.freeze({
       message: `${makeIntroForSpecificViolationMessage(
         USE_AGNOSTIC_LOGICS,
         USE_SERVER_FUNCTIONS
-      )} (Special) Server Functions can be modified on the server and on the client, but their use cases on both environments are not one-to-one compatible, since they're being addressed as they are on the server and addressed as references on the client.`,
+      )} ${
+        jscommentsConfig[directive21ConfigName][USE_AGNOSTIC_LOGICS][
+          USE_SERVER_FUNCTIONS
+        ]
+      }`,
     },
     {
       blockedImport: USE_CLIENT_CONTEXTS,
       message: `${makeIntroForSpecificViolationMessage(
         USE_AGNOSTIC_LOGICS,
         USE_CLIENT_CONTEXTS
-      )} (Special) Client Contexts Components, like any Client Components, cannot be tinkered with on both the server and the client.`,
+      )} ${
+        jscommentsConfig[directive21ConfigName][USE_AGNOSTIC_LOGICS][
+          USE_CLIENT_CONTEXTS
+        ]
+      }`,
     },
     // USE_AGNOSTIC_CONDITIONS allowed, because (Special) Agnostic Conditions Components, as if they were Lineal Agnostic Components themselves, can be composed with any Prime Environment Logics agnostically as long as the Prime Environment Logics Module, by convention, does not export React components.
   ],
@@ -296,7 +343,11 @@ export const commentedDirectives_blockedImports = Object.freeze({
       message: `${makeIntroForSpecificViolationMessage(
         USE_SERVER_COMPONENTS,
         USE_CLIENT_LOGICS
-      )} Prime Client Logics should never leak to the server.`,
+      )} ${
+        jscommentsConfig[directive21ConfigName][USE_SERVER_COMPONENTS][
+          USE_CLIENT_LOGICS
+        ]
+      }`,
     },
     // USE_AGNOSTIC_LOGICS allowed, because Prime Agnostic Logics can run safely on the server just like they can on the client.
     // USE_SERVER_COMPONENTS allowed, because Lineal Server Components can compose with one another, now that thanks to the inclusion of Agnostic Components they are actual Server Components.
@@ -312,7 +363,11 @@ export const commentedDirectives_blockedImports = Object.freeze({
       message: `${makeIntroForSpecificViolationMessage(
         USE_CLIENT_COMPONENTS,
         USE_SERVER_LOGICS
-      )} Prime Server Logics should never leak to the client.`,
+      )} ${
+        jscommentsConfig[directive21ConfigName][USE_CLIENT_COMPONENTS][
+          USE_SERVER_LOGICS
+        ]
+      }`,
     },
     // USE_CLIENT_LOGICS allowed, because Prime Client Logics, being logic from the client, can safely support Lineal Client Components, like any Client Components.
     // USE_AGNOSTIC_LOGICS allowed, because Prime Agnostic Logics can run safely on the client just like they can on the server.
@@ -321,7 +376,11 @@ export const commentedDirectives_blockedImports = Object.freeze({
       message: `${makeIntroForSpecificViolationMessage(
         USE_CLIENT_COMPONENTS,
         USE_SERVER_COMPONENTS
-      )} Lineal Server Components cannot be the children of Lineal Client Components.`,
+      )} ${
+        jscommentsConfig[directive21ConfigName][USE_CLIENT_COMPONENTS][
+          USE_SERVER_COMPONENTS
+        ]
+      }`,
     },
     // USE_CLIENT_COMPONENTS allowed, because Lineal Client Components can compose with one another.
     // USE_AGNOSTIC_COMPONENTS allowed, because Lineal Agnostic Components can render safely on the client just like they can on the server.
@@ -335,14 +394,22 @@ export const commentedDirectives_blockedImports = Object.freeze({
       message: `${makeIntroForSpecificViolationMessage(
         USE_AGNOSTIC_COMPONENTS,
         USE_SERVER_LOGICS
-      )} Prime Server Logics cannot run on both the server and the client.`,
+      )} ${
+        jscommentsConfig[directive21ConfigName][USE_AGNOSTIC_COMPONENTS][
+          USE_SERVER_LOGICS
+        ]
+      }`,
     },
     {
       blockedImport: USE_CLIENT_LOGICS,
       message: `${makeIntroForSpecificViolationMessage(
         USE_AGNOSTIC_COMPONENTS,
         USE_CLIENT_LOGICS
-      )} Prime Client Logics cannot run on both the server and the client.`,
+      )} ${
+        jscommentsConfig[directive21ConfigName][USE_AGNOSTIC_COMPONENTS][
+          USE_CLIENT_LOGICS
+        ]
+      }`,
     },
     // USE_AGNOSTIC_LOGICS allowed, because Prime Agnostic Logics, being environment-agnostic logic, can safely support Agnostic Components.
     {
@@ -350,7 +417,11 @@ export const commentedDirectives_blockedImports = Object.freeze({
       message: `${makeIntroForSpecificViolationMessage(
         USE_AGNOSTIC_COMPONENTS,
         USE_SERVER_COMPONENTS
-      )} Lineal Server Components, unlike Lineal Client Components, cannot make silos of their own once on the opposing environment (the client in this case), and therefore cannot be executed from the client, making them unable to execute agnostically from both the server and the client.`,
+      )} ${
+        jscommentsConfig[directive21ConfigName][USE_AGNOSTIC_COMPONENTS][
+          USE_SERVER_COMPONENTS
+        ]
+      }`,
     },
     // USE_CLIENT_COMPONENTS allowed, because Lineal Client Components can be nested inside Agnostic Components to create client boundaries when the root of the application is planted on the server.
     // USE_AGNOSTIC_COMPONENTS allowed, because Lineal Agnostic Components, can compose with one another.
@@ -365,7 +436,11 @@ export const commentedDirectives_blockedImports = Object.freeze({
       message: `${makeIntroForSpecificViolationMessage(
         USE_SERVER_FUNCTIONS,
         USE_CLIENT_LOGICS
-      )} Prime Client Logics should never leak to the server.`,
+      )} ${
+        jscommentsConfig[directive21ConfigName][USE_SERVER_FUNCTIONS][
+          USE_CLIENT_LOGICS
+        ]
+      }`,
     },
     // USE_AGNOSTIC_LOGICS allowed, because Prime Agnostic Logics can run safely on the server just like they can on the client.
     {
@@ -373,21 +448,33 @@ export const commentedDirectives_blockedImports = Object.freeze({
       message: `${makeIntroForSpecificViolationMessage(
         USE_SERVER_FUNCTIONS,
         USE_SERVER_COMPONENTS
-      )} Lineal Server Components aren't allowed because (Special) Server Functions have no business working with React Components.`,
+      )} ${
+        jscommentsConfig[directive21ConfigName][USE_SERVER_FUNCTIONS][
+          USE_SERVER_COMPONENTS
+        ]
+      }`,
     },
     {
       blockedImport: USE_CLIENT_COMPONENTS,
       message: `${makeIntroForSpecificViolationMessage(
         USE_SERVER_FUNCTIONS,
         USE_CLIENT_COMPONENTS
-      )} Lineal Client Components aren't allowed because (Special) Server Functions have no business working with React Components.`,
+      )} ${
+        jscommentsConfig[directive21ConfigName][USE_SERVER_FUNCTIONS][
+          USE_CLIENT_COMPONENTS
+        ]
+      }`,
     },
     {
       blockedImport: USE_AGNOSTIC_COMPONENTS,
       message: `${makeIntroForSpecificViolationMessage(
         USE_SERVER_FUNCTIONS,
         USE_AGNOSTIC_COMPONENTS
-      )} Lineal Agnostic Components aren't allowed because (Special) Server Functions have no business working with React Components.`,
+      )} ${
+        jscommentsConfig[directive21ConfigName][USE_SERVER_FUNCTIONS][
+          USE_AGNOSTIC_COMPONENTS
+        ]
+      }`,
     },
     // USE_SERVER_FUNCTIONS allowed, because (Special) Server Functions, even though they don't need to import one another and the same results can be generated via Prime Server Logics for the outcome of a single Server Function, can still compose with one another. (Perhaps a preferrable use case for this has been found or could be found either today or in the future.)
     {
@@ -395,14 +482,22 @@ export const commentedDirectives_blockedImports = Object.freeze({
       message: `${makeIntroForSpecificViolationMessage(
         USE_SERVER_FUNCTIONS,
         USE_CLIENT_CONTEXTS
-      )} (Special) Client Contexts Components aren't allowed because (Special) Server Functions have no business working with React Components.`,
+      )} ${
+        jscommentsConfig[directive21ConfigName][USE_SERVER_FUNCTIONS][
+          USE_CLIENT_CONTEXTS
+        ]
+      }`,
     },
     {
       blockedImport: USE_AGNOSTIC_CONDITIONS,
       message: `${makeIntroForSpecificViolationMessage(
         USE_SERVER_FUNCTIONS,
         USE_AGNOSTIC_CONDITIONS
-      )} (Special) Agnostic Conditions Components aren't allowed because (Special) Server Functions have no business working with React Components.`,
+      )} ${
+        jscommentsConfig[directive21ConfigName][USE_SERVER_FUNCTIONS][
+          USE_AGNOSTIC_CONDITIONS
+        ]
+      }`,
     },
   ],
   [USE_CLIENT_CONTEXTS]: [
@@ -411,7 +506,11 @@ export const commentedDirectives_blockedImports = Object.freeze({
       message: `${makeIntroForSpecificViolationMessage(
         USE_CLIENT_CONTEXTS,
         USE_SERVER_LOGICS
-      )} Prime Server Logics should never leak to the client.`,
+      )} ${
+        jscommentsConfig[directive21ConfigName][USE_CLIENT_CONTEXTS][
+          USE_SERVER_LOGICS
+        ]
+      }`,
     },
     // USE_CLIENT_LOGICS allowed, because Prime Client Logics, being logic from the client, can safely support (Special) Client Contexts Components, like any Client Components.
     // USE_AGNOSTIC_LOGICS allowed, because Prime Agnostic Logics can run safely on the client just like they can on the server.
@@ -420,7 +519,11 @@ export const commentedDirectives_blockedImports = Object.freeze({
       message: `${makeIntroForSpecificViolationMessage(
         USE_CLIENT_CONTEXTS,
         USE_SERVER_COMPONENTS
-      )} Lineal Server Components may only pass through (Special) Client Contexts Components via the children prop within Server Components Modules.`,
+      )} ${
+        jscommentsConfig[directive21ConfigName][USE_CLIENT_CONTEXTS][
+          USE_SERVER_COMPONENTS
+        ]
+      }`,
     },
     // USE_CLIENT_COMPONENTS allowed, because Lineal Client Components can create client boundaries within (Special) Client Contexts Components.
     // USE_AGNOSTIC_COMPONENTS allowed, because Lineal Agnostic Components can render safely on the client just like they can on the server.
@@ -434,14 +537,22 @@ export const commentedDirectives_blockedImports = Object.freeze({
       message: `${makeIntroForSpecificViolationMessage(
         USE_AGNOSTIC_CONDITIONS,
         USE_SERVER_LOGICS
-      )} Prime Server Logics cannot run on both the server and the client.`,
+      )} ${
+        jscommentsConfig[directive21ConfigName][USE_AGNOSTIC_CONDITIONS][
+          USE_SERVER_LOGICS
+        ]
+      }`,
     },
     {
       blockedImport: USE_CLIENT_LOGICS,
       message: `${makeIntroForSpecificViolationMessage(
         USE_AGNOSTIC_CONDITIONS,
         USE_CLIENT_LOGICS
-      )} Prime Client Logics cannot run on both the server and the client.`,
+      )} ${
+        jscommentsConfig[directive21ConfigName][USE_AGNOSTIC_CONDITIONS][
+          USE_CLIENT_LOGICS
+        ]
+      }`,
     },
     // USE_AGNOSTIC_LOGICS allowed, because Prime Agnostic Logics, being environment-agnostic logic, can safely support Agnostic Components, including (Special) Agnostic Conditions Components. (In this case this is necessary for the import of the `conditionAgnosticComponent` function needed to make Agnostic Conditions Components.)
     // USE_SERVER_COMPONENTS allowed, because Lineal Server Components are to be paired as `ComponentForServer` components with `ComponentForClient` components to form (Special) Agnostic Conditions Components.
@@ -452,14 +563,22 @@ export const commentedDirectives_blockedImports = Object.freeze({
       message: `${makeIntroForSpecificViolationMessage(
         USE_AGNOSTIC_CONDITIONS,
         USE_SERVER_FUNCTIONS
-      )} (Special) Server Functions are not accepted because (Special) Agnostic Conditions Components only take finite, imported components as arguments in their making. As such, assigning props to these components, including Server Functions, is not made within Agnostic Conditions Modules.`,
+      )} ${
+        jscommentsConfig[directive21ConfigName][USE_AGNOSTIC_CONDITIONS][
+          USE_SERVER_FUNCTIONS
+        ]
+      }`,
     },
     {
       blockedImport: USE_CLIENT_CONTEXTS,
       message: `${makeIntroForSpecificViolationMessage(
         USE_AGNOSTIC_CONDITIONS,
         USE_CLIENT_CONTEXTS
-      )} (Special) Client Contexts Components cannot be used as component arguments for (Special) Agnostic Conditions Components since they only take Lineal Components as arguments in their making.`,
+      )} ${
+        jscommentsConfig[directive21ConfigName][USE_AGNOSTIC_CONDITIONS][
+          USE_CLIENT_CONTEXTS
+        ]
+      }`,
     },
     // USE_AGNOSTIC_CONDITIONS allowed, because (Special) Agnostic Conditions Components, despite not being Lineal Components themselves, output components that can only be Lineal and compatible with their attributed rendering environments, making them acceptable arguments in the making of Agnostic Conditions Components.
   ],
