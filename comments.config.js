@@ -14,10 +14,10 @@ import {
 } from "./library/_commons/constants/bases.js";
 
 const config = {
-  comment: "comment", // $COMMENT_COMMENT in code, "comment" on hover when resolved by the VSCode extension JSComments
+  comment: "comment", // $COMMENT#COMMENT in code, "comment" on hover when resolved by the VSCode extension JSComments
   [agnostic20ConfigName]: {
     [USE_SERVER_LOGICS]: {
-      // $COMMENT_AGNOSTIC20_USE_SERVER_LOGICS_USE_SERVER_LOGICS
+      // $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_SERVER_LOGICS
       [USE_SERVER_LOGICS]:
         /* valid */ "Server Logics can compose with one another.",
       [USE_SERVER_COMPONENTS]:
@@ -321,9 +321,9 @@ export default config;
 /* Notes
 Aims of the VSCode extension JSComments: 
 - automatically capitalizes keys, so here: 
-  - config.comment would return $COMMENT_COMMENT
+  - config.comment would return $COMMENT#COMMENT
 - automatically chain keys within keys, so here
-  - config["agnostic20"] would return $COMMENT_AGNOSTIC20_*
-  - config["directive21"] would return $COMMENT_DIRECTIVE21_*
+  - config["agnostic20"] would return $COMMENT#AGNOSTIC20#*
+  - config["directive21"] would return $COMMENT#DIRECTIVE21#*
 - this way, instead doing a find-replace on a big documentation comment, the comment stays within the config and only the config placeholder is found and replaced for the same results 
 */

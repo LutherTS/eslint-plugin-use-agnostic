@@ -103,9 +103,9 @@ const SUGGEST_USE_AGNOSTIC =
 
 export const effectiveDirectives_blockedImports = Object.freeze({
   [USE_SERVER_LOGICS]: [
-    // USE_SERVER_LOGICS allowed, because Server Logics can compose with one another.
-    // USE_SERVER_COMPONENTS allowed, because Server Components are OK to be composed with Server Logics as long as the Server Logics Module, by convention, does not export React components.
-    // USE_SERVER_FUNCTIONS allowed, because Server Functions, being able to import one another, can compose and do so via Server Logics, despite this method seeming superfluous at first glance. (Perhaps a preferrable use case for this has been found or could be found either today or in the future.)
+    // USE_SERVER_LOGICS allowed, because $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_SERVER_LOGICS
+    // USE_SERVER_COMPONENTS allowed, because $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_SERVER_COMPONENTS
+    // USE_SERVER_FUNCTIONS allowed, because $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_SERVER_FUNCTIONS
     {
       blockedImport: USE_CLIENT_LOGICS,
       message: `${makeIntroForSpecificViolationMessage(
@@ -114,7 +114,7 @@ export const effectiveDirectives_blockedImports = Object.freeze({
       )} ${
         jscommentsConfig[agnostic20ConfigName][USE_SERVER_LOGICS][
           USE_CLIENT_LOGICS
-        ]
+        ] // $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_CLIENT_LOGICS
       }`,
     },
     {
@@ -125,16 +125,16 @@ export const effectiveDirectives_blockedImports = Object.freeze({
       )} ${
         jscommentsConfig[agnostic20ConfigName][USE_SERVER_LOGICS][
           USE_CLIENT_COMPONENTS
-        ]
+        ] // $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_CLIENT_COMPONENTS
       }`,
     },
-    // USE_AGNOSTIC_LOGICS allowed, because Agnostic Logics can run safely on the server just like they can on the client.
-    // USE_AGNOSTIC_COMPONENTS allowed, because Agnostic Components can be composed with Logics on the server just like they can on the client, as long at the Server Logics Module, by convention, does not export React components.
+    // USE_AGNOSTIC_LOGICS allowed, because $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_AGNOSTIC_LOGICS
+    // USE_AGNOSTIC_COMPONENTS allowed, because $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_AGNOSTIC_COMPONENTS
   ],
   [USE_SERVER_COMPONENTS]: [
-    // USE_SERVER_LOGICS allowed, because Server Logics, being logic from the server, can safely support Server Components.
-    // USE_SERVER_COMPONENTS allowed, because Server Components can compose with one another, assuming thanks to the inclusion of the 'use agnostic' directive that they are actual Server Components.
-    // USE_SERVER_FUNCTIONS allowed, because Server Functions can be passed to imported Client Components within Server Components Modules, even though indeed Server Components Modules and Server Components can make their own Server Functions through inline 'use server' directives.
+    // USE_SERVER_LOGICS allowed, because $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_SERVER_LOGICS
+    // USE_SERVER_COMPONENTS allowed, because $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_SERVER_COMPONENTS
+    // USE_SERVER_FUNCTIONS allowed, because $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_SERVER_FUNCTIONS
     {
       blockedImport: USE_CLIENT_LOGICS,
       message: `${makeIntroForSpecificViolationMessage(
@@ -143,15 +143,15 @@ export const effectiveDirectives_blockedImports = Object.freeze({
       )} ${
         jscommentsConfig[agnostic20ConfigName][USE_SERVER_COMPONENTS][
           USE_CLIENT_LOGICS
-        ]
+        ] // $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_CLIENT_LOGICS
       }`,
     },
-    // USE_CLIENT_COMPONENTS allowed, because Client Components can be nested inside Server Components either to wrap some of the tree with client state accessible through child Client Components and pass through Server Components, or to create client boundaries when the root of the application is planted on the server.
-    // USE_AGNOSTIC_LOGICS allowed, because Agnostic Logics can run safely on the server just like they can on the client.
-    // USE_AGNOSTIC_COMPONENTS allowed, because Agnostic Components can render safely on the server just like they can on the client.
+    // USE_CLIENT_COMPONENTS allowed, because $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_CLIENT_COMPONENTS
+    // USE_AGNOSTIC_LOGICS allowed, because $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_AGNOSTIC_LOGICS
+    // USE_AGNOSTIC_COMPONENTS allowed, because $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_AGNOSTIC_COMPONENTS
   ],
   [USE_SERVER_FUNCTIONS]: [
-    // USE_SERVER_LOGICS allowed, because Server Logics, being logic from the server, can safely support Server Functions.
+    // USE_SERVER_LOGICS allowed, because $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_SERVER_LOGICS
     {
       blockedImport: USE_SERVER_COMPONENTS,
       message: `${makeIntroForSpecificViolationMessage(
@@ -160,10 +160,10 @@ export const effectiveDirectives_blockedImports = Object.freeze({
       )} ${
         jscommentsConfig[agnostic20ConfigName][USE_SERVER_FUNCTIONS][
           USE_SERVER_COMPONENTS
-        ]
+        ] // $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_SERVER_COMPONENTS
       }`,
     },
-    // USE_SERVER_FUNCTIONS allowed, because Server Functions, even though they don't need to import one another and the same results can be generated via Server Logics for the outcome of a single Server Function, can still compose with one another. (Perhaps a preferrable use case for this has been found or could be found either today or in the future.)
+    // USE_SERVER_FUNCTIONS allowed, because $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_SERVER_FUNCTIONS
     {
       blockedImport: USE_CLIENT_LOGICS,
       message: `${makeIntroForSpecificViolationMessage(
@@ -172,7 +172,7 @@ export const effectiveDirectives_blockedImports = Object.freeze({
       )} ${
         jscommentsConfig[agnostic20ConfigName][USE_SERVER_FUNCTIONS][
           USE_CLIENT_LOGICS
-        ]
+        ] // $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_CLIENT_LOGICS
       }`,
     },
     {
@@ -183,10 +183,10 @@ export const effectiveDirectives_blockedImports = Object.freeze({
       )} ${
         jscommentsConfig[agnostic20ConfigName][USE_SERVER_FUNCTIONS][
           USE_CLIENT_COMPONENTS
-        ]
+        ] // $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_CLIENT_COMPONENTS
       }`,
     },
-    // USE_AGNOSTIC_LOGICS allowed, because Agnostic Logics can run safely on the server just like they can on the client.
+    // USE_AGNOSTIC_LOGICS allowed, because $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_AGNOSTIC_LOGICS
     {
       blockedImport: USE_AGNOSTIC_COMPONENTS,
       message: `${makeIntroForSpecificViolationMessage(
@@ -195,7 +195,7 @@ export const effectiveDirectives_blockedImports = Object.freeze({
       )} ${
         jscommentsConfig[agnostic20ConfigName][USE_SERVER_FUNCTIONS][
           USE_AGNOSTIC_COMPONENTS
-        ]
+        ] // $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_AGNOSTIC_COMPONENTS
       }`,
     },
   ],
@@ -208,7 +208,7 @@ export const effectiveDirectives_blockedImports = Object.freeze({
       )} ${
         jscommentsConfig[agnostic20ConfigName][USE_CLIENT_LOGICS][
           USE_SERVER_LOGICS
-        ]
+        ] // $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#USE_SERVER_LOGICS
       } 
 ${SUGGEST_USE_AGNOSTIC}`,
     },
@@ -220,15 +220,15 @@ ${SUGGEST_USE_AGNOSTIC}`,
       )} ${
         jscommentsConfig[agnostic20ConfigName][USE_CLIENT_LOGICS][
           USE_SERVER_COMPONENTS
-        ]
+        ] // $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#USE_SERVER_COMPONENTS
       } 
 ${SUGGEST_USE_AGNOSTIC}`,
     },
-    // USE_SERVER_FUNCTIONS allowed, because Server Functions can technically be attached to Client Components that are being tinkered with within Client Logics Modules.
-    // USE_CLIENT_LOGICS allowed, because Client Logics can compose with one another.
-    // USE_CLIENT_COMPONENTS allowed, because Client Components are OK to be composed with Client Logics as long as the Client Logics Module, by convention, does not export React components.
-    // USE_AGNOSTIC_LOGICS allowed, because Agnostic Logics can run safely on the client just like they can on the server.
-    // USE_AGNOSTIC_COMPONENTS allowed, because Agnostic Components can be composed with Logics on the client just like they can on the server, as long as the Client Logics Module, by convention, does not export React components.
+    // USE_SERVER_FUNCTIONS allowed, because $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#USE_SERVER_FUNCTIONS
+    // USE_CLIENT_LOGICS allowed, because $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#USE_CLIENT_LOGICS
+    // USE_CLIENT_COMPONENTS allowed, because $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#USE_CLIENT_COMPONENTS
+    // USE_AGNOSTIC_LOGICS allowed, because $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#USE_AGNOSTIC_LOGICS
+    // USE_AGNOSTIC_COMPONENTS allowed, because $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#USE_AGNOSTIC_COMPONENTS
   ],
   [USE_CLIENT_COMPONENTS]: [
     {
@@ -239,7 +239,7 @@ ${SUGGEST_USE_AGNOSTIC}`,
       )} ${
         jscommentsConfig[agnostic20ConfigName][USE_CLIENT_COMPONENTS][
           USE_SERVER_LOGICS
-        ]
+        ] // $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_SERVER_LOGICS
       } 
 ${SUGGEST_USE_AGNOSTIC}`,
     },
@@ -251,15 +251,15 @@ ${SUGGEST_USE_AGNOSTIC}`,
       )} ${
         jscommentsConfig[agnostic20ConfigName][USE_CLIENT_COMPONENTS][
           USE_SERVER_COMPONENTS
-        ]
+        ] // $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_SERVER_COMPONENTS
       } 
 ${SUGGEST_USE_AGNOSTIC}`,
     },
-    // USE_SERVER_FUNCTIONS allowed, because Server Functions are specifically triggered by Client Components.
-    // USE_CLIENT_LOGICS allowed, because Client Logics, being logic from the client, can safely support Client Components.
-    // USE_CLIENT_COMPONENTS allowed, because Client Components can compose with one another.
-    // USE_AGNOSTIC_LOGICS allowed, because Agnostic Logics can run safely on the client just like they can on the server.
-    // USE_AGNOSTIC_COMPONENTS allowed, because Agnostic Components can render safely on the client just like they can on the server.
+    // USE_SERVER_FUNCTIONS allowed, because $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_SERVER_FUNCTIONS
+    // USE_CLIENT_LOGICS allowed, because $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_CLIENT_LOGICS
+    // USE_CLIENT_COMPONENTS allowed, because $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_CLIENT_COMPONENTS
+    // USE_AGNOSTIC_LOGICS allowed, because $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_AGNOSTIC_LOGICS
+    // USE_AGNOSTIC_COMPONENTS allowed, because $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_AGNOSTIC_COMPONENTS
   ],
   [USE_AGNOSTIC_LOGICS]: [
     {
@@ -270,7 +270,7 @@ ${SUGGEST_USE_AGNOSTIC}`,
       )} ${
         jscommentsConfig[agnostic20ConfigName][USE_AGNOSTIC_LOGICS][
           USE_SERVER_LOGICS
-        ]
+        ] // $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#USE_SERVER_LOGICS
       } 
 ${SUGGEST_USE_AGNOSTIC}`,
     },
@@ -282,7 +282,7 @@ ${SUGGEST_USE_AGNOSTIC}`,
       )} ${
         jscommentsConfig[agnostic20ConfigName][USE_AGNOSTIC_LOGICS][
           USE_SERVER_COMPONENTS
-        ]
+        ] // $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#USE_SERVER_COMPONENTS
       } 
 ${SUGGEST_USE_AGNOSTIC}`,
     },
@@ -294,7 +294,7 @@ ${SUGGEST_USE_AGNOSTIC}`,
       )} ${
         jscommentsConfig[agnostic20ConfigName][USE_AGNOSTIC_LOGICS][
           USE_SERVER_FUNCTIONS
-        ]
+        ] // $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#USE_SERVER_FUNCTIONS
       }`,
     },
     {
@@ -305,7 +305,7 @@ ${SUGGEST_USE_AGNOSTIC}`,
       )} ${
         jscommentsConfig[agnostic20ConfigName][USE_AGNOSTIC_LOGICS][
           USE_CLIENT_LOGICS
-        ]
+        ] // $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#USE_CLIENT_LOGICS
       }`,
     },
     {
@@ -316,11 +316,11 @@ ${SUGGEST_USE_AGNOSTIC}`,
       )} ${
         jscommentsConfig[agnostic20ConfigName][USE_AGNOSTIC_LOGICS][
           USE_CLIENT_COMPONENTS
-        ]
+        ] // $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#USE_CLIENT_COMPONENTS
       }`,
     },
-    // USE_AGNOSTIC_LOGICS allowed, because Agnostic Logics can compose with one another.
-    // USE_AGNOSTIC_COMPONENTS allowed, because Agnostic Components can be composed with Logics agnostically as long as the Agnostic Logics Module, by convention, does not export React components.
+    // USE_AGNOSTIC_LOGICS allowed, because $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#USE_AGNOSTIC_LOGICS
+    // USE_AGNOSTIC_COMPONENTS allowed, because $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#USE_AGNOSTIC_COMPONENTS
   ],
   [USE_AGNOSTIC_COMPONENTS]: [
     {
@@ -331,7 +331,7 @@ ${SUGGEST_USE_AGNOSTIC}`,
       )} ${
         jscommentsConfig[agnostic20ConfigName][USE_AGNOSTIC_COMPONENTS][
           USE_SERVER_LOGICS
-        ]
+        ] // $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_SERVER_LOGICS
       } 
 ${SUGGEST_USE_AGNOSTIC}`,
     },
@@ -343,11 +343,11 @@ ${SUGGEST_USE_AGNOSTIC}`,
       )} ${
         jscommentsConfig[agnostic20ConfigName][USE_AGNOSTIC_COMPONENTS][
           USE_SERVER_COMPONENTS
-        ]
+        ] // $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_SERVER_COMPONENTS
       } 
 ${SUGGEST_USE_AGNOSTIC}`,
     },
-    // USE_SERVER_FUNCTIONS allowed, because Server Functions can be passed to Client Components as props when Client Components are also legally imported into Agnostic Components Modules.
+    // USE_SERVER_FUNCTIONS allowed, because $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_SERVER_FUNCTIONS
     {
       blockedImport: USE_CLIENT_LOGICS,
       message: `${makeIntroForSpecificViolationMessage(
@@ -356,11 +356,11 @@ ${SUGGEST_USE_AGNOSTIC}`,
       )} ${
         jscommentsConfig[agnostic20ConfigName][USE_AGNOSTIC_COMPONENTS][
           USE_CLIENT_LOGICS
-        ]
+        ] // $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_CLIENT_LOGICS
       }`,
     },
-    // USE_CLIENT_COMPONENTS allowed, because Client Components can be nested inside Agnostic Components either to wrap some of the tree with client state accessible through child Client Components and pass through Server Components (if still on the Server Tree), or to create client boundaries when the root of the application is planted on the server.
-    // USE_AGNOSTIC_LOGICS allowed, because Agnostic Logics, being environment-agnostic logic, can safely support Agnostic Components.
-    // USE_AGNOSTIC_COMPONENTS allowed, because Agnostic Components can compose with one another.
+    // USE_CLIENT_COMPONENTS allowed, because $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_CLIENT_COMPONENTS
+    // USE_AGNOSTIC_LOGICS allowed, because $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_AGNOSTIC_LOGICS
+    // USE_AGNOSTIC_COMPONENTS allowed, because $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_AGNOSTIC_COMPONENTS
   ],
 });
