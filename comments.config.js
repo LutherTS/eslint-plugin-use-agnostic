@@ -131,6 +131,7 @@ const config = {
     },
   },
   [directive21ConfigName]: {
+    // $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#USE_SERVER_LOGICS
     [USE_SERVER_LOGICS]: {
       [USE_SERVER_LOGICS]:
         /* valid */ "Prime Server Logics can compose with one another.",
