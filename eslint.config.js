@@ -8,26 +8,13 @@ import useAgnostic, {
   // enforceCommentedDirectivesRuleName
 } from "eslint-plugin-use-agnostic";
 
-import { EXTENSIONS } from "./library/_commons/constants/bases.js";
+import { makeTestFiles } from "./eslint/_commons/utilities/helpers.js";
 import {
   validPath20,
   invalidPath20,
   validPath21,
   invalidPath21,
 } from "./tests/_commons/constants/bases.js";
-
-/**
- * Makes the paths of the files to be linted for agnostic20 and directive21.
- * @param {string} validPath The directory for the valid paths.
- * @param {string} invalidPath The directory for the invalid paths.
- * @returns The paths of the files to be linted for agnostic20 and directive21.
- */
-const makeTestFiles = (validPath, invalidPath) =>
-  EXTENSIONS.map((e) => `**/*${e}`)
-    .map((e) => {
-      return [validPath + "/" + e, invalidPath + "/" + e];
-    })
-    .flat();
 
 export default defineConfig([
   globalIgnores([".next", ".react-router", "node_modules"]),

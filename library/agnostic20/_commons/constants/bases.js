@@ -1,4 +1,5 @@
 import {
+  agnostic20ConfigName,
   USE_SERVER_LOGICS as COMMONS_USE_SERVER_LOGICS,
   USE_SERVER_COMPONENTS as COMMONS_USE_SERVER_COMPONENTS,
   USE_SERVER_FUNCTIONS as COMMONS_USE_SERVER_FUNCTIONS,
@@ -10,6 +11,8 @@ import {
 } from "../../../_commons/constants/bases.js";
 
 import { makeIntroForSpecificViolationMessage as commonsMakeIntroForSpecificViolationMessage } from "../../../_commons/utilities/helpers.js";
+
+import jscommentsConfig from "../../../../comments.config.js";
 
 /**
  * @typedef {import('../../../../types/agnostic20/_commons/typedefs.js').Directive} Directive
@@ -108,14 +111,22 @@ export const effectiveDirectives_blockedImports = Object.freeze({
       message: `${makeIntroForSpecificViolationMessage(
         USE_SERVER_LOGICS,
         USE_CLIENT_LOGICS
-      )} Client Logics should never leak to the server.`,
+      )} ${
+        jscommentsConfig[agnostic20ConfigName][USE_SERVER_LOGICS][
+          USE_CLIENT_LOGICS
+        ]
+      }`,
     },
     {
       blockedImport: USE_CLIENT_COMPONENTS,
       message: `${makeIntroForSpecificViolationMessage(
         USE_SERVER_LOGICS,
         USE_CLIENT_COMPONENTS
-      )} Client Components cannot be tinkered with on the server.`,
+      )} ${
+        jscommentsConfig[agnostic20ConfigName][USE_SERVER_LOGICS][
+          USE_CLIENT_COMPONENTS
+        ]
+      }`,
     },
     // USE_AGNOSTIC_LOGICS allowed, because Agnostic Logics can run safely on the server just like they can on the client.
     // USE_AGNOSTIC_COMPONENTS allowed, because Agnostic Components can be composed with Logics on the server just like they can on the client, as long at the Server Logics Module, by convention, does not export React components.
@@ -129,7 +140,11 @@ export const effectiveDirectives_blockedImports = Object.freeze({
       message: `${makeIntroForSpecificViolationMessage(
         USE_SERVER_COMPONENTS,
         USE_CLIENT_LOGICS
-      )} Client Logics should never leak to the server.`,
+      )} ${
+        jscommentsConfig[agnostic20ConfigName][USE_SERVER_COMPONENTS][
+          USE_CLIENT_LOGICS
+        ]
+      }`,
     },
     // USE_CLIENT_COMPONENTS allowed, because Client Components can be nested inside Server Components either to wrap some of the tree with client state accessible through child Client Components and pass through Server Components, or to create client boundaries when the root of the application is planted on the server.
     // USE_AGNOSTIC_LOGICS allowed, because Agnostic Logics can run safely on the server just like they can on the client.
@@ -142,7 +157,11 @@ export const effectiveDirectives_blockedImports = Object.freeze({
       message: `${makeIntroForSpecificViolationMessage(
         USE_SERVER_FUNCTIONS,
         USE_SERVER_COMPONENTS
-      )} Server Components aren't allowed because Server Functions have no business working with React Components.`,
+      )} ${
+        jscommentsConfig[agnostic20ConfigName][USE_SERVER_FUNCTIONS][
+          USE_SERVER_COMPONENTS
+        ]
+      }`,
     },
     // USE_SERVER_FUNCTIONS allowed, because Server Functions, even though they don't need to import one another and the same results can be generated via Server Logics for the outcome of a single Server Function, can still compose with one another. (Perhaps a preferrable use case for this has been found or could be found either today or in the future.)
     {
@@ -150,14 +169,22 @@ export const effectiveDirectives_blockedImports = Object.freeze({
       message: `${makeIntroForSpecificViolationMessage(
         USE_SERVER_FUNCTIONS,
         USE_CLIENT_LOGICS
-      )} Client Logics should never leak to the server.`,
+      )} ${
+        jscommentsConfig[agnostic20ConfigName][USE_SERVER_FUNCTIONS][
+          USE_CLIENT_LOGICS
+        ]
+      }`,
     },
     {
       blockedImport: USE_CLIENT_COMPONENTS,
       message: `${makeIntroForSpecificViolationMessage(
         USE_SERVER_FUNCTIONS,
         USE_CLIENT_COMPONENTS
-      )} Client Components aren't allowed because Server Functions have no business working with React Components.`,
+      )} ${
+        jscommentsConfig[agnostic20ConfigName][USE_SERVER_FUNCTIONS][
+          USE_CLIENT_COMPONENTS
+        ]
+      }`,
     },
     // USE_AGNOSTIC_LOGICS allowed, because Agnostic Logics can run safely on the server just like they can on the client.
     {
@@ -165,7 +192,11 @@ export const effectiveDirectives_blockedImports = Object.freeze({
       message: `${makeIntroForSpecificViolationMessage(
         USE_SERVER_FUNCTIONS,
         USE_AGNOSTIC_COMPONENTS
-      )} Agnostic Components aren't allowed because Server Functions have no business working with React Components.`,
+      )} ${
+        jscommentsConfig[agnostic20ConfigName][USE_SERVER_FUNCTIONS][
+          USE_AGNOSTIC_COMPONENTS
+        ]
+      }`,
     },
   ],
   [USE_CLIENT_LOGICS]: [
@@ -174,7 +205,11 @@ export const effectiveDirectives_blockedImports = Object.freeze({
       message: `${makeIntroForSpecificViolationMessage(
         USE_CLIENT_LOGICS,
         USE_SERVER_LOGICS
-      )} Server Logics should never leak to the client. 
+      )} ${
+        jscommentsConfig[agnostic20ConfigName][USE_CLIENT_LOGICS][
+          USE_SERVER_LOGICS
+        ]
+      } 
 ${SUGGEST_USE_AGNOSTIC}`,
     },
     {
@@ -182,7 +217,11 @@ ${SUGGEST_USE_AGNOSTIC}`,
       message: `${makeIntroForSpecificViolationMessage(
         USE_CLIENT_LOGICS,
         USE_SERVER_COMPONENTS
-      )} Server Components cannot be thinkered with on the client. 
+      )} ${
+        jscommentsConfig[agnostic20ConfigName][USE_CLIENT_LOGICS][
+          USE_SERVER_COMPONENTS
+        ]
+      } 
 ${SUGGEST_USE_AGNOSTIC}`,
     },
     // USE_SERVER_FUNCTIONS allowed, because Server Functions can technically be attached to Client Components that are being tinkered with within Client Logics Modules.
@@ -197,7 +236,11 @@ ${SUGGEST_USE_AGNOSTIC}`,
       message: `${makeIntroForSpecificViolationMessage(
         USE_CLIENT_COMPONENTS,
         USE_SERVER_LOGICS
-      )} Server Logics should never leak to the client. 
+      )} ${
+        jscommentsConfig[agnostic20ConfigName][USE_CLIENT_COMPONENTS][
+          USE_SERVER_LOGICS
+        ]
+      } 
 ${SUGGEST_USE_AGNOSTIC}`,
     },
     {
@@ -205,7 +248,11 @@ ${SUGGEST_USE_AGNOSTIC}`,
       message: `${makeIntroForSpecificViolationMessage(
         USE_CLIENT_COMPONENTS,
         USE_SERVER_COMPONENTS
-      )} Server Components may only pass through Client Components via the children prop within Server Components Modules. 
+      )} ${
+        jscommentsConfig[agnostic20ConfigName][USE_CLIENT_COMPONENTS][
+          USE_SERVER_COMPONENTS
+        ]
+      } 
 ${SUGGEST_USE_AGNOSTIC}`,
     },
     // USE_SERVER_FUNCTIONS allowed, because Server Functions are specifically triggered by Client Components.
@@ -220,7 +267,11 @@ ${SUGGEST_USE_AGNOSTIC}`,
       message: `${makeIntroForSpecificViolationMessage(
         USE_AGNOSTIC_LOGICS,
         USE_SERVER_LOGICS
-      )} Server Logics cannot run on both the server and the client. 
+      )} ${
+        jscommentsConfig[agnostic20ConfigName][USE_AGNOSTIC_LOGICS][
+          USE_SERVER_LOGICS
+        ]
+      } 
 ${SUGGEST_USE_AGNOSTIC}`,
     },
     {
@@ -228,7 +279,11 @@ ${SUGGEST_USE_AGNOSTIC}`,
       message: `${makeIntroForSpecificViolationMessage(
         USE_AGNOSTIC_LOGICS,
         USE_SERVER_COMPONENTS
-      )} Server Components cannot be tinkered with on both the server and the client. 
+      )} ${
+        jscommentsConfig[agnostic20ConfigName][USE_AGNOSTIC_LOGICS][
+          USE_SERVER_COMPONENTS
+        ]
+      } 
 ${SUGGEST_USE_AGNOSTIC}`,
     },
     {
@@ -236,21 +291,33 @@ ${SUGGEST_USE_AGNOSTIC}`,
       message: `${makeIntroForSpecificViolationMessage(
         USE_AGNOSTIC_LOGICS,
         USE_SERVER_FUNCTIONS
-      )} Server Functions can be modified on the server and on the client, but their use cases on both environments are not one-to-one compatible, since they're being addressed as they are on the server and addressed as references on the client.`,
+      )} ${
+        jscommentsConfig[agnostic20ConfigName][USE_AGNOSTIC_LOGICS][
+          USE_SERVER_FUNCTIONS
+        ]
+      }`,
     },
     {
       blockedImport: USE_CLIENT_LOGICS,
       message: `${makeIntroForSpecificViolationMessage(
         USE_AGNOSTIC_LOGICS,
         USE_CLIENT_LOGICS
-      )} Client Logics cannot run on both the server and the client.`,
+      )} ${
+        jscommentsConfig[agnostic20ConfigName][USE_AGNOSTIC_LOGICS][
+          USE_CLIENT_LOGICS
+        ]
+      }`,
     },
     {
       blockedImport: USE_CLIENT_COMPONENTS,
       message: `${makeIntroForSpecificViolationMessage(
         USE_AGNOSTIC_LOGICS,
         USE_CLIENT_COMPONENTS
-      )} Client Components cannot be tinkered with on both the server and the client.`,
+      )} ${
+        jscommentsConfig[agnostic20ConfigName][USE_AGNOSTIC_LOGICS][
+          USE_CLIENT_COMPONENTS
+        ]
+      }`,
     },
     // USE_AGNOSTIC_LOGICS allowed, because Agnostic Logics can compose with one another.
     // USE_AGNOSTIC_COMPONENTS allowed, because Agnostic Components can be composed with Logics agnostically as long as the Agnostic Logics Module, by convention, does not export React components.
@@ -261,7 +328,11 @@ ${SUGGEST_USE_AGNOSTIC}`,
       message: `${makeIntroForSpecificViolationMessage(
         USE_AGNOSTIC_COMPONENTS,
         USE_SERVER_LOGICS
-      )} Server Logics cannot run on both the server and the client. 
+      )} ${
+        jscommentsConfig[agnostic20ConfigName][USE_AGNOSTIC_COMPONENTS][
+          USE_SERVER_LOGICS
+        ]
+      } 
 ${SUGGEST_USE_AGNOSTIC}`,
     },
     {
@@ -269,7 +340,11 @@ ${SUGGEST_USE_AGNOSTIC}`,
       message: `${makeIntroForSpecificViolationMessage(
         USE_AGNOSTIC_COMPONENTS,
         USE_SERVER_COMPONENTS
-      )} Server Components, unlike Client Components, cannot make silos of their own once on the opposing environment (the client in this case), and therefore cannot be executed from the client, making them unable to execute agnostically from both the server and the client. 
+      )} ${
+        jscommentsConfig[agnostic20ConfigName][USE_AGNOSTIC_COMPONENTS][
+          USE_SERVER_COMPONENTS
+        ]
+      } 
 ${SUGGEST_USE_AGNOSTIC}`,
     },
     // USE_SERVER_FUNCTIONS allowed, because Server Functions can be passed to Client Components as props when Client Components are also legally imported into Agnostic Components Modules.
@@ -278,7 +353,11 @@ ${SUGGEST_USE_AGNOSTIC}`,
       message: `${makeIntroForSpecificViolationMessage(
         USE_AGNOSTIC_COMPONENTS,
         USE_CLIENT_LOGICS
-      )} Client Logics cannot run on both the server and the client.`,
+      )} ${
+        jscommentsConfig[agnostic20ConfigName][USE_AGNOSTIC_COMPONENTS][
+          USE_CLIENT_LOGICS
+        ]
+      }`,
     },
     // USE_CLIENT_COMPONENTS allowed, because Client Components can be nested inside Agnostic Components either to wrap some of the tree with client state accessible through child Client Components and pass through Server Components (if still on the Server Tree), or to create client boundaries when the root of the application is planted on the server.
     // USE_AGNOSTIC_LOGICS allowed, because Agnostic Logics, being environment-agnostic logic, can safely support Agnostic Components.
