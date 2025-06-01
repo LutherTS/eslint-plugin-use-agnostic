@@ -78,7 +78,7 @@ export const AGNOSTIC_STRATEGIES_MODULE = "Agnostic Strategies Module";
 
 // all mappings of "resolved" directives with "resolved" modules
 // agnostic20
-export const effectiveDirectives_effectiveModules = Object.freeze({
+const effectiveDirectives_effectiveModules = Object.freeze({
   [USE_SERVER_LOGICS]: SERVER_LOGICS_MODULE,
   [USE_SERVER_COMPONENTS]: SERVER_COMPONENTS_MODULE,
   [USE_SERVER_FUNCTIONS]: SERVER_FUNCTIONS_MODULE,
@@ -88,12 +88,15 @@ export const effectiveDirectives_effectiveModules = Object.freeze({
   [USE_AGNOSTIC_COMPONENTS]: AGNOSTIC_COMPONENTS_MODULE,
 });
 // and directive21
-export const commentedDirectives_commentedModules = Object.freeze({
+const commentedDirectives_commentedModules = Object.freeze({
   [USE_CLIENT_CONTEXTS]: CLIENT_CONTEXTS_MODULE,
   [USE_AGNOSTIC_CONDITIONS]: AGNOSTIC_CONDITIONS_MODULE,
   [USE_AGNOSTIC_STRATEGIES]: AGNOSTIC_STRATEGIES_MODULE,
   ...effectiveDirectives_effectiveModules,
 });
+// for commons uses
+export const resolvedDirectives_resolvedModules =
+  commentedDirectives_commentedModules;
 
 // JavaScript/TypeScript extensions
 export const TSX = ".tsx";
@@ -105,7 +108,7 @@ export const CJS = ".cjs";
 
 // JavaScript/TypeScript extensions array
 /** @type {Extensions} */
-export const EXTENSIONS = [TSX, TS, JSX, JS, MJS, CJS]; // In priority order
+export const EXTENSIONS = Object.freeze([TSX, TS, JSX, JS, MJS, CJS]); // In priority order
 
 // message strings
 export const ARE_NOT_ALLOWED_TO_IMPORT = "are not allowed to import";

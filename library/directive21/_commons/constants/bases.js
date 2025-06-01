@@ -10,10 +10,12 @@ import {
   USE_CLIENT_CONTEXTS as COMMONS_USE_CLIENT_CONTEXTS,
   USE_AGNOSTIC_CONDITIONS as COMMONS_USE_AGNOSTIC_CONDITIONS,
   USE_AGNOSTIC_STRATEGIES as COMMONS_USE_AGNOSTIC_STRATEGIES,
-  commentedDirectives_commentedModules,
 } from "../../../_commons/constants/bases.js";
 
-import { makeIntroForSpecificViolationMessage as commonsMakeIntroForSpecificViolationMessage } from "../../../_commons/utilities/helpers.js";
+import {
+  makeIntroForSpecificViolationMessage as commonsMakeIntroForSpecificViolationMessage,
+  makeBlockedImport as commonsMakeBlockedImport,
+} from "../../../_commons/utilities/helpers.js";
 
 import jscommentsConfig from "../../../../comments.config.js";
 
@@ -39,7 +41,7 @@ export const USE_AGNOSTIC_STRATEGIES = COMMONS_USE_AGNOSTIC_STRATEGIES;
 
 // commented directives array
 /** @type {CommentedDirectives} */
-export const commentedDirectivesArray = [
+export const commentedDirectivesArray = Object.freeze([
   USE_SERVER_LOGICS,
   USE_CLIENT_LOGICS,
   USE_AGNOSTIC_LOGICS,
@@ -50,7 +52,7 @@ export const commentedDirectivesArray = [
   USE_CLIENT_CONTEXTS,
   USE_AGNOSTIC_CONDITIONS,
   USE_AGNOSTIC_STRATEGIES,
-];
+]);
 
 // commented directives set
 /** @type {ReadonlySet<CommentedDirective>} */
@@ -83,7 +85,7 @@ export const AT_AGNOSTIC_CONDITIONS = "@agnosticConditions";
 
 // commented strategies array
 /** @type {CommentedStrategies} */
-export const strategiesArray = [
+export const strategiesArray = Object.freeze([
   AT_SERVER_LOGICS,
   AT_CLIENT_LOGICS,
   AT_AGNOSTIC_LOGICS,
@@ -93,7 +95,7 @@ export const strategiesArray = [
   AT_SERVER_FUNCTIONS,
   AT_CLIENT_CONTEXTS,
   AT_AGNOSTIC_CONDITIONS,
-];
+]);
 
 // commented strategies set
 /** @type {ReadonlySet<CommentedStrategy>} */
@@ -178,8 +180,9 @@ export const commentedDirectives_verificationReports = Object.freeze({
 
 /**
  * Makes the intro for each specific import rule violation messages.
- * @param {CommentedDirective} currentFileCommentedDirective The current file's commented directive.
- * @param {CommentedDirectiveWithoutUseAgnosticStrategies} importedFileCommentedDirective The imported file's commented directive.
+ * @template {CommentedDirectiveWithoutUseAgnosticStrategies} T
+ * @param {T} currentFileCommentedDirective The current file's commented directive.
+ * @param {T} importedFileCommentedDirective The imported file's commented directive.
  * @returns "[Current file commented modules] are not allowed to import [imported file commented modules]."
  */
 const makeIntroForSpecificViolationMessage = (
@@ -187,12 +190,33 @@ const makeIntroForSpecificViolationMessage = (
   importedFileCommentedDirective
 ) =>
   commonsMakeIntroForSpecificViolationMessage(
-    commentedDirectives_commentedModules,
     currentFileCommentedDirective,
     importedFileCommentedDirective
   );
 
-export const commentedDirectives_blockedImports = Object.freeze({
+/* TEST START */
+
+/**
+ * Makes a blockedImport object for the identified blocked import at hand.
+ * @template {CommentedDirectiveWithoutUseAgnosticStrategies} T
+ * @param {T} currentFileCommentedDirective The current file's commented directive.
+ * @param {T} importedFileCommentedDirective The imported file's commented directive.
+ * @returns The blockedImport object for the identified blocked import at hand.
+ */
+const makeBlockedImport = (
+  currentFileCommentedDirective,
+  importedFileCommentedDirective
+) =>
+  commonsMakeBlockedImport(
+    currentFileCommentedDirective,
+    importedFileCommentedDirective,
+    makeIntroForSpecificViolationMessage,
+    directive21ConfigName
+  );
+
+/* TEST END */
+
+export const commentedDirectives_blockedImports = {
   [USE_SERVER_LOGICS]: [
     // USE_SERVER_LOGICS allowed, because $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#USE_SERVER_LOGICS
     {
@@ -585,4 +609,4 @@ export const commentedDirectives_blockedImports = Object.freeze({
   [USE_AGNOSTIC_STRATEGIES]: [
     // $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES
   ],
-});
+};

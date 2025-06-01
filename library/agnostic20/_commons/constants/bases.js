@@ -7,10 +7,12 @@ import {
   USE_CLIENT_COMPONENTS as COMMONS_USE_CLIENT_COMPONENTS,
   USE_AGNOSTIC_LOGICS as COMMONS_USE_AGNOSTIC_LOGICS,
   USE_AGNOSTIC_COMPONENTS as COMMONS_USE_AGNOSTIC_COMPONENTS,
-  effectiveDirectives_effectiveModules,
 } from "../../../_commons/constants/bases.js";
 
-import { makeIntroForSpecificViolationMessage as commonsMakeIntroForSpecificViolationMessage } from "../../../_commons/utilities/helpers.js";
+import {
+  makeIntroForSpecificViolationMessage as commonsMakeIntroForSpecificViolationMessage,
+  makeBlockedImport as commonsMakeBlockedImport,
+} from "../../../_commons/utilities/helpers.js";
 
 import jscommentsConfig from "../../../../comments.config.js";
 
@@ -29,7 +31,11 @@ export const USE_AGNOSTIC = "use agnostic";
 
 // directives array
 /** @type {Directives} */
-export const directivesArray = [USE_SERVER, USE_CLIENT, USE_AGNOSTIC];
+export const directivesArray = Object.freeze([
+  USE_SERVER,
+  USE_CLIENT,
+  USE_AGNOSTIC,
+]);
 
 // directives set
 /** @type {ReadonlySet<Directive>} */
@@ -51,7 +57,7 @@ export const FUNCTIONS = "functions";
 
 // mapping directives with effective directives
 /** @type {Directives_EffectiveDirectives} */
-export const directives_effectiveDirectives = Object.freeze({
+export const directives_effectiveDirectives = {
   [NO_DIRECTIVE]: {
     [LOGICS]: USE_SERVER_LOGICS,
     [COMPONENTS]: USE_SERVER_COMPONENTS,
@@ -72,7 +78,7 @@ export const directives_effectiveDirectives = Object.freeze({
     [COMPONENTS]: USE_AGNOSTIC_COMPONENTS,
     [FUNCTIONS]: null,
   },
-});
+};
 
 // message placeholders
 export const currentFileEffectiveDirective = "currentFileEffectiveDirective";
@@ -84,8 +90,9 @@ export const specificViolationMessage = "specificViolationMessage";
 
 /**
  * Makes the intro for each specific import rule violation messages.
- * @param {EffectiveDirective} currentFileEffectiveDirective The current file's effective directive.
- * @param {EffectiveDirective} importedFileEffectiveDirective The imported file's effective directive.
+ * @template {EffectiveDirective} T
+ * @param {T} currentFileEffectiveDirective The current file's effective directive.
+ * @param {T} importedFileEffectiveDirective The imported file's effective directive.
  * @returns "[Current file effective modules] are not allowed to import [imported file effective modules]."
  */
 const makeIntroForSpecificViolationMessage = (
@@ -93,7 +100,6 @@ const makeIntroForSpecificViolationMessage = (
   importedFileEffectiveDirective
 ) =>
   commonsMakeIntroForSpecificViolationMessage(
-    effectiveDirectives_effectiveModules,
     currentFileEffectiveDirective,
     importedFileEffectiveDirective
   );
@@ -101,7 +107,51 @@ const makeIntroForSpecificViolationMessage = (
 const SUGGEST_USE_AGNOSTIC =
   "If the module you're trying to import does not possess any server-side code however, please mark it with this plugin's own and eponymous 'use agnostic' directive to signal its compatibility across all environments.";
 
-export const effectiveDirectives_blockedImports = Object.freeze({
+/* TEST START */
+
+/**
+ * Makes a blockedImport object for the identified blocked import at hand.
+ * @template {EffectiveDirective} T
+ * @param {T} currentFileEffectiveDirective The current file's effective directive.
+ * @param {T} importedFileEffectiveDirective The imported file's effective directive.
+ * @returns The blockedImport object for the identified blocked import at hand.
+ */
+const makeBlockedImport = (
+  currentFileEffectiveDirective,
+  importedFileEffectiveDirective
+) =>
+  commonsMakeBlockedImport(
+    currentFileEffectiveDirective,
+    importedFileEffectiveDirective,
+    makeIntroForSpecificViolationMessage,
+    agnostic20ConfigName
+  );
+
+/**
+ * Makes a blockedImport object for the identified blocked import at hand enhanced with the suggestion to use the `'use agnostic'` directive.
+ * @param {*} currentFileEffectiveDirective The current file's effective directive.
+ * @param {*} importedFileEffectiveDirective The imported file's effective directive.
+ * @returns The enhanced blockedImport object with the suggestion to use the `'use agnostic'` directive.
+ */
+const makeBlockedImportSuggestingUseAgnostic = (
+  currentFileEffectiveDirective,
+  importedFileEffectiveDirective
+) => {
+  const blockedImport = makeBlockedImport(
+    currentFileEffectiveDirective,
+    importedFileEffectiveDirective
+  );
+
+  return {
+    ...blockedImport,
+    message: `${blockedImport.message} 
+${SUGGEST_USE_AGNOSTIC}`,
+  };
+};
+
+/* TEST END */
+
+export const effectiveDirectives_blockedImports = {
   [USE_SERVER_LOGICS]: [
     // USE_SERVER_LOGICS allowed, because $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_SERVER_LOGICS
     // USE_SERVER_COMPONENTS allowed, because $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_SERVER_COMPONENTS
@@ -363,4 +413,4 @@ ${SUGGEST_USE_AGNOSTIC}`,
     // USE_AGNOSTIC_LOGICS allowed, because $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_AGNOSTIC_LOGICS
     // USE_AGNOSTIC_COMPONENTS allowed, because $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_AGNOSTIC_COMPONENTS
   ],
-});
+};

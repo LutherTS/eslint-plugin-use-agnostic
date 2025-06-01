@@ -6,11 +6,11 @@ import {
 import { agnostic20Comments } from "./jscomments/agnostic20/constants/bases.js";
 import { directive21Comments } from "./jscomments/directive21/constants/bases.js";
 
-const config = {
+const config = Object.freeze({
   comment: "comment", // $COMMENT#COMMENT in code, "comment" on hover when resolved by the VSCode extension JSComments
   [agnostic20ConfigName]: agnostic20Comments,
   [directive21ConfigName]: directive21Comments,
-};
+});
 
 export default config;
 

@@ -8,7 +8,7 @@ import {
 } from "../_commons/constants/bases.js";
 
 /**
- * @typedef {import('../../types/agnostic20/_commons/typedefs.js').Plugin} Plugin
+ * @typedef {import('../../types/directive21/_commons/typedefs.js').Plugin} Plugin
  */
 
 /**

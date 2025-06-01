@@ -1,7 +1,4 @@
-import {
-  exportNotStrategized,
-  commentedDirectives_commentedModules,
-} from "../../../_commons/constants/bases.js";
+import { exportNotStrategized } from "../../../_commons/constants/bases.js";
 import {
   USE_AGNOSTIC_LOGICS,
   USE_AGNOSTIC_STRATEGIES,
@@ -138,7 +135,7 @@ export const getCommentedDirectiveFromCurrentModule = (context) => {
  * - `'use agnostic strategies'`: Agnostic Strategies Modules may export JSX.
  * @param {CommentedDirective} directive The commented directive as written on top of the file (cannot be `null` at that stage).
  * @param {Extension} extension The JavaScript (TypeScript) extension of the file.
- * @returns {CommentedDirective | null} The verified commented directive, from which imports rules are applied. Returns `null` if the verification failed, upon which an error will be reported depending on the commented directive, since the error logic here is strictly binary.
+ * @returns The verified commented directive, from which imports rules are applied. Returns `null` if the verification failed, upon which an error will be reported depending on the commented directive, since the error logic here is strictly binary.
  */
 export const getVerifiedCommentedDirective = (directive, extension) => {
   const rule = commentedDirectives_extensionRules[directive];
@@ -226,8 +223,9 @@ export const getStrategizedDirective = (context, node) => {
 
 /**
  * Returns a boolean deciding if an imported file's commented directive is incompatible with the current file's commented directive.
- * @param {CommentedDirective} currentFileCommentedDirective The current file's commented directive.
- * @param {CommentedDirectiveWithoutUseAgnosticStrategies} importedFileCommentedDirective The imported file's commented directive.
+ * @template {CommentedDirectiveWithoutUseAgnosticStrategies} T
+ * @param {T} currentFileCommentedDirective The current file's commented directive.
+ * @param {T} importedFileCommentedDirective The imported file's commented directive.
  * @returns `true` if the import is blocked, as established in `commentedDirectives_BlockedImports`.
  */
 export const isImportBlocked = (
@@ -244,14 +242,13 @@ export const isImportBlocked = (
 
 /**
  * Lists in an message the commented modules incompatible with a commented module based on its commented directive.
- * @param {CommentedDirective} commentedDirective The commented directive of the commented module.
+ * @param {CommentedDirectiveWithoutUseAgnosticStrategies} commentedDirective The commented directive of the commented module.
  * @returns The message listing the incompatible commented modules.
  */
 export const makeMessageFromCurrentFileCommentedDirective = (
   commentedDirective
 ) =>
   makeMessageFromCurrentFileResolvedDirective(
-    commentedDirectives_commentedModules,
     commentedDirectives_blockedImports,
     commentedDirective
   );
@@ -260,8 +257,9 @@ export const makeMessageFromCurrentFileCommentedDirective = (
 
 /**
  * Finds the `message` for the specific violation of commented directives import rules based on `commentedDirectives_BlockedImports`.
- * @param {CommentedDirective} currentFileCommentedDirective The current file's commented directive.
- * @param {CommentedDirectiveWithoutUseAgnosticStrategies} importedFileCommentedDirective The imported file's commented directive.
+ * @template {CommentedDirectiveWithoutUseAgnosticStrategies} T
+ * @param {T} currentFileCommentedDirective The current file's commented directive.
+ * @param {T} importedFileCommentedDirective The imported file's commented directive.
  * @returns The corresponding `message`.
  */
 export const findSpecificViolationMessage = (

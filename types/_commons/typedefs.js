@@ -1,4 +1,6 @@
 import {
+  agnostic20ConfigName,
+  directive21ConfigName,
   TSX,
   TS,
   JSX,
@@ -15,13 +17,14 @@ import {
   USE_CLIENT_CONTEXTS,
   USE_AGNOSTIC_CONDITIONS,
   USE_AGNOSTIC_STRATEGIES,
-  effectiveDirectives_effectiveModules,
-  commentedDirectives_commentedModules,
 } from "../../library/_commons/constants/bases";
 
 /**
  * @typedef {import("tsconfig-paths/lib/filesystem.js").PackageJson} PackageJson
  * @typedef {import('eslint').ESLint.Plugin} Plugin
+ *
+ * @typedef {typeof agnostic20ConfigName} Agnostic20ConfigName
+ * @typedef {typeof directive21ConfigName} Directive21ConfigName
  *
  * @typedef {typeof TSX | typeof TS | typeof JSX | typeof JS | typeof MJS | typeof CJS} Extension
  * @typedef {readonly [typeof TSX, typeof TS, typeof JSX, typeof JS, typeof MJS, typeof CJS]} Extensions
@@ -30,9 +33,8 @@ import {
  * @typedef {EffectiveDirective | typeof USE_CLIENT_CONTEXTS | typeof USE_AGNOSTIC_CONDITIONS | typeof USE_AGNOSTIC_STRATEGIES} CommentedDirective
  * @typedef {EffectiveDirective | CommentedDirective} ResolvedDirective
  *
- * @typedef {typeof effectiveDirectives_effectiveModules} EffectiveDirectives_EffectiveModules
- * @typedef {typeof commentedDirectives_commentedModules} CommentedDirectives_CommentedModules
- * @typedef {EffectiveDirectives_EffectiveModules & CommentedDirectives_CommentedModules} ResolvedDirectives_ResolvedModules
+ * @typedef {typeof USE_AGNOSTIC_STRATEGIES} UseAgnosticStrategies
+ * @typedef {Exclude<ResolvedDirective, UseAgnosticStrategies>} ResolvedDirectiveWithoutUseAgnosticStrategies
  *
  * @typedef {import('@typescript-eslint/types').TSESTree.ImportDeclaration} ImportDeclaration
  * @typedef {import('@typescript-eslint/types').TSESTree.ExportNamedDeclaration} ExportNamedDeclaration
@@ -41,15 +43,10 @@ import {
  */
 
 /**
- * @typedef {ResolvedDirective} CurrentFileResolvedDirective
- * @typedef {{blockedImport: string; message: string;}[]} BlockedImports
+ * @typedef {Readonly<{blockedImport: string; message: string;}>[]} BlockedImports
  */
 /**
- * @template {CurrentFileResolvedDirective} T
- * @typedef {Exclude<T, typeof USE_AGNOSTIC_STRATEGIES>} ImportedFileResolvedDirective
- */
-/**
- * @template {CurrentFileResolvedDirective} T
+ * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} T
  * @typedef {Readonly<Record<T, BlockedImports>>} ResolvedDirectives_BlockedImports
  */
 

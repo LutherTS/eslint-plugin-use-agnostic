@@ -3,20 +3,24 @@ import path from "path";
 
 import { loadConfig, createMatchPath } from "tsconfig-paths";
 
-import { EXTENSIONS, ARE_NOT_ALLOWED_TO_IMPORT } from "../constants/bases.js";
+import {
+  EXTENSIONS,
+  ARE_NOT_ALLOWED_TO_IMPORT,
+  resolvedDirectives_resolvedModules,
+} from "../constants/bases.js";
+
+import jscommentsConfig from "../../../comments.config.js";
 
 /**
- * @typedef {import('../../../types/_commons/typedefs').ResolvedDirectives_ResolvedModules} ResolvedDirectives_ResolvedModules
- * @typedef {import('../../../types/_commons/typedefs').CurrentFileResolvedDirective} CurrentFileResolvedDirective
+ * @typedef {import('../../../types/_commons/typedefs').CommentedDirective} CommentedDirective
+ * @typedef {import('../../../types/_commons/typedefs').ResolvedDirectiveWithoutUseAgnosticStrategies} ResolvedDirectiveWithoutUseAgnosticStrategies
+ * @typedef {import('../../../types/_commons/typedefs').Agnostic20ConfigName} Agnostic20ConfigName
+ * @typedef {import('../../../types/_commons/typedefs').Directive21ConfigName} Directive21ConfigName
  * @typedef {import('../../../types/_commons/typedefs').Context<string, readonly unknown[]>} Context
  */
 
 /**
- * @template {CurrentFileResolvedDirective} T
- * @typedef {import('../../../types/_commons/typedefs').ImportedFileResolvedDirective<T>} ImportedFileResolvedDirective
- */
-/**
- * @template {CurrentFileResolvedDirective} T
+ * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} T
  * @typedef {import('../../../types/_commons/typedefs').ResolvedDirectives_BlockedImports<T>} ResolvedDirectives_BlockedImports
  */
 
@@ -114,10 +118,10 @@ export const highlightFirstLineOfCode = (context) => ({
 
 /**
  * Returns a boolean deciding if an imported file's "resolved" directive is incompatible with the current file's "resolved" directive.
- * @template {CurrentFileResolvedDirective} T
+ * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} T
  * @param {ResolvedDirectives_BlockedImports<T>} resolvedDirectives_blockedImports The blocked imports object, either for agnostic20 or for directive21.
  * @param {T} currentFileResolvedDirective The current file's "resolved" directive.
- * @param {ImportedFileResolvedDirective<T>} importedFileResolvedDirective The imported file's "resolved" directive.
+ * @param {T} importedFileResolvedDirective The imported file's "resolved" directive.
  * @returns `true` if the import is blocked, as established in respective `resolvedDirectives_blockedImports`.
  */
 export const isImportBlocked = (
@@ -134,14 +138,12 @@ export const isImportBlocked = (
 
 /**
  * Makes the intro for each specific import rule violation messages.
- * @template {CurrentFileResolvedDirective} T
- * @param {ResolvedDirectives_ResolvedModules} resolvedDirectives_resolvedModules The resolved modules object, either for agnostic20 or for directive21.
- * @param {CurrentFileResolvedDirective} currentFileResolvedDirective The current file's "resolved" directive.
- * @param {ImportedFileResolvedDirective<T>} importedFileResolvedDirective The imported file's "resolved" directive.
+ * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} T
+ * @param {T} currentFileResolvedDirective The current file's "resolved" directive, excluding `"use agnostic strategies"`.
+ * @param {T} importedFileResolvedDirective The imported file's "resolved" directive, excluding `"use agnostic strategies"`.
  * @returns "[Current file 'resolved' modules] are not allowed to import [imported file 'resolved' modules]."
  */
 export const makeIntroForSpecificViolationMessage = (
-  resolvedDirectives_resolvedModules,
   currentFileResolvedDirective,
   importedFileResolvedDirective
 ) =>
@@ -151,14 +153,12 @@ export const makeIntroForSpecificViolationMessage = (
 
 /**
  * Lists in an message the "resolved" modules incompatible with a "resolved" module based on its "resolved" directive.
- * @template {CurrentFileResolvedDirective} T
- * @param {ResolvedDirectives_ResolvedModules} resolvedDirectives_resolvedModules The resolved modules object, either for agnostic20 or for directive21.
+ * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} T
  * @param {ResolvedDirectives_BlockedImports<T>} resolvedDirectives_blockedImports The blocked imports object, either for agnostic20 or for directive21.
  * @param {T} currentFileResolvedDirective The "resolved" directive of the "resolved" module.
  * @returns The message listing the incompatible "resolved" modules.
  */
 export const makeMessageFromCurrentFileResolvedDirective = (
-  resolvedDirectives_resolvedModules,
   resolvedDirectives_blockedImports,
   currentFileResolvedDirective
 ) => {
@@ -193,10 +193,10 @@ export const makeMessageFromCurrentFileResolvedDirective = (
 
 /**
  * Finds the `message` for the specific violation of "resolved" directives import rules based on `resolvedDirectives_blockedImports`.
- * @template {CurrentFileResolvedDirective} T
+ * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} T
  * @param {ResolvedDirectives_BlockedImports<T>} resolvedDirectives_blockedImports The blocked imports object, either for agnostic20 or for directive21.
- * @param {T} currentFileResolvedDirective The current file's "resolved" directive.
- * @param {ImportedFileResolvedDirective<T>} importedFileResolvedDirective The imported file's "resolved" directive.
+ * @param {T} currentFileResolvedDirective The current file's "resolved" directive, excluding `"use agnostic strategies"`.
+ * @param {T} importedFileResolvedDirective The imported file's "resolved" directive.
  * @returns The corresponding `message`.
  */
 export const findSpecificViolationMessage = (
@@ -207,3 +207,31 @@ export const findSpecificViolationMessage = (
   resolvedDirectives_blockedImports[currentFileResolvedDirective].find(
     (e) => e.blockedImport === importedFileResolvedDirective
   ).message;
+
+/* makeBlockedImport */
+
+/**
+ * Makes a blockedImport object for the identified blocked import at hand.
+ * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} T
+ * @param {T} currentFileResolvedDirective The current file's "resolved" directive, excluding `"use agnostic strategies"`.
+ * @param {T} importedFileResolvedDirective The imported file's "resolved" directive, excluding `"use agnostic strategies"`.
+ * @param {T extends CommentedDirective ? Directive21ConfigName : Agnostic20ConfigName} useAgnosticConfigName The name of the use-agnostic ESlint plugin config used, either "agnostic20" or "directive21".
+ * @returns
+ */
+export const makeBlockedImport = (
+  currentFileResolvedDirective,
+  importedFileResolvedDirective,
+  useAgnosticConfigName
+) => {
+  return Object.freeze({
+    blockedImport: importedFileResolvedDirective,
+    message: `${makeIntroForSpecificViolationMessage(
+      currentFileResolvedDirective,
+      importedFileResolvedDirective
+    )} ${
+      jscommentsConfig[useAgnosticConfigName][currentFileResolvedDirective][
+        importedFileResolvedDirective
+      ]
+    }`,
+  });
+};
