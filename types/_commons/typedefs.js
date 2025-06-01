@@ -25,6 +25,7 @@ import {
  *
  * @typedef {typeof agnostic20ConfigName} Agnostic20ConfigName
  * @typedef {typeof directive21ConfigName} Directive21ConfigName
+ * @typedef {Agnostic20ConfigName | Directive21ConfigName} UseAgnosticConfigName
  *
  * @typedef {typeof TSX | typeof TS | typeof JSX | typeof JS | typeof MJS | typeof CJS} Extension
  * @typedef {readonly [typeof TSX, typeof TS, typeof JSX, typeof JS, typeof MJS, typeof CJS]} Extensions

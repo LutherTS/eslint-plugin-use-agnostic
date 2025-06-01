@@ -9,10 +9,7 @@ import {
   USE_AGNOSTIC_COMPONENTS as COMMONS_USE_AGNOSTIC_COMPONENTS,
 } from "../../../_commons/constants/bases.js";
 
-import {
-  makeIntroForSpecificViolationMessage as commonsMakeIntroForSpecificViolationMessage,
-  makeBlockedImport as commonsMakeBlockedImport,
-} from "../../../_commons/utilities/helpers.js";
+import { makeIntroForSpecificViolationMessage } from "../../../_commons/utilities/helpers.js";
 
 import jscommentsConfig from "../../../../comments.config.js";
 
@@ -88,49 +85,40 @@ export const specificViolationMessage = "specificViolationMessage";
 
 /* effectiveDirectives_BlockedImports */
 
-// !!! ABOUT TO BE REMOVED
-/**
- * Makes the intro for each specific import rule violation messages.
- * @template {EffectiveDirective} T
- * @param {T} currentFileEffectiveDirective The current file's effective directive.
- * @param {T} importedFileEffectiveDirective The imported file's effective directive.
- * @returns "[Current file effective modules] are not allowed to import [imported file effective modules]."
- */
-const makeIntroForSpecificViolationMessage = (
-  currentFileEffectiveDirective,
-  importedFileEffectiveDirective
-) =>
-  commonsMakeIntroForSpecificViolationMessage(
-    currentFileEffectiveDirective,
-    importedFileEffectiveDirective
-  );
-
 const SUGGEST_USE_AGNOSTIC =
   "If the module you're trying to import does not possess any server-side code however, please mark it with this plugin's own and eponymous 'use agnostic' directive to signal its compatibility across all environments.";
-
-/* TEST START */
 
 /**
  * Makes a blockedImport object for the identified blocked import at hand.
  * @template {EffectiveDirective} T
+ * @template {EffectiveDirective} U
  * @param {T} currentFileEffectiveDirective The current file's effective directive.
- * @param {T} importedFileEffectiveDirective The imported file's effective directive.
+ * @param {U} importedFileEffectiveDirective The imported file's effective directive.
  * @returns The blockedImport object for the identified blocked import at hand.
  */
-const makeBlockedImport = (
+export const makeBlockedImport = (
   currentFileEffectiveDirective,
   importedFileEffectiveDirective
-) =>
-  commonsMakeBlockedImport(
-    currentFileEffectiveDirective,
-    importedFileEffectiveDirective,
-    agnostic20ConfigName
-  );
+) => {
+  return Object.freeze({
+    blockedImport: importedFileEffectiveDirective,
+    message: `${makeIntroForSpecificViolationMessage(
+      currentFileEffectiveDirective,
+      importedFileEffectiveDirective
+    )} ${
+      jscommentsConfig[agnostic20ConfigName][currentFileEffectiveDirective][
+        importedFileEffectiveDirective
+      ]
+    }`,
+  });
+};
 
 /**
  * Makes a blockedImport object for the identified blocked import at hand enhanced with the suggestion to use the `'use agnostic'` directive.
- * @param {*} currentFileEffectiveDirective The current file's effective directive.
- * @param {*} importedFileEffectiveDirective The imported file's effective directive.
+ * @template {EffectiveDirective} T
+ * @template {EffectiveDirective} U
+ * @param {T} currentFileEffectiveDirective The current file's effective directive.
+ * @param {U} importedFileEffectiveDirective The imported file's effective directive.
  * @returns The enhanced blockedImport object with the suggestion to use the `'use agnostic'` directive.
  */
 const makeBlockedImportSuggestingUseAgnostic = (
@@ -141,17 +129,16 @@ const makeBlockedImportSuggestingUseAgnostic = (
     currentFileEffectiveDirective,
     importedFileEffectiveDirective
   );
+  /** @type {`${typeof blockedImport.message} \n${SUGGEST_USE_AGNOSTIC}`} */
+  const blockedImportMessageSuggestingUseAgnostic = `${blockedImport.message} \n${SUGGEST_USE_AGNOSTIC}`;
 
-  return {
+  return Object.freeze({
     ...blockedImport,
-    message: `${blockedImport.message} 
-${SUGGEST_USE_AGNOSTIC}`,
-  };
+    message: blockedImportMessageSuggestingUseAgnostic,
+  });
 };
 
-/* TEST END */
-
-export const effectiveDirectives_blockedImports = {
+export const effectiveDirectives_blockedImports = Object.freeze({
   [USE_SERVER_LOGICS]: [
     // USE_SERVER_LOGICS allowed, because $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_SERVER_LOGICS
     // USE_SERVER_COMPONENTS allowed, because $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_SERVER_COMPONENTS
@@ -160,17 +147,10 @@ export const effectiveDirectives_blockedImports = {
       USE_SERVER_LOGICS,
       USE_CLIENT_LOGICS
     ) /* $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_CLIENT_LOGICS */,
-    {
-      blockedImport: USE_CLIENT_COMPONENTS,
-      message: `${makeIntroForSpecificViolationMessage(
-        USE_SERVER_LOGICS,
-        USE_CLIENT_COMPONENTS
-      )} ${
-        jscommentsConfig[agnostic20ConfigName][USE_SERVER_LOGICS][
-          USE_CLIENT_COMPONENTS
-        ] // $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_CLIENT_COMPONENTS
-      }`,
-    },
+    makeBlockedImport(
+      USE_SERVER_LOGICS,
+      USE_CLIENT_COMPONENTS
+    ) /* $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_CLIENT_COMPONENTS */,
     // USE_AGNOSTIC_LOGICS allowed, because $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_AGNOSTIC_LOGICS
     // USE_AGNOSTIC_COMPONENTS allowed, because $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_AGNOSTIC_COMPONENTS
   ],
@@ -178,87 +158,44 @@ export const effectiveDirectives_blockedImports = {
     // USE_SERVER_LOGICS allowed, because $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_SERVER_LOGICS
     // USE_SERVER_COMPONENTS allowed, because $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_SERVER_COMPONENTS
     // USE_SERVER_FUNCTIONS allowed, because $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_SERVER_FUNCTIONS
-    {
-      blockedImport: USE_CLIENT_LOGICS,
-      message: `${makeIntroForSpecificViolationMessage(
-        USE_SERVER_COMPONENTS,
-        USE_CLIENT_LOGICS
-      )} ${
-        jscommentsConfig[agnostic20ConfigName][USE_SERVER_COMPONENTS][
-          USE_CLIENT_LOGICS
-        ] // $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_CLIENT_LOGICS
-      }`,
-    },
+    makeBlockedImport(
+      USE_SERVER_COMPONENTS,
+      USE_CLIENT_LOGICS
+    ) /* $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_CLIENT_LOGICS */,
     // USE_CLIENT_COMPONENTS allowed, because $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_CLIENT_COMPONENTS
     // USE_AGNOSTIC_LOGICS allowed, because $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_AGNOSTIC_LOGICS
     // USE_AGNOSTIC_COMPONENTS allowed, because $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_AGNOSTIC_COMPONENTS
   ],
   [USE_SERVER_FUNCTIONS]: [
     // USE_SERVER_LOGICS allowed, because $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_SERVER_LOGICS
-    {
-      blockedImport: USE_SERVER_COMPONENTS,
-      message: `${makeIntroForSpecificViolationMessage(
-        USE_SERVER_FUNCTIONS,
-        USE_SERVER_COMPONENTS
-      )} ${
-        jscommentsConfig[agnostic20ConfigName][USE_SERVER_FUNCTIONS][
-          USE_SERVER_COMPONENTS
-        ] // $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_SERVER_COMPONENTS
-      }`,
-    },
+    makeBlockedImport(
+      USE_SERVER_FUNCTIONS,
+      USE_SERVER_COMPONENTS
+    ) /* $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_SERVER_COMPONENTS */,
     // USE_SERVER_FUNCTIONS allowed, because $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_SERVER_FUNCTIONS
-    {
-      blockedImport: USE_CLIENT_LOGICS,
-      message: `${makeIntroForSpecificViolationMessage(
-        USE_SERVER_FUNCTIONS,
-        USE_CLIENT_LOGICS
-      )} ${
-        jscommentsConfig[agnostic20ConfigName][USE_SERVER_FUNCTIONS][
-          USE_CLIENT_LOGICS
-        ] // $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_CLIENT_LOGICS
-      }`,
-    },
-    {
-      blockedImport: USE_CLIENT_COMPONENTS,
-      message: `${makeIntroForSpecificViolationMessage(
-        USE_SERVER_FUNCTIONS,
-        USE_CLIENT_COMPONENTS
-      )} ${
-        jscommentsConfig[agnostic20ConfigName][USE_SERVER_FUNCTIONS][
-          USE_CLIENT_COMPONENTS
-        ] // $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_CLIENT_COMPONENTS
-      }`,
-    },
+    makeBlockedImport(
+      USE_SERVER_FUNCTIONS,
+      USE_CLIENT_LOGICS
+    ) /* $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_CLIENT_LOGICS */,
+    makeBlockedImport(
+      USE_SERVER_FUNCTIONS,
+      USE_CLIENT_COMPONENTS
+    ) /* $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_CLIENT_COMPONENTS */,
     // USE_AGNOSTIC_LOGICS allowed, because $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_AGNOSTIC_LOGICS
-    {
-      blockedImport: USE_AGNOSTIC_COMPONENTS,
-      message: `${makeIntroForSpecificViolationMessage(
-        USE_SERVER_FUNCTIONS,
-        USE_AGNOSTIC_COMPONENTS
-      )} ${
-        jscommentsConfig[agnostic20ConfigName][USE_SERVER_FUNCTIONS][
-          USE_AGNOSTIC_COMPONENTS
-        ] // $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_AGNOSTIC_COMPONENTS
-      }`,
-    },
+    makeBlockedImport(
+      USE_SERVER_FUNCTIONS,
+      USE_AGNOSTIC_COMPONENTS
+    ) /* $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_AGNOSTIC_COMPONENTS */,
   ],
   [USE_CLIENT_LOGICS]: [
     makeBlockedImportSuggestingUseAgnostic(
       USE_CLIENT_LOGICS,
       USE_SERVER_LOGICS
     ) /* $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#USE_SERVER_LOGICS */,
-    {
-      blockedImport: USE_SERVER_COMPONENTS,
-      message: `${makeIntroForSpecificViolationMessage(
-        USE_CLIENT_LOGICS,
-        USE_SERVER_COMPONENTS
-      )} ${
-        jscommentsConfig[agnostic20ConfigName][USE_CLIENT_LOGICS][
-          USE_SERVER_COMPONENTS
-        ] // $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#USE_SERVER_COMPONENTS
-      } 
-${SUGGEST_USE_AGNOSTIC}`,
-    },
+    makeBlockedImportSuggestingUseAgnostic(
+      USE_CLIENT_LOGICS,
+      USE_SERVER_COMPONENTS
+    ) /* $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#USE_SERVER_COMPONENTS */,
     // USE_SERVER_FUNCTIONS allowed, because $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#USE_SERVER_FUNCTIONS
     // USE_CLIENT_LOGICS allowed, because $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#USE_CLIENT_LOGICS
     // USE_CLIENT_COMPONENTS allowed, because $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#USE_CLIENT_COMPONENTS
@@ -266,30 +203,14 @@ ${SUGGEST_USE_AGNOSTIC}`,
     // USE_AGNOSTIC_COMPONENTS allowed, because $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#USE_AGNOSTIC_COMPONENTS
   ],
   [USE_CLIENT_COMPONENTS]: [
-    {
-      blockedImport: USE_SERVER_LOGICS,
-      message: `${makeIntroForSpecificViolationMessage(
-        USE_CLIENT_COMPONENTS,
-        USE_SERVER_LOGICS
-      )} ${
-        jscommentsConfig[agnostic20ConfigName][USE_CLIENT_COMPONENTS][
-          USE_SERVER_LOGICS
-        ] // $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_SERVER_LOGICS
-      } 
-${SUGGEST_USE_AGNOSTIC}`,
-    },
-    {
-      blockedImport: USE_SERVER_COMPONENTS,
-      message: `${makeIntroForSpecificViolationMessage(
-        USE_CLIENT_COMPONENTS,
-        USE_SERVER_COMPONENTS
-      )} ${
-        jscommentsConfig[agnostic20ConfigName][USE_CLIENT_COMPONENTS][
-          USE_SERVER_COMPONENTS
-        ] // $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_SERVER_COMPONENTS
-      } 
-${SUGGEST_USE_AGNOSTIC}`,
-    },
+    makeBlockedImportSuggestingUseAgnostic(
+      USE_CLIENT_LOGICS,
+      USE_SERVER_LOGICS
+    ) /* $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#USE_SERVER_LOGICS */,
+    makeBlockedImportSuggestingUseAgnostic(
+      USE_CLIENT_LOGICS,
+      USE_SERVER_COMPONENTS
+    ) /* $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#USE_SERVER_COMPONENTS */,
     // USE_SERVER_FUNCTIONS allowed, because $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_SERVER_FUNCTIONS
     // USE_CLIENT_LOGICS allowed, because $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_CLIENT_LOGICS
     // USE_CLIENT_COMPONENTS allowed, because $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_CLIENT_COMPONENTS
@@ -297,105 +218,45 @@ ${SUGGEST_USE_AGNOSTIC}`,
     // USE_AGNOSTIC_COMPONENTS allowed, because $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_AGNOSTIC_COMPONENTS
   ],
   [USE_AGNOSTIC_LOGICS]: [
-    {
-      blockedImport: USE_SERVER_LOGICS,
-      message: `${makeIntroForSpecificViolationMessage(
-        USE_AGNOSTIC_LOGICS,
-        USE_SERVER_LOGICS
-      )} ${
-        jscommentsConfig[agnostic20ConfigName][USE_AGNOSTIC_LOGICS][
-          USE_SERVER_LOGICS
-        ] // $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#USE_SERVER_LOGICS
-      } 
-${SUGGEST_USE_AGNOSTIC}`,
-    },
-    {
-      blockedImport: USE_SERVER_COMPONENTS,
-      message: `${makeIntroForSpecificViolationMessage(
-        USE_AGNOSTIC_LOGICS,
-        USE_SERVER_COMPONENTS
-      )} ${
-        jscommentsConfig[agnostic20ConfigName][USE_AGNOSTIC_LOGICS][
-          USE_SERVER_COMPONENTS
-        ] // $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#USE_SERVER_COMPONENTS
-      } 
-${SUGGEST_USE_AGNOSTIC}`,
-    },
-    {
-      blockedImport: USE_SERVER_FUNCTIONS,
-      message: `${makeIntroForSpecificViolationMessage(
-        USE_AGNOSTIC_LOGICS,
-        USE_SERVER_FUNCTIONS
-      )} ${
-        jscommentsConfig[agnostic20ConfigName][USE_AGNOSTIC_LOGICS][
-          USE_SERVER_FUNCTIONS
-        ] // $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#USE_SERVER_FUNCTIONS
-      }`,
-    },
-    {
-      blockedImport: USE_CLIENT_LOGICS,
-      message: `${makeIntroForSpecificViolationMessage(
-        USE_AGNOSTIC_LOGICS,
-        USE_CLIENT_LOGICS
-      )} ${
-        jscommentsConfig[agnostic20ConfigName][USE_AGNOSTIC_LOGICS][
-          USE_CLIENT_LOGICS
-        ] // $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#USE_CLIENT_LOGICS
-      }`,
-    },
-    {
-      blockedImport: USE_CLIENT_COMPONENTS,
-      message: `${makeIntroForSpecificViolationMessage(
-        USE_AGNOSTIC_LOGICS,
-        USE_CLIENT_COMPONENTS
-      )} ${
-        jscommentsConfig[agnostic20ConfigName][USE_AGNOSTIC_LOGICS][
-          USE_CLIENT_COMPONENTS
-        ] // $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#USE_CLIENT_COMPONENTS
-      }`,
-    },
+    makeBlockedImportSuggestingUseAgnostic(
+      USE_AGNOSTIC_LOGICS,
+      USE_SERVER_LOGICS
+    ) /* $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#USE_SERVER_LOGICS */,
+    makeBlockedImportSuggestingUseAgnostic(
+      USE_AGNOSTIC_LOGICS,
+      USE_SERVER_COMPONENTS
+    ) /* $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#USE_SERVER_COMPONENTS */,
+    makeBlockedImport(
+      USE_AGNOSTIC_LOGICS,
+      USE_SERVER_FUNCTIONS
+    ) /* $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#USE_SERVER_FUNCTIONS */,
+    makeBlockedImport(
+      USE_AGNOSTIC_LOGICS,
+      USE_CLIENT_LOGICS
+    ) /* $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#USE_CLIENT_LOGICS */,
+    makeBlockedImport(
+      USE_AGNOSTIC_LOGICS,
+      USE_CLIENT_COMPONENTS
+    ) /* $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#USE_CLIENT_COMPONENTS */,
     // USE_AGNOSTIC_LOGICS allowed, because $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#USE_AGNOSTIC_LOGICS
     // USE_AGNOSTIC_COMPONENTS allowed, because $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#USE_AGNOSTIC_COMPONENTS
   ],
   [USE_AGNOSTIC_COMPONENTS]: [
-    {
-      blockedImport: USE_SERVER_LOGICS,
-      message: `${makeIntroForSpecificViolationMessage(
-        USE_AGNOSTIC_COMPONENTS,
-        USE_SERVER_LOGICS
-      )} ${
-        jscommentsConfig[agnostic20ConfigName][USE_AGNOSTIC_COMPONENTS][
-          USE_SERVER_LOGICS
-        ] // $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_SERVER_LOGICS
-      } 
-${SUGGEST_USE_AGNOSTIC}`,
-    },
-    {
-      blockedImport: USE_SERVER_COMPONENTS,
-      message: `${makeIntroForSpecificViolationMessage(
-        USE_AGNOSTIC_COMPONENTS,
-        USE_SERVER_COMPONENTS
-      )} ${
-        jscommentsConfig[agnostic20ConfigName][USE_AGNOSTIC_COMPONENTS][
-          USE_SERVER_COMPONENTS
-        ] // $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_SERVER_COMPONENTS
-      } 
-${SUGGEST_USE_AGNOSTIC}`,
-    },
+    makeBlockedImportSuggestingUseAgnostic(
+      USE_AGNOSTIC_COMPONENTS,
+      USE_SERVER_LOGICS
+    ) /* $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_SERVER_LOGICS */,
+    makeBlockedImportSuggestingUseAgnostic(
+      USE_AGNOSTIC_COMPONENTS,
+      USE_SERVER_COMPONENTS
+    ) /* $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_SERVER_COMPONENTS */,
     // USE_SERVER_FUNCTIONS allowed, because $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_SERVER_FUNCTIONS
-    {
-      blockedImport: USE_CLIENT_LOGICS,
-      message: `${makeIntroForSpecificViolationMessage(
-        USE_AGNOSTIC_COMPONENTS,
-        USE_CLIENT_LOGICS
-      )} ${
-        jscommentsConfig[agnostic20ConfigName][USE_AGNOSTIC_COMPONENTS][
-          USE_CLIENT_LOGICS
-        ] // $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_CLIENT_LOGICS
-      }`,
-    },
+    makeBlockedImport(
+      USE_AGNOSTIC_COMPONENTS,
+      USE_CLIENT_LOGICS
+    ) /* $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_CLIENT_LOGICS */,
     // USE_CLIENT_COMPONENTS allowed, because $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_CLIENT_COMPONENTS
     // USE_AGNOSTIC_LOGICS allowed, because $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_AGNOSTIC_LOGICS
     // USE_AGNOSTIC_COMPONENTS allowed, because $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_AGNOSTIC_COMPONENTS
   ],
-};
+});

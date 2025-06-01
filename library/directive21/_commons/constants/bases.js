@@ -12,10 +12,7 @@ import {
   USE_AGNOSTIC_STRATEGIES as COMMONS_USE_AGNOSTIC_STRATEGIES,
 } from "../../../_commons/constants/bases.js";
 
-import {
-  makeIntroForSpecificViolationMessage as commonsMakeIntroForSpecificViolationMessage,
-  makeBlockedImport as commonsMakeBlockedImport,
-} from "../../../_commons/utilities/helpers.js";
+import { makeIntroForSpecificViolationMessage as commonsMakeIntroForSpecificViolationMessage } from "../../../_commons/utilities/helpers.js";
 
 import jscommentsConfig from "../../../../comments.config.js";
 
@@ -178,12 +175,13 @@ export const commentedDirectives_verificationReports = Object.freeze({
 
 /* commentedDirectives_blockedImports */
 
-// !!! ABOUT TO BE REMOVED
+// !!! ABOUT TO BE REMOVED (?)
 /**
  * Makes the intro for each specific import rule violation messages.
  * @template {CommentedDirectiveWithoutUseAgnosticStrategies} T
+ * @template {CommentedDirectiveWithoutUseAgnosticStrategies} U
  * @param {T} currentFileCommentedDirective The current file's commented directive.
- * @param {T} importedFileCommentedDirective The imported file's commented directive.
+ * @param {U} importedFileCommentedDirective The imported file's commented directive.
  * @returns "[Current file commented modules] are not allowed to import [imported file commented modules]."
  */
 const makeIntroForSpecificViolationMessage = (
@@ -200,19 +198,29 @@ const makeIntroForSpecificViolationMessage = (
 /**
  * Makes a blockedImport object for the identified blocked import at hand.
  * @template {CommentedDirectiveWithoutUseAgnosticStrategies} T
+ * @template {CommentedDirectiveWithoutUseAgnosticStrategies} U
  * @param {T} currentFileCommentedDirective The current file's commented directive.
- * @param {T} importedFileCommentedDirective The imported file's commented directive.
+ * @param {U} importedFileCommentedDirective The imported file's commented directive.
  * @returns The blockedImport object for the identified blocked import at hand.
  */
-const makeBlockedImport = (
+export const makeBlockedImport = (
   currentFileCommentedDirective,
   importedFileCommentedDirective
-) =>
-  commonsMakeBlockedImport(
-    currentFileCommentedDirective,
-    importedFileCommentedDirective,
-    directive21ConfigName
-  );
+) => {
+  return Object.freeze({
+    blockedImport: importedFileCommentedDirective,
+    message: `${commonsMakeIntroForSpecificViolationMessage(
+      currentFileCommentedDirective,
+      importedFileCommentedDirective
+    )} ${
+      jscommentsConfig[directive21ConfigName][currentFileCommentedDirective][
+        importedFileCommentedDirective
+      ]
+    }`,
+  });
+};
+
+const c = makeBlockedImport(USE_SERVER_LOGICS, USE_CLIENT_LOGICS);
 
 /* TEST END */
 
@@ -221,34 +229,23 @@ export const commentedDirectives_blockedImports = {
     // USE_SERVER_LOGICS allowed, because $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#USE_SERVER_LOGICS
     makeBlockedImport(
       USE_SERVER_LOGICS,
-      USE_CLIENT_LOGICS
+      USE_CLIENT_LOGICS,
+      directive21ConfigName
     ) /* $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#USE_CLIENT_LOGICS */,
     // USE_AGNOSTIC_LOGICS allowed, because $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#USE_AGNOSTIC_LOGICS
     // USE_SERVER_COMPONENTS allowed, because $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#USE_SERVER_COMPONENTS
-    {
-      blockedImport: USE_CLIENT_COMPONENTS,
-      message: `${makeIntroForSpecificViolationMessage(
-        USE_SERVER_LOGICS,
-        USE_CLIENT_COMPONENTS
-      )} ${
-        jscommentsConfig[directive21ConfigName][USE_SERVER_LOGICS][
-          USE_CLIENT_COMPONENTS
-        ] // $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#USE_CLIENT_COMPONENTS
-      }`,
-    },
+    makeBlockedImport(
+      USE_SERVER_LOGICS,
+      USE_CLIENT_COMPONENTS,
+      directive21ConfigName
+    ) /* $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#USE_CLIENT_COMPONENTS */,
     // USE_AGNOSTIC_COMPONENTS allowed, because $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#USE_AGNOSTIC_COMPONENTS
     // USE_SERVER_FUNCTIONS allowed, because $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#USE_SERVER_FUNCTIONS
-    {
-      blockedImport: USE_CLIENT_CONTEXTS,
-      message: `${makeIntroForSpecificViolationMessage(
-        USE_SERVER_LOGICS,
-        USE_CLIENT_CONTEXTS
-      )} ${
-        jscommentsConfig[directive21ConfigName][USE_SERVER_LOGICS][
-          USE_CLIENT_CONTEXTS
-        ] // $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#USE_CLIENT_CONTEXTS
-      }`,
-    },
+    makeBlockedImport(
+      USE_SERVER_LOGICS,
+      USE_CLIENT_CONTEXTS,
+      directive21ConfigName
+    ) /* $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#USE_CLIENT_CONTEXTS */,
     // USE_AGNOSTIC_CONDITIONS allowed, because $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#USE_AGNOSTIC_CONDITIONS
   ],
   [USE_CLIENT_LOGICS]: [
