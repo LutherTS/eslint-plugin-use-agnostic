@@ -178,6 +178,7 @@ export const commentedDirectives_verificationReports = Object.freeze({
 
 /* commentedDirectives_blockedImports */
 
+// !!! ABOUT TO BE REMOVED
 /**
  * Makes the intro for each specific import rule violation messages.
  * @template {CommentedDirectiveWithoutUseAgnosticStrategies} T
@@ -210,7 +211,6 @@ const makeBlockedImport = (
   commonsMakeBlockedImport(
     currentFileCommentedDirective,
     importedFileCommentedDirective,
-    makeIntroForSpecificViolationMessage,
     directive21ConfigName
   );
 
@@ -219,17 +219,10 @@ const makeBlockedImport = (
 export const commentedDirectives_blockedImports = {
   [USE_SERVER_LOGICS]: [
     // USE_SERVER_LOGICS allowed, because $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#USE_SERVER_LOGICS
-    {
-      blockedImport: USE_CLIENT_LOGICS,
-      message: `${makeIntroForSpecificViolationMessage(
-        USE_SERVER_LOGICS,
-        USE_CLIENT_LOGICS
-      )} ${
-        jscommentsConfig[directive21ConfigName][USE_SERVER_LOGICS][
-          USE_CLIENT_LOGICS
-        ] // $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#USE_CLIENT_LOGICS
-      }`,
-    },
+    makeBlockedImport(
+      USE_SERVER_LOGICS,
+      USE_CLIENT_LOGICS
+    ) /* $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#USE_CLIENT_LOGICS */,
     // USE_AGNOSTIC_LOGICS allowed, because $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#USE_AGNOSTIC_LOGICS
     // USE_SERVER_COMPONENTS allowed, because $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#USE_SERVER_COMPONENTS
     {

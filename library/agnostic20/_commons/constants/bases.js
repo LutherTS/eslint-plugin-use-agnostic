@@ -88,6 +88,7 @@ export const specificViolationMessage = "specificViolationMessage";
 
 /* effectiveDirectives_BlockedImports */
 
+// !!! ABOUT TO BE REMOVED
 /**
  * Makes the intro for each specific import rule violation messages.
  * @template {EffectiveDirective} T
@@ -123,7 +124,6 @@ const makeBlockedImport = (
   commonsMakeBlockedImport(
     currentFileEffectiveDirective,
     importedFileEffectiveDirective,
-    makeIntroForSpecificViolationMessage,
     agnostic20ConfigName
   );
 
@@ -156,17 +156,10 @@ export const effectiveDirectives_blockedImports = {
     // USE_SERVER_LOGICS allowed, because $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_SERVER_LOGICS
     // USE_SERVER_COMPONENTS allowed, because $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_SERVER_COMPONENTS
     // USE_SERVER_FUNCTIONS allowed, because $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_SERVER_FUNCTIONS
-    {
-      blockedImport: USE_CLIENT_LOGICS,
-      message: `${makeIntroForSpecificViolationMessage(
-        USE_SERVER_LOGICS,
-        USE_CLIENT_LOGICS
-      )} ${
-        jscommentsConfig[agnostic20ConfigName][USE_SERVER_LOGICS][
-          USE_CLIENT_LOGICS
-        ] // $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_CLIENT_LOGICS
-      }`,
-    },
+    makeBlockedImport(
+      USE_SERVER_LOGICS,
+      USE_CLIENT_LOGICS
+    ) /* $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_CLIENT_LOGICS */,
     {
       blockedImport: USE_CLIENT_COMPONENTS,
       message: `${makeIntroForSpecificViolationMessage(
@@ -250,18 +243,10 @@ export const effectiveDirectives_blockedImports = {
     },
   ],
   [USE_CLIENT_LOGICS]: [
-    {
-      blockedImport: USE_SERVER_LOGICS,
-      message: `${makeIntroForSpecificViolationMessage(
-        USE_CLIENT_LOGICS,
-        USE_SERVER_LOGICS
-      )} ${
-        jscommentsConfig[agnostic20ConfigName][USE_CLIENT_LOGICS][
-          USE_SERVER_LOGICS
-        ] // $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#USE_SERVER_LOGICS
-      } 
-${SUGGEST_USE_AGNOSTIC}`,
-    },
+    makeBlockedImportSuggestingUseAgnostic(
+      USE_CLIENT_LOGICS,
+      USE_SERVER_LOGICS
+    ) /* $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#USE_SERVER_LOGICS */,
     {
       blockedImport: USE_SERVER_COMPONENTS,
       message: `${makeIntroForSpecificViolationMessage(
