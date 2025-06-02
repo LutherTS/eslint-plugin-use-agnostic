@@ -1,4 +1,3 @@
-import { effectiveDirectives_effectiveModules } from "../../../_commons/constants/bases.js";
 import {
   USE_SERVER,
   LOGICS,
@@ -145,7 +144,6 @@ export const makeMessageFromCurrentFileEffectiveDirective = (
   effectiveDirective
 ) =>
   makeMessageFromCurrentFileResolvedDirective(
-    effectiveDirectives_effectiveModules,
     effectiveDirectives_blockedImports,
     effectiveDirective
   );

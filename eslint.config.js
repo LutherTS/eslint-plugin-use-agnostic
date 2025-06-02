@@ -3,9 +3,9 @@ import { defineConfig, globalIgnores } from "eslint/config";
 import useAgnostic, {
   useAgnosticPluginName,
   agnostic20ConfigName,
-  // enforceEffectiveDirectivesRuleName
+  enforceEffectiveDirectivesRuleName,
   directive21ConfigName,
-  // enforceCommentedDirectivesRuleName
+  enforceCommentedDirectivesRuleName,
 } from "eslint-plugin-use-agnostic";
 
 import { makeTestFiles } from "./eslint/_commons/utilities/helpers.js";
@@ -24,6 +24,10 @@ export default defineConfig([
       [useAgnosticPluginName]: useAgnostic,
     },
     extends: [`${useAgnosticPluginName}/${agnostic20ConfigName}`],
+    rules: {
+      [`${useAgnosticPluginName}/${enforceEffectiveDirectivesRuleName}`]:
+        "error",
+    },
   },
   {
     files: makeTestFiles(validPath21, invalidPath21),
@@ -31,5 +35,9 @@ export default defineConfig([
       [useAgnosticPluginName]: useAgnostic,
     },
     extends: [`${useAgnosticPluginName}/${directive21ConfigName}`],
+    rules: {
+      [`${useAgnosticPluginName}/${enforceCommentedDirectivesRuleName}`]:
+        "warn",
+    },
   },
 ]);
