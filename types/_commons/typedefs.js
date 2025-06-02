@@ -1,6 +1,4 @@
 import {
-  agnostic20ConfigName,
-  directive21ConfigName,
   TSX,
   TS,
   JSX,
@@ -22,10 +20,6 @@ import {
 /**
  * @typedef {import("tsconfig-paths/lib/filesystem.js").PackageJson} PackageJson
  * @typedef {import('eslint').ESLint.Plugin} Plugin
- *
- * @typedef {typeof agnostic20ConfigName} Agnostic20ConfigName
- * @typedef {typeof directive21ConfigName} Directive21ConfigName
- * @typedef {Agnostic20ConfigName | Directive21ConfigName} UseAgnosticConfigName
  *
  * @typedef {typeof TSX | typeof TS | typeof JSX | typeof JS | typeof MJS | typeof CJS} Extension
  * @typedef {readonly [typeof TSX, typeof TS, typeof JSX, typeof JS, typeof MJS, typeof CJS]} Extensions
