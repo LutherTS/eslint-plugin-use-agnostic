@@ -22,7 +22,8 @@
   "files": [
     "library",
     "types/index.d.ts",
-    "jscomments"
+    "jscomments",
+    "comments.config.js"
   ],
   "exports": {
     ".": {
