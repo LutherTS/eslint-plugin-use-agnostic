@@ -9,15 +9,8 @@ import {
   resolvedDirectives_resolvedModules,
 } from "../constants/bases.js";
 
-import jscommentsConfig from "../../../comments.config.js";
-
 /**
- * @typedef {import('../../../types/_commons/typedefs').EffectiveDirective} EffectiveDirective
- * @typedef {import('../../../types/_commons/typedefs').CommentedDirective} CommentedDirective
  * @typedef {import('../../../types/_commons/typedefs').ResolvedDirectiveWithoutUseAgnosticStrategies} ResolvedDirectiveWithoutUseAgnosticStrategies
- * @typedef {import('../../../types/_commons/typedefs').Agnostic20ConfigName} Agnostic20ConfigName
- * @typedef {import('../../../types/_commons/typedefs').Directive21ConfigName} Directive21ConfigName
- * @typedef {import('../../../types/_commons/typedefs').UseAgnosticConfigName} UseAgnosticConfigName
  * @typedef {import('../../../types/_commons/typedefs').Context<string, readonly unknown[]>} Context
  */
 

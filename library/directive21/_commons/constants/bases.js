@@ -12,7 +12,7 @@ import {
   USE_AGNOSTIC_STRATEGIES as COMMONS_USE_AGNOSTIC_STRATEGIES,
 } from "../../../_commons/constants/bases.js";
 
-import { makeIntroForSpecificViolationMessage as commonsMakeIntroForSpecificViolationMessage } from "../../../_commons/utilities/helpers.js";
+import { makeIntroForSpecificViolationMessage } from "../../../_commons/utilities/helpers.js";
 
 import jscommentsConfig from "../../../../comments.config.js";
 
@@ -22,6 +22,7 @@ import jscommentsConfig from "../../../../comments.config.js";
  * @typedef {import('../../../../types/directive21/_commons/typedefs.js').CommentedDirectives} CommentedDirectives
  * @typedef {import('../../../../types/directive21/_commons/typedefs.js').CommentedStrategy} CommentedStrategy
  * @typedef {import('../../../../types/directive21/_commons/typedefs.js').CommentedStrategies} CommentedStrategies
+ * @typedef {import('../../../../types/directive21/_commons/typedefs.js').CommentStyles} CommentStyles
  */
 
 // commented directives
@@ -56,7 +57,7 @@ export const commentedDirectivesArray = Object.freeze([
 export const commentedDirectivesSet = new Set(commentedDirectivesArray); // no longer used exported to satisfy static type inference
 
 // mapped commented directives to their extension rules
-export const commentedDirectives_extensionRules = {
+export const commentedDirectives_extensionRules = Object.freeze({
   [USE_SERVER_LOGICS]: false, // Must not end with 'x'
   [USE_CLIENT_LOGICS]: false,
   [USE_AGNOSTIC_LOGICS]: false,
@@ -67,7 +68,7 @@ export const commentedDirectives_extensionRules = {
   [USE_CLIENT_CONTEXTS]: true,
   [USE_AGNOSTIC_CONDITIONS]: true,
   [USE_AGNOSTIC_STRATEGIES]: null, // Any extension allowed
-};
+});
 
 // commented strategies
 export const AT_SERVER_LOGICS = "@serverLogics";
@@ -121,23 +122,31 @@ export const specificFailure = "specificFailure";
 /* commentedDirectives_4RawImplementations */
 
 // all formatting styles as an array of [prefix, quote, suffix]
-const commentStyles = [
-  [`// `, `'`, ``], // V1: `// 'directive'`
-  [`// `, `"`, ``], // V2: `// "directive"`
-  [`/* `, `'`, ` */`], // V3: `/* 'directive' */`
-  [`/* `, `"`, ` */`], // V4: `/* "directive" */`
-]; // further inference optimation can be made but is overkill...
+/** @type {CommentStyles} */
+const commentStyles = Object.freeze([
+  Object.freeze([`// `, `'`, ``]), // V1: `// 'directive'`
+  Object.freeze([`// `, `"`, ``]), // V2: `// "directive"`
+  Object.freeze([`\/\* `, `'`, ` \*\/`]), // V3: `/* 'directive' */`
+  Object.freeze([`\/\* `, `"`, ` \*\/`]), // V4: `/* "directive" */`
+]);
 
 /**
  * Makes the array of all four accepted commented directive implementations on a directive basis.
- * @param {CommentedDirective} directive The commented directive.
+ * @template {CommentedDirective} T
+ * @param {T} directive The commented directive.
  * @returns The array of formatted commented directives.
  */
-const make4RawImplementations = (directive) =>
-  commentStyles.map(
-    ([prefix, quote, suffix]) =>
-      `${prefix}${quote}${directive}${quote}${suffix}`
-  ); // ...further inference optimation could be an extra challenge but would probably require TypeScript for comfort
+const make4RawImplementations = (directive) => {
+  /** @type {readonly [`// '${T}'`, `// "${T}""`, `\/\* '${T}' \*\/`, `\/\* "${T}"" \*\/`]} */
+  const rawImplementations = Object.freeze(
+    commentStyles.map(
+      ([prefix, quote, suffix]) =>
+        `${prefix}${quote}${directive}${quote}${suffix}`
+    )
+  );
+
+  return rawImplementations;
+};
 
 export const commentedDirectives_4RawImplementations = Object.freeze({
   [USE_SERVER_LOGICS]: make4RawImplementations(USE_SERVER_LOGICS),
@@ -189,7 +198,7 @@ export const makeBlockedImport = (
 ) => {
   return Object.freeze({
     blockedImport: importedFileCommentedDirective,
-    message: `${commonsMakeIntroForSpecificViolationMessage(
+    message: `${makeIntroForSpecificViolationMessage(
       currentFileCommentedDirective,
       importedFileCommentedDirective
     )} ${
