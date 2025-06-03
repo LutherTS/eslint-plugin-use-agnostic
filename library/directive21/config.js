@@ -4,7 +4,7 @@ import {
   directive21ConfigName,
   useAgnosticPluginName,
   enforceCommentedDirectivesRuleName,
-  typeScriptCompatible,
+  typeScriptAndJSXCompatible,
 } from "../_commons/constants/bases.js";
 
 /**
@@ -26,7 +26,7 @@ export const makeDirective21Config = (plugin) => ({
         [`${useAgnosticPluginName}/${enforceCommentedDirectivesRuleName}`]:
           "warn",
       },
-      languageOptions: typeScriptCompatible,
+      languageOptions: typeScriptAndJSXCompatible,
     },
   ]),
 });

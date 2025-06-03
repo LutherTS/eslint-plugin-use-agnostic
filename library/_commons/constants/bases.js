@@ -1,4 +1,3 @@
-import { Linter } from "eslint";
 import tseslint from "typescript-eslint";
 
 /**
@@ -121,11 +120,15 @@ export const skip = Object.freeze({
   skip: true,
 });
 
-// common linter for AST retrieval
-export const linter = new Linter();
-
 // ESLint configs language options
-export const typeScriptCompatible = Object.freeze({
+/** @type {import('eslint').Linter.LanguageOptions} */
+export const typeScriptAndJSXCompatible = {
   // for compatibility with .ts and .tsx
   parser: tseslint.parser,
-});
+  // for compatibility with JSX
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+  },
+};
