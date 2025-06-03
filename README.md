@@ -76,7 +76,7 @@ With this list established, it thus becomes possible to recognize static import 
 
 Only the first line of code in a file is observed for the presence of a directive. If no top-of-the-file directive is present or recognized, the file is considered to not have a directive, defaulting to being understood as a Server Logics Module if it doesn't use a JSX file extension (`.js`, `.ts`) or as a Server Components Module if it does (`.jsx`, `.tsx`).
 
-Aliased import paths are resolved only if your ESLint config file and your `tsconfig.json` file are in the same directory. At least to my knowledge, since the resolution depends on the `cwd` property from ESLint rules' `context` objects.
+Aliased and base url import paths are resolved only if your ESLint config and your `tsconfig.json` files are in the same directory, since the resolution depends on the `cwd` property from ESLint rules' `context` objects.
 
 It is up to you to confirm that your Agnostic Modules are indeed agnostic, meaning that they have neither server- nor client-side code. `eslint-plugin-use-agnostic`, at least at this time, does not do this verification for you.
 
@@ -102,4 +102,4 @@ But not having a directive to distinguish between 1. non-special Server Modules 
 
 This is what the `'use agnostic'` directive solves. It clearly marks a module to be an Agnostic Module. And if a module that used to lack a directive can now be marked as an Agnostic Module, this allows modules without a directive to finally, truly be Server Modules by default. And `eslint-plugin-use-agnostic` can work from there.
 
-A lot more needs to be done, and a lot of it unfortunately can only be optimized deeper into React's innerworkings. But if the introduction of `'use agnostic'` can already create such powerful static analysis, imagine what it could produce if only it were incorporated into React as an official directive of the Fullstack React Architecture.
+A lot more needs to be done, and I suspect a lot of it unfortunately can only be optimized deeperly into React's innerworkings. But if the introduction of `'use agnostic'` can already create such powerful static analysis, imagine what it could produce if only it were incorporated into React as an official directive of the Fullstack React Architecture.
