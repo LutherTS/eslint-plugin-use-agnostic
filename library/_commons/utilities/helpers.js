@@ -114,9 +114,10 @@ export const highlightFirstLineOfCode = (context) => ({
 /**
  * Returns a boolean deciding if an imported file's "resolved" directive is incompatible with the current file's "resolved" directive.
  * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} T
+ * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} U
  * @param {ResolvedDirectives_BlockedImports<T>} resolvedDirectives_blockedImports The blocked imports object, either for agnostic20 or for directive21.
  * @param {T} currentFileResolvedDirective The current file's "resolved" directive.
- * @param {T} importedFileResolvedDirective The imported file's "resolved" directive.
+ * @param {U} importedFileResolvedDirective The imported file's "resolved" directive.
  * @returns `true` if the import is blocked, as established in respective `resolvedDirectives_blockedImports`.
  */
 export const isImportBlocked = (

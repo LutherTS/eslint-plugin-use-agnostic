@@ -40,7 +40,7 @@ import {
 /* currentFileFlow */
 
 /**
- * The flow that begins the import rules enforcement rule, retrieving the valid directive of the current file before comparing it to upcoming valid directives of the files it imports.
+ * The flow that begins the import rules enforcement rule, retrieving the effective directive of the current file before comparing it to upcoming effective directives of the files it imports.
  * @param {Context} context The ESLint rule's `context` object.
  * @returns Either an object with `skip: true` to disregard or one with the non-null `currentFileEffectiveDirective`.
  */
