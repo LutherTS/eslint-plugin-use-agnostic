@@ -10,8 +10,8 @@ import {
 } from "../constants/bases.js";
 
 /**
- * @typedef {import('../../../types/_commons/typedefs').ResolvedDirectiveWithoutUseAgnosticStrategies} ResolvedDirectiveWithoutUseAgnosticStrategies
  * @typedef {import('../../../types/_commons/typedefs').Context<string, readonly unknown[]>} Context
+ * @typedef {import('../../../types/_commons/typedefs').ResolvedDirectiveWithoutUseAgnosticStrategies} ResolvedDirectiveWithoutUseAgnosticStrategies
  */
 
 /**
@@ -36,16 +36,16 @@ const findExistingPath = (basePath) => {
 
 /**
  * Resolves an import path to a filesystem path, handling:
- * - Aliases (via tsconfig.json `paths`)
- * - Missing extensions (appends .ts, .tsx, etc.)
+ * - Base url and aliases (via tsconfig.json `baseUrl` and `paths` compiler options)
+ * - Missing extensions (appends `.ts`, `.tsx`, etc.)
  * - Directory imports (e.g., `./components` → `./components/index.ts`)
  * @param {string} currentDir The directory of the file containing the import (from `path.dirname(context.filename)`).
  * @param {string} importPath The import specifier (e.g., `@/components/Button` or `./utils`), from the current node.
- * @param {string} cwd The project root (from `context.cwd`). Caveat: only as an assumption currently.
+ * @param {string} cwd The project root (from `context.cwd`).
  * @returns The absolute resolved path or `null` if no path is found.
  */
 export const resolveImportPath = (currentDir, importPath, cwd) => {
-  // Step 1: Resolve baseUrl and aliases (if tsconfig.json `paths` exists)
+  // Step 1: Resolves baseUrl and aliases
   const config = loadConfig(cwd);
 
   const resolveTSConfig =
@@ -53,12 +53,12 @@ export const resolveImportPath = (currentDir, importPath, cwd) => {
       ? createMatchPath(config.absoluteBaseUrl, config.paths)
       : null;
 
-  const aliasedPath = resolveTSConfig
+  const baseUrlOrAliasedPath = resolveTSConfig
     ? resolveTSConfig(importPath, undefined, undefined, EXTENSIONS)
     : null;
 
-  // Step 2: Resolve relative/absolute paths
-  const basePath = aliasedPath || path.resolve(currentDir, importPath);
+  // Step 2: Resolves relative/absolute paths
+  const basePath = baseUrlOrAliasedPath || path.resolve(currentDir, importPath);
 
   // does not resolve on node_modules
   if (basePath.includes("node_modules")) return null;
@@ -66,7 +66,7 @@ export const resolveImportPath = (currentDir, importPath, cwd) => {
   // Case 1: File with extension exists
   if (path.extname(importPath) && fs.existsSync(basePath)) return basePath;
 
-  // Case 2: Try appending extensions
+  // Case 2: Tries appending extensions
   const extensionlessImportPath = findExistingPath(basePath);
   if (extensionlessImportPath) return extensionlessImportPath;
 
@@ -135,8 +135,8 @@ export const isImportBlocked = (
  * Makes the intro for each specific import rule violation messages.
  * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} T
  * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} U
- * @param {T} currentFileResolvedDirective The current file's "resolved" directive, excluding `"use agnostic strategies"`.
- * @param {U} importedFileResolvedDirective The imported file's "resolved" directive, excluding `"use agnostic strategies"`.
+ * @param {T} currentFileResolvedDirective The current file's "resolved" directive.
+ * @param {U} importedFileResolvedDirective The imported file's "resolved" directive.
  * @returns "[Current file 'resolved' modules] are not allowed to import [imported file 'resolved' modules]."
  */
 export const makeIntroForSpecificViolationMessage = (
@@ -194,9 +194,10 @@ export const makeMessageFromCurrentFileResolvedDirective = (
 /**
  * Finds the `message` for the specific violation of "resolved" directives import rules based on `resolvedDirectives_blockedImports`.
  * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} T
+ * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} U
  * @param {ResolvedDirectives_BlockedImports<T>} resolvedDirectives_blockedImports The blocked imports object, either for agnostic20 or for directive21.
- * @param {T} currentFileResolvedDirective The current file's "resolved" directive, excluding `"use agnostic strategies"`.
- * @param {T} importedFileResolvedDirective The imported file's "resolved" directive.
+ * @param {T} currentFileResolvedDirective The current file's "resolved" directive.
+ * @param {U} importedFileResolvedDirective The imported file's "resolved" directive.
  * @returns The corresponding `message`.
  */
 export const findSpecificViolationMessage = (
