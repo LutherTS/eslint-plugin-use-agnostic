@@ -1,3 +1,9 @@
+/* TEST START */
+import fs from "fs";
+import { Linter } from "eslint";
+import tseslint from "typescript-eslint";
+/* TEST END */
+
 import {
   USE_SERVER,
   LOGICS,
@@ -85,6 +91,11 @@ export const getEffectiveDirective = (directive, extension) => {
 
 /* getDirectiveFromImportedModule */
 
+/* TEST START */
+// to be instantiate a single time in a parent imported file (in commons)
+const linter = new Linter();
+/* TEST END */
+
 /**
  * Gets the directive of the imported module.
  * - `'use client'` denotes a Client Module.
@@ -95,6 +106,54 @@ export const getEffectiveDirective = (directive, extension) => {
  * @returns The directive, or lack thereof via `null`. The lack of a directive is considered server-by-default.
  */
 export const getDirectiveFromImportedModule = (resolvedImportPath) => {
+  /* TEST START */
+  // console.log({ resolvedImportPath });
+
+  const text = fs.readFileSync(resolvedImportPath, "utf8");
+  // console.log({text})
+
+  linter.verify(
+    text,
+    // turn these language options into an object that can be imported from a parent imported file (in commons)
+    {
+      languageOptions: {
+        // for compatibility with .ts and .tsx
+        parser: tseslint.parser,
+      },
+    }
+  );
+  const code = linter.getSourceCode();
+  console.log({ code });
+  const ast = code.ast;
+  // console.log({ ast });
+
+  // and now copy pasting from getDirectiveFromCurrentModule...
+  // the AST body to check for the top-of-the-file directive
+  const { body } = ast;
+  // console.log({ body });
+
+  // the first statement from the source code's Abstract Syntax Tree
+  const firstStatement = body[0];
+  // console.log({ firstStatement });
+
+  // the value of that first statement or null
+  const value =
+    firstStatement?.type === "ExpressionStatement" &&
+    firstStatement.expression?.type === "Literal"
+      ? firstStatement.expression.value
+      : null;
+  // console.log({ value });
+
+  // considers early a null value as the absence of a directive
+  if (value === null) return value;
+
+  // the value to be exactly 'use client', 'use server' or 'use agnostic' in order not to be considered null by default, or server-by-default
+  const currentFileDirective =
+    directivesArray.find((directive) => directive === value) ?? null;
+
+  return currentFileDirective;
+  /* TEST END */
+
   // gets the first line of the code of the import
   const importedFileFirstLine = getImportedFileFirstLine(resolvedImportPath);
 
