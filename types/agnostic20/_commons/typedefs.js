@@ -13,6 +13,7 @@ import {
 /**
  * @typedef {import("../../_commons/typedefs.js").Plugin} Plugin
  *
+ * @typedef {import("../../_commons/typedefs.js").AST} AST
  * @typedef {import("../../_commons/typedefs.js").ImportDeclaration} ImportDeclaration
  * @typedef {import("../../_commons/typedefs.js").ExportNamedDeclaration} ExportNamedDeclaration
  * @typedef {import("../../_commons/typedefs.js").ExportAllDeclaration} ExportAllDeclaration

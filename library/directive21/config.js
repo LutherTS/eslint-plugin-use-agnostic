@@ -1,10 +1,10 @@
 import { defineConfig } from "eslint/config";
-import tseslint from "typescript-eslint";
 
 import {
   directive21ConfigName,
   useAgnosticPluginName,
   enforceCommentedDirectivesRuleName,
+  typeScriptCompatible,
 } from "../_commons/constants/bases.js";
 
 /**
@@ -26,10 +26,7 @@ export const makeDirective21Config = (plugin) => ({
         [`${useAgnosticPluginName}/${enforceCommentedDirectivesRuleName}`]:
           "warn",
       },
-      languageOptions: {
-        // for compatibility with .ts and .tsx
-        parser: tseslint.parser,
-      },
+      languageOptions: typeScriptCompatible,
     },
   ]),
 });

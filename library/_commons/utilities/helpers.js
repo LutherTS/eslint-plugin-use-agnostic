@@ -7,6 +7,8 @@ import {
   EXTENSIONS,
   ARE_NOT_ALLOWED_TO_IMPORT,
   resolvedDirectives_resolvedModules,
+  linter,
+  typeScriptCompatible,
 } from "../constants/bases.js";
 
 /**
@@ -78,7 +80,29 @@ export const resolveImportPath = (currentDir, importPath, cwd) => {
   return null; // not found
 };
 
-/* getImportedFileFirstLine */
+/* getASTFromResolvedPath */ // for agnostic20
+// Note: For agnostic20, I need the AST so that the directive can be picked up on any line as long as it is the first statement of the file.
+
+/**
+ * Gets the ESLint-generated Abstract Syntax Tree of a file from its resolved path.
+ * @param {string} resolvedPath The resolved path of the file.
+ * @returns The ESLint-generated AST (Abstract Syntax Tree) of the file.
+ */
+export const getASTFromFilePath = (resolvedPath) => {
+  // the raw code of the file at the end of the resolved path
+  const text = fs.readFileSync(resolvedPath, "utf8");
+  // utilizes linter.verify ...
+  linter.verify(text, { languageOptions: typeScriptCompatible });
+  // ... to retrieve the raw code as a SourceCode object ...
+  const code = linter.getSourceCode();
+  // ... from which to extra the ESLint-generated AST
+  const ast = code.ast;
+
+  return ast;
+};
+
+/* getImportedFileFirstLine */ // for directive21
+// Note: For directive21, I prioritize reading from the file system for performance, forgoing the retrieval of the source code comments for imported modules, since the Directive-First Architecture imposes that the first line of the file is reserved for its commented directive.
 
 /**
  * Gets the first line of code of the imported module.

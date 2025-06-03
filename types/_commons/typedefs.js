@@ -31,6 +31,7 @@ import {
  * @typedef {typeof USE_AGNOSTIC_STRATEGIES} UseAgnosticStrategies
  * @typedef {Exclude<ResolvedDirective, UseAgnosticStrategies>} ResolvedDirectiveWithoutUseAgnosticStrategies
  *
+ * @typedef {import('@typescript-eslint/utils').TSESLint.SourceCode.Program} AST
  * @typedef {import('@typescript-eslint/types').TSESTree.ImportDeclaration} ImportDeclaration
  * @typedef {import('@typescript-eslint/types').TSESTree.ExportNamedDeclaration} ExportNamedDeclaration
  * @typedef {import('@typescript-eslint/types').TSESTree.ExportAllDeclaration} ExportAllDeclaration
