@@ -11,10 +11,10 @@ import {
 } from "../constants/bases.js";
 
 import {
-  getImportedFileFirstLine,
   isImportBlocked as commonsIsImportBlocked,
   makeMessageFromCurrentFileResolvedDirective,
   findSpecificViolationMessage as commonsFindSpecificViolationMessage,
+  getImportedFileFirstLine,
 } from "../../../_commons/utilities/helpers.js";
 
 /**

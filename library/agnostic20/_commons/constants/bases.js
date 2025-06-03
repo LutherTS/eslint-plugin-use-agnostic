@@ -54,28 +54,28 @@ export const FUNCTIONS = "functions";
 
 // mapping directives with effective directives
 /** @type {Directives_EffectiveDirectives} */
-export const directives_effectiveDirectives = {
-  [NO_DIRECTIVE]: {
+export const directives_effectiveDirectives = Object.freeze({
+  [NO_DIRECTIVE]: Object.freeze({
     [LOGICS]: USE_SERVER_LOGICS,
     [COMPONENTS]: USE_SERVER_COMPONENTS,
     [FUNCTIONS]: null,
-  },
-  [USE_SERVER]: {
+  }),
+  [USE_SERVER]: Object.freeze({
     [LOGICS]: null,
     [COMPONENTS]: null,
     [FUNCTIONS]: USE_SERVER_FUNCTIONS,
-  },
-  [USE_CLIENT]: {
+  }),
+  [USE_CLIENT]: Object.freeze({
     [LOGICS]: USE_CLIENT_LOGICS,
     [COMPONENTS]: USE_CLIENT_COMPONENTS,
     [FUNCTIONS]: null,
-  },
-  [USE_AGNOSTIC]: {
+  }),
+  [USE_AGNOSTIC]: Object.freeze({
     [LOGICS]: USE_AGNOSTIC_LOGICS,
     [COMPONENTS]: USE_AGNOSTIC_COMPONENTS,
     [FUNCTIONS]: null,
-  },
-};
+  }),
+});
 
 // message placeholders
 export const currentFileEffectiveDirective = "currentFileEffectiveDirective";

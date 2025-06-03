@@ -13,6 +13,7 @@ import {
 /**
  * @typedef {import("../../_commons/typedefs.js").Plugin} Plugin
  *
+ * @typedef {import("../../_commons/typedefs.js").AST} AST
  * @typedef {import("../../_commons/typedefs.js").ImportDeclaration} ImportDeclaration
  * @typedef {import("../../_commons/typedefs.js").ExportNamedDeclaration} ExportNamedDeclaration
  * @typedef {import("../../_commons/typedefs.js").ExportAllDeclaration} ExportAllDeclaration
@@ -22,7 +23,7 @@ import {
  * @typedef {typeof USE_SERVER | typeof USE_CLIENT | typeof USE_AGNOSTIC} Directive
  * @typedef {readonly [typeof USE_SERVER, typeof USE_CLIENT, typeof USE_AGNOSTIC]} Directives
  * @typedef {typeof NO_DIRECTIVE} NoDirective
- * @typedef {Record<Directive | NoDirective, { logics: EffectiveDirective | null, components: EffectiveDirective | null, functions: EffectiveDirective | null }>} Directives_EffectiveDirectives
+ * @typedef {Readonly<Record<Directive | NoDirective, Readonly<{ logics: EffectiveDirective | null, components: EffectiveDirective | null, functions: EffectiveDirective | null }>>>} Directives_EffectiveDirectives
  *
  * @typedef {import("../../_commons/typedefs.js").EffectiveDirective} EffectiveDirective
  *

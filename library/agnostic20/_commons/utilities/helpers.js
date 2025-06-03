@@ -9,13 +9,14 @@ import {
 } from "../constants/bases.js";
 
 import {
-  getImportedFileFirstLine,
   isImportBlocked as commonsIsImportBlocked,
   makeMessageFromCurrentFileResolvedDirective,
   findSpecificViolationMessage as commonsFindSpecificViolationMessage,
+  getASTFromFilePath,
 } from "../../../_commons/utilities/helpers.js";
 
 /**
+ * @typedef {import('../../../../types/agnostic20/_commons/typedefs.js').AST} AST
  * @typedef {import('../../../../types/agnostic20/_commons/typedefs.js').Context} Context
  * @typedef {import('../../../../types/agnostic20/_commons/typedefs.js').Directive} Directive
  * @typedef {import('../../../../types/agnostic20/_commons/typedefs.js').NoDirective} NoDirective
@@ -23,20 +24,20 @@ import {
  * @typedef {import('../../../../types/agnostic20/_commons/typedefs.js').EffectiveDirective} EffectiveDirective
  */
 
-/* getDirectiveFromCurrentModule */
+/* getDirectiveFromModule */
 
 /**
- * Gets the directive of the current module.
+ * Gets the directive of a module from its Abstract Syntax Tree.
  * - `null` denotes a server-by-default module, ideally a Server Module.
  * - `'use client'` denotes a Client Module.
  * - `'use server'` denotes a Server Functions Module.
  * - `'use agnostic'` denotes an Agnostic Module (formerly Shared Module).
- * @param {Context} context The ESLint rule's `context` object.
+ * @param {AST} ast The module's AST (Abstract Syntax Tree).
  * @returns The directive, or lack thereof via `null`. The lack of a directive is considered server-by-default.
  */
-export const getDirectiveFromCurrentModule = (context) => {
+export const getDirectiveFromModule = (ast) => {
   // the AST body to check for the top-of-the-file directive
-  const { body } = context.sourceCode.ast;
+  const { body } = ast;
 
   // the first statement from the source code's Abstract Syntax Tree
   const firstStatement = body[0];
@@ -52,10 +53,46 @@ export const getDirectiveFromCurrentModule = (context) => {
   if (value === null) return value;
 
   // the value to be exactly 'use client', 'use server' or 'use agnostic' in order not to be considered null by default, or server-by-default
-  const currentFileDirective =
+  const moduleDirective =
     directivesArray.find((directive) => directive === value) ?? null;
 
-  return currentFileDirective;
+  return moduleDirective;
+};
+
+/* getDirectiveFromCurrentModule */
+
+/**
+ * Gets the directive of the current module.
+ * - `null` denotes a server-by-default module, ideally a Server Module.
+ * - `'use client'` denotes a Client Module.
+ * - `'use server'` denotes a Server Functions Module.
+ * - `'use agnostic'` denotes an Agnostic Module (formerly Shared Module).
+ * @param {Context} context The ESLint rule's `context` object.
+ * @returns The directive, or lack thereof via `null`. The lack of a directive is considered server-by-default.
+ */
+export const getDirectiveFromCurrentModule = (context) => {
+  // the AST of the current module
+  const ast = context.sourceCode.ast;
+
+  return getDirectiveFromModule(ast);
+};
+
+/* getDirectiveFromImportedModule */
+
+/**
+ * Gets the directive of the imported module.
+ * - `'use client'` denotes a Client Module.
+ * - `'use server'` denotes a Server Functions Module.
+ * - `'use agnostic'` denotes an Agnostic Module (formerly Shared Module).
+ * - `null` denotes a server-by-default module, ideally a Server Module.
+ * @param {string} resolvedImportPath The resolved path of the import.
+ * @returns The directive, or lack thereof via `null`. The lack of a directive is considered server-by-default.
+ */
+export const getDirectiveFromImportedModule = (resolvedImportPath) => {
+  // the AST of the imported module
+  const ast = getASTFromFilePath(resolvedImportPath);
+
+  return getDirectiveFromModule(ast);
 };
 
 /* getEffectiveDirective */
@@ -81,38 +118,6 @@ export const getEffectiveDirective = (directive, extension) => {
     : LOGICS;
 
   return directives_effectiveDirectives[directive][moduleKind];
-};
-
-/* getDirectiveFromImportedModule */
-
-/**
- * Gets the directive of the imported module.
- * - `'use client'` denotes a Client Module.
- * - `'use server'` denotes a Server Functions Module.
- * - `'use agnostic'` denotes an Agnostic Module (formerly Shared Module).
- * - `null` denotes a server-by-default module, ideally a Server Module.
- * @param {string} resolvedImportPath The resolved path of the import.
- * @returns The directive, or lack thereof via `null`. The lack of a directive is considered server-by-default.
- */
-export const getDirectiveFromImportedModule = (resolvedImportPath) => {
-  // gets the first line of the code of the import
-  const importedFileFirstLine = getImportedFileFirstLine(resolvedImportPath);
-
-  // verifies that this first line starts with a valid directive, thus excluding comments
-  const hasAcceptedDirective = directivesArray.some(
-    (directive) =>
-      importedFileFirstLine.startsWith(`'${directive}'`) ||
-      importedFileFirstLine.startsWith(`"${directive}"`)
-  );
-
-  // applies the correct directive or the lack thereof with null
-  const importedFileDirective = hasAcceptedDirective
-    ? directivesArray.find((directive) =>
-        importedFileFirstLine.includes(directive)
-      ) ?? null
-    : null;
-
-  return importedFileDirective;
 };
 
 /* isImportBlocked */

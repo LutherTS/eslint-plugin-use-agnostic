@@ -1,3 +1,6 @@
+import { Linter } from "eslint";
+import tseslint from "typescript-eslint";
+
 /**
  * @typedef {import('../../../types/_commons/typedefs').Extensions} Extensions
  */
@@ -116,4 +119,13 @@ export const ARE_NOT_ALLOWED_TO_IMPORT = "are not allowed to import";
 // skipping object for flows
 export const skip = Object.freeze({
   skip: true,
+});
+
+// common linter for AST retrieval
+export const linter = new Linter();
+
+// ESLint configs language options
+export const typeScriptCompatible = Object.freeze({
+  // for compatibility with .ts and .tsx
+  parser: tseslint.parser,
 });

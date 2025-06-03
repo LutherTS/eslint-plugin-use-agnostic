@@ -1,10 +1,10 @@
 import { defineConfig } from "eslint/config";
-import tseslint from "typescript-eslint";
 
 import {
   agnostic20ConfigName,
   useAgnosticPluginName,
   enforceEffectiveDirectivesRuleName,
+  typeScriptCompatible,
 } from "../_commons/constants/bases.js";
 
 /**
@@ -26,10 +26,7 @@ export const makeAgnostic20Config = (plugin) => ({
         [`${useAgnosticPluginName}/${enforceEffectiveDirectivesRuleName}`]:
           "warn",
       },
-      languageOptions: {
-        // for compatibility with .ts and .tsx
-        parser: tseslint.parser,
-      },
+      languageOptions: typeScriptCompatible,
     },
   ]),
 });
