@@ -8,8 +8,7 @@ import {
   EXTENSIONS,
   ARE_NOT_ALLOWED_TO_IMPORT,
   resolvedDirectives_resolvedModules,
-  // linter,
-  typeScriptCompatible,
+  typeScriptAndJSXCompatible,
 } from "../constants/bases.js";
 
 /**
@@ -90,11 +89,13 @@ export const resolveImportPath = (currentDir, importPath, cwd) => {
  * @returns The ESLint-generated AST (Abstract Syntax Tree) of the file.
  */
 export const getASTFromFilePath = (resolvedPath) => {
+  // ensures each instance of the function is based on its own linter
+  // (just in case somehow some linters were running concurrently)
   const linter = new Linter();
   // the raw code of the file at the end of the resolved path
   const text = fs.readFileSync(resolvedPath, "utf8");
   // utilizes linter.verify ...
-  linter.verify(text, { languageOptions: typeScriptCompatible });
+  linter.verify(text, { languageOptions: typeScriptAndJSXCompatible });
   // ... to retrieve the raw code as a SourceCode object ...
   const code = linter.getSourceCode();
   // ... from which to extra the ESLint-generated AST

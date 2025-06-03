@@ -4,7 +4,7 @@ import {
   agnostic20ConfigName,
   useAgnosticPluginName,
   enforceEffectiveDirectivesRuleName,
-  typeScriptCompatible,
+  typeScriptAndJSXCompatible,
 } from "../_commons/constants/bases.js";
 
 /**
@@ -26,7 +26,7 @@ export const makeAgnostic20Config = (plugin) => ({
         [`${useAgnosticPluginName}/${enforceEffectiveDirectivesRuleName}`]:
           "warn",
       },
-      languageOptions: typeScriptCompatible,
+      languageOptions: typeScriptAndJSXCompatible,
     },
   ]),
 });
