@@ -20,6 +20,7 @@ import {
 /**
  * @typedef {import("tsconfig-paths/lib/filesystem.js").PackageJson} PackageJson
  * @typedef {import('eslint').ESLint.Plugin} Plugin
+ * @typedef {import('eslint').Linter.LanguageOptions} LanguageOptions
  *
  * @typedef {typeof TSX | typeof TS | typeof JSX | typeof JS | typeof MJS | typeof CJS} Extension
  * @typedef {readonly [typeof TSX, typeof TS, typeof JSX, typeof JS, typeof MJS, typeof CJS]} Extensions
