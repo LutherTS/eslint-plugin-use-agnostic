@@ -1,13 +1,14 @@
 import fs from "fs";
 import path from "path";
 
+import { Linter } from "eslint";
 import { loadConfig, createMatchPath } from "tsconfig-paths";
 
 import {
   EXTENSIONS,
   ARE_NOT_ALLOWED_TO_IMPORT,
   resolvedDirectives_resolvedModules,
-  linter,
+  // linter,
   typeScriptCompatible,
 } from "../constants/bases.js";
 
@@ -89,6 +90,7 @@ export const resolveImportPath = (currentDir, importPath, cwd) => {
  * @returns The ESLint-generated AST (Abstract Syntax Tree) of the file.
  */
 export const getASTFromFilePath = (resolvedPath) => {
+  const linter = new Linter();
   // the raw code of the file at the end of the resolved path
   const text = fs.readFileSync(resolvedPath, "utf8");
   // utilizes linter.verify ...
