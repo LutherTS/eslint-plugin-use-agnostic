@@ -46,9 +46,9 @@ import {
 /* currentFileFlow */
 
 /**
- * The flow that begins the import rules enforcement rule, retrieving the valid directive of the current file before comparing it to upcoming valid directives of the files it imports.
+ * The flow that begins the import rules enforcement rule, retrieving the verified commented directive of the current file before comparing it to upcoming verified commented directives of the files it imports.
  * @param {Context} context The ESLint rule's `context` object.
- * @returns Either an object with `skip: true` to disregard or one with the non-null `verifiedCommentedDirective`. ()
+ * @returns Either an object with `skip: true` to disregard or one with the non-null `verifiedCommentedDirective`.
  */
 export const currentFileFlow = (context) => {
   const skipTrue = { ...skip, verifiedCommentedDirective: undefined };
@@ -135,7 +135,7 @@ const importedFileFlow = (context, node) => {
   if (!importedFileCommentedDirective) {
     console.warn(
       "WARNING. The imported file, whose path has been resolved, has no directive. It is thus ignored since the report on that circumstance is available on the imported file itself."
-    );
+    ); // The decision not to report has been taken to not inflate the number of warnings.
     return skipTrue;
   }
 
