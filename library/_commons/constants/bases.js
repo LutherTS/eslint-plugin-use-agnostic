@@ -2,6 +2,7 @@ import tseslint from "typescript-eslint";
 
 /**
  * @typedef {import('../../../types/_commons/typedefs').Extensions} Extensions
+ * @typedef {import('../../../types/_commons/typedefs').LanguageOptions} LanguageOptions
  */
 
 /* plugin names */
@@ -121,7 +122,7 @@ export const skip = Object.freeze({
 });
 
 // ESLint configs language options
-/** @type {import('eslint').Linter.LanguageOptions} */
+/** @type {LanguageOptions} */
 export const typeScriptAndJSXCompatible = {
   // for compatibility with .ts and .tsx
   parser: tseslint.parser,
