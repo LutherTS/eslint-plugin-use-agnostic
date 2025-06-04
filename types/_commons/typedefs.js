@@ -40,11 +40,13 @@ import {
  */
 
 /**
- * @typedef {Readonly<{blockedImport: string; message: string;}>[]} BlockedImports
+ * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} U
+ * @typedef {Readonly<{blockedImport: U; message: string;}>[]} BlockedImports
  */
 /**
  * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} T
- * @typedef {Readonly<Record<T, BlockedImports>>} ResolvedDirectives_BlockedImports
+ * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} U
+ * @typedef {Readonly<Record<T, BlockedImports<U>>>} ResolvedDirectives_BlockedImports
  */
 
 /**
