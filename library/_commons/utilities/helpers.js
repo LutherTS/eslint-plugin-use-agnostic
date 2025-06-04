@@ -18,7 +18,8 @@ import {
 
 /**
  * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} T
- * @typedef {import('../../../types/_commons/typedefs').ResolvedDirectives_BlockedImports<T>} ResolvedDirectives_BlockedImports
+ * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} U
+ * @typedef {import('../../../types/_commons/typedefs').ResolvedDirectives_BlockedImports<T, U>} ResolvedDirectives_BlockedImports
  */
 
 /* resolveImportPath */
@@ -98,14 +99,14 @@ export const getASTFromFilePath = (resolvedPath) => {
   linter.verify(text, { languageOptions: typeScriptAndJSXCompatible });
   // ... to retrieve the raw code as a SourceCode object ...
   const code = linter.getSourceCode();
-  // ... from which to extra the ESLint-generated AST
+  // ... from which to extract the ESLint-generated AST
   const ast = code.ast;
 
   return ast;
 };
 
 /* getImportedFileFirstLine */ // for directive21
-// Note: For directive21, I prioritize reading from the file system for performance, forgoing the retrieval of the source code comments for imported modules, since the Directive-First Architecture imposes that the first line of the file is reserved for its commented directive.
+// Note: For directive21, I prioritize reading from the file system for performance, foregoing the retrieval of the source code comments for imported modules, since the Directive-First Architecture imposes that the first line of the file is reserved for its commented directive.
 
 /**
  * Gets the first line of code of the imported module.
@@ -142,7 +143,7 @@ export const highlightFirstLineOfCode = (context) => ({
  * Returns a boolean deciding if an imported file's "resolved" directive is incompatible with the current file's "resolved" directive.
  * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} T
  * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} U
- * @param {ResolvedDirectives_BlockedImports<T>} resolvedDirectives_blockedImports The blocked imports object, either for agnostic20 or for directive21.
+ * @param {ResolvedDirectives_BlockedImports<T, U>} resolvedDirectives_blockedImports The blocked imports object, either for agnostic20 or for directive21.
  * @param {T} currentFileResolvedDirective The current file's "resolved" directive.
  * @param {U} importedFileResolvedDirective The imported file's "resolved" directive.
  * @returns `true` if the import is blocked, as established in respective `resolvedDirectives_blockedImports`.
@@ -182,7 +183,8 @@ export const makeIntroForSpecificViolationMessage = (
 /**
  * Lists in an message the "resolved" modules incompatible with a "resolved" module based on its "resolved" directive.
  * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} T
- * @param {ResolvedDirectives_BlockedImports<T>} resolvedDirectives_blockedImports The blocked imports object, either for agnostic20 or for directive21.
+ * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} U
+ * @param {ResolvedDirectives_BlockedImports<T, U>} resolvedDirectives_blockedImports The blocked imports object, either for agnostic20 or for directive21.
  * @param {T} currentFileResolvedDirective The "resolved" directive of the "resolved" module.
  * @returns The message listing the incompatible "resolved" modules.
  */
@@ -223,7 +225,7 @@ export const makeMessageFromCurrentFileResolvedDirective = (
  * Finds the `message` for the specific violation of "resolved" directives import rules based on `resolvedDirectives_blockedImports`.
  * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} T
  * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} U
- * @param {ResolvedDirectives_BlockedImports<T>} resolvedDirectives_blockedImports The blocked imports object, either for agnostic20 or for directive21.
+ * @param {ResolvedDirectives_BlockedImports<T, U>} resolvedDirectives_blockedImports The blocked imports object, either for agnostic20 or for directive21.
  * @param {T} currentFileResolvedDirective The current file's "resolved" directive.
  * @param {U} importedFileResolvedDirective The imported file's "resolved" directive.
  * @returns The corresponding `message`.

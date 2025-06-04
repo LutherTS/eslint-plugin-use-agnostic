@@ -219,14 +219,42 @@ export const getStrategizedDirective = (context, node) => {
   return commentedDirective;
 };
 
+/* addressDirectiveIfAgnosticStrategies */
+
+/**
+ * Verifies the current node's export strategy if the current commented directive is `"use agnostic strategies"` by reporting `exportNotStrategized` in case an export is not strategized in an Agnostic Strategies Module.
+ * @param {Context} context The ESLint rule's `context` object.
+ * @param {ExportNamedDeclaration | ExportAllDeclaration | ExportDefaultDeclaration} node The ESLint `node` of the rule's current traversal.
+ * @param {CommentedDirective} currentFileCommentedDirective The current file's commented directive.
+ * @returns The commented directive, the addressed strategy (as a commented directive) or `null` in case of failure.
+ */
+export const addressDirectiveIfAgnosticStrategies = (
+  context,
+  node,
+  currentFileCommentedDirective
+) => {
+  // ignores if not addressing an Agnostic Strategies Module
+  if (currentFileCommentedDirective !== USE_AGNOSTIC_STRATEGIES)
+    return currentFileCommentedDirective;
+
+  const exportStrategizedDirective = getStrategizedDirective(context, node);
+
+  if (exportStrategizedDirective === null) {
+    context.report({
+      node,
+      messageId: exportNotStrategized,
+    });
+  }
+
+  return exportStrategizedDirective; // null indicates failure
+};
+
 /* isImportBlocked */
 
 /**
  * Returns a boolean deciding if an imported file's commented directive is incompatible with the current file's commented directive.
- * @template {CommentedDirectiveWithoutUseAgnosticStrategies} T
- * @template {CommentedDirectiveWithoutUseAgnosticStrategies} U
- * @param {T} currentFileCommentedDirective The current file's commented directive.
- * @param {U} importedFileCommentedDirective The imported file's commented directive.
+ * @param {CommentedDirectiveWithoutUseAgnosticStrategies} currentFileCommentedDirective The current file's commented directive.
+ * @param {CommentedDirectiveWithoutUseAgnosticStrategies} importedFileCommentedDirective The imported file's commented directive.
  * @returns `true` if the import is blocked, as established in `commentedDirectives_BlockedImports`.
  */
 export const isImportBlocked = (
@@ -258,10 +286,8 @@ export const makeMessageFromCurrentFileCommentedDirective = (
 
 /**
  * Finds the `message` for the specific violation of commented directives import rules based on `commentedDirectives_BlockedImports`.
- * @template {CommentedDirectiveWithoutUseAgnosticStrategies} T
- * @template {CommentedDirectiveWithoutUseAgnosticStrategies} U
- * @param {T} currentFileCommentedDirective The current file's commented directive.
- * @param {U} importedFileCommentedDirective The imported file's commented directive.
+ * @param {CommentedDirectiveWithoutUseAgnosticStrategies} currentFileCommentedDirective The current file's commented directive.
+ * @param {CommentedDirectiveWithoutUseAgnosticStrategies} importedFileCommentedDirective The imported file's commented directive.
  * @returns The corresponding `message`.
  */
 export const findSpecificViolationMessage = (
@@ -273,33 +299,3 @@ export const findSpecificViolationMessage = (
     currentFileCommentedDirective,
     importedFileCommentedDirective
   );
-
-/* addressDirectiveIfAgnosticStrategies */
-
-/**
- * Verifies the current node's export strategy if the current commented directive is `"use agnostic strategies"` by reporting `exportNotStrategized` in case an export is not strategized in an Agnostic Strategies Module.
- * @param {Context} context The ESLint rule's `context` object.
- * @param {ExportNamedDeclaration | ExportAllDeclaration | ExportDefaultDeclaration} node The ESLint `node` of the rule's current traversal.
- * @param {CommentedDirective} currentFileCommentedDirective The current file's commented directive.
- * @returns The commented directive, the addressed strategy (as a commented directive) or `null` in case of failure.
- */
-export const addressDirectiveIfAgnosticStrategies = (
-  context,
-  node,
-  currentFileCommentedDirective
-) => {
-  // ignores if not addressing an Agnostic Strategies Module
-  if (currentFileCommentedDirective !== USE_AGNOSTIC_STRATEGIES)
-    return currentFileCommentedDirective;
-
-  const exportStrategizedDirective = getStrategizedDirective(context, node);
-
-  if (exportStrategizedDirective === null) {
-    context.report({
-      node,
-      messageId: exportNotStrategized,
-    });
-  }
-
-  return exportStrategizedDirective; // null indicates failure
-};
