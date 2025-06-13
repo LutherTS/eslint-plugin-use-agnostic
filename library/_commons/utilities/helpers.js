@@ -96,7 +96,7 @@ export const getSourceCodeFromFilePath = (resolvedPath) => {
   const text = fs.readFileSync(resolvedPath, "utf8");
   // utilizes linter.verify ...
   linter.verify(text, { languageOptions: typeScriptAndJSXCompatible });
-  // ... to retrieve the raw code as a SourceCode object ...
+  // ... to retrieve the raw code as a SourceCode object
   const code = linter.getSourceCode();
 
   return code;
