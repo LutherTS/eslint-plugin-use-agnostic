@@ -39,7 +39,7 @@ Here, "{{ ${currentFileCommentedDirective} }}" and "{{ ${importedFileCommentedDi
       [importBreaksCommentedImportRulesMessageId]: `{{ ${commentedDirectiveMessage} }} 
 In this case, {{ ${specificViolationMessage} }} `,
       [noCommentedDirective]: `No commented directive detected.
-All targeted modules need to be marked with their respective directives (\`// "use server logics"\`, etc.) for the purpose of this linting rule. `,
+All targeted modules need to be marked with their respective directives (\`// "use server logics"\`, etc.) for the purpose of this linting rule, evaluated from the first JavaScript comment starting on the first column within the first three lines of a module. `,
       [commentedDirectiveVerificationFailed]: `The commented directive could not pass verification due to an incompatible combination with its file extension.
 In this context, {{ ${specificFailure} }} `,
       [importNotStrategized]: `Imports from Agnostic Strategies Modules must be strategized (\`/* @serverLogics */\`, etc.).  

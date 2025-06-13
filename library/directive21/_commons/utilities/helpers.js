@@ -88,7 +88,12 @@ const stripDoubleQuotes = (string) => {
  */
 export const getCommentedDirectiveFromSourceCode = (sourceCode) => {
   // gets the first comment from the source code
-  const firstComment = sourceCode.getAllComments()[0];
+  const rawFirstComment = sourceCode.getAllComments()[0];
+
+  const firstComment =
+    rawFirstComment.type === "Shebang"
+      ? sourceCode.getAllComments()[1]
+      : rawFirstComment;
 
   // returns null early if there is no first comment
   if (!firstComment) return null;
