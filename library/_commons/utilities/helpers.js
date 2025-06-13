@@ -81,15 +81,12 @@ export const resolveImportPath = (currentDir, importPath, cwd) => {
   return null; // not found
 };
 
-/* getASTFromResolvedPath */ // for agnostic20
-// Note: For agnostic20, I need the AST so that the directive can be picked up on any line as long as it is the first statement of the file.
-
 /**
- * Gets the ESLint-generated Abstract Syntax Tree of a file from its resolved path.
+ * Gets the ESLint-generated SourceCode object of a file from its resolved path.
  * @param {string} resolvedPath The resolved path of the file.
- * @returns The ESLint-generated AST (Abstract Syntax Tree) of the file.
+ * @returns The ESLint-generated SourceCode object of the file.
  */
-export const getASTFromFilePath = (resolvedPath) => {
+export const getSourceCodeFromFilePath = (resolvedPath) => {
   // ensures each instance of the function is based on its own linter
   // (just in case somehow some linters were running concurrently)
   const linter = new Linter();
@@ -99,6 +96,20 @@ export const getASTFromFilePath = (resolvedPath) => {
   linter.verify(text, { languageOptions: typeScriptAndJSXCompatible });
   // ... to retrieve the raw code as a SourceCode object ...
   const code = linter.getSourceCode();
+
+  return code;
+};
+
+/* getASTFromResolvedPath */ // for agnostic20
+// Note: For agnostic20, I need the AST so that the directive can be picked up on any line as long as it is the first statement of the file.
+
+/**
+ * Gets the ESLint-generated Abstract Syntax Tree of a file from its resolved path.
+ * @param {string} resolvedPath The resolved path of the file.
+ * @returns The ESLint-generated AST (Abstract Syntax Tree) of the file.
+ */
+export const getASTFromFilePath = (resolvedPath) => {
+  const code = getSourceCodeFromFilePath(resolvedPath);
   // ... from which to extract the ESLint-generated AST
   const ast = code.ast;
 
@@ -107,6 +118,8 @@ export const getASTFromFilePath = (resolvedPath) => {
 
 /* getImportedFileFirstLine */ // for directive21
 // Note: For directive21, I prioritize reading from the file system for performance, foregoing the retrieval of the source code comments for imported modules, since the Directive-First Architecture imposes that the first line of the file is reserved for its commented directive.
+// NEW
+// I'm now looking into making the commented directive be the first comment as long as it is within the first three lines of code.
 
 /**
  * Gets the first line of code of the imported module.

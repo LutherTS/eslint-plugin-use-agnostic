@@ -1,11 +1,11 @@
 import { exportNotStrategized } from "../../../_commons/constants/bases.js";
 import {
-  USE_AGNOSTIC_LOGICS,
+  // USE_AGNOSTIC_LOGICS,
   USE_AGNOSTIC_STRATEGIES,
   commentedDirectivesArray,
   strategiesArray,
   commentedDirectives_extensionRules,
-  commentedDirectives_4RawImplementations,
+  // commentedDirectives_4RawImplementations,
   commentedStrategies_commentedDirectives,
   commentedDirectives_blockedImports,
 } from "../constants/bases.js";
@@ -14,7 +14,8 @@ import {
   isImportBlocked as commonsIsImportBlocked,
   makeMessageFromCurrentFileResolvedDirective,
   findSpecificViolationMessage as commonsFindSpecificViolationMessage,
-  getImportedFileFirstLine,
+  // getImportedFileFirstLine,
+  getSourceCodeFromFilePath,
 } from "../../../_commons/utilities/helpers.js";
 
 /**
@@ -28,7 +29,7 @@ import {
  * @typedef {import('../../../../types/directive21/_commons/typedefs.js').ExportDefaultDeclaration} ExportDefaultDeclaration
  */
 
-/* getCommentedDirectiveFromCurrentModule */
+/* getCommentedDirectiveFromSourceCode */
 
 /**
  * Detects whether a string is single- or double-quoted.
@@ -70,7 +71,7 @@ const stripDoubleQuotes = (string) => {
 };
 
 /**
- * Gets the commented directive of the current module.
+ * Gets the commented directive of a module from its ESLint SourceCode object.
  *
  * Accepted directives for the default Directive-First Architecture are (single or double quotes included):
  * - `'use server logics'`, `"use server logics"` denoting a Server Logics Module.
@@ -84,19 +85,21 @@ const stripDoubleQuotes = (string) => {
  * - `'use client contexts'`, `"use client contexts"` denoting a Client Contexts Module.
  * - `'use agnostic conditions'`, `"use agnostic conditions"` denoting an Agnostic Conditions Module.
  * - `'use agnostic strategies'`, `"use agnostic strategies"` denoting an Agnostic Strategies Module.
- * @param {Context} context The ESLint rule's `context` object.
+ * @param {import('eslint').SourceCode} sourceCode The ESLint SourceCode object.
  * @returns The commented directive, or lack thereof via `null`. Given the strictness of this architecture, the lack of a directive is considered a mistake. (Though rules may provide the opportunity to declare a default, and configs with preset defaults may become provided.)
  */
-export const getCommentedDirectiveFromCurrentModule = (context) => {
+export const getCommentedDirectiveFromSourceCode = (sourceCode) => {
   // gets the first comment from the source code
-  const firstComment = context.sourceCode.getAllComments()[0];
+  const firstComment = sourceCode.getAllComments()[0];
 
   // returns null early if there is no first comment
   if (!firstComment) return null;
 
-  // returns null early if the first comment is not on the first line and the first column
-  if (firstComment.loc.start.line !== 1 || firstComment.loc.start.column !== 0)
-    return null;
+  // returns null early if the first comment is not on one of the first three lines
+  if (firstComment.loc.start.line > 3) return null;
+
+  // returns null early if the first comment is not on the first column
+  if (firstComment.loc.start.column !== 0) return null;
 
   // gets the trimmed raw value of the first comment
   const rawValue = firstComment.value.trim();
@@ -115,6 +118,33 @@ export const getCommentedDirectiveFromCurrentModule = (context) => {
   // certifies the directive or lack thereof from the obtained value
   const commentedDirective =
     commentedDirectivesArray.find((directive) => directive === value) ?? null;
+
+  return commentedDirective;
+};
+
+/* getCommentedDirectiveFromCurrentModule */
+
+/**
+ * Gets the commented directive of the current module.
+ *
+ * Accepted directives for the default Directive-First Architecture are (single or double quotes included):
+ * - `'use server logics'`, `"use server logics"` denoting a Server Logics Module.
+ * - `'use client logics'`, `"use client logics"` denoting a Client Logics Module.
+ * - `'use agnostic logics'`, `"use agnostic logics"` denoting an Agnostic Logics Module.
+ * - `'use server components'`, `"use server components"` denoting a Server Components Module.
+ * - `'use client components'`, `"use client components"` denoting a Client Components Module.
+ * - `'use agnostic components'`, `"use agnostic components"` denoting an Agnostic Components Module.
+ * - `'use agnostic logics'`, `"use agnostic logics"` denoting an Agnostic Logics Module.
+ * - `'use server functions'`, `"use server functions"` denoting a Server Functions Module.
+ * - `'use client contexts'`, `"use client contexts"` denoting a Client Contexts Module.
+ * - `'use agnostic conditions'`, `"use agnostic conditions"` denoting an Agnostic Conditions Module.
+ * - `'use agnostic strategies'`, `"use agnostic strategies"` denoting an Agnostic Strategies Module.
+ * @param {Context} context The ESLint rule's `context` object.
+ * @returns The commented directive, or lack thereof via `null`. Given the strictness of this architecture, the lack of a directive is considered a mistake. (Though rules may provide the opportunity to declare a default, and configs with preset defaults may become provided.)
+ */
+export const getCommentedDirectiveFromCurrentModule = (context) => {
+  const sourceCode = context.sourceCode;
+  const commentedDirective = getCommentedDirectiveFromSourceCode(sourceCode);
 
   return commentedDirective;
 };
@@ -165,27 +195,14 @@ export const getVerifiedCommentedDirective = (directive, extension) => {
  * - `'use client contexts'`, `"use client contexts"` denoting a Client Contexts Module.
  * - `'use agnostic conditions'`, `"use agnostic conditions"` denoting an Agnostic Conditions Module.
  * - `'use agnostic strategies'`, `"use agnostic strategies"` denoting an Agnostic Strategies Module.
- * @param {string} resolvedImportPath The resolved path of the import.
+ * @param {string} resolvedPath The resolved path of the import.
  * @returns The commented directive, or lack thereof via `null`. Given the strictness of this architecture, the lack of a directive is considered a mistake. (Though rules may provide the opportunity to declare a default, and configs with preset defaults may become provided.)
  */
-export const getCommentedDirectiveFromImportedModule = (resolvedImportPath) => {
-  // gets the first line of the code of the import
-  const importedFileFirstLine = getImportedFileFirstLine(resolvedImportPath);
+export const getCommentedDirectiveFromImportedModule = (resolvedPath) => {
+  const sourceCode = getSourceCodeFromFilePath(resolvedPath);
+  const commentedDirective = getCommentedDirectiveFromSourceCode(sourceCode);
 
-  // sees if the first line includes any of the directives and finds the directive that it includes, with USE_AGNOSTIC_LOGICS as a default
-  const includedDirective = commentedDirectivesArray.reduce((acc, curr) => {
-    if (importedFileFirstLine.includes(curr)) return curr;
-    else return acc;
-  }, USE_AGNOSTIC_LOGICS);
-
-  // sees if the first line is strictly equal to one of the four raw implementations of the commented directive and returns that directive if true or null if false
-  if (
-    commentedDirectives_4RawImplementations[includedDirective].some(
-      (raw) => raw === importedFileFirstLine
-    )
-  )
-    return includedDirective;
-  else return null;
+  return commentedDirective;
 };
 
 /* getStrategizedDirective */
