@@ -14,7 +14,6 @@ import {
   isImportBlocked as commonsIsImportBlocked,
   makeMessageFromCurrentFileResolvedDirective,
   findSpecificViolationMessage as commonsFindSpecificViolationMessage,
-  // getImportedFileFirstLine,
   getSourceCodeFromFilePath,
 } from "../../../_commons/utilities/helpers.js";
 
@@ -149,6 +148,33 @@ export const getCommentedDirectiveFromCurrentModule = (context) => {
   return commentedDirective;
 };
 
+/* getCommentedDirectiveFromImportedModule */
+
+/**
+ * Gets the commented directive of the imported module.
+ *
+ * Accepted directives for the default Directive-First Architecture are (single or double quotes included):
+ * - `'use server logics'`, `"use server logics"` denoting a Server Logics Module.
+ * - `'use client logics'`, `"use client logics"` denoting a Client Logics Module.
+ * - `'use agnostic logics'`, `"use agnostic logics"` denoting an Agnostic Logics Module.
+ * - `'use server components'`, `"use server components"` denoting a Server Components Module.
+ * - `'use client components'`, `"use client components"` denoting a Client Components Module.
+ * - `'use agnostic components'`, `"use agnostic components"` denoting an Agnostic Components Module.
+ * - `'use agnostic logics'`, `"use agnostic logics"` denoting an Agnostic Logics Module.
+ * - `'use server functions'`, `"use server functions"` denoting a Server Functions Module.
+ * - `'use client contexts'`, `"use client contexts"` denoting a Client Contexts Module.
+ * - `'use agnostic conditions'`, `"use agnostic conditions"` denoting an Agnostic Conditions Module.
+ * - `'use agnostic strategies'`, `"use agnostic strategies"` denoting an Agnostic Strategies Module.
+ * @param {string} resolvedPath The resolved path of the imported module.
+ * @returns The commented directive, or lack thereof via `null`. Given the strictness of this architecture, the lack of a directive is considered a mistake. (Though rules may provide the opportunity to declare a default, and configs with preset defaults may become provided.)
+ */
+export const getCommentedDirectiveFromImportedModule = (resolvedPath) => {
+  const sourceCode = getSourceCodeFromFilePath(resolvedPath);
+  const commentedDirective = getCommentedDirectiveFromSourceCode(sourceCode);
+
+  return commentedDirective;
+};
+
 /* getVerifiedCommentedDirective */
 
 /**
@@ -176,33 +202,6 @@ export const getVerifiedCommentedDirective = (directive, extension) => {
   if (rule === null) return directive; // no extension constraint, specifically for "use agnostic strategies"
 
   return null; // verification failed
-};
-
-/* getCommentedDirectiveFromImportedModule */
-
-/**
- * Gets the commented directive of the imported module.
- *
- * Accepted directives for the default Directive-First Architecture are (single or double quotes included):
- * - `'use server logics'`, `"use server logics"` denoting a Server Logics Module.
- * - `'use client logics'`, `"use client logics"` denoting a Client Logics Module.
- * - `'use agnostic logics'`, `"use agnostic logics"` denoting an Agnostic Logics Module.
- * - `'use server components'`, `"use server components"` denoting a Server Components Module.
- * - `'use client components'`, `"use client components"` denoting a Client Components Module.
- * - `'use agnostic components'`, `"use agnostic components"` denoting an Agnostic Components Module.
- * - `'use agnostic logics'`, `"use agnostic logics"` denoting an Agnostic Logics Module.
- * - `'use server functions'`, `"use server functions"` denoting a Server Functions Module.
- * - `'use client contexts'`, `"use client contexts"` denoting a Client Contexts Module.
- * - `'use agnostic conditions'`, `"use agnostic conditions"` denoting an Agnostic Conditions Module.
- * - `'use agnostic strategies'`, `"use agnostic strategies"` denoting an Agnostic Strategies Module.
- * @param {string} resolvedPath The resolved path of the import.
- * @returns The commented directive, or lack thereof via `null`. Given the strictness of this architecture, the lack of a directive is considered a mistake. (Though rules may provide the opportunity to declare a default, and configs with preset defaults may become provided.)
- */
-export const getCommentedDirectiveFromImportedModule = (resolvedPath) => {
-  const sourceCode = getSourceCodeFromFilePath(resolvedPath);
-  const commentedDirective = getCommentedDirectiveFromSourceCode(sourceCode);
-
-  return commentedDirective;
 };
 
 /* getStrategizedDirective */

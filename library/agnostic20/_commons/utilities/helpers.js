@@ -12,7 +12,7 @@ import {
   isImportBlocked as commonsIsImportBlocked,
   makeMessageFromCurrentFileResolvedDirective,
   findSpecificViolationMessage as commonsFindSpecificViolationMessage,
-  getASTFromFilePath,
+  getSourceCodeFromFilePath,
 } from "../../../_commons/utilities/helpers.js";
 
 /**
@@ -85,12 +85,12 @@ export const getDirectiveFromCurrentModule = (context) => {
  * - `'use server'` denotes a Server Functions Module.
  * - `'use agnostic'` denotes an Agnostic Module (formerly Shared Module).
  * - `null` denotes a server-by-default module, ideally a Server Module.
- * @param {string} resolvedImportPath The resolved path of the import.
+ * @param {string} resolvedPath The resolved path of the imported module.
  * @returns The directive, or lack thereof via `null`. The lack of a directive is considered server-by-default.
  */
-export const getDirectiveFromImportedModule = (resolvedImportPath) => {
+export const getDirectiveFromImportedModule = (resolvedPath) => {
   // the AST of the imported module
-  const ast = getASTFromFilePath(resolvedImportPath);
+  const ast = getSourceCodeFromFilePath(resolvedPath).ast;
 
   return getDirectiveFromModule(ast);
 };

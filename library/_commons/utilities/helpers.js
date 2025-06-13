@@ -81,6 +81,8 @@ export const resolveImportPath = (currentDir, importPath, cwd) => {
   return null; // not found
 };
 
+/* getSourceCodeFromFilePath */
+
 /**
  * Gets the ESLint-generated SourceCode object of a file from its resolved path.
  * @param {string} resolvedPath The resolved path of the file.
@@ -98,44 +100,6 @@ export const getSourceCodeFromFilePath = (resolvedPath) => {
   const code = linter.getSourceCode();
 
   return code;
-};
-
-/* getASTFromResolvedPath */ // for agnostic20
-// Note: For agnostic20, I need the AST so that the directive can be picked up on any line as long as it is the first statement of the file.
-
-/**
- * Gets the ESLint-generated Abstract Syntax Tree of a file from its resolved path.
- * @param {string} resolvedPath The resolved path of the file.
- * @returns The ESLint-generated AST (Abstract Syntax Tree) of the file.
- */
-export const getASTFromFilePath = (resolvedPath) => {
-  const code = getSourceCodeFromFilePath(resolvedPath);
-  // ... from which to extract the ESLint-generated AST
-  const ast = code.ast;
-
-  return ast;
-};
-
-/* getImportedFileFirstLine */ // for directive21
-// Note: For directive21, I prioritize reading from the file system for performance, foregoing the retrieval of the source code comments for imported modules, since the Directive-First Architecture imposes that the first line of the file is reserved for its commented directive.
-// NEW
-// I'm now looking into making the commented directive be the first comment as long as it is within the first three lines of code.
-
-/**
- * Gets the first line of code of the imported module.
- * @param {string} resolvedImportPath The resolved path of the imported module.
- * @returns The first line of the imported module.
- */
-export const getImportedFileFirstLine = (resolvedImportPath) => {
-  // gets the code of the import
-  const importedFileContent = fs.readFileSync(resolvedImportPath, "utf8");
-  // gets the first line of the code of the import
-  const importedFileFirstLine = importedFileContent
-    .trim()
-    .split("\n")[0]
-    .trim(); // the line itself needs to be trimmed too
-
-  return importedFileFirstLine;
 };
 
 /* highlightFirstLineOfCode */
