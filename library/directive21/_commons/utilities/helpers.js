@@ -1,11 +1,9 @@
 import { exportNotStrategized } from "../../../_commons/constants/bases.js";
 import {
-  // USE_AGNOSTIC_LOGICS,
   USE_AGNOSTIC_STRATEGIES,
   commentedDirectivesArray,
   strategiesArray,
   commentedDirectives_extensionRules,
-  // commentedDirectives_4RawImplementations,
   commentedStrategies_commentedDirectives,
   commentedDirectives_blockedImports,
 } from "../constants/bases.js";
@@ -18,6 +16,7 @@ import {
 } from "../../../_commons/utilities/helpers.js";
 
 /**
+ * @typedef {import('../../../../types/directive21/_commons/typedefs.js').SourceCode} SourceCode
  * @typedef {import('../../../../types/directive21/_commons/typedefs.js').Context} Context
  * @typedef {import('../../../../types/directive21/_commons/typedefs.js').CommentedDirective} CommentedDirective
  * @typedef {import('../../../../types/directive21/_commons/typedefs.js').CommentedDirectiveWithoutUseAgnosticStrategies} CommentedDirectiveWithoutUseAgnosticStrategies
@@ -84,7 +83,7 @@ const stripDoubleQuotes = (string) => {
  * - `'use client contexts'`, `"use client contexts"` denoting a Client Contexts Module.
  * - `'use agnostic conditions'`, `"use agnostic conditions"` denoting an Agnostic Conditions Module.
  * - `'use agnostic strategies'`, `"use agnostic strategies"` denoting an Agnostic Strategies Module.
- * @param {import('eslint').SourceCode} sourceCode The ESLint SourceCode object.
+ * @param {SourceCode} sourceCode The ESLint SourceCode object.
  * @returns The commented directive, or lack thereof via `null`. Given the strictness of this architecture, the lack of a directive is considered a mistake. (Though rules may provide the opportunity to declare a default, and configs with preset defaults may become provided.)
  */
 export const getCommentedDirectiveFromSourceCode = (sourceCode) => {
