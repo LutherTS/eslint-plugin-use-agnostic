@@ -78,7 +78,7 @@ Base url and aliased import paths are currently resolved under the assumption th
 
 It is up to you to confirm that your Agnostic Modules are indeed agnostic, meaning that they have neither server- nor client-side code. `eslint-plugin-use-agnostic`, at least at this time, does not do this verification for you.
 
-It is also up to you to ensure, as outlined above, that **you avoid** exporting React components along with other logics within the same module, which may derail the linting in some cases. Separating exporting React components within their own modules ending with a JSX file extension, from exporting other logics within modules that don't end with a JSX file extension, is crucial for distinguishing between Components Modules and Logics Modules respectively.
+It is also up to you to ensure, as outlined above, that **you avoid** exporting React components along with other logics within the same modules (unless you have to per the design of your current framework), which may derail the linting in some cases. Separating exporting React components within their own modules ending with a JSX file extension, from exporting other logics within modules that don't end with a JSX file extension, is crucial for distinguishing between Components Modules and Logics Modules respectively.
 
 The import rules are designed to be as permissive as possible, allowing for more obscure use cases as long as they are non-breaking. However, it is still your responsibility as a developer to, within a file, not mix in incompatible ways code that cannot compose.
 

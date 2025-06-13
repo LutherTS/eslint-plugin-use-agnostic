@@ -81,15 +81,14 @@ export const resolveImportPath = (currentDir, importPath, cwd) => {
   return null; // not found
 };
 
-/* getASTFromResolvedPath */ // for agnostic20
-// Note: For agnostic20, I need the AST so that the directive can be picked up on any line as long as it is the first statement of the file.
+/* getSourceCodeFromFilePath */
 
 /**
- * Gets the ESLint-generated Abstract Syntax Tree of a file from its resolved path.
+ * Gets the ESLint-generated SourceCode object of a file from its resolved path.
  * @param {string} resolvedPath The resolved path of the file.
- * @returns The ESLint-generated AST (Abstract Syntax Tree) of the file.
+ * @returns The ESLint-generated SourceCode object of the file.
  */
-export const getASTFromFilePath = (resolvedPath) => {
+export const getSourceCodeFromFilePath = (resolvedPath) => {
   // ensures each instance of the function is based on its own linter
   // (just in case somehow some linters were running concurrently)
   const linter = new Linter();
@@ -97,32 +96,10 @@ export const getASTFromFilePath = (resolvedPath) => {
   const text = fs.readFileSync(resolvedPath, "utf8");
   // utilizes linter.verify ...
   linter.verify(text, { languageOptions: typeScriptAndJSXCompatible });
-  // ... to retrieve the raw code as a SourceCode object ...
+  // ... to retrieve the raw code as a SourceCode object
   const code = linter.getSourceCode();
-  // ... from which to extract the ESLint-generated AST
-  const ast = code.ast;
 
-  return ast;
-};
-
-/* getImportedFileFirstLine */ // for directive21
-// Note: For directive21, I prioritize reading from the file system for performance, foregoing the retrieval of the source code comments for imported modules, since the Directive-First Architecture imposes that the first line of the file is reserved for its commented directive.
-
-/**
- * Gets the first line of code of the imported module.
- * @param {string} resolvedImportPath The resolved path of the imported module.
- * @returns The first line of the imported module.
- */
-export const getImportedFileFirstLine = (resolvedImportPath) => {
-  // gets the code of the import
-  const importedFileContent = fs.readFileSync(resolvedImportPath, "utf8");
-  // gets the first line of the code of the import
-  const importedFileFirstLine = importedFileContent
-    .trim()
-    .split("\n")[0]
-    .trim(); // the line itself needs to be trimmed too
-
-  return importedFileFirstLine;
+  return code;
 };
 
 /* highlightFirstLineOfCode */

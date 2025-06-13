@@ -119,48 +119,6 @@ export const commentedDirectiveMessage = "commentedDirectiveMessage";
 export const specificViolationMessage = "specificViolationMessage";
 export const specificFailure = "specificFailure";
 
-/* commentedDirectives_4RawImplementations */
-
-// all formatting styles as an array of [prefix, quote, suffix]
-/** @type {CommentStyles} */
-const commentStyles = Object.freeze([
-  Object.freeze([`// `, `'`, ``]), // V1: `// 'directive'`
-  Object.freeze([`// `, `"`, ``]), // V2: `// "directive"`
-  Object.freeze([`\/\* `, `'`, ` \*\/`]), // V3: `/* 'directive' */`
-  Object.freeze([`\/\* `, `"`, ` \*\/`]), // V4: `/* "directive" */`
-]);
-
-/**
- * Makes the array of all four accepted commented directive implementations on a directive basis.
- * @template {CommentedDirective} T
- * @param {T} directive The commented directive.
- * @returns The array of formatted commented directives.
- */
-const make4RawImplementations = (directive) => {
-  /** @type {readonly [`// '${T}'`, `// "${T}""`, `\/\* '${T}' \*\/`, `\/\* "${T}"" \*\/`]} */
-  const rawImplementations = Object.freeze(
-    commentStyles.map(
-      ([prefix, quote, suffix]) =>
-        `${prefix}${quote}${directive}${quote}${suffix}`
-    )
-  );
-
-  return rawImplementations;
-};
-
-export const commentedDirectives_4RawImplementations = Object.freeze({
-  [USE_SERVER_LOGICS]: make4RawImplementations(USE_SERVER_LOGICS),
-  [USE_CLIENT_LOGICS]: make4RawImplementations(USE_CLIENT_LOGICS),
-  [USE_AGNOSTIC_LOGICS]: make4RawImplementations(USE_AGNOSTIC_LOGICS),
-  [USE_SERVER_COMPONENTS]: make4RawImplementations(USE_SERVER_COMPONENTS),
-  [USE_CLIENT_COMPONENTS]: make4RawImplementations(USE_CLIENT_COMPONENTS),
-  [USE_AGNOSTIC_COMPONENTS]: make4RawImplementations(USE_AGNOSTIC_COMPONENTS),
-  [USE_SERVER_FUNCTIONS]: make4RawImplementations(USE_SERVER_FUNCTIONS),
-  [USE_CLIENT_CONTEXTS]: make4RawImplementations(USE_CLIENT_CONTEXTS),
-  [USE_AGNOSTIC_CONDITIONS]: make4RawImplementations(USE_AGNOSTIC_CONDITIONS),
-  [USE_AGNOSTIC_STRATEGIES]: make4RawImplementations(USE_AGNOSTIC_STRATEGIES),
-});
-
 /* commentedDirectives_verificationReports */
 
 const MODULES_MARKED_WITH_THE_ = "modules marked with the";
