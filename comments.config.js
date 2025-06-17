@@ -3,26 +3,17 @@ import {
   directive21ConfigName,
 } from "./library/_commons/constants/bases.js";
 
+import { testsComments } from "./jscomments/_commons/constants/bases.js";
 import { agnostic20Comments } from "./jscomments/agnostic20/constants/bases.js";
 import { directive21Comments } from "./jscomments/directive21/constants/bases.js";
 
 const config = Object.freeze({
   comment: "comment", // $COMMENT#COMMENT in code, "comment" on hover when resolved by the VSCode extension JSComments
-  // from tests (start)
-  thatsA: "That's a",
-  thatsAn: "That's an",
-  importingA: "...Importing a",
-  withExtension: "with extension",
-  withExtensionParentheses: "(with extension).",
-  byFolder: "by a folder.",
-  importing: "...Importing",
-  viaStrategy: "via Special Agnostic Strategy",
-  viaStrategyPeriod: "via Special Agnostic Strategy.",
-  viaAlias: "Via alias.",
-  viaBaseUrl: "Via baseUrl.",
-  valid: "Valid.",
-  invalid: "Invalid.",
-  // from tests (end) (to be migrated in a different folder)
+  ...testsComments,
+  // _commons/utilities/helpers.js
+  resolvedDirectives_blockedImports: `The blocked imports object, either for agnostic20 or for directive21.`,
+  currentFileResolvedDirective: `The current file's "resolved" directive.`,
+  importedFileResolvedDirective: `The imported file's "resolved" directive.`,
   [agnostic20ConfigName]: agnostic20Comments,
   [directive21ConfigName]: directive21Comments,
 });
