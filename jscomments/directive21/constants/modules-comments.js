@@ -32,6 +32,7 @@ export const serverLogicsComments = Object.freeze({
     /* valid */ "(Special) Agnostic Conditions Components are able to safely render on the server, guaranteeing that only their `ComponentForServer` will be effectively involved in Prime Server Logics Modules.",
   module: "Prime Server Logics Module",
   modulePeriod: "Prime Server Logics Module.",
+  kinds: "Prime Server Logics",
 });
 
 export const clientLogicsComments = Object.freeze({
@@ -55,6 +56,7 @@ export const clientLogicsComments = Object.freeze({
     /* valid */ "(Special) Agnostic Conditions Components are able to safely render on the client, guaranteeing that only their `ComponentForClient` will be effectively involved in Prime Client Logics Modules.",
   module: "Prime Client Logics Module",
   modulePeriod: "Prime Client Logics Module.",
+  kinds: "Prime Client Logics",
 });
 
 export const agnosticLogicsComments = Object.freeze({
@@ -78,6 +80,7 @@ export const agnosticLogicsComments = Object.freeze({
     /* valid */ "(Special) Agnostic Conditions Components, as if they were Lineal Agnostic Components themselves, can be composed with any Prime Environment Logics agnostically as long as the Prime Environment Logics Module, by convention, does not export React components.",
   module: "Prime Agnostic Logics Module",
   modulePeriod: "Prime Agnostic Logics Module.",
+  kinds: "Prime Agnostic Logics",
 });
 
 export const serverComponentsComments = Object.freeze({
@@ -101,6 +104,7 @@ export const serverComponentsComments = Object.freeze({
     /* valid */ "(Special) Agnostic Conditions Components, as if they were Lineal Agnostic Components themselves, can render safely on the server just like they can on the client.",
   module: "Lineal Server Components Module",
   modulePeriod: "Lineal Server Components Module.",
+  kinds: "Lineal Server Components",
 });
 
 export const clientComponentsComments = Object.freeze({
@@ -124,6 +128,7 @@ export const clientComponentsComments = Object.freeze({
     /* valid */ "(Special) Agnostic Conditions Components, as if they were Lineal Agnostic Components themselves, can render safely on the client just like they can on the server.",
   module: "Lineal Client Components Module",
   modulePeriod: "Lineal Client Components Module.",
+  kinds: "Lineal Client Components",
 });
 
 export const agnosticComponentsComments = Object.freeze({
@@ -147,6 +152,7 @@ export const agnosticComponentsComments = Object.freeze({
     /* valid */ "(Special) Agnostic Conditions Components can compose with Lineal Agnostic Components as if they were Lineal Agnostic Components themselves, making them a necessary mechanism for Server Components to be nested in Agnostic Components.",
   module: "Lineal Agnostic Components Module",
   modulePeriod: "Lineal Agnostic Components Module.",
+  kinds: "Lineal Agnostic Components",
 });
 
 export const serverFunctionsComments = Object.freeze({
@@ -170,6 +176,7 @@ export const serverFunctionsComments = Object.freeze({
     /* invalid */ "(Special) Agnostic Conditions Components aren't allowed because (Special) Server Functions have no business working with React Components.",
   module: "Special Server Functions Module",
   modulePeriod: "Special Server Functions Module.",
+  kinds: "Special Server Functions",
 });
 
 export const clientContextsComments = Object.freeze({
@@ -193,6 +200,7 @@ export const clientContextsComments = Object.freeze({
     /* valid */ "(Special) Agnostic Conditions Components, as if they were Lineal Agnostic Components themselves, can render safely on the client just like they can on the server, in a mechanism that allows (Special) Client Contexts Components to safely and indirectly compose with child Server Components within Client Contexts Modules.",
   module: "Special Client Contexts Module",
   modulePeriod: "Special Client Contexts Module.",
+  kinds: "Special Client Contexts",
 });
 
 export const agnosticConditionsComments = Object.freeze({
@@ -216,4 +224,5 @@ export const agnosticConditionsComments = Object.freeze({
     /* valid */ "(Special) Agnostic Conditions Components, despite not being Lineal Components themselves, output components that can only be Lineal and compatible with their attributed rendering environments, making them acceptable arguments in the making of Agnostic Conditions Components.",
   module: "Special Agnostic Conditions Module",
   modulePeriod: "Special Agnostic Conditions Module.",
+  kinds: "Special Agnostic Conditions",
 });

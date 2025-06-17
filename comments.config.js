@@ -10,12 +10,14 @@ const config = Object.freeze({
   comment: "comment", // $COMMENT#COMMENT in code, "comment" on hover when resolved by the VSCode extension JSComments
   // from tests (start)
   thatsA: "That's a",
+  thatsAn: "That's an",
   importingA: "...Importing a",
+  withExtension: "with extension",
   withExtensionParentheses: "(with extension).",
   byFolder: "by a folder.",
   importing: "...Importing",
-  viaStrategy: "via Special Agnostic Strategy.",
-  withExtension: "with extension",
+  viaStrategy: "via Special Agnostic Strategy",
+  viaStrategyPeriod: "via Special Agnostic Strategy.",
   viaAlias: "Via alias.",
   viaBaseUrl: "Via baseUrl.",
   valid: "Valid.",
