@@ -8,4 +8,4 @@ import agnosticComponents from "../../../../../imported/javascript/agnostic.jsx"
 import agnosticComponentsFolder from "../../../../../imported/javascript/agnostic-jsx";
 
 // Valid.
-// Agnostic Components can render safely on the client just like they can on the server.
+// $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_AGNOSTIC_COMPONENTS

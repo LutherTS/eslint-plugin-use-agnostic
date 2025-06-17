@@ -15,4 +15,4 @@ import serverComponentsFolderAlias from "@/tests/agnostic20/imported/typescript/
 import serverComponentsFolderBaseUrl from "tests/agnostic20/imported/typescript/server-tsx";
 
 // Valid.
-// Server Components are OK to be composed with Server Logics as long as the Server Logics Module, by convention, does not export React components.
+// $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_SERVER_COMPONENTS

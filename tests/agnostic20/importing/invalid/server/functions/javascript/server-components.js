@@ -7,4 +7,4 @@ import serverComponents from "../../../../../imported/javascript/server.jsx";
 import serverComponentsFolder from "../../../../../imported/javascript/server-jsx";
 
 // Invalid.
-// Server Components aren't allowed because Server Functions have no business working with React Components.
+// $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_SERVER_COMPONENTS

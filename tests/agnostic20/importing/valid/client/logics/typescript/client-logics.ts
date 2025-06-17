@@ -16,4 +16,4 @@ import clientLogicsFolderAlias from "@/tests/agnostic20/imported/typescript/clie
 import clientLogicsFolderBaseUrl from "tests/agnostic20/imported/typescript/client-ts";
 
 // Valid.
-// Client Logics can compose with one another.
+// $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#USE_CLIENT_LOGICS

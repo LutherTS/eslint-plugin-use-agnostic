@@ -16,4 +16,4 @@ import serverComponentsFolderAlias from "@/tests/agnostic20/imported/typescript/
 import serverComponentsFolderBaseUrl from "tests/agnostic20/imported/typescript/server-tsx";
 
 // Invalid.
-// Server Components aren't allowed because Server Functions have no business working with React Components.
+// $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_SERVER_COMPONENTS

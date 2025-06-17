@@ -16,4 +16,4 @@ import clientComponentsFolderAlias from "@/tests/agnostic20/imported/typescript/
 import clientComponentsFolderBaseUrl from "tests/agnostic20/imported/typescript/client-tsx";
 
 // Valid.
-// Client Components are OK to be composed with Client Logics as long as the Client Logics Module, by convention, does not export React components.
+// $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#USE_CLIENT_COMPONENTS

@@ -16,4 +16,4 @@ import serverLogicsFolderAlias from "@/tests/agnostic20/imported/typescript/serv
 import serverLogicsFolderBaseUrl from "tests/agnostic20/imported/typescript/server-ts";
 
 // Invalid.
-// Server Logics cannot run on both the server and the client.
+// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#USE_SERVER_LOGICS

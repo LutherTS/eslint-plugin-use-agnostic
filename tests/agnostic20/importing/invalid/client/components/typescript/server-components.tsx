@@ -16,4 +16,4 @@ import serverComponentsFolderAlias from "@/tests/agnostic20/imported/typescript/
 import serverComponentsFolderBaseUrl from "tests/agnostic20/imported/typescript/server-tsx";
 
 // Invalid.
-// Server Components may only pass through Client Components via the children prop within Server Components Modules.
+// $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_SERVER_COMPONENTS

@@ -8,4 +8,4 @@ import serverComponents from "../../../../../imported/javascript/server.jsx";
 import serverComponentsFolder from "../../../../../imported/javascript/server-jsx";
 
 // Invalid.
-// Server Components cannot be thinkered with on the client.
+// $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#USE_SERVER_COMPONENTS

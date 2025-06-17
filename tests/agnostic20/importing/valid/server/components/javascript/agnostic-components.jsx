@@ -7,4 +7,4 @@ import agnosticComponents from "../../../../../imported/javascript/agnostic.jsx"
 import agnosticComponentsFolder from "../../../../../imported/javascript/agnostic-jsx";
 
 // Valid.
-// Agnostic Components can render safely on the server just like they can on the client.
+// $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_AGNOSTIC_COMPONENTS

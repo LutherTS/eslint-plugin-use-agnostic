@@ -16,4 +16,4 @@ import clientLogicsFolderAlias from "@/tests/agnostic20/imported/typescript/clie
 import clientLogicsFolderBaseUrl from "tests/agnostic20/imported/typescript/client-ts";
 
 // Valid.
-// Client Logics, being logic from the client, can safely support Client Components.
+// $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_CLIENT_LOGICS
