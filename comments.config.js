@@ -14,6 +14,23 @@ const config = Object.freeze({
   resolvedDirectives_blockedImports: `The blocked imports object, either for agnostic20 or for directive21.`,
   currentFileResolvedDirective: `The current file's "resolved" directive.`,
   importedFileResolvedDirective: `The imported file's "resolved" directive.`,
+  // config.js
+  forPlugin: "for the use-agnostic ESLint plugin.",
+  plugin: "The use-agnostic ESLint plugin itself.",
+  asKeyAsValue: "as a key and its config as its value.",
+  // agnostic20/_commons/constants/bases.js
+  currentFileEffectiveDirective: "The current file's effective directive.",
+  importedFileEffectiveDirective: "The imported file's effective directive.",
+  // flows.js
+  context: "The ESLint rule's `context` object.",
+  node: "The ESLint `node` of the rule's current traversal.",
+  // helpers.js
+  extension: "The JavaScript (TypeScript) extension of the file.",
+  // agnostic20/_commons/utilities/helpers.js
+  serverByDefault: `\`null\` denotes a server-by-default module, ideally a Server Module.`,
+  useServer: `\`'use server'\` denotes a Server Functions Module.`,
+  useClient: `\`'use client'\` denotes a Client Module.`,
+  useAgnostic: `\`'use agnostic'\` denotes an Agnostic Module (formerly Shared Module).`,
   [agnostic20ConfigName]: agnostic20Comments,
   [directive21ConfigName]: directive21Comments,
 });
@@ -28,4 +45,6 @@ Aims of the VSCode extension JSComments:
   - config["agnostic20"] would return $COMMENT#AGNOSTIC20#*
   - config["directive21"] would return $COMMENT#DIRECTIVE21#*
 - this way, instead doing a find-replace on a big documentation comment, the comment stays within the config and only the config placeholder is found and replaced for the same results 
+...
+#JSDOC#
 */

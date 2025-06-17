@@ -29,8 +29,8 @@ import {
 /**
  * Gets the directive of a module from its Abstract Syntax Tree.
  * - `null` denotes a server-by-default module, ideally a Server Module.
- * - `'use client'` denotes a Client Module.
  * - `'use server'` denotes a Server Functions Module.
+ * - `'use client'` denotes a Client Module.
  * - `'use agnostic'` denotes an Agnostic Module (formerly Shared Module).
  * @param {AST} ast The module's AST (Abstract Syntax Tree).
  * @returns The directive, or lack thereof via `null`. The lack of a directive is considered server-by-default.
@@ -64,8 +64,8 @@ export const getDirectiveFromModule = (ast) => {
 /**
  * Gets the directive of the current module.
  * - `null` denotes a server-by-default module, ideally a Server Module.
- * - `'use client'` denotes a Client Module.
  * - `'use server'` denotes a Server Functions Module.
+ * - `'use client'` denotes a Client Module.
  * - `'use agnostic'` denotes an Agnostic Module (formerly Shared Module).
  * @param {Context} context The ESLint rule's `context` object.
  * @returns The directive, or lack thereof via `null`. The lack of a directive is considered server-by-default.
@@ -81,10 +81,10 @@ export const getDirectiveFromCurrentModule = (context) => {
 
 /**
  * Gets the directive of the imported module.
- * - `'use client'` denotes a Client Module.
- * - `'use server'` denotes a Server Functions Module.
- * - `'use agnostic'` denotes an Agnostic Module (formerly Shared Module).
  * - `null` denotes a server-by-default module, ideally a Server Module.
+ * - `'use server'` denotes a Server Functions Module.
+ * - `'use client'` denotes a Client Module.
+ * - `'use agnostic'` denotes an Agnostic Module (formerly Shared Module).
  * @param {string} resolvedPath The resolved path of the imported module.
  * @returns The directive, or lack thereof via `null`. The lack of a directive is considered server-by-default.
  */
