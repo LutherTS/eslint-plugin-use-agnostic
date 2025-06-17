@@ -24,6 +24,9 @@ export const jSDocComments = Object.freeze({
   extension: "The JavaScript (TypeScript) extension of the file.",
   resolvedPath: "The resolved path of the imported module.",
   // library/agnostic20/_commons/utilities/helpers.js
+  ast: "The module's AST (Abstract Syntax Tree).",
+  directiveA20: `The directive as written on top of the file (\`"no directive"\` if no valid directive).`,
+  effectiveDirective: "The effective directive of the effective module.",
   serverByDefault: `\`null\` denotes a server-by-default module, ideally a Server Module.`,
   useServer: `\`'use server'\` denotes a Server Functions Module.`,
   useClient: `\`'use client'\` denotes a Client Module.`,
@@ -41,6 +44,9 @@ export const jSDocComments = Object.freeze({
   // library/directive21/_commons/utilities/helpers.js
   string: "The original string.",
   sourceCode: "The ESLint SourceCode object.",
+  directiveD21:
+    "The commented directive as written on top of the file (cannot be `null` at that stage).",
+  commentedDirective: "The commented directive of the commented module.",
   useServerLogics21: `\`'use server logics'\`, \`"use server logics"\` denoting a Server Logics Module.`,
   useClientLogics21: `\`'use client logics'\`, \`"use client logics"\` denoting a Client Logics Module.`,
   useAgnosticLogics21: `\`'use agnostic logics'\`, \`"use agnostic logics"\` denoting an Agnostic Logics Module.`,
@@ -65,6 +71,9 @@ export const jSDocComments = Object.freeze({
   folderPath: "The provided directory.",
   allFiles:
     "The accumulator array of file paths. Defaults to an empty array on the initial call, and is passed through each recursive call to be mutated and collect results.",
+  javaScriptErrorsLength: "The number of errors expected on JavaScript files.",
+  typeScriptErrorsLength: "The number of errors expected on TypeScript files.",
+  messageId: "The messageId of the errors expected.",
 });
 
 export const testsComments = Object.freeze({
