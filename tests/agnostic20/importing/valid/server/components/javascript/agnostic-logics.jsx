@@ -7,4 +7,4 @@ import agnosticLogics from "../../../../../imported/javascript/agnostic.js";
 import agnosticLogicsFolder from "../../../../../imported/javascript/agnostic-js";
 
 // Valid.
-// Agnostic Logics can run safely on the server just like they can on the client.
+// Agnostic Logics can run safely on the server just like they can on the client, such as is the case here in a Server Components Module.

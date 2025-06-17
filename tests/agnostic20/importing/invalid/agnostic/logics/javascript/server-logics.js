@@ -8,4 +8,4 @@ import serverLogics from "../../../../../imported/javascript/server.js";
 import serverLogicsFolder from "../../../../../imported/javascript/server-js";
 
 // Invalid.
-// Server Logics cannot run on both the server and the client.
+// Server Logics cannot run on both the server and the client, such as would be the case here in an Agnostic Logics Module.

@@ -17,4 +17,4 @@ import {
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
 // Invalid.
-// Prime Client Logics cannot run on both the server and the client.
+// Prime Client Logics cannot run on both the server and the client, such as would be the case here in a Prime Agnostic Logics Module.

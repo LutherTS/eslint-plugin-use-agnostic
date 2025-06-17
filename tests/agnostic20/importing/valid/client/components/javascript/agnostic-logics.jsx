@@ -8,4 +8,4 @@ import agnosticLogics from "../../../../../imported/javascript/agnostic.js";
 import agnosticLogicsFolder from "../../../../../imported/javascript/agnostic-js";
 
 // Valid.
-// Agnostic Logics can run safely on the client just like they can on the server.
+// Agnostic Logics can run safely on the client just like they can on the server, such as is the case here in a Client Components Module.

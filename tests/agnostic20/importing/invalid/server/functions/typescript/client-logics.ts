@@ -16,4 +16,4 @@ import clientLogicsFolderAlias from "@/tests/agnostic20/imported/typescript/clie
 import clientLogicsFolderBaseUrl from "tests/agnostic20/imported/typescript/client-ts";
 
 // Invalid.
-// Client Logics should never leak to the server.
+// Client Logics should never leak to the server, such as  would be the case here in a Server Functions Module.

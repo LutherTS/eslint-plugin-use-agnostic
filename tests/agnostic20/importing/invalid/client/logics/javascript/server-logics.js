@@ -8,4 +8,4 @@ import serverLogics from "../../../../../imported/javascript/server.js";
 import serverLogicsFolder from "../../../../../imported/javascript/server-js";
 
 // Invalid.
-// Server Logics should never leak to the client.
+// Server Logics should never leak to the client, such as would be the case here in a Client Logics Module.

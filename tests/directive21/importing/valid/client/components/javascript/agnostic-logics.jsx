@@ -17,4 +17,4 @@ import {
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
 // Valid.
-// Prime Agnostic Logics can run safely on the client just like they can on the server.
+// Prime Agnostic Logics can run safely on the client just like they can on the server, such as is the case here in a Lineal Client Components Module.

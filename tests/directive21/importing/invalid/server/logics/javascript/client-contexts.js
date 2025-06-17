@@ -17,4 +17,4 @@ import {
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
 // Invalid.
-// (Special) Client Contexts Components, like any Client Components, cannot be tinkered with on the server.`
+// Client Contexts Components, like any Client Components, cannot be tinkered with on the server.

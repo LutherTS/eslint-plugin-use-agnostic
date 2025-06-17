@@ -17,7 +17,7 @@ import agnosticLogicsBaseUrlExtension from "tests/directive21/imported/typescrip
 import agnosticLogicsFolder from "../../../../../imported/typescript/agnostic-logics-ts";
 // Via alias.
 import agnosticLogicsFolderAlias from "@/tests/directive21/imported/typescript/agnostic-logics-ts";
-// Via baseURL.
+// Via baseUrl.
 import agnosticLogicsFolderBaseUrl from "tests/directive21/imported/typescript/agnostic-logics-ts";
 
 // ...Importing Prime Agnostic Logics via Special Agnostic Strategy.
@@ -53,10 +53,10 @@ import {
 import {
   /* @agnosticLogics */ agnosticLogicsStrategized as agnosticLogicsStrategizedFolderAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies-tsx";
-// Via baseURL.
+// Via baseUrl.
 import {
   /* @agnosticLogics */ agnosticLogicsStrategized as agnosticLogicsStrategizedFolderBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
 // Valid.
-// Prime Agnostic Logics can run safely on the client just like they can on the server.
+// Prime Agnostic Logics can run safely on the client just like they can on the server, such as is the case here in a Lineal Client Components Module.

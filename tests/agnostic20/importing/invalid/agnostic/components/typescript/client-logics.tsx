@@ -16,4 +16,4 @@ import clientLogicsFolderAlias from "@/tests/agnostic20/imported/typescript/clie
 import clientLogicsFolderBaseUrl from "tests/agnostic20/imported/typescript/client-ts";
 
 // Invalid.
-// Client Logics cannot run on both the server and the client.
+// Client Logics cannot run on both the server and the client, such as would be the case here in an Agnostic Components Module.

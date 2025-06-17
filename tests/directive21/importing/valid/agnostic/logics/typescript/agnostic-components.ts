@@ -17,7 +17,7 @@ import agnosticComponentsBaseUrlExtension from "tests/directive21/imported/types
 import agnosticComponentsFolder from "../../../../../imported/typescript/agnostic-components-tsx";
 // Via alias.
 import agnosticComponentsFolderAlias from "@/tests/directive21/imported/typescript/agnostic-components-tsx";
-// Via baseURL.
+// Via baseUrl.
 import agnosticComponentsFolderBaseUrl from "tests/directive21/imported/typescript/agnostic-components-tsx";
 
 // ...Importing Lineal Agnostic Components via Special Agnostic Strategy.
@@ -51,10 +51,10 @@ import {
 import {
   /* @agnosticComponents */ agnosticComponentsStrategized as agnosticComponentsStrategizedFolderAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies-tsx";
-// Via baseURL.
+// Via baseUrl.
 import {
   /* @agnosticComponents */ agnosticComponentsStrategized as agnosticComponentsStrategizedFolderBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
 // Valid.
-// Lineal Agnostic Components can be composed with any Prime Environment Logics agnostically as long as the Prime Environment Logics Module, by convention, does not export React components.
+// Lineal Agnostic Components can be composed with any Prime Environment Logics agnostically, such as Prime Agnostic Logics, as long as the Prime Environment Logics Module, by convention, does not export React components.

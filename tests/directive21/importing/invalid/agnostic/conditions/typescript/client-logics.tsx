@@ -8,7 +8,7 @@ import clientLogicsExtension from "../../../../../imported/typescript/client-log
 import clientLogicsAlias from "@/tests/directive21/imported/typescript/client-logics";
 // with extension
 import clientLogicsAliasExtension from "@/tests/directive21/imported/typescript/client-logics.ts";
-// Via baseURL.
+// Via baseUrl.
 import clientLogicsBaseUrl from "tests/directive21/imported/typescript/client-logics";
 // with extension
 import clientLogicsBaseUrlExtension from "tests/directive21/imported/typescript/client-logics.ts";
@@ -17,7 +17,7 @@ import clientLogicsBaseUrlExtension from "tests/directive21/imported/typescript/
 import clientLogicsFolder from "../../../../../imported/typescript/client-logics-ts";
 // Via alias.
 import clientLogicsFolderAlias from "@/tests/directive21/imported/typescript/client-logics-ts";
-// Via baseURL.
+// Via baseUrl.
 import clientLogicsFolderBaseUrl from "tests/directive21/imported/typescript/client-logics-ts";
 
 // ...Importing Prime Client Logics via Special Agnostic Strategy.
@@ -36,7 +36,7 @@ import {
 import {
   /* @clientLogics */ clientLogicsStrategized as clientLogicsStrategizedAliasExtension,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies.tsx";
-// Via baseURL.
+// Via baseUrl.
 import {
   /* @clientLogics */ clientLogicsStrategized as clientLogicsStrategizedBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies";
@@ -53,10 +53,10 @@ import {
 import {
   /* @clientLogics */ clientLogicsStrategized as clientLogicsStrategizedFolderAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies-tsx";
-// Via baseURL.
+// Via baseUrl.
 import {
   /* @clientLogics */ clientLogicsStrategized as clientLogicsStrategizedFolderBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
 // Invalid.
-// Prime Client Logics cannot run on both the server and the client.
+// Prime Client Logics cannot run on both the server and the client, such as would be the case here in a Special Agnostic Conditions Module.

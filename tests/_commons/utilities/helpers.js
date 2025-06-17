@@ -9,26 +9,24 @@ import {
 /**
  * Reads file paths at any depths within a provided directory.
  * @param {string} folderPath The provided directory.
- * @returns {string[]} All files at any depths within the provided directory. (Return type made explicit due to recursion falling back by default to any.)
+ * @param {string[]} allFiles The accumulator array of file paths. Defaults to an empty array on the initial call, and is passed through each recursive call to be mutated and collect results.
+ * @returns All files at any depths within the provided directory.
  */
-const readFilesRecursively = (folderPath) => {
-  /** @type {string[]} */
-  const initialValue = [];
+const readFilesRecursively = (folderPath, allFiles = []) => {
+  const items = fs.readdirSync(folderPath);
 
-  const results = fs.readdirSync(folderPath).reduce((allFiles, item) => {
+  for (const item of items) {
     const fullPath = path.join(folderPath, item);
     const stats = fs.statSync(fullPath);
 
     if (stats.isDirectory()) {
-      return allFiles.concat(readFilesRecursively(fullPath));
+      readFilesRecursively(fullPath, allFiles);
     } else if (stats.isFile()) {
-      return allFiles.concat(fullPath);
-    } else {
-      return allFiles;
+      allFiles.push(fullPath);
     }
-  }, initialValue);
+  }
 
-  return results;
+  return allFiles;
 };
 
 /**

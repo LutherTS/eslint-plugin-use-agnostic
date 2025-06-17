@@ -16,4 +16,4 @@ import agnosticLogicsFolderAlias from "@/tests/agnostic20/imported/typescript/ag
 import agnosticLogicsFolderBaseUrl from "tests/agnostic20/imported/typescript/agnostic-ts";
 
 // Valid.
-// Agnostic Logics can run safely on the client just like they can on the server.
+// Agnostic Logics can run safely on the client just like they can on the server, such as is the case here in a Client Components Module.

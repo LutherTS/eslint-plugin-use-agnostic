@@ -78,7 +78,6 @@ const stripDoubleQuotes = (string) => {
  * - `'use server components'`, `"use server components"` denoting a Server Components Module.
  * - `'use client components'`, `"use client components"` denoting a Client Components Module.
  * - `'use agnostic components'`, `"use agnostic components"` denoting an Agnostic Components Module.
- * - `'use agnostic logics'`, `"use agnostic logics"` denoting an Agnostic Logics Module.
  * - `'use server functions'`, `"use server functions"` denoting a Server Functions Module.
  * - `'use client contexts'`, `"use client contexts"` denoting a Client Contexts Module.
  * - `'use agnostic conditions'`, `"use agnostic conditions"` denoting an Agnostic Conditions Module.
@@ -137,7 +136,6 @@ export const getCommentedDirectiveFromSourceCode = (sourceCode) => {
  * - `'use server components'`, `"use server components"` denoting a Server Components Module.
  * - `'use client components'`, `"use client components"` denoting a Client Components Module.
  * - `'use agnostic components'`, `"use agnostic components"` denoting an Agnostic Components Module.
- * - `'use agnostic logics'`, `"use agnostic logics"` denoting an Agnostic Logics Module.
  * - `'use server functions'`, `"use server functions"` denoting a Server Functions Module.
  * - `'use client contexts'`, `"use client contexts"` denoting a Client Contexts Module.
  * - `'use agnostic conditions'`, `"use agnostic conditions"` denoting an Agnostic Conditions Module.
@@ -164,7 +162,6 @@ export const getCommentedDirectiveFromCurrentModule = (context) => {
  * - `'use server components'`, `"use server components"` denoting a Server Components Module.
  * - `'use client components'`, `"use client components"` denoting a Client Components Module.
  * - `'use agnostic components'`, `"use agnostic components"` denoting an Agnostic Components Module.
- * - `'use agnostic logics'`, `"use agnostic logics"` denoting an Agnostic Logics Module.
  * - `'use server functions'`, `"use server functions"` denoting a Server Functions Module.
  * - `'use client contexts'`, `"use client contexts"` denoting a Client Contexts Module.
  * - `'use agnostic conditions'`, `"use agnostic conditions"` denoting an Agnostic Conditions Module.

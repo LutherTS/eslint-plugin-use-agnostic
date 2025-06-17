@@ -8,4 +8,4 @@ import clientLogics from "../../../../../imported/javascript/client.js";
 import clientLogicsFolder from "../../../../../imported/javascript/client-js";
 
 // Invalid.
-// Client Logics cannot run on both the server and the client.
+// Client Logics cannot run on both the server and the client, such as would be the case here in an Agnostic Components Module.

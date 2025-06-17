@@ -17,7 +17,7 @@ import clientContextsBaseUrlExtension from "tests/directive21/imported/typescrip
 import clientContextsFolder from "../../../../../imported/typescript/client-contexts-tsx";
 // Via alias.
 import clientContextsFolderAlias from "@/tests/directive21/imported/typescript/client-contexts-tsx";
-// Via baseURL.
+// Via baseUrl.
 import clientContextsFolderBaseUrl from "tests/directive21/imported/typescript/client-contexts-tsx";
 
 // ...Importing Special Client Contexts via Special Agnostic Strategy.
@@ -53,7 +53,7 @@ import {
 import {
   /* @clientContexts */ clientContextsStrategized as clientContextsStrategizedFolderAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies-tsx";
-// Via baseURL.
+// Via baseUrl.
 import {
   /* @clientContexts */ clientContextsStrategized as clientContextsStrategizedFolderBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
