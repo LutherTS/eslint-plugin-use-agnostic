@@ -1,6 +1,6 @@
 export const jSDocComments = Object.freeze({
   // library/_commons/utilities/helpers.js
-  basedPath: "The absolute import path with extension yet resolved.",
+  basePath: "The absolute import path with extension yet resolved.",
   currentDir:
     "The directory of the file containing the import (from `path.dirname(context.filename)`).",
   importPath:
@@ -11,10 +11,9 @@ export const jSDocComments = Object.freeze({
   resolvedDirectives_blockedImports: `The blocked imports object, either for agnostic20 or for directive21.`,
   currentFileResolvedDirective: `The current file's "resolved" directive.`,
   importedFileResolvedDirective: `The imported file's "resolved" directive.`,
+  theCurrentFileResolvedDirective: `The "resolved" directive of the "resolved" module.`,
   // library/ ... /config.js
-  forPlugin: "for the use-agnostic ESLint plugin.",
   plugin: "The use-agnostic ESLint plugin itself.",
-  asKeyAsValue: "as a key and its config as its value.",
   // library/agnostic20/_commons/constants/bases.js
   currentFileEffectiveDirective: "The current file's effective directive.",
   importedFileEffectiveDirective: "The imported file's effective directive.",
