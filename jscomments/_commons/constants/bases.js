@@ -1,5 +1,13 @@
 export const jSDocComments = Object.freeze({
   // library/_commons/utilities/helpers.js
+  basedPath: "The absolute import path with extension yet resolved.",
+  currentDir:
+    "The directory of the file containing the import (from `path.dirname(context.filename)`).",
+  importPath:
+    "The import specifier (e.g., `@/components/Button` or `./utils`), from the current node.",
+  cwd: "The project root (from `context.cwd`).",
+  fileResolvedPath: "The resolved path of the file.",
+  aContext: "An ESLint rule's `context` object.",
   resolvedDirectives_blockedImports: `The blocked imports object, either for agnostic20 or for directive21.`,
   currentFileResolvedDirective: `The current file's "resolved" directive.`,
   importedFileResolvedDirective: `The imported file's "resolved" directive.`,
