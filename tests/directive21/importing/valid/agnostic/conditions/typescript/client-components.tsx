@@ -17,7 +17,7 @@ import clientComponentsBaseUrlExtension from "tests/directive21/imported/typescr
 import clientComponentsFolder from "../../../../../imported/typescript/client-components-tsx";
 // Via alias.
 import clientComponentsFolderAlias from "@/tests/directive21/imported/typescript/client-components-tsx";
-// Via baseURL.
+// Via baseUrl.
 import clientComponentsFolderBaseUrl from "tests/directive21/imported/typescript/client-components-tsx";
 
 // ...Importing Lineal Client Components via Special Agnostic Strategy.
@@ -53,7 +53,7 @@ import {
 import {
   /* @clientComponents */ clientComponentsStrategized as clientComponentsStrategizedFolderAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies-tsx";
-// Via baseURL.
+// Via baseUrl.
 import {
   /* @clientComponents */ clientComponentsStrategized as clientComponentsStrategizedFolderBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";

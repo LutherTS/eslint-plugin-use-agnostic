@@ -17,7 +17,7 @@ import serverFunctionsBaseUrlExtension from "tests/directive21/imported/typescri
 import serverFunctionsFolder from "../../../../../imported/typescript/server-functions-ts";
 // Via alias.
 import serverFunctionsFolderAlias from "@/tests/directive21/imported/typescript/server-functions-ts";
-// Via baseURL.
+// Via baseUrl.
 import serverFunctionsFolderBaseUrl from "tests/directive21/imported/typescript/server-functions-ts";
 
 // ...Importing Special Server Functions via Special Agnostic Strategy.
@@ -53,7 +53,7 @@ import {
 import {
   /* @serverFunctions */ serverFunctionsStrategized as serverFunctionsStrategizedFolderAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies-tsx";
-// Via baseURL.
+// Via baseUrl.
 import {
   /* @serverFunctions */ serverFunctionsStrategized as serverFunctionsStrategizedFolderBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";

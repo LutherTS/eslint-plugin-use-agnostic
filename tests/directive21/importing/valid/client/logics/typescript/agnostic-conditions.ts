@@ -17,7 +17,7 @@ import agnosticConditionsBaseUrlExtension from "tests/directive21/imported/types
 import agnosticConditionsFolder from "../../../../../imported/typescript/agnostic-conditions-tsx";
 // Via alias.
 import agnosticConditionsFolderAlias from "@/tests/directive21/imported/typescript/agnostic-conditions-tsx";
-// Via baseURL.
+// Via baseUrl.
 import agnosticConditionsFolderBaseUrl from "tests/directive21/imported/typescript/agnostic-conditions-tsx";
 
 // ...Importing Special Agnostic Conditions via Special Agnostic Strategy.
@@ -53,7 +53,7 @@ import {
 import {
   /* @agnosticConditions */ agnosticConditionsStrategized as agnosticConditionsStrategizedFolderAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies-tsx";
-// Via baseURL.
+// Via baseUrl.
 import {
   /* @agnosticConditions */ agnosticConditionsStrategized as agnosticConditionsStrategizedFolderBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
