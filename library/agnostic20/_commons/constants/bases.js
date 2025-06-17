@@ -146,7 +146,7 @@ export const effectiveDirectives_blockedImports = Object.freeze({
     makeBlockedImport(
       USE_SERVER_LOGICS,
       USE_CLIENT_LOGICS
-    ) /* Client Logics should never leak to the server, such as  would be the case here in a Server Logics Module. */,
+    ) /* Client Logics should never leak to the server, such as would be the case here in a Server Logics Module. */,
     makeBlockedImport(
       USE_SERVER_LOGICS,
       USE_CLIENT_COMPONENTS
@@ -161,7 +161,7 @@ export const effectiveDirectives_blockedImports = Object.freeze({
     makeBlockedImport(
       USE_SERVER_COMPONENTS,
       USE_CLIENT_LOGICS
-    ) /* Client Logics should never leak to the server, such as  would be the case here in a Server Components Module. */,
+    ) /* Client Logics should never leak to the server, such as would be the case here in a Server Components Module. */,
     // USE_CLIENT_COMPONENTS allowed, because Client Components can be nested inside Server Components either to wrap some of the tree with client state accessible through child Client Components and pass through Server Components, or to create client boundaries when the root of the application is planted on the server.
     // USE_AGNOSTIC_LOGICS allowed, because Agnostic Logics can run safely on the server just like they can on the client, such as is the case here in a Server Components Module.
     // USE_AGNOSTIC_COMPONENTS allowed, because Agnostic Components can render safely on the server just like they can on the client.
@@ -176,7 +176,7 @@ export const effectiveDirectives_blockedImports = Object.freeze({
     makeBlockedImport(
       USE_SERVER_FUNCTIONS,
       USE_CLIENT_LOGICS
-    ) /* Client Logics should never leak to the server, such as  would be the case here in a Server Functions Module. */,
+    ) /* Client Logics should never leak to the server, such as would be the case here in a Server Functions Module. */,
     makeBlockedImport(
       USE_SERVER_FUNCTIONS,
       USE_CLIENT_COMPONENTS
