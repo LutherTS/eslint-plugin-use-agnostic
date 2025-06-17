@@ -87,7 +87,7 @@ const stripDoubleQuotes = (string) => {
  * @returns The commented directive, or lack thereof via `null`. Given the strictness of this architecture, the lack of a directive is considered a mistake. (Though rules may provide the opportunity to declare a default, and configs with preset defaults may become provided.)
  */
 export const getCommentedDirectiveFromSourceCode = (sourceCode) => {
-  // gets the first $COMMENT#COMMENT from the source code
+  // gets the first comment from the source code
   const rawFirstComment = sourceCode.getAllComments()[0];
 
   const firstComment =
@@ -95,16 +95,16 @@ export const getCommentedDirectiveFromSourceCode = (sourceCode) => {
       ? sourceCode.getAllComments()[1]
       : rawFirstComment;
 
-  // returns null early if there is no first $COMMENT#COMMENT
+  // returns null early if there is no first comment
   if (!firstComment) return null;
 
-  // returns null early if the first $COMMENT#COMMENT is not on one of the first three lines
+  // returns null early if the first comment is not on one of the first three lines
   if (firstComment.loc.start.line > 3) return null;
 
-  // returns null early if the first $COMMENT#COMMENT is not on the first column
+  // returns null early if the first comment is not on the first column
   if (firstComment.loc.start.column !== 0) return null;
 
-  // gets the trimmed raw value of the first $COMMENT#COMMENT
+  // gets the trimmed raw value of the first comment
   const rawValue = firstComment.value.trim();
 
   // checks if the raw value is single- or double-quoted (or neither)
@@ -217,16 +217,16 @@ export const getVerifiedCommentedDirective = (directive, extension) => {
  * @returns The interpreted directive, a.k.a. strategized directive, or lack thereof via `null`.
  */
 export const getStrategizedDirective = (context, node) => {
-  // gets the first nested `/* */` $COMMENT#COMMENT inside the node
+  // gets the first nested `/* */` comment inside the node
   const firstNestedComment = context.sourceCode.getCommentsInside(node)[0];
 
   // returns null early if there is no nested comments
   if (!firstNestedComment) return null;
 
-  // gets and trims the first nested $COMMENT#COMMENT raw
+  // gets and trims the first nested comment raw
   const rawStrategy = firstNestedComment.value.trim() || "";
 
-  // asserts whether that first nested $COMMENT#COMMENT is or isn't a Strategy
+  // asserts whether that first nested comment is or isn't a Strategy
   const strategy =
     strategiesArray.find((strategy) => strategy === rawStrategy) ?? null;
 

@@ -16,4 +16,4 @@ import serverLogicsFolderAlias from "@/tests/agnostic20/imported/typescript/serv
 import serverLogicsFolderBaseUrl from "tests/agnostic20/imported/typescript/server-ts";
 
 // Invalid.
-// $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_SERVER_LOGICS
+// Server Logics should never leak to the client, such as would be the case here in a Client Components Module.

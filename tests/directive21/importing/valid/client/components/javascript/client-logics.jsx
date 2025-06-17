@@ -17,4 +17,4 @@ import {
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
 // Valid.
-// $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#USE_CLIENT_LOGICS
+// Prime Client Logics, being logic from the client, can safely support Lineal Client Components, like any Client Components.

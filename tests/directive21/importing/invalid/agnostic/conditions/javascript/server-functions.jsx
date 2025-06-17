@@ -17,4 +17,4 @@ import {
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
 // Invalid.
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_SERVER_FUNCTIONS
+// (Special) Server Functions are not accepted because (Special) Agnostic Conditions Components only take finite, imported components as arguments in their making. As such, assigning props to these components, including Server Functions, is not made within Agnostic Conditions Modules.

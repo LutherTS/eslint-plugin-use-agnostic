@@ -59,4 +59,4 @@ import {
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
 // Valid.
-// (Special) $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_SERVER_FUNCTIONS
+// (Special) Server Functions are specifically triggered by Client Components.

@@ -17,4 +17,4 @@ import {
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
 // Invalid.
-// $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#USE_CLIENT_LOGICS
+// Prime Client Logics should never leak to the server, such as would be the case here in a Prime Server Logics Module.

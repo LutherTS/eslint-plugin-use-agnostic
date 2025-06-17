@@ -8,4 +8,4 @@ import agnosticComponents from "../../../../../imported/javascript/agnostic.jsx"
 import agnosticComponentsFolder from "../../../../../imported/javascript/agnostic-jsx";
 
 // Valid.
-// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_AGNOSTIC_COMPONENTS
+// Agnostic Components can compose with one another.

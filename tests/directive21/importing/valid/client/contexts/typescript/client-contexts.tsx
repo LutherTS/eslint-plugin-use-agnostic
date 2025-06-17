@@ -59,4 +59,4 @@ import {
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
 // Valid.
-// $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#USE_CLIENT_CONTEXTS
+// (Special) Client Contexts Components can compose with one another.

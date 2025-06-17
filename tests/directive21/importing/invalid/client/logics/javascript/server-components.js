@@ -17,4 +17,4 @@ import {
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
 // Invalid.
-// $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#USE_SERVER_COMPONENTS
+// Lineal Server Components cannot be thinkered with on the client.

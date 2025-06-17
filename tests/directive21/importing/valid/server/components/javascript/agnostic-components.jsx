@@ -17,4 +17,4 @@ import {
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
 // Valid.
-// $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#USE_AGNOSTIC_COMPONENTS
+// Lineal Agnostic Components can render safely on the server just like they can on the client.

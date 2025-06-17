@@ -17,4 +17,4 @@ import {
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
 // Valid.
-// $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#USE_CLIENT_COMPONENTS
+// Lineal Client Components can be nested inside Server Components to create client boundaries when the root of the application is planted on the server.

@@ -59,4 +59,4 @@ import {
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
 // Invalid.
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#USE_SERVER_COMPONENTS
+// Lineal Server Components cannot be tinkered with on both the server and the client.

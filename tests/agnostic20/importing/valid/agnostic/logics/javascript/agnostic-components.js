@@ -8,4 +8,4 @@ import agnosticComponents from "../../../../../imported/javascript/agnostic.jsx"
 import agnosticComponentsFolder from "../../../../../imported/javascript/agnostic-jsx";
 
 // Valid.
-// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#USE_AGNOSTIC_COMPONENTS
+// Agnostic Components can be composed with Logics agnostically as long as the Agnostic Logics Module, by convention, does not export React components.

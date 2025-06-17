@@ -17,4 +17,4 @@ import {
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
 // Valid.
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#USE_AGNOSTIC_LOGICS
+// Prime Agnostic Logics, being environment-agnostic logic, can safely support Agnostic Components.

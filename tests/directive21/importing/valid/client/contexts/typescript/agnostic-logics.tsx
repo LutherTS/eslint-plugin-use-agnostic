@@ -59,4 +59,4 @@ import {
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
 // Valid.
-// $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#USE_AGNOSTIC_LOGICS
+// Prime Agnostic Logics can run safely on the client just like they can on the server, such as is the case here in a Special Client Contexts Module.

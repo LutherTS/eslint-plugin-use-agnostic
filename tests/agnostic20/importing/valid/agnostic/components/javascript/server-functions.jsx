@@ -8,4 +8,4 @@ import serverFunctions from "../../../../../imported/javascript/server-functions
 import serverFunctionsFolder from "../../../../../imported/javascript/server-functions-js";
 
 // Valid.
-// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_SERVER_FUNCTIONS
+// Server Functions can be passed to Client Components as props when Client Components are also legally imported into Agnostic Components Modules.

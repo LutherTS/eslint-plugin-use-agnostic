@@ -59,4 +59,4 @@ import {
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
 // Valid.
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#USE_AGNOSTIC_LOGICS
+// Prime Agnostic Logics, being environment-agnostic logic, can safely support Agnostic Components.

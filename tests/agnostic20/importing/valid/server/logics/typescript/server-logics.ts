@@ -15,4 +15,4 @@ import serverLogicsFolderAlias from "@/tests/agnostic20/imported/typescript/serv
 import serverLogicsFolderBaseUrl from "tests/agnostic20/imported/typescript/server-ts";
 
 // Valid.
-// $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_SERVER_LOGICS
+// Server Logics can compose with one another.

@@ -17,4 +17,4 @@ import {
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
 // Valid.
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#USE_AGNOSTIC_LOGICS
+// Prime Agnostic Logics can compose with one another.

@@ -8,4 +8,4 @@ import agnosticLogics from "../../../../../imported/javascript/agnostic.js";
 import agnosticLogicsFolder from "../../../../../imported/javascript/agnostic-js";
 
 // Valid.
-// $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_AGNOSTIC_LOGICS
+// Agnostic Logics can run safely on the server just like they can on the client, such as is the case here in a Server Functions Module.

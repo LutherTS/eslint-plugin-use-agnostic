@@ -7,4 +7,4 @@ import clientComponents from "../../../../../imported/javascript/client.jsx";
 import clientComponentsFolder from "../../../../../imported/javascript/client-jsx";
 
 // Invalid.
-// $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_CLIENT_COMPONENTS
+// Client Components cannot be tinkered with on the server.

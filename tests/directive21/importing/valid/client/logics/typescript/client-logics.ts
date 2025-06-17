@@ -59,4 +59,4 @@ import {
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
 // Valid.
-// $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#USE_CLIENT_LOGICS
+// Prime Client Logics can compose with one another.

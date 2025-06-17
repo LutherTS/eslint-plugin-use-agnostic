@@ -8,4 +8,4 @@ import clientComponents from "../../../../../imported/javascript/client.jsx";
 import clientComponentsFolder from "../../../../../imported/javascript/client-jsx";
 
 // Valid.
-// $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#USE_CLIENT_COMPONENTS
+// Client Components are OK to be composed with Client Logics as long as the Client Logics Module, by convention, does not export React components.

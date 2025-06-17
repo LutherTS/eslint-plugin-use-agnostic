@@ -17,4 +17,4 @@ import {
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
 // Invalid.
-// $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#USE_SERVER_COMPONENTS
+// Lineal Server Components cannot be the children of Lineal Client Components.

@@ -17,4 +17,4 @@ import {
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
 // Invalid.
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_SERVER_LOGICS
+// Prime Server Logics cannot run on both the server and the client, such as would be the case here in a Special Agnostic Conditions Module.

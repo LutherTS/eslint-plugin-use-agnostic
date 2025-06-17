@@ -16,4 +16,4 @@ import clientComponentsFolderAlias from "@/tests/agnostic20/imported/typescript/
 import clientComponentsFolderBaseUrl from "tests/agnostic20/imported/typescript/client-tsx";
 
 // Invalid.
-// $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_CLIENT_COMPONENTS
+// Client Components aren't allowed because Server Functions have no business working with React Components.

@@ -59,4 +59,4 @@ import {
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
 // Valid.
-// $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#USE_SERVER_COMPONENTS
+// Lineal Server Components can compose with one another, now that thanks to the inclusion of Agnostic Components they are actual Server Components.

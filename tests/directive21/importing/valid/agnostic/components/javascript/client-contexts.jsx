@@ -17,4 +17,4 @@ import {
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
 // Valid.
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#USE_CLIENT_CONTEXTS
+// (Special) Client Contexts Components can be nested inside Agnostic Components to wrap some of the tree with client state accessible through child Client Components, and to pass through Server Components (if still on the Server Tree) when the root of the application is planted on the server.

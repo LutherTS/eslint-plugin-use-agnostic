@@ -8,4 +8,4 @@ import agnosticLogics from "../../../../../imported/javascript/agnostic.js";
 import agnosticLogicsFolder from "../../../../../imported/javascript/agnostic-js";
 
 // Valid.
-// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_AGNOSTIC_LOGICS
+// Agnostic Logics, being environment-agnostic logic, can safely support Agnostic Components.

@@ -17,4 +17,4 @@ import {
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
 // Valid.
-// $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#USE_AGNOSTIC_COMPONENTS
+// Lineal Agnostic Components can be composed with any Prime Environment Logics agnostically, such as Prime Server Logics, as long as the Prime Environment Logics Module, by convention, does not export React components.

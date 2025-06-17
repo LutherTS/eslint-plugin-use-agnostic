@@ -15,4 +15,4 @@ import clientComponentsFolderAlias from "@/tests/agnostic20/imported/typescript/
 import clientComponentsFolderBaseUrl from "tests/agnostic20/imported/typescript/client-tsx";
 
 // Valid.
-// $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_CLIENT_COMPONENTS
+// Client Components can be nested inside Server Components either to wrap some of the tree with client state accessible through child Client Components and pass through Server Components, or to create client boundaries when the root of the application is planted on the server.

@@ -17,4 +17,4 @@ import {
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
 // Valid.
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#USE_SERVER_FUNCTIONS
+// (Special) Server Functions can be passed to Client Components as props when Client Components are also legally imported into Agnostic Components Modules.

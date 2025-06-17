@@ -8,4 +8,4 @@ import serverLogics from "../../../../../imported/javascript/server.js";
 import serverLogicsFolder from "../../../../../imported/javascript/server-js";
 
 // Invalid.
-// $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#USE_SERVER_LOGICS
+// Server Logics should never leak to the client, such as would be the case here in a Client Logics Module.

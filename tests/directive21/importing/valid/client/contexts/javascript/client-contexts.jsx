@@ -17,4 +17,4 @@ import {
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
 // Valid.
-// $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#USE_CLIENT_CONTEXTS
+// (Special) Client Contexts Components can compose with one another.

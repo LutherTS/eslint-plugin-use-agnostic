@@ -16,4 +16,4 @@ import serverLogicsFolderAlias from "@/tests/agnostic20/imported/typescript/serv
 import serverLogicsFolderBaseUrl from "tests/agnostic20/imported/typescript/server-ts";
 
 // Valid.
-// $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_SERVER_LOGICS
+// Server Logics, being logic from the server, can safely support Server Functions.

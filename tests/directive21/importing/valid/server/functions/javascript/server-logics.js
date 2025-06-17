@@ -17,4 +17,4 @@ import {
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
 // Valid.
-// $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#USE_SERVER_LOGICS
+// Prime Server Logics, being logic from the server, can safely support (Special) Server Functions.

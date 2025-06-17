@@ -7,4 +7,4 @@ import serverComponents from "../../../../../imported/javascript/server.jsx";
 import serverComponentsFolder from "../../../../../imported/javascript/server-jsx";
 
 // Invalid.
-// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#USE_SERVER_COMPONENTS
+// Server Components cannot be tinkered with on both the server and the client.

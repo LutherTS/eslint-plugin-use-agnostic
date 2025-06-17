@@ -8,4 +8,4 @@ import clientComponents from "../../../../../imported/javascript/client.jsx";
 import clientComponentsFolder from "../../../../../imported/javascript/client-jsx";
 
 // Valid.
-// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_CLIENT_COMPONENTS
+// Client Components can be nested inside Agnostic Components either to wrap some of the tree with client state accessible through child Client Components and pass through Server Components (if still on the Server Tree), or to create client boundaries when the root of the application is planted on the server.

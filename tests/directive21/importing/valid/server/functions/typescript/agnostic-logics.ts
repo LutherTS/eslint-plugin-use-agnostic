@@ -59,4 +59,4 @@ import {
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
 // Valid.
-// $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#USE_AGNOSTIC_LOGICS
+// Prime Agnostic Logics can run safely on the server just like they can on the client, such as is the case here in a Special Server Functions Module.

@@ -17,4 +17,4 @@ import {
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
 // Valid.
-// $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#USE_SERVER_COMPONENTS
+// Lineal Server Components can compose with one another, now that thanks to the inclusion of Agnostic Components they are actual Server Components.

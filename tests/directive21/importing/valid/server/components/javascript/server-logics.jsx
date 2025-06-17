@@ -17,4 +17,4 @@ import {
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
 // Valid.
-// $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#USE_SERVER_LOGICS
+// Prime Server Logics, being logic from the server, can safely support Lineal Server Components.

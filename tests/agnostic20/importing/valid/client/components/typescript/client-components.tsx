@@ -16,4 +16,4 @@ import clientComponentsFolderAlias from "@/tests/agnostic20/imported/typescript/
 import clientComponentsFolderBaseUrl from "tests/agnostic20/imported/typescript/client-tsx";
 
 // Valid.
-// $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_CLIENT_COMPONENTS
+// Client Components can compose with one another.

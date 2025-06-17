@@ -59,4 +59,4 @@ import {
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
 // Invalid.
-// $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#USE_SERVER_COMPONENTS
+// Lineal Server Components may only pass through (Special) Client Contexts Components via the children prop within Server Components Modules.

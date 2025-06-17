@@ -8,4 +8,4 @@ import clientLogics from "../../../../../imported/javascript/client.js";
 import clientLogicsFolder from "../../../../../imported/javascript/client-js";
 
 // Valid.
-// $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_CLIENT_LOGICS
+// Client Logics, being logic from the client, can safely support Client Components.

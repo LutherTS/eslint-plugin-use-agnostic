@@ -16,4 +16,4 @@ import agnosticComponentsFolderAlias from "@/tests/agnostic20/imported/typescrip
 import agnosticComponentsFolderBaseUrl from "tests/agnostic20/imported/typescript/agnostic-tsx";
 
 // Valid.
-// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_AGNOSTIC_COMPONENTS
+// Agnostic Components can compose with one another.

@@ -16,4 +16,4 @@ import agnosticLogicsFolderAlias from "@/tests/agnostic20/imported/typescript/ag
 import agnosticLogicsFolderBaseUrl from "tests/agnostic20/imported/typescript/agnostic-ts";
 
 // Valid.
-// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#USE_AGNOSTIC_LOGICS
+// Agnostic Logics can compose with one another.

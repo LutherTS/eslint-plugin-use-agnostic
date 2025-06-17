@@ -6,4 +6,4 @@ import serverComponents from "../../../../../imported/javascript/server.jsx";
 import serverComponentsFolder from "../../../../../imported/javascript/server-jsx";
 
 // Valid.
-// $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_SERVER_COMPONENTS
+// Server Components can compose with one another, assuming thanks to the inclusion of the 'use agnostic' directive that they are actual Server Components.

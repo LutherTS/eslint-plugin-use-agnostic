@@ -16,4 +16,4 @@ import serverFunctionsFolderAlias from "@/tests/agnostic20/imported/typescript/s
 import serverFunctionsFolderBaseUrl from "tests/agnostic20/imported/typescript/server-functions-ts";
 
 // Valid.
-// $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_SERVER_FUNCTIONS
+// Server Functions are specifically triggered by Client Components.

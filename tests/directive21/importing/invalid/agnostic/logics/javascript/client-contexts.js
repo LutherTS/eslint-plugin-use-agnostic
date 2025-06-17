@@ -17,4 +17,4 @@ import {
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
 // Invalid.
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#USE_CLIENT_CONTEXTS
+// (Special) Client Contexts Components, like any Client Components, cannot be tinkered with on both the server and the client.

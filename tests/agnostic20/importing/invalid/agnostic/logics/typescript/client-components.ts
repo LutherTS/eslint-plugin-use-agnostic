@@ -16,4 +16,4 @@ import clientComponentsFolderAlias from "@/tests/agnostic20/imported/typescript/
 import clientComponentsFolderBaseUrl from "tests/agnostic20/imported/typescript/client-tsx";
 
 // Invalid.
-// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#USE_CLIENT_COMPONENTS
+// Client Components cannot be tinkered with on both the server and the client.

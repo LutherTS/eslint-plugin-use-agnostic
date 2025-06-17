@@ -59,4 +59,4 @@ import {
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
 // Invalid.
-// $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#USE_SERVER_LOGICS
+// Prime Server Logics should never leak to the client, such as would be the case here in a Prime Client Logics Module.

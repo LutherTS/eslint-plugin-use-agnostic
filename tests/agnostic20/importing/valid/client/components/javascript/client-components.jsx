@@ -8,4 +8,4 @@ import clientComponents from "../../../../../imported/javascript/client.jsx";
 import clientComponentsFolder from "../../../../../imported/javascript/client-jsx";
 
 // Valid.
-// $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_CLIENT_COMPONENTS
+// Client Components can compose with one another.

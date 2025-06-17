@@ -6,4 +6,4 @@ import serverComponents from "../../../../../imported/javascript/server.jsx";
 import serverComponentsFolder from "../../../../../imported/javascript/server-jsx";
 
 // Valid.
-// $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_SERVER_COMPONENTS
+// Server Components are OK to be composed with Server Logics as long as the Server Logics Module, by convention, does not export React components.

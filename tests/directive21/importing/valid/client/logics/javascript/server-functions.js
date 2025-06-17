@@ -17,4 +17,4 @@ import {
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
 // Valid.
-// $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#USE_SERVER_FUNCTIONS
+// (Special) Server Functions can technically be attached to Client Components that are being tinkered with within Client Logics Modules.

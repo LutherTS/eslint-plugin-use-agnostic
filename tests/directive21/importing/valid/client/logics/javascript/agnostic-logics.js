@@ -17,4 +17,4 @@ import {
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
 // Valid.
-// $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#USE_AGNOSTIC_LOGICS
+// Prime Agnostic Logics can run safely on the client just like they can on the server, such as is the case here in a Prime Client Logics Module.

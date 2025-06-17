@@ -59,4 +59,4 @@ import {
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
 // Invalid.
-// $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#USE_CLIENT_LOGICS
+// Prime Client Logics should never leak to the server, such as would be the case here in a Lineal Server Components Module.

@@ -15,4 +15,4 @@ import serverComponentsFolderAlias from "@/tests/agnostic20/imported/typescript/
 import serverComponentsFolderBaseUrl from "tests/agnostic20/imported/typescript/server-tsx";
 
 // Valid.
-// $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_SERVER_COMPONENTS
+// Server Components can compose with one another, assuming thanks to the inclusion of the 'use agnostic' directive that they are actual Server Components.

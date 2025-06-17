@@ -8,4 +8,4 @@ import serverFunctions from "../../../../../imported/javascript/server-functions
 import serverFunctionsFolder from "../../../../../imported/javascript/server-functions-js";
 
 // Valid.
-// $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_SERVER_FUNCTIONS
+// Server Functions are specifically triggered by Client Components.
