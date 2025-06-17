@@ -8,6 +8,18 @@ import { directive21Comments } from "./jscomments/directive21/constants/bases.js
 
 const config = Object.freeze({
   comment: "comment", // $COMMENT#COMMENT in code, "comment" on hover when resolved by the VSCode extension JSComments
+  // from tests (start)
+  importingA: "...Importing a",
+  withExtensionParentheses: "(with extension).",
+  byFolder: "by a folder.",
+  importing: "...Importing",
+  viaStrategy: "via Special Agnostic Strategy.",
+  withExtension: "with extension",
+  viaAlias: "Via alias.",
+  viaBaseUrl: "Via baseUrl.",
+  valid: "Valid.",
+  invalid: "Invalid.",
+  // from tests (end) (to be migrated in a different folder)
   [agnostic20ConfigName]: agnostic20Comments,
   [directive21ConfigName]: directive21Comments,
 });
