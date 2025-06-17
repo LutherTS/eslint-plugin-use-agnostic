@@ -26,11 +26,19 @@ const config = Object.freeze({
   node: "The ESLint `node` of the rule's current traversal.",
   // helpers.js
   extension: "The JavaScript (TypeScript) extension of the file.",
+  resolvedPath: "The resolved path of the imported module.",
   // agnostic20/_commons/utilities/helpers.js
   serverByDefault: `\`null\` denotes a server-by-default module, ideally a Server Module.`,
   useServer: `\`'use server'\` denotes a Server Functions Module.`,
   useClient: `\`'use client'\` denotes a Client Module.`,
   useAgnostic: `\`'use agnostic'\` denotes an Agnostic Module (formerly Shared Module).`,
+  useServerLogics20: `\`'use server logics'\` denotes a Server Logics Module.`,
+  useServerComponents20: `\`'use server components'\` denotes a Server Components Module.`,
+  useServerFunctions20: `\`'use server functions'\` denotes a Server Functions Module.`,
+  useClientLogics20: `\`'use client logics'\` denotes a Client Logics Module.`,
+  useClientComponents20: `\`'use client components'\` denotes a Client Components Module.`,
+  useAgnosticLogics20: `\`'use agnostic logics'\` denotes an Agnostic Logics Module.`,
+  useAgnosticComponents20: `\`'use agnostic components'\` denotes an Agnostic Components Module.`,
   [agnostic20ConfigName]: agnostic20Comments,
   [directive21ConfigName]: directive21Comments,
 });
