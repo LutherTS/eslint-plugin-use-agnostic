@@ -9,6 +9,7 @@ import { directive21Comments } from "./jscomments/directive21/constants/bases.js
 const config = Object.freeze({
   comment: "comment", // $COMMENT#COMMENT in code, "comment" on hover when resolved by the VSCode extension JSComments
   // from tests (start)
+  thatsA: "That's a",
   importingA: "...Importing a",
   withExtensionParentheses: "(with extension).",
   byFolder: "by a folder.",

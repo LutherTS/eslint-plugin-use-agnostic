@@ -24,6 +24,8 @@ export const serverLogicsComments = Object.freeze({
     /* valid */ "Agnostic Logics can run safely on the server just like they can on the client, such as is the case here in a Server Logics Module.",
   [USE_AGNOSTIC_COMPONENTS]:
     /* valid */ "Agnostic Components can be composed with Logics on the server just like they can on the client, as long at the Server Logics Module, by convention, does not export React components.",
+  module: "Server Logics Module",
+  modulePeriod: "Server Logics Module.",
 });
 
 export const serverComponentsComments = Object.freeze({
@@ -41,6 +43,8 @@ export const serverComponentsComments = Object.freeze({
     /* valid */ "Agnostic Logics can run safely on the server just like they can on the client, such as is the case here in a Server Components Module.",
   [USE_AGNOSTIC_COMPONENTS]:
     /* valid */ "Agnostic Components can render safely on the server just like they can on the client.",
+  module: "Server Components Module",
+  modulePeriod: "Server Components Module.",
 });
 
 export const serverFunctionsComments = Object.freeze({
@@ -58,6 +62,8 @@ export const serverFunctionsComments = Object.freeze({
     /* valid */ "Agnostic Logics can run safely on the server just like they can on the client, such as is the case here in a Server Functions Module.",
   [USE_AGNOSTIC_COMPONENTS]:
     /* invalid */ "Agnostic Components aren't allowed because Server Functions have no business working with React Components.",
+  module: "Server Functions Module",
+  modulePeriod: "Server Functions Module.",
 });
 
 export const clientLogicsComments = Object.freeze({
@@ -75,6 +81,8 @@ export const clientLogicsComments = Object.freeze({
     /* valid */ "Agnostic Logics can run safely on the client just like they can on the server, such as is the case here in a Client Logics Module.",
   [USE_AGNOSTIC_COMPONENTS]:
     /* valid */ "Agnostic Components can be composed with Logics on the client just like they can on the server, as long as the Client Logics Module, by convention, does not export React components.",
+  module: "Client Logics Module",
+  modulePeriod: "Client Logics Module.",
 });
 
 export const clientComponentsComments = Object.freeze({
@@ -92,6 +100,8 @@ export const clientComponentsComments = Object.freeze({
     /* valid */ "Agnostic Logics can run safely on the client just like they can on the server, such as is the case here in a Client Components Module.",
   [USE_AGNOSTIC_COMPONENTS]:
     /* valid */ "Agnostic Components can render safely on the client just like they can on the server.",
+  module: "Client Components Module",
+  modulePeriod: "Client Components Module.",
 });
 
 export const agnosticLogicsComments = Object.freeze({
@@ -109,6 +119,8 @@ export const agnosticLogicsComments = Object.freeze({
     /* valid */ "Agnostic Logics can compose with one another.",
   [USE_AGNOSTIC_COMPONENTS]:
     /* valid */ "Agnostic Components can be composed with Logics agnostically as long as the Agnostic Logics Module, by convention, does not export React components.",
+  module: "Agnostic Logics Module",
+  modulePeriod: "Agnostic Logics Module.",
 });
 
 export const agnosticComponentsComments = Object.freeze({
@@ -126,4 +138,6 @@ export const agnosticComponentsComments = Object.freeze({
     /* valid */ "Agnostic Logics, being environment-agnostic logic, can safely support Agnostic Components.",
   [USE_AGNOSTIC_COMPONENTS]:
     /* valid */ "Agnostic Components can compose with one another.",
+  module: "Agnostic Components Module",
+  modulePeriod: "Agnostic Components Module.",
 });
