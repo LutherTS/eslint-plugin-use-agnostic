@@ -1,3 +1,4 @@
+// comment variables for JSDoc definitions
 export const jSDocComments = Object.freeze({
   // library/_commons/utilities/helpers.js
   basePath: "The absolute import path with extension yet resolved.",
@@ -76,6 +77,7 @@ export const jSDocComments = Object.freeze({
   messageId: "The messageId of the errors expected.",
 });
 
+// comment variables for tests flavor texts
 export const testsComments = Object.freeze({
   thatsA: "That's a",
   thatsAn: "That's an",
