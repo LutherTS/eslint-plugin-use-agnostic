@@ -1,5 +1,7 @@
 import path from "path";
 
+import { resolveImportingPath } from "resolve-importing-path";
+
 import {
   EXTENSIONS,
   useServerJSXMessageId,
@@ -16,10 +18,7 @@ import {
   specificViolationMessage,
 } from "../constants/bases.js";
 
-import {
-  resolveImportPath,
-  highlightFirstLineOfCode,
-} from "../../../_commons/utilities/helpers.js";
+import { highlightFirstLineOfCode } from "../../../_commons/utilities/helpers.js";
 import {
   getDirectiveFromCurrentModule,
   getDirectiveFromImportedModule,
@@ -104,7 +103,7 @@ const importedFileFlow = (context, node) => {
   const skipTrue = { ...skip, importedFileEffectiveDirective: undefined };
 
   // finds the full path of the import
-  const resolvedImportPath = resolveImportPath(
+  const resolvedImportPath = resolveImportingPath(
     path.dirname(context.filename),
     node.source.value,
     context.cwd
