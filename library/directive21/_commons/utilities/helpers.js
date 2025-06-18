@@ -1,3 +1,5 @@
+import { getSourceCodeFromFilePath } from "get-sourcecode-from-file-path";
+
 import { exportNotStrategized } from "../../../_commons/constants/bases.js";
 import {
   USE_AGNOSTIC_STRATEGIES,
@@ -12,7 +14,6 @@ import {
   isImportBlocked as commonsIsImportBlocked,
   makeMessageFromCurrentFileResolvedDirective,
   findSpecificViolationMessage as commonsFindSpecificViolationMessage,
-  getSourceCodeFromFilePath,
 } from "../../../_commons/utilities/helpers.js";
 
 /**
