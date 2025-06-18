@@ -1,12 +1,12 @@
 // comment variables for JSDoc definitions
 export const jSDocComments = Object.freeze({
   // library/_commons/utilities/helpers.js
-  basePath: "The absolute import path with extension yet resolved.",
+  basePath: "The absolute import path with its extension yet resolved.",
   currentDir:
-    "The directory of the file containing the import (from `path.dirname(context.filename)`).",
+    "The directory of the file containing the import, such as from `path.dirname(context.filename)`.",
   importPath:
-    "The import specifier (e.g., `@/components/Button` or `./utils`), from the current node.",
-  cwd: "The project root (from `context.cwd`).",
+    "The import specifier (e.g., `@/components/Button` or `./utils`), such as one from the current node.",
+  cwd: "The project root, such as from `context.cwd`.",
   fileResolvedPath: "The resolved path of the file.",
   aContext: "An ESLint rule's `context` object.",
   resolvedDirectives_blockedImports: `The blocked imports object, either for agnostic20 or for directive21.`,

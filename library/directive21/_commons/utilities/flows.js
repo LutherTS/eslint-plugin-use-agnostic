@@ -1,5 +1,7 @@
 import path from "path";
 
+import { resolveImportingPath } from "resolve-importing-path";
+
 import {
   EXTENSIONS,
   reExportNotSameMessageId,
@@ -19,10 +21,7 @@ import {
   specificFailure,
 } from "../constants/bases.js";
 
-import {
-  resolveImportPath,
-  highlightFirstLineOfCode,
-} from "../../../_commons/utilities/helpers.js";
+import { highlightFirstLineOfCode } from "../../../_commons/utilities/helpers.js";
 import {
   getCommentedDirectiveFromCurrentModule,
   getVerifiedCommentedDirective,
@@ -113,7 +112,7 @@ const importedFileFlow = (context, node) => {
   const skipTrue = { ...skip, importedFileCommentedDirective: undefined };
 
   // finds the full path of the import
-  const resolvedImportPath = resolveImportPath(
+  const resolvedImportPath = resolveImportingPath(
     path.dirname(context.filename),
     node.source.value,
     context.cwd
