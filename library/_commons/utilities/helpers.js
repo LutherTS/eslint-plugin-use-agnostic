@@ -1,11 +1,6 @@
-import fs from "fs";
-
-import { Linter } from "eslint";
-
 import {
   ARE_NOT_ALLOWED_TO_IMPORT,
   resolvedDirectives_resolvedModules,
-  typeScriptAndJSXCompatible,
 } from "../constants/bases.js";
 
 /**
@@ -18,27 +13,6 @@ import {
  * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} U
  * @typedef {import('../../../types/_commons/typedefs').ResolvedDirectives_BlockedImports<T, U>} ResolvedDirectives_BlockedImports
  */
-
-/* getSourceCodeFromFilePath */
-
-/**
- * Gets the ESLint-generated SourceCode object of a file from its resolved path.
- * @param {string} resolvedPath The resolved path of the file.
- * @returns The ESLint-generated SourceCode object of the file.
- */
-export const getSourceCodeFromFilePath = (resolvedPath) => {
-  // ensures each instance of the function is based on its own linter
-  // (just in case somehow some linters were running concurrently)
-  const linter = new Linter();
-  // the raw code of the file at the end of the resolved path
-  const text = fs.readFileSync(resolvedPath, "utf8");
-  // utilizes linter.verify ...
-  linter.verify(text, { languageOptions: typeScriptAndJSXCompatible });
-  // ... to retrieve the raw code as a SourceCode object
-  const code = linter.getSourceCode();
-
-  return code;
-};
 
 /* highlightFirstLineOfCode */
 

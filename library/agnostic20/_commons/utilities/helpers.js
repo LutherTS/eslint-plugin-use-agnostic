@@ -1,3 +1,5 @@
+import { getSourceCodeFromFilePath } from "get-sourcecode-from-file-path";
+
 import {
   USE_SERVER,
   LOGICS,
@@ -12,7 +14,6 @@ import {
   isImportBlocked as commonsIsImportBlocked,
   makeMessageFromCurrentFileResolvedDirective,
   findSpecificViolationMessage as commonsFindSpecificViolationMessage,
-  getSourceCodeFromFilePath,
 } from "../../../_commons/utilities/helpers.js";
 
 /**
