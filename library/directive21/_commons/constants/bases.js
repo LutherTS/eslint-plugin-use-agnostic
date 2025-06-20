@@ -14,7 +14,7 @@ import {
 
 import { makeIntroForSpecificViolationMessage } from "../../../_commons/utilities/helpers.js";
 
-import jscommentsConfig from "../../../../comments.config.js";
+import { data as jscommentsConfig } from "../../../../comments.config.js";
 
 /**
  * @typedef {import('../../../../types/directive21/_commons/typedefs.js').CommentedDirective} CommentedDirective
