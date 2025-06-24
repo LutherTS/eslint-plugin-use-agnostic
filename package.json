@@ -41,8 +41,8 @@
     "test": "node tests/agnostic20/import-rules.test.js && node tests/directive21/import-rules.test.js"
   },
   "dependencies": {
-    "get-sourcecode-from-file-path": "^1.0.1",
-    "resolve-importing-path": "^1.0.2",
+    "get-sourcecode-from-file-path": "^1.1.2",
+    "resolve-importing-path": "^1.0.3",
     "tsconfig-paths": "^4.2.0",
     "typescript-eslint": "^8.32.0"
   },
