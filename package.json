@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-use-agnostic",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Highlights problematic server-client imports in projects made with the Fullstack React Architecture.",
   "keywords": [
     "eslint",
@@ -41,8 +41,8 @@
     "test": "node tests/agnostic20/import-rules.test.js && node tests/directive21/import-rules.test.js"
   },
   "dependencies": {
-    "get-sourcecode-from-file-path": "^1.0.0",
-    "resolve-importing-path": "^1.0.2",
+    "get-sourcecode-from-file-path": "^1.1.2",
+    "resolve-importing-path": "^1.0.3",
     "tsconfig-paths": "^4.2.0",
     "typescript-eslint": "^8.32.0"
   },

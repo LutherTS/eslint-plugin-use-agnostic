@@ -11,7 +11,7 @@ import {
 
 import { makeIntroForSpecificViolationMessage } from "../../../_commons/utilities/helpers.js";
 
-import jscommentsConfig from "../../../../comments.config.js";
+import { data as jscommentsConfig } from "../../../../comments.config.js";
 
 /**
  * @typedef {import('../../../../types/agnostic20/_commons/typedefs.js').Directive} Directive

@@ -10,12 +10,19 @@ import {
 import { agnostic20Comments } from "./jscomments/agnostic20/constants/bases.js";
 import { directive21Comments } from "./jscomments/directive21/constants/bases.js";
 
-const config = Object.freeze({
+export const data = Object.freeze({
   jsDoc: jSDocComments,
   tests: testsComments,
   [agnostic20ConfigName]: agnostic20Comments,
   [directive21ConfigName]: directive21Comments,
 });
+
+const ignores = [];
+
+const config = {
+  data,
+  ignores,
+};
 
 export default config;
 
