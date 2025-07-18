@@ -1,20 +1,20 @@
 // "use server components"
 
-// ...Importing a Special Agnostic Conditions Module.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#MODULEPERIOD
 import agnosticConditions from "../../../../../imported/javascript/agnostic-conditions.jsx";
 
-// ...Importing a Special Agnostic Conditions Module by a folder.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#MODULE $COMMENT#TESTS#BYFOLDER
 import agnosticConditionsFolder from "../../../../../imported/javascript/agnostic-conditions-jsx";
 
-// ...Importing Special Agnostic Conditions via Special Agnostic Strategy.
+// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#KINDS $COMMENT#TESTS#VIASTRATEGYPERIOD
 import {
   /* @agnosticConditions */ agnosticConditionsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// ...Importing Special Agnostic Conditions via Special Agnostic Strategy by a folder.
+// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#KINDS $COMMENT#TESTS#VIASTRATEGY $COMMENT#TESTS#BYFOLDER
 import {
   /* @agnosticConditions */ agnosticConditionsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// Valid.
-// (Special) Agnostic Conditions Components, as if they were Lineal Agnostic Components themselves, can render safely on the server just like they can on the client.
+// $COMMENT#TESTS#VALID
+// $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#USE_AGNOSTIC_CONDITIONS

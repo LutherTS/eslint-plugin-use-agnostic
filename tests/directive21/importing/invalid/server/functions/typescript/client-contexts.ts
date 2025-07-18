@@ -1,62 +1,62 @@
 // "use server functions"
 
-// ...Importing a Special Client Contexts Module.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#MODULEPERIOD
 import clientContexts from "../../../../../imported/typescript/client-contexts";
-// with extension
+// $COMMENT#TESTS#WITHEXTENSION
 import clientContextsExtension from "../../../../../imported/typescript/client-contexts.tsx";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import clientContextsAlias from "@/tests/directive21/imported/typescript/client-contexts";
-// with extension
+// $COMMENT#TESTS#WITHEXTENSION
 import clientContextsAliasExtension from "@/tests/directive21/imported/typescript/client-contexts.tsx";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import clientContextsBaseUrl from "tests/directive21/imported/typescript/client-contexts";
-// with extension
+// $COMMENT#TESTS#WITHEXTENSION
 import clientContextsBaseUrlExtension from "tests/directive21/imported/typescript/client-contexts.tsx";
 
-// ...Importing a Special Client Contexts Module by a folder.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#MODULE $COMMENT#TESTS#BYFOLDER
 import clientContextsFolder from "../../../../../imported/typescript/client-contexts-tsx";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import clientContextsFolderAlias from "@/tests/directive21/imported/typescript/client-contexts-tsx";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import clientContextsFolderBaseUrl from "tests/directive21/imported/typescript/client-contexts-tsx";
 
-// ...Importing Special Client Contexts via Special Agnostic Strategy.
+// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#KINDS $COMMENT#TESTS#VIASTRATEGYPERIOD
 import {
   /* @clientContexts */ clientContextsStrategized,
 } from "../../../../../imported/typescript/agnostic-strategies";
-// with extension
+// $COMMENT#TESTS#WITHEXTENSION
 import {
   /* @clientContexts */ clientContextsStrategized as clientContextsStrategizedExtension,
 } from "../../../../../imported/typescript/agnostic-strategies.tsx";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import {
   /* @clientContexts */ clientContextsStrategized as clientContextsStrategizedAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies";
-// with extension
+// $COMMENT#TESTS#WITHEXTENSION
 import {
   /* @clientContexts */ clientContextsStrategized as clientContextsStrategizedAliasExtension,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies.tsx";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import {
   /* @clientContexts */ clientContextsStrategized as clientContextsStrategizedBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies";
-// with extension
+// $COMMENT#TESTS#WITHEXTENSION
 import {
   /* @clientContexts */ clientContextsStrategized as clientContextsStrategizedBaseUrlExtension,
 } from "tests/directive21/imported/typescript/agnostic-strategies.tsx";
 
-// ...Importing Special Client Contexts via Special Agnostic Strategy by a folder.
+// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#KINDS $COMMENT#TESTS#VIASTRATEGY $COMMENT#TESTS#BYFOLDER
 import {
   /* @clientContexts */ clientContextsStrategized as clientContextsStrategizedFolder,
 } from "../../../../../imported/typescript/agnostic-strategies-tsx";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import {
   /* @clientContexts */ clientContextsStrategized as clientContextsStrategizedFolderAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies-tsx";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import {
   /* @clientContexts */ clientContextsStrategized as clientContextsStrategizedFolderBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
-// Invalid.
-// (Special) Client Contexts Components aren't allowed because (Special) Server Functions have no business working with React Components.
+// $COMMENT#TESTS#INVALID
+// $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#USE_CLIENT_CONTEXTS

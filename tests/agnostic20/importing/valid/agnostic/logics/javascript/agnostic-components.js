@@ -1,11 +1,11 @@
 "use agnostic";
-// That's an Agnostic Logics Module.
+// $COMMENT#TESTS#THATSAN $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#MODULEPERIOD
 
-// ...Importing a Agnostic Components Module (with extension).
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#MODULE $COMMENT#TESTS#WITHEXTENSIONPARENTHESES
 import agnosticComponents from "../../../../../imported/javascript/agnostic.jsx";
 
-// ...Importing a Agnostic Components Module by a folder.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#MODULE $COMMENT#TESTS#BYFOLDER
 import agnosticComponentsFolder from "../../../../../imported/javascript/agnostic-jsx";
 
-// Valid.
-// Agnostic Components can be composed with Logics agnostically as long as the Agnostic Logics Module, by convention, does not export React components.
+// $COMMENT#TESTS#VALID
+// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#USE_AGNOSTIC_COMPONENTS

@@ -1,11 +1,11 @@
 "use server";
-// That's a Server Functions Module.
+// $COMMENT#TESTS#THATSA $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#MODULEPERIOD
 
-// ...Importing a Server Functions Module (with extension).
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#MODULE $COMMENT#TESTS#WITHEXTENSIONPARENTHESES
 import serverFunctions from "../../../../../imported/javascript/server-functions.js";
 
-// ...Importing a Server Functions Module by a folder.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#MODULE $COMMENT#TESTS#BYFOLDER
 import serverFunctionsFolder from "../../../../../imported/javascript/server-functions-js";
 
-// Valid.
-// Server Functions, even though they don't need to import one another and the same results can be generated via Server Logics for the outcome of a single Server Function, can still compose with one another. (Perhaps a preferrable use case for this has been found or could be found either today or in the future.)
+// $COMMENT#TESTS#VALID
+// $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_SERVER_FUNCTIONS

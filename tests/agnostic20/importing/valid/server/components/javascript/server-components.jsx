@@ -1,9 +1,9 @@
-// That's a Server Components Module.
+// $COMMENT#TESTS#THATSA $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#MODULEPERIOD
 
 import serverComponents from "../../../../../imported/javascript/server.jsx";
 
-// ...Importing a Server Components Module by a folder.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#MODULE $COMMENT#TESTS#BYFOLDER
 import serverComponentsFolder from "../../../../../imported/javascript/server-jsx";
 
-// Valid.
-// Server Components can compose with one another, assuming thanks to the inclusion of the 'use agnostic' directive that they are actual Server Components.
+// $COMMENT#TESTS#VALID
+// $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_SERVER_COMPONENTS

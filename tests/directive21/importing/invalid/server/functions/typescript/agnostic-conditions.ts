@@ -1,62 +1,62 @@
 // "use server functions"
 
-// ...Importing a Special Agnostic Conditions Module.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#MODULEPERIOD
 import agnosticConditions from "../../../../../imported/typescript/agnostic-conditions";
-// with extension
+// $COMMENT#TESTS#WITHEXTENSION
 import agnosticConditionsExtension from "../../../../../imported/typescript/agnostic-conditions.tsx";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import agnosticConditionsAlias from "@/tests/directive21/imported/typescript/agnostic-conditions";
-// with extension
+// $COMMENT#TESTS#WITHEXTENSION
 import agnosticConditionsAliasExtension from "@/tests/directive21/imported/typescript/agnostic-conditions.tsx";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import agnosticConditionsBaseUrl from "tests/directive21/imported/typescript/agnostic-conditions";
-// with extension
+// $COMMENT#TESTS#WITHEXTENSION
 import agnosticConditionsBaseUrlExtension from "tests/directive21/imported/typescript/agnostic-conditions.tsx";
 
-// ...Importing a Special Agnostic Conditions Module by a folder.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#MODULE $COMMENT#TESTS#BYFOLDER
 import agnosticConditionsFolder from "../../../../../imported/typescript/agnostic-conditions-tsx";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import agnosticConditionsFolderAlias from "@/tests/directive21/imported/typescript/agnostic-conditions-tsx";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import agnosticConditionsFolderBaseUrl from "tests/directive21/imported/typescript/agnostic-conditions-tsx";
 
-// ...Importing Special Agnostic Conditions via Special Agnostic Strategy.
+// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#KINDS $COMMENT#TESTS#VIASTRATEGYPERIOD
 import {
   /* @agnosticConditions */ agnosticConditionsStrategized,
 } from "../../../../../imported/typescript/agnostic-strategies";
-// with extension
+// $COMMENT#TESTS#WITHEXTENSION
 import {
   /* @agnosticConditions */ agnosticConditionsStrategized as agnosticConditionsStrategizedExtension,
 } from "../../../../../imported/typescript/agnostic-strategies.tsx";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import {
   /* @agnosticConditions */ agnosticConditionsStrategized as agnosticConditionsStrategizedAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies";
-// with extension
+// $COMMENT#TESTS#WITHEXTENSION
 import {
   /* @agnosticConditions */ agnosticConditionsStrategized as agnosticConditionsStrategizedAliasExtension,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies.tsx";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import {
   /* @agnosticConditions */ agnosticConditionsStrategized as agnosticConditionsStrategizedBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies";
-// with extension
+// $COMMENT#TESTS#WITHEXTENSION
 import {
   /* @agnosticConditions */ agnosticConditionsStrategized as agnosticConditionsStrategizedBaseUrlExtension,
 } from "tests/directive21/imported/typescript/agnostic-strategies.tsx";
 
-// ...Importing Special Agnostic Conditions via Special Agnostic Strategy by a folder.
+// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#KINDS $COMMENT#TESTS#VIASTRATEGY $COMMENT#TESTS#BYFOLDER
 import {
   /* @agnosticConditions */ agnosticConditionsStrategized as agnosticConditionsStrategizedFolder,
 } from "../../../../../imported/typescript/agnostic-strategies-tsx";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import {
   /* @agnosticConditions */ agnosticConditionsStrategized as agnosticConditionsStrategizedFolderAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies-tsx";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import {
   /* @agnosticConditions */ agnosticConditionsStrategized as agnosticConditionsStrategizedFolderBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
-// Invalid.
-// (Special) Agnostic Conditions Components aren't allowed because (Special) Server Functions have no business working with React Components.
+// $COMMENT#TESTS#INVALID
+// $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#USE_AGNOSTIC_CONDITIONS

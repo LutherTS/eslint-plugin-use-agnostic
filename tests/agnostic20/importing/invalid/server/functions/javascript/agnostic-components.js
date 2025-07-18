@@ -1,11 +1,11 @@
 "use server";
-// That's a Server Functions Module.
+// $COMMENT#TESTS#THATSA $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#MODULEPERIOD
 
-// ...Importing a Agnostic Components Module (with extension).
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#MODULE $COMMENT#TESTS#WITHEXTENSIONPARENTHESES
 import agnosticComponents from "../../../../../imported/javascript/agnostic.jsx";
 
-// ...Importing a Agnostic Components Module by a folder.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#MODULE $COMMENT#TESTS#BYFOLDER
 import agnosticComponentsFolder from "../../../../../imported/javascript/agnostic-jsx";
 
-// Invalid.
-// Agnostic Components aren't allowed because Server Functions have no business working with React Components.
+// $COMMENT#TESTS#INVALID
+// $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_AGNOSTIC_COMPONENTS

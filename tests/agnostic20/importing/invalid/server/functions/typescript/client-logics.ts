@@ -1,19 +1,19 @@
 "use server";
-// That's a Server Functions Module.
+// $COMMENT#TESTS#THATSA $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#MODULEPERIOD
 
-// ...Importing a Client Logics Module (with extension).
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#MODULE $COMMENT#TESTS#WITHEXTENSIONPARENTHESES
 import clientLogics from "../../../../../imported/typescript/client.ts";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import clientLogicsAlias from "@/tests/agnostic20/imported/typescript/client.ts";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import clientLogicsBaseUrl from "tests/agnostic20/imported/typescript/client.ts";
 
-// ...Importing a Client Logics Module by a folder.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#MODULE $COMMENT#TESTS#BYFOLDER
 import clientLogicsFolder from "../../../../../imported/typescript/client-ts";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import clientLogicsFolderAlias from "@/tests/agnostic20/imported/typescript/client-ts";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import clientLogicsFolderBaseUrl from "tests/agnostic20/imported/typescript/client-ts";
 
-// Invalid.
-// Client Logics should never leak to the server, such as would be the case here in a Server Functions Module.
+// $COMMENT#TESTS#INVALID
+// $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_CLIENT_LOGICS

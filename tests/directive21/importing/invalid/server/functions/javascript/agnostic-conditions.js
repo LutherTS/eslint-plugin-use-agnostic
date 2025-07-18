@@ -1,20 +1,20 @@
 // "use server functions"
 
-// ...Importing a Special Agnostic Conditions Module.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#MODULEPERIOD
 import agnosticConditions from "../../../../../imported/javascript/agnostic-conditions.jsx";
 
-// ...Importing a Special Agnostic Conditions Module by a folder.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#MODULE $COMMENT#TESTS#BYFOLDER
 import agnosticConditionsFolder from "../../../../../imported/javascript/agnostic-conditions-jsx";
 
-// ...Importing Special Agnostic Conditions via Special Agnostic Strategy.
+// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#KINDS $COMMENT#TESTS#VIASTRATEGYPERIOD
 import {
   /* @agnosticConditions */ agnosticConditionsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// ...Importing Special Agnostic Conditions via Special Agnostic Strategy by a folder.
+// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#KINDS $COMMENT#TESTS#VIASTRATEGY $COMMENT#TESTS#BYFOLDER
 import {
   /* @agnosticConditions */ agnosticConditionsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// Invalid.
-// (Special) Agnostic Conditions Components aren't allowed because (Special) Server Functions have no business working with React Components.
+// $COMMENT#TESTS#INVALID
+// $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#USE_AGNOSTIC_CONDITIONS

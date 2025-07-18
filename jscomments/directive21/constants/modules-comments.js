@@ -23,7 +23,7 @@ export const serverLogicsComments = Object.freeze({
   [USE_CLIENT_COMPONENTS]:
     /* invalid */ "Lineal Client Components, like any Client Components, cannot be tinkered with on the server.",
   [USE_AGNOSTIC_COMPONENTS]:
-    /* valid */ "Lineal Agnostic Components can be composed with any Prime Environment Logics agnostically, such as Prime Server Logics, as long as the Prime Environment Logics Module, by convention, does not export React components.",
+    /* valid */ "Lineal Agnostic Components can be composed with any Prime Environment Logics agnostically, such as Prime Server Logics, as long as the Prime Environment Logics Module, by convention, does not export React components.", //
   [USE_SERVER_FUNCTIONS]:
     /* valid */ "(Special) Server Functions, being able to import one another, can compose and do so via Prime Server Logics, despite this method seeming superfluous at first glance. (Perhaps a preferrable use case for this has been found or could be found either today or in the future.)",
   [USE_CLIENT_CONTEXTS]:

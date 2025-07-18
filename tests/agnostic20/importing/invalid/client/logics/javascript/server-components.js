@@ -1,11 +1,11 @@
 "use client";
-// That's a Client Logics Module.
+// $COMMENT#TESTS#THATSA $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#MODULEPERIOD
 
-// ...Importing a Server Components Module (with extension).
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#MODULE $COMMENT#TESTS#WITHEXTENSIONPARENTHESES
 import serverComponents from "../../../../../imported/javascript/server.jsx";
 
-// ...Importing a Server Components Module by a folder.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#MODULE $COMMENT#TESTS#BYFOLDER
 import serverComponentsFolder from "../../../../../imported/javascript/server-jsx";
 
-// Invalid.
-// Server Components cannot be thinkered with on the client.
+// $COMMENT#TESTS#INVALID
+// $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#USE_SERVER_COMPONENTS

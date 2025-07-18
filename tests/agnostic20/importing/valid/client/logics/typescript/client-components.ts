@@ -1,19 +1,19 @@
 "use client";
-// That's a Client Logics Module.
+// $COMMENT#TESTS#THATSA $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#MODULEPERIOD
 
-// ...Importing a Client Components Module (with extension).
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#MODULE $COMMENT#TESTS#WITHEXTENSIONPARENTHESES
 import clientComponents from "../../../../../imported/typescript/client.tsx";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import clientComponentsAlias from "@/tests/agnostic20/imported/typescript/client.tsx";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import clientComponentsBaseUrl from "tests/agnostic20/imported/typescript/client.tsx";
 
-// ...Importing a Client Components Module by a folder.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#MODULE $COMMENT#TESTS#BYFOLDER
 import clientComponentsFolder from "../../../../../imported/typescript/client-tsx";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import clientComponentsFolderAlias from "@/tests/agnostic20/imported/typescript/client-tsx";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import clientComponentsFolderBaseUrl from "tests/agnostic20/imported/typescript/client-tsx";
 
-// Valid.
-// Client Components are OK to be composed with Client Logics as long as the Client Logics Module, by convention, does not export React components.
+// $COMMENT#TESTS#VALID
+// $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#USE_CLIENT_COMPONENTS

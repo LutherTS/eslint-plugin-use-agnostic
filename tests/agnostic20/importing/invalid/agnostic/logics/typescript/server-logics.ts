@@ -1,19 +1,19 @@
 "use agnostic";
-// That's an Agnostic Logics Module.
+// $COMMENT#TESTS#THATSAN $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#MODULEPERIOD
 
-// ...Importing a Server Logics Module (with extension).
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#MODULE $COMMENT#TESTS#WITHEXTENSIONPARENTHESES
 import serverLogics from "../../../../../imported/typescript/server.ts";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import serverLogicsAlias from "@/tests/agnostic20/imported/typescript/server.ts";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import serverLogicsBaseUrl from "tests/agnostic20/imported/typescript/server.ts";
 
-// ...Importing a Server Logics Module by a folder.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#MODULE $COMMENT#TESTS#BYFOLDER
 import serverLogicsFolder from "../../../../../imported/typescript/server-ts";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import serverLogicsFolderAlias from "@/tests/agnostic20/imported/typescript/server-ts";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import serverLogicsFolderBaseUrl from "tests/agnostic20/imported/typescript/server-ts";
 
-// Invalid.
-// Server Logics cannot run on both the server and the client, such as would be the case here in an Agnostic Logics Module.
+// $COMMENT#TESTS#INVALID
+// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#USE_SERVER_LOGICS

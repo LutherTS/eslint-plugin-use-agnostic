@@ -1,20 +1,20 @@
 // "use agnostic components"
 
-// ...Importing a Prime Client Logics Module.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#MODULEPERIOD
 import clientLogics from "../../../../../imported/javascript/client-logics.js";
 
-// ...Importing a Prime Client Logics Module by a folder.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#MODULE $COMMENT#TESTS#BYFOLDER
 import clientLogicsFolder from "../../../../../imported/javascript/client-logics-js";
 
-// ...Importing Prime Client Logics via Special Agnostic Strategy.
+// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#KINDS $COMMENT#TESTS#VIASTRATEGYPERIOD
 import {
   /* @clientLogics */ clientLogicsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// ...Importing Prime Client Logics via Special Agnostic Strategy by a folder.
+// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#KINDS $COMMENT#TESTS#VIASTRATEGY $COMMENT#TESTS#BYFOLDER
 import {
   /* @clientLogics */ clientLogicsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// Invalid.
-// Prime Client Logics cannot run on both the server and the client, such as would be the case here in a Lineal Agnostic Components Module.
+// $COMMENT#TESTS#INVALID
+// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#USE_CLIENT_LOGICS

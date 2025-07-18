@@ -1,20 +1,20 @@
 // "use server components"
 
-// ...Importing a Special Server Functions Module.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#MODULEPERIOD
 import serverFunctions from "../../../../../imported/javascript/server-functions.js";
 
-// ...Importing a Special Server Functions Module by a folder.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#MODULE $COMMENT#TESTS#BYFOLDER
 import serverFunctionsFolder from "../../../../../imported/javascript/server-functions-js";
 
-// ...Importing Special Server Functions via Special Agnostic Strategy.
+// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#KINDS $COMMENT#TESTS#VIASTRATEGYPERIOD
 import {
   /* @serverFunctions */ serverFunctionsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// ...Importing Special Server Functions via Special Agnostic Strategy by a folder.
+// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#KINDS $COMMENT#TESTS#VIASTRATEGY $COMMENT#TESTS#BYFOLDER
 import {
   /* @serverFunctions */ serverFunctionsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// Valid.
-// (Special) Server Functions can be passed to imported Client Components within Lineal Server Components Modules, even though indeed Lineal Server Components Modules and Lineal Server Components can make their own Server Functions through inline 'use server' directives.
+// $COMMENT#TESTS#VALID
+// $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#USE_SERVER_FUNCTIONS

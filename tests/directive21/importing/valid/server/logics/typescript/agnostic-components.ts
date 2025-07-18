@@ -1,41 +1,41 @@
 // "use server logics"
 
-// ...Importing a Lineal Agnostic Components Module.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#MODULEPERIOD
 import agnosticComponents from "../../../../../imported/typescript/agnostic-components";
-// with extension
+// $COMMENT#TESTS#WITHEXTENSION
 import agnosticComponentsExtension from "../../../../../imported/typescript/agnostic-components.tsx";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import agnosticComponentsAlias from "@/tests/directive21/imported/typescript/agnostic-components";
-// with extension
+// $COMMENT#TESTS#WITHEXTENSION
 import agnosticComponentsAliasExtension from "@/tests/directive21/imported/typescript/agnostic-components.tsx";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import agnosticComponentsBaseUrl from "tests/directive21/imported/typescript/agnostic-components";
-// with extension
+// $COMMENT#TESTS#WITHEXTENSION
 import agnosticComponentsBaseUrlExtension from "tests/directive21/imported/typescript/agnostic-components.tsx";
 
-// ...Importing a Lineal Agnostic Components Module by a folder.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#MODULE $COMMENT#TESTS#BYFOLDER
 import agnosticComponentsFolder from "../../../../../imported/typescript/agnostic-components-tsx";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import agnosticComponentsFolderAlias from "@/tests/directive21/imported/typescript/agnostic-components-tsx";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import agnosticComponentsFolderBaseUrl from "tests/directive21/imported/typescript/agnostic-components-tsx";
 
-// ...Importing Lineal Agnostic Components via Special Agnostic Strategy.
+// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#KINDS $COMMENT#TESTS#VIASTRATEGYPERIOD
 import {
   /* @agnosticComponents */ agnosticComponentsStrategized,
 } from "../../../../../imported/typescript/agnostic-strategies";
-// with extension
+// $COMMENT#TESTS#WITHEXTENSION
 import {
   /* @agnosticComponents */ agnosticComponentsStrategized as agnosticComponentsStrategizedExtension,
 } from "../../../../../imported/typescript/agnostic-strategies.tsx";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import {
   /* @agnosticComponents */ agnosticComponentsStrategized as agnosticComponentsStrategizedAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies";
 import {
   /* @agnosticComponents */ agnosticComponentsStrategized as agnosticComponentsStrategizedAliasExtension,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies.tsx";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import {
   /* @agnosticComponents */ agnosticComponentsStrategized as agnosticComponentsStrategizedBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies";
@@ -43,18 +43,18 @@ import {
   /* @agnosticComponents */ agnosticComponentsStrategized as agnosticComponentsStrategizedBaseUrlExtension,
 } from "tests/directive21/imported/typescript/agnostic-strategies.tsx";
 
-// ...Importing Lineal Agnostic Components via Special Agnostic Strategy by a folder.
+// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#KINDS $COMMENT#TESTS#VIASTRATEGY $COMMENT#TESTS#BYFOLDER
 import {
   /* @agnosticComponents */ agnosticComponentsStrategized as agnosticComponentsStrategizedFolder,
 } from "../../../../../imported/typescript/agnostic-strategies-tsx";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import {
   /* @agnosticComponents */ agnosticComponentsStrategized as agnosticComponentsStrategizedFolderAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies-tsx";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import {
   /* @agnosticComponents */ agnosticComponentsStrategized as agnosticComponentsStrategizedFolderBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
-// Valid.
-// Lineal Agnostic Components can be composed with any Prime Environment Logics agnostically, such as Prime Server Logics, as long as the Prime Environment Logics Module, by convention, does not export React components.
+// $COMMENT#TESTS#VALID
+// $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#USE_AGNOSTIC_COMPONENTS

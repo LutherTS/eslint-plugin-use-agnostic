@@ -1,11 +1,11 @@
 "use client";
-// That's a Client Components Module.
+// $COMMENT#TESTS#THATSA $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#MODULEPERIOD
 
-// ...Importing a Client Logics Module (with extension).
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#MODULE $COMMENT#TESTS#WITHEXTENSIONPARENTHESES
 import clientLogics from "../../../../../imported/javascript/client.js";
 
-// ...Importing a Client Logics Module by a folder.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#MODULE $COMMENT#TESTS#BYFOLDER
 import clientLogicsFolder from "../../../../../imported/javascript/client-js";
 
-// Valid.
-// Client Logics, being logic from the client, can safely support Client Components.
+// $COMMENT#TESTS#VALID
+// $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_CLIENT_LOGICS

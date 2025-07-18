@@ -1,11 +1,11 @@
 "use client";
-// That's a Client Logics Module.
+// $COMMENT#TESTS#THATSA $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#MODULEPERIOD
 
-// ...Importing a Agnostic Components Module (with extension).
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#MODULE $COMMENT#TESTS#WITHEXTENSIONPARENTHESES
 import agnosticComponents from "../../../../../imported/javascript/agnostic.jsx";
 
-// ...Importing a Agnostic Components Module by a folder.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#MODULE $COMMENT#TESTS#BYFOLDER
 import agnosticComponentsFolder from "../../../../../imported/javascript/agnostic-jsx";
 
-// Valid.
-// Agnostic Components can be composed with Logics on the client just like they can on the server, as long as the Client Logics Module, by convention, does not export React components.
+// $COMMENT#TESTS#VALID
+// $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#USE_AGNOSTIC_COMPONENTS

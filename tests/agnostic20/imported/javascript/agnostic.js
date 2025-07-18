@@ -1,4 +1,4 @@
 "use agnostic";
-// That's an Agnostic Logics Module.
+// $COMMENT#TESTS#THATSAN $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#MODULEPERIOD
 
 export default {};

@@ -1,62 +1,62 @@
 // "use agnostic conditions"
 
-// ...Importing a Prime Agnostic Logics Module.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#MODULEPERIOD
 import agnosticLogics from "../../../../../imported/typescript/agnostic-logics";
-// with extension
+// $COMMENT#TESTS#WITHEXTENSION
 import agnosticLogicsExtension from "../../../../../imported/typescript/agnostic-logics.ts";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import agnosticLogicsAlias from "@/tests/directive21/imported/typescript/agnostic-logics";
-// with extension
+// $COMMENT#TESTS#WITHEXTENSION
 import agnosticLogicsAliasExtension from "@/tests/directive21/imported/typescript/agnostic-logics.ts";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import agnosticLogicsBaseUrl from "tests/directive21/imported/typescript/agnostic-logics";
-// with extension
+// $COMMENT#TESTS#WITHEXTENSION
 import agnosticLogicsBaseUrlExtension from "tests/directive21/imported/typescript/agnostic-logics.ts";
 
-// ...Importing a Prime Agnostic Logics Module by a folder.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#MODULE $COMMENT#TESTS#BYFOLDER
 import agnosticLogicsFolder from "../../../../../imported/typescript/agnostic-logics-ts";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import agnosticLogicsFolderAlias from "@/tests/directive21/imported/typescript/agnostic-logics-ts";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import agnosticLogicsFolderBaseUrl from "tests/directive21/imported/typescript/agnostic-logics-ts";
 
-// ...Importing Prime Agnostic Logics via Special Agnostic Strategy.
+// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#KINDS $COMMENT#TESTS#VIASTRATEGYPERIOD
 import {
   /* @agnosticLogics */ agnosticLogicsStrategized,
 } from "../../../../../imported/typescript/agnostic-strategies";
-// with extension
+// $COMMENT#TESTS#WITHEXTENSION
 import {
   /* @agnosticLogics */ agnosticLogicsStrategized as agnosticLogicsStrategizedExtension,
 } from "../../../../../imported/typescript/agnostic-strategies.tsx";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import {
   /* @agnosticLogics */ agnosticLogicsStrategized as agnosticLogicsStrategizedAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies";
-// with extension
+// $COMMENT#TESTS#WITHEXTENSION
 import {
   /* @agnosticLogics */ agnosticLogicsStrategized as agnosticLogicsStrategizedAliasExtension,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies.tsx";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import {
   /* @agnosticLogics */ agnosticLogicsStrategized as agnosticLogicsStrategizedBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies";
-// with extension
+// $COMMENT#TESTS#WITHEXTENSION
 import {
   /* @agnosticLogics */ agnosticLogicsStrategized as agnosticLogicsStrategizedBaseUrlExtension,
 } from "tests/directive21/imported/typescript/agnostic-strategies.tsx";
 
-// ...Importing Prime Agnostic Logics via Special Agnostic Strategy by a folder.
+// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#KINDS $COMMENT#TESTS#VIASTRATEGY $COMMENT#TESTS#BYFOLDER
 import {
   /* @agnosticLogics */ agnosticLogicsStrategized as agnosticLogicsStrategizedFolder,
 } from "../../../../../imported/typescript/agnostic-strategies-tsx";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import {
   /* @agnosticLogics */ agnosticLogicsStrategized as agnosticLogicsStrategizedFolderAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies-tsx";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import {
   /* @agnosticLogics */ agnosticLogicsStrategized as agnosticLogicsStrategizedFolderBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
-// Valid.
-// Prime Agnostic Logics, being environment-agnostic logic, can safely support Agnostic Components, including (Special) Agnostic Conditions Components. (In this case this is necessary for the import of the `conditionAgnosticComponent` function needed to make Agnostic Conditions Components.)
+// $COMMENT#TESTS#VALID
+// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_AGNOSTIC_LOGICS

@@ -1,10 +1,10 @@
-// That's a Server Components Module.
+// $COMMENT#TESTS#THATSA $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#MODULEPERIOD
 
-// ...Importing a Client Logics Module (with extension).
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#MODULE $COMMENT#TESTS#WITHEXTENSIONPARENTHESES
 import clientLogics from "../../../../../imported/javascript/client.js";
 
-// ...Importing a Client Logics Module by a folder.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#MODULE $COMMENT#TESTS#BYFOLDER
 import clientLogicsFolder from "../../../../../imported/javascript/client-js";
 
-// Invalid.
-// Client Logics should never leak to the server, such as would be the case here in a Server Components Module.
+// $COMMENT#TESTS#INVALID
+// $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_CLIENT_LOGICS

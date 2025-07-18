@@ -1,11 +1,11 @@
 "use agnostic";
-// That's an Agnostic Logics Module.
+// $COMMENT#TESTS#THATSAN $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#MODULEPERIOD
 
-// ...Importing a Client Components Module (with extension).
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#MODULE $COMMENT#TESTS#WITHEXTENSIONPARENTHESES
 import clientComponents from "../../../../../imported/javascript/client.jsx";
 
-// ...Importing a Client Components Module by a folder.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#MODULE $COMMENT#TESTS#BYFOLDER
 import clientComponentsFolder from "../../../../../imported/javascript/client-jsx";
 
-// Invalid.
-// Client Components cannot be tinkered with on both the server and the client.
+// $COMMENT#TESTS#INVALID
+// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#USE_CLIENT_COMPONENTS

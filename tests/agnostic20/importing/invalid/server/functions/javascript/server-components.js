@@ -1,10 +1,10 @@
 "use server";
-// That's a Server Functions Module.
+// $COMMENT#TESTS#THATSA $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#MODULEPERIOD
 
 import serverComponents from "../../../../../imported/javascript/server.jsx";
 
-// ...Importing a Server Components Module by a folder.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#MODULE $COMMENT#TESTS#BYFOLDER
 import serverComponentsFolder from "../../../../../imported/javascript/server-jsx";
 
-// Invalid.
-// Server Components aren't allowed because Server Functions have no business working with React Components.
+// $COMMENT#TESTS#INVALID
+// $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_SERVER_COMPONENTS

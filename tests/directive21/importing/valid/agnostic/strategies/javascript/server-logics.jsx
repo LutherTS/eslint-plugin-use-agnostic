@@ -1,20 +1,20 @@
 // "use agnostic strategies"
 
-// ...Importing a Prime Server Logics Module.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#MODULEPERIOD
 import serverLogics from "../../../../../imported/javascript/server-logics.js";
 
-// ...Importing a Prime Server Logics Module by a folder.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#MODULE $COMMENT#TESTS#BYFOLDER
 import serverLogicsFolder from "../../../../../imported/javascript/server-logics-js";
 
-// ...Importing Prime Server Logics via Special Agnostic Strategy.
+// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#KINDS $COMMENT#TESTS#VIASTRATEGYPERIOD
 import {
   /* @serverLogics */ serverLogicsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// ...Importing Prime Server Logics via Special Agnostic Strategy by a folder.
+// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#KINDS $COMMENT#TESTS#VIASTRATEGY $COMMENT#TESTS#BYFOLDER
 import {
   /* @serverLogics */ serverLogicsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// Valid.
-// (Special) Agnostic Strategies Modules can import all known modules, except themselves since they cannot be imported as they are, only as and via Strategies. (Since Agnostic Strategies Modules cannot be imported as they are, there is no such things as a 'use agnostic strategies' importFileCommentedDirective.)
+// $COMMENT#TESTS#VALID
+// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES

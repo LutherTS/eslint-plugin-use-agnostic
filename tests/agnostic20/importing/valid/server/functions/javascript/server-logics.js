@@ -1,11 +1,11 @@
 "use server";
-// That's a Server Functions Module.
+// $COMMENT#TESTS#THATSA $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#MODULEPERIOD
 
-// ...Importing a Server Logics Module (with extension).
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#MODULE $COMMENT#TESTS#WITHEXTENSIONPARENTHESES
 import serverLogics from "../../../../../imported/javascript/server.js";
 
-// ...Importing a Server Logics Module by a folder.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#MODULE $COMMENT#TESTS#BYFOLDER
 import serverLogicsFolder from "../../../../../imported/javascript/server-js";
 
-// Valid.
-// Server Logics, being logic from the server, can safely support Server Functions.
+// $COMMENT#TESTS#VALID
+// $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_SERVER_LOGICS

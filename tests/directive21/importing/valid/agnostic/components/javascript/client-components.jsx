@@ -1,20 +1,20 @@
 // "use agnostic components"
 
-// ...Importing a Lineal Client Components Module.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#MODULEPERIOD
 import clientComponents from "../../../../../imported/javascript/client-components.jsx";
 
-// ...Importing a Lineal Client Components Module by a folder.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#MODULE $COMMENT#TESTS#BYFOLDER
 import clientComponentsFolder from "../../../../../imported/javascript/client-components-jsx";
 
-// ...Importing Lineal Client Components via Special Agnostic Strategy.
+// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#KINDS $COMMENT#TESTS#VIASTRATEGYPERIOD
 import {
   /* @clientComponents */ clientComponentsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// ...Importing Lineal Client Components via Special Agnostic Strategy by a folder.
+// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#KINDS $COMMENT#TESTS#VIASTRATEGY $COMMENT#TESTS#BYFOLDER
 import {
   /* @clientComponents */ clientLogicsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// Valid.
-// Lineal Client Components can be nested inside Agnostic Components to create client boundaries when the root of the application is planted on the server.
+// $COMMENT#TESTS#VALID
+// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#USE_CLIENT_COMPONENTS

@@ -1,4 +1,4 @@
 "use client";
-// That's a Client Components Module.
+// $COMMENT#TESTS#THATSA $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#MODULEPERIOD
 
 export default {};

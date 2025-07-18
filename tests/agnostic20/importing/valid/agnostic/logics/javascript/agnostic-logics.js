@@ -1,11 +1,11 @@
 "use agnostic";
-// That's an Agnostic Logics Module.
+// $COMMENT#TESTS#THATSAN $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#MODULEPERIOD
 
-// ...Importing a Agnostic Logics Module (with extension).
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#MODULE $COMMENT#TESTS#WITHEXTENSIONPARENTHESES
 import agnosticLogics from "../../../../../imported/javascript/agnostic.js";
 
-// ...Importing a Agnostic Logics Module by a folder.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#MODULE $COMMENT#TESTS#BYFOLDER
 import agnosticLogicsFolder from "../../../../../imported/javascript/agnostic-js";
 
-// Valid.
-// Agnostic Logics can compose with one another.
+// $COMMENT#TESTS#VALID
+// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#USE_AGNOSTIC_LOGICS

@@ -1,11 +1,11 @@
 "use agnostic";
-// That's an Agnostic Logics Module.
+// $COMMENT#TESTS#THATSAN $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#MODULEPERIOD
 
-// ...Importing a Server Functions Module (with extension).
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#MODULE $COMMENT#TESTS#WITHEXTENSIONPARENTHESES
 import serverFunctions from "../../../../../imported/javascript/server-functions.js";
 
-// ...Importing a Server Functions Module by a folder.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#MODULE $COMMENT#TESTS#BYFOLDER
 import serverFunctionsFolder from "../../../../../imported/javascript/server-functions-js";
 
-// Invalid.
-// Server Functions can be modified on the server and on the client, but their use cases on both environments are not one-to-one compatible, since they're being addressed as they are on the server and addressed as references on the client.
+// $COMMENT#TESTS#INVALID
+// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#USE_SERVER_FUNCTIONS

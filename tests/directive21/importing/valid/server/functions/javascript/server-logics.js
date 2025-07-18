@@ -1,20 +1,20 @@
 // "use server functions"
 
-// ...Importing a Prime Server Logics Module.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#MODULEPERIOD
 import serverLogics from "../../../../../imported/javascript/server-logics.js";
 
-// ...Importing a Prime Server Logics Module by a folder.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#MODULE $COMMENT#TESTS#BYFOLDER
 import serverLogicsFolder from "../../../../../imported/javascript/server-logics-js";
 
-// ...Importing Prime Server Logics via Special Agnostic Strategy.
+// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#KINDS $COMMENT#TESTS#VIASTRATEGYPERIOD
 import {
   /* @serverLogics */ serverLogicsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// ...Importing Prime Server Logics via Special Agnostic Strategy by a folder.
+// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#KINDS $COMMENT#TESTS#VIASTRATEGY $COMMENT#TESTS#BYFOLDER
 import {
   /* @serverLogics */ serverLogicsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// Valid.
-// Prime Server Logics, being logic from the server, can safely support (Special) Server Functions.
+// $COMMENT#TESTS#VALID
+// $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#USE_SERVER_LOGICS

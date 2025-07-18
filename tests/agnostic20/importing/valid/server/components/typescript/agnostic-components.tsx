@@ -1,18 +1,18 @@
-// That's a Server Components Module.
+// $COMMENT#TESTS#THATSA $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#MODULEPERIOD
 
-// ...Importing a Agnostic Components Module (with extension).
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#MODULE $COMMENT#TESTS#WITHEXTENSIONPARENTHESES
 import agnosticComponents from "../../../../../imported/typescript/agnostic.tsx";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import agnosticComponentsAlias from "@/tests/agnostic20/imported/typescript/agnostic.tsx";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import agnosticComponentsBaseUrl from "tests/agnostic20/imported/typescript/agnostic.tsx";
 
-// ...Importing a Agnostic Components Module by a folder.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#MODULE $COMMENT#TESTS#BYFOLDER
 import agnosticComponentsFolder from "../../../../../imported/typescript/agnostic-tsx";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import agnosticComponentsFolderAlias from "@/tests/agnostic20/imported/typescript/agnostic-tsx";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import agnosticComponentsFolderBaseUrl from "tests/agnostic20/imported/typescript/agnostic-tsx";
 
-// Valid.
-// Agnostic Components can render safely on the server just like they can on the client.
+// $COMMENT#TESTS#VALID
+// $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_AGNOSTIC_COMPONENTS

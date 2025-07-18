@@ -1,20 +1,20 @@
 // "use client logics"
 
-// ...Importing a Special Agnostic Conditions Module.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#MODULEPERIOD
 import agnosticConditions from "../../../../../imported/javascript/agnostic-conditions.jsx";
 
-// ...Importing a Special Agnostic Conditions Module by a folder.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#MODULE $COMMENT#TESTS#BYFOLDER
 import agnosticConditionsFolder from "../../../../../imported/javascript/agnostic-conditions-jsx";
 
-// ...Importing Special Agnostic Conditions via Special Agnostic Strategy.
+// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#KINDS $COMMENT#TESTS#VIASTRATEGYPERIOD
 import {
   /* @agnosticConditions */ agnosticConditionsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// ...Importing Special Agnostic Conditions via Special Agnostic Strategy by a folder.
+// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#KINDS $COMMENT#TESTS#VIASTRATEGY $COMMENT#TESTS#BYFOLDER
 import {
   /* @agnosticConditions */ agnosticConditionsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// Valid.
-// (Special) Agnostic Conditions Components are able to safely render on the client, guaranteeing that only their `ComponentForClient` will be effectively involved in Prime Client Logics Modules.
+// $COMMENT#TESTS#VALID
+// $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#USE_AGNOSTIC_CONDITIONS

@@ -1,19 +1,19 @@
 "use server";
-// That's a Server Functions Module.
+// $COMMENT#TESTS#THATSA $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#MODULEPERIOD
 
-// ...Importing a Agnostic Components Module (with extension).
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#MODULE $COMMENT#TESTS#WITHEXTENSIONPARENTHESES
 import agnosticComponents from "../../../../../imported/typescript/agnostic.tsx";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import agnosticComponentsAlias from "@/tests/agnostic20/imported/typescript/agnostic.tsx";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import agnosticComponentsBaseUrl from "tests/agnostic20/imported/typescript/agnostic.tsx";
 
-// ...Importing a Agnostic Components Module by a folder.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#MODULE $COMMENT#TESTS#BYFOLDER
 import agnosticComponentsFolder from "../../../../../imported/typescript/agnostic-tsx";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import agnosticComponentsFolderAlias from "@/tests/agnostic20/imported/typescript/agnostic-tsx";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import agnosticComponentsFolderBaseUrl from "tests/agnostic20/imported/typescript/agnostic-tsx";
 
-// Invalid.
-// Agnostic Components aren't allowed because Server Functions have no business working with React Components.
+// $COMMENT#TESTS#INVALID
+// $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_AGNOSTIC_COMPONENTS

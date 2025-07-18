@@ -1,20 +1,20 @@
 // "use client contexts"
 
-// ...Importing a Lineal Server Components Module.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#MODULEPERIOD
 import serverComponents from "../../../../../imported/javascript/server-components.jsx";
 
-// ...Importing a Lineal Server Components Module by a folder.
+// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#MODULE $COMMENT#TESTS#BYFOLDER
 import serverComponentsFolder from "../../../../../imported/javascript/server-components-jsx";
 
-// ...Importing Lineal Server Components via Special Agnostic Strategy.
+// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#KINDS $COMMENT#TESTS#VIASTRATEGYPERIOD
 import {
   /* @serverComponents */ serverComponentsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// ...Importing Lineal Server Components via Special Agnostic Strategy by a folder.
+// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#KINDS $COMMENT#TESTS#VIASTRATEGY $COMMENT#TESTS#BYFOLDER
 import {
   /* @serverComponents */ serverLogicsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// Invalid.
-// Lineal Server Components may only pass through (Special) Client Contexts Components via the children prop within Server Components Modules.
+// $COMMENT#TESTS#INVALID
+// $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#USE_SERVER_COMPONENTS
