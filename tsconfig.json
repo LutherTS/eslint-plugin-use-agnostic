@@ -4,7 +4,6 @@
       "~/*": ["./library/*"],
       "@/*": ["./*"] // strongly preferred over basedUrl
     },
-    "plugins": [],
     "baseUrl": ".",
     "jsx": "react-jsx",
     "allowImportingTsExtensions": true,
