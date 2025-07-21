@@ -3,8 +3,7 @@ export const testsComments = Object.freeze({
   viaBaseUrl: "Via baseUrl." /* $COMMENT#TESTS#VIABASEURL */,
   valid: "Valid." /* $COMMENT#TESTS#VALID */,
   invalid: "Invalid." /* $COMMENT#TESTS#INVALID */,
-  withExtension:
-    "with extension" /* $COMMENT#TESTS#FORCOMPOSEDVARIABLES#WITHEXTENSION */,
+  withExtension: "with extension" /* $COMMENT#TESTS#WITHEXTENSION */,
   forComposedVariables: Object.freeze({
     thatsA: "That's a" /* $COMMENT#TESTS#FORCOMPOSEDVARIABLES#THATSA */,
     thatsAn: "That's an" /* $COMMENT#TESTS#FORCOMPOSEDVARIABLES#THATSAN */,
