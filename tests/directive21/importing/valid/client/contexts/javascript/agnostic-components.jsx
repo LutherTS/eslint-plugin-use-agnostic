@@ -1,20 +1,20 @@
 // "use client contexts"
 
-// ...Importing a Lineal Agnostic Components Module.
+// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#IMPORTINGAMODULE
 import agnosticComponents from "../../../../../imported/javascript/agnostic-components.jsx";
 
-// ...Importing a Lineal Agnostic Components Module by a folder.
+// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#IMPORTINGBYAFOLDER
 import agnosticComponentsFolder from "../../../../../imported/javascript/agnostic-components-jsx";
 
-// ...Importing Lineal Agnostic Components via Special Agnostic Strategy.
+// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#IMPORTINGVIASTRATEGY
 import {
   /* @agnosticComponents */ agnosticComponentsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// ...Importing Lineal Agnostic Components via Special Agnostic Strategy by a folder.
+// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#IMPORTINGVIASTRATEGYBYAFOLDER
 import {
   /* @agnosticComponents */ agnosticLogicsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// Valid.
-// Lineal Agnostic Components can render safely on the client just like they can on the server.
+// $COMMENT#TESTS#VALID
+// Lineal $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_AGNOSTIC_COMPONENTS

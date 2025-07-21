@@ -1,20 +1,20 @@
 // "use client contexts"
 
-// ...Importing a Special Agnostic Conditions Module.
+// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#IMPORTINGAMODULE
 import agnosticConditions from "../../../../../imported/javascript/agnostic-conditions.jsx";
 
-// ...Importing a Special Agnostic Conditions Module by a folder.
+// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#IMPORTINGBYAFOLDER
 import agnosticConditionsFolder from "../../../../../imported/javascript/agnostic-conditions-jsx";
 
-// ...Importing Special Agnostic Conditions via Special Agnostic Strategy.
+// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#IMPORTINGVIASTRATEGY
 import {
   /* @agnosticConditions */ agnosticConditionsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// ...Importing Special Agnostic Conditions via Special Agnostic Strategy by a folder.
+// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#IMPORTINGVIASTRATEGYBYAFOLDER
 import {
   /* @agnosticConditions */ agnosticConditionsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// Valid.
-// (Special) Agnostic Conditions Components, as if they were Lineal Agnostic Components themselves, can render safely on the client just like they can on the server, in a mechanism that allows (Special) Client Contexts Components to safely and indirectly compose with child Server Components within Client Contexts Modules.
+// $COMMENT#TESTS#VALID
+// $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#USE_AGNOSTIC_CONDITIONS

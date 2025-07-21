@@ -1,18 +1,18 @@
-// That's a Server Components Module.
+// $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#THATSAMODULE
 
-// ...Importing a Server Functions Module (with extension).
+// $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#IMPORTINGWITHEXTENSION
 import serverFunctions from "../../../../../imported/typescript/server-functions.ts";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import serverFunctionsAlias from "@/tests/agnostic20/imported/typescript/server-functions.ts";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import serverFunctionsBaseUrl from "tests/agnostic20/imported/typescript/server-functions.ts";
 
-// ...Importing a Server Functions Module by a folder.
+// $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#IMPORTINGBYAFOLDER
 import serverFunctionsFolder from "../../../../../imported/typescript/server-functions-ts";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import serverFunctionsFolderAlias from "@/tests/agnostic20/imported/typescript/server-functions-ts";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import serverFunctionsFolderBaseUrl from "tests/agnostic20/imported/typescript/server-functions-ts";
 
-// Valid.
-// Server Functions can be passed to imported Client Components within Server Components Modules, even though indeed Server Components Modules and Server Components can make their own Server Functions through inline 'use server' directives.
+// $COMMENT#TESTS#VALID
+// $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_SERVER_FUNCTIONS

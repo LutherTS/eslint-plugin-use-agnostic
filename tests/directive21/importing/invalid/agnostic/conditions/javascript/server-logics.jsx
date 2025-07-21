@@ -1,20 +1,20 @@
 // "use agnostic conditions"
 
-// ...Importing a Prime Server Logics Module.
+// $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#IMPORTINGAMODULE
 import serverLogics from "../../../../../imported/javascript/server-logics.js";
 
-// ...Importing a Prime Server Logics Module by a folder.
+// $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#IMPORTINGBYAFOLDER
 import serverLogicsFolder from "../../../../../imported/javascript/server-logics-js";
 
-// ...Importing Prime Server Logics via Special Agnostic Strategy.
+// $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#IMPORTINGVIASTRATEGY
 import {
   /* @serverLogics */ serverLogicsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// ...Importing Prime Server Logics via Special Agnostic Strategy by a folder.
+// $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#IMPORTINGVIASTRATEGYBYAFOLDER
 import {
   /* @serverLogics */ serverLogicsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// Invalid.
-// Prime Server Logics cannot run on both the server and the client, such as would be the case here in a Special Agnostic Conditions Module.
+// $COMMENT#TESTS#INVALID
+// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_SERVER_LOGICS
