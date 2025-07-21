@@ -36,4 +36,5 @@ Aims of the VSCode extension JSComments:
   - config["directive21"] would return $COMMENT#DIRECTIVE21#*
 - this way, instead doing a find-replace on a big documentation comment, the comment stays within the config and only the config placeholder is found and replaced for the same results
 A working CLI is already on npm: comment-variables.
+And the VS Code is also done now privately.
 */
