@@ -1,10 +1,10 @@
 "use client";
 // That's a Client Logics Module.
 
-// ...Importing a Agnostic Components Module (with extension).
+// ...Importing an Agnostic Components Module (with extension).
 import agnosticComponents from "../../../../../imported/javascript/agnostic.jsx";
 
-// ...Importing a Agnostic Components Module by a folder.
+// ...Importing an Agnostic Components Module by a folder.
 import agnosticComponentsFolder from "../../../../../imported/javascript/agnostic-jsx";
 
 // Valid.
