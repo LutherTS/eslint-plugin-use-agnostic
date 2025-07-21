@@ -27,33 +27,39 @@ export const agnostic20Comments = Object.freeze({
   [USE_AGNOSTIC_LOGICS]: agnosticLogicsComments,
   [USE_AGNOSTIC_COMPONENTS]: agnosticComponentsComments,
   forAliasVariables: Object.freeze({
-    clientNeverServer: "Client Logics should never leak to the server.",
+    clientNeverServer:
+      "Client Logics should never leak to the server." /* $COMMENT#AGNOSTIC20#FORALIASVARIABLES#CLIENTNEVERSERVER */,
+    serverNeverClient:
+      "Server Logics should never leak to the client." /* $COMMENT#AGNOSTIC20#FORALIASVARIABLES#SERVERNEVERCLIENT */,
     agnosticCanServerClient:
-      "Agnostic Logics can run safely on the server just like they can on the client.",
-    serverFunctionsNoComponents:
-      "Server Functions have no business working with React Components.",
-    serverNeverClient: "Server Logics should never leak to the client.",
+      "Agnostic Logics can run safely on the server just like they can on the client." /* $COMMENT#AGNOSTIC20#FORALIASVARIABLES#AGNOSTICCANSERVERCLIENT */,
     agnosticCanClientServer:
-      "Agnostic Logics can run safely on the client just like they can on the server",
+      "Agnostic Logics can run safely on the client just like they can on the server." /* $COMMENT#AGNOSTIC20#FORALIASVARIABLES#AGNOSTICCANCLIENTSERVER */,
     serverCantServerClient:
-      "Server Logics cannot run on both the server and the client.",
+      "$COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#SERVERLOGICS $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#CANTSERVERCLIENT" /* $COMMENT#AGNOSTIC20#FORALIASVARIABLES#SERVERCANTSERVERCLIENT */,
     clientCantServerClient:
-      "Client Logics cannot run on both the server and the client.",
+      "$COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#CLIENTLOGICS $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#CANTSERVERCLIENT" /* $COMMENT#AGNOSTIC20#FORALIASVARIABLES#CLIENTCANTSERVERCLIENT */,
+    serverFunctionsNoComponents:
+      "Server Functions have no business working with React Components." /* $COMMENT#AGNOSTIC20#FORALIASVARIABLES#SERVERFUNCTIONSNOCOMPONENTS */,
   }),
   forComposedVariables: Object.freeze({
     serverComponentsOKLogics:
-      "Server Components are OK to be composed with Server Logics as long as the Server Logics Module,",
+      "Server Components are OK to be composed with Server Logics as long as the Server Logics Module," /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#SERVERCOMPONENTSOKLOGICS */,
     clientComponentsOKLogics:
-      "Client Components are OK to be composed with Client Logics as long as the Client Logics Module,",
+      "Client Components are OK to be composed with Client Logics as long as the Client Logics Module," /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#CLIENTCOMPONENTSOKLOGICS */,
     agnosticComponentsCanServer:
-      "Agnostic Components can be composed with Logics on the server just like they can on the client, as long at the Server Logics Module,",
+      "Agnostic Components can be composed with Logics on the server just like they can on the client, as long at the Server Logics Module," /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#AGNOSTICCOMPONENTSCANSERVER */,
     agnosticComponentsCanClient:
-      "Agnostic Components can be composed with Logics on the client just like they can on the server, as long as the Client Logics Module,",
+      "Agnostic Components can be composed with Logics on the client just like they can on the server, as long as the Client Logics Module," /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#AGNOSTICCOMPONENTSCANCLIENT */,
     agnosticComponentsCanAgnostic:
-      "Agnostic Components can be composed with Logics agnostically as long as the Agnostic Logics Module,",
-    noExportComponents: "by convention, does not export React components.",
-    serverLogics: "Server Logics",
-    clientLogics: "Client Logics",
-    cantServerClient: "cannot run on both the server and the client.",
+      "Agnostic Components can be composed with Logics agnostically as long as the Agnostic Logics Module," /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#AGNOSTICCOMPONENTSCANAGNOSTIC */,
+    noExportComponents:
+      "by convention, does not export React components." /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#NOEXPORTCOMPONENTS */,
+    serverLogics:
+      "Server Logics" /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#SERVERLOGICS */,
+    clientLogics:
+      "Client Logics" /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#CLIENTLOGICS */,
+    cantServerClient:
+      "cannot run on both the server and the client." /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#CANTSERVERCLIENT */,
   }),
 });
