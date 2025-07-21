@@ -1,19 +1,19 @@
 "use agnostic";
-// $COMMENT#TESTS#THATSAN $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#MODULEPERIOD
+// That's an Agnostic Components Module.
 
-// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#MODULE $COMMENT#TESTS#WITHEXTENSIONPARENTHESES
+// ...Importing a Server Functions Module (with extension).
 import serverFunctions from "../../../../../imported/typescript/server-functions.ts";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import serverFunctionsAlias from "@/tests/agnostic20/imported/typescript/server-functions.ts";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import serverFunctionsBaseUrl from "tests/agnostic20/imported/typescript/server-functions.ts";
 
-// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#MODULE $COMMENT#TESTS#BYFOLDER
+// ...Importing a Server Functions Module by a folder.
 import serverFunctionsFolder from "../../../../../imported/typescript/server-functions-ts";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import serverFunctionsFolderAlias from "@/tests/agnostic20/imported/typescript/server-functions-ts";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import serverFunctionsFolderBaseUrl from "tests/agnostic20/imported/typescript/server-functions-ts";
 
-// $COMMENT#TESTS#VALID
-// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_SERVER_FUNCTIONS
+// Valid.
+// Server Functions can be passed to Client Components as props when Client Components are also legally imported into Agnostic Components Modules.

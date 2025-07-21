@@ -1,62 +1,62 @@
 // "use agnostic components"
 
-// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#MODULEPERIOD
+// ...Importing a Prime Agnostic Logics Module.
 import agnosticLogics from "../../../../../imported/typescript/agnostic-logics";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import agnosticLogicsExtension from "../../../../../imported/typescript/agnostic-logics.ts";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import agnosticLogicsAlias from "@/tests/directive21/imported/typescript/agnostic-logics";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import agnosticLogicsAliasExtension from "@/tests/directive21/imported/typescript/agnostic-logics.ts";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import agnosticLogicsBaseUrl from "tests/directive21/imported/typescript/agnostic-logics";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import agnosticLogicsBaseUrlExtension from "tests/directive21/imported/typescript/agnostic-logics.ts";
 
-// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#MODULE $COMMENT#TESTS#BYFOLDER
+// ...Importing a Prime Agnostic Logics Module by a folder.
 import agnosticLogicsFolder from "../../../../../imported/typescript/agnostic-logics-ts";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import agnosticLogicsFolderAlias from "@/tests/directive21/imported/typescript/agnostic-logics-ts";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import agnosticLogicsFolderBaseUrl from "tests/directive21/imported/typescript/agnostic-logics-ts";
 
-// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#KINDS $COMMENT#TESTS#VIASTRATEGYPERIOD
+// ...Importing Prime Agnostic Logics via Special Agnostic Strategy.
 import {
   /* @agnosticLogics */ agnosticLogicsStrategized,
 } from "../../../../../imported/typescript/agnostic-strategies";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import {
   /* @agnosticLogics */ agnosticLogicsStrategized as agnosticLogicsStrategizedExtension,
 } from "../../../../../imported/typescript/agnostic-strategies.tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import {
   /* @agnosticLogics */ agnosticLogicsStrategized as agnosticLogicsStrategizedAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import {
   /* @agnosticLogics */ agnosticLogicsStrategized as agnosticLogicsStrategizedAliasExtension,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies.tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import {
   /* @agnosticLogics */ agnosticLogicsStrategized as agnosticLogicsStrategizedBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import {
   /* @agnosticLogics */ agnosticLogicsStrategized as agnosticLogicsStrategizedBaseUrlExtension,
 } from "tests/directive21/imported/typescript/agnostic-strategies.tsx";
 
-// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#KINDS $COMMENT#TESTS#VIASTRATEGY $COMMENT#TESTS#BYFOLDER
+// ...Importing Prime Agnostic Logics via Special Agnostic Strategy by a folder.
 import {
   /* @agnosticLogics */ agnosticLogicsStrategized as agnosticLogicsStrategizedFolder,
 } from "../../../../../imported/typescript/agnostic-strategies-tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import {
   /* @agnosticLogics */ agnosticLogicsStrategized as agnosticLogicsStrategizedFolderAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies-tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import {
   /* @agnosticLogics */ agnosticLogicsStrategized as agnosticLogicsStrategizedFolderBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
-// $COMMENT#TESTS#VALID
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#USE_AGNOSTIC_LOGICS
+// Valid.
+// Prime Agnostic Logics, being environment-agnostic logic, can safely support Agnostic Components.

@@ -1,19 +1,19 @@
 "use agnostic";
-// $COMMENT#TESTS#THATSAN $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#MODULEPERIOD
+// That's an Agnostic Components Module.
 
-// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#MODULE $COMMENT#TESTS#WITHEXTENSIONPARENTHESES
+// ...Importing a Client Components Module (with extension).
 import clientComponents from "../../../../../imported/typescript/client.tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import clientComponentsAlias from "@/tests/agnostic20/imported/typescript/client.tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import clientComponentsBaseUrl from "tests/agnostic20/imported/typescript/client.tsx";
 
-// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#MODULE $COMMENT#TESTS#BYFOLDER
+// ...Importing a Client Components Module by a folder.
 import clientComponentsFolder from "../../../../../imported/typescript/client-tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import clientComponentsFolderAlias from "@/tests/agnostic20/imported/typescript/client-tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import clientComponentsFolderBaseUrl from "tests/agnostic20/imported/typescript/client-tsx";
 
-// $COMMENT#TESTS#VALID
-// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_CLIENT_COMPONENTS
+// Valid.
+// Client Components can be nested inside Agnostic Components either to wrap some of the tree with client state accessible through child Client Components and pass through Server Components (if still on the Server Tree), or to create client boundaries when the root of the application is planted on the server.

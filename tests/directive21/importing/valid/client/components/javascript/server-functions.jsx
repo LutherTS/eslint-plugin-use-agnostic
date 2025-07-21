@@ -1,20 +1,20 @@
 // "use client components"
 
-// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#MODULEPERIOD
+// ...Importing a Special Server Functions Module.
 import serverFunctions from "../../../../../imported/javascript/server-functions.js";
 
-// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#MODULE $COMMENT#TESTS#BYFOLDER
+// ...Importing a Special Server Functions Module by a folder.
 import serverFunctionsFolder from "../../../../../imported/javascript/server-functions-js";
 
-// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#KINDS $COMMENT#TESTS#VIASTRATEGYPERIOD
+// ...Importing Special Server Functions via Special Agnostic Strategy.
 import {
   /* @serverFunctions */ serverFunctionsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#KINDS $COMMENT#TESTS#VIASTRATEGY $COMMENT#TESTS#BYFOLDER
+// ...Importing Special Server Functions via Special Agnostic Strategy by a folder.
 import {
   /* @serverFunctions */ serverFunctionsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// $COMMENT#TESTS#VALID
-// (Special) $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_SERVER_FUNCTIONS
+// Valid.
+// (Special) Server Functions are specifically triggered by Client Components.

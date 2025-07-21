@@ -1,20 +1,20 @@
 // "use agnostic strategies"
 
-// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#MODULEPERIOD
+// ...Importing a Lineal Server Components Module.
 import serverComponents from "../../../../../imported/javascript/server-components.jsx";
 
-// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#MODULE $COMMENT#TESTS#BYFOLDER
+// ...Importing a Lineal Server Components Module by a folder.
 import serverComponentsFolder from "../../../../../imported/javascript/server-components-jsx";
 
-// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#KINDS $COMMENT#TESTS#VIASTRATEGYPERIOD
+// ...Importing Lineal Server Components via Special Agnostic Strategy.
 import {
   /* @serverComponents */ serverComponentsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#KINDS $COMMENT#TESTS#VIASTRATEGY $COMMENT#TESTS#BYFOLDER
+// ...Importing Lineal Server Components via Special Agnostic Strategy by a folder.
 import {
   /* @serverComponents */ serverLogicsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// $COMMENT#TESTS#VALID
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES
+// Valid.
+// (Special) Agnostic Strategies Modules can import all known modules, except themselves since they cannot be imported as they are, only as and via Strategies. (Since Agnostic Strategies Modules cannot be imported as they are, there is no such things as a 'use agnostic strategies' importFileCommentedDirective.)

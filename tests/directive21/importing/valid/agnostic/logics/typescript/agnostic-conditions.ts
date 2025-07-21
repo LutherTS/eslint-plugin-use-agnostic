@@ -1,62 +1,62 @@
 // "use agnostic logics"
 
-// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#MODULEPERIOD
+// ...Importing a Special Agnostic Conditions Module.
 import agnosticConditions from "../../../../../imported/typescript/agnostic-conditions";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import agnosticConditionsExtension from "../../../../../imported/typescript/agnostic-conditions.tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import agnosticConditionsAlias from "@/tests/directive21/imported/typescript/agnostic-conditions";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import agnosticConditionsAliasExtension from "@/tests/directive21/imported/typescript/agnostic-conditions.tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import agnosticConditionsBaseUrl from "tests/directive21/imported/typescript/agnostic-conditions";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import agnosticConditionsBaseUrlExtension from "tests/directive21/imported/typescript/agnostic-conditions.tsx";
 
-// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#MODULE $COMMENT#TESTS#BYFOLDER
+// ...Importing a Special Agnostic Conditions Module by a folder.
 import agnosticConditionsFolder from "../../../../../imported/typescript/agnostic-conditions-tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import agnosticConditionsFolderAlias from "@/tests/directive21/imported/typescript/agnostic-conditions-tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import agnosticConditionsFolderBaseUrl from "tests/directive21/imported/typescript/agnostic-conditions-tsx";
 
-// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#KINDS $COMMENT#TESTS#VIASTRATEGYPERIOD
+// ...Importing Special Agnostic Conditions via Special Agnostic Strategy.
 import {
   /* @agnosticConditions */ agnosticConditionsStrategized,
 } from "../../../../../imported/typescript/agnostic-strategies";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import {
   /* @agnosticConditions */ agnosticConditionsStrategized as agnosticConditionsStrategizedExtension,
 } from "../../../../../imported/typescript/agnostic-strategies.tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import {
   /* @agnosticConditions */ agnosticConditionsStrategized as agnosticConditionsStrategizedAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import {
   /* @agnosticConditions */ agnosticConditionsStrategized as agnosticConditionsStrategizedAliasExtension,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies.tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import {
   /* @agnosticConditions */ agnosticConditionsStrategized as agnosticConditionsStrategizedBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import {
   /* @agnosticConditions */ agnosticConditionsStrategized as agnosticConditionsStrategizedBaseUrlExtension,
 } from "tests/directive21/imported/typescript/agnostic-strategies.tsx";
 
-// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#KINDS $COMMENT#TESTS#VIASTRATEGY $COMMENT#TESTS#BYFOLDER
+// ...Importing Special Agnostic Conditions via Special Agnostic Strategy by a folder.
 import {
   /* @agnosticConditions */ agnosticConditionsStrategized as agnosticConditionsStrategizedFolder,
 } from "../../../../../imported/typescript/agnostic-strategies-tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import {
   /* @agnosticConditions */ agnosticConditionsStrategized as agnosticConditionsStrategizedFolderAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies-tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import {
   /* @agnosticConditions */ agnosticConditionsStrategized as agnosticConditionsStrategizedFolderBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
-// $COMMENT#TESTS#VALID
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#USE_AGNOSTIC_CONDITIONS
+// Valid.
+// (Special) Agnostic Conditions Components, as if they were Lineal Agnostic Components themselves, can be composed with any Prime Environment Logics agnostically as long as the Prime Environment Logics Module, by convention, does not export React components.

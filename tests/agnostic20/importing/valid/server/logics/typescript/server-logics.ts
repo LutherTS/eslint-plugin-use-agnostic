@@ -1,18 +1,18 @@
-// $COMMENT#TESTS#THATSA $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#MODULEPERIOD
+// That's a Server Logics Module.
 
-// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#MODULE $COMMENT#TESTS#WITHEXTENSIONPARENTHESES
+// ...Importing a Server Logics Module (with extension).
 import serverLogics from "../../../../../imported/typescript/server.ts";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import serverLogicsAlias from "@/tests/agnostic20/imported/typescript/server.ts";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import serverLogicsBaseUrl from "tests/agnostic20/imported/typescript/server.ts";
 
-// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#MODULE $COMMENT#TESTS#BYFOLDER
+// ...Importing a Server Logics Module by a folder.
 import serverLogicsFolder from "../../../../../imported/typescript/server-ts";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import serverLogicsFolderAlias from "@/tests/agnostic20/imported/typescript/server-ts";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import serverLogicsFolderBaseUrl from "tests/agnostic20/imported/typescript/server-ts";
 
-// $COMMENT#TESTS#VALID
-// $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_SERVER_LOGICS
+// Valid.
+// Server Logics can compose with one another.

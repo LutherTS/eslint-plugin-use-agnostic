@@ -1,19 +1,19 @@
 "use agnostic";
-// $COMMENT#TESTS#THATSAN $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#MODULEPERIOD
+// That's an Agnostic Components Module.
 
-// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#MODULE $COMMENT#TESTS#WITHEXTENSIONPARENTHESES
+// ...Importing a Agnostic Components Module (with extension).
 import agnosticComponents from "../../../../../imported/typescript/agnostic.tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import agnosticComponentsAlias from "@/tests/agnostic20/imported/typescript/agnostic.tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import agnosticComponentsBaseUrl from "tests/agnostic20/imported/typescript/agnostic.tsx";
 
-// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#MODULE $COMMENT#TESTS#BYFOLDER
+// ...Importing a Agnostic Components Module by a folder.
 import agnosticComponentsFolder from "../../../../../imported/typescript/agnostic-tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import agnosticComponentsFolderAlias from "@/tests/agnostic20/imported/typescript/agnostic-tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import agnosticComponentsFolderBaseUrl from "tests/agnostic20/imported/typescript/agnostic-tsx";
 
-// $COMMENT#TESTS#VALID
-// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_AGNOSTIC_COMPONENTS
+// Valid.
+// Agnostic Components can compose with one another.

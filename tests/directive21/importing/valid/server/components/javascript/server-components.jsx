@@ -1,20 +1,20 @@
 // "use server components"
 
-// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#MODULEPERIOD
+// ...Importing a Lineal Server Components Module.
 import serverComponents from "../../../../../imported/javascript/server-components.jsx";
 
-// $COMMENT#TESTS#IMPORTINGA $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#MODULE $COMMENT#TESTS#BYFOLDER
+// ...Importing a Lineal Server Components Module by a folder.
 import serverComponentsFolder from "../../../../../imported/javascript/server-components-jsx";
 
-// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#KINDS $COMMENT#TESTS#VIASTRATEGYPERIOD
+// ...Importing Lineal Server Components via Special Agnostic Strategy.
 import {
   /* @serverComponents */ serverComponentsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// $COMMENT#TESTS#IMPORTING $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#KINDS $COMMENT#TESTS#VIASTRATEGY $COMMENT#TESTS#BYFOLDER
+// ...Importing Lineal Server Components via Special Agnostic Strategy by a folder.
 import {
   /* @serverComponents */ serverLogicsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// $COMMENT#TESTS#VALID
-// $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#USE_SERVER_COMPONENTS
+// Valid.
+// Lineal Server Components can compose with one another, now that thanks to the inclusion of Agnostic Components they are actual Server Components.

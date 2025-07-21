@@ -1,19 +1,19 @@
 "use server";
-// $COMMENT#TESTS#THATSA $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#MODULEPERIOD
+// That's a Server Functions Module.
 
-// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#MODULE $COMMENT#TESTS#WITHEXTENSIONPARENTHESES
+// ...Importing a Agnostic Logics Module (with extension).
 import agnosticLogics from "../../../../../imported/typescript/agnostic.ts";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import agnosticLogicsAlias from "@/tests/agnostic20/imported/typescript/agnostic.ts";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import agnosticLogicsBaseUrl from "tests/agnostic20/imported/typescript/agnostic.ts";
 
-// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#MODULE $COMMENT#TESTS#BYFOLDER
+// ...Importing a Agnostic Logics Module by a folder.
 import agnosticLogicsFolder from "../../../../../imported/typescript/agnostic-ts";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import agnosticLogicsFolderAlias from "@/tests/agnostic20/imported/typescript/agnostic-ts";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import agnosticLogicsFolderBaseUrl from "tests/agnostic20/imported/typescript/agnostic-ts";
 
-// $COMMENT#TESTS#VALID
-// $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_AGNOSTIC_LOGICS
+// Valid.
+// Agnostic Logics can run safely on the server just like they can on the client, such as is the case here in a Server Functions Module.

@@ -3,12 +3,15 @@ import {
   directive21ConfigName,
 } from "./library/_commons/constants/bases.js";
 
-import {
-  jSDocComments,
-  testsComments,
-} from "./jscomments/_commons/constants/bases.js";
+// import {
+//   jSDocComments,
+//   testsComments,
+// } from "./jscomments/_commons/constants/bases.js";
 import { agnostic20Comments } from "./jscomments/agnostic20/constants/bases.js";
 import { directive21Comments } from "./jscomments/directive21/constants/bases.js";
+import { testsComments } from "./jscomments/_commons/constants/tests.js";
+
+import { jSDocComments } from "./jscomments/_commons/constants/jsdoc-original.js";
 
 export const data = Object.freeze({
   jsDoc: jSDocComments,

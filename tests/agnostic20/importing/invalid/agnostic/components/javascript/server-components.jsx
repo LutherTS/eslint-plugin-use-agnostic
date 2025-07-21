@@ -1,10 +1,10 @@
 "use agnostic";
-// $COMMENT#TESTS#THATSAN $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#MODULEPERIOD
+// That's an Agnostic Components Module.
 
 import serverComponents from "../../../../../imported/javascript/server.jsx";
 
-// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#MODULE $COMMENT#TESTS#BYFOLDER
+// ...Importing a Server Components Module by a folder.
 import serverComponentsFolder from "../../../../../imported/javascript/server-jsx";
 
-// $COMMENT#TESTS#INVALID
-// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_SERVER_COMPONENTS
+// Invalid.
+// Server Components, unlike Client Components, cannot make silos of their own once on the opposing environment (the client in this case), and therefore cannot be executed from the client, making them unable to execute agnostically from both the server and the client.

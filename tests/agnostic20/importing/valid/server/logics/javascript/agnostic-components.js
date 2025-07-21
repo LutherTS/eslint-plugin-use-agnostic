@@ -1,10 +1,10 @@
-// $COMMENT#TESTS#THATSA $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#MODULEPERIOD
+// That's a Server Logics Module.
 
-// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#MODULE $COMMENT#TESTS#WITHEXTENSIONPARENTHESES
+// ...Importing a Agnostic Components Module (with extension).
 import agnosticComponents from "../../../../../imported/javascript/agnostic.jsx";
 
-// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#MODULE $COMMENT#TESTS#BYFOLDER
+// ...Importing a Agnostic Components Module by a folder.
 import agnosticComponentsFolder from "../../../../../imported/javascript/agnostic-jsx";
 
-// $COMMENT#TESTS#VALID
-// $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_AGNOSTIC_COMPONENTS
+// Valid.
+// Agnostic Components can be composed with Logics on the server just like they can on the client, as long at the Server Logics Module, by convention, does not export React components.

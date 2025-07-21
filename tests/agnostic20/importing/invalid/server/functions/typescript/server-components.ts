@@ -1,19 +1,19 @@
 "use server";
-// $COMMENT#TESTS#THATSA $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#MODULEPERIOD
+// That's a Server Functions Module.
 
-// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#MODULE $COMMENT#TESTS#WITHEXTENSIONPARENTHESES
+// ...Importing a Server Components Module (with extension).
 import serverComponents from "../../../../../imported/typescript/server.tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import serverComponentsAlias from "@/tests/agnostic20/imported/typescript/server.tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import serverComponentsBaseUrl from "tests/agnostic20/imported/typescript/server.tsx";
 
-// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#MODULE $COMMENT#TESTS#BYFOLDER
+// ...Importing a Server Components Module by a folder.
 import serverComponentsFolder from "../../../../../imported/typescript/server-tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import serverComponentsFolderAlias from "@/tests/agnostic20/imported/typescript/server-tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import serverComponentsFolderBaseUrl from "tests/agnostic20/imported/typescript/server-tsx";
 
-// $COMMENT#TESTS#INVALID
-// $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_SERVER_COMPONENTS
+// Invalid.
+// Server Components aren't allowed because Server Functions have no business working with React Components.

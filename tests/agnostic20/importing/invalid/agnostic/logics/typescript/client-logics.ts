@@ -1,19 +1,19 @@
 "use agnostic";
-// $COMMENT#TESTS#THATSAN $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#MODULEPERIOD
+// That's an Agnostic Logics Module.
 
-// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#MODULE $COMMENT#TESTS#WITHEXTENSIONPARENTHESES
+// ...Importing a Client Logics Module (with extension).
 import clientLogics from "../../../../../imported/typescript/client.ts";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import clientLogicsAlias from "@/tests/agnostic20/imported/typescript/client.ts";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import clientLogicsBaseUrl from "tests/agnostic20/imported/typescript/client.ts";
 
-// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#MODULE $COMMENT#TESTS#BYFOLDER
+// ...Importing a Client Logics Module by a folder.
 import clientLogicsFolder from "../../../../../imported/typescript/client-ts";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import clientLogicsFolderAlias from "@/tests/agnostic20/imported/typescript/client-ts";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import clientLogicsFolderBaseUrl from "tests/agnostic20/imported/typescript/client-ts";
 
-// $COMMENT#TESTS#INVALID
-// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#USE_CLIENT_LOGICS
+// Invalid.
+// Client Logics cannot run on both the server and the client, such as would be the case here in an Agnostic Logics Module.

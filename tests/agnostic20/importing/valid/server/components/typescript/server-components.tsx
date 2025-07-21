@@ -1,18 +1,18 @@
-// $COMMENT#TESTS#THATSA $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#MODULEPERIOD
+// That's a Server Components Module.
 
-// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#MODULE $COMMENT#TESTS#WITHEXTENSIONPARENTHESES
+// ...Importing a Server Components Module (with extension).
 import serverComponents from "../../../../../imported/typescript/server.tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import serverComponentsAlias from "@/tests/agnostic20/imported/typescript/server.tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import serverComponentsBaseUrl from "tests/agnostic20/imported/typescript/server.tsx";
 
-// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#MODULE $COMMENT#TESTS#BYFOLDER
+// ...Importing a Server Components Module by a folder.
 import serverComponentsFolder from "../../../../../imported/typescript/server-tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import serverComponentsFolderAlias from "@/tests/agnostic20/imported/typescript/server-tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import serverComponentsFolderBaseUrl from "tests/agnostic20/imported/typescript/server-tsx";
 
-// $COMMENT#TESTS#VALID
-// $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_SERVER_COMPONENTS
+// Valid.
+// Server Components can compose with one another, assuming thanks to the inclusion of the 'use agnostic' directive that they are actual Server Components.

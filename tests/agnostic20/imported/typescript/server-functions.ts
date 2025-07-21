@@ -1,5 +1,5 @@
 "use server";
-// $COMMENT#TESTS#THATSA $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#MODULEPERIOD
+// That's a Server Functions Module.
 
 const object: {} = {};
 

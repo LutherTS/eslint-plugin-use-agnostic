@@ -1,5 +1,5 @@
 "use agnostic";
-// $COMMENT#TESTS#THATSAN $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#MODULEPERIOD
+// That's an Agnostic Logics Module.
 
 const object: {} = {};
 

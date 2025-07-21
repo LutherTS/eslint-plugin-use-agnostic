@@ -1,3 +1,3 @@
-// $COMMENT#TESTS#THATSA $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#MODULEPERIOD
+// That's a Server Components Module.
 
 export default {};

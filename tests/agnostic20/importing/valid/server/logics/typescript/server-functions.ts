@@ -1,17 +1,17 @@
-// $COMMENT#TESTS#THATSA $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#MODULEPERIOD
+// That's a Server Logics Module.
 
-// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#MODULE $COMMENT#TESTS#WITHEXTENSIONPARENTHESES
+// ...Importing a Server Functions Module (with extension).
 import serverFunctions from "../../../../../imported/typescript/server-functions.ts";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import serverFunctionsAlias from "@/tests/agnostic20/imported/typescript/server-functions.ts";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import serverFunctionsBaseUrl from "tests/agnostic20/imported/typescript/server-functions.ts";
 
-// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#MODULE $COMMENT#TESTS#BYFOLDER
+// ...Importing a Server Functions Module by a folder.
 import serverFunctionsFolder from "../../../../../imported/typescript/server-functions-ts";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import serverFunctionsFolderAlias from "@/tests/agnostic20/imported/typescript/server-functions-ts";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import serverFunctionsFolderBaseUrl from "tests/agnostic20/imported/typescript/server-functions-ts";
 
-// $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_SERVER_FUNCTIONS
+// Server Functions, being able to import one another, can compose and do so via Server Logics, despite this method seeming superfluous at first glance. (Perhaps a preferrable use case for this has been found or could be found either today or in the future.)

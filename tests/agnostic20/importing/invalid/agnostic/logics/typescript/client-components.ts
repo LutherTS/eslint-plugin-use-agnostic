@@ -1,19 +1,19 @@
 "use agnostic";
-// $COMMENT#TESTS#THATSAN $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#MODULEPERIOD
+// That's an Agnostic Logics Module.
 
-// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#MODULE $COMMENT#TESTS#WITHEXTENSIONPARENTHESES
+// ...Importing a Client Components Module (with extension).
 import clientComponents from "../../../../../imported/typescript/client.tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import clientComponentsAlias from "@/tests/agnostic20/imported/typescript/client.tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import clientComponentsBaseUrl from "tests/agnostic20/imported/typescript/client.tsx";
 
-// $COMMENT#TESTS#IMPORTINGA $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#MODULE $COMMENT#TESTS#BYFOLDER
+// ...Importing a Client Components Module by a folder.
 import clientComponentsFolder from "../../../../../imported/typescript/client-tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import clientComponentsFolderAlias from "@/tests/agnostic20/imported/typescript/client-tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import clientComponentsFolderBaseUrl from "tests/agnostic20/imported/typescript/client-tsx";
 
-// $COMMENT#TESTS#INVALID
-// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#USE_CLIENT_COMPONENTS
+// Invalid.
+// Client Components cannot be tinkered with on both the server and the client.
