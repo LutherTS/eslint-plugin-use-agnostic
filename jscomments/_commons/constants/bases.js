@@ -140,8 +140,8 @@ export const testsComments = Object.freeze({
   viaStrategy: "via Special Agnostic Strategy" /* $COMMENT#TESTS#VIASTRATEGY */,
   viaStrategyPeriod:
     "via Special Agnostic Strategy." /* $COMMENT#TESTS#VIASTRATEGYPERIOD */,
-  viaAlias: "Via alias." /* $COMMENT#TESTS#VIAALIAS */,
-  viaBaseUrl: "Via baseUrl." /* $COMMENT#TESTS#VIABASEURL */,
-  valid: "Valid." /* $COMMENT#TESTS#VALID */,
-  invalid: "Invalid." /* $COMMENT#TESTS#INVALID */,
+  viaAlias: "Via alias." /* Via alias. */,
+  viaBaseUrl: "Via baseUrl." /* Via baseUrl. */,
+  valid: "Valid." /* Valid. */,
+  invalid: "Invalid." /* Invalid. */,
 });
