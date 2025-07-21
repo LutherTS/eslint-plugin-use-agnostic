@@ -24,8 +24,12 @@ export const serverLogicsComments = Object.freeze({
     /* valid */ "Agnostic Logics can run safely on the server just like they can on the client, such as is the case here in a Server Logics Module." /* $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_AGNOSTIC_LOGICS */,
   [USE_AGNOSTIC_COMPONENTS]:
     /* valid */ "Agnostic Components can be composed with Logics on the server just like they can on the client, as long at the Server Logics Module, by convention, does not export React components." /* $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_AGNOSTIC_COMPONENTS */,
-  module: "Server Logics Module" /* $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#MODULE */,
-  modulePeriod: "Server Logics Module." /* $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#MODULEPERIOD */,
+  module:
+    "Server Logics Module" /* $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#MODULE */,
+  modulePeriod:
+    "Server Logics Module." /* $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#MODULEPERIOD */,
+  thatsAModule:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#THATSA $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#MODULEPERIOD",
 });
 
 export const serverComponentsComments = Object.freeze({
@@ -43,8 +47,12 @@ export const serverComponentsComments = Object.freeze({
     /* valid */ "Agnostic Logics can run safely on the server just like they can on the client, such as is the case here in a Server Components Module." /* $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_AGNOSTIC_LOGICS */,
   [USE_AGNOSTIC_COMPONENTS]:
     /* valid */ "Agnostic Components can render safely on the server just like they can on the client." /* $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_AGNOSTIC_COMPONENTS */,
-  module: "Server Components Module" /* $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#MODULE */,
-  modulePeriod: "Server Components Module." /* $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#MODULEPERIOD */,
+  module:
+    "Server Components Module" /* $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#MODULE */,
+  modulePeriod:
+    "Server Components Module." /* $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#MODULEPERIOD */,
+  thatsAModule:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#THATSA $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#MODULEPERIOD",
 });
 
 export const serverFunctionsComments = Object.freeze({
@@ -62,8 +70,12 @@ export const serverFunctionsComments = Object.freeze({
     /* valid */ "Agnostic Logics can run safely on the server just like they can on the client, such as is the case here in a Server Functions Module." /* $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_AGNOSTIC_LOGICS */,
   [USE_AGNOSTIC_COMPONENTS]:
     /* invalid */ "Agnostic Components aren't allowed because Server Functions have no business working with React Components." /* $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_AGNOSTIC_COMPONENTS */,
-  module: "Server Functions Module" /* $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#MODULE */,
-  modulePeriod: "Server Functions Module." /* $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#MODULEPERIOD */,
+  module:
+    "Server Functions Module" /* $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#MODULE */,
+  modulePeriod:
+    "Server Functions Module." /* $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#MODULEPERIOD */,
+  thatsAModule:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#THATSA $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#MODULEPERIOD",
 });
 
 export const clientLogicsComments = Object.freeze({
@@ -81,8 +93,12 @@ export const clientLogicsComments = Object.freeze({
     /* valid */ "Agnostic Logics can run safely on the client just like they can on the server, such as is the case here in a Client Logics Module." /* $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#USE_AGNOSTIC_LOGICS */,
   [USE_AGNOSTIC_COMPONENTS]:
     /* valid */ "Agnostic Components can be composed with Logics on the client just like they can on the server, as long as the Client Logics Module, by convention, does not export React components." /* $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#USE_AGNOSTIC_COMPONENTS */,
-  module: "Client Logics Module" /* $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#MODULE */,
-  modulePeriod: "Client Logics Module." /* $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#MODULEPERIOD */,
+  module:
+    "Client Logics Module" /* $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#MODULE */,
+  modulePeriod:
+    "Client Logics Module." /* $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#MODULEPERIOD */,
+  thatsAModule:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#THATSA $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#MODULEPERIOD",
 });
 
 export const clientComponentsComments = Object.freeze({
@@ -100,8 +116,12 @@ export const clientComponentsComments = Object.freeze({
     /* valid */ "Agnostic Logics can run safely on the client just like they can on the server, such as is the case here in a Client Components Module." /* $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_AGNOSTIC_LOGICS */,
   [USE_AGNOSTIC_COMPONENTS]:
     /* valid */ "Agnostic Components can render safely on the client just like they can on the server." /* $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_AGNOSTIC_COMPONENTS */,
-  module: "Client Components Module" /* $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#MODULE */,
-  modulePeriod: "Client Components Module." /* $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#MODULEPERIOD */,
+  module:
+    "Client Components Module" /* $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#MODULE */,
+  modulePeriod:
+    "Client Components Module." /* $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#MODULEPERIOD */,
+  thatsAModule:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#THATSA $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#MODULEPERIOD",
 });
 
 export const agnosticLogicsComments = Object.freeze({
@@ -119,8 +139,12 @@ export const agnosticLogicsComments = Object.freeze({
     /* valid */ "Agnostic Logics can compose with one another." /* $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#USE_AGNOSTIC_LOGICS */,
   [USE_AGNOSTIC_COMPONENTS]:
     /* valid */ "Agnostic Components can be composed with Logics agnostically as long as the Agnostic Logics Module, by convention, does not export React components." /* $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#USE_AGNOSTIC_COMPONENTS */,
-  module: "Agnostic Logics Module" /* $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#MODULE */,
-  modulePeriod: "Agnostic Logics Module." /* $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#MODULEPERIOD */,
+  module:
+    "Agnostic Logics Module" /* $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#MODULE */,
+  modulePeriod:
+    "Agnostic Logics Module." /* $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#MODULEPERIOD */,
+  thatsAModule:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#THATSAN $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#MODULEPERIOD",
 });
 
 export const agnosticComponentsComments = Object.freeze({
@@ -138,6 +162,10 @@ export const agnosticComponentsComments = Object.freeze({
     /* valid */ "Agnostic Logics, being environment-agnostic logic, can safely support Agnostic Components." /* $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_AGNOSTIC_LOGICS */,
   [USE_AGNOSTIC_COMPONENTS]:
     /* valid */ "Agnostic Components can compose with one another." /* $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_AGNOSTIC_COMPONENTS */,
-  module: "Agnostic Components Module" /* $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#MODULE */,
-  modulePeriod: "Agnostic Components Module." /* $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#MODULEPERIOD */,
+  module:
+    "Agnostic Components Module" /* $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#MODULE */,
+  modulePeriod:
+    "Agnostic Components Module." /* $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#MODULEPERIOD */,
+  thatsAModule:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#THATSAN $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#MODULEPERIOD",
 });
