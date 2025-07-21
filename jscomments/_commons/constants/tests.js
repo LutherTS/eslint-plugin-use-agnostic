@@ -3,6 +3,8 @@ export const testsComments = Object.freeze({
   viaBaseUrl: "Via baseUrl." /* $COMMENT#TESTS#VIABASEURL */,
   valid: "Valid." /* $COMMENT#TESTS#VALID */,
   invalid: "Invalid." /* $COMMENT#TESTS#INVALID */,
+  withExtension:
+    "with extension" /* $COMMENT#TESTS#FORCOMPOSEDVARIABLES#WITHEXTENSION */,
   forComposedVariables: Object.freeze({
     thatsA: "That's a" /* $COMMENT#TESTS#FORCOMPOSEDVARIABLES#THATSA */,
     thatsAn: "That's an" /* $COMMENT#TESTS#FORCOMPOSEDVARIABLES#THATSAN */,
@@ -15,11 +17,9 @@ export const testsComments = Object.freeze({
     byFolder: "by a folder." /* $COMMENT#TESTS#FORCOMPOSEDVARIABLES#BYFOLDER */,
     importing:
       "...Importing" /* $COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTING */,
-    withExtension:
-      "with extension" /* $COMMENT#TESTS#FORCOMPOSEDVARIABLES#WITHEXTENSION */,
-    viaStrategy:
-      "via Special Agnostic Strategy" /* $COMMENT#TESTS#FORCOMPOSEDVARIABLES#VIASTRATEGY */,
     viaStrategyPeriod:
       "via Special Agnostic Strategy." /* $COMMENT#TESTS#FORCOMPOSEDVARIABLES#VIASTRATEGYPERIOD */,
+    viaStrategy:
+      "via Special Agnostic Strategy" /* $COMMENT#TESTS#FORCOMPOSEDVARIABLES#VIASTRATEGY */,
   }),
 });

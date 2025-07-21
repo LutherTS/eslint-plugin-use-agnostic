@@ -30,9 +30,20 @@ export const serverLogicsComments = Object.freeze({
     /* invalid */ "Client Contexts Components, like any Client Components, cannot be tinkered with on the server." /* $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#USE_CLIENT_CONTEXTS */,
   [USE_AGNOSTIC_CONDITIONS]:
     /* valid */ "(Special) Agnostic Conditions Components are able to safely render on the server, guaranteeing that only their `ComponentForServer` will be effectively involved in Prime Server Logics Modules." /* $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#USE_AGNOSTIC_CONDITIONS */,
-  module: "Prime Server Logics Module" /* $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#MODULE */,
-  modulePeriod: "Prime Server Logics Module." /* $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#MODULEPERIOD */,
-  kinds: "Prime Server Logics" /* $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#KINDS */,
+  module:
+    "Prime Server Logics Module" /* $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#MODULE */,
+  modulePeriod:
+    "Prime Server Logics Module." /* $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#MODULEPERIOD */,
+  kinds:
+    "Prime Server Logics" /* $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#KINDS */,
+  importingAModule:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTINGA $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#MODULEPERIOD",
+  importingByAFolder:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTINGA $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#MODULE $COMMENT#TESTS#FORCOMPOSEDVARIABLES#BYFOLDER",
+  importingViaStrategy:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTING $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#KINDS $COMMENT#TESTS#FORCOMPOSEDVARIABLES#VIASTRATEGYPERIOD",
+  importingViaStrategyByAFolder:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTING $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#KINDS $COMMENT#TESTS#FORCOMPOSEDVARIABLES#VIASTRATEGY $COMMENT#TESTS#FORCOMPOSEDVARIABLES#BYFOLDER",
 });
 
 export const clientLogicsComments = Object.freeze({
@@ -54,9 +65,20 @@ export const clientLogicsComments = Object.freeze({
     /* valid */ "(Special) Client Contexts Components, like any Client Components, are OK to be composed with Prime Client Logics as long as the Prime Client Logics Module, by convention, does not export React components." /* $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#USE_CLIENT_CONTEXTS */,
   [USE_AGNOSTIC_CONDITIONS]:
     /* valid */ "(Special) Agnostic Conditions Components are able to safely render on the client, guaranteeing that only their `ComponentForClient` will be effectively involved in Prime Client Logics Modules." /* $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#USE_AGNOSTIC_CONDITIONS */,
-  module: "Prime Client Logics Module" /* $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#MODULE */,
-  modulePeriod: "Prime Client Logics Module." /* $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#MODULEPERIOD */,
-  kinds: "Prime Client Logics" /* $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#KINDS */,
+  module:
+    "Prime Client Logics Module" /* $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#MODULE */,
+  modulePeriod:
+    "Prime Client Logics Module." /* $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#MODULEPERIOD */,
+  kinds:
+    "Prime Client Logics" /* $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#KINDS */,
+  importingAModule:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTINGA $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#MODULEPERIOD",
+  importingByAFolder:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTINGA $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#MODULE $COMMENT#TESTS#FORCOMPOSEDVARIABLES#BYFOLDER",
+  importingViaStrategy:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTING $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#KINDS $COMMENT#TESTS#FORCOMPOSEDVARIABLES#VIASTRATEGYPERIOD",
+  importingViaStrategyByAFolder:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTING $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#KINDS $COMMENT#TESTS#FORCOMPOSEDVARIABLES#VIASTRATEGY $COMMENT#TESTS#FORCOMPOSEDVARIABLES#BYFOLDER",
 });
 
 export const agnosticLogicsComments = Object.freeze({
@@ -78,9 +100,20 @@ export const agnosticLogicsComments = Object.freeze({
     /* invalid */ "(Special) Client Contexts Components, like any Client Components, cannot be tinkered with on both the server and the client." /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#USE_CLIENT_CONTEXTS */,
   [USE_AGNOSTIC_CONDITIONS]:
     /* valid */ "(Special) Agnostic Conditions Components, as if they were Lineal Agnostic Components themselves, can be composed with any Prime Environment Logics agnostically as long as the Prime Environment Logics Module, by convention, does not export React components." /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#USE_AGNOSTIC_CONDITIONS */,
-  module: "Prime Agnostic Logics Module" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#MODULE */,
-  modulePeriod: "Prime Agnostic Logics Module." /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#MODULEPERIOD */,
-  kinds: "Prime Agnostic Logics" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#KINDS */,
+  module:
+    "Prime Agnostic Logics Module" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#MODULE */,
+  modulePeriod:
+    "Prime Agnostic Logics Module." /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#MODULEPERIOD */,
+  kinds:
+    "Prime Agnostic Logics" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#KINDS */,
+  importingAModule:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTINGA $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#MODULEPERIOD",
+  importingByAFolder:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTINGA $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#MODULE $COMMENT#TESTS#FORCOMPOSEDVARIABLES#BYFOLDER",
+  importingViaStrategy:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTING $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#KINDS $COMMENT#TESTS#FORCOMPOSEDVARIABLES#VIASTRATEGYPERIOD",
+  importingViaStrategyByAFolder:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTING $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#KINDS $COMMENT#TESTS#FORCOMPOSEDVARIABLES#VIASTRATEGY $COMMENT#TESTS#FORCOMPOSEDVARIABLES#BYFOLDER",
 });
 
 export const serverComponentsComments = Object.freeze({
@@ -102,9 +135,20 @@ export const serverComponentsComments = Object.freeze({
     /* valid */ "(Special) Client Contexts Components can be nested inside Server Components to wrap some of the tree with client state accessible through child Client Components, and to pass through Server Components when the root of the application is planted on the server." /* $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#USE_CLIENT_CONTEXTS */,
   [USE_AGNOSTIC_CONDITIONS]:
     /* valid */ "(Special) Agnostic Conditions Components, as if they were Lineal Agnostic Components themselves, can render safely on the server just like they can on the client." /* $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#USE_AGNOSTIC_CONDITIONS */,
-  module: "Lineal Server Components Module" /* $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#MODULE */,
-  modulePeriod: "Lineal Server Components Module." /* $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#MODULEPERIOD */,
-  kinds: "Lineal Server Components" /* $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#KINDS */,
+  module:
+    "Lineal Server Components Module" /* $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#MODULE */,
+  modulePeriod:
+    "Lineal Server Components Module." /* $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#MODULEPERIOD */,
+  kinds:
+    "Lineal Server Components" /* $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#KINDS */,
+  importingAModule:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTINGA $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#MODULEPERIOD",
+  importingByAFolder:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTINGA $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#MODULE $COMMENT#TESTS#FORCOMPOSEDVARIABLES#BYFOLDER",
+  importingViaStrategy:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTING $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#KINDS $COMMENT#TESTS#FORCOMPOSEDVARIABLES#VIASTRATEGYPERIOD",
+  importingViaStrategyByAFolder:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTING $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#KINDS $COMMENT#TESTS#FORCOMPOSEDVARIABLES#VIASTRATEGY $COMMENT#TESTS#FORCOMPOSEDVARIABLES#BYFOLDER",
 });
 
 export const clientComponentsComments = Object.freeze({
@@ -126,9 +170,20 @@ export const clientComponentsComments = Object.freeze({
     /* valid */ "(Special) Client Contexts Components can effectively become Lineal and only render their children on the client via this mechanism since, by a Client Contexts Component being the child of a Lineal Client Component, the Client Contexts Component's children become the grand-children of an ancestor Lineal Client Component, enforcing them to render exclusively on the client." /* $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#USE_CLIENT_CONTEXTS */,
   [USE_AGNOSTIC_CONDITIONS]:
     /* valid */ "(Special) Agnostic Conditions Components, as if they were Lineal Agnostic Components themselves, can render safely on the client just like they can on the server." /* $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#USE_AGNOSTIC_CONDITIONS */,
-  module: "Lineal Client Components Module" /* $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#MODULE */,
-  modulePeriod: "Lineal Client Components Module." /* $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#MODULEPERIOD */,
-  kinds: "Lineal Client Components" /* $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#KINDS */,
+  module:
+    "Lineal Client Components Module" /* $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#MODULE */,
+  modulePeriod:
+    "Lineal Client Components Module." /* $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#MODULEPERIOD */,
+  kinds:
+    "Lineal Client Components" /* $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#KINDS */,
+  importingAModule:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTINGA $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#MODULEPERIOD",
+  importingByAFolder:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTINGA $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#MODULE $COMMENT#TESTS#FORCOMPOSEDVARIABLES#BYFOLDER",
+  importingViaStrategy:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTING $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#KINDS $COMMENT#TESTS#FORCOMPOSEDVARIABLES#VIASTRATEGYPERIOD",
+  importingViaStrategyByAFolder:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTING $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#KINDS $COMMENT#TESTS#FORCOMPOSEDVARIABLES#VIASTRATEGY $COMMENT#TESTS#FORCOMPOSEDVARIABLES#BYFOLDER",
 });
 
 export const agnosticComponentsComments = Object.freeze({
@@ -150,9 +205,20 @@ export const agnosticComponentsComments = Object.freeze({
     /* valid */ "(Special) Client Contexts Components can be nested inside Agnostic Components to wrap some of the tree with client state accessible through child Client Components, and to pass through Server Components (if still on the Server Tree) when the root of the application is planted on the server." /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#USE_CLIENT_CONTEXTS */,
   [USE_AGNOSTIC_CONDITIONS]:
     /* valid */ "(Special) Agnostic Conditions Components can compose with Lineal Agnostic Components as if they were Lineal Agnostic Components themselves, making them a necessary mechanism for Server Components to be nested in Agnostic Components." /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#USE_AGNOSTIC_CONDITIONS */,
-  module: "Lineal Agnostic Components Module" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#MODULE */,
-  modulePeriod: "Lineal Agnostic Components Module." /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#MODULEPERIOD */,
-  kinds: "Lineal Agnostic Components" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#KINDS */,
+  module:
+    "Lineal Agnostic Components Module" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#MODULE */,
+  modulePeriod:
+    "Lineal Agnostic Components Module." /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#MODULEPERIOD */,
+  kinds:
+    "Lineal Agnostic Components" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#KINDS */,
+  importingAModule:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTINGA $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#MODULEPERIOD",
+  importingByAFolder:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTINGA $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#MODULE $COMMENT#TESTS#FORCOMPOSEDVARIABLES#BYFOLDER",
+  importingViaStrategy:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTING $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#KINDS $COMMENT#TESTS#FORCOMPOSEDVARIABLES#VIASTRATEGYPERIOD",
+  importingViaStrategyByAFolder:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTING $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#KINDS $COMMENT#TESTS#FORCOMPOSEDVARIABLES#VIASTRATEGY $COMMENT#TESTS#FORCOMPOSEDVARIABLES#BYFOLDER",
 });
 
 export const serverFunctionsComments = Object.freeze({
@@ -174,9 +240,20 @@ export const serverFunctionsComments = Object.freeze({
     /* invalid */ "(Special) Client Contexts Components aren't allowed because (Special) Server Functions have no business working with React Components." /* $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#USE_CLIENT_CONTEXTS */,
   [USE_AGNOSTIC_CONDITIONS]:
     /* invalid */ "(Special) Agnostic Conditions Components aren't allowed because (Special) Server Functions have no business working with React Components." /* $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#USE_AGNOSTIC_CONDITIONS */,
-  module: "Special Server Functions Module" /* $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#MODULE */,
-  modulePeriod: "Special Server Functions Module." /* $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#MODULEPERIOD */,
-  kinds: "Special Server Functions" /* $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#KINDS */,
+  module:
+    "Special Server Functions Module" /* $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#MODULE */,
+  modulePeriod:
+    "Special Server Functions Module." /* $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#MODULEPERIOD */,
+  kinds:
+    "Special Server Functions" /* $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#KINDS */,
+  importingAModule:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTINGA $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#MODULEPERIOD",
+  importingByAFolder:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTINGA $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#MODULE $COMMENT#TESTS#FORCOMPOSEDVARIABLES#BYFOLDER",
+  importingViaStrategy:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTING $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#KINDS $COMMENT#TESTS#FORCOMPOSEDVARIABLES#VIASTRATEGYPERIOD",
+  importingViaStrategyByAFolder:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTING $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#KINDS $COMMENT#TESTS#FORCOMPOSEDVARIABLES#VIASTRATEGY $COMMENT#TESTS#FORCOMPOSEDVARIABLES#BYFOLDER",
 });
 
 export const clientContextsComments = Object.freeze({
@@ -198,9 +275,20 @@ export const clientContextsComments = Object.freeze({
     /* valid */ "(Special) Client Contexts Components can compose with one another." /* $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#USE_CLIENT_CONTEXTS */,
   [USE_AGNOSTIC_CONDITIONS]:
     /* valid */ "(Special) Agnostic Conditions Components, as if they were Lineal Agnostic Components themselves, can render safely on the client just like they can on the server, in a mechanism that allows (Special) Client Contexts Components to safely and indirectly compose with child Server Components within Client Contexts Modules." /* $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#USE_AGNOSTIC_CONDITIONS */,
-  module: "Special Client Contexts Module" /* $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#MODULE */,
-  modulePeriod: "Special Client Contexts Module." /* $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#MODULEPERIOD */,
-  kinds: "Special Client Contexts" /* $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#KINDS */,
+  module:
+    "Special Client Contexts Module" /* $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#MODULE */,
+  modulePeriod:
+    "Special Client Contexts Module." /* $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#MODULEPERIOD */,
+  kinds:
+    "Special Client Contexts" /* $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#KINDS */,
+  importingAModule:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTINGA $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#MODULEPERIOD",
+  importingByAFolder:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTINGA $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#MODULE $COMMENT#TESTS#FORCOMPOSEDVARIABLES#BYFOLDER",
+  importingViaStrategy:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTING $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#KINDS $COMMENT#TESTS#FORCOMPOSEDVARIABLES#VIASTRATEGYPERIOD",
+  importingViaStrategyByAFolder:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTING $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#KINDS $COMMENT#TESTS#FORCOMPOSEDVARIABLES#VIASTRATEGY $COMMENT#TESTS#FORCOMPOSEDVARIABLES#BYFOLDER",
 });
 
 export const agnosticConditionsComments = Object.freeze({
@@ -222,7 +310,18 @@ export const agnosticConditionsComments = Object.freeze({
     /* invalid */ "(Special) Client Contexts Components cannot be used as component arguments for (Special) Agnostic Conditions Components since they only take Lineal Components as arguments in their making." /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_CLIENT_CONTEXTS */,
   [USE_AGNOSTIC_CONDITIONS]:
     /* valid */ "(Special) Agnostic Conditions Components, despite not being Lineal Components themselves, output components that can only be Lineal and compatible with their attributed rendering environments, making them acceptable arguments in the making of Agnostic Conditions Components." /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_AGNOSTIC_CONDITIONS */,
-  module: "Special Agnostic Conditions Module" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#MODULE */,
-  modulePeriod: "Special Agnostic Conditions Module." /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#MODULEPERIOD */,
-  kinds: "Special Agnostic Conditions" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#KINDS */,
+  module:
+    "Special Agnostic Conditions Module" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#MODULE */,
+  modulePeriod:
+    "Special Agnostic Conditions Module." /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#MODULEPERIOD */,
+  kinds:
+    "Special Agnostic Conditions" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#KINDS */,
+  importingAModule:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTINGA $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#MODULEPERIOD",
+  importingByAFolder:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTINGA $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#MODULE $COMMENT#TESTS#FORCOMPOSEDVARIABLES#BYFOLDER",
+  importingViaStrategy:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTING $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#KINDS $COMMENT#TESTS#FORCOMPOSEDVARIABLES#VIASTRATEGYPERIOD",
+  importingViaStrategyByAFolder:
+    "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTING $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#KINDS $COMMENT#TESTS#FORCOMPOSEDVARIABLES#VIASTRATEGY $COMMENT#TESTS#FORCOMPOSEDVARIABLES#BYFOLDER",
 });

@@ -10,7 +10,8 @@ export const jSDocComments = Object.freeze({
   cwd: "The project root, such as from `context.cwd`." /* The project root, such as from `context.cwd`. */,
   fileResolvedPath:
     "The resolved path of the file." /* The resolved path of the file. */,
-  aContext: "An ESLint rule's `context` object." /* An ESLint rule's `context` object. */,
+  aContext:
+    "An ESLint rule's `context` object." /* An ESLint rule's `context` object. */,
   resolvedDirectives_blockedImports:
     "The blocked imports object, either for agnostic20 or for directive21." /* The blocked imports object, either for agnostic20 or for directive21. */,
   currentFileResolvedDirective:
@@ -20,14 +21,16 @@ export const jSDocComments = Object.freeze({
   theCurrentFileResolvedDirective:
     'The "resolved" directive of the "resolved" module.' /* The "resolved" directive of the "resolved" module. */,
   // library/ ... /config.js
-  plugin: "The use-agnostic ESLint plugin itself." /* The use-agnostic ESLint plugin itself. */,
+  plugin:
+    "The use-agnostic ESLint plugin itself." /* The use-agnostic ESLint plugin itself. */,
   // library/agnostic20/_commons/constants/bases.js
   currentFileEffectiveDirective:
     "The current file's effective directive." /* The current file's effective directive. */,
   importedFileEffectiveDirective:
     "The imported file's effective directive." /* The imported file's effective directive. */,
   // library/ ... /flows.js
-  context: "The ESLint rule's `context` object." /* The ESLint rule's `context` object. */,
+  context:
+    "The ESLint rule's `context` object." /* The ESLint rule's `context` object. */,
   node: "The ESLint `node` of the rule's current traversal." /* The ESLint `node` of the rule's current traversal. */,
   // library/ ... /helpers.js
   extension:
@@ -69,7 +72,8 @@ export const jSDocComments = Object.freeze({
     "The imported file's commented directive." /* The imported file's commented directive. */,
   // library/directive21/_commons/utilities/helpers.js
   string: "The original string." /* The original string. */,
-  sourceCode: "The ESLint SourceCode object." /* The ESLint SourceCode object. */,
+  sourceCode:
+    "The ESLint SourceCode object." /* The ESLint SourceCode object. */,
   directiveD21:
     "The commented directive as written on top of the file (cannot be `null` at that stage)." /* The commented directive as written on top of the file (cannot be `null` at that stage). */,
   commentedDirective:
@@ -137,9 +141,9 @@ export const testsComments = Object.freeze({
     "(with extension)." /* $COMMENT#TESTS#WITHEXTENSIONPARENTHESES */,
   byFolder: "by a folder." /* $COMMENT#TESTS#BYFOLDER */,
   importing: "...Importing" /* $COMMENT#TESTS#IMPORTING */,
-  viaStrategy: "via Special Agnostic Strategy" /* $COMMENT#TESTS#VIASTRATEGY */,
   viaStrategyPeriod:
     "via Special Agnostic Strategy." /* $COMMENT#TESTS#VIASTRATEGYPERIOD */,
+  viaStrategy: "via Special Agnostic Strategy" /* $COMMENT#TESTS#VIASTRATEGY */,
   viaAlias: "Via alias." /* Via alias. */,
   viaBaseUrl: "Via baseUrl." /* Via baseUrl. */,
   valid: "Valid." /* Valid. */,
