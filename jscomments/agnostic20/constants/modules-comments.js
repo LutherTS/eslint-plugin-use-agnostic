@@ -17,7 +17,7 @@ export const serverLogicsComments = Object.freeze({
   [USE_SERVER_FUNCTIONS]:
     /* valid */ "Server Functions, being able to import one another, can compose and do so via Server Logics, despite this method seeming superfluous at first glance. (Perhaps a preferrable use case for this has been found or could be found either today or in the future.)" /* $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_SERVER_FUNCTIONS */,
   [USE_CLIENT_LOGICS]:
-    /* invalid */ "Client Logics should never leak to the server, such as would be the case here in a Server Logics Module." /* $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_CLIENT_LOGICS */,
+    /* invalid */ "Client Logics should never leak to the server, such as would be the case here in a Server Logics Module." /* $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_CLIENT_LOGICS */, // clientNeverServer
   [USE_CLIENT_COMPONENTS]:
     /* invalid */ "Client Components cannot be tinkered with on the server." /* $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_CLIENT_COMPONENTS */,
   [USE_AGNOSTIC_LOGICS]:
@@ -44,7 +44,7 @@ export const serverComponentsComments = Object.freeze({
   [USE_SERVER_FUNCTIONS]:
     /* valid */ "Server Functions can be passed to imported Client Components within Server Components Modules, even though indeed Server Components Modules and Server Components can make their own Server Functions through inline 'use server' directives." /* $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_SERVER_FUNCTIONS */,
   [USE_CLIENT_LOGICS]:
-    /* invalid */ "Client Logics should never leak to the server, such as would be the case here in a Server Components Module." /* $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_CLIENT_LOGICS */,
+    /* invalid */ "Client Logics should never leak to the server, such as would be the case here in a Server Components Module." /* $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_CLIENT_LOGICS */, // clientNeverServer
   [USE_CLIENT_COMPONENTS]:
     /* valid */ "Client Components can be nested inside Server Components either to wrap some of the tree with client state accessible through child Client Components and pass through Server Components, or to create client boundaries when the root of the application is planted on the server." /* $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_CLIENT_COMPONENTS */,
   [USE_AGNOSTIC_LOGICS]:
@@ -71,7 +71,7 @@ export const serverFunctionsComments = Object.freeze({
   [USE_SERVER_FUNCTIONS]:
     /* valid */ "Server Functions, even though they don't need to import one another and the same results can be generated via Server Logics for the outcome of a single Server Function, can still compose with one another. (Perhaps a preferrable use case for this has been found or could be found either today or in the future.)" /* $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_SERVER_FUNCTIONS */,
   [USE_CLIENT_LOGICS]:
-    /* invalid */ "Client Logics should never leak to the server, such as would be the case here in a Server Functions Module." /* $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_CLIENT_LOGICS */,
+    /* invalid */ "Client Logics should never leak to the server, such as would be the case here in a Server Functions Module." /* $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_CLIENT_LOGICS */, // clientNeverServer
   [USE_CLIENT_COMPONENTS]:
     /* invalid */ "Client Components aren't allowed because Server Functions have no business working with React Components." /* $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_CLIENT_COMPONENTS */,
   [USE_AGNOSTIC_LOGICS]:

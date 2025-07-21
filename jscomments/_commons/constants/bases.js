@@ -10,8 +10,7 @@ export const jSDocComments = Object.freeze({
   cwd: "The project root, such as from `context.cwd`." /* $COMMENT#JSDOC#CWD */,
   fileResolvedPath:
     "The resolved path of the file." /* $COMMENT#JSDOC#FILERESOLVEDPATH */,
-  aContext:
-    "An ESLint rule's `context` object." /* $COMMENT#JSDOC#ACONTEXT */,
+  aContext: "An ESLint rule's `context` object." /* $COMMENT#JSDOC#ACONTEXT */,
   resolvedDirectives_blockedImports:
     "The blocked imports object, either for agnostic20 or for directive21." /* $COMMENT#JSDOC#RESOLVEDDIRECTIVES_BLOCKEDIMPORTS */,
   currentFileResolvedDirective:
@@ -21,16 +20,14 @@ export const jSDocComments = Object.freeze({
   theCurrentFileResolvedDirective:
     'The "resolved" directive of the "resolved" module.' /* $COMMENT#JSDOC#THECURRENTFILERESOLVEDDIRECTIVE */,
   // library/ ... /config.js
-  plugin:
-    "The use-agnostic ESLint plugin itself." /* $COMMENT#JSDOC#PLUGIN */,
+  plugin: "The use-agnostic ESLint plugin itself." /* $COMMENT#JSDOC#PLUGIN */,
   // library/agnostic20/_commons/constants/bases.js
   currentFileEffectiveDirective:
     "The current file's effective directive." /* $COMMENT#JSDOC#CURRENTFILEEFFECTIVEDIRECTIVE */,
   importedFileEffectiveDirective:
     "The imported file's effective directive." /* $COMMENT#JSDOC#IMPORTEDFILEEFFECTIVEDIRECTIVE */,
   // library/ ... /flows.js
-  context:
-    "The ESLint rule's `context` object." /* $COMMENT#JSDOC#CONTEXT */,
+  context: "The ESLint rule's `context` object." /* $COMMENT#JSDOC#CONTEXT */,
   node: "The ESLint `node` of the rule's current traversal." /* $COMMENT#JSDOC#NODE */,
   // library/ ... /helpers.js
   extension:
@@ -72,8 +69,7 @@ export const jSDocComments = Object.freeze({
     "The imported file's commented directive." /* $COMMENT#JSDOC#IMPORTEDFILECOMMENTEDDIRECTIVE */,
   // library/directive21/_commons/utilities/helpers.js
   string: "The original string." /* $COMMENT#JSDOC#STRING */,
-  sourceCode:
-    "The ESLint SourceCode object." /* $COMMENT#JSDOC#SOURCECODE */,
+  sourceCode: "The ESLint SourceCode object." /* $COMMENT#JSDOC#SOURCECODE */,
   directiveD21:
     "The commented directive as written on top of the file (cannot be `null` at that stage)." /* $COMMENT#JSDOC#DIRECTIVED21 */,
   commentedDirective:
@@ -128,24 +124,4 @@ export const jSDocComments = Object.freeze({
     "The number of errors expected on TypeScript files." /* $COMMENT#JSDOC#TYPESCRIPTERRORSLENGTH */,
   messageId:
     "The messageId of the errors expected." /* $COMMENT#JSDOC#MESSAGEID */,
-});
-
-// comment variables for tests flavor texts
-export const testsComments = Object.freeze({
-  thatsA: "That's a" /* $COMMENT#TESTS#THATSA */,
-  thatsAn: "That's an" /* $COMMENT#TESTS#THATSAN */,
-  importingA: "...Importing a" /* $COMMENT#TESTS#IMPORTINGA */,
-  importingAn: "...Importing an" /* $COMMENT#TESTS#IMPORTINGAN */,
-  withExtension: "with extension" /* $COMMENT#TESTS#WITHEXTENSION */,
-  withExtensionParentheses:
-    "(with extension)." /* $COMMENT#TESTS#WITHEXTENSIONPARENTHESES */,
-  byFolder: "by a folder." /* $COMMENT#TESTS#BYFOLDER */,
-  importing: "...Importing" /* $COMMENT#TESTS#IMPORTING */,
-  viaStrategyPeriod:
-    "via Special Agnostic Strategy." /* $COMMENT#TESTS#VIASTRATEGYPERIOD */,
-  viaStrategy: "via Special Agnostic Strategy" /* $COMMENT#TESTS#VIASTRATEGY */,
-  viaAlias: "Via alias." /* $COMMENT#TESTS#VIAALIAS */,
-  viaBaseUrl: "Via baseUrl." /* $COMMENT#TESTS#VIABASEURL */,
-  valid: "Valid." /* $COMMENT#TESTS#VALID */,
-  invalid: "Invalid." /* $COMMENT#TESTS#INVALID */,
 });
