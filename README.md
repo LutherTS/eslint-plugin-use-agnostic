@@ -42,6 +42,8 @@ export default defineConfig([
 ]);
 ```
 
+And don't forget to install the ESLint VS Code plugin for live reports.
+
 ## How it works
 
 In the beginning, there were not two kinds of modules in the Fullstack React Architecture (server vs. client). There were three:
