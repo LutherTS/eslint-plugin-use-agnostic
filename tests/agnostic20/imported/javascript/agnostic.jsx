@@ -1,4 +1,4 @@
 "use agnostic";
-// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#THATSAMODULE
+// That's an Agnostic Components Module.
 
 export default {};

@@ -1,20 +1,20 @@
 // "use agnostic conditions"
 
-// $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#IMPORTINGAMODULE
+// ...Importing a Special Client Contexts Module.
 import clientContexts from "../../../../../imported/javascript/client-contexts.jsx";
 
-// $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#IMPORTINGBYAFOLDER
+// ...Importing a Special Client Contexts Module by a folder.
 import clientContextsFolder from "../../../../../imported/javascript/client-contexts-jsx";
 
-// $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#IMPORTINGVIASTRATEGY
+// ...Importing (Special) Client Contexts Components via Special Agnostic Strategy.
 import {
   /* @clientContexts */ clientContextsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#IMPORTINGVIASTRATEGYBYAFOLDER
+// ...Importing (Special) Client Contexts Components via Special Agnostic Strategy by a folder.
 import {
   /* @clientContexts */ clientContextsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// $COMMENT#TESTS#INVALID
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_CLIENT_CONTEXTS
+// Invalid.
+// (Special) Client Contexts Components cannot be used as component arguments for (Special) Agnostic Conditions Components since they only take Lineal Components as arguments in their making.
