@@ -1,8 +1,3 @@
-import {
-  agnostic20ConfigName,
-  directive21ConfigName,
-} from "./library/_commons/constants/bases.js";
-
 // import {
 //   jSDocComments,
 // } from "./jscomments/_commons/constants/bases.js";
@@ -15,8 +10,8 @@ import { jSDocComments } from "./jscomments/_commons/constants/jsdoc-original.js
 export const data = Object.freeze({
   jsDoc: jSDocComments,
   tests: testsComments,
-  [agnostic20ConfigName]: agnostic20Comments,
-  [directive21ConfigName]: directive21Comments,
+  agnostic20: agnostic20Comments,
+  directive21: directive21Comments,
 });
 
 const ignores = [];

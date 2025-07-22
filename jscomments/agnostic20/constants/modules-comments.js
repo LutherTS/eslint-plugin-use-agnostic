@@ -1,5 +1,4 @@
 export const serverLogicsComments = Object.freeze({
-  // $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_SERVER_LOGICS
   USE_SERVER_LOGICS:
     /* valid */ "Server Logics can compose with one another." /* $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_SERVER_LOGICS */,
   USE_SERVER_COMPONENTS:
