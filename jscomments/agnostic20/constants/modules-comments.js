@@ -34,7 +34,7 @@ export const serverComponentsComments = Object.freeze({
   USE_CLIENT_LOGICS:
     /* invalid */ "AGNOSTIC20#FORALIASVARIABLES#CLIENTNEVERSERVER" /* $COMMENT#AGNOSTIC20#FORALIASVARIABLES#CLIENTNEVERSERVER */,
   USE_CLIENT_COMPONENTS:
-    /* valid */ "Client Components can be nested inside Server Components either to wrap some of the tree with client state accessible through child Client Components and pass through Server Components, or to create client boundaries when the root of the application is planted on the server." /* $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_CLIENT_COMPONENTS */,
+    /* valid */ "Client Components can be nested inside Server Components either to wrap some of the tree with client state accessible through child Client Components and pass through Server Components or to create client boundaries when the root of the application is planted on the server." /* $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_CLIENT_COMPONENTS */,
   USE_AGNOSTIC_LOGICS:
     /* valid */ "AGNOSTIC20#FORALIASVARIABLES#AGNOSTICCANSERVERCLIENT" /* $COMMENT#AGNOSTIC20#FORALIASVARIABLES#AGNOSTICCANSERVERCLIENT */,
   USE_AGNOSTIC_COMPONENTS:
@@ -110,7 +110,7 @@ export const clientComponentsComments = Object.freeze({
   USE_SERVER_COMPONENTS:
     /* invalid */ "Server Components may only pass through Client Components via the children prop within Server Components Modules." /* $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_SERVER_COMPONENTS */,
   USE_SERVER_FUNCTIONS:
-    /* valid */ "Server Functions are specifically triggered by Client Components." /* $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_SERVER_FUNCTIONS */,
+    /* valid */ "Server Functions can specifically be triggered by Client Components." /* $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_SERVER_FUNCTIONS */,
   USE_CLIENT_LOGICS:
     /* valid */ "Client Logics, being logic from the client, can safely support Client Components." /* $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_CLIENT_LOGICS */,
   USE_CLIENT_COMPONENTS:
@@ -167,7 +167,7 @@ export const agnosticComponentsComments = Object.freeze({
   USE_CLIENT_LOGICS:
     /* invalid */ "AGNOSTIC20#FORALIASVARIABLES#CLIENTLOGICSCANTBOTH" /* $COMMENT#AGNOSTIC20#FORALIASVARIABLES#CLIENTLOGICSCANTBOTH */,
   USE_CLIENT_COMPONENTS:
-    /* valid */ "Client Components can be nested inside Agnostic Components either to wrap some of the tree with client state accessible through child Client Components and pass through Server Components (if still on the Server Tree), or to create client boundaries when the root of the application is planted on the server." /* $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_CLIENT_COMPONENTS */,
+    /* valid */ "Client Components can be nested inside Agnostic Components either to wrap some of the tree with client state accessible through child Client Components and pass through Server Components — if still on the Server Tree — or to create client boundaries when the root of the application is planted on the server." /* $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_CLIENT_COMPONENTS */,
   USE_AGNOSTIC_LOGICS:
     /* valid */ "Agnostic Logics, being environment-agnostic logic, can safely support Agnostic Components." /* $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_AGNOSTIC_LOGICS */,
   USE_AGNOSTIC_COMPONENTS:
