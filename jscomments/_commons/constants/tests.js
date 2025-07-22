@@ -11,6 +11,9 @@ export const testsComments = Object.freeze({
       "...Importing a" /* $COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTINGA */,
     importingAn:
       "...Importing an" /* $COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTINGAN */,
+    module: "Module" /* $COMMENT#TESTS#FORCOMPOSEDVARIABLES#MODULE */,
+    modulePeriod:
+      "Module." /* $COMMENT#TESTS#FORCOMPOSEDVARIABLES#MODULEPERIOD */,
     withExtensionParentheses:
       "(with extension)." /* $COMMENT#TESTS#FORCOMPOSEDVARIABLES#WITHEXTENSIONPARENTHESES */,
     byFolder: "by a folder." /* $COMMENT#TESTS#FORCOMPOSEDVARIABLES#BYFOLDER */,

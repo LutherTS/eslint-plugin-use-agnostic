@@ -33,6 +33,14 @@ export const agnostic20Comments = Object.freeze({
       "$COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#KINDS $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#CANTSERVERCLIENT" /* $COMMENT#AGNOSTIC20#FORALIASVARIABLES#CLIENTLOGICSCANTBOTH */,
   }),
   forComposedVariables: Object.freeze({
+    canComposeOneAnother:
+      "can compose with one another." /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#CANCOMPOSEONEANOTHER */,
+    cantTinkeredServer:
+      "cannot be tinkered with on the server." /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#CANTTINKEREDSERVER */,
+    cantTinkeredClient:
+      "cannot be tinkered with on the client." /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#CANTTINKEREDCLIENT */,
+    cantTinkeredBoth:
+      "cannot be tinkered with on both the server and the client." /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#CANTTINKEREDBOTH */,
     serverComponentsOKLogics:
       "Server Components are OK to be composed with Server Logics as long as the Server Logics Module," /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#SERVERCOMPONENTSOKLOGICS */,
     clientComponentsOKLogics:
