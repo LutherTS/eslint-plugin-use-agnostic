@@ -9,13 +9,13 @@ import {
 } from "./modules-comments.js";
 
 export const agnostic20Comments = Object.freeze({
-  USE_SERVER_LOGICS: serverLogicsComments,
-  USE_SERVER_COMPONENTS: serverComponentsComments,
-  USE_SERVER_FUNCTIONS: serverFunctionsComments,
-  USE_CLIENT_LOGICS: clientLogicsComments,
-  USE_CLIENT_COMPONENTS: clientComponentsComments,
-  USE_AGNOSTIC_LOGICS: agnosticLogicsComments,
-  USE_AGNOSTIC_COMPONENTS: agnosticComponentsComments,
+  "use server logics": serverLogicsComments,
+  "use server components": serverComponentsComments,
+  "use server functions": serverFunctionsComments,
+  "use client logics": clientLogicsComments,
+  "use client components": clientComponentsComments,
+  "use agnostic logics": agnosticLogicsComments,
+  "use agnostic components": agnosticComponentsComments,
   forAliasVariables: Object.freeze({
     serverNeverClient:
       "Server Logics should never leak to the client." /* $COMMENT#AGNOSTIC20#FORALIASVARIABLES#SERVERNEVERCLIENT */,

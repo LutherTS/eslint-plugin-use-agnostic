@@ -12,16 +12,16 @@ import {
 } from "./modules-comments.js";
 
 export const directive21Comments = Object.freeze({
-  USE_SERVER_LOGICS: serverLogicsComments,
-  USE_CLIENT_LOGICS: clientLogicsComments,
-  USE_AGNOSTIC_LOGICS: agnosticLogicsComments,
-  USE_SERVER_COMPONENTS: serverComponentsComments,
-  USE_CLIENT_COMPONENTS: clientComponentsComments,
-  USE_AGNOSTIC_COMPONENTS: agnosticComponentsComments,
-  USE_SERVER_FUNCTIONS: serverFunctionsComments,
-  USE_CLIENT_CONTEXTS: clientContextsComments,
-  USE_AGNOSTIC_CONDITIONS: agnosticConditionsComments,
-  USE_AGNOSTIC_STRATEGIES: agnosticStrategiesComments,
+  "use server logics": serverLogicsComments,
+  "use client logics": clientLogicsComments,
+  "use agnostic logics": agnosticLogicsComments,
+  "use server components": serverComponentsComments,
+  "use client components": clientComponentsComments,
+  "use agnostic components": agnosticComponentsComments,
+  "use server functions": serverFunctionsComments,
+  "use client contexts": clientContextsComments,
+  "use agnostic conditions": agnosticConditionsComments,
+  "use agnostic strategies": agnosticStrategiesComments,
   forAliasVariables: Object.freeze({
     serverNeverClient:
       "Prime Server Logics should never leak to the client." /* $COMMENT#DIRECTIVE21#FORALIASVARIABLES#SERVERNEVERCLIENT */,
