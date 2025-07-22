@@ -138,6 +138,11 @@ const makeBlockedImportSuggestingUseAgnostic = (
   });
 };
 
+// The final boss is going to be to building this from the config.
+// Probably in the blocked import thing.
+// But so that means I'm going to need using resolveConfig, or maybe I could give resolveConfig an option that allows it to return the actual config data with all values recursively resolved.
+// That's what I would do, then I would just need to use the object of the config data instead of `jscommentsConfig[agnostic20ConfigName]` for makeBlockedImport.
+// const jscommentsConfigData = makeResolvedConfig(configPath)
 export const effectiveDirectives_blockedImports = Object.freeze({
   [USE_SERVER_LOGICS]: Object.freeze([
     // USE_SERVER_LOGICS allowed, because Server Logics can compose with one another.
