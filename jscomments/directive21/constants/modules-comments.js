@@ -310,3 +310,11 @@ export const agnosticConditionsComments = Object.freeze({
   importingViaStrategyByAFolder:
     "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTING $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#SPECIALS $COMMENT#TESTS#FORCOMPOSEDVARIABLES#VIASTRATEGY $COMMENT#TESTS#FORCOMPOSEDVARIABLES#BYFOLDER" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#IMPORTINGVIASTRATEGYBYAFOLDER */,
 });
+
+export const agnosticStrategiesComments = Object.freeze({
+  valid: `(Special) Agnostic Strategies Modules can import all known modules, except themselves since they cannot be imported as they are, only as and via Strategies. (Since Agnostic Strategies Modules cannot be imported as they are, there is no such things as a \`'use agnostic strategies'\` importFileCommentedDirective.)`,
+  kinds: `Special Agnostic Strategies`,
+  kindsComma: `Special Agnostic Strategies,`,
+  specials: `(Special) Agnostic Strategies Components`,
+  specialsComma: `(Special) Agnostic Strategies Components,`,
+});
