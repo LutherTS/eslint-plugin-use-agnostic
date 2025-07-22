@@ -39,6 +39,10 @@ export const directive21Comments = Object.freeze({
       "$COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#KINDS $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#CANTSERVERCLIENT" /* $COMMENT#DIRECTIVE21#FORALIASVARIABLES#CLIENTLOGICSCANTBOTH */,
     agnosticComponentsCanAny:
       "$COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#KINDS $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#CANANYPRIMELOGICS $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#NOEXPORTCOMPONENTS" /* $COMMENT#DIRECTIVE21#FORALIASVARIABLES#AGNOSTICCOMPONENTSCANANY */,
+    agnosticComponentsRenderAny:
+      "$COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#KINDS $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#CANCLIENTLIKESERVER" /* $COMMENT#DIRECTIVE21#FORALIASVARIABLES#AGNOSTICCOMPONENTSRENDERANY */,
+    serverFunctionsClient:
+      "$COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#SPECIALS $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#CANCLIENTCOMPONENTS" /* $COMMENT#DIRECTIVE21#FORALIASVARIABLES#SERVERFUNCTIONSCLIENT */,
   }),
   forComposedVariables: Object.freeze({
     canComposeOneAnother:
@@ -51,8 +55,8 @@ export const directive21Comments = Object.freeze({
       "AGNOSTIC20#FORCOMPOSEDVARIABLES#CANTTINKEREDBOTH" /* $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#CANTTINKEREDBOTH */,
     serverComponentsOKLogics:
       "Lineal Server Components are OK to be composed with Prime Server Logics as long as the Prime Server Logics Module," /* $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#SERVERCOMPONENTSOKLOGICS */,
-    likeAnyClientComponents:
-      "like any Client Components," /* $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#LIKEANYCLIENTCOMPONENTS */,
+    likeAnyClientComponentsComma:
+      "like any Client Components," /* $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#LIKEANYCLIENTCOMPONENTSCOMMA */,
     likeAnyClientComponentsPeriod:
       "like any Client Components." /* $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#LIKEANYCLIENTCOMPONENTSPERIOD */,
     anyAgnosticComponentsPeriod:
@@ -81,17 +85,21 @@ export const directive21Comments = Object.freeze({
       "AGNOSTIC20#FORCOMPOSEDVARIABLES#BEINGLOGICAGNOSTIC" /* $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#BEINGLOGICAGNOSTIC */,
     canSafelySupport:
       "AGNOSTIC20#FORCOMPOSEDVARIABLES#CANSAFELYSUPPORT" /* $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#CANSAFELYSUPPORT */,
+    canBeNestedInside:
+      "AGNOSTIC20#FORCOMPOSEDVARIABLES#CANBENESTEDINSIDE" /* $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#CANBENESTEDINSIDE */,
+    toCreateBoundaries:
+      "to create client boundaries" /* $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#TOCREATEBOUNDARIES */,
+    towrapTree:
+      "to wrap some of the tree with client state accessible through child Client Components, and to pass through Server Components" /* $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#TOWRAPTREE */,
+    ifStillOnServerTree:
+      "AGNOSTIC20#FORCOMPOSEDVARIABLES#IFSTILLONSERVERTREE" /* $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#IFSTILLONSERVERTREE */,
+    whenRootOnServer:
+      "when the root of the application is planted on the server." /* $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#WHENROOTONSERVER */,
+    canClientComponents:
+      "can be specifically triggered by Client Components." /* $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#CANCLIENTCOMPONENTS */,
+    canServerLikeClient:
+      "can render safely on the server just like they can on the client." /* $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#CANSERVERLIKECLIENT */,
+    canClientLikeServer:
+      "can render safely on the client just like they can on the server." /* $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#CANCLIENTLIKESERVER */,
   }),
 });
-
-// are specifically triggered by Client Components
-// can be specifically triggered by Client Components.
-
-// can render safely on the server just like they can on the client
-// can render safely on the client just like they can on the server
-// as if they were Lineal Agnostic Components themselves,
-// can be nested inside
-// to create client boundaries
-// to wrap some of the tree with client state accessible through child Client Components, and to pass through Server Components
-// – if still on the Server Tree –
-// when the root of the application is planted on the server.
