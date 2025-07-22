@@ -17,4 +17,4 @@ import {
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
 // $COMMENT#TESTS#VALID
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES
+// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#VALID

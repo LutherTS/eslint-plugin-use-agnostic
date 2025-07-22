@@ -16,4 +16,4 @@ import clientLogicsFolderAlias from "@/tests/agnostic20/imported/typescript/clie
 import clientLogicsFolderBaseUrl from "tests/agnostic20/imported/typescript/client-ts";
 
 // $COMMENT#TESTS#INVALID
-// $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_CLIENT_LOGICS
+// $COMMENT#AGNOSTIC20#FORALIASVARIABLES#CLIENTNEVERSERVER

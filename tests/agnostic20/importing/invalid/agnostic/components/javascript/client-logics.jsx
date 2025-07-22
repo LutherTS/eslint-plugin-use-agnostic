@@ -8,4 +8,4 @@ import clientLogics from "../../../../../imported/javascript/client.js";
 import clientLogicsFolder from "../../../../../imported/javascript/client-js";
 
 // $COMMENT#TESTS#INVALID
-// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_CLIENT_LOGICS
+// $COMMENT#AGNOSTIC20#FORALIASVARIABLES#CLIENTLOGICSCANTBOTH

@@ -312,9 +312,10 @@ export const agnosticConditionsComments = Object.freeze({
 });
 
 export const agnosticStrategiesComments = Object.freeze({
-  valid: `(Special) Agnostic Strategies Modules can import all known modules, except themselves since they cannot be imported as they are, only as and via Strategies. (Since Agnostic Strategies Modules cannot be imported as they are, there is no such things as a \`'use agnostic strategies'\` importFileCommentedDirective.)`,
-  kinds: `Special Agnostic Strategies`,
-  kindsComma: `Special Agnostic Strategies,`,
-  specials: `(Special) Agnostic Strategies Components`,
-  specialsComma: `(Special) Agnostic Strategies Components,`,
+  valid:
+    "(Special) Agnostic Strategies Modules can import all known modules, except themselves since they cannot be imported as they are, only as and via Strategies. (Since Agnostic Strategies Modules cannot be imported as they are, there is no such things as a `'use agnostic strategies'` importFileCommentedDirective.)" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#VALID */,
+  kinds: "Special Agnostic Strategies" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#KINDS */,
+  kindsComma: "Special Agnostic Strategies," /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#KINDSCOMMA */,
+  specials: "(Special) Agnostic Strategies Components" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#SPECIALS */,
+  specialsComma: "(Special) Agnostic Strategies Components," /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#SPECIALSCOMMA */,
 });

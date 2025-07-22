@@ -16,4 +16,4 @@ import agnosticLogicsFolderAlias from "@/tests/agnostic20/imported/typescript/ag
 import agnosticLogicsFolderBaseUrl from "tests/agnostic20/imported/typescript/agnostic-ts";
 
 // Valid
-// $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#USE_AGNOSTIC_LOGICS
+// $COMMENT#AGNOSTIC20#FORALIASVARIABLES#AGNOSTICCANCLIENTSERVER
