@@ -57,6 +57,8 @@ export const agnostic20Comments = Object.freeze({
       "cannot run on both the server and the client." /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#CANTSERVERCLIENT */,
     arentAllowed:
       "aren't allowed because" /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#ARENTALLOWED */,
+    allowedBecause:
+      "allowed, because" /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#ALLOWEDBECAUSE */,
     beingLogicServer:
       "being logic from the server," /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#BEINGLOGICSERVER */,
     beingLogicClient:
