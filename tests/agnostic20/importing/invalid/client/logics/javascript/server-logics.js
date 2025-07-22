@@ -1,11 +1,11 @@
 "use client";
-// That's a Client Logics Module.
+// $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#THATSAMODULE
 
-// ...Importing a Server Logics Module (with extension).
+// $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#IMPORTINGWITHEXTENSION
 import serverLogics from "../../../../../imported/javascript/server.js";
 
-// ...Importing a Server Logics Module by a folder.
+// $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#IMPORTINGBYAFOLDER
 import serverLogicsFolder from "../../../../../imported/javascript/server-js";
 
-// Invalid.
-// Server Logics should never leak to the client, such as would be the case here in a Client Logics Module.
+// $COMMENT#TESTS#INVALID
+// $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#USE_SERVER_LOGICS

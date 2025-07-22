@@ -1,20 +1,17 @@
-import {
-  agnostic20ConfigName,
-  directive21ConfigName,
-} from "./library/_commons/constants/bases.js";
+// import {
+//   jSDocComments,
+// } from "./jscomments/_commons/constants/comments.js";
+import { agnostic20Comments } from "./jscomments/agnostic20/constants/comments.js";
+import { directive21Comments } from "./jscomments/directive21/constants/comments.js";
+import { testsComments } from "./jscomments/_commons/constants/tests.js";
 
-import {
-  jSDocComments,
-  testsComments,
-} from "./jscomments/_commons/constants/bases.js";
-import { agnostic20Comments } from "./jscomments/agnostic20/constants/bases.js";
-import { directive21Comments } from "./jscomments/directive21/constants/bases.js";
+import { jSDocComments } from "./jscomments/_commons/constants/jsdoc-original.js";
 
 export const data = Object.freeze({
   jsDoc: jSDocComments,
   tests: testsComments,
-  [agnostic20ConfigName]: agnostic20Comments,
-  [directive21ConfigName]: directive21Comments,
+  agnostic20: agnostic20Comments,
+  directive21: directive21Comments,
 });
 
 const ignores = [];
@@ -36,4 +33,5 @@ Aims of the VSCode extension JSComments:
   - config["directive21"] would return $COMMENT#DIRECTIVE21#*
 - this way, instead doing a find-replace on a big documentation comment, the comment stays within the config and only the config placeholder is found and replaced for the same results
 A working CLI is already on npm: comment-variables.
+And the VS Code is also done now privately.
 */

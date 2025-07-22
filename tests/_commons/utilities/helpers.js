@@ -8,8 +8,8 @@ import {
 
 /**
  * Reads file paths at any depths within a provided directory.
- * @param {string} folderPath The provided directory.
- * @param {string[]} allFiles The accumulator array of file paths. Defaults to an empty array on the initial call, and is passed through each recursive call to be mutated and collect results.
+ * @param {string} folderPath $COMMENT#JSDOC#FOLDERPATH
+ * @param {string[]} allFiles $COMMENT#JSDOC#ALLFILES
  * @returns All files at any depths within the provided directory.
  */
 const readFilesRecursively = (folderPath, allFiles = []) => {
@@ -31,7 +31,7 @@ const readFilesRecursively = (folderPath, allFiles = []) => {
 
 /**
  * Reads file paths at any depths within a provided valid files directory.
- * @param {string} folderPath The provided directory.
+ * @param {string} folderPath $COMMENT#JSDOC#FOLDERPATH
  * @returns The RuleTester's array of valid files with needed properties.
  */
 export const readValidFilesRecursively = (folderPath) =>
@@ -43,10 +43,10 @@ export const readValidFilesRecursively = (folderPath) =>
 
 /**
  * Reads file paths at any depths within a provided invalid files directory.
- * @param {string} folderPath The provided directory.
- * @param {number} javaScriptErrorsLength The number of errors expected on JavaScript files.
- * @param {number} typeScriptErrorsLength The number of errors expected on TypeScript files.
- * @param {string} messageId The messageId of the errors expected.
+ * @param {string} folderPath $COMMENT#JSDOC#FOLDERPATH
+ * @param {number} javaScriptErrorsLength $COMMENT#JSDOC#JAVASCRIPTERRORSLENGTH
+ * @param {number} typeScriptErrorsLength $COMMENT#JSDOC#TYPESCRIPTERRORSLENGTH
+ * @param {string} messageId $COMMENT#JSDOC#MESSAGEID
  * @returns The RuleTester's array of invalid files with needed properties.
  */
 const readInvalidFilesRecursively = (
@@ -72,7 +72,7 @@ const readInvalidFilesRecursively = (
 
 /**
  * Reads file paths at any depths within a provided invalid files directory for agnostic20.
- * @param {string} folderPath The provided directory.
+ * @param {string} folderPath $COMMENT#JSDOC#FOLDERPATH
  * @returns The RuleTester's array of invalid files with needed properties for agnostic20.
  */
 export const readInvalidFilesRecursively20 = (folderPath) =>
@@ -85,7 +85,7 @@ export const readInvalidFilesRecursively20 = (folderPath) =>
 
 /**
  * Reads file paths at any depths within a provided invalid files directory for directive21.
- * @param {string} folderPath The provided directory.
+ * @param {string} folderPath $COMMENT#JSDOC#FOLDERPATH
  * @returns The RuleTester's array of invalid files with needed properties for directive21.
  */
 export const readInvalidFilesRecursively21 = (folderPath) =>

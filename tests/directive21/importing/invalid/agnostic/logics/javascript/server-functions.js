@@ -1,20 +1,20 @@
 // "use agnostic logics"
 
-// ...Importing a Special Server Functions Module.
+// $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#IMPORTINGAMODULE
 import serverFunctions from "../../../../../imported/javascript/server-functions.js";
 
-// ...Importing a Special Server Functions Module by a folder.
+// $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#IMPORTINGBYAFOLDER
 import serverFunctionsFolder from "../../../../../imported/javascript/server-functions-js";
 
-// ...Importing Special Server Functions via Special Agnostic Strategy.
+// $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#IMPORTINGVIASTRATEGY
 import {
   /* @serverFunctions */ serverFunctionsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// ...Importing Special Server Functions via Special Agnostic Strategy by a folder.
+// $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#IMPORTINGVIASTRATEGYBYAFOLDER
 import {
   /* @serverFunctions */ serverFunctionsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// Invalid.
-// (Special) Server Functions can be modified on the server and on the client, but their use cases on both environments are not one-to-one compatible, since they're being addressed as they are on the server and addressed as references on the client.
+// $COMMENT#TESTS#INVALID
+// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#USE_SERVER_FUNCTIONS

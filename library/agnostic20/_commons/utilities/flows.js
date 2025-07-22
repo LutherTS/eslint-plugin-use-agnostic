@@ -40,7 +40,7 @@ import {
 
 /**
  * The flow that begins the import rules enforcement rule, retrieving the effective directive of the current file before comparing it to upcoming effective directives of the files it imports.
- * @param {Context} context The ESLint rule's `context` object.
+ * @param {Context} context $COMMENT#JSDOC#CONTEXT
  * @returns Either an object with `skip: true` to disregard or one with the non-null `currentFileEffectiveDirective`.
  */
 export const currentFileFlow = (context) => {
@@ -95,8 +95,8 @@ export const currentFileFlow = (context) => {
 
 /**
  * The flow that is shared between import and re-export traversals to obtain the import file's effective directive.
- * @param {Context} context The ESLint rule's `context` object.
- * @param {ImportDeclaration} node The ESLint `node` of the rule's current traversal.
+ * @param {Context} context $COMMENT#JSDOC#CONTEXT
+ * @param {ImportDeclaration} node $COMMENT#JSDOC#NODE
  * @returns Either an object with `skip: true` to disregard or one with the non-null `importedFileEffectiveDirective`.
  */
 const importedFileFlow = (context, node) => {
@@ -144,9 +144,9 @@ const importedFileFlow = (context, node) => {
 /* importsFlow */
 
 /** The full flow for import traversals to enforce effective directives import rules.
- * @param {Context} context The ESLint rule's `context` object.
- * @param {ImportDeclaration} node The ESLint `node` of the rule's current traversal.
- * @param {EffectiveDirective} currentFileEffectiveDirective The current file's effective directive.
+ * @param {Context} context $COMMENT#JSDOC#CONTEXT
+ * @param {ImportDeclaration} node $COMMENT#JSDOC#NODE
+ * @param {EffectiveDirective} currentFileEffectiveDirective $COMMENT#JSDOC#CURRENTFILEEFFECTIVEDIRECTIVE
  * @returns Early if the flow needs to be interrupted.
  */
 export const importsFlow = (context, node, currentFileEffectiveDirective) => {
@@ -184,9 +184,9 @@ export const importsFlow = (context, node, currentFileEffectiveDirective) => {
 /* reExportsFlow */
 
 /** The full flow for export traversals, shared between `ExportNamedDeclaration` and `ExportAllDeclaration`, to ensure same effective directive re-exports.
- * @param {Context} context The ESLint rule's `context` object.
- * @param {ExportNamedDeclaration | ExportAllDeclaration} node The ESLint `node` of the rule's current traversal.
- * @param {EffectiveDirective} currentFileEffectiveDirective The current file's effective directive.
+ * @param {Context} context $COMMENT#JSDOC#CONTEXT
+ * @param {ExportNamedDeclaration | ExportAllDeclaration} node $COMMENT#JSDOC#NODE
+ * @param {EffectiveDirective} currentFileEffectiveDirective $COMMENT#JSDOC#CURRENTFILEEFFECTIVEDIRECTIVE
  * @returns Early if the flow needs to be interrupted.
  */
 export const reExportsFlow = (context, node, currentFileEffectiveDirective) => {

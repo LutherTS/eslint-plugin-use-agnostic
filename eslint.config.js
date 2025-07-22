@@ -26,7 +26,7 @@ export default defineConfig([
     extends: [`${useAgnosticPluginName}/${agnostic20ConfigName}`],
     rules: {
       [`${useAgnosticPluginName}/${enforceEffectiveDirectivesRuleName}`]:
-        "error",
+        "warn",
     },
   },
   {
@@ -37,7 +37,7 @@ export default defineConfig([
     extends: [`${useAgnosticPluginName}/${directive21ConfigName}`],
     rules: {
       [`${useAgnosticPluginName}/${enforceCommentedDirectivesRuleName}`]:
-        "warn",
+        "error",
     },
   },
 ]);

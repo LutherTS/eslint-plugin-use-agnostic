@@ -1,10 +1,10 @@
-// That's a Server Logics Module.
+// $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#THATSAMODULE
 
-// ...Importing a Agnostic Logics Module (with extension).
+// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#IMPORTINGWITHEXTENSION
 import agnosticLogics from "../../../../../imported/javascript/agnostic.js";
 
-// ...Importing a Agnostic Logics Module by a folder.
+// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#IMPORTINGBYAFOLDER
 import agnosticLogicsFolder from "../../../../../imported/javascript/agnostic-js";
 
-// Valid.
-// Agnostic Logics can run safely on the server just like they can on the client, such as is the case here in a Server Logics Module.
+// $COMMENT#TESTS#VALID
+// $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_AGNOSTIC_LOGICS

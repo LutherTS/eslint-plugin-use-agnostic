@@ -1,20 +1,20 @@
 // "use client components"
 
-// ...Importing a Special Client Contexts Module.
+// $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#IMPORTINGAMODULE
 import clientContexts from "../../../../../imported/javascript/client-contexts.jsx";
 
-// ...Importing a Special Client Contexts Module by a folder.
+// $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#IMPORTINGBYAFOLDER
 import clientContextsFolder from "../../../../../imported/javascript/client-contexts-jsx";
 
-// ...Importing Special Client Contexts via Special Agnostic Strategy.
+// $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#IMPORTINGVIASTRATEGY
 import {
   /* @clientContexts */ clientContextsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// ...Importing Special Client Contexts via Special Agnostic Strategy by a folder.
+// $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#IMPORTINGVIASTRATEGYBYAFOLDER
 import {
   /* @clientContexts */ clientContextsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// Valid.
-// (Special) Client Contexts Components can effectively become Lineal and only render their children on the client via this mechanism since, by a Client Contexts Component being the child of a Lineal Client Component, the Client Contexts Component's children become the grand-children of an ancestor Lineal Client Component, enforcing them to render exclusively on the client.
+// $COMMENT#TESTS#VALID
+// $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#USE_CLIENT_CONTEXTS

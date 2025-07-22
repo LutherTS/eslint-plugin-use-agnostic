@@ -1,10 +1,10 @@
-// That's a Server Components Module.
+// $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#THATSAMODULE
 
-// ...Importing a Client Components Module (with extension).
+// $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#IMPORTINGWITHEXTENSION
 import clientComponents from "../../../../../imported/javascript/client.jsx";
 
-// ...Importing a Client Components Module by a folder.
+// $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#IMPORTINGBYAFOLDER
 import clientComponentsFolder from "../../../../../imported/javascript/client-jsx";
 
-// Valid.
-// Client Components can be nested inside Server Components either to wrap some of the tree with client state accessible through child Client Components and pass through Server Components, or to create client boundaries when the root of the application is planted on the server.
+// $COMMENT#TESTS#VALID
+// $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_CLIENT_COMPONENTS

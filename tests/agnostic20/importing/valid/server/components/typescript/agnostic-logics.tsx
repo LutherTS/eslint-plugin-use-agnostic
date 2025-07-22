@@ -1,18 +1,18 @@
-// That's a Server Components Module.
+// $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#THATSAMODULE
 
-// ...Importing a Agnostic Logics Module (with extension).
+// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#IMPORTINGWITHEXTENSION
 import agnosticLogics from "../../../../../imported/typescript/agnostic.ts";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import agnosticLogicsAlias from "@/tests/agnostic20/imported/typescript/agnostic.ts";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import agnosticLogicsBaseUrl from "tests/agnostic20/imported/typescript/agnostic.ts";
 
-// ...Importing a Agnostic Logics Module by a folder.
+// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#IMPORTINGBYAFOLDER
 import agnosticLogicsFolder from "../../../../../imported/typescript/agnostic-ts";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import agnosticLogicsFolderAlias from "@/tests/agnostic20/imported/typescript/agnostic-ts";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import agnosticLogicsFolderBaseUrl from "tests/agnostic20/imported/typescript/agnostic-ts";
 
-// Valid.
-// Agnostic Logics can run safely on the server just like they can on the client, such as is the case here in a Server Components Module.
+// $COMMENT#TESTS#VALID
+// $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_AGNOSTIC_LOGICS
