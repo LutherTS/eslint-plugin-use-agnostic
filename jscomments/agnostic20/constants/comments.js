@@ -77,13 +77,3 @@ export const agnostic20Comments = Object.freeze({
       "or to create client boundaries when the root of the application is planted on the server." /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#ORCREATEBOUNDARIES */,
   }),
 });
-
-// BELOW IN THE PROCESS OF BEING IMPLEMENTED
-// being logic from the server,
-// being logic from the client,
-// being environment-agnostic logic,
-// can safely support
-// can be nested inside
-// either to wrap some of the tree with client state accessible through child Client Components and pass through Server Components
-// — if still on the Server Tree —
-// or to create client boundaries when the root of the application is planted on the server.
