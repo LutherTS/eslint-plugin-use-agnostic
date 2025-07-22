@@ -57,19 +57,26 @@ export const agnostic20Comments = Object.freeze({
       "cannot run on both the server and the client." /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#CANTSERVERCLIENT */,
     arentAllowed:
       "aren't allowed because" /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#ARENTALLOWED */,
-    beingLogicServer: "being logic from the server," /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#BEINGLOGICSERVER */,
-    beingLogicClient: "being logic from the client," /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#BEINGLOGICCLIENT */,
-    beingLogicAgnostic: "being environment-agnostic logic," /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#BEINGLOGICAGNOSTIC */,
-    canSafelySupport: "can safely support" /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#CANSAFELYSUPPORT */,
-    canBeNestedInside: "can be nested inside" /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#CANBENESTEDINSIDE */,
+    beingLogicServer:
+      "being logic from the server," /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#BEINGLOGICSERVER */,
+    beingLogicClient:
+      "being logic from the client," /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#BEINGLOGICCLIENT */,
+    beingLogicAgnostic:
+      "being environment-agnostic logic," /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#BEINGLOGICAGNOSTIC */,
+    canSafelySupport:
+      "can safely support" /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#CANSAFELYSUPPORT */,
+    canBeNestedInside:
+      "can be nested inside" /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#CANBENESTEDINSIDE */,
     eitherWrapTree:
       "either to wrap some of the tree with client state accessible through child Client Components and pass through Server Components" /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#EITHERWRAPTREE */,
-    ifStillOnServerTree: "— if still on the Server Tree —" /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#IFSTILLONSERVERTREE */,
+    ifStillOnServerTree:
+      "— if still on the Server Tree —" /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#IFSTILLONSERVERTREE */,
     orCreateBoundaries:
       "or to create client boundaries when the root of the application is planted on the server." /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#ORCREATEBOUNDARIES */,
   }),
 });
 
+// BELOW IN THE PROCESS OF BEING IMPLEMENTED
 // being logic from the server,
 // being logic from the client,
 // being environment-agnostic logic,
