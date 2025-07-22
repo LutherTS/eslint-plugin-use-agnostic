@@ -53,6 +53,10 @@ export const directive21Comments = Object.freeze({
       "Lineal Server Components are OK to be composed with Prime Server Logics as long as the Prime Server Logics Module," /* $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#SERVERCOMPONENTSOKLOGICS */,
     likeAnyClientComponents:
       "like any Client Components," /* $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#LIKEANYCLIENTCOMPONENTS */,
+    likeAnyClientComponentsPeriod:
+      "like any Client Components." /* $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#LIKEANYCLIENTCOMPONENTSPERIOD */,
+    anyAgnosticComponentsPeriod:
+      "any Agnostic Components." /* $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#ANYAGNOSTICCOMPONENTSPERIOD */,
     okClientLogics:
       "are OK to be composed with Prime Client Logics as long as the Prime Client Logics Module," /* $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#OKCLIENTLOGICS */,
     agnosticComponentsCanAny:
