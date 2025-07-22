@@ -185,7 +185,7 @@ export const importsFlow = (context, node, currentFileCommentedDirective) => {
   if (result.skip) return;
   const { importedFileCommentedDirective } = result;
 
-  // returns early is the current file is an Agnostic Strategies Module
+  // returns early is the current file is an Agnostic Strategies $COMMENT#TESTS#FORCOMPOSEDVARIABLES#MODULE
   if (currentFileCommentedDirective === USE_AGNOSTIC_STRATEGIES) return;
 
   if (

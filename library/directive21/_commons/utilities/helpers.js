@@ -209,7 +209,7 @@ export const getVerifiedCommentedDirective = (directive, extension) => {
 /* getStrategizedDirective */
 
 /**
- * Gets the interpreted directive from a specified commented Strategy (such as `@serverLogics`) nested inside the import declaration for an import from an Agnostic Strategies Module.
+ * Gets the interpreted directive from a specified commented Strategy (such as `@serverLogics`) nested inside the import declaration for an import from an Agnostic Strategies $COMMENT#TESTS#FORCOMPOSEDVARIABLES#MODULEPERIOD
  * @param {Context} context $COMMENT#JSDOC#CONTEXT
  * @param {ImportDeclaration} node $COMMENT#JSDOC#NODE
  * @returns The interpreted directive, a.k.a. strategized directive, or lack thereof via `null`.
@@ -240,7 +240,7 @@ export const getStrategizedDirective = (context, node) => {
 /* addressDirectiveIfAgnosticStrategies */
 
 /**
- * Verifies the current node's export strategy if the current commented directive is `"use agnostic strategies"` by reporting `exportNotStrategized` in case an export is not strategized in an Agnostic Strategies Module.
+ * Verifies the current node's export strategy if the current commented directive is `"use agnostic strategies"` by reporting `exportNotStrategized` in case an export is not strategized in an Agnostic Strategies $COMMENT#TESTS#FORCOMPOSEDVARIABLES#MODULEPERIOD
  * @param {Context} context $COMMENT#JSDOC#CONTEXT
  * @param {ExportNamedDeclaration | ExportAllDeclaration | ExportDefaultDeclaration} node $COMMENT#JSDOC#NODE
  * @param {CommentedDirective} currentFileCommentedDirective $COMMENT#JSDOC#CURRENTFILECOMMENTEDDIRECTIVE
@@ -251,7 +251,7 @@ export const addressDirectiveIfAgnosticStrategies = (
   node,
   currentFileCommentedDirective
 ) => {
-  // ignores if not addressing an Agnostic Strategies Module
+  // ignores if not addressing an Agnostic Strategies $COMMENT#TESTS#FORCOMPOSEDVARIABLES#MODULE
   if (currentFileCommentedDirective !== USE_AGNOSTIC_STRATEGIES)
     return currentFileCommentedDirective;
 
