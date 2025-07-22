@@ -13,7 +13,7 @@ import {
 
 /**
  * Makes the agnostic20 config for the use-agnostic ESLint plugin.
- * @param {Plugin} plugin $COMMENT#JSDOC#PLUGIN
+ * @param {Plugin} plugin The use-agnostic ESLint plugin itself.
  * @returns The agnostic20 config's name as a key and its config as its value.
  */
 export const makeAgnostic20Config = (plugin) => ({

@@ -46,7 +46,7 @@ import {
 
 /**
  * The flow that begins the import rules enforcement rule, retrieving the verified commented directive of the current file before comparing it to upcoming verified commented directives of the files it imports.
- * @param {Context} context $COMMENT#JSDOC#CONTEXT
+ * @param {Context} context The ESLint rule's `context` object.
  * @returns Either an object with `skip: true` to disregard or one with the non-null `verifiedCommentedDirective`.
  */
 export const currentFileFlow = (context) => {
@@ -104,8 +104,8 @@ export const currentFileFlow = (context) => {
 
 /**
  * The flow that is shared between import and re-export traversals to obtain the import file's commented directive.
- * @param {Context} context $COMMENT#JSDOC#CONTEXT
- * @param {ImportDeclaration} node $COMMENT#JSDOC#NODE
+ * @param {Context} context The ESLint rule's `context` object.
+ * @param {ImportDeclaration} node The ESLint `node` of the rule's current traversal.
  * @returns Either an object with `skip: true` to disregard or one with the non-null `importedFileCommentedDirective`.
  */
 const importedFileFlow = (context, node) => {
@@ -171,9 +171,9 @@ const importedFileFlow = (context, node) => {
 
 /**
  * The full flow for import traversals to enforce effective directives import rules.
- * @param {Context} context $COMMENT#JSDOC#CONTEXT
- * @param {ImportDeclaration} node $COMMENT#JSDOC#NODE
- * @param {CommentedDirective} currentFileCommentedDirective $COMMENT#JSDOC#CURRENTFILECOMMENTEDDIRECTIVE
+ * @param {Context} context The ESLint rule's `context` object.
+ * @param {ImportDeclaration} node The ESLint `node` of the rule's current traversal.
+ * @param {CommentedDirective} currentFileCommentedDirective The current file's commented directive.
  * @returns Early if the flow needs to be interrupted.
  */
 export const importsFlow = (context, node, currentFileCommentedDirective) => {
@@ -185,7 +185,7 @@ export const importsFlow = (context, node, currentFileCommentedDirective) => {
   if (result.skip) return;
   const { importedFileCommentedDirective } = result;
 
-  // returns early is the current file is an Agnostic Strategies $COMMENT#TESTS#FORCOMPOSEDVARIABLES#MODULE
+  // returns early is the current file is an Agnostic Strategies Module
   if (currentFileCommentedDirective === USE_AGNOSTIC_STRATEGIES) return;
 
   if (
@@ -215,9 +215,9 @@ export const importsFlow = (context, node, currentFileCommentedDirective) => {
 
 /**
  * The full flow for export traversals, shared between `ExportNamedDeclaration`, `ExportAllDeclaration`, and `ExportDefaultDeclaration`, to ensure same commented directive re-exports in modules that aren't Agnostic Strategies Modules, and enforce strategized exports specifically in Agnostic Strategies Modules.
- * @param {Context} context $COMMENT#JSDOC#CONTEXT
- * @param {ExportNamedDeclaration | ExportAllDeclaration | ExportDefaultDeclaration} node $COMMENT#JSDOC#NODE
- * @param {CommentedDirective} currentFileCommentedDirective $COMMENT#JSDOC#CURRENTFILECOMMENTEDDIRECTIVE
+ * @param {Context} context The ESLint rule's `context` object.
+ * @param {ExportNamedDeclaration | ExportAllDeclaration | ExportDefaultDeclaration} node The ESLint `node` of the rule's current traversal.
+ * @param {CommentedDirective} currentFileCommentedDirective The current file's commented directive.
  * @returns Early if the flow needs to be interrupted.
  */
 export const allExportsFlow = (
