@@ -83,3 +83,15 @@ export const directive21Comments = Object.freeze({
       "AGNOSTIC20#FORCOMPOSEDVARIABLES#CANSAFELYSUPPORT" /* $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#CANSAFELYSUPPORT */,
   }),
 });
+
+// are specifically triggered by Client Components
+// can be specifically triggered by Client Components.
+
+// can render safely on the server just like they can on the client
+// can render safely on the client just like they can on the server
+// as if they were Lineal Agnostic Components themselves,
+// can be nested inside
+// to create client boundaries
+// to wrap some of the tree with client state accessible through child Client Components, and to pass through Server Components
+// – if still on the Server Tree –
+// when the root of the application is planted on the server.
