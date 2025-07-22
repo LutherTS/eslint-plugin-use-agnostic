@@ -27,20 +27,20 @@ export const agnostic20Comments = Object.freeze({
   [USE_AGNOSTIC_LOGICS]: agnosticLogicsComments,
   [USE_AGNOSTIC_COMPONENTS]: agnosticComponentsComments,
   forAliasVariables: Object.freeze({
-    clientNeverServer:
-      "Client Logics should never leak to the server." /* $COMMENT#AGNOSTIC20#FORALIASVARIABLES#CLIENTNEVERSERVER */,
     serverNeverClient:
       "Server Logics should never leak to the client." /* $COMMENT#AGNOSTIC20#FORALIASVARIABLES#SERVERNEVERCLIENT */,
+    clientNeverServer:
+      "Client Logics should never leak to the server." /* $COMMENT#AGNOSTIC20#FORALIASVARIABLES#CLIENTNEVERSERVER */,
     agnosticCanServerClient:
       "Agnostic Logics can run safely on the server just like they can on the client." /* $COMMENT#AGNOSTIC20#FORALIASVARIABLES#AGNOSTICCANSERVERCLIENT */,
     agnosticCanClientServer:
       "Agnostic Logics can run safely on the client just like they can on the server." /* $COMMENT#AGNOSTIC20#FORALIASVARIABLES#AGNOSTICCANCLIENTSERVER */,
+    serverFunctionsNoComponents:
+      "Server Functions have no business working with React Components." /* $COMMENT#AGNOSTIC20#FORALIASVARIABLES#SERVERFUNCTIONSNOCOMPONENTS */,
     serverCantServerClient:
       "$COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#SERVERLOGICS $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#CANTSERVERCLIENT" /* $COMMENT#AGNOSTIC20#FORALIASVARIABLES#SERVERCANTSERVERCLIENT */,
     clientCantServerClient:
       "$COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#CLIENTLOGICS $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#CANTSERVERCLIENT" /* $COMMENT#AGNOSTIC20#FORALIASVARIABLES#CLIENTCANTSERVERCLIENT */,
-    serverFunctionsNoComponents:
-      "Server Functions have no business working with React Components." /* $COMMENT#AGNOSTIC20#FORALIASVARIABLES#SERVERFUNCTIONSNOCOMPONENTS */,
   }),
   forComposedVariables: Object.freeze({
     serverComponentsOKLogics:
