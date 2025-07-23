@@ -1,7 +1,7 @@
-import { jsDocComments } from "./jscomments/_commons/constants/jsdoc.js";
-import { testsComments } from "./jscomments/_commons/constants/tests.js";
-import { agnostic20Comments } from "./jscomments/agnostic20/constants/comments.js";
-import { directive21Comments } from "./jscomments/directive21/constants/comments.js";
+import { jsDocComments } from "./jscomments/jsdoc/comments.js";
+import { testsComments } from "./jscomments/tests/comments.js";
+import { agnostic20Comments } from "./jscomments/agnostic20/comments.js";
+import { directive21Comments } from "./jscomments/directive21/comments.js";
 
 export const data = Object.freeze({
   jsDoc: jsDocComments,

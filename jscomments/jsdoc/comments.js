@@ -1,3 +1,6 @@
+import { forAliasVariables } from "./alias-variables.js";
+import { forComposedVariables } from "./composed-variables.js";
+
 export const jsDocComments = Object.freeze({
   definitions: Object.freeze({
     makeTestFiles:
@@ -5,32 +8,32 @@ export const jsDocComments = Object.freeze({
     highlightFirstLineOfCode:
       "Gets the coordinates for the first line of code of a file." /* $COMMENT#JSDOC#DEFINITIONS#HIGHLIGHTFIRSTLINEOFCODE */,
     isImportBlocked:
-      'Returns a boolean deciding if an imported file\'s "resolved" directive is incompatible with the current file\'s "resolved" directive.' /* $COMMENT#JSDOC#DEFINITIONS#ISIMPORTBLOCKED */,
+      "$COMMENT#JSDOC#FORCOMPOSEDVARIABLES#RETURNSDECIDING $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#RESOLVED $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#DIRECTIVEINCOMPATIBLE $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#RESOLVED $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#DIRECTIVEPERIOD" /* $COMMENT#JSDOC#DEFINITIONS#ISIMPORTBLOCKED */,
     makeIntroForSpecificViolationMessage:
       "Makes the intro for each specific import rule violation messages." /* $COMMENT#JSDOC#DEFINITIONS#MAKEINTROFORSPECIFICVIOLATIONMESSAGE */,
     makeMessageFromCurrentFileResolvedDirective:
-      'Lists in an message the "resolved" modules incompatible with a "resolved" module based on its "resolved" directive.' /* $COMMENT#JSDOC#DEFINITIONS#MAKEMESSAGEFROMCURRENTFILERESOLVEDDIRECTIVE */,
+      "$COMMENT#JSDOC#FORCOMPOSEDVARIABLES#LISTSINMESSAGE $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#RESOLVED $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#MODULESINCOMPATIBLE $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#RESOLVED $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#MODULEBASEDON $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#RESOLVED $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#DIRECTIVEPERIOD" /* $COMMENT#JSDOC#DEFINITIONS#MAKEMESSAGEFROMCURRENTFILERESOLVEDDIRECTIVE */,
     findSpecificViolationMessage:
       'Finds the `message` for the specific violation of "resolved" directives import rules based on `resolvedDirectives_blockedImports`.' /* $COMMENT#JSDOC#DEFINITIONS#FINDSPECIFICVIOLATIONMESSAGE */,
     agnostic20: Object.freeze({
       makeAgnostic20Config:
-        "Makes the agnostic20 config for the use-agnostic ESLint plugin." /* $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#MAKEAGNOSTIC20CONFIG */,
+        "$COMMENT#JSDOC#FORCOMPOSEDVARIABLES#MAKESTHE $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#AGNOSTIC20 $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#CONFIGFORPLUGIN" /* $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#MAKEAGNOSTIC20CONFIG */,
       makeBlockedImport:
         "Makes a blockedImport object for the identified blocked import at hand." /* $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#MAKEBLOCKEDIMPORT */,
       makeBlockedImportSuggestingUseAgnostic:
         "Makes a blockedImport object for the identified blocked import at hand enhanced with the suggestion to use the `'use agnostic'` directive." /* $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#MAKEBLOCKEDIMPORTSUGGESTINGUSEAGNOSTIC */,
       getDirectiveFromModule:
-        "Gets the directive of a module from its Abstract Syntax Tree." /* $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#GETDIRECTIVEFROMMODULE */,
+        "$COMMENT#JSDOC#FORCOMPOSEDVARIABLES#GETSDIRECTIVEOF $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#AMODULE" /* $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#GETDIRECTIVEFROMMODULE */,
       getDirectiveFromCurrentModule:
-        "Gets the directive of the current module." /* $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#GETDIRECTIVEFROMCURRENTMODULE */,
+        "$COMMENT#JSDOC#FORCOMPOSEDVARIABLES#GETSDIRECTIVEOF $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#CURRENTMODULE" /* $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#GETDIRECTIVEFROMCURRENTMODULE */,
       getDirectiveFromImportedModule:
-        "Gets the directive of the imported module." /* $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#GETDIRECTIVEFROMIMPORTEDMODULE */,
+        "$COMMENT#JSDOC#FORCOMPOSEDVARIABLES#GETSDIRECTIVEOF $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#IMPORTEDMODULE" /* $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#GETDIRECTIVEFROMIMPORTEDMODULE */,
       getEffectiveDirective:
         "Gets the effective directive of a module, based on the combination of its directive (or lack thereof) and its extension (depending on whether it ends with 'x' for JSX)." /* $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#GETEFFECTIVEDIRECTIVE */,
       isImportBlocked:
-        "Returns a boolean deciding if an imported file's effective directive is incompatible with the current file's effective directive." /* $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#ISIMPORTBLOCKED */,
+        "$COMMENT#JSDOC#FORCOMPOSEDVARIABLES#RETURNSDECIDING $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#EFFECTIVE $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#DIRECTIVEINCOMPATIBLE $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#EFFECTIVE $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#DIRECTIVEPERIOD" /* $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#ISIMPORTBLOCKED */,
       makeMessageFromCurrentFileEffectiveDirective:
-        "Lists in an message the effective modules incompatible with an effective module based on its effective directive." /* $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#MAKEMESSAGEFROMCURRENTFILEEFFECTIVEDIRECTIVE */,
+        "$COMMENT#JSDOC#FORCOMPOSEDVARIABLES#LISTSINMESSAGE $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#EFFECTIVE $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#MODULESINCOMPATIBLE $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#EFFECTIVE $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#MODULEBASEDON $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#EFFECTIVE $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#DIRECTIVEPERIOD" /* $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#MAKEMESSAGEFROMCURRENTFILEEFFECTIVEDIRECTIVE */,
       findSpecificViolationMessage:
         "Finds the `message` for the specific violation of effective directives import rules based on `effectiveDirectives_BlockedImports`." /* $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#FINDSPECIFICVIOLATIONMESSAGE */,
       currentFileFlow:
@@ -44,7 +47,7 @@ export const jsDocComments = Object.freeze({
     }),
     directive21: Object.freeze({
       makeDirective21Config:
-        "Makes the directive21 config for the use-agnostic ESLint plugin." /* $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#MAKEDIRECTIVE21CONFIG */,
+        "$COMMENT#JSDOC#FORCOMPOSEDVARIABLES#MAKESTHE $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#DIRECTIVE21 $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#CONFIGFORPLUGIN" /* $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#MAKEDIRECTIVE21CONFIG */,
       makeBlockedImport:
         "JSDOC#DEFINITIONS#AGNOSTIC20#MAKEBLOCKEDIMPORT" /* $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#MAKEBLOCKEDIMPORT */,
       detectQuoteType:
@@ -72,9 +75,9 @@ export const jsDocComments = Object.freeze({
       addressDirectiveIfAgnosticStrategies:
         'Verifies the current node\'s export strategy if the current commented directive is `"use agnostic strategies"` by reporting `exportNotStrategized` in case an export is not strategized in an Agnostic Strategies Module.' /* $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#ADDRESSDIRECTIVEIFAGNOSTICSTRATEGIES */,
       isImportBlocked:
-        "Returns a boolean deciding if an imported file's commented directive is incompatible with the current file's commented directive." /* $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#ISIMPORTBLOCKED */,
+        "$COMMENT#JSDOC#FORCOMPOSEDVARIABLES#RETURNSDECIDING $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#COMMENTED $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#DIRECTIVEINCOMPATIBLE $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#COMMENTED $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#DIRECTIVEPERIOD" /* $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#ISIMPORTBLOCKED */,
       makeMessageFromCurrentFileCommentedDirective:
-        "Lists in an message the commented modules incompatible with a commented module based on its commented directive." /* $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#MAKEMESSAGEFROMCURRENTFILECOMMENTEDDIRECTIVE */,
+        "$COMMENT#JSDOC#FORCOMPOSEDVARIABLES#LISTSINMESSAGE $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#COMMENTED $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#MODULESINCOMPATIBLE $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#COMMENTED $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#MODULEBASEDON $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#COMMENTED $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#DIRECTIVEPERIOD" /* $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#MAKEMESSAGEFROMCURRENTFILECOMMENTEDDIRECTIVE */,
       findSpecificViolationMessage:
         "Finds the `message` for the specific violation of commented directives import rules based on `commentedDirectives_BlockedImports`." /* $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#FINDSPECIFICVIOLATIONMESSAGE */,
       currentFileFlow:
@@ -268,9 +271,9 @@ export const jsDocComments = Object.freeze({
       importedFileFlow:
         "Either an object with `skip: true` to disregard or one with the non-null `importedFileEffectiveDirective`." /* $COMMENT#JSDOC#RETURNS#AGNOSTIC20#IMPORTEDFILEFLOW */,
       importsFlow:
-        "Early if the flow needs to be interrupted." /* $COMMENT#JSDOC#RETURNS#AGNOSTIC20#IMPORTSFLOW */,
+        "JSDOC#FORALIASVARIABLES#FLOWRETURNSEARLY" /* $COMMENT#JSDOC#RETURNS#AGNOSTIC20#IMPORTSFLOW */,
       reExportsFlow:
-        "JSDOC#RETURNS#AGNOSTIC20#IMPORTSFLOW" /* $COMMENT#JSDOC#RETURNS#AGNOSTIC20#REEXPORTSFLOW */,
+        "JSDOC#FORALIASVARIABLES#FLOWRETURNSEARLY" /* $COMMENT#JSDOC#RETURNS#AGNOSTIC20#REEXPORTSFLOW */,
     }),
     directive21: Object.freeze({
       makeDirective21Config:
@@ -306,9 +309,9 @@ export const jsDocComments = Object.freeze({
       importedFileFlow:
         "Either an object with `skip: true` to disregard or one with the non-null `importedFileCommentedDirective`." /* $COMMENT#JSDOC#RETURNS#DIRECTIVE21#IMPORTEDFILEFLOW */,
       importsFlow:
-        "JSDOC#RETURNS#AGNOSTIC20#IMPORTSFLOW" /* $COMMENT#JSDOC#RETURNS#DIRECTIVE21#IMPORTSFLOW */,
+        "JSDOC#FORALIASVARIABLES#FLOWRETURNSEARLY" /* $COMMENT#JSDOC#RETURNS#DIRECTIVE21#IMPORTSFLOW */,
       allExportsFlow:
-        "JSDOC#RETURNS#AGNOSTIC20#IMPORTSFLOW" /* $COMMENT#JSDOC#RETURNS#DIRECTIVE21#ALLEXPORTSFLOW */,
+        "JSDOC#FORALIASVARIABLES#FLOWRETURNSEARLY" /* $COMMENT#JSDOC#RETURNS#DIRECTIVE21#ALLEXPORTSFLOW */,
     }),
     tests: Object.freeze({
       readFilesRecursively:
@@ -323,4 +326,6 @@ export const jsDocComments = Object.freeze({
         "The RuleTester's array of invalid files with needed properties for directive21." /* $COMMENT#JSDOC#RETURNS#TESTS#READINVALIDFILESRECURSIVELY21 */,
     }),
   }),
+  forAliasVariables,
+  forComposedVariables,
 });
