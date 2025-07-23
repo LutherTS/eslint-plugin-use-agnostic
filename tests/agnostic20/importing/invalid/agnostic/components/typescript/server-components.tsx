@@ -1,19 +1,19 @@
 "use agnostic";
-// That's an Agnostic Components Module.
+// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#THATSAMODULE
 
-// ...Importing a Server Components Module (with extension).
+// $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#IMPORTINGWITHEXTENSION
 import serverComponents from "../../../../../imported/typescript/server.tsx";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import serverComponentsAlias from "@/tests/agnostic20/imported/typescript/server.tsx";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import serverComponentsBaseUrl from "tests/agnostic20/imported/typescript/server.tsx";
 
-// ...Importing a Server Components Module by a folder.
+// $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#IMPORTINGBYAFOLDER
 import serverComponentsFolder from "../../../../../imported/typescript/server-tsx";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import serverComponentsFolderAlias from "@/tests/agnostic20/imported/typescript/server-tsx";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import serverComponentsFolderBaseUrl from "tests/agnostic20/imported/typescript/server-tsx";
 
-// Invalid.
-// Server Components, unlike Client Components, cannot make silos of their own once on the opposing environment (the client in this case), and therefore cannot be executed from the client, making them unable to execute agnostically from both the server and the client.
+// $COMMENT#TESTS#INVALID
+// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_SERVER_COMPONENTS
