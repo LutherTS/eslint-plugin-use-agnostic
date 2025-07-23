@@ -64,6 +64,38 @@ export const jSDocComments = Object.freeze({
         "Gets the commented directive of the imported module.",
       getCommentedDirectiveFromImportedModule2:
         "JSDOC#DEFINITIONS#AGNOSTIC20#GETCOMMENTEDDIRECTIVEFROMSOURCECODE2",
+      getVerifiedCommentedDirective:
+        "Ensures that a module's commented directive is consistent with its file extension (depending on whether it ends with 'x' for JSX).",
+      getStrategizedDirective:
+        "Gets the interpreted directive from a specified commented Strategy (such as `@serverLogics`) nested inside the import declaration for an import from an Agnostic Strategies Module.",
+      addressDirectiveIfAgnosticStrategies:
+        'Verifies the current node\'s export strategy if the current commented directive is `"use agnostic strategies"` by reporting `exportNotStrategized` in case an export is not strategized in an Agnostic Strategies Module.',
+      isImportBlocked:
+        "Returns a boolean deciding if an imported file's commented directive is incompatible with the current file's commented directive.",
+      makeMessageFromCurrentFileCommentedDirective:
+        "Lists in an message the commented modules incompatible with a commented module based on its commented directive.",
+      findSpecificViolationMessage:
+        "Finds the `message` for the specific violation of commented directives import rules based on `commentedDirectives_BlockedImports`.",
+      currentFileFlow:
+        "The flow that begins the import rules enforcement rule, retrieving the verified commented directive of the current file before comparing it to upcoming verified commented directives of the files it imports.",
+      importedFileFlow:
+        "The flow that is shared between import and re-export traversals to obtain the import file's commented directive.",
+      importsFlow:
+        "The full flow for import traversals to enforce effective directives import rules.",
+      allExportsFlow:
+        "The full flow for export traversals, shared between `ExportNamedDeclaration`, `ExportAllDeclaration`, and `ExportDefaultDeclaration`, to ensure same commented directive re-exports in modules that aren't Agnostic Strategies Modules, and enforce strategized exports specifically in Agnostic Strategies Modules.",
+    }),
+    tests: Object.freeze({
+      readFilesRecursively:
+        "Reads file paths at any depths within a provided directory.",
+      readValidFilesRecursively:
+        "Reads file paths at any depths within a provided valid files directory.",
+      readInvalidFilesRecursively:
+        "Reads file paths at any depths within a provided invalid files directory.",
+      readInvalidFilesRecursively20:
+        "Reads file paths at any depths within a provided invalid files directory for agnostic20.",
+      readInvalidFilesRecursively21:
+        "Reads file paths at any depths within a provided invalid files directory for directive21.",
     }),
   }),
   params: Object.freeze({
@@ -98,6 +130,19 @@ export const jSDocComments = Object.freeze({
         "The imported file's commented directive.",
       string: "The original string.",
       sourceCode: "The ESLint SourceCode object.",
+      directive:
+        "The commented directive as written on top of the file (cannot be `null` at that stage).",
+      commentedDirective: "The commented directive of the commented module.",
+    }),
+    tests: Object.freeze({
+      folderPath: "The provided directory.",
+      allFiles:
+        "The accumulator array of file paths. Defaults to an empty array on the initial call, and is passed through each recursive call to be mutated and collect results.",
+      javaScriptErrorsLength:
+        "The number of errors expected on JavaScript files.",
+      typeScriptErrorsLength:
+        "The number of errors expected on TypeScript files.",
+      messageId: "The messageId of the errors expected.",
     }),
   }),
   details: Object.freeze({
@@ -122,26 +167,46 @@ export const jSDocComments = Object.freeze({
         "`'use agnostic components'` denotes an Agnostic Components Module.",
     }),
     directive21: Object.freeze({
-      useServerLogics:
+      useServerLogicsA:
         "`'use server logics'`, `\"use server logics\"` denoting a Server Logics Module.",
-      useClientLogics:
+      useClientLogicsA:
         "`'use client logics'`, `\"use client logics\"` denoting a Client Logics Module.",
-      useAgnosticLogics:
+      useAgnosticLogicsA:
         "`'use agnostic logics'`, `\"use agnostic logics\"` denoting an Agnostic Logics Module.",
-      useServerComponents:
+      useServerComponentsA:
         "`'use server components'`, `\"use server components\"` denoting a Server Components Module.",
-      useClientComponents:
+      useClientComponentsA:
         "`'use client components'`, `\"use client components\"` denoting a Client Components Module.",
-      useAgnosticComponents:
+      useAgnosticComponentsA:
         "`'use agnostic components'`, `\"use agnostic components\"` denoting an Agnostic Components Module.",
-      useServerFunctions:
+      useServerFunctionsA:
         "`'use server functions'`, `\"use server functions\"` denoting a Server Functions Module.",
-      useClientContexts:
+      useClientContextsA:
         "`'use client contexts'`, `\"use client contexts\"` denoting a Client Contexts Module.",
-      useAgnosticConditions:
+      useAgnosticConditionsA:
         "`'use agnostic conditions'`, `\"use agnostic conditions\"` denoting an Agnostic Conditions Module.",
-      useAgnosticStrategies:
+      useAgnosticStrategiesA:
         "`'use agnostic strategies'`, `\"use agnostic strategies\"` denoting an Agnostic Strategies Module.",
+      useServerLogicsB:
+        "`'use server logics'`: Server Logics Modules do NOT export JSX.",
+      useClientLogicsB:
+        "`'use client logics'`: Client Logics Modules do NOT export JSX.",
+      useAgnosticLogicsB:
+        "`'use agnostic logics'`: Agnostic Logics Modules do NOT export JSX.",
+      useServerComponentsB:
+        "`'use server components'`: Server Components Modules ONLY export JSX.",
+      useClientComponentsB:
+        "`'use client components'`: Client Components Modules ONLY export JSX.",
+      useAgnosticComponentsB:
+        "`'use agnostic components'`: Agnostic Components Modules ONLY export JSX.",
+      useServerFunctionsB:
+        "`'use server functions'`: Server Functions Modules do NOT export JSX.",
+      useClientContextsB:
+        "`'use client contexts'`: Client Contexts Modules ONLY export JSX.",
+      useAgnosticConditionsB:
+        "`'use agnostic conditions'`: Agnostic Conditions Modules ONLY export JSX.",
+      useAgnosticStrategiesB:
+        "`'use agnostic strategies'`: Agnostic Strategies Modules may export JSX.",
     }),
   }),
   returns: Object.freeze({
@@ -198,6 +263,36 @@ export const jSDocComments = Object.freeze({
         "JSDOC#RETURNS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMSOURCECODE",
       getCommentedDirectiveFromImportedModule:
         "JSDOC#RETURNS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMSOURCECODE",
+      getVerifiedCommentedDirective:
+        "The verified commented directive, from which imports rules are applied. Returns `null` if the verification failed, upon which an error will be reported depending on the commented directive, since the error logic here is strictly binary.",
+      getStrategizedDirective:
+        "The interpreted directive, a.k.a. strategized directive, or lack thereof via `null`.",
+      addressDirectiveIfAgnosticStrategies:
+        "The commented directive, the addressed strategy (as a commented directive) or `null` in case of failure.",
+      isImportBlocked:
+        "`true` if the import is blocked, as established in `commentedDirectives_BlockedImports`.",
+      makeMessageFromCurrentFileCommentedDirective:
+        "The message listing the incompatible commented modules.",
+      findSpecificViolationMessage:
+        "JSDOC#RETURNS#FINDSPECIFICVIOLATIONMESSAGE",
+      currentFileFlow:
+        "Either an object with `skip: true` to disregard or one with the non-null `verifiedCommentedDirective`.",
+      importedFileFlow:
+        "Either an object with `skip: true` to disregard or one with the non-null `importedFileCommentedDirective`.",
+      importsFlow: "JSDOC#RETURNS#AGNOSTIC20#IMPORTSFLOW",
+      allExportsFlow: "JSDOC#RETURNS#AGNOSTIC20#IMPORTSFLOW",
+    }),
+    tests: Object.freeze({
+      readFilesRecursively:
+        "All files at any depths within the provided directory.",
+      readValidFilesRecursively:
+        "The RuleTester's array of valid files with needed properties.",
+      readInvalidFilesRecursively:
+        "The RuleTester's array of invalid files with needed properties.",
+      readInvalidFilesRecursively20:
+        "The RuleTester's array of invalid files with needed properties for agnostic20.",
+      readInvalidFilesRecursively21:
+        "The RuleTester's array of invalid files with needed properties for directive21.",
     }),
   }),
 });
