@@ -12,6 +12,7 @@ import {
 import { makeIntroForSpecificViolationMessage } from "../../../_commons/utilities/helpers.js";
 
 import { data as jscommentsConfig } from "../../../../comments.config.js";
+import { resolvedConfigData } from "../../../../jscomments/_commons/constants/bases.js";
 
 /**
  * @typedef {import('../../../../types/agnostic20/_commons/typedefs.js').Directive} Directive
@@ -106,7 +107,7 @@ export const makeBlockedImport = (
       currentFileEffectiveDirective,
       importedFileEffectiveDirective
     )} ${
-      jscommentsConfig[agnostic20ConfigName][currentFileEffectiveDirective][
+      resolvedConfigData[agnostic20ConfigName][currentFileEffectiveDirective][
         importedFileEffectiveDirective
       ]
     }`,

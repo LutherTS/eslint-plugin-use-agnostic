@@ -15,6 +15,7 @@ import {
 import { makeIntroForSpecificViolationMessage } from "../../../_commons/utilities/helpers.js";
 
 import { data as jscommentsConfig } from "../../../../comments.config.js";
+import { resolvedConfigData } from "../../../../jscomments/_commons/constants/bases.js";
 
 /**
  * @typedef {import('../../../../types/directive21/_commons/typedefs.js').CommentedDirective} CommentedDirective
@@ -160,7 +161,7 @@ export const makeBlockedImport = (
       currentFileCommentedDirective,
       importedFileCommentedDirective
     )} ${
-      jscommentsConfig[directive21ConfigName][currentFileCommentedDirective][
+      resolvedConfigData[directive21ConfigName][currentFileCommentedDirective][
         importedFileCommentedDirective
       ]
     }`,
