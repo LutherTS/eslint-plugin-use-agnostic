@@ -9,13 +9,13 @@ import {
 } from "./modules-comments.js";
 
 export const agnostic20Comments = Object.freeze({
-  USE_SERVER_LOGICS: serverLogicsComments,
-  USE_SERVER_COMPONENTS: serverComponentsComments,
-  USE_SERVER_FUNCTIONS: serverFunctionsComments,
-  USE_CLIENT_LOGICS: clientLogicsComments,
-  USE_CLIENT_COMPONENTS: clientComponentsComments,
-  USE_AGNOSTIC_LOGICS: agnosticLogicsComments,
-  USE_AGNOSTIC_COMPONENTS: agnosticComponentsComments,
+  "use server logics": serverLogicsComments,
+  "use server components": serverComponentsComments,
+  "use server functions": serverFunctionsComments,
+  "use client logics": clientLogicsComments,
+  "use client components": clientComponentsComments,
+  "use agnostic logics": agnosticLogicsComments,
+  "use agnostic components": agnosticComponentsComments,
   forAliasVariables: Object.freeze({
     serverNeverClient:
       "Server Logics should never leak to the client." /* $COMMENT#AGNOSTIC20#FORALIASVARIABLES#SERVERNEVERCLIENT */,
@@ -57,14 +57,23 @@ export const agnostic20Comments = Object.freeze({
       "cannot run on both the server and the client." /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#CANTSERVERCLIENT */,
     arentAllowed:
       "aren't allowed because" /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#ARENTALLOWED */,
+    allowedBecause:
+      "allowed, because" /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#ALLOWEDBECAUSE */,
+    beingLogicServer:
+      "being logic from the server," /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#BEINGLOGICSERVER */,
+    beingLogicClient:
+      "being logic from the client," /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#BEINGLOGICCLIENT */,
+    beingLogicAgnostic:
+      "being environment-agnostic logic," /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#BEINGLOGICAGNOSTIC */,
+    canSafelySupport:
+      "can safely support" /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#CANSAFELYSUPPORT */,
+    canBeNestedInside:
+      "can be nested inside" /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#CANBENESTEDINSIDE */,
+    eitherWrapTree:
+      "either to wrap some of the tree with client state accessible through child Client Components and pass through Server Components" /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#EITHERWRAPTREE */,
+    ifStillOnServerTree:
+      "— if still on the Server Tree —" /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#IFSTILLONSERVERTREE */,
+    orCreateBoundaries:
+      "or to create client boundaries when the root of the application is planted on the server." /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#ORCREATEBOUNDARIES */,
   }),
 });
-
-// being logic from the server,
-// being logic from the client,
-// being environment-agnostic logic,
-// can safely support
-// can be nested inside
-// either to wrap some of the tree with client state accessible through child Client Components and pass through Server Components
-// — if still on the Server Tree —
-// or to create client boundaries when the root of the application is planted on the server.

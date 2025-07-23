@@ -12,9 +12,9 @@ import {
  */
 
 /**
- * Makes the agnostic20 config for the use-agnostic ESLint plugin.
- * @param {Plugin} plugin $COMMENT#JSDOC#PLUGIN
- * @returns The agnostic20 config's name as a key and its config as its value.
+ * $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#MAKEAGNOSTIC20CONFIG
+ * @param {Plugin} plugin $COMMENT#JSDOC#PARAMS#PLUGIN
+ * @returns $COMMENT#JSDOC#RETURNS#AGNOSTIC20#MAKEAGNOSTIC20CONFIG
  */
 export const makeAgnostic20Config = (plugin) => ({
   [agnostic20ConfigName]: defineConfig([

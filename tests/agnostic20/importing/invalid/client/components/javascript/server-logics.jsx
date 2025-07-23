@@ -8,4 +8,4 @@ import serverLogics from "../../../../../imported/javascript/server.js";
 import serverLogicsFolder from "../../../../../imported/javascript/server-js";
 
 // $COMMENT#TESTS#INVALID
-// $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_SERVER_LOGICS
+// $COMMENT#AGNOSTIC20#FORALIASVARIABLES#SERVERNEVERCLIENT

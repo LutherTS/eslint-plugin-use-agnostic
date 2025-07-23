@@ -45,9 +45,9 @@ import {
 /* currentFileFlow */
 
 /**
- * The flow that begins the import rules enforcement rule, retrieving the verified commented directive of the current file before comparing it to upcoming verified commented directives of the files it imports.
- * @param {Context} context $COMMENT#JSDOC#CONTEXT
- * @returns Either an object with `skip: true` to disregard or one with the non-null `verifiedCommentedDirective`.
+ * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#CURRENTFILEFLOW
+ * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
+ * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#CURRENTFILEFLOW
  */
 export const currentFileFlow = (context) => {
   const skipTrue = { ...skip, verifiedCommentedDirective: undefined };
@@ -103,10 +103,10 @@ export const currentFileFlow = (context) => {
 /* importedFileFlow */
 
 /**
- * The flow that is shared between import and re-export traversals to obtain the import file's commented directive.
- * @param {Context} context $COMMENT#JSDOC#CONTEXT
- * @param {ImportDeclaration} node $COMMENT#JSDOC#NODE
- * @returns Either an object with `skip: true` to disregard or one with the non-null `importedFileCommentedDirective`.
+ * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#IMPORTEDFILEFLOW
+ * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
+ * @param {ImportDeclaration} node $COMMENT#JSDOC#PARAMS#NODE
+ * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#IMPORTEDFILEFLOW
  */
 const importedFileFlow = (context, node) => {
   const skipTrue = { ...skip, importedFileCommentedDirective: undefined };
@@ -170,11 +170,11 @@ const importedFileFlow = (context, node) => {
 /* importsFlow */
 
 /**
- * The full flow for import traversals to enforce effective directives import rules.
- * @param {Context} context $COMMENT#JSDOC#CONTEXT
- * @param {ImportDeclaration} node $COMMENT#JSDOC#NODE
- * @param {CommentedDirective} currentFileCommentedDirective $COMMENT#JSDOC#CURRENTFILECOMMENTEDDIRECTIVE
- * @returns Early if the flow needs to be interrupted.
+ * $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#IMPORTSFLOW
+ * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
+ * @param {ImportDeclaration} node $COMMENT#JSDOC#PARAMS#NODE
+ * @param {CommentedDirective} currentFileCommentedDirective $COMMENT#JSDOC#PARAMS#DIRECTIVE21#CURRENTFILECOMMENTEDDIRECTIVE
+ * @returns $COMMENT#JSDOC#RETURNS#AGNOSTIC20#IMPORTSFLOW
  */
 export const importsFlow = (context, node, currentFileCommentedDirective) => {
   // does not operate on `import type`
@@ -185,7 +185,7 @@ export const importsFlow = (context, node, currentFileCommentedDirective) => {
   if (result.skip) return;
   const { importedFileCommentedDirective } = result;
 
-  // returns early is the current file is an Agnostic Strategies Module
+  // returns early is the current file is an Agnostic Strategies $COMMENT#TESTS#FORCOMPOSEDVARIABLES#MODULE
   if (currentFileCommentedDirective === USE_AGNOSTIC_STRATEGIES) return;
 
   if (
@@ -214,11 +214,11 @@ export const importsFlow = (context, node, currentFileCommentedDirective) => {
 /* allExportsFlow */
 
 /**
- * The full flow for export traversals, shared between `ExportNamedDeclaration`, `ExportAllDeclaration`, and `ExportDefaultDeclaration`, to ensure same commented directive re-exports in modules that aren't Agnostic Strategies Modules, and enforce strategized exports specifically in Agnostic Strategies Modules.
- * @param {Context} context $COMMENT#JSDOC#CONTEXT
- * @param {ExportNamedDeclaration | ExportAllDeclaration | ExportDefaultDeclaration} node $COMMENT#JSDOC#NODE
- * @param {CommentedDirective} currentFileCommentedDirective $COMMENT#JSDOC#CURRENTFILECOMMENTEDDIRECTIVE
- * @returns Early if the flow needs to be interrupted.
+ * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#ALLEXPORTSFLOW
+ * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
+ * @param {ExportNamedDeclaration | ExportAllDeclaration | ExportDefaultDeclaration} node $COMMENT#JSDOC#PARAMS#NODE
+ * @param {CommentedDirective} currentFileCommentedDirective $COMMENT#JSDOC#PARAMS#DIRECTIVE21#CURRENTFILECOMMENTEDDIRECTIVE
+ * @returns $COMMENT#JSDOC#RETURNS#AGNOSTIC20#IMPORTSFLOW
  */
 export const allExportsFlow = (
   context,

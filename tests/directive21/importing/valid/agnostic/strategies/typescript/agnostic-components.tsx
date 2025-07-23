@@ -57,4 +57,4 @@ import {
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
 // $COMMENT#TESTS#VALID
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES
+// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#VALID

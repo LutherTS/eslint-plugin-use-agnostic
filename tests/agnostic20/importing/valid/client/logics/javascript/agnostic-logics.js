@@ -8,4 +8,4 @@ import agnosticLogics from "../../../../../imported/javascript/agnostic.js";
 import agnosticLogicsFolder from "../../../../../imported/javascript/agnostic-js";
 
 // $COMMENT#TESTS#VALID
-// $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#USE_AGNOSTIC_LOGICS
+// $COMMENT#AGNOSTIC20#FORALIASVARIABLES#AGNOSTICCANCLIENTSERVER
