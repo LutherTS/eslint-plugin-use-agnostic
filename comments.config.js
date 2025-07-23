@@ -1,13 +1,11 @@
-// import {
-//   jSDocComments,
-// } from "./jscomments/_commons/constants/comments.js";
-import { jSDocComments } from "./jscomments/_commons/constants/jsdoc-original.js";
+import { jsDocComments } from "./jscomments/_commons/constants/jsdoc.js";
+// import { jSDocComments } from "./jscomments/_commons/constants/jsdoc-original.js";
 import { testsComments } from "./jscomments/_commons/constants/tests.js";
 import { agnostic20Comments } from "./jscomments/agnostic20/constants/comments.js";
 import { directive21Comments } from "./jscomments/directive21/constants/comments.js";
 
 export const data = Object.freeze({
-  jsDoc: jSDocComments,
+  jsDoc: jsDocComments,
   tests: testsComments,
   agnostic20: agnostic20Comments,
   directive21: directive21Comments,

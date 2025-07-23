@@ -1,4 +1,4 @@
-export const jSDocComments = Object.freeze({
+export const jsDocComments = Object.freeze({
   definitions: Object.freeze({
     makeTestFiles:
       "Makes the paths of the files to be linted for agnostic20 and directive21.",
@@ -59,11 +59,11 @@ export const jSDocComments = Object.freeze({
       getCommentedDirectiveFromCurrentModule1:
         "Gets the commented directive of the current module.",
       getCommentedDirectiveFromCurrentModule2:
-        "JSDOC#DEFINITIONS#AGNOSTIC20#GETCOMMENTEDDIRECTIVEFROMSOURCECODE2",
+        "JSDOC#DEFINITIONS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMSOURCECODE2",
       getCommentedDirectiveFromImportedModule1:
         "Gets the commented directive of the imported module.",
       getCommentedDirectiveFromImportedModule2:
-        "JSDOC#DEFINITIONS#AGNOSTIC20#GETCOMMENTEDDIRECTIVEFROMSOURCECODE2",
+        "JSDOC#DEFINITIONS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMSOURCECODE2",
       getVerifiedCommentedDirective:
         "Ensures that a module's commented directive is consistent with its file extension (depending on whether it ends with 'x' for JSX).",
       getStrategizedDirective:
