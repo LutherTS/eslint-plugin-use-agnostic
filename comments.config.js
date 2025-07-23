@@ -1,5 +1,4 @@
 import { jsDocComments } from "./jscomments/_commons/constants/jsdoc.js";
-// import { jSDocComments } from "./jscomments/_commons/constants/jsdoc-original.js";
 import { testsComments } from "./jscomments/_commons/constants/tests.js";
 import { agnostic20Comments } from "./jscomments/agnostic20/constants/comments.js";
 import { directive21Comments } from "./jscomments/directive21/constants/comments.js";

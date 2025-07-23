@@ -45,7 +45,7 @@ export const jsDocComments = Object.freeze({
     directive21: Object.freeze({
       makeDirective21Config:
         "Makes the directive21 config for the use-agnostic ESLint plugin.",
-      makeBlockedImport: "JSDOC#DEFINITIONS#AGNOSTIC20#MAKEBLOCKEDIMPORT",
+      // makeBlockedImport: "JSDOC#DEFINITIONS#AGNOSTIC20#MAKEBLOCKEDIMPORT",
       getCommentedDirectiveFromSourceCode:
         "Detects whether a string is single- or double-quoted.",
       stripSingleQuotes:
@@ -58,12 +58,12 @@ export const jsDocComments = Object.freeze({
         "Accepted directives for the default Directive-First Architecture are (single or double quotes included):",
       getCommentedDirectiveFromCurrentModule1:
         "Gets the commented directive of the current module.",
-      getCommentedDirectiveFromCurrentModule2:
-        "JSDOC#DEFINITIONS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMSOURCECODE2",
+      // getCommentedDirectiveFromCurrentModule2:
+      //   "JSDOC#DEFINITIONS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMSOURCECODE2",
       getCommentedDirectiveFromImportedModule1:
         "Gets the commented directive of the imported module.",
-      getCommentedDirectiveFromImportedModule2:
-        "JSDOC#DEFINITIONS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMSOURCECODE2",
+      // getCommentedDirectiveFromImportedModule2:
+      //   "JSDOC#DEFINITIONS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMSOURCECODE2",
       getVerifiedCommentedDirective:
         "Ensures that a module's commented directive is consistent with its file extension (depending on whether it ends with 'x' for JSX).",
       getStrategizedDirective:
@@ -80,8 +80,7 @@ export const jsDocComments = Object.freeze({
         "The flow that begins the import rules enforcement rule, retrieving the verified commented directive of the current file before comparing it to upcoming verified commented directives of the files it imports.",
       importedFileFlow:
         "The flow that is shared between import and re-export traversals to obtain the import file's commented directive.",
-      importsFlow:
-        "The full flow for import traversals to enforce effective directives import rules.",
+      // importsFlow: "JSDOC#DEFINITIONS#AGNOSTIC20#IMPORTSFLOW",
       allExportsFlow:
         "The full flow for export traversals, shared between `ExportNamedDeclaration`, `ExportAllDeclaration`, and `ExportDefaultDeclaration`, to ensure same commented directive re-exports in modules that aren't Agnostic Strategies Modules, and enforce strategized exports specifically in Agnostic Strategies Modules.",
     }),
@@ -230,39 +229,39 @@ export const jsDocComments = Object.freeze({
         "The enhanced blockedImport object with the suggestion to use the `'use agnostic'` directive.",
       getDirectiveFromModule:
         "The directive, or lack thereof via `null`. The lack of a directive is considered server-by-default.",
-      getDirectiveFromCurrentModule:
-        "JSDOC#RETURNS#AGNOSTIC20#GETDIRECTIVEFROMMODULE",
-      getDirectiveFromImportedModule:
-        "JSDOC#RETURNS#AGNOSTIC20#GETDIRECTIVEFROMMODULE",
+      // getDirectiveFromCurrentModule:
+      //   "JSDOC#RETURNS#AGNOSTIC20#GETDIRECTIVEFROMMODULE",
+      // getDirectiveFromImportedModule:
+      //   "JSDOC#RETURNS#AGNOSTIC20#GETDIRECTIVEFROMMODULE",
       getEffectiveDirective:
         "The effective directive, from which imports rules are applied.",
       isImportBlocked:
         "`true` if the import is blocked, as established in `effectiveDirectives_BlockedImports`.",
       makeMessageFromCurrentFileEffectiveDirective:
         "The message listing the incompatible effective modules.",
-      findSpecificViolationMessage:
-        "JSDOC#RETURNS#FINDSPECIFICVIOLATIONMESSAGE",
+      // findSpecificViolationMessage:
+      //   "JSDOC#RETURNS#FINDSPECIFICVIOLATIONMESSAGE",
       currentFileFlow:
         "Either an object with `skip: true` to disregard or one with the non-null `currentFileEffectiveDirective`.",
       importedFileFlow:
         "Either an object with `skip: true` to disregard or one with the non-null `importedFileEffectiveDirective`.",
       importsFlow: "Early if the flow needs to be interrupted.",
-      reExportsFlow: "JSDOC#RETURNS#AGNOSTIC20#IMPORTSFLOW",
+      // reExportsFlow: "JSDOC#RETURNS#AGNOSTIC20#IMPORTSFLOW",
     }),
     directive21: Object.freeze({
       makeDirective21Config:
         "The directive21 config's name as a key and its config as its value.",
-      makeBlockedImport: "JSDOC#RETURNS#AGNOSTIC20#MAKEBLOCKEDIMPORT",
+      // makeBlockedImport: "JSDOC#RETURNS#AGNOSTIC20#MAKEBLOCKEDIMPORT",
       getCommentedDirectiveFromSourceCode:
         "`true` if single-quoted, `false` if double-quoted, `null` if neither.",
       stripSingleQuotes: "The string with quotes removed.",
-      stripDoubleQuotes: "JSDOC#RETURNS#DIRECTIVE21#STRIPSINGLEQUOTES",
+      // stripDoubleQuotes: "JSDOC#RETURNS#DIRECTIVE21#STRIPSINGLEQUOTES",
       getCommentedDirectiveFromSourceCode:
         "The commented directive, or lack thereof via `null`. Given the strictness of this architecture, the lack of a directive is considered a mistake. (Though rules may provide the opportunity to declare a default, and configs with preset defaults may become provided.)",
-      getCommentedDirectiveFromCurrentModule:
-        "JSDOC#RETURNS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMSOURCECODE",
-      getCommentedDirectiveFromImportedModule:
-        "JSDOC#RETURNS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMSOURCECODE",
+      // getCommentedDirectiveFromCurrentModule:
+      //   "JSDOC#RETURNS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMSOURCECODE",
+      // getCommentedDirectiveFromImportedModule:
+      //   "JSDOC#RETURNS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMSOURCECODE",
       getVerifiedCommentedDirective:
         "The verified commented directive, from which imports rules are applied. Returns `null` if the verification failed, upon which an error will be reported depending on the commented directive, since the error logic here is strictly binary.",
       getStrategizedDirective:
@@ -273,14 +272,14 @@ export const jsDocComments = Object.freeze({
         "`true` if the import is blocked, as established in `commentedDirectives_BlockedImports`.",
       makeMessageFromCurrentFileCommentedDirective:
         "The message listing the incompatible commented modules.",
-      findSpecificViolationMessage:
-        "JSDOC#RETURNS#FINDSPECIFICVIOLATIONMESSAGE",
+      // findSpecificViolationMessage:
+      //   "JSDOC#RETURNS#FINDSPECIFICVIOLATIONMESSAGE",
       currentFileFlow:
         "Either an object with `skip: true` to disregard or one with the non-null `verifiedCommentedDirective`.",
       importedFileFlow:
         "Either an object with `skip: true` to disregard or one with the non-null `importedFileCommentedDirective`.",
-      importsFlow: "JSDOC#RETURNS#AGNOSTIC20#IMPORTSFLOW",
-      allExportsFlow: "JSDOC#RETURNS#AGNOSTIC20#IMPORTSFLOW",
+      // importsFlow: "JSDOC#RETURNS#AGNOSTIC20#IMPORTSFLOW",
+      // allExportsFlow: "JSDOC#RETURNS#AGNOSTIC20#IMPORTSFLOW",
     }),
     tests: Object.freeze({
       readFilesRecursively:
