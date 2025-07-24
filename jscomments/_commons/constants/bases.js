@@ -1,7 +1,15 @@
+import url from "url";
+import path from "path";
+
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
-const raw = require("../../../comments.config.json");
+const filename = url.fileURLToPath(import.meta.url);
+const dirname = path.dirname(filename);
+
+const rawPath = path.join(dirname, "../../../comments.config.json");
+
+const raw = require(rawPath);
 export const resolvedConfigData = raw;
 
 /* Notes
