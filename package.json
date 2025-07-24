@@ -41,7 +41,6 @@
     "test": "node tests/agnostic20/import-rules.test.js && node tests/directive21/import-rules.test.js"
   },
   "dependencies": {
-    "comment-variables-resolve-config": "^1.9.0",
     "get-sourcecode-from-file-path": "^1.1.2",
     "resolve-importing-path": "^1.0.3",
     "tsconfig-paths": "^4.2.0",

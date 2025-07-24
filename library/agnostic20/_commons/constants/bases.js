@@ -13,6 +13,10 @@ import { makeIntroForSpecificViolationMessage } from "../../../_commons/utilitie
 
 import { resolvedConfigData } from "../../../../jscomments/_commons/constants/bases.js";
 
+// const resolvedConfigData = await import("../../../../comments.config.json", {
+//   assert: { type: "json" },
+// });
+
 /**
  * @typedef {import('../../../../types/agnostic20/_commons/typedefs.js').Directive} Directive
  * @typedef {import('../../../../types/agnostic20/_commons/typedefs.js').Directives} Directives

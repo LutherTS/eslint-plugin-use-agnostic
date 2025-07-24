@@ -1,21 +1,10 @@
-import url from "url";
-import path from "path";
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
 
-import { makeResolvedConfigData } from "comment-variables-resolve-config";
+const raw = require("../../../comments.config.json");
+export const resolvedConfigData = raw;
 
-const dirname = path.dirname(url.fileURLToPath(import.meta.url));
-const jsCommentsConfigPath = path.join(dirname, "../../../comments.config.js");
-
-const makeResolvedConfigDataResults = await makeResolvedConfigData(
-  jsCommentsConfigPath
-);
-
-if (!makeResolvedConfigDataResults.success) {
-  makeResolvedConfigDataResults.errors.forEach((e) => {
-    console.error(e.message);
-  });
-  throw new Error("Failed to resolve config data.");
-}
-
-export const resolvedConfigData =
-  makeResolvedConfigDataResults.resolvedConfigData;
+/* Notes
+We're actually not supposed to install comment-variables-resolve-config. What's supposed to happen is that the resolved config data should be made and consumed as a JSON either via a command in the CLI or automatically on save by the VS Code extension. 
+For the CLI, the decision has been taken to automatically create the JSON every time the CLI is successfully run with any command.
+*/
