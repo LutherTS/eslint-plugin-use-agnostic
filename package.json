@@ -23,7 +23,8 @@
     "library",
     "types/index.d.ts",
     "jscomments",
-    "comments.config.js"
+    "comments.config.js",
+    "comments.config.json"
   ],
   "exports": {
     ".": {
