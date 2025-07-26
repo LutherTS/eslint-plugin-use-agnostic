@@ -79,9 +79,12 @@ export const forComposedVariables = Object.freeze({
     "for agnostic20." /* $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#FORAGNOSTIC20 */,
   forDirective21:
     "for directive21." /* $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#FORDIRECTIVE21 */,
-  ruleTesterArray: "The RuleTester's array of" /* $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#RULETESTERARRAY */,
-  withNeededProperties: "with needed properties" /* $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#WITHNEEDEDPROPERTIES */,
-  withNeededPropertiesPeriod: "with needed properties." /* $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#WITHNEEDEDPROPERTIESPERIOD */,
+  ruleTesterArray:
+    "The RuleTester's array of" /* $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#RULETESTERARRAY */,
+  withNeededProperties:
+    "with needed properties" /* $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#WITHNEEDEDPROPERTIES */,
+  withNeededPropertiesPeriod:
+    "with needed properties." /* $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#WITHNEEDEDPROPERTIESPERIOD */,
   theCurrentFile:
     "The current file's" /* $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#THECURRENTFILE */,
   theImportedFile:
