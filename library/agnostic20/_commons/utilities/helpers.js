@@ -28,16 +28,16 @@ import {
 /* getDirectiveFromModule */
 
 /**
- * Gets the directive of a module from its Abstract Syntax Tree.
- * - `null` denotes a server-by-default module, ideally a Server Module.
- * - `'use server'` denotes a Server Functions Module.
- * - `'use client'` denotes a Client Module.
- * - `'use agnostic'` denotes an Agnostic Module (formerly Shared Module).
- * @param {AST} ast The module's AST (Abstract Syntax Tree).
- * @returns The directive, or lack thereof via `null`. The lack of a directive is considered server-by-default.
+ * $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#GETDIRECTIVEFROMMODULE
+ * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#NULLDIRECTIVE
+ * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#USESERVER
+ * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#USECLIENT
+ * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#USEAGNOSTIC
+ * @param {AST} ast $COMMENT#JSDOC#PARAMS#AGNOSTIC20#AST
+ * @returns $COMMENT#JSDOC#RETURNS#AGNOSTIC20#GETDIRECTIVEFROMMODULE
  */
 export const getDirectiveFromModule = (ast) => {
-  // the AST body to check for the top-of-the-file directive
+  // the AST body to check for the top-of-the-file $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#DIRECTIVE
   const { body } = ast;
 
   // the first statement from the source code's Abstract Syntax Tree
@@ -50,7 +50,7 @@ export const getDirectiveFromModule = (ast) => {
       ? firstStatement.expression.value
       : null;
 
-  // considers early a null value as the absence of a directive
+  // considers early a null value as the absence of a $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#DIRECTIVE
   if (value === null) return value;
 
   // the value to be exactly 'use client', 'use server' or 'use agnostic' in order not to be considered null by default, or server-by-default
@@ -63,13 +63,13 @@ export const getDirectiveFromModule = (ast) => {
 /* getDirectiveFromCurrentModule */
 
 /**
- * Gets the directive of the current module.
- * - `null` denotes a server-by-default module, ideally a Server Module.
- * - `'use server'` denotes a Server Functions Module.
- * - `'use client'` denotes a Client Module.
- * - `'use agnostic'` denotes an Agnostic Module (formerly Shared Module).
- * @param {Context} context The ESLint rule's `context` object.
- * @returns The directive, or lack thereof via `null`. The lack of a directive is considered server-by-default.
+ * $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#GETDIRECTIVEFROMCURRENTMODULE
+ * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#NULLDIRECTIVE
+ * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#USESERVER
+ * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#USECLIENT
+ * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#USEAGNOSTIC
+ * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
+ * @returns $COMMENT#JSDOC#RETURNS#AGNOSTIC20#GETDIRECTIVEFROMMODULE
  */
 export const getDirectiveFromCurrentModule = (context) => {
   // the AST of the current module
@@ -81,13 +81,13 @@ export const getDirectiveFromCurrentModule = (context) => {
 /* getDirectiveFromImportedModule */
 
 /**
- * Gets the directive of the imported module.
- * - `null` denotes a server-by-default module, ideally a Server Module.
- * - `'use server'` denotes a Server Functions Module.
- * - `'use client'` denotes a Client Module.
- * - `'use agnostic'` denotes an Agnostic Module (formerly Shared Module).
- * @param {string} resolvedPath The resolved path of the imported module.
- * @returns The directive, or lack thereof via `null`. The lack of a directive is considered server-by-default.
+ * $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#GETDIRECTIVEFROMIMPORTEDMODULE
+ * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#NULLDIRECTIVE
+ * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#USESERVER
+ * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#USECLIENT
+ * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#USEAGNOSTIC
+ * @param {string} resolvedPath $COMMENT#JSDOC#PARAMS#RESOLVEDPATH
+ * @returns $COMMENT#JSDOC#RETURNS#AGNOSTIC20#GETDIRECTIVEFROMMODULE
  */
 export const getDirectiveFromImportedModule = (resolvedPath) => {
   // the AST of the imported module
@@ -99,17 +99,17 @@ export const getDirectiveFromImportedModule = (resolvedPath) => {
 /* getEffectiveDirective */
 
 /**
- * Gets the effective directive of a module, based on the combination of its directive (or lack thereof) and its extension (depending on whether it ends with 'x' for JSX).
- * - `'use server logics'` denotes a Server Logics Module.
- * - `'use server components'` denotes a Server Components Module.
- * - `'use server functions'` denotes a Server Functions Module.
- * - `'use client logics'` denotes a Client Logics Module.
- * - `'use client components'` denotes a Client Components Module.
- * - `'use agnostic logics'` denotes an Agnostic Logics Module.
- * - `'use agnostic components'` denotes an Agnostic Components Module.
- * @param {Directive | NoDirective} directive The directive as written on top of the file (`"no directive"` if no valid directive).
- * @param {Extension} extension The JavaScript (TypeScript) extension of the file.
- * @returns The effective directive, from which imports rules are applied.
+ * $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#GETEFFECTIVEDIRECTIVE
+ * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#USESERVERLOGICS
+ * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#USESERVERCOMPONENTS
+ * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#USESERVERFUNCTIONS
+ * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#USECLIENTLOGICS
+ * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#USECLIENTCOMPONENTS
+ * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#USEAGNOSTICLOGICS
+ * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#USEAGNOSTICCOMPONENTS
+ * @param {Directive | NoDirective} $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#DIRECTIVE $COMMENT#JSDOC#PARAMS#AGNOSTIC20#DIRECTIVE
+ * @param {Extension} extension $COMMENT#JSDOC#PARAMS#EXTENSION
+ * @returns $COMMENT#JSDOC#RETURNS#AGNOSTIC20#GETEFFECTIVEDIRECTIVE
  */
 export const getEffectiveDirective = (directive, extension) => {
   const moduleKind = extension.endsWith("x")
@@ -124,10 +124,10 @@ export const getEffectiveDirective = (directive, extension) => {
 /* isImportBlocked */
 
 /**
- * Returns a boolean deciding if an imported file's effective directive is incompatible with the current file's effective directive.
- * @param {EffectiveDirective} currentFileEffectiveDirective The current file's effective directive.
- * @param {EffectiveDirective} importedFileEffectiveDirective The imported file's effective directive.
- * @returns `true` if the import is blocked, as established in `effectiveDirectives_BlockedImports`.
+ * $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#ISIMPORTBLOCKED
+ * @param {EffectiveDirective} currentFileEffectiveDirective $COMMENT#JSDOC#PARAMS#AGNOSTIC20#CURRENTFILEEFFECTIVEDIRECTIVE
+ * @param {EffectiveDirective} importedFileEffectiveDirective $COMMENT#JSDOC#PARAMS#AGNOSTIC20#IMPORTEDFILEEFFECTIVEDIRECTIVE
+ * @returns $COMMENT#JSDOC#RETURNS#AGNOSTIC20#ISIMPORTBLOCKED
  */
 export const isImportBlocked = (
   currentFileEffectiveDirective,
@@ -142,9 +142,9 @@ export const isImportBlocked = (
 /* makeMessageFromCurrentFileEffectiveDirective */
 
 /**
- * Lists in an message the effective modules incompatible with a effective module based on its effective directive.
- * @param {EffectiveDirective} effectiveDirective The effective directive of the effective module.
- * @returns The message listing the incompatible effective modules.
+ * $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#MAKEMESSAGEFROMCURRENTFILEEFFECTIVEDIRECTIVE
+ * @param {EffectiveDirective} effectiveDirective $COMMENT#JSDOC#PARAMS#AGNOSTIC20#EFFECTIVEDIRECTIVE
+ * @returns $COMMENT#JSDOC#RETURNS#AGNOSTIC20#MAKEMESSAGEFROMCURRENTFILEEFFECTIVEDIRECTIVE
  */
 export const makeMessageFromCurrentFileEffectiveDirective = (
   effectiveDirective
@@ -157,10 +157,10 @@ export const makeMessageFromCurrentFileEffectiveDirective = (
 /* findSpecificViolationMessage */
 
 /**
- * Finds the `message` for the specific violation of effective directives import rules based on `effectiveDirectives_BlockedImports`.
- * @param {EffectiveDirective} currentFileEffectiveDirective The current file's effective directive.
- * @param {EffectiveDirective} importedFileEffectiveDirective The imported file's effective directive.
- * @returns The corresponding `message`.
+ * $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#FINDSPECIFICVIOLATIONMESSAGE
+ * @param {EffectiveDirective} currentFileEffectiveDirective $COMMENT#JSDOC#PARAMS#AGNOSTIC20#CURRENTFILEEFFECTIVEDIRECTIVE
+ * @param {EffectiveDirective} importedFileEffectiveDirective $COMMENT#JSDOC#PARAMS#AGNOSTIC20#IMPORTEDFILEEFFECTIVEDIRECTIVE
+ * @returns $COMMENT#JSDOC#RETURNS#FINDSPECIFICVIOLATIONMESSAGE
  */
 export const findSpecificViolationMessage = (
   currentFileEffectiveDirective,
