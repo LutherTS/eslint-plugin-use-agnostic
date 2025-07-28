@@ -17,4 +17,4 @@ import {
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
 // Valid.
-// Prime Client Logics, being logic from the client, can safely support like any Client Components.
+// Prime Client Logics, being logic from the client, can safely support (Special) Client Contexts Components, like any Client Components.

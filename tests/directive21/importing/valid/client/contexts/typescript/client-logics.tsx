@@ -59,4 +59,4 @@ import {
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
 // Valid.
-// Prime Client Logics, being logic from the client, can safely support like any Client Components.
+// Prime Client Logics, being logic from the client, can safely support (Special) Client Contexts Components, like any Client Components.

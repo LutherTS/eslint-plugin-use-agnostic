@@ -319,7 +319,7 @@ export const commentedDirectives_blockedImports = Object.freeze({
       USE_CLIENT_CONTEXTS,
       USE_SERVER_LOGICS
     ) /* Prime Server Logics should never leak to the client. */,
-    // USE_CLIENT_LOGICS allowed, because Prime Client Logics, being logic from the client, can safely support like any Client Components.
+    // USE_CLIENT_LOGICS allowed, because Prime Client Logics, being logic from the client, can safely support (Special) Client Contexts Components, like any Client Components.
     // USE_AGNOSTIC_LOGICS allowed, because Prime Agnostic Logics can run safely on the client just like they can on the server.
     makeBlockedImport(
       USE_CLIENT_CONTEXTS,
