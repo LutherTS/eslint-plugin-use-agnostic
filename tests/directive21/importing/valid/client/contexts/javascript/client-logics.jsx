@@ -1,20 +1,20 @@
 // "use client contexts"
 
-// ...Importing a Prime Client Logics Module.
+// $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#IMPORTINGAMODULE
 import clientLogics from "../../../../../imported/javascript/client-logics.js";
 
-// ...Importing a Prime Client Logics Module by a folder.
+// $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#IMPORTINGBYAFOLDER
 import clientLogicsFolder from "../../../../../imported/javascript/client-logics-js";
 
-// ...Importing Prime Client Logics via Special Agnostic Strategy.
+// $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#IMPORTINGVIASTRATEGY
 import {
   /* @clientLogics */ clientLogicsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// ...Importing Prime Client Logics via Special Agnostic Strategy by a folder.
+// $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#IMPORTINGVIASTRATEGYBYAFOLDER
 import {
   /* @clientLogics */ clientLogicsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// Valid.
-// Prime Client Logics, being logic from the client, can safely support like any Client Components.
+// $COMMENT#TESTS#VALID
+// $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#USE_CLIENT_LOGICS
