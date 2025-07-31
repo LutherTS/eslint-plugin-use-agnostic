@@ -1,3 +1,3 @@
-// $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#THATSAMODULE
+// That's a Server Components Module.
 
 export default {};

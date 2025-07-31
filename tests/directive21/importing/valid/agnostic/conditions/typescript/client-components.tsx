@@ -1,62 +1,62 @@
 // "use agnostic conditions"
 
-// $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#IMPORTINGAMODULE
+// ...Importing a Lineal Client Components Module.
 import clientComponents from "../../../../../imported/typescript/client-components";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import clientComponentsExtension from "../../../../../imported/typescript/client-components.tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import clientComponentsAlias from "@/tests/directive21/imported/typescript/client-components";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import clientComponentsAliasExtension from "@/tests/directive21/imported/typescript/client-components.tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import clientComponentsBaseUrl from "tests/directive21/imported/typescript/client-components";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import clientComponentsBaseUrlExtension from "tests/directive21/imported/typescript/client-components.tsx";
 
-// $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#IMPORTINGBYAFOLDER
+// ...Importing a Lineal Client Components Module by a folder.
 import clientComponentsFolder from "../../../../../imported/typescript/client-components-tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import clientComponentsFolderAlias from "@/tests/directive21/imported/typescript/client-components-tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import clientComponentsFolderBaseUrl from "tests/directive21/imported/typescript/client-components-tsx";
 
-// $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#IMPORTINGVIASTRATEGY
+// ...Importing Lineal Client Components via Special Agnostic Strategy.
 import {
   /* @clientComponents */ clientComponentsStrategized,
 } from "../../../../../imported/typescript/agnostic-strategies";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import {
   /* @clientComponents */ clientComponentsStrategized as clientComponentsStrategizedExtension,
 } from "../../../../../imported/typescript/agnostic-strategies.tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import {
   /* @clientComponents */ clientComponentsStrategized as clientComponentsStrategizedAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import {
   /* @clientComponents */ clientComponentsStrategized as clientComponentsStrategizedAliasExtension,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies.tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import {
   /* @clientComponents */ clientComponentsStrategized as clientComponentsStrategizedBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import {
   /* @clientComponents */ clientComponentsStrategized as clientComponentsStrategizedBaseUrlExtension,
 } from "tests/directive21/imported/typescript/agnostic-strategies.tsx";
 
-// $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#IMPORTINGVIASTRATEGYBYAFOLDER
+// ...Importing Lineal Client Components via Special Agnostic Strategy by a folder.
 import {
   /* @clientComponents */ clientComponentsStrategized as clientComponentsStrategizedFolder,
 } from "../../../../../imported/typescript/agnostic-strategies-tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import {
   /* @clientComponents */ clientComponentsStrategized as clientComponentsStrategizedFolderAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies-tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import {
   /* @clientComponents */ clientComponentsStrategized as clientComponentsStrategizedFolderBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
-// $COMMENT#TESTS#VALID
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_CLIENT_COMPONENTS
+// Valid.
+// Lineal Client Components are to be paired as `ComponentForClient` components with `ComponentForServer` components to form (Special) Agnostic Conditions Components.

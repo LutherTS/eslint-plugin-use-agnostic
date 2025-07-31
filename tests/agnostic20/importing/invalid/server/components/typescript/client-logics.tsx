@@ -1,18 +1,18 @@
-// $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#THATSAMODULE
+// That's a Server Components Module.
 
-// $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#IMPORTINGWITHEXTENSION
+// ...Importing a Client Logics Module (with extension).
 import clientLogics from "../../../../../imported/typescript/client.ts";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import clientLogicsAlias from "@/tests/agnostic20/imported/typescript/client.ts";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import clientLogicsBaseUrl from "tests/agnostic20/imported/typescript/client.ts";
 
-// $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#IMPORTINGBYAFOLDER
+// ...Importing a Client Logics Module by a folder.
 import clientLogicsFolder from "../../../../../imported/typescript/client-ts";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import clientLogicsFolderAlias from "@/tests/agnostic20/imported/typescript/client-ts";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import clientLogicsFolderBaseUrl from "tests/agnostic20/imported/typescript/client-ts";
 
-// $COMMENT#TESTS#INVALID
-// $COMMENT#AGNOSTIC20#FORALIASVARIABLES#CLIENTNEVERSERVER
+// Invalid.
+// Client Logics should never leak to the server.
