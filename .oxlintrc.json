@@ -1,0 +1,5 @@
+{
+  "rules": {
+    "no-unused-vars": "off" // temporary disabled to silence the current JSDoc bug, plus VS Code already highlights unused variables
+  }
+}
