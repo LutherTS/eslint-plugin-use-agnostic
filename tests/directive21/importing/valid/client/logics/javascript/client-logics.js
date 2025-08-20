@@ -1,20 +1,20 @@
 // "use client logics"
 
-// $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#IMPORTINGAMODULE
+// ...Importing a Prime Client Logics Module.
 import clientLogics from "../../../../../imported/javascript/client-logics.js";
 
-// $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#IMPORTINGBYAFOLDER
+// ...Importing a Prime Client Logics Module by a folder.
 import clientLogicsFolder from "../../../../../imported/javascript/client-logics-js";
 
-// $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#IMPORTINGVIASTRATEGY
+// ...Importing Prime Client Logics via Special Agnostic Strategy.
 import {
   /* @clientLogics */ clientLogicsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#IMPORTINGVIASTRATEGYBYAFOLDER
+// ...Importing Prime Client Logics via Special Agnostic Strategy by a folder.
 import {
   /* @clientLogics */ clientLogicsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// $COMMENT#TESTS#VALID
-// $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#USE_CLIENT_LOGICS
+// Valid.
+// Prime Client Logics can compose with one another.
