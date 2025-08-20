@@ -27,7 +27,7 @@ const composedVariablesExclusives = [
 const config = {
   data,
   ignores,
-  // composedVariablesExclusives
+  composedVariablesExclusives,
 };
 
 export default config;
