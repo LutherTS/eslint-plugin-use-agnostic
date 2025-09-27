@@ -1,9 +1,15 @@
 import {
   TSX,
   TS,
+  MTSX,
+  MTS,
+  CTSX,
+  CTS,
   JSX,
   JS,
+  MJSX,
   MJS,
+  CJSX,
   CJS,
   USE_SERVER_LOGICS,
   USE_CLIENT_LOGICS,
@@ -23,8 +29,8 @@ import {
  * @typedef {import('eslint').Linter.LanguageOptions} LanguageOptions
  * @typedef {import('eslint').SourceCode} SourceCode
  *
- * @typedef {typeof TSX | typeof TS | typeof JSX | typeof JS | typeof MJS | typeof CJS} Extension
- * @typedef {readonly [typeof TSX, typeof TS, typeof JSX, typeof JS, typeof MJS, typeof CJS]} Extensions
+ * @typedef {typeof TSX | typeof TS | typeof MTSX | typeof MTS | typeof CTSX | typeof CTS | typeof JSX | typeof JS | typeof MJSX | typeof MJS | typeof CJSX | typeof CJS} Extension
+ * @typedef {readonly [typeof TSX, typeof TS, typeof MTSX, typeof MTS, typeof CTSX, typeof CTS, typeof JSX, typeof JS, typeof MJSX, typeof MJS, typeof CJSX, typeof CJS]} Extensions
  *
  * @typedef {typeof USE_SERVER_LOGICS | typeof USE_CLIENT_LOGICS | typeof USE_AGNOSTIC_LOGICS | typeof USE_SERVER_COMPONENTS | typeof USE_CLIENT_COMPONENTS | typeof USE_AGNOSTIC_COMPONENTS | typeof USE_SERVER_FUNCTIONS} EffectiveDirective
  * @typedef {EffectiveDirective | typeof USE_CLIENT_CONTEXTS | typeof USE_AGNOSTIC_CONDITIONS | typeof USE_AGNOSTIC_STRATEGIES} CommentedDirective
