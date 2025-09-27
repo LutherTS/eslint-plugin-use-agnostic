@@ -4,7 +4,7 @@ import { exportNotStrategized } from "../../../_commons/constants/bases.js";
 import {
   USE_AGNOSTIC_STRATEGIES,
   commentedDirectivesArray,
-  strategiesArray,
+  commentedStrategiesArray,
   commentedDirectives_extensionRules,
   commentedStrategies_commentedDirectives,
   commentedDirectives_blockedImports,
@@ -201,7 +201,8 @@ export const getVerifiedCommentedDirective = (directive, extension) => {
 
   if (rule === true && isExtensionJSX) return directive; // requires JSX extension
   if (rule === false && !isExtensionJSX) return directive; // forbids JSX extension
-  if (rule === null) return directive; // no extension constraint, specifically for "use agnostic strategies"
+  // CHANGE: no longer applies, Agnostic Strategies Modules are now required to ends in `x`.
+  // if (rule === null) return directive; // no extension constraint, specifically for "use agnostic strategies"
 
   return null; // verification failed
 };
@@ -226,7 +227,8 @@ export const getStrategizedDirective = (context, node) => {
 
   // asserts whether that first nested comment is or isn't a Strategy
   const strategy =
-    strategiesArray.find((strategy) => strategy === rawStrategy) ?? null;
+    commentedStrategiesArray.find((strategy) => strategy === rawStrategy) ??
+    null;
 
   // returns null early if no strategy was identified
   if (!strategy) return null;
