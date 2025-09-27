@@ -10,3 +10,5 @@ export const agnostic20ConfigName: "agnostic20";
 export const directive21ConfigName: "directive21";
 export const enforceEffectiveDirectivesRuleName: "enforce-effective-directives-import-rules";
 export const enforceCommentedDirectivesRuleName: "enforce-commented-directives-import-rules";
+
+export const USE_SERVER_LOGICS: "use server logics";
