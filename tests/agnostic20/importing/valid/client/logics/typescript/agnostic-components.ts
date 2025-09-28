@@ -1,19 +1,19 @@
 "use client";
-// $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#THATSAMODULE
+// That's a Client Logics Module.
 
-// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#IMPORTINGWITHEXTENSION
+// ...Importing an Agnostic Components Module (with extension).
 import agnosticComponents from "../../../../../imported/typescript/agnostic.tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import agnosticComponentsAlias from "@/tests/agnostic20/imported/typescript/agnostic.tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import agnosticComponentsBaseUrl from "tests/agnostic20/imported/typescript/agnostic.tsx";
 
-// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#IMPORTINGBYAFOLDER
+// ...Importing an Agnostic Components Module by a folder.
 import agnosticComponentsFolder from "../../../../../imported/typescript/agnostic-tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import agnosticComponentsFolderAlias from "@/tests/agnostic20/imported/typescript/agnostic-tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import agnosticComponentsFolderBaseUrl from "tests/agnostic20/imported/typescript/agnostic-tsx";
 
-// $COMMENT#TESTS#VALID
-// $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#USE_AGNOSTIC_COMPONENTS
+// Valid.
+// Agnostic Components can be composed with Logics on the client just like they can on the server, as long as the Client Logics Module, by convention, does not export React components.
