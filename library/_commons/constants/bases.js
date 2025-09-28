@@ -104,14 +104,33 @@ export const resolvedDirectives_resolvedModules =
 // JavaScript/TypeScript extensions
 export const TSX = ".tsx";
 export const TS = ".ts";
+export const MTSX = ".mtsx";
+export const MTS = ".mts";
+export const CTSX = ".ctsx";
+export const CTS = ".cts";
 export const JSX = ".jsx";
 export const JS = ".js";
+export const MJSX = ".mjsx";
 export const MJS = ".mjs";
+export const CJSX = ".cjsx";
 export const CJS = ".cjs";
 
 // JavaScript/TypeScript extensions array
 /** @type {Extensions} */
-export const EXTENSIONS = Object.freeze([TSX, TS, JSX, JS, MJS, CJS]); // In priority order
+export const EXTENSIONS = Object.freeze([
+  TSX,
+  TS,
+  MTSX,
+  MTS,
+  CTSX,
+  CTS,
+  JSX,
+  JS,
+  MJSX,
+  MJS,
+  CJSX,
+  CJS,
+]); // In priority order
 
 // message strings
 export const ARE_NOT_ALLOWED_TO_IMPORT = "are not allowed to import";

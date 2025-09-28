@@ -67,7 +67,9 @@ export const commentedDirectives_extensionRules = Object.freeze({
   [USE_SERVER_FUNCTIONS]: false,
   [USE_CLIENT_CONTEXTS]: true,
   [USE_AGNOSTIC_CONDITIONS]: true,
-  [USE_AGNOSTIC_STRATEGIES]: null, // Any extension allowed
+  // CHANGE: Agnostic Strategies Modules must now be JSX modules (ending in `x`) in order to conform with eXtra JSX, and moreover to assert their capacity to adapt with both logics and components.
+  // [USE_AGNOSTIC_STRATEGIES]: null, // Any extension allowed
+  [USE_AGNOSTIC_STRATEGIES]: true,
 });
 
 // commented strategies
@@ -83,7 +85,7 @@ export const AT_AGNOSTIC_CONDITIONS = "@agnosticConditions";
 
 // commented strategies array
 /** @type {CommentedStrategies} */
-export const strategiesArray = Object.freeze([
+export const commentedStrategiesArray = Object.freeze([
   AT_SERVER_LOGICS,
   AT_CLIENT_LOGICS,
   AT_AGNOSTIC_LOGICS,
@@ -97,7 +99,7 @@ export const strategiesArray = Object.freeze([
 
 // commented strategies set
 /** @type {ReadonlySet<CommentedStrategy>} */
-export const strategiesSet = new Set(strategiesArray); // no longer used exported to satisfy static type inference
+export const commentedStrategiesSet = new Set(commentedStrategiesArray); // no longer used exported to satisfy static type inference
 
 // mapped commented strategies to their commented directives
 export const commentedStrategies_commentedDirectives = Object.freeze({

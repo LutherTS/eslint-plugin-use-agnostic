@@ -4,7 +4,7 @@ import { exportNotStrategized } from "../../../_commons/constants/bases.js";
 import {
   USE_AGNOSTIC_STRATEGIES,
   commentedDirectivesArray,
-  strategiesArray,
+  commentedStrategiesArray,
   commentedDirectives_extensionRules,
   commentedStrategies_commentedDirectives,
   commentedDirectives_blockedImports,
@@ -201,7 +201,8 @@ export const getVerifiedCommentedDirective = (directive, extension) => {
 
   if (rule === true && isExtensionJSX) return directive; // requires JSX extension
   if (rule === false && !isExtensionJSX) return directive; // forbids JSX extension
-  if (rule === null) return directive; // no extension constraint, specifically for "use agnostic strategies"
+  // CHANGE: no longer applies, Agnostic Strategies Modules are now required to ends in `x`.
+  // if (rule === null) return directive; // no extension constraint, specifically for "use agnostic strategies"
 
   return null; // verification failed
 };
@@ -209,9 +210,9 @@ export const getVerifiedCommentedDirective = (directive, extension) => {
 /* getStrategizedDirective */
 
 /**
- * Gets the interpreted directive from a specified commented Strategy (such as `@serverLogics`) nested inside the import declaration for an import from an Agnostic Strategies Module.
+ * Gets the interpreted directive from a specified commented Strategy (such as `@serverLogics`) nested inside the import (or export) declaration for an import (or export) from an Agnostic Strategies Module.
  * @param {Context} context The ESLint rule's `context` object.
- * @param {ImportDeclaration} node The ESLint `node` of the rule's current traversal.
+ * @param {ImportDeclaration | ExportNamedDeclaration | ExportAllDeclaration | ExportDefaultDeclaration} node The ESLint `node` of the rule's current traversal.
  * @returns The interpreted directive, a.k.a. strategized directive, or lack thereof via `null`.
  */
 export const getStrategizedDirective = (context, node) => {
@@ -226,7 +227,8 @@ export const getStrategizedDirective = (context, node) => {
 
   // asserts whether that first nested comment is or isn't a Strategy
   const strategy =
-    strategiesArray.find((strategy) => strategy === rawStrategy) ?? null;
+    commentedStrategiesArray.find((strategy) => strategy === rawStrategy) ??
+    null;
 
   // returns null early if no strategy was identified
   if (!strategy) return null;
