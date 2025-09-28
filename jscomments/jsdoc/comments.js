@@ -71,7 +71,7 @@ export const jsDocComments = Object.freeze({
       getVerifiedCommentedDirective:
         "Ensures that a module's commented directive is consistent with its file extension (depending on whether it ends with 'x' for JSX)." /* $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#GETVERIFIEDCOMMENTEDDIRECTIVE */,
       getStrategizedDirective:
-        "Gets the interpreted directive from a specified commented Strategy (such as `@serverLogics`) nested inside the import declaration for an import from an Agnostic Strategies Module." /* $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#GETSTRATEGIZEDDIRECTIVE */,
+        "Gets the interpreted directive from a specified commented Strategy (such as `@serverLogics`) nested inside the import (or export) declaration for an import (or export) from an Agnostic Strategies Module." /* $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#GETSTRATEGIZEDDIRECTIVE */,
       addressDirectiveIfAgnosticStrategies:
         'Verifies the current node\'s export strategy if the current commented directive is `"use agnostic strategies"` by reporting `exportNotStrategized` in case an export is not strategized in an Agnostic Strategies Module.' /* $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#ADDRESSDIRECTIVEIFAGNOSTICSTRATEGIES */,
       isImportBlocked:

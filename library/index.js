@@ -48,6 +48,8 @@ export {
 
 // NEW: eslint-plugin-use-agnostic is effectively the premier implementation of the Directive-First Architecture. As such, the following imports are to access its constants and utilities across other implementations of the Directive-First Architecture, such as eXtra JSX.
 
+// agnostic20
+
 export {
   // directives
   NO_DIRECTIVE,
@@ -69,6 +71,8 @@ export {
   getEffectiveDirective,
   isImportBlocked as isImportBlockedAgnostic20,
 } from "./agnostic20/_commons/utilities/helpers.js";
+
+// directive21
 
 export {
   // commented directives
@@ -112,6 +116,5 @@ export {
   getCommentedDirectiveFromImportedModule,
   getVerifiedCommentedDirective,
   getStrategizedDirective,
-  addressDirectiveIfAgnosticStrategies,
   isImportBlocked as isImportBlockedDirective21,
 } from "./directive21/_commons/utilities/helpers.js";

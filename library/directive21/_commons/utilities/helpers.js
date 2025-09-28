@@ -212,7 +212,7 @@ export const getVerifiedCommentedDirective = (directive, extension) => {
 /**
  * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#GETSTRATEGIZEDDIRECTIVE
  * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
- * @param {ImportDeclaration} node $COMMENT#JSDOC#PARAMS#NODE
+ * @param {ImportDeclaration | ExportNamedDeclaration | ExportAllDeclaration | ExportDefaultDeclaration} node $COMMENT#JSDOC#PARAMS#NODE
  * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#GETSTRATEGIZEDDIRECTIVE
  */
 export const getStrategizedDirective = (context, node) => {
