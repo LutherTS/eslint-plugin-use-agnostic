@@ -1,20 +1,20 @@
 // "use client logics"
 
-// ...Importing a Lineal Server Components Module.
+// $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#IMPORTINGAMODULE
 import serverComponents from "../../../../../imported/javascript/server-components.jsx";
 
-// ...Importing a Lineal Server Components Module by a folder.
+// $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#IMPORTINGBYAFOLDER
 import serverComponentsFolder from "../../../../../imported/javascript/server-components-jsx";
 
-// ...Importing Lineal Server Components via Special Agnostic Strategy.
+// $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#IMPORTINGVIASTRATEGY
 import {
   /* @serverComponents */ serverComponentsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// ...Importing Lineal Server Components via Special Agnostic Strategy by a folder.
+// $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#IMPORTINGVIASTRATEGYBYAFOLDER
 import {
   /* @serverComponents */ serverLogicsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// Invalid.
-// Lineal Server Components cannot be tinkered with on the client.
+// $COMMENT#TESTS#INVALID
+// $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#USE_SERVER_COMPONENTS
