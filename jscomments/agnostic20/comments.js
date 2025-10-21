@@ -18,13 +18,13 @@ export const agnostic20Comments = Object.freeze({
   "use agnostic components": agnosticComponentsComments,
   forAliasVariables: Object.freeze({
     serverNeverClient:
-      "Server Logics should never leak to the client." /* $COMMENT#AGNOSTIC20#FORALIASVARIABLES#SERVERNEVERCLIENT */,
+      "$COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#KINDS $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#SHOULDNEVERCLIENT" /* $COMMENT#AGNOSTIC20#FORALIASVARIABLES#SERVERNEVERCLIENT */,
     clientNeverServer:
-      "Client Logics should never leak to the server." /* $COMMENT#AGNOSTIC20#FORALIASVARIABLES#CLIENTNEVERSERVER */,
+      "$COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#KINDS $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#SHOULDNEVERSERVER" /* $COMMENT#AGNOSTIC20#FORALIASVARIABLES#CLIENTNEVERSERVER */,
     agnosticCanServerClient:
-      "Agnostic Logics can run safely on the server just like they can on the client." /* $COMMENT#AGNOSTIC20#FORALIASVARIABLES#AGNOSTICCANSERVERCLIENT */,
+      "$COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#KINDS $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#RUNSERVERLIKECLIENT" /* $COMMENT#AGNOSTIC20#FORALIASVARIABLES#AGNOSTICCANSERVERCLIENT */,
     agnosticCanClientServer:
-      "Agnostic Logics can run safely on the client just like they can on the server." /* $COMMENT#AGNOSTIC20#FORALIASVARIABLES#AGNOSTICCANCLIENTSERVER */,
+      "$COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#KINDS $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#RUNCLIENTLIKESERVER" /* $COMMENT#AGNOSTIC20#FORALIASVARIABLES#AGNOSTICCANCLIENTSERVER */,
     serverFunctionsNoComponents:
       "Server Functions have no business working with React Components." /* $COMMENT#AGNOSTIC20#FORALIASVARIABLES#SERVERFUNCTIONSNOCOMPONENTS */,
     serverLogicsCantBoth:
@@ -33,6 +33,14 @@ export const agnostic20Comments = Object.freeze({
       "$COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#KINDS $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#CANTSERVERCLIENT" /* $COMMENT#AGNOSTIC20#FORALIASVARIABLES#CLIENTLOGICSCANTBOTH */,
   }),
   forComposedVariables: Object.freeze({
+    shouldNeverClient:
+      "should never leak to the client." /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#SHOULDNEVERCLIENT */,
+    shouldNeverServer:
+      "should never leak to the server." /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#SHOULDNEVERSERVER */,
+    runServerLikeClient:
+      "can run safely on the server just like they can on the client." /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#RUNSERVERLIKECLIENT */,
+    runClientLikeServer:
+      "can run safely on the client just like they can on the server." /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#RUNCLIENTLIKESERVER */,
     canComposeOneAnother:
       "can compose with one another." /* $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#CANCOMPOSEONEANOTHER */,
     cantTinkeredServer:

@@ -1652,6 +1652,26 @@
       }
     },
     "forComposedVariables": {
+      "shouldNeverClient": {
+        "value": "should never leak to the client.",
+        "key": "AGNOSTIC20#FORCOMPOSEDVARIABLES#SHOULDNEVERCLIENT",
+        "placeholder": "$COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#SHOULDNEVERCLIENT"
+      },
+      "shouldNeverServer": {
+        "value": "should never leak to the server.",
+        "key": "AGNOSTIC20#FORCOMPOSEDVARIABLES#SHOULDNEVERSERVER",
+        "placeholder": "$COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#SHOULDNEVERSERVER"
+      },
+      "runServerLikeClient": {
+        "value": "can run safely on the server just like they can on the client.",
+        "key": "AGNOSTIC20#FORCOMPOSEDVARIABLES#RUNSERVERLIKECLIENT",
+        "placeholder": "$COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#RUNSERVERLIKECLIENT"
+      },
+      "runClientLikeServer": {
+        "value": "can run safely on the client just like they can on the server.",
+        "key": "AGNOSTIC20#FORCOMPOSEDVARIABLES#RUNCLIENTLIKESERVER",
+        "placeholder": "$COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#RUNCLIENTLIKESERVER"
+      },
       "canComposeOneAnother": {
         "value": "can compose with one another.",
         "key": "AGNOSTIC20#FORCOMPOSEDVARIABLES#CANCOMPOSEONEANOTHER",
@@ -2643,6 +2663,26 @@
       }
     },
     "forComposedVariables": {
+      "shouldNeverClient": {
+        "value": "should never leak to the client.",
+        "key": "DIRECTIVE21#FORCOMPOSEDVARIABLES#SHOULDNEVERCLIENT",
+        "placeholder": "$COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#SHOULDNEVERCLIENT"
+      },
+      "shouldNeverServer": {
+        "value": "should never leak to the server.",
+        "key": "DIRECTIVE21#FORCOMPOSEDVARIABLES#SHOULDNEVERSERVER",
+        "placeholder": "$COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#SHOULDNEVERSERVER"
+      },
+      "runServerLikeClient": {
+        "value": "can run safely on the server just like they can on the client.",
+        "key": "DIRECTIVE21#FORCOMPOSEDVARIABLES#RUNSERVERLIKECLIENT",
+        "placeholder": "$COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#RUNSERVERLIKECLIENT"
+      },
+      "runClientLikeServer": {
+        "value": "can run safely on the client just like they can on the server.",
+        "key": "DIRECTIVE21#FORCOMPOSEDVARIABLES#RUNCLIENTLIKESERVER",
+        "placeholder": "$COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#RUNCLIENTLIKESERVER"
+      },
       "canComposeOneAnother": {
         "value": "can compose with one another.",
         "key": "DIRECTIVE21#FORCOMPOSEDVARIABLES#CANCOMPOSEONEANOTHER",
@@ -2773,15 +2813,15 @@
         "key": "DIRECTIVE21#FORCOMPOSEDVARIABLES#CANCLIENTCOMPONENTS",
         "placeholder": "$COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#CANCLIENTCOMPONENTS"
       },
-      "canServerLikeClient": {
+      "renderServerLikeClient": {
         "value": "can render safely on the server just like they can on the client.",
-        "key": "DIRECTIVE21#FORCOMPOSEDVARIABLES#CANSERVERLIKECLIENT",
-        "placeholder": "$COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#CANSERVERLIKECLIENT"
+        "key": "DIRECTIVE21#FORCOMPOSEDVARIABLES#RENDERSERVERLIKECLIENT",
+        "placeholder": "$COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#RENDERSERVERLIKECLIENT"
       },
-      "canClientLikeServer": {
+      "renderClientLikeServer": {
         "value": "can render safely on the client just like they can on the server.",
-        "key": "DIRECTIVE21#FORCOMPOSEDVARIABLES#CANCLIENTLIKESERVER",
-        "placeholder": "$COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#CANCLIENTLIKESERVER"
+        "key": "DIRECTIVE21#FORCOMPOSEDVARIABLES#RENDERCLIENTLIKESERVER",
+        "placeholder": "$COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#RENDERCLIENTLIKESERVER"
       }
     }
   }
