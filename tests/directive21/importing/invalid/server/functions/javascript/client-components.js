@@ -1,20 +1,20 @@
 // "use server functions"
 
-// ...Importing a Lineal Client Components Module.
+// $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#IMPORTINGAMODULE
 import clientComponents from "../../../../../imported/javascript/client-components.jsx";
 
-// ...Importing a Lineal Client Components Module by a folder.
+// $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#IMPORTINGBYAFOLDER
 import clientComponentsFolder from "../../../../../imported/javascript/client-components-jsx";
 
-// ...Importing Lineal Client Components via Special Agnostic Strategy.
+// $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#IMPORTINGVIASTRATEGY
 import {
   /* @clientComponents */ clientComponentsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// ...Importing Lineal Client Components via Special Agnostic Strategy by a folder.
+// $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#IMPORTINGVIASTRATEGYBYAFOLDER
 import {
   /* @clientComponents */ clientLogicsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// Invalid.
-// Lineal Client Components aren't allowed because (Special) Server Functions have no business working with React Components.
+// $COMMENT#TESTS#INVALID
+// $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#USE_CLIENT_COMPONENTS

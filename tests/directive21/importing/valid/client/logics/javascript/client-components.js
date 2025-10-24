@@ -1,20 +1,20 @@
 // "use client logics"
 
-// ...Importing a Lineal Client Components Module.
+// $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#IMPORTINGAMODULE
 import clientComponents from "../../../../../imported/javascript/client-components.jsx";
 
-// ...Importing a Lineal Client Components Module by a folder.
+// $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#IMPORTINGBYAFOLDER
 import clientComponentsFolder from "../../../../../imported/javascript/client-components-jsx";
 
-// ...Importing Lineal Client Components via Special Agnostic Strategy.
+// $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#IMPORTINGVIASTRATEGY
 import {
   /* @clientComponents */ clientComponentsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// ...Importing Lineal Client Components via Special Agnostic Strategy by a folder.
+// $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#IMPORTINGVIASTRATEGYBYAFOLDER
 import {
   /* @clientComponents */ clientLogicsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// Valid.
-// Prime Client Logics, like any Client Components, are OK to be composed with Prime Client Logics as long as the Prime Client Logics Module, by convention, does not export React components.
+// $COMMENT#TESTS#VALID
+// $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#USE_CLIENT_COMPONENTS
