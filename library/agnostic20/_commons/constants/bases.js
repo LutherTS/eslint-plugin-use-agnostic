@@ -11,7 +11,6 @@ import {
 
 import { makeIntroForSpecificViolationMessage } from "../../../_commons/utilities/helpers.js";
 
-// import { resolvedConfigData } from "../../../../jscomments/_commons/constants/bases.js";
 import { commentVariablesData } from "../../../../jscomments/_commons/constants/data.js";
 
 /**

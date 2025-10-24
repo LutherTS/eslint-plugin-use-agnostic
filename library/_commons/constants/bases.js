@@ -1,5 +1,7 @@
 import tseslint from "typescript-eslint";
 
+import { commentVariablesData } from "../../../jscomments/_commons/constants/data.js";
+
 /**
  * @typedef {import('../../../types/_commons/typedefs').Extensions} Extensions
  * @typedef {import('../../../types/_commons/typedefs').LanguageOptions} LanguageOptions
@@ -53,31 +55,53 @@ export const exportNotStrategized =
 // - AIA: Agnostic-Included Architecture (agnostic20)
 // - DFA: Directive-First Architecture (directive21)
 // agnostic20
-export const USE_SERVER_LOGICS = "use server logics";
-export const USE_CLIENT_LOGICS = "use client logics";
-export const USE_AGNOSTIC_LOGICS = "use agnostic logics";
-export const USE_SERVER_COMPONENTS = "use server components";
-export const USE_CLIENT_COMPONENTS = "use client components";
-export const USE_AGNOSTIC_COMPONENTS = "use agnostic components";
-export const USE_SERVER_FUNCTIONS = "use server functions";
+export const USE_SERVER_LOGICS =
+  commentVariablesData.agnostic20["use server logics"].directive.value;
+export const USE_CLIENT_LOGICS =
+  commentVariablesData.agnostic20["use client logics"].directive.value;
+export const USE_AGNOSTIC_LOGICS =
+  commentVariablesData.agnostic20["use agnostic logics"].directive.value;
+export const USE_SERVER_COMPONENTS =
+  commentVariablesData.agnostic20["use server components"].directive.value;
+export const USE_CLIENT_COMPONENTS =
+  commentVariablesData.agnostic20["use client components"].directive.value;
+export const USE_AGNOSTIC_COMPONENTS =
+  commentVariablesData.agnostic20["use agnostic components"].directive.value;
+export const USE_SERVER_FUNCTIONS =
+  commentVariablesData.agnostic20["use server functions"].directive.value;
 // and directive21
-export const USE_CLIENT_CONTEXTS = "use client contexts";
-export const USE_AGNOSTIC_CONDITIONS = "use agnostic conditions";
-export const USE_AGNOSTIC_STRATEGIES = "use agnostic strategies";
+export const USE_CLIENT_CONTEXTS =
+  commentVariablesData.directive21["use client contexts"].directive.value;
+export const USE_AGNOSTIC_CONDITIONS =
+  commentVariablesData.directive21["use agnostic conditions"].directive.value;
+export const USE_AGNOSTIC_STRATEGIES =
+  commentVariablesData.directive21["use agnostic strategies"].directive.value;
 
 // all "resolved" modules (from AIA/agnostic20 & DFA/directive21)
 // agnostic20
-export const SERVER_LOGICS_MODULE = "Server Logics Module";
-export const CLIENT_LOGICS_MODULE = "Client Logics Module";
-export const AGNOSTIC_LOGICS_MODULE = "Agnostic Logics Module";
-export const SERVER_COMPONENTS_MODULE = "Server Components Module";
-export const CLIENT_COMPONENTS_MODULE = "Client Components Module";
-export const AGNOSTIC_COMPONENTS_MODULE = "Agnostic Components Module";
-export const SERVER_FUNCTIONS_MODULE = "Server Functions Module";
+export const SERVER_LOGICS_MODULE =
+  commentVariablesData.agnostic20["use server logics"].module.value;
+export const CLIENT_LOGICS_MODULE =
+  commentVariablesData.agnostic20["use client logics"].module.value;
+export const AGNOSTIC_LOGICS_MODULE =
+  commentVariablesData.agnostic20["use agnostic logics"].module.value;
+export const SERVER_COMPONENTS_MODULE =
+  commentVariablesData.agnostic20["use server components"].module.value;
+export const CLIENT_COMPONENTS_MODULE =
+  commentVariablesData.agnostic20["use client components"].module.value;
+export const AGNOSTIC_COMPONENTS_MODULE =
+  commentVariablesData.agnostic20["use agnostic components"].module.value;
+export const SERVER_FUNCTIONS_MODULE =
+  commentVariablesData.agnostic20["use server functions"].module.value;
 // and directive21
-export const CLIENT_CONTEXTS_MODULE = "Client Contexts Module";
-export const AGNOSTIC_CONDITIONS_MODULE = "Agnostic Conditions Module";
-export const AGNOSTIC_STRATEGIES_MODULE = "Agnostic Strategies Module";
+export const CLIENT_CONTEXTS_MODULE =
+  commentVariablesData.directive21["use client contexts"].moduleSimple.value;
+export const AGNOSTIC_CONDITIONS_MODULE =
+  commentVariablesData.directive21["use agnostic conditions"].moduleSimple
+    .value;
+export const AGNOSTIC_STRATEGIES_MODULE =
+  commentVariablesData.directive21["use agnostic strategies"].moduleSimple
+    .value;
 
 // all mappings of "resolved" directives with "resolved" modules
 // agnostic20

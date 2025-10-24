@@ -14,7 +14,6 @@ import {
 
 import { makeIntroForSpecificViolationMessage } from "../../../_commons/utilities/helpers.js";
 
-// import { resolvedConfigData } from "../../../../jscomments/_commons/constants/bases.js";
 import { commentVariablesData } from "../../../../jscomments/_commons/constants/data.js";
 
 /**
@@ -74,15 +73,24 @@ export const commentedDirectives_extensionRules = Object.freeze({
 });
 
 // commented strategies
-export const AT_SERVER_LOGICS = "@serverLogics";
-export const AT_CLIENT_LOGICS = "@clientLogics";
-export const AT_AGNOSTIC_LOGICS = "@agnosticLogics";
-export const AT_SERVER_COMPONENTS = "@serverComponents";
-export const AT_CLIENT_COMPONENTS = "@clientComponents";
-export const AT_AGNOSTIC_COMPONENTS = "@agnosticComponents";
-export const AT_SERVER_FUNCTIONS = "@serverFunctions";
-export const AT_CLIENT_CONTEXTS = "@clientContexts";
-export const AT_AGNOSTIC_CONDITIONS = "@agnosticConditions";
+export const AT_SERVER_LOGICS =
+  commentVariablesData.directive21["use server logics"].atStrategy.value;
+export const AT_CLIENT_LOGICS =
+  commentVariablesData.directive21["use client logics"].atStrategy.value;
+export const AT_AGNOSTIC_LOGICS =
+  commentVariablesData.directive21["use agnostic logics"].atStrategy.value;
+export const AT_SERVER_COMPONENTS =
+  commentVariablesData.directive21["use server components"].atStrategy.value;
+export const AT_CLIENT_COMPONENTS =
+  commentVariablesData.directive21["use client components"].atStrategy.value;
+export const AT_AGNOSTIC_COMPONENTS =
+  commentVariablesData.directive21["use agnostic components"].atStrategy.value;
+export const AT_SERVER_FUNCTIONS =
+  commentVariablesData.directive21["use server functions"].atStrategy.value;
+export const AT_CLIENT_CONTEXTS =
+  commentVariablesData.directive21["use client contexts"].atStrategy.value;
+export const AT_AGNOSTIC_CONDITIONS =
+  commentVariablesData.directive21["use agnostic conditions"].atStrategy.value;
 
 // commented strategies array
 /** @type {CommentedStrategies} */
@@ -140,7 +148,8 @@ export const commentedDirectives_verificationReports = Object.freeze({
   [USE_SERVER_FUNCTIONS]: `${MODULES_MARKED_WITH_THE_} "${USE_SERVER_FUNCTIONS}" ${_DIRECTIVE_MUST_HAVE_A_NON_JSX_FILE_EXTENSION}.`,
   [USE_CLIENT_CONTEXTS]: `${MODULES_MARKED_WITH_THE_} "${USE_CLIENT_CONTEXTS}" ${_DIRECTIVE_MUST_HAVE_A_JSX_FILE_EXTENSION}.`,
   [USE_AGNOSTIC_CONDITIONS]: `${MODULES_MARKED_WITH_THE_} "${USE_AGNOSTIC_CONDITIONS}" ${_DIRECTIVE_MUST_HAVE_A_JSX_FILE_EXTENSION}.`,
-  [USE_AGNOSTIC_STRATEGIES]: `${MODULES_MARKED_WITH_THE_} "${USE_AGNOSTIC_STRATEGIES}" directive are free to have the file extension of their choosing. (This is not a problem and should never surface.)`,
+  // [USE_AGNOSTIC_STRATEGIES]: `${MODULES_MARKED_WITH_THE_} "${USE_AGNOSTIC_STRATEGIES}" directive are free to have the file extension of their choosing. (This is not a problem and should never surface.)`,
+  [USE_AGNOSTIC_STRATEGIES]: `${MODULES_MARKED_WITH_THE_} "${USE_AGNOSTIC_STRATEGIES}" ${_DIRECTIVE_MUST_HAVE_A_JSX_FILE_EXTENSION}.`,
 });
 
 /* commentedDirectives_blockedImports */

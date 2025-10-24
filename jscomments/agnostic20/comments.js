@@ -8,6 +8,8 @@ import {
   agnosticComponentsComments,
 } from "./modules-comments.js";
 
+// Notice: The Comment Variables config and its directly related imports are to be the only place in the code where variables are defined manually, such as `"use server logics"` as a key below. Then, within the code, string variables can be made from values of the config's .mts file in JS/TS (or from its JSON in other languages given how universal JSON is as a notation), so that the text variables in comments and text variables in-code are entirely in sync.
+
 export const agnostic20Comments = Object.freeze({
   "use server logics": serverLogicsComments,
   "use server components": serverComponentsComments,
