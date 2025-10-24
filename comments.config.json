@@ -1210,6 +1210,16 @@
         "value": "...Importing a Server Logics Module by a folder.",
         "key": "AGNOSTIC20#USE_SERVER_LOGICS#IMPORTINGBYAFOLDER",
         "placeholder": "$COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#IMPORTINGBYAFOLDER"
+      },
+      "directive": {
+        "value": "use server logics",
+        "key": "AGNOSTIC20#USE_SERVER_LOGICS#DIRECTIVE",
+        "placeholder": "$COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#DIRECTIVE"
+      },
+      "module": {
+        "value": "Server Logics Module",
+        "key": "AGNOSTIC20#USE_SERVER_LOGICS#MODULE",
+        "placeholder": "$COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#MODULE"
       }
     },
     "use server components": {

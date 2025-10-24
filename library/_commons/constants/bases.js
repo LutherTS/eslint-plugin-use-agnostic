@@ -1,5 +1,7 @@
 import tseslint from "typescript-eslint";
 
+import { commentVariablesData } from "../../../jscomments/_commons/constants/data.js";
+
 /**
  * @typedef {import('../../../types/_commons/typedefs').Extensions} Extensions
  * @typedef {import('../../../types/_commons/typedefs').LanguageOptions} LanguageOptions
@@ -53,7 +55,8 @@ export const exportNotStrategized =
 // - AIA: Agnostic-Included Architecture (agnostic20)
 // - DFA: Directive-First Architecture (directive21)
 // agnostic20
-export const USE_SERVER_LOGICS = "use server logics";
+export const USE_SERVER_LOGICS =
+  commentVariablesData.agnostic20["use server logics"].directive.value;
 export const USE_CLIENT_LOGICS = "use client logics";
 export const USE_AGNOSTIC_LOGICS = "use agnostic logics";
 export const USE_SERVER_COMPONENTS = "use server components";
@@ -67,7 +70,8 @@ export const USE_AGNOSTIC_STRATEGIES = "use agnostic strategies";
 
 // all "resolved" modules (from AIA/agnostic20 & DFA/directive21)
 // agnostic20
-export const SERVER_LOGICS_MODULE = "Server Logics Module";
+export const SERVER_LOGICS_MODULE =
+  commentVariablesData.agnostic20["use server logics"].module.value;
 export const CLIENT_LOGICS_MODULE = "Client Logics Module";
 export const AGNOSTIC_LOGICS_MODULE = "Agnostic Logics Module";
 export const SERVER_COMPONENTS_MODULE = "Server Components Module";

@@ -1,3 +1,5 @@
+// Notice: So eventually the only place where you're going to manually write your text variables will eventually be in Comment Variables, because by doing so you ensure that your text variables are not only variables inside of your code, but variables inside of your comments too, thanks to Comment Variables.
+
 export const serverLogicsComments = Object.freeze({
   "use server logics":
     /* valid */ "$COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#KINDS $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#CANCOMPOSEONEANOTHER" /* $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_SERVER_LOGICS */,
@@ -24,6 +26,10 @@ export const serverLogicsComments = Object.freeze({
     "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTINGA $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#KINDS $COMMENT#TESTS#FORCOMPOSEDVARIABLES#MODULE $COMMENT#TESTS#FORCOMPOSEDVARIABLES#WITHEXTENSIONPARENTHESES" /* $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#IMPORTINGWITHEXTENSION */,
   importingByAFolder:
     "$COMMENT#TESTS#FORCOMPOSEDVARIABLES#IMPORTINGA $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#KINDS $COMMENT#TESTS#FORCOMPOSEDVARIABLES#MODULE $COMMENT#TESTS#FORCOMPOSEDVARIABLES#BYFOLDER" /* $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#IMPORTINGBYAFOLDER */,
+  directive:
+    "use server logics" /* $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#DIRECTIVE */,
+  module:
+    "$COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#KINDS $COMMENT#TESTS#FORCOMPOSEDVARIABLES#MODULE" /* $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#MODULE */,
 });
 
 export const serverComponentsComments = Object.freeze({
