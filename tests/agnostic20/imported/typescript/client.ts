@@ -1,5 +1,5 @@
 "use client";
-// $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#THATSAMODULE
+// That's a Client Logics Module.
 
 const object: {} = {};
 
