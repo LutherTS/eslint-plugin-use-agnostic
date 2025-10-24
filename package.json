@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-use-agnostic",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "Highlights problematic server-client imports in projects made with the Fullstack React Architecture.",
   "keywords": [
     "eslint",
@@ -24,7 +24,8 @@
     "types/index.d.ts",
     "jscomments",
     "comments.config.js",
-    "comments.config.json"
+    "comments.config.json",
+    "comments.config.mjs"
   ],
   "exports": {
     ".": {
