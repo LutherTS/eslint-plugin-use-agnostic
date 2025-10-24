@@ -14,7 +14,8 @@ import {
 
 import { makeIntroForSpecificViolationMessage } from "../../../_commons/utilities/helpers.js";
 
-import { resolvedConfigData } from "../../../../jscomments/_commons/constants/bases.js";
+// import { resolvedConfigData } from "../../../../jscomments/_commons/constants/bases.js";
+import { commentVariablesData } from "../../../../jscomments/_commons/constants/data.js";
 
 /**
  * @typedef {import('../../../../types/directive21/_commons/typedefs.js').CommentedDirective} CommentedDirective
@@ -162,9 +163,9 @@ export const makeBlockedImport = (
       currentFileCommentedDirective,
       importedFileCommentedDirective
     )} ${
-      resolvedConfigData[directive21ConfigName][currentFileCommentedDirective][
-        importedFileCommentedDirective
-      ].value
+      commentVariablesData[directive21ConfigName][
+        currentFileCommentedDirective
+      ][importedFileCommentedDirective].value
     }`,
   });
 };
