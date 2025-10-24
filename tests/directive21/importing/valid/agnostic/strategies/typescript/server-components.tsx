@@ -1,62 +1,62 @@
 // "use agnostic strategies"
 
-// ...Importing a Lineal Server Components Module.
+// $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#IMPORTINGAMODULE
 import serverComponents from "../../../../../imported/typescript/server-components";
-// with extension
+// $COMMENT#TESTS#WITHEXTENSION
 import serverComponentsExtension from "../../../../../imported/typescript/server-components.tsx";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import serverComponentsAlias from "@/tests/directive21/imported/typescript/server-components";
-// with extension
+// $COMMENT#TESTS#WITHEXTENSION
 import serverComponentsAliasExtension from "@/tests/directive21/imported/typescript/server-components.tsx";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import serverComponentsBaseUrl from "tests/directive21/imported/typescript/server-components";
-// with extension
+// $COMMENT#TESTS#WITHEXTENSION
 import serverComponentsBaseUrlExtension from "tests/directive21/imported/typescript/server-components.tsx";
 
-// ...Importing a Lineal Server Components Module by a folder.
+// $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#IMPORTINGBYAFOLDER
 import serverComponentsFolder from "../../../../../imported/typescript/server-components-tsx";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import serverComponentsFolderAlias from "@/tests/directive21/imported/typescript/server-components-tsx";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import serverComponentsFolderBaseUrl from "tests/directive21/imported/typescript/server-components-tsx";
 
-// ...Importing Lineal Server Components via Special Agnostic Strategy.
+// $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#IMPORTINGVIASTRATEGY
 import {
-  /* @serverComponents */ serverComponentsStrategized,
+  /* $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#ATSTRATEGY */ serverComponentsStrategized,
 } from "../../../../../imported/typescript/agnostic-strategies";
-// with extension
+// $COMMENT#TESTS#WITHEXTENSION
 import {
-  /* @serverComponents */ serverComponentsStrategized as serverComponentsStrategizedExtension,
+  /* $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#ATSTRATEGY */ serverComponentsStrategized as serverComponentsStrategizedExtension,
 } from "../../../../../imported/typescript/agnostic-strategies.tsx";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import {
-  /* @serverComponents */ serverComponentsStrategized as serverComponentsStrategizedAlias,
+  /* $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#ATSTRATEGY */ serverComponentsStrategized as serverComponentsStrategizedAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies";
-// with extension
+// $COMMENT#TESTS#WITHEXTENSION
 import {
-  /* @serverComponents */ serverComponentsStrategized as serverComponentsStrategizedAliasExtension,
+  /* $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#ATSTRATEGY */ serverComponentsStrategized as serverComponentsStrategizedAliasExtension,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies.tsx";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import {
-  /* @serverComponents */ serverComponentsStrategized as serverComponentsStrategizedBaseUrl,
+  /* $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#ATSTRATEGY */ serverComponentsStrategized as serverComponentsStrategizedBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies";
-// with extension
+// $COMMENT#TESTS#WITHEXTENSION
 import {
-  /* @serverComponents */ serverComponentsStrategized as serverComponentsStrategizedBaseUrlExtension,
+  /* $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#ATSTRATEGY */ serverComponentsStrategized as serverComponentsStrategizedBaseUrlExtension,
 } from "tests/directive21/imported/typescript/agnostic-strategies.tsx";
 
-// ...Importing Lineal Server Components via Special Agnostic Strategy by a folder.
+// $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#IMPORTINGVIASTRATEGYBYAFOLDER
 import {
-  /* @serverComponents */ serverComponentsStrategized as serverComponentsStrategizedFolder,
+  /* $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#ATSTRATEGY */ serverComponentsStrategized as serverComponentsStrategizedFolder,
 } from "../../../../../imported/typescript/agnostic-strategies-tsx";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import {
-  /* @serverComponents */ serverComponentsStrategized as serverComponentsStrategizedFolderAlias,
+  /* $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#ATSTRATEGY */ serverComponentsStrategized as serverComponentsStrategizedFolderAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies-tsx";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import {
-  /* @serverComponents */ serverComponentsStrategized as serverComponentsStrategizedFolderBaseUrl,
+  /* $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#ATSTRATEGY */ serverComponentsStrategized as serverComponentsStrategizedFolderBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
-// Valid.
-// (Special) Agnostic Strategies Modules can import all known modules, except themselves since they cannot be imported as they are, only as and via Strategies. (Since Agnostic Strategies Modules cannot be imported as they are, there is no such things as a `'use agnostic strategies'` importFileCommentedDirective.)
+// $COMMENT#TESTS#VALID
+// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#VALID

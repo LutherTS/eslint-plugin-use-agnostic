@@ -1,20 +1,20 @@
 // "use agnostic logics"
 
-// ...Importing a Lineal Agnostic Components Module.
+// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#IMPORTINGAMODULE
 import agnosticComponents from "../../../../../imported/javascript/agnostic-components.jsx";
 
-// ...Importing a Lineal Agnostic Components Module by a folder.
+// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#IMPORTINGBYAFOLDER
 import agnosticComponentsFolder from "../../../../../imported/javascript/agnostic-components-jsx";
 
-// ...Importing Lineal Agnostic Components via Special Agnostic Strategy.
+// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#IMPORTINGVIASTRATEGY
 import {
-  /* @agnosticComponents */ agnosticComponentsStrategized,
+  /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#ATSTRATEGY */ agnosticComponentsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// ...Importing Lineal Agnostic Components via Special Agnostic Strategy by a folder.
+// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#IMPORTINGVIASTRATEGYBYAFOLDER
 import {
-  /* @agnosticComponents */ agnosticLogicsStrategizedFolder,
+  /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#ATSTRATEGY */ agnosticLogicsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// Valid.
-// Lineal Agnostic Components can be composed with any Prime Environment Logics agnostically, as long as the Prime Environment Logics Module, by convention, does not export React components.
+// $COMMENT#TESTS#VALID
+// $COMMENT#DIRECTIVE21#FORALIASVARIABLES#AGNOSTICCOMPONENTSCANANY

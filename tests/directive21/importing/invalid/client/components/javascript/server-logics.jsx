@@ -1,20 +1,20 @@
 // "use client components"
 
-// ...Importing a Prime Server Logics Module.
+// $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#IMPORTINGAMODULE
 import serverLogics from "../../../../../imported/javascript/server-logics.js";
 
-// ...Importing a Prime Server Logics Module by a folder.
+// $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#IMPORTINGBYAFOLDER
 import serverLogicsFolder from "../../../../../imported/javascript/server-logics-js";
 
-// ...Importing Prime Server Logics via Special Agnostic Strategy.
+// $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#IMPORTINGVIASTRATEGY
 import {
-  /* @serverLogics */ serverLogicsStrategized,
+  /* $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#ATSTRATEGY */ serverLogicsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// ...Importing Prime Server Logics via Special Agnostic Strategy by a folder.
+// $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#IMPORTINGVIASTRATEGYBYAFOLDER
 import {
-  /* @serverLogics */ serverLogicsStrategizedFolder,
+  /* $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#ATSTRATEGY */ serverLogicsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// Invalid.
-// Prime Server Logics should never leak to the client.
+// $COMMENT#TESTS#INVALID
+// $COMMENT#DIRECTIVE21#FORALIASVARIABLES#SERVERNEVERCLIENT
