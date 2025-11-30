@@ -8,12 +8,12 @@ import agnosticConditionsFolder from "../../../../../imported/javascript/agnosti
 
 // $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#IMPORTINGVIASTRATEGY
 import {
-  /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#ATSTRATEGY */ agnosticConditionsStrategized,
+  /* @agnosticConditions */ agnosticConditionsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
 // $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#IMPORTINGVIASTRATEGYBYAFOLDER
 import {
-  /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#ATSTRATEGY */ agnosticConditionsStrategizedFolder,
+  /* @agnosticConditions */ agnosticConditionsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
 // $COMMENT#TESTS#INVALID

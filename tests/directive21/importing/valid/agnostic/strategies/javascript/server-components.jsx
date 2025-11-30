@@ -8,12 +8,12 @@ import serverComponentsFolder from "../../../../../imported/javascript/server-co
 
 // $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#IMPORTINGVIASTRATEGY
 import {
-  /* $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#ATSTRATEGY */ serverComponentsStrategized,
+  /* @serverComponents */ serverComponentsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
 // $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#IMPORTINGVIASTRATEGYBYAFOLDER
 import {
-  /* $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#ATSTRATEGY */ serverLogicsStrategizedFolder,
+  /* @serverComponents */ serverLogicsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
 // $COMMENT#TESTS#VALID

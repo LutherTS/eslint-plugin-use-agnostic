@@ -22,40 +22,40 @@ import serverComponentsFolderBaseUrl from "tests/directive21/imported/typescript
 
 // $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#IMPORTINGVIASTRATEGY
 import {
-  /* $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#ATSTRATEGY */ serverComponentsStrategized,
+  /* @serverComponents */ serverComponentsStrategized,
 } from "../../../../../imported/typescript/agnostic-strategies";
 // $COMMENT#TESTS#WITHEXTENSION
 import {
-  /* $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#ATSTRATEGY */ serverComponentsStrategized as serverComponentsStrategizedExtension,
+  /* @serverComponents */ serverComponentsStrategized as serverComponentsStrategizedExtension,
 } from "../../../../../imported/typescript/agnostic-strategies.tsx";
 // $COMMENT#TESTS#VIAALIAS
 import {
-  /* $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#ATSTRATEGY */ serverComponentsStrategized as serverComponentsStrategizedAlias,
+  /* @serverComponents */ serverComponentsStrategized as serverComponentsStrategizedAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies";
 // $COMMENT#TESTS#WITHEXTENSION
 import {
-  /* $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#ATSTRATEGY */ serverComponentsStrategized as serverComponentsStrategizedAliasExtension,
+  /* @serverComponents */ serverComponentsStrategized as serverComponentsStrategizedAliasExtension,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies.tsx";
 // $COMMENT#TESTS#VIABASEURL
 import {
-  /* $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#ATSTRATEGY */ serverComponentsStrategized as serverComponentsStrategizedBaseUrl,
+  /* @serverComponents */ serverComponentsStrategized as serverComponentsStrategizedBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies";
 // $COMMENT#TESTS#WITHEXTENSION
 import {
-  /* $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#ATSTRATEGY */ serverComponentsStrategized as serverComponentsStrategizedBaseUrlExtension,
+  /* @serverComponents */ serverComponentsStrategized as serverComponentsStrategizedBaseUrlExtension,
 } from "tests/directive21/imported/typescript/agnostic-strategies.tsx";
 
 // $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#IMPORTINGVIASTRATEGYBYAFOLDER
 import {
-  /* $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#ATSTRATEGY */ serverComponentsStrategized as serverComponentsStrategizedFolder,
+  /* @serverComponents */ serverComponentsStrategized as serverComponentsStrategizedFolder,
 } from "../../../../../imported/typescript/agnostic-strategies-tsx";
 // $COMMENT#TESTS#VIAALIAS
 import {
-  /* $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#ATSTRATEGY */ serverComponentsStrategized as serverComponentsStrategizedFolderAlias,
+  /* @serverComponents */ serverComponentsStrategized as serverComponentsStrategizedFolderAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies-tsx";
 // $COMMENT#TESTS#VIABASEURL
 import {
-  /* $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#ATSTRATEGY */ serverComponentsStrategized as serverComponentsStrategizedFolderBaseUrl,
+  /* @serverComponents */ serverComponentsStrategized as serverComponentsStrategizedFolderBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
 // $COMMENT#TESTS#INVALID

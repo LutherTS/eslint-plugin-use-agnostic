@@ -1,20 +1,20 @@
 // "use agnostic strategies"
 
-export /* $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#ATSTRATEGY */ const serverLogicsStrategized =
+export /* @serverLogics */ const serverLogicsStrategized =
   "serverLogicsStrategized";
-export /* $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#ATSTRATEGY */ const clientLogicsStrategized =
+export /* @clientLogics */ const clientLogicsStrategized =
   "clientLogicsStrategized";
-export /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#ATSTRATEGY */ const agnosticLogicsStrategized =
+export /* @agnosticLogics */ const agnosticLogicsStrategized =
   "agnosticLogicsStrategized";
-export /* $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#ATSTRATEGY */ const serverComponentsStrategized =
+export /* @serverComponents */ const serverComponentsStrategized =
   "serverComponentsStrategized";
-export /* $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#ATSTRATEGY */ const clientComponentsStrategized =
+export /* @clientComponents */ const clientComponentsStrategized =
   "clientComponentsStrategized";
-export /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#ATSTRATEGY */ const agnosticComponentsStrategized =
+export /* @agnosticComponents */ const agnosticComponentsStrategized =
   "agnosticComponentsStrategized";
-export /* $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#ATSTRATEGY */ const serverFunctionsStrategized =
+export /* @serverFunctions */ const serverFunctionsStrategized =
   "serverFunctionsStrategized";
-export /* $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#ATSTRATEGY */ const clientContextsStrategized =
+export /* @clientContexts */ const clientContextsStrategized =
   "clientContextsStrategized";
-export /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#ATSTRATEGY */ const agnosticConditionsStrategized =
+export /* @agnosticConditions */ const agnosticConditionsStrategized =
   "agnosticConditionsStrategized";

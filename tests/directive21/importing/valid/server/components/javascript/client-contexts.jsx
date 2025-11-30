@@ -8,12 +8,12 @@ import clientContextsFolder from "../../../../../imported/javascript/client-cont
 
 // $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#IMPORTINGVIASTRATEGY
 import {
-  /* $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#ATSTRATEGY */ clientContextsStrategized,
+  /* @clientContexts */ clientContextsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
 // $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#IMPORTINGVIASTRATEGYBYAFOLDER
 import {
-  /* $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#ATSTRATEGY */ clientContextsStrategizedFolder,
+  /* @clientContexts */ clientContextsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
 // $COMMENT#TESTS#VALID

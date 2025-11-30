@@ -139,7 +139,7 @@ const importedFileFlow = (context, node) => {
   }
 
   /* GETTING THE CORRECT DIRECTIVE INTERPRETATION OF STRATEGY FOR AGNOSTIC STRATEGIES MODULES IMPORTS. 
-  The Directive-First Architecture does not check whether the export and import Strategies are the same at this time, meaning an $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#ATSTRATEGY strategy could be wrongly imported and interpreted as an $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#ATSTRATEGY strategy.
+  The Directive-First Architecture does not check whether the export and import Strategies are the same at this time, meaning an @clientLogics strategy could be wrongly imported and interpreted as an @serverLogics strategy.
   
   After a short attempt, the feature to address this (crossingStrategies) is currently canceled, mainly due to the exponential complexity provided by the different ways in which exports can be made in JavaScript.
   

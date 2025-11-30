@@ -22,40 +22,40 @@ import agnosticConditionsFolderBaseUrl from "tests/directive21/imported/typescri
 
 // $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#IMPORTINGVIASTRATEGY
 import {
-  /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#ATSTRATEGY */ agnosticConditionsStrategized,
+  /* @agnosticConditions */ agnosticConditionsStrategized,
 } from "../../../../../imported/typescript/agnostic-strategies";
 // $COMMENT#TESTS#WITHEXTENSION
 import {
-  /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#ATSTRATEGY */ agnosticConditionsStrategized as agnosticConditionsStrategizedExtension,
+  /* @agnosticConditions */ agnosticConditionsStrategized as agnosticConditionsStrategizedExtension,
 } from "../../../../../imported/typescript/agnostic-strategies.tsx";
 // $COMMENT#TESTS#VIAALIAS
 import {
-  /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#ATSTRATEGY */ agnosticConditionsStrategized as agnosticConditionsStrategizedAlias,
+  /* @agnosticConditions */ agnosticConditionsStrategized as agnosticConditionsStrategizedAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies";
 // $COMMENT#TESTS#WITHEXTENSION
 import {
-  /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#ATSTRATEGY */ agnosticConditionsStrategized as agnosticConditionsStrategizedAliasExtension,
+  /* @agnosticConditions */ agnosticConditionsStrategized as agnosticConditionsStrategizedAliasExtension,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies.tsx";
 // $COMMENT#TESTS#VIABASEURL
 import {
-  /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#ATSTRATEGY */ agnosticConditionsStrategized as agnosticConditionsStrategizedBaseUrl,
+  /* @agnosticConditions */ agnosticConditionsStrategized as agnosticConditionsStrategizedBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies";
 // $COMMENT#TESTS#WITHEXTENSION
 import {
-  /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#ATSTRATEGY */ agnosticConditionsStrategized as agnosticConditionsStrategizedBaseUrlExtension,
+  /* @agnosticConditions */ agnosticConditionsStrategized as agnosticConditionsStrategizedBaseUrlExtension,
 } from "tests/directive21/imported/typescript/agnostic-strategies.tsx";
 
 // $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#IMPORTINGVIASTRATEGYBYAFOLDER
 import {
-  /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#ATSTRATEGY */ agnosticConditionsStrategized as agnosticConditionsStrategizedFolder,
+  /* @agnosticConditions */ agnosticConditionsStrategized as agnosticConditionsStrategizedFolder,
 } from "../../../../../imported/typescript/agnostic-strategies-tsx";
 // $COMMENT#TESTS#VIAALIAS
 import {
-  /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#ATSTRATEGY */ agnosticConditionsStrategized as agnosticConditionsStrategizedFolderAlias,
+  /* @agnosticConditions */ agnosticConditionsStrategized as agnosticConditionsStrategizedFolderAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies-tsx";
 // $COMMENT#TESTS#VIABASEURL
 import {
-  /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#ATSTRATEGY */ agnosticConditionsStrategized as agnosticConditionsStrategizedFolderBaseUrl,
+  /* @agnosticConditions */ agnosticConditionsStrategized as agnosticConditionsStrategizedFolderBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
 // $COMMENT#TESTS#VALID
