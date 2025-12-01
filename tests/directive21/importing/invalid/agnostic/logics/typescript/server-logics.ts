@@ -1,62 +1,62 @@
 // "use agnostic logics"
 
-// $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#IMPORTINGAMODULE
+// ...Importing a Prime Server Logics Module.
 import serverLogics from "../../../../../imported/typescript/server-logics";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import serverLogicsExtension from "../../../../../imported/typescript/server-logics.ts";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import serverLogicsAlias from "@/tests/directive21/imported/typescript/server-logics";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import serverLogicsAliasExtension from "@/tests/directive21/imported/typescript/server-logics.ts";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import serverLogicsBaseUrl from "tests/directive21/imported/typescript/server-logics";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import serverLogicsBaseUrlExtension from "tests/directive21/imported/typescript/server-logics.ts";
 
-// $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#IMPORTINGBYAFOLDER
+// ...Importing a Prime Server Logics Module by a folder.
 import serverLogicsFolder from "../../../../../imported/typescript/server-logics-ts";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import serverLogicsFolderAlias from "@/tests/directive21/imported/typescript/server-logics-ts";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import serverLogicsFolderBaseUrl from "tests/directive21/imported/typescript/server-logics-ts";
 
-// $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#IMPORTINGVIASTRATEGY
+// ...Importing Prime Server Logics via Special Agnostic Strategy.
 import {
   /* @serverLogics */ serverLogicsStrategized,
 } from "../../../../../imported/typescript/agnostic-strategies";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import {
   /* @serverLogics */ serverLogicsStrategized as serverLogicsStrategizedExtension,
 } from "../../../../../imported/typescript/agnostic-strategies.tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import {
   /* @serverLogics */ serverLogicsStrategized as serverLogicsStrategizedAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import {
   /* @serverLogics */ serverLogicsStrategized as serverLogicsStrategizedAliasExtension,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies.tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import {
   /* @serverLogics */ serverLogicsStrategized as serverLogicsStrategizedBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import {
   /* @serverLogics */ serverLogicsStrategized as serverLogicsStrategizedBaseUrlExtension,
 } from "tests/directive21/imported/typescript/agnostic-strategies.tsx";
 
-// $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#IMPORTINGVIASTRATEGYBYAFOLDER
+// ...Importing Prime Server Logics via Special Agnostic Strategy by a folder.
 import {
   /* @serverLogics */ serverLogicsStrategized as serverLogicsStrategizedFolder,
 } from "../../../../../imported/typescript/agnostic-strategies-tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import {
   /* @serverLogics */ serverLogicsStrategized as serverLogicsStrategizedFolderAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies-tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import {
   /* @serverLogics */ serverLogicsStrategized as serverLogicsStrategizedFolderBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
-// $COMMENT#TESTS#INVALID
-// $COMMENT#DIRECTIVE21#FORALIASVARIABLES#SERVERLOGICSCANTBOTH
+// Invalid.
+// Prime Server Logics cannot run on both the server and the client.
