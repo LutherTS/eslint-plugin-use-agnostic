@@ -67,7 +67,7 @@ export const commentedDirectives_extensionRules = Object.freeze({
   [USE_SERVER_FUNCTIONS]: false,
   [USE_CLIENT_CONTEXTS]: true,
   [USE_AGNOSTIC_CONDITIONS]: true,
-  // CHANGE: $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#KINDSSIMPLE Modules must now be JSX modules (ending in `x`) in order to conform with eXtra JSX, and moreover to assert their capacity to adapt with both logics and components.
+  // CHANGE: Agnostic Strategies Modules must now be JSX modules (ending in `x`) in order to conform with eXtra JSX, and moreover to assert their capacity to adapt with both logics and components.
   // [USE_AGNOSTIC_STRATEGIES]: null, // Any extension allowed
   [USE_AGNOSTIC_STRATEGIES]: true,
 });

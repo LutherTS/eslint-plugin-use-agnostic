@@ -144,7 +144,7 @@ const importedFileFlow = (context, node) => {
   After a short attempt, the feature to address this (crossingStrategies) is currently canceled, mainly due to the exponential complexity provided by the different ways in which exports can be made in JavaScript.
   
   (Consequently, details below are currently at the stage of wishful thinking.)
-  Strategy exports are planned to be linting in the future within their own $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#KINDSSIMPLE Modules to ensure they respect import rules within their own scopes. It may also become possible to check whether the export and import Strategies are the same in the future when identifiers are defined and the same, especially for components modules where a convention could be for all non-type exports to be named and PascalCase. */
+  Strategy exports are planned to be linting in the future within their own Agnostic Strategies Modules to ensure they respect import rules within their own scopes. It may also become possible to check whether the export and import Strategies are the same in the future when identifiers are defined and the same, especially for components modules where a convention could be for all non-type exports to be named and PascalCase. */
 
   if (importedFileCommentedDirective === USE_AGNOSTIC_STRATEGIES) {
     const importingFileCommentedDirective = getStrategizedDirective(
@@ -185,7 +185,7 @@ export const importsFlow = (context, node, currentFileCommentedDirective) => {
   if (result.skip) return;
   const { importedFileCommentedDirective } = result;
 
-  // returns early is the current file is an $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#MODULESIMPLE
+  // returns early is the current file is an Agnostic Strategies Module
   if (currentFileCommentedDirective === USE_AGNOSTIC_STRATEGIES) return;
 
   if (

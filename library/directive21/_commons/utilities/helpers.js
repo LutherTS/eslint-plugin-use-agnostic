@@ -201,7 +201,7 @@ export const getVerifiedCommentedDirective = (directive, extension) => {
 
   if (rule === true && isExtensionJSX) return directive; // requires JSX extension
   if (rule === false && !isExtensionJSX) return directive; // forbids JSX extension
-  // CHANGE: no longer applies, $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#KINDSSIMPLE Modules are now required to ends in `x`.
+  // CHANGE: no longer applies, Agnostic Strategies Modules are now required to ends in `x`.
   // if (rule === null) return directive; // no extension constraint, specifically for "use agnostic strategies"
 
   return null; // verification failed
@@ -253,7 +253,7 @@ export const addressDirectiveIfAgnosticStrategies = (
   node,
   currentFileCommentedDirective
 ) => {
-  // ignores if not addressing an $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#MODULESIMPLE
+  // ignores if not addressing an Agnostic Strategies Module
   if (currentFileCommentedDirective !== USE_AGNOSTIC_STRATEGIES)
     return currentFileCommentedDirective;
 
