@@ -31,8 +31,9 @@ const composedVariablesExclusives = [
   "DIRECTIVE21#USE_SERVER_FUNCTIONS#ATSTRATEGY",
   "DIRECTIVE21#USE_CLIENT_CONTEXTS#ATSTRATEGY",
   "DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#ATSTRATEGY",
-  // "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#MODULESIMPLE", // ERROR. The "composedVariablesExclusives" key array should only include keys representing comment variables, but "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#MODULESIMPLE" represents a composed variable. Which defeats the purpose of "composedVariablesExclusives" since composed variables cannot be made of other composed variables. // Something to perhaps modify.
-  // "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#KINDSSIMPLE",
+  "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#KINDSSIMPLE",
+  // actual composed variables below
+  "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#MODULESIMPLE",
 ];
 
 const config = {
