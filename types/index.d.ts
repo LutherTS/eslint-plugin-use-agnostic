@@ -18,6 +18,22 @@ export const enforceCommentedDirectivesRuleName: "enforce-commented-directives-i
 
 // NEW
 
+// JavaScript/TypeScript extensions array
+export const EXTENSIONS: readonly [
+  ".tsx",
+  ".ts",
+  ".mtsx",
+  ".mts",
+  ".ctsx",
+  ".cts",
+  ".jsx",
+  ".js",
+  ".mjsx",
+  ".mjs",
+  ".cjsx",
+  ".cjs"
+];
+
 // agnostic20
 
 // directives
