@@ -1,19 +1,19 @@
 "use server";
-// $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#THATSAMODULE
+// That's a Server Functions Module.
 
-// $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#IMPORTINGWITHEXTENSION
+// ...Importing a Server Logics Module (with extension).
 import serverLogics from "../../../../../imported/typescript/server.ts";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import serverLogicsAlias from "@/tests/agnostic20/imported/typescript/server.ts";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import serverLogicsBaseUrl from "tests/agnostic20/imported/typescript/server.ts";
 
-// $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#IMPORTINGBYAFOLDER
+// ...Importing a Server Logics Module by a folder.
 import serverLogicsFolder from "../../../../../imported/typescript/server-ts";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import serverLogicsFolderAlias from "@/tests/agnostic20/imported/typescript/server-ts";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import serverLogicsFolderBaseUrl from "tests/agnostic20/imported/typescript/server-ts";
 
-// $COMMENT#TESTS#VALID
-// $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_SERVER_LOGICS
+// Valid.
+// Server Logics, being logic from the server, can safely support Server Functions.
