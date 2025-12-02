@@ -87,15 +87,21 @@ const stripDoubleQuotes = (string) => {
  * @returns The commented directive, or lack thereof via `null`. Given the strictness of this architecture, the lack of a directive is considered a mistake. (Though rules may provide the opportunity to declare a default, and configs with preset defaults may become provided.)
  */
 export const getCommentedDirectiveFromSourceCode = (sourceCode) => {
+  // gets all comments from the source code
+  const allComments = sourceCode.getAllComments();
+
+  // returns null early if there are no comments
+  if (allComments.length === 0) return null;
+
   // gets the first comment from the source code
-  const rawFirstComment = sourceCode.getAllComments()[0];
+  const rawFirstComment = allComments[0];
 
   const firstComment =
     rawFirstComment.type === "Shebang"
       ? sourceCode.getAllComments()[1]
       : rawFirstComment;
 
-  // returns null early if there is no first comment
+  // returns null early if there is no such first comment
   if (!firstComment) return null;
 
   // returns null early if the first comment is not on one of the first three lines
