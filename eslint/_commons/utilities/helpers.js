@@ -1,10 +1,10 @@
 import { EXTENSIONS } from "../../../library/_commons/constants/bases.js";
 
 /**
- * $COMMENT#JSDOC#DEFINITIONS#MAKETESTFILES
- * @param {string} validPath $COMMENT#JSDOC#PARAMS#VALIDPATH
- * @param {string} invalidPath $COMMENT#JSDOC#PARAMS#INVALIDPATH
- * @returns $COMMENT#JSDOC#RETURNS#MAKETESTFILES
+ * Makes the paths of the files to be linted for agnostic20 and directive21.
+ * @param {string} validPath The directory for the valid paths.
+ * @param {string} invalidPath The directory for the invalid paths.
+ * @returns The paths of the files to be linted for agnostic20 and directive21.
  */
 export const makeTestFiles = (validPath, invalidPath) =>
   EXTENSIONS.map((e) => `**/*${e}`)
