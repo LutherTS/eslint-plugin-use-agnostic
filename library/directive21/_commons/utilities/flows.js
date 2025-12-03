@@ -1,6 +1,7 @@
 import path from "path";
 
 import { resolveImportingPath } from "resolve-importing-path";
+import { findUpSync } from "find-up";
 
 import {
   EXTENSIONS,
@@ -115,7 +116,9 @@ const importedFileFlow = (context, node) => {
   const resolvedImportPath = resolveImportingPath(
     path.dirname(context.filename),
     node.source.value,
-    context.cwd
+    findUpSync("tsconfig.json", {
+      cwd: path.dirname(context.filename),
+    }) ?? context.cwd
   );
 
   // does not operate on paths it did not resolve
