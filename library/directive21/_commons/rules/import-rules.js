@@ -57,6 +57,9 @@ Please include a Strategy that corresponds to the kind of module this export wou
     return {
       ImportDeclaration: (node) =>
         importsFlow(context, node, verifiedCommentedDirective),
+      // that should work
+      ImportExpression: (node) =>
+        importsFlow(context, node, verifiedCommentedDirective),
       ExportNamedDeclaration: (node) =>
         allExportsFlow(context, node, verifiedCommentedDirective),
       ExportAllDeclaration: (node) =>

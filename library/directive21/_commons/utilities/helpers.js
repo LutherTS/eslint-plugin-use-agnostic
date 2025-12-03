@@ -97,9 +97,7 @@ export const getCommentedDirectiveFromSourceCode = (sourceCode) => {
   const rawFirstComment = allComments[0];
 
   const firstComment =
-    rawFirstComment.type === "Shebang"
-      ? sourceCode.getAllComments()[1]
-      : rawFirstComment;
+    rawFirstComment.type === "Shebang" ? allComments[1] : rawFirstComment;
 
   // returns null early if there is no such first comment
   if (!firstComment) return null;

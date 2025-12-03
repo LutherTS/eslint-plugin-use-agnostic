@@ -47,6 +47,9 @@ Indeed, Server Functions Modules have no business exporting JSX. `,
     return {
       ImportDeclaration: (node) =>
         importsFlow(context, node, currentFileEffectiveDirective),
+      // that should work
+      ImportExpression: (node) =>
+        importsFlow(context, node, currentFileEffectiveDirective),
       ExportNamedDeclaration: (node) =>
         reExportsFlow(context, node, currentFileEffectiveDirective),
       ExportAllDeclaration: (node) =>
