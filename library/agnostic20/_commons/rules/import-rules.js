@@ -47,13 +47,14 @@ Indeed, Server Functions Modules have no business exporting JSX. `,
     return {
       ImportDeclaration: (node) =>
         importsFlow(context, node, currentFileEffectiveDirective),
-      // that should work
       ImportExpression: (node) =>
         importsFlow(context, node, currentFileEffectiveDirective),
       ExportNamedDeclaration: (node) =>
         reExportsFlow(context, node, currentFileEffectiveDirective),
       ExportAllDeclaration: (node) =>
         reExportsFlow(context, node, currentFileEffectiveDirective),
+      // Unlike directive21, no ExportDefaultDeclaration because ExportDefaultDeclaration don't have source. The reason they're addressed in directive21 is specifically for Agnostic Strategies.
+      // ...but removed because export default can only be
     };
   },
 };
