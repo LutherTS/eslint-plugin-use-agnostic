@@ -34,6 +34,19 @@ export const EXTENSIONS: readonly [
   ".cjs"
 ];
 
+export const commentedDirectives_commentedModules: Readonly<{
+  "use server logics": "Server Logics Module";
+  "use client logics": "Client Logics Module";
+  "use agnostic logics": "Agnostic Logics Module";
+  "use server components": "Server Components Module";
+  "use client components": "Client Components Module";
+  "use agnostic components": "Agnostic Components Module";
+  "use server functions": "Server Functions Module";
+  "use client contexts": "Client Contexts Module";
+  "use agnostic conditions": "Agnostic Conditions Module";
+  "use agnostic strategies": "Agnostic Strategies Module";
+}>;
+
 // agnostic20
 
 // directives

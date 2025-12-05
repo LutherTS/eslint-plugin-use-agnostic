@@ -115,7 +115,7 @@ const effectiveDirectives_effectiveModules = Object.freeze({
   [USE_AGNOSTIC_COMPONENTS]: AGNOSTIC_COMPONENTS_MODULE,
 });
 // and directive21
-const commentedDirectives_commentedModules = Object.freeze({
+export const commentedDirectives_commentedModules = Object.freeze({
   [USE_CLIENT_CONTEXTS]: CLIENT_CONTEXTS_MODULE,
   [USE_AGNOSTIC_CONDITIONS]: AGNOSTIC_CONDITIONS_MODULE,
   [USE_AGNOSTIC_STRATEGIES]: AGNOSTIC_STRATEGIES_MODULE,
