@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-use-agnostic",
-  "version": "1.6.6",
+  "version": "1.6.7",
   "description": "Highlights problematic server-client imports in projects made with the Fullstack React Architecture.",
   "keywords": [
     "eslint",
