@@ -136,7 +136,7 @@ const importedFileFlow = (context, node) => {
   // returns early if there is no directive or no valid directive (same, but eventually no directive could have defaults)
   if (!importedFileCommentedDirective) {
     console.warn(
-      "WARNING. The imported file, whose path has been resolved, has no directive. It is thus ignored since the report on that circumstance is available on the imported file itself."
+      `WARNING. The imported file ${resolvedImportPath}, whose path has been resolved from ${context.filename}, has no commented directive. It is thus ignored since the report on that circumstance would be available on the imported file itself.`
     ); // The decision not to report has been taken to not inflate the number of warnings.
     return skipTrue;
   }
