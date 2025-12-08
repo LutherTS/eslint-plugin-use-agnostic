@@ -9,7 +9,7 @@ _(Now powered by Comment Variables.)_
 ## Installation
 
 ```
-npm install eslint@^9.0.0 eslint-plugin-use-agnostic@latest --save-dev
+npm install eslint@^9 eslint-plugin-use-agnostic@latest --save-dev
 ```
 
 ## Setup
