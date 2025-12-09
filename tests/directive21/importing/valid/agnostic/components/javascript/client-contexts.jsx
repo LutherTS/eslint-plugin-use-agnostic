@@ -1,4 +1,5 @@
 // "use agnostic components"
+"use agnostic";
 
 // $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#IMPORTINGAMODULE
 import clientContexts from "../../../../../imported/javascript/client-contexts.jsx";

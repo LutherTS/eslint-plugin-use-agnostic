@@ -1,4 +1,5 @@
 // "use agnostic logics"
+"use agnostic";
 
 // $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#IMPORTINGAMODULE
 import serverComponents from "../../../../../imported/javascript/server-components.jsx";

@@ -1,4 +1,5 @@
 // "use server functions"
+"use server";
 
 // $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#IMPORTINGAMODULE
 import agnosticLogics from "../../../../../imported/javascript/agnostic-logics.js";

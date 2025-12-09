@@ -1,4 +1,5 @@
 // "use server functions"
+"use server";
 
 // $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#IMPORTINGAMODULE
 import serverLogics from "../../../../../imported/typescript/server-logics";

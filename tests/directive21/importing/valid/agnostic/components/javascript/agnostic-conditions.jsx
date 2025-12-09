@@ -1,4 +1,5 @@
 // "use agnostic components"
+"use agnostic";
 
 // $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#IMPORTINGAMODULE
 import agnosticConditions from "../../../../../imported/javascript/agnostic-conditions.jsx";

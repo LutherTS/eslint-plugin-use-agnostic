@@ -1,4 +1,5 @@
 // "use client logics"
+"use client";
 
 // $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#IMPORTINGAMODULE
 import clientComponents from "../../../../../imported/typescript/client-components";

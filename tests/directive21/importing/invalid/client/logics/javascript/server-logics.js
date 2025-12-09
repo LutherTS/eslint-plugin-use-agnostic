@@ -1,4 +1,5 @@
 // "use client logics"
+"use client";
 
 // $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#IMPORTINGAMODULE
 import serverLogics from "../../../../../imported/javascript/server-logics.js";

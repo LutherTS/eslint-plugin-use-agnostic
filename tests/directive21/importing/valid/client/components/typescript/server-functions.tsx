@@ -1,4 +1,5 @@
 // "use client components"
+"use client";
 
 // $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#IMPORTINGAMODULE
 import serverFunctions from "../../../../../imported/typescript/server-functions";

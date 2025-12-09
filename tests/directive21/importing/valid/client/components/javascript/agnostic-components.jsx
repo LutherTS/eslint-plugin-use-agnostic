@@ -1,4 +1,5 @@
 // "use client components"
+"use client";
 
 // $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#IMPORTINGAMODULE
 import agnosticComponents from "../../../../../imported/javascript/agnostic-components.jsx";

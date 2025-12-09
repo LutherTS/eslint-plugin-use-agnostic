@@ -1,4 +1,5 @@
 // "use agnostic logics"
+"use agnostic";
 
 // $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#IMPORTINGAMODULE
 import serverLogics from "../../../../../imported/typescript/server-logics";

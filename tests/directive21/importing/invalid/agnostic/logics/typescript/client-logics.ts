@@ -1,4 +1,5 @@
 // "use agnostic logics"
+"use agnostic";
 
 // $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#IMPORTINGAMODULE
 import clientLogics from "../../../../../imported/typescript/client-logics";

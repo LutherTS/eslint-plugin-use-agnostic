@@ -1,4 +1,5 @@
 // "use server functions"
+"use server";
 
 // $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#IMPORTINGAMODULE
 import agnosticComponents from "../../../../../imported/typescript/agnostic-components";
