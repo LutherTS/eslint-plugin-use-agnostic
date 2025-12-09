@@ -1,6 +1,6 @@
 import { getSourceCodeFromFilePath } from "get-sourcecode-from-file-path";
 
-import { exportNotStrategized } from "../../../_commons/constants/bases.js";
+import { exportNotStrategizedMessageId } from "../../../_commons/constants/bases.js";
 import {
   USE_AGNOSTIC_STRATEGIES,
   commentedDirectivesArray,
@@ -172,13 +172,13 @@ export const getCommentedDirectiveFromCurrentModule = (context) => {
  * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICCONDITIONSA
  * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICSTRATEGIESA
  * @param {string} resolvedPath $COMMENT#JSDOC#PARAMS#RESOLVEDPATH
- * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMSOURCECODE
+ * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMSOURCECODE Now also provides the obtained SourceCode object.
  */
 export const getCommentedDirectiveFromImportedModule = (resolvedPath) => {
   const sourceCode = getSourceCodeFromFilePath(resolvedPath);
   const commentedDirective = getCommentedDirectiveFromSourceCode(sourceCode);
 
-  return commentedDirective;
+  return { commentedDirective, sourceCode };
 };
 
 /* getVerifiedCommentedDirective */
@@ -266,7 +266,7 @@ export const addressDirectiveIfAgnosticStrategies = (
   if (exportStrategizedDirective === null) {
     context.report({
       node,
-      messageId: exportNotStrategized,
+      messageId: exportNotStrategizedMessageId,
     });
   }
 

@@ -7,9 +7,10 @@ import {
   EXTENSIONS,
   reExportNotSameMessageId,
   importBreaksCommentedImportRulesMessageId,
-  noCommentedDirective,
-  commentedDirectiveVerificationFailed,
-  importNotStrategized,
+  noCommentedDirectiveMessageId,
+  commentedDirectiveVerificationFailedMessageId,
+  importNotStrategizedMessageId,
+  cantChainImportAcrossEnvironmentsMessageId,
   skip,
 } from "../../../_commons/constants/bases.js";
 import {
@@ -17,9 +18,12 @@ import {
   commentedDirectives_verificationReports,
   // currentFileCommentedDirective,
   // importedFileCommentedDirective,
+  // currentFileEnvironment,
+  // importedFileEnvironment,
   commentedDirectiveMessage,
   specificViolationMessage,
   specificFailure,
+  environments_allowedChainImportEnvironments,
 } from "../constants/bases.js";
 
 import { highlightFirstLineOfCode } from "../../../_commons/utilities/helpers.js";
@@ -33,6 +37,7 @@ import {
   getStrategizedDirective,
   addressDirectiveIfAgnosticStrategies,
 } from "./helpers.js";
+import { analyzeExportsForReExports } from "./analyze-exports-re.js";
 
 /**
  * @typedef {import('../../../../types/directive21/_commons/typedefs.js').Context} Context
@@ -41,6 +46,7 @@ import {
  * @typedef {import('../../../../types/directive21/_commons/typedefs.js').ExportNamedDeclaration} ExportNamedDeclaration
  * @typedef {import('../../../../types/directive21/_commons/typedefs.js').ExportAllDeclaration} ExportAllDeclaration
  * @typedef {import('../../../../types/directive21/_commons/typedefs.js').ExportDefaultDeclaration} ExportDefaultDeclaration
+ * @typedef {import('../../../../types/directive21/_commons/typedefs.js').Environment} Environment
  */
 
 /* currentFileFlow */
@@ -74,7 +80,7 @@ export const currentFileFlow = (context) => {
   if (!commentedDirective) {
     context.report({
       loc: highlightFirstLineOfCode(context),
-      messageId: noCommentedDirective,
+      messageId: noCommentedDirectiveMessageId,
     });
     return skipTrue;
   }
@@ -89,7 +95,7 @@ export const currentFileFlow = (context) => {
   if (!verifiedCommentedDirective) {
     context.report({
       loc: highlightFirstLineOfCode(context),
-      messageId: commentedDirectiveVerificationFailed,
+      messageId: commentedDirectiveVerificationFailedMessageId,
       data: {
         [specificFailure]:
           commentedDirectives_verificationReports[commentedDirective],
@@ -107,10 +113,14 @@ export const currentFileFlow = (context) => {
  * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#IMPORTEDFILEFLOW
  * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
  * @param {ImportDeclaration} node $COMMENT#JSDOC#PARAMS#NODE
- * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#IMPORTEDFILEFLOW
+ * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#IMPORTEDFILEFLOW (And now we the added results of `analyzeExportsForReExports`.)
  */
 const importedFileFlow = (context, node) => {
-  const skipTrue = { ...skip, importedFileCommentedDirective: undefined };
+  const skipTrue = {
+    ...skip,
+    importedFileCommentedDirective: undefined,
+    analyzeExportsForReExportsResults: undefined,
+  };
 
   // finds the full path of the import
   const resolvedImportPath = resolveImportingPath(
@@ -130,8 +140,10 @@ const importedFileFlow = (context, node) => {
   if (!isImportedFileJS) return skipTrue;
 
   // GETTING THE DIRECTIVE (or lack thereof) OF THE IMPORTED FILE
-  let importedFileCommentedDirective =
-    getCommentedDirectiveFromImportedModule(resolvedImportPath);
+  let {
+    commentedDirective: importedFileCommentedDirective,
+    sourceCode: importedFileSourceCode,
+  } = getCommentedDirectiveFromImportedModule(resolvedImportPath);
 
   // returns early if there is no directive or no valid directive (same, but eventually no directive could have defaults)
   if (!importedFileCommentedDirective) {
@@ -160,7 +172,7 @@ const importedFileFlow = (context, node) => {
     if (importingFileCommentedDirective === null) {
       context.report({
         node,
-        messageId: importNotStrategized,
+        messageId: importNotStrategizedMessageId,
       });
       return skipTrue;
     }
@@ -169,7 +181,27 @@ const importedFileFlow = (context, node) => {
     importedFileCommentedDirective = importingFileCommentedDirective;
   }
 
-  return { skip: undefined, importedFileCommentedDirective };
+  // you never know
+  if (!importedFileSourceCode) {
+    console.warn(
+      `Somehow, file "${resolvedImportPath}" does not have a SourceCode object obtainable.`
+    );
+    return {
+      skip: undefined,
+      importedFileCommentedDirective,
+      analyzeExportsForReExportsResults: undefined,
+    };
+  }
+
+  const analyzeExportsForReExportsResults = analyzeExportsForReExports(
+    importedFileSourceCode
+  );
+
+  return {
+    skip: undefined,
+    importedFileCommentedDirective,
+    analyzeExportsForReExportsResults,
+  };
 };
 
 /* importsFlow */
@@ -214,6 +246,54 @@ export const importsFlow = (context, node, currentFileCommentedDirective) => {
       },
     });
   }
+
+  // new
+  if (result.analyzeExportsForReExportsResults) {
+    const { reExportsWithSource, reExportsViaLocal } =
+      result.analyzeExportsForReExportsResults;
+    // console.debug("reExportsWithSource are:", reExportsWithSource);
+    // console.debug("reExportsViaLocal are:", reExportsViaLocal);
+    // console.debug(
+    //   "currentFileCommentedDirective is:",
+    //   currentFileCommentedDirective
+    // );
+    // console.debug(
+    //   "importedFileCommentedDirective is:",
+    //   importedFileCommentedDirective
+    // );
+    // console.debug(context.sourceCode.getText(node));
+
+    // immediately returns if no re-exports are found
+    if (reExportsWithSource.length === 0 && reExportsViaLocal.length === 0)
+      return;
+
+    /** @type {Environment} */
+    const currentFileEnvironment = currentFileCommentedDirective.split(" ")[1];
+    /** @type {Environment} */
+    const importedFileEnvironment =
+      importedFileCommentedDirective.split(" ")[1];
+    // console.debug("currentFileEnvironment is:", currentFileEnvironment);
+    // console.debug("importedFileEnvironment is:", importedFileEnvironment);
+
+    if (
+      !environments_allowedChainImportEnvironments[
+        currentFileEnvironment
+      ].includes(importedFileEnvironment)
+    ) {
+      // console.debug(cantChainImportAcrossEnvironmentsMessageId);
+
+      context.report({
+        node,
+        messageId: cantChainImportAcrossEnvironmentsMessageId,
+        data: {
+          // currentFileEnvironment:
+          currentFileEnvironment,
+          // importedFileEnvironment:
+          importedFileEnvironment,
+        },
+      });
+    }
+  }
 };
 
 /* allExportsFlow */
@@ -230,6 +310,9 @@ export const allExportsFlow = (
   node,
   currentFileCommentedDirective
 ) => {
+  // saving the original commented directive (speficially for "use agnostic strategies")
+  const originalCurrentFileCommentedDirective = currentFileCommentedDirective;
+
   // does not operate on `export type`
   if (node.exportKind === "type") return;
 
@@ -270,6 +353,57 @@ export const allExportsFlow = (
           importedFileCommentedDirective,
         },
       });
+    }
+
+    // new
+    if (result.analyzeExportsForReExportsResults) {
+      const { reExportsWithSource, reExportsViaLocal } =
+        result.analyzeExportsForReExportsResults;
+      // console.debug("reExportsWithSource are:", reExportsWithSource);
+      // console.debug("reExportsViaLocal are:", reExportsViaLocal);
+      // console.debug(
+      //   "currentFileCommentedDirective is:",
+      //   currentFileCommentedDirective
+      // );
+      // console.debug(
+      //   "importedFileCommentedDirective is:",
+      //   importedFileCommentedDirective
+      // );
+      // console.debug(context.sourceCode.getText(node));
+
+      // immediately returns if no re-exports are found
+      if (reExportsWithSource.length === 0 && reExportsViaLocal.length === 0)
+        return;
+
+      if (originalCurrentFileCommentedDirective !== USE_AGNOSTIC_STRATEGIES) {
+        /** @type {Environment} */
+        const currentFileEnvironment =
+          currentFileCommentedDirective.split(" ")[1];
+        /** @type {Environment} */
+        const importedFileEnvironment =
+          importedFileCommentedDirective.split(" ")[1];
+        // console.debug("currentFileEnvironment is:", currentFileEnvironment);
+        // console.debug("importedFileEnvironment is:", importedFileEnvironment);
+
+        if (
+          !environments_allowedChainImportEnvironments[
+            currentFileEnvironment
+          ].includes(importedFileEnvironment)
+        ) {
+          // console.debug(cantChainImportAcrossEnvironmentsMessageId);
+
+          context.report({
+            node,
+            messageId: cantChainImportAcrossEnvironmentsMessageId,
+            data: {
+              // currentFileEnvironment:
+              currentFileEnvironment,
+              // importedFileEnvironment:
+              importedFileEnvironment,
+            },
+          });
+        }
+      }
     }
   }
 };

@@ -20,10 +20,10 @@ export const analyzeExportsForReExports = (sourceCode) => {
   const importMap = new Map();
 
   /** @type {{node: ExportAllDeclaration | ExportNamedDeclarationWithSource, source: string}[]} */
-  const reexportsWithSource = [];
+  const reExportsWithSource = [];
 
   /** @type {{identifier: string, node: ExportNamedDeclarationWithoutSourceWithMultiple | ExportNamedDeclarationWithoutSourceWithSingle | ExportDefaultDeclaration, importNode: ImportDeclaration, source: string}[]} */
-  const reexportsViaLocal = [];
+  const reExportsViaLocal = [];
 
   walkAST(sourceCode, (node) => {
     if (node.type === "ImportDeclaration") {
@@ -38,22 +38,25 @@ export const analyzeExportsForReExports = (sourceCode) => {
       }
     }
 
+    // works
     if (
       node.type === "ExportAllDeclaration" &&
       node.exportKind === "value" &&
       node.source
     ) {
-      reexportsWithSource.push({ node, source: node.source.value });
+      reExportsWithSource.push({ node, source: node.source.value });
     }
 
+    // works
     if (
       node.type === "ExportNamedDeclaration" &&
       node.exportKind === "value" &&
       node.source
     ) {
-      reexportsWithSource.push({ node, source: node.source.value });
+      reExportsWithSource.push({ node, source: node.source.value });
     }
 
+    // works
     if (
       node.type === "ExportNamedDeclaration" &&
       node.exportKind === "value" &&
@@ -64,7 +67,7 @@ export const analyzeExportsForReExports = (sourceCode) => {
         const local = spec.local?.name;
         if (importMap.has(local)) {
           const info = importMap.get(local);
-          reexportsViaLocal.push({
+          reExportsViaLocal.push({
             identifier: local,
             exportNode: node,
             importNode: info.importNode,
@@ -74,6 +77,7 @@ export const analyzeExportsForReExports = (sourceCode) => {
       }
     }
 
+    // works
     if (
       node.type === "ExportDefaultDeclaration" &&
       node.exportKind === "value" &&
@@ -82,7 +86,7 @@ export const analyzeExportsForReExports = (sourceCode) => {
       const name = node.declaration.name;
       if (importMap.has(name)) {
         const info = importMap.get(name);
-        reexportsViaLocal.push({
+        reExportsViaLocal.push({
           identifier: name,
           exportNode: node,
           importNode: info.importNode,
@@ -92,5 +96,5 @@ export const analyzeExportsForReExports = (sourceCode) => {
     }
   });
 
-  return { reexportsWithSource, reexportsViaLocal };
+  return { reExportsWithSource, reExportsViaLocal };
 };

@@ -129,6 +129,8 @@ export const importedFileCommentedDirective = "importedFileCommentedDirective";
 export const commentedDirectiveMessage = "commentedDirectiveMessage";
 export const specificViolationMessage = "specificViolationMessage";
 export const specificFailure = "specificFailure";
+export const currentFileEnvironment = "currentFileEnvironment";
+export const importedFileEnvironment = "importedFileEnvironment";
 
 /* commentedDirectives_verificationReports */
 
@@ -366,4 +368,23 @@ export const commentedDirectives_blockedImports = Object.freeze({
     ) /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_CLIENT_CONTEXTS */,
     // USE_AGNOSTIC_CONDITIONS $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#ALLOWEDBECAUSE $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_AGNOSTIC_CONDITIONS
   ]),
+});
+
+/* environments_allowedChainedImportEnvironments */
+
+export const SERVER = "server";
+export const CLIENT = "client";
+export const AGNOSTIC = "agnostic";
+
+/** @type {readonly [typeof SERVER, typeof AGNOSTIC]} */
+const server_allowedChainImportEnvironments = Object.freeze([SERVER, AGNOSTIC]);
+/** @type {readonly [typeof CLIENT, typeof AGNOSTIC]} */
+const client_allowedChainImportEnvironments = Object.freeze([CLIENT, AGNOSTIC]);
+/** @type {readonly [typeof AGNOSTIC]} */
+const agnostic_allowedChainImportEnvironments = Object.freeze([AGNOSTIC]);
+
+export const environments_allowedChainImportEnvironments = Object.freeze({
+  [SERVER]: server_allowedChainImportEnvironments,
+  [CLIENT]: client_allowedChainImportEnvironments,
+  [AGNOSTIC]: agnostic_allowedChainImportEnvironments,
 });
