@@ -11,6 +11,11 @@ import {
   USE_AGNOSTIC_CONDITIONS as COMMONS_USE_AGNOSTIC_CONDITIONS,
   USE_AGNOSTIC_STRATEGIES as COMMONS_USE_AGNOSTIC_STRATEGIES,
 } from "../../../_commons/constants/bases.js";
+import {
+  USE_SERVER,
+  USE_CLIENT,
+  USE_AGNOSTIC,
+} from "../../../agnostic20/_commons/constants/bases.js";
 
 import { makeIntroForSpecificViolationMessage } from "../../../_commons/utilities/helpers.js";
 
@@ -129,6 +134,8 @@ export const importedFileCommentedDirective = "importedFileCommentedDirective";
 export const commentedDirectiveMessage = "commentedDirectiveMessage";
 export const specificViolationMessage = "specificViolationMessage";
 export const specificFailure = "specificFailure";
+export const verifiedCommentedDirective = "verifiedCommentedDirective";
+export const expectedReactDirectiveAsText = "expectedReactDirectiveAsText";
 export const currentFileEnvironment = "currentFileEnvironment";
 export const importedFileEnvironment = "importedFileEnvironment";
 
@@ -388,3 +395,24 @@ export const environments_allowedChainImportEnvironments = Object.freeze({
   [CLIENT]: client_allowedChainImportEnvironments,
   [AGNOSTIC]: agnostic_allowedChainImportEnvironments,
 });
+
+export const commentedDirectives_reactDirectives = Object.freeze({
+  [USE_SERVER_LOGICS]: null,
+  [USE_CLIENT_LOGICS]: "use client",
+  [USE_AGNOSTIC_LOGICS]: "use agnostic",
+  [USE_SERVER_COMPONENTS]: null,
+  [USE_CLIENT_COMPONENTS]: "use client",
+  [USE_AGNOSTIC_COMPONENTS]: "use agnostic",
+  [USE_SERVER_FUNCTIONS]: "use server",
+  [USE_CLIENT_CONTEXTS]: "use client",
+  [USE_AGNOSTIC_CONDITIONS]: null,
+  [USE_AGNOSTIC_STRATEGIES]: null,
+});
+
+/** @type {Map<typeof USE_SERVER | typeof USE_CLIENT | typeof USE_AGNOSTIC | null, `the React "${typeof USE_SERVER}"` | `the React "${typeof USE_CLIENT}"` | `the React "${typeof USE_AGNOSTIC}"` | "no React" `>} */
+export const reactDirectives_asTexts = new Map([
+  [USE_SERVER, `the React "${USE_SERVER}"`],
+  [USE_CLIENT, `the React "${USE_CLIENT}"`],
+  [USE_AGNOSTIC, `the React "${USE_AGNOSTIC}"`],
+  [null, "no React"],
+]);

@@ -3,6 +3,7 @@ import {
   importBreaksCommentedImportRulesMessageId,
   noCommentedDirectiveMessageId,
   commentedDirectiveVerificationFailedMessageId,
+  commentedDirectiveReactDirectiveFailedMessageId,
   importNotStrategizedMessageId,
   exportNotStrategizedMessageId,
   cantChainImportAcrossEnvironmentsMessageId,
@@ -13,6 +14,8 @@ import {
   commentedDirectiveMessage,
   specificViolationMessage,
   specificFailure,
+  verifiedCommentedDirective,
+  expectedReactDirectiveAsText,
   currentFileEnvironment,
   importedFileEnvironment,
 } from "../constants/bases.js";
@@ -45,6 +48,7 @@ In this case, {{ ${specificViolationMessage} }} `,
 All targeted modules need to be marked with their respective directives (\`// "use server logics"\`, etc.) for the purpose of this linting rule, evaluated from the first JavaScript comment starting on the first column within the first three lines of a module. `,
       [commentedDirectiveVerificationFailedMessageId]: `The commented directive could not pass verification due to an incompatible combination with its file extension.
 In this context, {{ ${specificFailure} }} `,
+      [commentedDirectiveReactDirectiveFailedMessageId]: `Commented directive "{{ ${verifiedCommentedDirective} }}" requires {{ ${expectedReactDirectiveAsText} }} directive in order to communicate accordingly with the React architecture at hand. `,
       [importNotStrategizedMessageId]: `Imports from Agnostic Strategies Modules must be strategized (\`/* @serverLogics */\`, etc.).  
 Please include a Strategy that corresponds to the kind of module this import would be mapped to. `,
       [exportNotStrategizedMessageId]: `Exports from Agnostic Strategies Modules must be strategized (\`/* @serverLogics */\`, etc.).  

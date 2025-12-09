@@ -46,6 +46,8 @@ export const importBreaksCommentedImportRulesMessageId =
 export const noCommentedDirectiveMessageId = "no-commented-directive-detected";
 export const commentedDirectiveVerificationFailedMessageId =
   "commented-directive-verification-failed";
+export const commentedDirectiveReactDirectiveFailedMessageId =
+  "commented-directive-correct-react-directive-failed";
 export const importNotStrategizedMessageId =
   "import-from-use-agnostic-strategies-not-strategized";
 export const exportNotStrategizedMessageId =

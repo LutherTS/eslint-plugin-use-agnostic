@@ -1,4 +1,4 @@
-// "use client components"
+// "use server functions"
 
 export * as File1 from "./file1";
 
