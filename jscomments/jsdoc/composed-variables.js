@@ -99,4 +99,6 @@ export const forComposedVariables = Object.freeze({
     "`verifiedCommentedDirective`." /* $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#VCDPERIOD */,
   ifcdPeriod:
     "`importedFileCommentedDirective`." /* $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#IFCDPERIOD */,
+  analyzeExportsForReExportsResults:
+    "And now with the added results of `analyzeExportsForReExports`." /* $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#ANALYZEEXPORTSFORREEXPORTSRESULTS */,
 });

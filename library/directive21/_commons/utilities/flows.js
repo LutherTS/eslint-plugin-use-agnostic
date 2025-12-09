@@ -58,9 +58,9 @@ import { analyzeExportsForReExports } from "./analyze-exports-re.js";
 /* currentFileFlow */
 
 /**
- * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#CURRENTFILEFLOW
- * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
- * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#CURRENTFILEFLOW
+ * The flow that begins the import rules enforcement rule, retrieving the verified commented directive of the current file before comparing it to upcoming verified commented directives of the files it imports.
+ * @param {Context} context The ESLint rule's `context` object.
+ * @returns Either an object with `skip: true` to disregard or one with the non-null `verifiedCommentedDirective`.
  */
 export const currentFileFlow = (context) => {
   const skipTrue = { ...skip, verifiedCommentedDirective: undefined };
@@ -127,12 +127,12 @@ export const currentFileFlow = (context) => {
       console.warn(
         `Somehow, expectedReactDirectiveAsText for ${expectedReactDirective} is undefined.`
       );
-      return { skip: undefined, verifiedCommentedDirective }; // at this time, behave as if the new implementation didn't exist yet
+      return { skip: undefined, verifiedCommentedDirective }; // at this time, behaves as if the new implementation didn't exist yet
     }
 
     context.report({
       loc: highlightFirstLineOfCode(context),
-      messageId: commentedDirectiveReactDirectiveFailedMessageId, // ADD NEW
+      messageId: commentedDirectiveReactDirectiveFailedMessageId,
       data: {
         // verifiedCommentedDirective
         verifiedCommentedDirective,
@@ -149,10 +149,10 @@ export const currentFileFlow = (context) => {
 /* importedFileFlow */
 
 /**
- * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#IMPORTEDFILEFLOW
- * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
- * @param {ImportDeclaration} node $COMMENT#JSDOC#PARAMS#NODE
- * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#IMPORTEDFILEFLOW (And now we the added results of `analyzeExportsForReExports`.)
+ * The flow that is shared between import and re-export traversals to obtain the import file's commented directive.
+ * @param {Context} context The ESLint rule's `context` object.
+ * @param {ImportDeclaration} node The ESLint `node` of the rule's current traversal.
+ * @returns Either an object with `skip: true` to disregard or one with the non-null `importedFileCommentedDirective`. And now with the added results of `analyzeExportsForReExports`.
  */
 const importedFileFlow = (context, node) => {
   const skipTrue = {
@@ -189,7 +189,7 @@ const importedFileFlow = (context, node) => {
     // Now silencing the warning as superfluous, in order to not warn on imports of files without a commented directive that are outside of linting range.
 
     // console.warn(
-    //   `WARNING. The imported file ${resolvedImportPath}, whose path has been resolved from ${context.filename}, has no commented $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#DIRECTIVEPERIOD It is thus ignored since the report on that circumstance would be available on the imported file itself.`
+    //   `WARNING. The imported file ${resolvedImportPath}, whose path has been resolved from ${context.filename}, has no commented directive. It is thus ignored since the report on that circumstance would be available on the imported file itself.`
     // ); // The decision not to report has been taken to not inflate the number of warnings.
     return skipTrue;
   }
@@ -246,11 +246,11 @@ const importedFileFlow = (context, node) => {
 /* importsFlow */
 
 /**
- * $COMMENT#JSDOC#FORALIASVARIABLES#IMPORTSFLOW
- * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
- * @param {ImportDeclaration} node $COMMENT#JSDOC#PARAMS#NODE
- * @param {CommentedDirective} currentFileCommentedDirective $COMMENT#JSDOC#PARAMS#DIRECTIVE21#CURRENTFILECOMMENTEDDIRECTIVE
- * @returns $COMMENT#JSDOC#FORALIASVARIABLES#FLOWRETURNSEARLY
+ * The full flow for import traversals to enforce effective directives import rules.
+ * @param {Context} context The ESLint rule's `context` object.
+ * @param {ImportDeclaration} node The ESLint `node` of the rule's current traversal.
+ * @param {CommentedDirective} currentFileCommentedDirective The current file's commented directive.
+ * @returns Early if the flow needs to be interrupted.
  */
 export const importsFlow = (context, node, currentFileCommentedDirective) => {
   // does not operate on `import type`
@@ -286,21 +286,10 @@ export const importsFlow = (context, node, currentFileCommentedDirective) => {
     });
   }
 
-  // new
+  // NEW
   if (result.analyzeExportsForReExportsResults) {
     const { reExportsWithSource, reExportsViaLocal } =
       result.analyzeExportsForReExportsResults;
-    // console.debug("reExportsWithSource are:", reExportsWithSource);
-    // console.debug("reExportsViaLocal are:", reExportsViaLocal);
-    // console.debug(
-    //   "currentFileCommentedDirective is:",
-    //   currentFileCommentedDirective
-    // );
-    // console.debug(
-    //   "importedFileCommentedDirective is:",
-    //   importedFileCommentedDirective
-    // );
-    // console.debug(context.sourceCode.getText(node));
 
     // immediately returns if no re-exports are found
     if (reExportsWithSource.length === 0 && reExportsViaLocal.length === 0)
@@ -311,16 +300,12 @@ export const importsFlow = (context, node, currentFileCommentedDirective) => {
     /** @type {Environment} */
     const importedFileEnvironment =
       importedFileCommentedDirective.split(" ")[1];
-    // console.debug("currentFileEnvironment is:", currentFileEnvironment);
-    // console.debug("importedFileEnvironment is:", importedFileEnvironment);
 
     if (
       !environments_allowedChainImportEnvironments[
         currentFileEnvironment
       ].includes(importedFileEnvironment)
     ) {
-      // console.debug(cantChainImportAcrossEnvironmentsMessageId);
-
       context.report({
         node,
         messageId: cantChainImportAcrossEnvironmentsMessageId,
@@ -338,11 +323,11 @@ export const importsFlow = (context, node, currentFileCommentedDirective) => {
 /* allExportsFlow */
 
 /**
- * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#ALLEXPORTSFLOW
- * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
- * @param {ExportNamedDeclaration | ExportAllDeclaration | ExportDefaultDeclaration} node $COMMENT#JSDOC#PARAMS#NODE
- * @param {CommentedDirective} currentFileCommentedDirective $COMMENT#JSDOC#PARAMS#DIRECTIVE21#CURRENTFILECOMMENTEDDIRECTIVE
- * @returns $COMMENT#JSDOC#FORALIASVARIABLES#FLOWRETURNSEARLY
+ * The full flow for export traversals, shared between `ExportNamedDeclaration`, `ExportAllDeclaration`, and `ExportDefaultDeclaration`, to ensure same commented directive re-exports in modules that aren't Agnostic Strategies Modules, and enforce strategized exports specifically in Agnostic Strategies modules.
+ * @param {Context} context The ESLint rule's `context` object.
+ * @param {ExportNamedDeclaration | ExportAllDeclaration | ExportDefaultDeclaration} node The ESLint `node` of the rule's current traversal.
+ * @param {CommentedDirective} currentFileCommentedDirective The current file's commented directive.
+ * @returns Early if the flow needs to be interrupted.
  */
 export const allExportsFlow = (
   context,
@@ -394,21 +379,10 @@ export const allExportsFlow = (
       });
     }
 
-    // new
+    // NEW
     if (result.analyzeExportsForReExportsResults) {
       const { reExportsWithSource, reExportsViaLocal } =
         result.analyzeExportsForReExportsResults;
-      // console.debug("reExportsWithSource are:", reExportsWithSource);
-      // console.debug("reExportsViaLocal are:", reExportsViaLocal);
-      // console.debug(
-      //   "currentFileCommentedDirective is:",
-      //   currentFileCommentedDirective
-      // );
-      // console.debug(
-      //   "importedFileCommentedDirective is:",
-      //   importedFileCommentedDirective
-      // );
-      // console.debug(context.sourceCode.getText(node));
 
       // immediately returns if no re-exports are found
       if (reExportsWithSource.length === 0 && reExportsViaLocal.length === 0)
@@ -421,16 +395,12 @@ export const allExportsFlow = (
         /** @type {Environment} */
         const importedFileEnvironment =
           importedFileCommentedDirective.split(" ")[1];
-        // console.debug("currentFileEnvironment is:", currentFileEnvironment);
-        // console.debug("importedFileEnvironment is:", importedFileEnvironment);
 
         if (
           !environments_allowedChainImportEnvironments[
             currentFileEnvironment
           ].includes(importedFileEnvironment)
         ) {
-          // console.debug(cantChainImportAcrossEnvironmentsMessageId);
-
           context.report({
             node,
             messageId: cantChainImportAcrossEnvironmentsMessageId,

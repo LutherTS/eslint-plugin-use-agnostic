@@ -1,4 +1,4 @@
 "use client";
-// $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#THATSAMODULE
+// That's a Client Components Module.
 
 export default {};

@@ -11,9 +11,9 @@
 import { walkAST } from "../../../_commons/utilities/walk-ast.js";
 
 /**
- * Analyzes a source code exports to detect re-exports.
- * @param {SourceCode} sourceCode
- * @returns
+ * Analyzes a source code's exports to detect re-exports.
+ * @param {SourceCode} sourceCode The `SourceCode` to analyze.
+ * @returns An object with the `reExportsWithSource` key tracking the direct re-exports from an imported source in an array and the `reExportsViaLocal` key tracking the indirect re-exports from an imported source in an array.
  */
 export const analyzeExportsForReExports = (sourceCode) => {
   /** @type {Map<string, {source: string, importNode: ImportDeclaration}>} */
@@ -38,7 +38,6 @@ export const analyzeExportsForReExports = (sourceCode) => {
       }
     }
 
-    // works
     if (
       node.type === "ExportAllDeclaration" &&
       node.exportKind === "value" &&
@@ -47,7 +46,6 @@ export const analyzeExportsForReExports = (sourceCode) => {
       reExportsWithSource.push({ node, source: node.source.value });
     }
 
-    // works
     if (
       node.type === "ExportNamedDeclaration" &&
       node.exportKind === "value" &&
@@ -56,7 +54,6 @@ export const analyzeExportsForReExports = (sourceCode) => {
       reExportsWithSource.push({ node, source: node.source.value });
     }
 
-    // works
     if (
       node.type === "ExportNamedDeclaration" &&
       node.exportKind === "value" &&
@@ -77,7 +74,6 @@ export const analyzeExportsForReExports = (sourceCode) => {
       }
     }
 
-    // works
     if (
       node.type === "ExportDefaultDeclaration" &&
       node.exportKind === "value" &&
