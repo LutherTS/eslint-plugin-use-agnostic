@@ -40,8 +40,13 @@ import {
  * @typedef {Exclude<ResolvedDirective, UseAgnosticStrategies>} ResolvedDirectiveWithoutUseAgnosticStrategies
  *
  * @typedef {import('@typescript-eslint/utils').TSESLint.SourceCode.Program} AST
+ * @typedef {import('@typescript-eslint/utils').TSESLint.SourceCode.VisitorKeys} VisitorKeys
+ * @typedef {import('@typescript-eslint/types').TSESTree.Node} Node
  * @typedef {import('@typescript-eslint/types').TSESTree.ImportDeclaration} ImportDeclaration
  * @typedef {import('@typescript-eslint/types').TSESTree.ExportNamedDeclaration} ExportNamedDeclaration
+ * @typedef {import('@typescript-eslint/types').TSESTree.ExportNamedDeclarationWithSource} ExportNamedDeclarationWithSource
+ * @typedef {import('@typescript-eslint/types').TSESTree.ExportNamedDeclarationWithoutSourceWithMultiple} ExportNamedDeclarationWithoutSourceWithMultiple
+ * @typedef {import('@typescript-eslint/types').TSESTree.ExportNamedDeclarationWithoutSourceWithSingle} ExportNamedDeclarationWithoutSourceWithSingle
  * @typedef {import('@typescript-eslint/types').TSESTree.ExportAllDeclaration} ExportAllDeclaration
  * @typedef {import('@typescript-eslint/types').TSESTree.ExportDefaultDeclaration} ExportDefaultDeclaration
  */
