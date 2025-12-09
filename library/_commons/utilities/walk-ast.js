@@ -5,9 +5,9 @@
  */
 
 /**
- * Walks an AST with a given callback.
- * @param {SourceCode} sourceCode
- * @param {(node: Node, parent: Node | null) => void} callback
+ * $COMMENT#JSDOC#DEFINITIONS#WALKAST
+ * @param {SourceCode} sourceCode $COMMENT#JSDOC#PARAMS#SOURCECODEA
+ * @param {(node: Node, parent: Node | null) => void} callback $COMMENT#JSDOC#PARAMS#CALLBACK
  */
 export const walkAST = (sourceCode, callback) => {
   const ast = sourceCode.ast;
@@ -17,11 +17,11 @@ export const walkAST = (sourceCode, callback) => {
 };
 
 /**
- * Recursively visits an AST node with a given callback.
- * @param {Node} node
- * @param {Node | null} parent
- * @param {VisitorKeys} visitorKeys
- * @param {(node: Node, parent: Node | null) => void} callback
+ * $COMMENT#JSDOC#DEFINITIONS#VISITNODE
+ * @param {Node} node $COMMENT#JSDOC#PARAMS#NODEB
+ * @param {Node | null} parent $COMMENT#JSDOC#PARAMS#PARENT
+ * @param {VisitorKeys} visitorKeys $COMMENT#JSDOC#PARAMS#VISITORKEYS
+ * @param {(node: Node, parent: Node | null) => void} callback $COMMENT#JSDOC#PARAMS#CALLBACK
  */
 const visitNode = (node, parent, visitorKeys, callback) => {
   callback(node, parent);

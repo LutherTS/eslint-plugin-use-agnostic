@@ -127,12 +127,12 @@ export const currentFileFlow = (context) => {
       console.warn(
         `Somehow, expectedReactDirectiveAsText for ${expectedReactDirective} is undefined.`
       );
-      return { skip: undefined, verifiedCommentedDirective }; // at this time, behave as if the new implementation didn't exist yet
+      return { skip: undefined, verifiedCommentedDirective }; // at this time, behaves as if the new implementation didn't exist yet
     }
 
     context.report({
       loc: highlightFirstLineOfCode(context),
-      messageId: commentedDirectiveReactDirectiveFailedMessageId, // ADD NEW
+      messageId: commentedDirectiveReactDirectiveFailedMessageId,
       data: {
         // verifiedCommentedDirective
         verifiedCommentedDirective,
@@ -152,7 +152,7 @@ export const currentFileFlow = (context) => {
  * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#IMPORTEDFILEFLOW
  * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
  * @param {ImportDeclaration} node $COMMENT#JSDOC#PARAMS#NODE
- * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#IMPORTEDFILEFLOW (And now we the added results of `analyzeExportsForReExports`.)
+ * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#IMPORTEDFILEFLOW
  */
 const importedFileFlow = (context, node) => {
   const skipTrue = {
@@ -286,21 +286,10 @@ export const importsFlow = (context, node, currentFileCommentedDirective) => {
     });
   }
 
-  // new
+  // NEW
   if (result.analyzeExportsForReExportsResults) {
     const { reExportsWithSource, reExportsViaLocal } =
       result.analyzeExportsForReExportsResults;
-    // console.debug("reExportsWithSource are:", reExportsWithSource);
-    // console.debug("reExportsViaLocal are:", reExportsViaLocal);
-    // console.debug(
-    //   "currentFileCommentedDirective is:",
-    //   currentFileCommentedDirective
-    // );
-    // console.debug(
-    //   "importedFileCommentedDirective is:",
-    //   importedFileCommentedDirective
-    // );
-    // console.debug(context.sourceCode.getText(node));
 
     // immediately returns if no re-exports are found
     if (reExportsWithSource.length === 0 && reExportsViaLocal.length === 0)
@@ -311,16 +300,12 @@ export const importsFlow = (context, node, currentFileCommentedDirective) => {
     /** @type {Environment} */
     const importedFileEnvironment =
       importedFileCommentedDirective.split(" ")[1];
-    // console.debug("currentFileEnvironment is:", currentFileEnvironment);
-    // console.debug("importedFileEnvironment is:", importedFileEnvironment);
 
     if (
       !environments_allowedChainImportEnvironments[
         currentFileEnvironment
       ].includes(importedFileEnvironment)
     ) {
-      // console.debug(cantChainImportAcrossEnvironmentsMessageId);
-
       context.report({
         node,
         messageId: cantChainImportAcrossEnvironmentsMessageId,
@@ -394,21 +379,10 @@ export const allExportsFlow = (
       });
     }
 
-    // new
+    // NEW
     if (result.analyzeExportsForReExportsResults) {
       const { reExportsWithSource, reExportsViaLocal } =
         result.analyzeExportsForReExportsResults;
-      // console.debug("reExportsWithSource are:", reExportsWithSource);
-      // console.debug("reExportsViaLocal are:", reExportsViaLocal);
-      // console.debug(
-      //   "currentFileCommentedDirective is:",
-      //   currentFileCommentedDirective
-      // );
-      // console.debug(
-      //   "importedFileCommentedDirective is:",
-      //   importedFileCommentedDirective
-      // );
-      // console.debug(context.sourceCode.getText(node));
 
       // immediately returns if no re-exports are found
       if (reExportsWithSource.length === 0 && reExportsViaLocal.length === 0)
@@ -421,16 +395,12 @@ export const allExportsFlow = (
         /** @type {Environment} */
         const importedFileEnvironment =
           importedFileCommentedDirective.split(" ")[1];
-        // console.debug("currentFileEnvironment is:", currentFileEnvironment);
-        // console.debug("importedFileEnvironment is:", importedFileEnvironment);
 
         if (
           !environments_allowedChainImportEnvironments[
             currentFileEnvironment
           ].includes(importedFileEnvironment)
         ) {
-          // console.debug(cantChainImportAcrossEnvironmentsMessageId);
-
           context.report({
             node,
             messageId: cantChainImportAcrossEnvironmentsMessageId,

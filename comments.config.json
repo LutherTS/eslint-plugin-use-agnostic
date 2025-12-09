@@ -25,6 +25,18 @@
         "value": "Finds the `message` for the specific violation of \"resolved\" directives import rules based on `resolvedDirectives_blockedImports`.",
         "key": "JSDOC#DEFINITIONS#FINDSPECIFICVIOLATIONMESSAGE"
       },
+      "walkAST": {
+        "value": "Walks an AST with a given callback.",
+        "key": "JSDOC#DEFINITIONS#WALKAST"
+      },
+      "visitNode": {
+        "value": "Recursively visits an AST node with a given callback.",
+        "key": "JSDOC#DEFINITIONS#VISITNODE"
+      },
+      "analyzeExportsForReExports": {
+        "value": "Analyzes a source code's exports to detect re-exports.",
+        "key": "JSDOC#DEFINITIONS#ANALYZEEXPORTSFORREEXPORTS"
+      },
       "agnostic20": {
         "makeAgnostic20Config": {
           "value": "Makes the agnostic20 config for the use-agnostic ESLint plugin.",
@@ -240,6 +252,30 @@
       "node": {
         "value": "The ESLint `node` of the rule's current traversal.",
         "key": "JSDOC#PARAMS#NODE"
+      },
+      "sourceCodeA": {
+        "value": "The `SourceCode` where the AST comes from.",
+        "key": "JSDOC#PARAMS#SOURCECODEA"
+      },
+      "callback": {
+        "value": "The callback that runs during the walk.",
+        "key": "JSDOC#PARAMS#CALLBACK"
+      },
+      "nodeB": {
+        "value": "The node being visited.",
+        "key": "JSDOC#PARAMS#NODEB"
+      },
+      "parent": {
+        "value": "The parent of the node being visited.",
+        "key": "JSDOC#PARAMS#PARENT"
+      },
+      "visitorKeys": {
+        "value": "The visitor keys of the node being visited.",
+        "key": "JSDOC#PARAMS#VISITORKEYS"
+      },
+      "sourceCodeB": {
+        "value": "The `SourceCode` to analyze.",
+        "key": "JSDOC#PARAMS#SOURCECODEB"
       },
       "agnostic20": {
         "currentFileEffectiveDirective": {
@@ -467,6 +503,10 @@
         "value": "The corresponding `message`.",
         "key": "JSDOC#RETURNS#FINDSPECIFICVIOLATIONMESSAGE"
       },
+      "analyzeExportsForReExports": {
+        "value": "An object with the `reExportsWithSource` key tracking the direct re-exports from an imported source in an array and the `reExportsViaLocal` key tracking the indirect re-exports from an imported source in an array.",
+        "key": "JSDOC#RETURNS#ANALYZEEXPORTSFORREEXPORTS"
+      },
       "agnostic20": {
         "makeAgnostic20Config": {
           "value": "The agnostic20 config's name as a key and its config as its value.",
@@ -555,7 +595,7 @@
           "key": "JSDOC#RETURNS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMCURRENTMODULE"
         },
         "getCommentedDirectiveFromImportedModule": {
-          "value": "The commented directive, or lack thereof via `null`. Given the strictness of this architecture, the lack of a directive is considered a mistake. (Though rules may provide the opportunity to declare a default, and configs with preset defaults may become provided.)",
+          "value": "The commented directive, or lack thereof via `null`. Now also provides the obtained `SourceCode` object. Given the strictness of this architecture, the lack of a directive is considered a mistake. (Though rules may provide the opportunity to declare a default, and configs with preset defaults may become provided.)",
           "key": "JSDOC#RETURNS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMIMPORTEDMODULE"
         },
         "getVerifiedCommentedDirective": {
@@ -587,7 +627,7 @@
           "key": "JSDOC#RETURNS#DIRECTIVE21#CURRENTFILEFLOW"
         },
         "importedFileFlow": {
-          "value": "Either an object with `skip: true` to disregard or one with the non-null `importedFileCommentedDirective`.",
+          "value": "Either an object with `skip: true` to disregard or one with the non-null `importedFileCommentedDirective`. And now with the added results of `analyzeExportsForReExports`.",
           "key": "JSDOC#RETURNS#DIRECTIVE21#IMPORTEDFILEFLOW"
         },
         "importsFlow": {
@@ -852,6 +892,10 @@
       "ifcdPeriod": {
         "value": "`importedFileCommentedDirective`.",
         "key": "JSDOC#FORCOMPOSEDVARIABLES#IFCDPERIOD"
+      },
+      "analyzeExportsForReExportsResults": {
+        "value": "And now with the added results of `analyzeExportsForReExports`.",
+        "key": "JSDOC#FORCOMPOSEDVARIABLES#ANALYZEEXPORTSFORREEXPORTSRESULTS"
       }
     }
   },

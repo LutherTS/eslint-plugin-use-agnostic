@@ -172,7 +172,7 @@ export const getCommentedDirectiveFromCurrentModule = (context) => {
  * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICCONDITIONSA
  * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICSTRATEGIESA
  * @param {string} resolvedPath $COMMENT#JSDOC#PARAMS#RESOLVEDPATH
- * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMSOURCECODE Now also provides the obtained SourceCode object.
+ * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMIMPORTEDMODULE
  */
 export const getCommentedDirectiveFromImportedModule = (resolvedPath) => {
   const sourceCode = getSourceCodeFromFilePath(resolvedPath);
