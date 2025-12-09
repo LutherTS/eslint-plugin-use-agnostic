@@ -1,4 +1,4 @@
-// "use client components"
+// "use server functions"
 
 const x = 1;
 export const y = 2;

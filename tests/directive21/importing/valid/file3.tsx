@@ -1,4 +1,4 @@
-// "use server components"
+// "use client components"
 
 import * as File1ViaFile2 from "./file2";
 // File1ViaFile2.File1.default

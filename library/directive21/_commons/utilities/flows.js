@@ -9,6 +9,7 @@ import {
   importBreaksCommentedImportRulesMessageId,
   noCommentedDirectiveMessageId,
   commentedDirectiveVerificationFailedMessageId,
+  commentedDirectiveReactDirectiveFailedMessageId,
   importNotStrategizedMessageId,
   cantChainImportAcrossEnvironmentsMessageId,
   skip,
@@ -23,10 +24,15 @@ import {
   commentedDirectiveMessage,
   specificViolationMessage,
   specificFailure,
+  // verifiedCommentedDirective,
+  // expectedReactDirectiveAsText,
   environments_allowedChainImportEnvironments,
+  commentedDirectives_reactDirectives,
+  reactDirectives_asTexts,
 } from "../constants/bases.js";
 
 import { highlightFirstLineOfCode } from "../../../_commons/utilities/helpers.js";
+import { getDirectiveFromCurrentModule } from "../../../agnostic20/_commons/utilities/helpers.js";
 import {
   getCommentedDirectiveFromCurrentModule,
   getVerifiedCommentedDirective,
@@ -99,6 +105,39 @@ export const currentFileFlow = (context) => {
       data: {
         [specificFailure]:
           commentedDirectives_verificationReports[commentedDirective],
+      },
+    });
+    return skipTrue;
+  }
+
+  // GETTING THE DIRECTIVE (or lack thereof) OF THE CURRENT FILE
+  const currentFileDirective = getDirectiveFromCurrentModule(context);
+
+  if (
+    commentedDirectives_reactDirectives[verifiedCommentedDirective] !==
+    currentFileDirective
+  ) {
+    const expectedReactDirective =
+      commentedDirectives_reactDirectives[verifiedCommentedDirective];
+    const expectedReactDirectiveAsText = reactDirectives_asTexts.get(
+      expectedReactDirective
+    );
+
+    if (!expectedReactDirectiveAsText) {
+      console.warn(
+        `Somehow, expectedReactDirectiveAsText for ${expectedReactDirective} is undefined.`
+      );
+      return { skip: undefined, verifiedCommentedDirective }; // at this time, behave as if the new implementation didn't exist yet
+    }
+
+    context.report({
+      loc: highlightFirstLineOfCode(context),
+      messageId: commentedDirectiveReactDirectiveFailedMessageId, // ADD NEW
+      data: {
+        // verifiedCommentedDirective
+        verifiedCommentedDirective,
+        // expectedReactDirectiveAsText
+        expectedReactDirectiveAsText,
       },
     });
     return skipTrue;
