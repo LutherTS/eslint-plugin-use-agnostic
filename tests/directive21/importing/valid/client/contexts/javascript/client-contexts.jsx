@@ -1,20 +1,20 @@
 // "use client contexts"
 
-// ...Importing a Special Client Contexts Module.
+// $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#IMPORTINGAMODULE
 import clientContexts from "../../../../../imported/javascript/client-contexts.jsx";
 
-// ...Importing a Special Client Contexts Module by a folder.
+// $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#IMPORTINGBYAFOLDER
 import clientContextsFolder from "../../../../../imported/javascript/client-contexts-jsx";
 
-// ...Importing (Special) Client Contexts Components via Special Agnostic Strategy.
+// $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#IMPORTINGVIASTRATEGY
 import {
   /* @clientContexts */ clientContextsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// ...Importing (Special) Client Contexts Components via Special Agnostic Strategy by a folder.
+// $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#IMPORTINGVIASTRATEGYBYAFOLDER
 import {
   /* @clientContexts */ clientContextsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// Valid.
-// (Special) Client Contexts Components can compose with one another.
+// $COMMENT#TESTS#VALID
+// $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#USE_CLIENT_CONTEXTS
