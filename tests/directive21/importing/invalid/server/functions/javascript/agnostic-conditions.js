@@ -1,21 +1,21 @@
 // "use server functions"
 "use server";
 
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#IMPORTINGAMODULE
+// ...Importing a Special Agnostic Conditions Module.
 import agnosticConditions from "../../../../../imported/javascript/agnostic-conditions.jsx";
 
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#IMPORTINGBYAFOLDER
+// ...Importing a Special Agnostic Conditions Module by a folder.
 import agnosticConditionsFolder from "../../../../../imported/javascript/agnostic-conditions-jsx";
 
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#IMPORTINGVIASTRATEGY
+// ...Importing (Special) Agnostic Conditions Components via Special Agnostic Strategy.
 import {
   /* @agnosticConditions */ agnosticConditionsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#IMPORTINGVIASTRATEGYBYAFOLDER
+// ...Importing (Special) Agnostic Conditions Components via Special Agnostic Strategy by a folder.
 import {
   /* @agnosticConditions */ agnosticConditionsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// $COMMENT#TESTS#INVALID
-// $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#USE_AGNOSTIC_CONDITIONS
+// Invalid.
+// (Special) Agnostic Conditions Components aren't allowed because (Special) Server Functions have no business working with React Components.
