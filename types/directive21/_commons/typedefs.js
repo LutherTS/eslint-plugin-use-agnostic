@@ -1,10 +1,11 @@
 import {
   reExportNotSameMessageId,
   importBreaksCommentedImportRulesMessageId,
-  noCommentedDirective,
-  commentedDirectiveVerificationFailed,
-  importNotStrategized,
-  exportNotStrategized,
+  noCommentedDirectiveMessageId,
+  commentedDirectiveVerificationFailedMessageId,
+  importNotStrategizedMessageId,
+  exportNotStrategizedMessageId,
+  cantChainImportAcrossEnvironmentsMessageId,
 } from "../../../library/_commons/constants/bases.js";
 import {
   USE_SERVER_LOGICS,
@@ -26,6 +27,9 @@ import {
   AT_SERVER_FUNCTIONS,
   AT_CLIENT_CONTEXTS,
   AT_AGNOSTIC_CONDITIONS,
+  SERVER,
+  CLIENT,
+  AGNOSTIC,
 } from "../../../library/directive21/_commons/constants/bases.js";
 
 /**
@@ -47,9 +51,11 @@ import {
  * @typedef {typeof AT_SERVER_LOGICS | typeof AT_CLIENT_LOGICS | typeof AT_AGNOSTIC_LOGICS | typeof AT_SERVER_COMPONENTS | typeof AT_CLIENT_COMPONENTS | typeof AT_AGNOSTIC_COMPONENTS | typeof AT_SERVER_FUNCTIONS | typeof AT_CLIENT_CONTEXTS | typeof AT_AGNOSTIC_CONDITIONS} CommentedStrategy
  * @typedef {readonly [typeof AT_SERVER_LOGICS, typeof AT_CLIENT_LOGICS, typeof AT_AGNOSTIC_LOGICS, typeof AT_SERVER_COMPONENTS, typeof AT_CLIENT_COMPONENTS, typeof AT_AGNOSTIC_COMPONENTS, typeof AT_SERVER_FUNCTIONS, typeof AT_CLIENT_CONTEXTS, typeof AT_AGNOSTIC_CONDITIONS]} CommentedStrategies
  *
+ * @typedef {typeof SERVER | typeof CLIENT | typeof AGNOSTIC} Environment
+ *
  * @typedef {readonly [readonly [`// `, `'`, ``], readonly [`// `, `"`, ``], readonly [`\/\* `, `'`, ` \*\/`], readonly [`\/\* `, `"`, ` \*\/`]]} CommentStyles
  *
- * @typedef {typeof reExportNotSameMessageId | typeof importBreaksCommentedImportRulesMessageId | typeof noCommentedDirective | typeof commentedDirectiveVerificationFailed | typeof importNotStrategized | typeof exportNotStrategized} RuleMessageId
+ * @typedef {typeof reExportNotSameMessageId | typeof importBreaksCommentedImportRulesMessageId | typeof noCommentedDirectiveMessageId | typeof commentedDirectiveVerificationFailedMessageId | typeof importNotStrategizedMessageId | typeof exportNotStrategizedMessageId | typeof cantChainImportAcrossEnvironmentsMessageId} RuleMessageId
  * @typedef {[]} RuleOptions
  * @typedef {import("../../_commons/typedefs.js").Rule<RuleMessageId, RuleOptions>} Rule
  * @typedef {import("../../_commons/typedefs.js").Context<RuleMessageId, RuleOptions>} Context

@@ -43,13 +43,15 @@ export const useServerJSXMessageId = "use-server-has-jsx-extension";
 // directive21
 export const importBreaksCommentedImportRulesMessageId =
   "import-breaks-commented-directive-import-rule";
-export const noCommentedDirective = "no-commented-directive-detected";
-export const commentedDirectiveVerificationFailed =
+export const noCommentedDirectiveMessageId = "no-commented-directive-detected";
+export const commentedDirectiveVerificationFailedMessageId =
   "commented-directive-verification-failed";
-export const importNotStrategized =
+export const importNotStrategizedMessageId =
   "import-from-use-agnostic-strategies-not-strategized";
-export const exportNotStrategized =
+export const exportNotStrategizedMessageId =
   "export-from-use-agnostic-strategies-not-strategized";
+export const cantChainImportAcrossEnvironmentsMessageId =
+  "cant-chain-import-across-environments";
 
 // all "resolved" directives (from AIA/agnostic20 & DFA/directive21)
 // - AIA: Agnostic-Included Architecture (agnostic20)

@@ -1,10 +1,11 @@
 import {
   reExportNotSameMessageId,
   importBreaksCommentedImportRulesMessageId,
-  noCommentedDirective,
-  commentedDirectiveVerificationFailed,
-  importNotStrategized,
-  exportNotStrategized,
+  noCommentedDirectiveMessageId,
+  commentedDirectiveVerificationFailedMessageId,
+  importNotStrategizedMessageId,
+  exportNotStrategizedMessageId,
+  cantChainImportAcrossEnvironmentsMessageId,
 } from "../../../_commons/constants/bases.js";
 import {
   currentFileCommentedDirective,
@@ -12,6 +13,8 @@ import {
   commentedDirectiveMessage,
   specificViolationMessage,
   specificFailure,
+  currentFileEnvironment,
+  importedFileEnvironment,
 } from "../constants/bases.js";
 
 import {
@@ -38,14 +41,15 @@ const rule = {
 Here, "{{ ${currentFileCommentedDirective} }}" and "{{ ${importedFileCommentedDirective} }}" are not the same. Please re-export only from modules that have the same commented directive as the current module. `,
       [importBreaksCommentedImportRulesMessageId]: `{{ ${commentedDirectiveMessage} }} 
 In this case, {{ ${specificViolationMessage} }} `,
-      [noCommentedDirective]: `No commented directive detected.
+      [noCommentedDirectiveMessageId]: `No commented directive detected.
 All targeted modules need to be marked with their respective directives (\`// "use server logics"\`, etc.) for the purpose of this linting rule, evaluated from the first JavaScript comment starting on the first column within the first three lines of a module. `,
-      [commentedDirectiveVerificationFailed]: `The commented directive could not pass verification due to an incompatible combination with its file extension.
+      [commentedDirectiveVerificationFailedMessageId]: `The commented directive could not pass verification due to an incompatible combination with its file extension.
 In this context, {{ ${specificFailure} }} `,
-      [importNotStrategized]: `Imports from Agnostic Strategies Modules must be strategized (\`/* @serverLogics */\`, etc.).  
+      [importNotStrategizedMessageId]: `Imports from Agnostic Strategies Modules must be strategized (\`/* @serverLogics */\`, etc.).  
 Please include a Strategy that corresponds to the kind of module this import would be mapped to. `,
-      [exportNotStrategized]: `Exports from Agnostic Strategies Modules must be strategized (\`/* @serverLogics */\`, etc.).  
+      [exportNotStrategizedMessageId]: `Exports from Agnostic Strategies Modules must be strategized (\`/* @serverLogics */\`, etc.).  
 Please include a Strategy that corresponds to the kind of module this export would be mapped to. `,
+      [cantChainImportAcrossEnvironmentsMessageId]: `Because imports are actually references instead of modules across environments, it is not possible to chain-import between the {{ ${currentFileEnvironment} }} environment and the {{ ${importedFileEnvironment} }} environment. In these cases, only direct imports apply. `,
     },
   },
   create: (context) => {
