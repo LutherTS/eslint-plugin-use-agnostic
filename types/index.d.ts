@@ -16,8 +16,6 @@ export const directive21ConfigName: "directive21";
 export const enforceEffectiveDirectivesRuleName: "enforce-effective-directives-import-rules";
 export const enforceCommentedDirectivesRuleName: "enforce-commented-directives-import-rules";
 
-// NEW
-
 // JavaScript/TypeScript extensions array
 export const EXTENSIONS: readonly [
   ".tsx",
@@ -327,6 +325,9 @@ export const commentedDirectives_reactDirectives: Readonly<{
   [USE_AGNOSTIC_CONDITIONS]: null;
   [USE_AGNOSTIC_STRATEGIES]: null;
 }>;
+
+/** Typing currently unavailable. To be used by chaining .importingCommentedDirective.importedCommentedDirective to obtained the reason why a module import is or not allowed. */
+export const directive21Data: object;
 
 /**
  * Gets the commented directive of a module from its ESLint `SourceCode` object.
