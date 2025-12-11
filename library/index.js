@@ -113,6 +113,13 @@ export {
   commentedStrategiesSet,
   // mapped commented strategies to their commented directives
   commentedStrategies_commentedDirectives,
+  // environments
+  SERVER,
+  CLIENT,
+  AGNOSTIC,
+  environments_allowedChainImportEnvironments,
+  // mapped commented directives to their React directives
+  commentedDirectives_reactDirectives,
 } from "./directive21/_commons/constants/bases.js";
 
 export {

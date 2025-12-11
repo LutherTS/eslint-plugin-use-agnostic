@@ -396,6 +396,7 @@ export const environments_allowedChainImportEnvironments = Object.freeze({
   [AGNOSTIC]: agnostic_allowedChainImportEnvironments,
 });
 
+// mapped commented directives to their React directives
 export const commentedDirectives_reactDirectives = Object.freeze({
   [USE_SERVER_LOGICS]: null,
   [USE_CLIENT_LOGICS]: "use client",
@@ -409,6 +410,7 @@ export const commentedDirectives_reactDirectives = Object.freeze({
   [USE_AGNOSTIC_STRATEGIES]: null,
 });
 
+// mapped React directives to textual needs
 /** @type {Map<typeof USE_SERVER | typeof USE_CLIENT | typeof USE_AGNOSTIC | null, `the React "${typeof USE_SERVER}"` | `the React "${typeof USE_CLIENT}"` | `the React "${typeof USE_AGNOSTIC}"` | "no React" `>} */
 export const reactDirectives_asTexts = new Map([
   [USE_SERVER, `the React "${USE_SERVER}"`],
