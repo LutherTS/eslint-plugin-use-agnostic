@@ -130,3 +130,5 @@ export {
   getStrategizedDirective,
   isImportBlocked as isImportBlockedDirective21,
 } from "./directive21/_commons/utilities/helpers.js";
+
+export { directive21Data } from "../jscomments/_commons/constants/data.js";
