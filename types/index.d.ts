@@ -326,7 +326,7 @@ export const commentedDirectives_reactDirectives: Readonly<{
   [USE_AGNOSTIC_STRATEGIES]: null;
 }>;
 
-/** Typing currently unavailable. To be used by chaining .importingCommentedDirective.importedCommentedDirective to obtained the reason why a module import is or not allowed. */
+/** Typing currently unavailable. To be used by chaining `.importingCommentedDirective` `.importedCommentedDirective` `.value` to obtained the reason why a module import is or isn't allowed. */
 export const directive21Data: object;
 
 /**
