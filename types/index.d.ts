@@ -303,6 +303,31 @@ export const commentedStrategies_commentedDirectives: Readonly<{
   [AT_AGNOSTIC_CONDITIONS]: "use agnostic conditions";
 }>;
 
+// environments
+export const SERVER: "server";
+export const CLIENT: "client";
+export const AGNOSTIC: "agnostic";
+
+export const environments_allowedChainImportEnvironments: Readonly<{
+  [SERVER]: readonly ["server", "agnostic"];
+  [CLIENT]: readonly ["client", "agnostic"];
+  [AGNOSTIC]: readonly ["agnostic"];
+}>;
+
+// mapped commented directives to their React directives
+export const commentedDirectives_reactDirectives: Readonly<{
+  [USE_SERVER_LOGICS]: null;
+  [USE_CLIENT_LOGICS]: "use client";
+  [USE_AGNOSTIC_LOGICS]: "use agnostic";
+  [USE_SERVER_COMPONENTS]: null;
+  [USE_CLIENT_COMPONENTS]: "use client";
+  [USE_AGNOSTIC_COMPONENTS]: "use agnostic";
+  [USE_SERVER_FUNCTIONS]: "use server";
+  [USE_CLIENT_CONTEXTS]: "use client";
+  [USE_AGNOSTIC_CONDITIONS]: null;
+  [USE_AGNOSTIC_STRATEGIES]: null;
+}>;
+
 /**
  * Gets the commented directive of a module from its ESLint `SourceCode` object.
  *
