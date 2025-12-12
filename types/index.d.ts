@@ -408,22 +408,25 @@ export const getCommentedDirectiveFromCurrentModule: (
  * - `'use agnostic conditions'`, `"use agnostic conditions"` denoting an Agnostic Conditions Module.
  * - `'use agnostic strategies'`, `"use agnostic strategies"` denoting an Agnostic Strategies Module.
  * @param resolvedPath The resolved path of the imported module.
- * @returns The commented directive, or lack thereof via `null`. Given the strictness of this architecture, the lack of a directive is considered a mistake. (Though rules may provide the opportunity to declare a default, and configs with preset defaults may become provided.)
+ * @returns The commented directive, or lack thereof via `null`. Now also provides the obtained `SourceCode` object. Given the strictness of this architecture, the lack of a directive is considered a mistake. (Though rules may provide the opportunity to declare a default, and configs with preset defaults may become provided.)
  */
 export const getCommentedDirectiveFromImportedModule: (
   resolvedPath: string
-) =>
-  | "use server logics"
-  | "use client logics"
-  | "use agnostic logics"
-  | "use server components"
-  | "use client components"
-  | "use agnostic components"
-  | "use server functions"
-  | "use client contexts"
-  | "use agnostic conditions"
-  | "use agnostic strategies"
-  | null;
+) => {
+  commentedDirective:
+    | "use server logics"
+    | "use client logics"
+    | "use agnostic logics"
+    | "use server components"
+    | "use client components"
+    | "use agnostic components"
+    | "use server functions"
+    | "use client contexts"
+    | "use agnostic conditions"
+    | "use agnostic strategies"
+    | null;
+  sourceCode: ESLintSourceCode;
+};
 
 /**
  * Ensures that a module's commented directive is consistent with its file extension (depending on whether it ends with 'x' for JSX).
