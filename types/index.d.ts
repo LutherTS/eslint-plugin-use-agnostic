@@ -45,6 +45,24 @@ export const commentedDirectives_commentedModules: Readonly<{
   "use agnostic strategies": "Agnostic Strategies Module";
 }>;
 
+/**
+ * Gets the coordinates for the first line of code of a file.
+ * @param context An ESLint rule's `context` object.
+ * @returns The `context.report` `loc`-compatible coordinates for the first line of code of a file.
+ */
+export const highlightFirstLineOfCode: (
+  context: RuleContext<string, readonly unknown[]>
+) => {
+  start: {
+    line: number;
+    column: number;
+  };
+  end: {
+    line: number;
+    column: number;
+  };
+};
+
 // agnostic20
 
 // directives
