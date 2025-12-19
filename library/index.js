@@ -53,6 +53,8 @@ export {
   commentedDirectives_commentedModules,
 } from "./_commons/constants/bases.js";
 
+export { highlightFirstLineOfCode } from "./_commons/utilities/helpers.js";
+
 // agnostic20
 
 export {

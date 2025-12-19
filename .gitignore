@@ -1,2 +1,16 @@
 .DS_Store
 /node_modules/
+
+# raw Extra JavaScript output files
+*.xjsx
+*.xcjsx
+*.xmjsx
+*.xtsx
+*.xctsx
+*.xmtsx
+*.xjs
+*.xcjs
+*.xmjs
+*.xts
+*.xcts
+*.xmts
