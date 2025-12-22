@@ -57,6 +57,66 @@ import { analyzeExportsForReExports } from "./analyze-exports-re.js";
 
 /* currentFileFlow */
 
+// copied from eXtra JSX (further proving that all core constants and utilities from eXtra JSX should live inside use-agnostic)
+
+/**
+ * @type {readonly [".x.jsx", ".x.cjsx", ".x.mjsx", ".x.tsx", ".x.ctsx", ".x.mtsx"]}
+ */
+export const eXtraJsxExtensions = Object.freeze([
+  ".x.jsx",
+  ".x.cjsx",
+  ".x.mjsx",
+  ".x.tsx",
+  ".x.ctsx",
+  ".x.mtsx",
+]);
+
+/**
+ * @type {readonly [".x.js", ".x.cjs", ".x.mjs", ".x.ts", ".x.cts", ".x.mts"]}
+ */
+export const eXtraJsExtensions = Object.freeze([
+  ".x.js",
+  ".x.cjs",
+  ".x.mjs",
+  ".x.ts",
+  ".x.cts",
+  ".x.mts",
+]);
+
+/**
+ * @type {readonly [".x.jsx", ".x.cjsx", ".x.mjsx", ".x.tsx", ".x.ctsx", ".x.mtsx", ".x.js", ".x.cjs", ".x.mjs", ".x.ts", ".x.cts", ".x.mts"]}
+ */
+export const extraJavaScriptExtensions = Object.freeze([
+  ...eXtraJsxExtensions,
+  ...eXtraJsExtensions,
+]);
+
+/**
+ * $COMMENT#JSDOC#CORE#DEFS#FILEISANYJAVASCRIPT
+ * @param {string} filePath $COMMENT#JSDOC#CORE#PARAMS#FILEPATH
+ * @returns $COMMENT#JSDOC#CORE#RETURNS#FILEISANYJAVASCRIPT
+ */
+export const fileIsAnyJavaScript = (filePath) =>
+  EXTENSIONS.some((e) => filePath.endsWith(e));
+
+/**
+ * $COMMENT#JSDOC#CORE#DEFS#FILEISEXTRAJAVASCRIPT
+ * @param {string} filePath $COMMENT#JSDOC#CORE#PARAMS#FILEPATH
+ * @returns $COMMENT#JSDOC#CORE#RETURNS#FILEISEXTRAJAVASCRIPT
+ */
+export const fileIsExtraJavaScript = (filePath) =>
+  extraJavaScriptExtensions.some((e) => filePath.endsWith(e));
+
+/**
+ * $COMMENT#JSDOC#CORE#DEFS#FILEISREGULARJAVASCRIPT
+ * @param {string} filePath $COMMENT#JSDOC#CORE#PARAMS#FILEPATH
+ * @returns $COMMENT#JSDOC#CORE#RETURNS#FILEISREGULARJAVASCRIPT
+ */
+export const fileIsRegularJavaScript = (filePath) =>
+  fileIsAnyJavaScript(filePath) && !fileIsExtraJavaScript(filePath);
+
+//
+
 /**
  * The flow that begins the import rules enforcement rule, retrieving the verified commented directive of the current file before comparing it to upcoming verified commented directives of the files it imports.
  * @param {Context} context The ESLint rule's `context` object.
@@ -130,16 +190,24 @@ export const currentFileFlow = (context) => {
       return { skip: undefined, verifiedCommentedDirective }; // at this time, behaves as if the new implementation didn't exist yet
     }
 
-    context.report({
-      loc: highlightFirstLineOfCode(context),
-      messageId: commentedDirectiveReactDirectiveFailedMessageId,
-      data: {
-        // verifiedCommentedDirective
-        verifiedCommentedDirective,
-        // expectedReactDirectiveAsText
-        expectedReactDirectiveAsText,
-      },
-    });
+    // NEW
+    // do not report if the module is a non-Extra JavaScript Agnostic Strategies Module, in order to allow them the freedom of doing whatever they want so they can behave in any which way they need to as convention files
+    if (
+      !(
+        fileIsRegularJavaScript(context.filename) &&
+        verifiedCommentedDirective === USE_AGNOSTIC_STRATEGIES
+      )
+    )
+      context.report({
+        loc: highlightFirstLineOfCode(context),
+        messageId: commentedDirectiveReactDirectiveFailedMessageId,
+        data: {
+          // verifiedCommentedDirective
+          verifiedCommentedDirective,
+          // expectedReactDirectiveAsText
+          expectedReactDirectiveAsText,
+        },
+      });
     return skipTrue;
   }
 
