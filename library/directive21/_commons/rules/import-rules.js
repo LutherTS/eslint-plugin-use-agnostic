@@ -24,6 +24,7 @@ import {
   currentFileFlow,
   importsFlow,
   allExportsFlow,
+  importsFlowRequire,
 } from "../utilities/flows.js";
 
 /**
@@ -73,6 +74,8 @@ Please include a Strategy that corresponds to the kind of module this export wou
         allExportsFlow(context, node, verifiedCommentedDirective),
       ExportDefaultDeclaration: (node) =>
         allExportsFlow(context, node, verifiedCommentedDirective),
+      CallExpression: (node) =>
+        importsFlowRequire(context, node, verifiedCommentedDirective),
     };
   },
 };

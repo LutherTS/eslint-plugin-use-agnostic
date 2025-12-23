@@ -35,6 +35,7 @@ import {
  * @typedef {import('../../../../types/agnostic20/_commons/typedefs.js').ImportDeclaration} ImportDeclaration
  * @typedef {import('../../../../types/agnostic20/_commons/typedefs.js').ExportNamedDeclaration} ExportNamedDeclaration
  * @typedef {import('../../../../types/agnostic20/_commons/typedefs.js').ExportAllDeclaration} ExportAllDeclaration
+ * @typedef {import('../../../../types/agnostic20/_commons/typedefs.js').CallExpression} CallExpression
  */
 
 /* currentFileFlow */
@@ -144,6 +145,68 @@ const importedFileFlow = (context, node) => {
   return { skip: undefined, importedFileEffectiveDirective };
 };
 
+// NEW!! Currently strictly adapted from importedFileFlow
+/**
+ * $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#IMPORTEDFILEFLOW
+ * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
+ * @param {CallExpression} node $COMMENT#JSDOC#PARAMS#NODE
+ * @returns $COMMENT#JSDOC#RETURNS#AGNOSTIC20#IMPORTEDFILEFLOW
+ */
+const importedFileFlowRequire = (context, node) => {
+  const skipTrue = { ...skip, importedFileEffectiveDirective: undefined };
+
+  if (
+    node.callee.type === "Identifier" &&
+    node.callee.name === "require" &&
+    node.arguments.length === 1 &&
+    node.arguments[0].type === "Literal"
+  ) {
+    const importPath = node.arguments[0].value;
+
+    if (typeof importPath !== "string") return skipTrue;
+
+    // finds the full path of the import
+    const resolvedImportPath = resolveImportingPath(
+      path.dirname(context.filename),
+      importPath,
+      findUpSync("tsconfig.json", {
+        cwd: path.dirname(context.filename),
+      }) ?? context.cwd
+    );
+
+    // does not operate on paths it did not resolve
+    if (resolvedImportPath === null) return skipTrue;
+    // does not operate on non-JS files
+    const isImportedFileJS = EXTENSIONS.some((ext) =>
+      resolvedImportPath.endsWith(ext)
+    );
+    if (!isImportedFileJS) return skipTrue;
+
+    // GETTING THE DIRECTIVE (or lack thereof) OF THE IMPORTED FILE
+    const importedFileDirective =
+      getDirectiveFromImportedModule(resolvedImportPath) ?? NO_DIRECTIVE;
+
+    // GETTING THE EXTENSION OF THE IMPORTED FILE
+    const importedFileFileExtension = path.extname(resolvedImportPath);
+
+    // GETTING THE EFFECTIVE DIRECTIVE (no lack thereof) OF THE IMPORTED FILE
+    const importedFileEffectiveDirective = getEffectiveDirective(
+      importedFileDirective,
+      importedFileFileExtension
+    );
+
+    // also fails if one of the seven effective directives has not been obtained
+    if (importedFileEffectiveDirective === null) {
+      console.error("ERROR. Effective directive should never be null.");
+      return skipTrue;
+    }
+
+    // For now skipping on both "does not operate" (which should ignore) and "fails" (which should crash) albeit with console.error.
+
+    return { skip: undefined, importedFileEffectiveDirective };
+  } else return skipTrue;
+};
+
 /* importsFlow */
 
 /** $COMMENT#JSDOC#FORALIASVARIABLES#IMPORTSFLOW
@@ -157,6 +220,46 @@ export const importsFlow = (context, node, currentFileEffectiveDirective) => {
   if (node.importKind === "type") return;
 
   const result = importedFileFlow(context, node);
+
+  if (result.skip) return;
+  const { importedFileEffectiveDirective } = result;
+
+  if (
+    isImportBlocked(
+      currentFileEffectiveDirective,
+      importedFileEffectiveDirective
+    )
+  ) {
+    context.report({
+      node,
+      messageId: importBreaksEffectiveImportRulesMessageId,
+      data: {
+        [effectiveDirectiveMessage]:
+          makeMessageFromCurrentFileEffectiveDirective(
+            currentFileEffectiveDirective
+          ),
+        [specificViolationMessage]: findSpecificViolationMessage(
+          currentFileEffectiveDirective,
+          importedFileEffectiveDirective
+        ),
+      },
+    });
+  }
+};
+
+// NEW!! Currently strictly adapted from importsFlow
+/** $COMMENT#JSDOC#FORALIASVARIABLES#IMPORTSFLOW
+ * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
+ * @param {CallExpression} node $COMMENT#JSDOC#PARAMS#NODE
+ * @param {EffectiveDirective} currentFileEffectiveDirective $COMMENT#JSDOC#PARAMS#AGNOSTIC20#CURRENTFILEEFFECTIVEDIRECTIVE
+ * @returns $COMMENT#JSDOC#FORALIASVARIABLES#FLOWRETURNSEARLY
+ */
+export const importsFlowRequire = (
+  context,
+  node,
+  currentFileEffectiveDirective
+) => {
+  const result = importedFileFlowRequire(context, node);
 
   if (result.skip) return;
   const { importedFileEffectiveDirective } = result;
