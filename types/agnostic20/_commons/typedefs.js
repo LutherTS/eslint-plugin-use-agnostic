@@ -10,6 +10,7 @@ import {
   USE_AGNOSTIC,
 } from "../../../library/agnostic20/_commons/constants/bases.js";
 
+// CallExpression
 /**
  * @typedef {import("../../_commons/typedefs.js").Plugin} Plugin
  *
@@ -17,6 +18,7 @@ import {
  * @typedef {import("../../_commons/typedefs.js").ImportDeclaration} ImportDeclaration
  * @typedef {import("../../_commons/typedefs.js").ExportNamedDeclaration} ExportNamedDeclaration
  * @typedef {import("../../_commons/typedefs.js").ExportAllDeclaration} ExportAllDeclaration
+ * @typedef {import("../../_commons/typedefs.js").CallExpression} CallExpression
  *
  * @typedef {import("../../_commons/typedefs.js").Extension} Extension
  *

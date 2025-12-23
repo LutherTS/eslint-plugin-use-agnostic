@@ -49,6 +49,7 @@ import {
  * @typedef {import('@typescript-eslint/types').TSESTree.ExportNamedDeclarationWithoutSourceWithSingle} ExportNamedDeclarationWithoutSourceWithSingle
  * @typedef {import('@typescript-eslint/types').TSESTree.ExportAllDeclaration} ExportAllDeclaration
  * @typedef {import('@typescript-eslint/types').TSESTree.ExportDefaultDeclaration} ExportDefaultDeclaration
+ * @typedef {import('@typescript-eslint/types').TSESTree.CallExpression} CallExpression
  */
 
 /**
