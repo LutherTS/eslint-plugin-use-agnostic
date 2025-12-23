@@ -1,11 +1,11 @@
 "use agnostic";
-// That's an Agnostic Components Module.
+// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#THATSAMODULE
 
-// ...Importing a Server Logics Module (with extension).
+// $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#IMPORTINGWITHEXTENSION
 import serverLogics from "../../../../../imported/javascript/server.js";
 
-// ...Importing a Server Logics Module by a folder.
+// $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#IMPORTINGBYAFOLDER
 import serverLogicsFolder from "../../../../../imported/javascript/server-js";
 
-// Invalid.
-// Server Logics cannot run on both the server and the client.
+// $COMMENT#TESTS#INVALID
+// $COMMENT#AGNOSTIC20#FORALIASVARIABLES#SERVERLOGICSCANTBOTH
