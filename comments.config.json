@@ -86,6 +86,10 @@
           "value": "The flow that is shared between import and re-export traversals to obtain the import file's effective directive.",
           "key": "JSDOC#DEFINITIONS#AGNOSTIC20#IMPORTEDFILEFLOW"
         },
+        "importedFileFlowRequire": {
+          "value": "The `importedFileFlow` adapted for `require` calls to obtain the import file's effective directive.",
+          "key": "JSDOC#DEFINITIONS#AGNOSTIC20#IMPORTEDFILEFLOWREQUIRE"
+        },
         "importsFlow": {
           "value": "The full flow for import traversals to enforce effective directives import rules.",
           "key": "JSDOC#DEFINITIONS#AGNOSTIC20#IMPORTSFLOW"
@@ -171,6 +175,10 @@
         "importedFileFlow": {
           "value": "The flow that is shared between import and re-export traversals to obtain the import file's commented directive.",
           "key": "JSDOC#DEFINITIONS#DIRECTIVE21#IMPORTEDFILEFLOW"
+        },
+        "importedFileFlowRequire": {
+          "value": "The `importedFileFlow` adapted for `require` calls to obtain the import file's commented directive.",
+          "key": "JSDOC#DEFINITIONS#DIRECTIVE21#IMPORTEDFILEFLOWREQUIRE"
         },
         "importsFlow": {
           "value": "The full flow for import traversals to enforce effective directives import rules.",
@@ -666,6 +674,18 @@
       "importsFlow": {
         "value": "The full flow for import traversals to enforce effective directives import rules.",
         "key": "JSDOC#FORALIASVARIABLES#IMPORTSFLOW"
+      },
+      "importsFlowRequire": {
+        "value": "The `importsFlow` adapted for `require` calls to enforce effective directives import rules.",
+        "key": "JSDOC#FORALIASVARIABLES#IMPORTSFLOWREQUIRE"
+      },
+      "importsFlowCommented": {
+        "value": "The full flow for import traversals to enforce commented directives import rules.",
+        "key": "JSDOC#FORALIASVARIABLES#IMPORTSFLOWCOMMENTED"
+      },
+      "importsFlowCommentedRequire": {
+        "value": "The `importsFlow` adapted for `require` calls to enforce commented directives import rules.",
+        "key": "JSDOC#FORALIASVARIABLES#IMPORTSFLOWCOMMENTEDREQUIRE"
       },
       "flowReturnsEarly": {
         "value": "Early if the flow needs to be interrupted.",

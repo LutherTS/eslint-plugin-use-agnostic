@@ -147,7 +147,7 @@ const importedFileFlow = (context, node) => {
 
 // NEW!! Currently strictly adapted from importedFileFlow
 /**
- * $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#IMPORTEDFILEFLOW
+ * $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#IMPORTEDFILEFLOWREQUIRE
  * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
  * @param {CallExpression} node $COMMENT#JSDOC#PARAMS#NODE
  * @returns $COMMENT#JSDOC#RETURNS#AGNOSTIC20#IMPORTEDFILEFLOW
@@ -248,7 +248,7 @@ export const importsFlow = (context, node, currentFileEffectiveDirective) => {
 };
 
 // NEW!! Currently strictly adapted from importsFlow
-/** $COMMENT#JSDOC#FORALIASVARIABLES#IMPORTSFLOW
+/** $COMMENT#JSDOC#FORALIASVARIABLES#IMPORTSFLOWREQUIRE
  * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
  * @param {CallExpression} node $COMMENT#JSDOC#PARAMS#NODE
  * @param {EffectiveDirective} currentFileEffectiveDirective $COMMENT#JSDOC#PARAMS#AGNOSTIC20#CURRENTFILEEFFECTIVEDIRECTIVE

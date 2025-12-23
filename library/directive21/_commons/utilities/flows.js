@@ -314,7 +314,7 @@ const importedFileFlow = (context, node) => {
 
 // NEW!! Currently strictly adapted from importedFileFlow
 /**
- * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#IMPORTEDFILEFLOW
+ * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#IMPORTEDFILEFLOWREQUIRE
  * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
  * @param {CallExpression} node $COMMENT#JSDOC#PARAMS#NODE
  * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#IMPORTEDFILEFLOW
@@ -422,7 +422,7 @@ const importedFileFlowRequire = (context, node) => {
 /* importsFlow */
 
 /**
- * $COMMENT#JSDOC#FORALIASVARIABLES#IMPORTSFLOW
+ * $COMMENT#JSDOC#FORALIASVARIABLES#IMPORTSFLOWCOMMENTED
  * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
  * @param {ImportDeclaration} node $COMMENT#JSDOC#PARAMS#NODE
  * @param {CommentedDirective} currentFileCommentedDirective $COMMENT#JSDOC#PARAMS#DIRECTIVE21#CURRENTFILECOMMENTEDDIRECTIVE
@@ -497,7 +497,7 @@ export const importsFlow = (context, node, currentFileCommentedDirective) => {
 
 // NEW!! Currently strictly adapted from importsFlow
 /**
- * $COMMENT#JSDOC#FORALIASVARIABLES#IMPORTSFLOW
+ * $COMMENT#JSDOC#FORALIASVARIABLES#IMPORTSFLOWCOMMENTEDREQUIRE
  * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
  * @param {CallExpression} node $COMMENT#JSDOC#PARAMS#NODE
  * @param {CommentedDirective} currentFileCommentedDirective $COMMENT#JSDOC#PARAMS#DIRECTIVE21#CURRENTFILECOMMENTEDDIRECTIVE
