@@ -314,7 +314,7 @@ const importedFileFlow = (context, node) => {
 
 // NEW!! Currently strictly adapted from importedFileFlow
 /**
- * The flow that is shared between import and re-export traversals to obtain the import file's commented directive.
+ * The `importedFileFlow` adapted for `require` calls to obtain the import file's commented directive.
  * @param {Context} context The ESLint rule's `context` object.
  * @param {CallExpression} node The ESLint `node` of the rule's current traversal.
  * @returns Either an object with `skip: true` to disregard or one with the non-null `importedFileCommentedDirective`. And now with the added results of `analyzeExportsForReExports`.
@@ -422,7 +422,7 @@ const importedFileFlowRequire = (context, node) => {
 /* importsFlow */
 
 /**
- * The full flow for import traversals to enforce effective directives import rules.
+ * The full flow for import traversals to enforce commented directives import rules.
  * @param {Context} context The ESLint rule's `context` object.
  * @param {ImportDeclaration} node The ESLint `node` of the rule's current traversal.
  * @param {CommentedDirective} currentFileCommentedDirective The current file's commented directive.
@@ -497,7 +497,7 @@ export const importsFlow = (context, node, currentFileCommentedDirective) => {
 
 // NEW!! Currently strictly adapted from importsFlow
 /**
- * The full flow for import traversals to enforce effective directives import rules.
+ * The `importsFlow` adapted for `require` calls to enforce commented directives import rules.
  * @param {Context} context The ESLint rule's `context` object.
  * @param {CallExpression} node The ESLint `node` of the rule's current traversal.
  * @param {CommentedDirective} currentFileCommentedDirective The current file's commented directive.
