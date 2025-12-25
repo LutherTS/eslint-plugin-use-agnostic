@@ -58,7 +58,7 @@ import { analyzeExportsForReExports } from "./analyze-exports-re.js";
 
 /* currentFileFlow */
 
-// copied from eXtra JSX (further proving that all core constants and utilities from eXtra JSX should live inside use-agnostic)
+// copied from eXtra JSX (further proving that all core constants and utilities from eXtra JSX should live inside use-agnostic in v2)
 
 /**
  * @type {readonly [".x.jsx", ".x.cjsx", ".x.mjsx", ".x.tsx", ".x.ctsx", ".x.mtsx"]}
@@ -277,7 +277,10 @@ const importedFileFlow = (context, node) => {
       node
     );
 
-    if (importingFileCommentedDirective === null) {
+    if (
+      importingFileCommentedDirective === null &&
+      fileIsExtraJavaScript(context.filename)
+    ) {
       context.report({
         node,
         messageId: importNotStrategizedMessageId,
@@ -383,7 +386,10 @@ const importedFileFlowRequire = (context, node) => {
         node
       );
 
-      if (importingFileCommentedDirective === null) {
+      if (
+        importingFileCommentedDirective === null &&
+        fileIsExtraJavaScript(context.filename)
+      ) {
         context.report({
           node,
           messageId: importNotStrategizedMessageId,

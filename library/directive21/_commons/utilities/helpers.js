@@ -245,6 +245,66 @@ export const getStrategizedDirective = (context, node) => {
 
 /* addressDirectiveIfAgnosticStrategies */
 
+// copied from eXtra JSX (further proving that all core constants and utilities from eXtra JSX should live inside use-agnostic in v2)
+
+/**
+ * @type {readonly [".x.jsx", ".x.cjsx", ".x.mjsx", ".x.tsx", ".x.ctsx", ".x.mtsx"]}
+ */
+export const eXtraJsxExtensions = Object.freeze([
+  ".x.jsx",
+  ".x.cjsx",
+  ".x.mjsx",
+  ".x.tsx",
+  ".x.ctsx",
+  ".x.mtsx",
+]);
+
+/**
+ * @type {readonly [".x.js", ".x.cjs", ".x.mjs", ".x.ts", ".x.cts", ".x.mts"]}
+ */
+export const eXtraJsExtensions = Object.freeze([
+  ".x.js",
+  ".x.cjs",
+  ".x.mjs",
+  ".x.ts",
+  ".x.cts",
+  ".x.mts",
+]);
+
+/**
+ * @type {readonly [".x.jsx", ".x.cjsx", ".x.mjsx", ".x.tsx", ".x.ctsx", ".x.mtsx", ".x.js", ".x.cjs", ".x.mjs", ".x.ts", ".x.cts", ".x.mts"]}
+ */
+export const extraJavaScriptExtensions = Object.freeze([
+  ...eXtraJsxExtensions,
+  ...eXtraJsExtensions,
+]);
+
+/**
+ * $COMMENT#JSDOC#CORE#DEFS#FILEISANYJAVASCRIPT
+ * @param {string} filePath $COMMENT#JSDOC#CORE#PARAMS#FILEPATH
+ * @returns $COMMENT#JSDOC#CORE#RETURNS#FILEISANYJAVASCRIPT
+ */
+export const fileIsAnyJavaScript = (filePath) =>
+  EXTENSIONS.some((e) => filePath.endsWith(e));
+
+/**
+ * $COMMENT#JSDOC#CORE#DEFS#FILEISEXTRAJAVASCRIPT
+ * @param {string} filePath $COMMENT#JSDOC#CORE#PARAMS#FILEPATH
+ * @returns $COMMENT#JSDOC#CORE#RETURNS#FILEISEXTRAJAVASCRIPT
+ */
+export const fileIsExtraJavaScript = (filePath) =>
+  extraJavaScriptExtensions.some((e) => filePath.endsWith(e));
+
+/**
+ * $COMMENT#JSDOC#CORE#DEFS#FILEISREGULARJAVASCRIPT
+ * @param {string} filePath $COMMENT#JSDOC#CORE#PARAMS#FILEPATH
+ * @returns $COMMENT#JSDOC#CORE#RETURNS#FILEISREGULARJAVASCRIPT
+ */
+export const fileIsRegularJavaScript = (filePath) =>
+  fileIsAnyJavaScript(filePath) && !fileIsExtraJavaScript(filePath);
+
+//
+
 /**
  * Verifies the current node's export strategy if the current commented directive is `"use agnostic strategies"` by reporting `exportNotStrategized` in case an export is not strategized in an Agnostic Strategies Module.
  * @param {Context} context The ESLint rule's `context` object.
@@ -263,7 +323,10 @@ export const addressDirectiveIfAgnosticStrategies = (
 
   const exportStrategizedDirective = getStrategizedDirective(context, node);
 
-  if (exportStrategizedDirective === null) {
+  if (
+    exportStrategizedDirective === null &&
+    fileIsExtraJavaScript(context.filename)
+  ) {
     context.report({
       node,
       messageId: exportNotStrategizedMessageId,
