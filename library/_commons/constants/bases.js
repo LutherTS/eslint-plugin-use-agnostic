@@ -48,10 +48,10 @@ export const commentedDirectiveVerificationFailedMessageId =
   "commented-directive-verification-failed";
 export const commentedDirectiveReactDirectiveFailedMessageId =
   "commented-directive-correct-react-directive-failed";
-export const importNotStrategizedMessageId =
-  "import-from-use-agnostic-strategies-not-strategized";
-export const exportNotStrategizedMessageId =
-  "export-from-use-agnostic-strategies-not-strategized";
+// export const importNotStrategizedMessageId =
+//   "import-from-use-agnostic-strategies-not-strategized";
+// export const exportNotStrategizedMessageId =
+//   "export-from-use-agnostic-strategies-not-strategized";
 export const cantChainImportAcrossEnvironmentsMessageId =
   "cant-chain-import-across-environments";
 

@@ -10,7 +10,7 @@ import {
   noCommentedDirectiveMessageId,
   commentedDirectiveVerificationFailedMessageId,
   commentedDirectiveReactDirectiveFailedMessageId,
-  importNotStrategizedMessageId,
+  // importNotStrategizedMessageId,
   cantChainImportAcrossEnvironmentsMessageId,
   skip,
 } from "../../../_commons/constants/bases.js";
@@ -40,7 +40,7 @@ import {
   isImportBlocked,
   makeMessageFromCurrentFileCommentedDirective,
   findSpecificViolationMessage,
-  getStrategizedDirective,
+  // getStrategizedDirective,
   addressDirectiveIfAgnosticStrategies,
 } from "./helpers.js";
 import { analyzeExportsForReExports } from "./analyze-exports-re.js";
@@ -271,26 +271,29 @@ const importedFileFlow = (context, node) => {
   (Consequently, details below are currently at the stage of wishful thinking.)
   Strategy exports are planned to be linting in the future within their own Agnostic Strategies Modules to ensure they respect import rules within their own scopes. It may also become possible to check whether the export and import Strategies are the same in the future when identifiers are defined and the same, especially for components modules where a convention could be for all non-type exports to be named and PascalCase. */
 
-  if (importedFileCommentedDirective === USE_AGNOSTIC_STRATEGIES) {
-    const importingFileCommentedDirective = getStrategizedDirective(
-      context,
-      node
-    );
+  // NEW!!
+  // No changes anymore. Agnostic Strategies Modules from now on are going to be considered regularly checked module that simply CANNOT be imported anywhere.
 
-    if (
-      importingFileCommentedDirective === null &&
-      fileIsExtraJavaScript(context.filename)
-    ) {
-      context.report({
-        node,
-        messageId: importNotStrategizedMessageId,
-      });
-      return skipTrue;
-    }
+  // if (importedFileCommentedDirective === USE_AGNOSTIC_STRATEGIES) {
+  //   const importingFileCommentedDirective = getStrategizedDirective(
+  //     context,
+  //     node
+  //   );
 
-    // FOR NOW, we consider the importingFileCommentedDirective (which is strategized) and the importedFileCommentedDirective (which should be strategized on its own imported file) to be same, given the limitation highlighted above.
-    importedFileCommentedDirective = importingFileCommentedDirective;
-  }
+  //   if (
+  //     importingFileCommentedDirective === null &&
+  //     fileIsExtraJavaScript(context.filename)
+  //   ) {
+  //     context.report({
+  //       node,
+  //       messageId: importNotStrategizedMessageId,
+  //     });
+  //     return skipTrue;
+  //   }
+
+  //   // FOR NOW, we consider the importingFileCommentedDirective (which is strategized) and the importedFileCommentedDirective (which should be strategized on its own imported file) to be same, given the limitation highlighted above.
+  //   importedFileCommentedDirective = importingFileCommentedDirective;
+  // }
 
   // you never know
   if (!importedFileSourceCode) {
@@ -380,26 +383,26 @@ const importedFileFlowRequire = (context, node) => {
   (Consequently, details below are currently at the stage of wishful thinking.)
   Strategy exports are planned to be linting in the future within their own Agnostic Strategies Modules to ensure they respect import rules within their own scopes. It may also become possible to check whether the export and import Strategies are the same in the future when identifiers are defined and the same, especially for components modules where a convention could be for all non-type exports to be named and PascalCase. */
 
-    if (importedFileCommentedDirective === USE_AGNOSTIC_STRATEGIES) {
-      const importingFileCommentedDirective = getStrategizedDirective(
-        context,
-        node
-      );
+    // if (importedFileCommentedDirective === USE_AGNOSTIC_STRATEGIES) {
+    //   const importingFileCommentedDirective = getStrategizedDirective(
+    //     context,
+    //     node
+    //   );
 
-      if (
-        importingFileCommentedDirective === null &&
-        fileIsExtraJavaScript(context.filename)
-      ) {
-        context.report({
-          node,
-          messageId: importNotStrategizedMessageId,
-        });
-        return skipTrue;
-      }
+    //   if (
+    //     importingFileCommentedDirective === null &&
+    //     fileIsExtraJavaScript(context.filename)
+    //   ) {
+    //     context.report({
+    //       node,
+    //       messageId: importNotStrategizedMessageId,
+    //     });
+    //     return skipTrue;
+    //   }
 
-      // FOR NOW, we consider the importingFileCommentedDirective (which is strategized) and the importedFileCommentedDirective (which should be strategized on its own imported file) to be same, given the limitation highlighted above.
-      importedFileCommentedDirective = importingFileCommentedDirective;
-    }
+    //   // FOR NOW, we consider the importingFileCommentedDirective (which is strategized) and the importedFileCommentedDirective (which should be strategized on its own imported file) to be same, given the limitation highlighted above.
+    //   importedFileCommentedDirective = importingFileCommentedDirective;
+    // }
 
     // you never know
     if (!importedFileSourceCode) {

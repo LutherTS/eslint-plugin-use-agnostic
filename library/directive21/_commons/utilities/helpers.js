@@ -1,6 +1,6 @@
 import { getSourceCodeFromFilePath } from "get-sourcecode-from-file-path";
 
-import { exportNotStrategizedMessageId } from "../../../_commons/constants/bases.js";
+// import { exportNotStrategizedMessageId } from "../../../_commons/constants/bases.js";
 import {
   USE_AGNOSTIC_STRATEGIES,
   commentedDirectivesArray,
@@ -323,15 +323,20 @@ export const addressDirectiveIfAgnosticStrategies = (
 
   const exportStrategizedDirective = getStrategizedDirective(context, node);
 
-  if (
-    exportStrategizedDirective === null &&
-    fileIsExtraJavaScript(context.filename)
-  ) {
-    context.report({
-      node,
-      messageId: exportNotStrategizedMessageId,
-    });
-  }
+  // NEW!!
+  // Now entirely neutralized. Agnostic Strategies Modules are now going to be vetted module just like the others from now on.
+  // BUT!!
+  // Still acknowledges ongoing strategies since they are indeed still acknowledged, though in a unreliable way, by the eXtra JSX's TypeScript server plugin.
+
+  // if (
+  //   exportStrategizedDirective === null &&
+  //   fileIsExtraJavaScript(context.filename)
+  // ) {
+  //   context.report({
+  //     node,
+  //     messageId: exportNotStrategizedMessageId,
+  //   });
+  // }
 
   return exportStrategizedDirective; // null indicates failure
 };

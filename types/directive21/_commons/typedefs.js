@@ -3,8 +3,8 @@ import {
   importBreaksCommentedImportRulesMessageId,
   noCommentedDirectiveMessageId,
   commentedDirectiveVerificationFailedMessageId,
-  importNotStrategizedMessageId,
-  exportNotStrategizedMessageId,
+  // importNotStrategizedMessageId,
+  // exportNotStrategizedMessageId,
   cantChainImportAcrossEnvironmentsMessageId,
 } from "../../../library/_commons/constants/bases.js";
 import {
@@ -56,7 +56,7 @@ import {
  *
  * @typedef {readonly [readonly [`// `, `'`, ``], readonly [`// `, `"`, ``], readonly [`\/\* `, `'`, ` \*\/`], readonly [`\/\* `, `"`, ` \*\/`]]} CommentStyles
  *
- * @typedef {typeof reExportNotSameMessageId | typeof importBreaksCommentedImportRulesMessageId | typeof noCommentedDirectiveMessageId | typeof commentedDirectiveVerificationFailedMessageId | typeof importNotStrategizedMessageId | typeof exportNotStrategizedMessageId | typeof cantChainImportAcrossEnvironmentsMessageId} RuleMessageId
+ * @typedef {typeof reExportNotSameMessageId | typeof importBreaksCommentedImportRulesMessageId | typeof noCommentedDirectiveMessageId | typeof commentedDirectiveVerificationFailedMessageId | typeof cantChainImportAcrossEnvironmentsMessageId} RuleMessageId // removed `| typeof importNotStrategizedMessageId | typeof exportNotStrategizedMessageId`
  * @typedef {[]} RuleOptions
  * @typedef {import("../../_commons/typedefs.js").Rule<RuleMessageId, RuleOptions>} Rule
  * @typedef {import("../../_commons/typedefs.js").Context<RuleMessageId, RuleOptions>} Context
