@@ -16,7 +16,9 @@ export const serverLogicsComments = Object.freeze({
   "use client contexts":
     /* invalid */ "$COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#SPECIALSCOMMA $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#LIKEANYCLIENTCOMPONENTSCOMMA $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#CANTTINKEREDSERVER" /* $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#USE_CLIENT_CONTEXTS */,
   "use agnostic conditions":
-    /* valid */ "(Special) Agnostic Conditions Components are able to safely render on the server, guaranteeing that only their `ComponentForServer` will be effectively involved in Prime Server Logics Modules." /* $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#USE_AGNOSTIC_CONDITIONS */,
+    /* invalid */ "DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#INVALIDONLYINCOMPONENTS" /* $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#USE_AGNOSTIC_CONDITIONS */,
+  "use agnostic strategies":
+    /* invalid */ "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#INVALID" /* $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#USE_AGNOSTIC_STRATEGIES */,
   kinds:
     "Prime Server Logics" /* $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#KINDS */,
   kindsComma:
@@ -61,7 +63,9 @@ export const clientLogicsComments = Object.freeze({
   "use client contexts":
     /* valid */ "$COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#SPECIALSCOMMA $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#LIKEANYCLIENTCOMPONENTSCOMMA $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#OKCLIENTLOGICS $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#NOEXPORTCOMPONENTS" /* $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#USE_CLIENT_CONTEXTS */,
   "use agnostic conditions":
-    /* valid */ "(Special) Agnostic Conditions Components are able to safely render on the client, guaranteeing that only their `ComponentForClient` will be effectively involved in Prime Client Logics Modules." /* $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#USE_AGNOSTIC_CONDITIONS */,
+    /* invalid */ "DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#INVALIDONLYINCOMPONENTS" /* $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#USE_AGNOSTIC_CONDITIONS */,
+  "use agnostic strategies":
+    /* invalid */ "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#INVALID" /* $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#USE_AGNOSTIC_STRATEGIES */,
   kinds:
     "Prime Client Logics" /* $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#KINDS */,
   kindsComma:
@@ -106,7 +110,9 @@ export const agnosticLogicsComments = Object.freeze({
   "use client contexts":
     /* invalid */ "$COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#SPECIALSCOMMA $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#LIKEANYCLIENTCOMPONENTSCOMMA $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#CANTTINKEREDBOTH" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#USE_CLIENT_CONTEXTS */,
   "use agnostic conditions":
-    /* valid */ "$COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#SPECIALSCOMMA $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#ASIFLINEALAGNOSTIC $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#CANANYPRIMELOGICS $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#NOEXPORTCOMPONENTS" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#USE_AGNOSTIC_CONDITIONS */,
+    /* invalid */ "DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#INVALIDENVIRONMENT" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#USE_AGNOSTIC_CONDITIONS */,
+  "use agnostic strategies":
+    /* invalid */ "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#INVALID" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#USE_AGNOSTIC_STRATEGIES */,
   kinds:
     "Prime Agnostic Logics" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#KINDS */,
   kindsComma:
@@ -152,6 +158,8 @@ export const serverComponentsComments = Object.freeze({
     /* valid */ "$COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#SPECIALS $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#CANBENESTEDINSIDE $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#KINDS $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#TOWRAPTREE $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#WHENROOTONSERVER" /* $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#USE_CLIENT_CONTEXTS */,
   "use agnostic conditions":
     /* valid */ "$COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#SPECIALSCOMMA $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#ASIFLINEALAGNOSTIC $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#RENDERSERVERLIKECLIENT" /* $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#USE_AGNOSTIC_CONDITIONS */,
+  "use agnostic strategies":
+    /* invalid */ "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#INVALID" /* $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#USE_AGNOSTIC_STRATEGIES */,
   kinds:
     "Lineal Server Components" /* $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#KINDS */,
   kindsComma:
@@ -197,6 +205,8 @@ export const clientComponentsComments = Object.freeze({
     /* valid */ "(Special) Client Contexts Components can effectively become Lineal and only render their children on the client via this mechanism since, by a Client Contexts Component being the child of a Lineal Client Component, the Client Contexts Component's children become the grandchildren of an ancestor Lineal Client Component, enforcing them to render exclusively on the client." /* $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#USE_CLIENT_CONTEXTS */,
   "use agnostic conditions":
     /* valid */ "$COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#SPECIALSCOMMA $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#ASIFLINEALAGNOSTIC $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#RENDERCLIENTLIKESERVER" /* $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#USE_AGNOSTIC_CONDITIONS */,
+  "use agnostic strategies":
+    /* invalid */ "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#INVALID" /* $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#USE_AGNOSTIC_STRATEGIES */,
   kinds:
     "Lineal Client Components" /* $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#KINDS */,
   kindsComma:
@@ -243,7 +253,9 @@ export const agnosticComponentsComments = Object.freeze({
   "use client contexts":
     /* valid */ "$COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#SPECIALS $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#CANBENESTEDINSIDE $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#KINDS $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#TOWRAPTREE $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#IFSTILLONSERVERTREE $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#WHENROOTONSERVER" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#USE_CLIENT_CONTEXTS */,
   "use agnostic conditions":
-    /* valid */ "(Special) Agnostic Conditions Components can compose with Lineal Agnostic Components as if they were Lineal Agnostic Components themselves, making them a necessary mechanism for Lineal Server Components to be nested in any Agnostic Components." /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#USE_AGNOSTIC_CONDITIONS */,
+    /* invalid */ "DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#INVALIDENVIRONMENT" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#USE_AGNOSTIC_CONDITIONS */,
+  "use agnostic strategies":
+    /* invalid */ "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#INVALID" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#USE_AGNOSTIC_STRATEGIES */,
   kinds:
     "Lineal Agnostic Components" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#KINDS */,
   kindsComma:
@@ -289,6 +301,8 @@ export const serverFunctionsComments = Object.freeze({
     /* invalid */ "$COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#SPECIALS $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#ARENTALLOWED $COMMENT#DIRECTIVE21#FORALIASVARIABLES#SERVERFUNCTIONSNOCOMPONENTS" /* $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#USE_CLIENT_CONTEXTS */,
   "use agnostic conditions":
     /* invalid */ "$COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#SPECIALS $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#ARENTALLOWED $COMMENT#DIRECTIVE21#FORALIASVARIABLES#SERVERFUNCTIONSNOCOMPONENTS" /* $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#USE_AGNOSTIC_CONDITIONS */,
+  "use agnostic strategies":
+    /* invalid */ "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#INVALID" /* $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#USE_AGNOSTIC_STRATEGIES */,
   kinds:
     "Special Server Functions" /* $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#KINDS */,
   kindsComma:
@@ -340,6 +354,8 @@ export const clientContextsComments = Object.freeze({
     /* valid */ "$COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#SPECIALS $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#CANCOMPOSEONEANOTHER" /* $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#USE_CLIENT_CONTEXTS */,
   "use agnostic conditions":
     /* valid */ "(Special) Agnostic Conditions Components, as if they were Lineal Agnostic Components themselves, can render safely on the client just like they can on the server, in a mechanism that allows Client Contexts Components to safely and indirectly compose with child Server Components within Client Contexts Modules." /* $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#USE_AGNOSTIC_CONDITIONS */,
+  "use agnostic strategies":
+    /* invalid */ "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#INVALID" /* $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#USE_AGNOSTIC_STRATEGIES */,
   kinds:
     "Special Client Contexts" /* $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#KINDS */,
   kindsComma:
@@ -374,23 +390,31 @@ export const clientContextsComments = Object.freeze({
 
 export const agnosticConditionsComments = Object.freeze({
   "use server logics":
-    /* invalid */ "DIRECTIVE21#FORALIASVARIABLES#SERVERLOGICSCANTBOTH" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_SERVER_LOGICS */,
+    /* invalid */ "DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#INVALIDONLYFROMCOMPONENTS" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_SERVER_LOGICS */,
   "use client logics":
-    /* invalid */ "DIRECTIVE21#FORALIASVARIABLES#CLIENTLOGICSCANTBOTH" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_CLIENT_LOGICS */,
+    /* invalid */ "DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#INVALIDONLYFROMCOMPONENTS" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_CLIENT_LOGICS */,
   "use agnostic logics":
-    /* valid */ "Prime Agnostic Logics, being environment-agnostic logic, can safely support any Agnostic Components, including (Special) Agnostic Conditions Components. (In this case this is necessary for the import of the `conditionAgnosticComponent` function needed to make Agnostic Conditions Components.)" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_AGNOSTIC_LOGICS */,
+    /* invalid */ "DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#INVALIDONLYFROMCOMPONENTS" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_AGNOSTIC_LOGICS */,
   "use server components":
-    /* valid */ "Lineal Server Components are to be paired as `ComponentForServer` components with `ComponentForClient` components to form (Special) Agnostic Conditions Components." /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_SERVER_COMPONENTS */,
+    /* valid */ "Lineal Server Components are to be paired as `ComponentForServer` components with `ComponentForClient` components to form (Special) Agnostic Conditions Components. The `ComponentForServer` is always the first assigned." /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_SERVER_COMPONENTS */,
   "use client components":
-    /* valid */ "Lineal Client Components are to be paired as `ComponentForClient` components with `ComponentForServer` components to form (Special) Agnostic Conditions Components." /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_CLIENT_COMPONENTS */,
+    /* valid */ "Lineal Client Components are to be paired as `ComponentForClient` components with `ComponentForServer` components to form (Special) Agnostic Conditions Components. The `ComponentForClient` is always the last assigned." /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_CLIENT_COMPONENTS */,
   "use agnostic components":
     /* valid */ "Lineal Agnostic Components can take the place of `ComponentForServer` and/or `ComponentForClient` components to form (Special) Agnostic Conditions Components." /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_AGNOSTIC_COMPONENTS */,
   "use server functions":
-    /* invalid */ "(Special) Server Functions are not accepted because (Special) Agnostic Conditions Components only take finite, imported components as arguments in their making. As such, assigning props to these components, including Server Functions, is not made within Agnostic Conditions Modules." /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_SERVER_FUNCTIONS */,
+    /* invalid */ "DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#INVALIDONLYFROMCOMPONENTS" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_SERVER_FUNCTIONS */,
   "use client contexts":
-    /* invalid */ "(Special) Client Contexts Components cannot be used as component arguments for (Special) Agnostic Conditions Components since they only take Lineal Components as arguments in their making." /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_CLIENT_CONTEXTS */,
+    /* valid */ "(Special) Client Contexts Components can actually be used as `ComponentForClient` arguments for (Special) Agnostic Conditions Components notably as counterparts to similar passthrough components selected as `ComponentForServer` arguments." /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_CLIENT_CONTEXTS */,
   "use agnostic conditions":
-    /* valid */ "(Special) Agnostic Conditions Components, despite not being Lineal Components themselves, output components that can only be Lineal and compatible with their attributed rendering environments, making them acceptable arguments in the making of Agnostic Conditions Components." /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_AGNOSTIC_CONDITIONS */,
+    /* invalid */ "DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#INVALIDENVIRONMENT" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_AGNOSTIC_CONDITIONS */,
+  "use agnostic strategies":
+    /* invalid */ "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#INVALID" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_AGNOSTIC_STRATEGIES */,
+  invalidEnvironment:
+    "(Special) Agnostic Conditions Modules cannot be imported in the (Abstract) Agnostic Environment, only strictly on the server or strictly on the client." /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#INVALIDENVIRONMENT */,
+  invalidOnlyInComponents:
+    "(Special) Agnostic Conditions Modules can only be imported by Components Modules, given how the consuming of their conditioned mechanism is restricted to React Components." /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#INVALIDONLYINCOMPONENTS */,
+  invalidOnlyFromComponents:
+    "(Special) Agnostic Conditions Modules can only import directly from Components Modules, given how the making of their conditioned mechanism is restricted to React Components." /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#INVALIDONLYFROMCOMPONENTS */,
   kinds:
     "Special Agnostic Conditions" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#KINDS */,
   kindsComma:
@@ -424,8 +448,30 @@ export const agnosticConditionsComments = Object.freeze({
 });
 
 export const agnosticStrategiesComments = Object.freeze({
+  "use server logics":
+    /* valid */ "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#VALID" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#USE_SERVER_LOGICS */,
+  "use client logics":
+    /* valid */ "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#VALID" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#USE_CLIENT_LOGICS */,
+  "use agnostic logics":
+    /* valid */ "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#VALID" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#USE_AGNOSTIC_LOGICS */,
+  "use server components":
+    /* valid */ "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#VALID" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#USE_SERVER_COMPONENTS */,
+  "use client components":
+    /* valid */ "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#VALID" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#USE_CLIENT_COMPONENTS */,
+  "use agnostic components":
+    /* valid */ "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#VALID" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#USE_AGNOSTIC_COMPONENTS */,
+  "use server functions":
+    /* valid */ "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#VALID" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#USE_SERVER_FUNCTIONS */,
+  "use client contexts":
+    /* valid */ "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#VALID" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#USE_CLIENT_CONTEXTS */,
+  "use agnostic conditions":
+    /* invalid */ "DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#INVALIDENVIRONMENT" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#USE_AGNOSTIC_CONDITIONS */,
+  "use agnostic strategies":
+    /* invalid */ "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#INVALID" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#USE_AGNOSTIC_STRATEGIES */,
   valid:
-    "(Special) Agnostic Strategies Modules can import all known modules, except themselves since they cannot be imported as they are, only as and via Strategies. (Since Agnostic Strategies Modules cannot be imported as they are, there is no such things as a `'use agnostic strategies'` importFileCommentedDirective.)" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#VALID */,
+    "(Special) Agnostic Strategies Modules can import all known modules except Special Agnostic Modules, which are file generators and should not be imported directly." /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#VALID */,
+  invalid:
+    "(Special) Agnostic Strategies Modules cannot be imported by any of the known modules, since given that Agnostic Strategies Modules generate strategized files, they need to be imported via their strategized files (like those ending in `.serverLogics.ts`) instead." /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#INVALID */,
   kinds:
     "Special Agnostic Strategies" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#KINDS */,
   kindsComma:

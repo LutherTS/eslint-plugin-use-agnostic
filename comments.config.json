@@ -1590,8 +1590,12 @@
         "key": "DIRECTIVE21#USE_SERVER_LOGICS#USE_CLIENT_CONTEXTS"
       },
       "use agnostic conditions": {
-        "value": "(Special) Agnostic Conditions Components are able to safely render on the server, guaranteeing that only their `ComponentForServer` will be effectively involved in Prime Server Logics Modules.",
+        "value": "(Special) Agnostic Conditions Modules can only be imported by Components Modules, given how the consuming of their conditioned mechanism is restricted to React Components.",
         "key": "DIRECTIVE21#USE_SERVER_LOGICS#USE_AGNOSTIC_CONDITIONS"
+      },
+      "use agnostic strategies": {
+        "value": "(Special) Agnostic Strategies Modules cannot be imported by any of the known modules, since given that Agnostic Strategies Modules generate strategized files, they need to be imported via their strategized files (like those ending in `.serverLogics.ts`) instead.",
+        "key": "DIRECTIVE21#USE_SERVER_LOGICS#USE_AGNOSTIC_STRATEGIES"
       },
       "kinds": {
         "value": "Prime Server Logics",
@@ -1676,8 +1680,12 @@
         "key": "DIRECTIVE21#USE_CLIENT_LOGICS#USE_CLIENT_CONTEXTS"
       },
       "use agnostic conditions": {
-        "value": "(Special) Agnostic Conditions Components are able to safely render on the client, guaranteeing that only their `ComponentForClient` will be effectively involved in Prime Client Logics Modules.",
+        "value": "(Special) Agnostic Conditions Modules can only be imported by Components Modules, given how the consuming of their conditioned mechanism is restricted to React Components.",
         "key": "DIRECTIVE21#USE_CLIENT_LOGICS#USE_AGNOSTIC_CONDITIONS"
+      },
+      "use agnostic strategies": {
+        "value": "(Special) Agnostic Strategies Modules cannot be imported by any of the known modules, since given that Agnostic Strategies Modules generate strategized files, they need to be imported via their strategized files (like those ending in `.serverLogics.ts`) instead.",
+        "key": "DIRECTIVE21#USE_CLIENT_LOGICS#USE_AGNOSTIC_STRATEGIES"
       },
       "kinds": {
         "value": "Prime Client Logics",
@@ -1762,8 +1770,12 @@
         "key": "DIRECTIVE21#USE_AGNOSTIC_LOGICS#USE_CLIENT_CONTEXTS"
       },
       "use agnostic conditions": {
-        "value": "(Special) Agnostic Conditions Components, as if they were Lineal Agnostic Components themselves, can be composed with any Prime Environment Logics agnostically, as long as the Prime Environment Logics Module, by convention, does not export React components.",
+        "value": "(Special) Agnostic Conditions Modules cannot be imported in the (Abstract) Agnostic Environment, only strictly on the server or strictly on the client.",
         "key": "DIRECTIVE21#USE_AGNOSTIC_LOGICS#USE_AGNOSTIC_CONDITIONS"
+      },
+      "use agnostic strategies": {
+        "value": "(Special) Agnostic Strategies Modules cannot be imported by any of the known modules, since given that Agnostic Strategies Modules generate strategized files, they need to be imported via their strategized files (like those ending in `.serverLogics.ts`) instead.",
+        "key": "DIRECTIVE21#USE_AGNOSTIC_LOGICS#USE_AGNOSTIC_STRATEGIES"
       },
       "kinds": {
         "value": "Prime Agnostic Logics",
@@ -1851,6 +1863,10 @@
         "value": "(Special) Agnostic Conditions Components, as if they were Lineal Agnostic Components themselves, can render safely on the server just like they can on the client.",
         "key": "DIRECTIVE21#USE_SERVER_COMPONENTS#USE_AGNOSTIC_CONDITIONS"
       },
+      "use agnostic strategies": {
+        "value": "(Special) Agnostic Strategies Modules cannot be imported by any of the known modules, since given that Agnostic Strategies Modules generate strategized files, they need to be imported via their strategized files (like those ending in `.serverLogics.ts`) instead.",
+        "key": "DIRECTIVE21#USE_SERVER_COMPONENTS#USE_AGNOSTIC_STRATEGIES"
+      },
       "kinds": {
         "value": "Lineal Server Components",
         "key": "DIRECTIVE21#USE_SERVER_COMPONENTS#KINDS"
@@ -1936,6 +1952,10 @@
       "use agnostic conditions": {
         "value": "(Special) Agnostic Conditions Components, as if they were Lineal Agnostic Components themselves, can render safely on the client just like they can on the server.",
         "key": "DIRECTIVE21#USE_CLIENT_COMPONENTS#USE_AGNOSTIC_CONDITIONS"
+      },
+      "use agnostic strategies": {
+        "value": "(Special) Agnostic Strategies Modules cannot be imported by any of the known modules, since given that Agnostic Strategies Modules generate strategized files, they need to be imported via their strategized files (like those ending in `.serverLogics.ts`) instead.",
+        "key": "DIRECTIVE21#USE_CLIENT_COMPONENTS#USE_AGNOSTIC_STRATEGIES"
       },
       "kinds": {
         "value": "Lineal Client Components",
@@ -2024,8 +2044,12 @@
         "key": "DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#USE_CLIENT_CONTEXTS"
       },
       "use agnostic conditions": {
-        "value": "(Special) Agnostic Conditions Components can compose with Lineal Agnostic Components as if they were Lineal Agnostic Components themselves, making them a necessary mechanism for Lineal Server Components to be nested in any Agnostic Components.",
+        "value": "(Special) Agnostic Conditions Modules cannot be imported in the (Abstract) Agnostic Environment, only strictly on the server or strictly on the client.",
         "key": "DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#USE_AGNOSTIC_CONDITIONS"
+      },
+      "use agnostic strategies": {
+        "value": "(Special) Agnostic Strategies Modules cannot be imported by any of the known modules, since given that Agnostic Strategies Modules generate strategized files, they need to be imported via their strategized files (like those ending in `.serverLogics.ts`) instead.",
+        "key": "DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#USE_AGNOSTIC_STRATEGIES"
       },
       "kinds": {
         "value": "Lineal Agnostic Components",
@@ -2112,6 +2136,10 @@
       "use agnostic conditions": {
         "value": "(Special) Agnostic Conditions Components aren't allowed because (Special) Server Functions have no business working with React Components.",
         "key": "DIRECTIVE21#USE_SERVER_FUNCTIONS#USE_AGNOSTIC_CONDITIONS"
+      },
+      "use agnostic strategies": {
+        "value": "(Special) Agnostic Strategies Modules cannot be imported by any of the known modules, since given that Agnostic Strategies Modules generate strategized files, they need to be imported via their strategized files (like those ending in `.serverLogics.ts`) instead.",
+        "key": "DIRECTIVE21#USE_SERVER_FUNCTIONS#USE_AGNOSTIC_STRATEGIES"
       },
       "kinds": {
         "value": "Special Server Functions",
@@ -2211,6 +2239,10 @@
         "value": "(Special) Agnostic Conditions Components, as if they were Lineal Agnostic Components themselves, can render safely on the client just like they can on the server, in a mechanism that allows Client Contexts Components to safely and indirectly compose with child Server Components within Client Contexts Modules.",
         "key": "DIRECTIVE21#USE_CLIENT_CONTEXTS#USE_AGNOSTIC_CONDITIONS"
       },
+      "use agnostic strategies": {
+        "value": "(Special) Agnostic Strategies Modules cannot be imported by any of the known modules, since given that Agnostic Strategies Modules generate strategized files, they need to be imported via their strategized files (like those ending in `.serverLogics.ts`) instead.",
+        "key": "DIRECTIVE21#USE_CLIENT_CONTEXTS#USE_AGNOSTIC_STRATEGIES"
+      },
       "kinds": {
         "value": "Special Client Contexts",
         "key": "DIRECTIVE21#USE_CLIENT_CONTEXTS#KINDS"
@@ -2274,23 +2306,23 @@
     },
     "use agnostic conditions": {
       "use server logics": {
-        "value": "Prime Server Logics cannot run on both the server and the client.",
+        "value": "(Special) Agnostic Conditions Modules can only import directly from Components Modules, given how the making of their conditioned mechanism is restricted to React Components.",
         "key": "DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_SERVER_LOGICS"
       },
       "use client logics": {
-        "value": "Prime Client Logics cannot run on both the server and the client.",
+        "value": "(Special) Agnostic Conditions Modules can only import directly from Components Modules, given how the making of their conditioned mechanism is restricted to React Components.",
         "key": "DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_CLIENT_LOGICS"
       },
       "use agnostic logics": {
-        "value": "Prime Agnostic Logics, being environment-agnostic logic, can safely support any Agnostic Components, including (Special) Agnostic Conditions Components. (In this case this is necessary for the import of the `conditionAgnosticComponent` function needed to make Agnostic Conditions Components.)",
+        "value": "(Special) Agnostic Conditions Modules can only import directly from Components Modules, given how the making of their conditioned mechanism is restricted to React Components.",
         "key": "DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_AGNOSTIC_LOGICS"
       },
       "use server components": {
-        "value": "Lineal Server Components are to be paired as `ComponentForServer` components with `ComponentForClient` components to form (Special) Agnostic Conditions Components.",
+        "value": "Lineal Server Components are to be paired as `ComponentForServer` components with `ComponentForClient` components to form (Special) Agnostic Conditions Components. The `ComponentForServer` is always the first assigned.",
         "key": "DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_SERVER_COMPONENTS"
       },
       "use client components": {
-        "value": "Lineal Client Components are to be paired as `ComponentForClient` components with `ComponentForServer` components to form (Special) Agnostic Conditions Components.",
+        "value": "Lineal Client Components are to be paired as `ComponentForClient` components with `ComponentForServer` components to form (Special) Agnostic Conditions Components. The `ComponentForClient` is always the last assigned.",
         "key": "DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_CLIENT_COMPONENTS"
       },
       "use agnostic components": {
@@ -2298,16 +2330,32 @@
         "key": "DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_AGNOSTIC_COMPONENTS"
       },
       "use server functions": {
-        "value": "(Special) Server Functions are not accepted because (Special) Agnostic Conditions Components only take finite, imported components as arguments in their making. As such, assigning props to these components, including Server Functions, is not made within Agnostic Conditions Modules.",
+        "value": "(Special) Agnostic Conditions Modules can only import directly from Components Modules, given how the making of their conditioned mechanism is restricted to React Components.",
         "key": "DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_SERVER_FUNCTIONS"
       },
       "use client contexts": {
-        "value": "(Special) Client Contexts Components cannot be used as component arguments for (Special) Agnostic Conditions Components since they only take Lineal Components as arguments in their making.",
+        "value": "(Special) Client Contexts Components can actually be used as `ComponentForClient` arguments for (Special) Agnostic Conditions Components notably as counterparts to similar passthrough components selected as `ComponentForServer` arguments.",
         "key": "DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_CLIENT_CONTEXTS"
       },
       "use agnostic conditions": {
-        "value": "(Special) Agnostic Conditions Components, despite not being Lineal Components themselves, output components that can only be Lineal and compatible with their attributed rendering environments, making them acceptable arguments in the making of Agnostic Conditions Components.",
+        "value": "(Special) Agnostic Conditions Modules cannot be imported in the (Abstract) Agnostic Environment, only strictly on the server or strictly on the client.",
         "key": "DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_AGNOSTIC_CONDITIONS"
+      },
+      "use agnostic strategies": {
+        "value": "(Special) Agnostic Strategies Modules cannot be imported by any of the known modules, since given that Agnostic Strategies Modules generate strategized files, they need to be imported via their strategized files (like those ending in `.serverLogics.ts`) instead.",
+        "key": "DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#USE_AGNOSTIC_STRATEGIES"
+      },
+      "invalidEnvironment": {
+        "value": "(Special) Agnostic Conditions Modules cannot be imported in the (Abstract) Agnostic Environment, only strictly on the server or strictly on the client.",
+        "key": "DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#INVALIDENVIRONMENT"
+      },
+      "invalidOnlyInComponents": {
+        "value": "(Special) Agnostic Conditions Modules can only be imported by Components Modules, given how the consuming of their conditioned mechanism is restricted to React Components.",
+        "key": "DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#INVALIDONLYINCOMPONENTS"
+      },
+      "invalidOnlyFromComponents": {
+        "value": "(Special) Agnostic Conditions Modules can only import directly from Components Modules, given how the making of their conditioned mechanism is restricted to React Components.",
+        "key": "DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#INVALIDONLYFROMCOMPONENTS"
       },
       "kinds": {
         "value": "Special Agnostic Conditions",
@@ -2371,9 +2419,53 @@
       }
     },
     "use agnostic strategies": {
+      "use server logics": {
+        "value": "(Special) Agnostic Strategies Modules can import all known modules except Special Agnostic Modules, which are file generators and should not be imported directly.",
+        "key": "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#USE_SERVER_LOGICS"
+      },
+      "use client logics": {
+        "value": "(Special) Agnostic Strategies Modules can import all known modules except Special Agnostic Modules, which are file generators and should not be imported directly.",
+        "key": "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#USE_CLIENT_LOGICS"
+      },
+      "use agnostic logics": {
+        "value": "(Special) Agnostic Strategies Modules can import all known modules except Special Agnostic Modules, which are file generators and should not be imported directly.",
+        "key": "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#USE_AGNOSTIC_LOGICS"
+      },
+      "use server components": {
+        "value": "(Special) Agnostic Strategies Modules can import all known modules except Special Agnostic Modules, which are file generators and should not be imported directly.",
+        "key": "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#USE_SERVER_COMPONENTS"
+      },
+      "use client components": {
+        "value": "(Special) Agnostic Strategies Modules can import all known modules except Special Agnostic Modules, which are file generators and should not be imported directly.",
+        "key": "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#USE_CLIENT_COMPONENTS"
+      },
+      "use agnostic components": {
+        "value": "(Special) Agnostic Strategies Modules can import all known modules except Special Agnostic Modules, which are file generators and should not be imported directly.",
+        "key": "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#USE_AGNOSTIC_COMPONENTS"
+      },
+      "use server functions": {
+        "value": "(Special) Agnostic Strategies Modules can import all known modules except Special Agnostic Modules, which are file generators and should not be imported directly.",
+        "key": "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#USE_SERVER_FUNCTIONS"
+      },
+      "use client contexts": {
+        "value": "(Special) Agnostic Strategies Modules can import all known modules except Special Agnostic Modules, which are file generators and should not be imported directly.",
+        "key": "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#USE_CLIENT_CONTEXTS"
+      },
+      "use agnostic conditions": {
+        "value": "(Special) Agnostic Conditions Modules cannot be imported in the (Abstract) Agnostic Environment, only strictly on the server or strictly on the client.",
+        "key": "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#USE_AGNOSTIC_CONDITIONS"
+      },
+      "use agnostic strategies": {
+        "value": "(Special) Agnostic Strategies Modules cannot be imported by any of the known modules, since given that Agnostic Strategies Modules generate strategized files, they need to be imported via their strategized files (like those ending in `.serverLogics.ts`) instead.",
+        "key": "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#USE_AGNOSTIC_STRATEGIES"
+      },
       "valid": {
-        "value": "(Special) Agnostic Strategies Modules can import all known modules, except themselves since they cannot be imported as they are, only as and via Strategies. (Since Agnostic Strategies Modules cannot be imported as they are, there is no such things as a `'use agnostic strategies'` importFileCommentedDirective.)",
+        "value": "(Special) Agnostic Strategies Modules can import all known modules except Special Agnostic Modules, which are file generators and should not be imported directly.",
         "key": "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#VALID"
+      },
+      "invalid": {
+        "value": "(Special) Agnostic Strategies Modules cannot be imported by any of the known modules, since given that Agnostic Strategies Modules generate strategized files, they need to be imported via their strategized files (like those ending in `.serverLogics.ts`) instead.",
+        "key": "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#INVALID"
       },
       "kinds": {
         "value": "Special Agnostic Strategies",
