@@ -29,6 +29,7 @@ import {
   environments_allowedChainImportEnvironments,
   commentedDirectives_reactDirectives,
   reactDirectives_asTexts,
+  USE_AGNOSTIC_CONDITIONS,
 } from "../constants/bases.js";
 
 import { highlightFirstLineOfCode } from "../../../_commons/utilities/helpers.js";
@@ -620,12 +621,42 @@ export const allExportsFlow = (
       currentFileCommentedDirective
     );
 
-    // returns early if an address has been made
-    if (!addressedDirective) return;
+    // // returns early if an address has been made
+    // if (!addressedDirective) return;
     // moves on to the re-export check otherwise
-    else currentFileCommentedDirective = addressedDirective;
+    // else
+    currentFileCommentedDirective = addressedDirective; // to still keep compatibility with strategies
 
-    if (currentFileCommentedDirective !== importedFileCommentedDirective) {
+    // Lints imports of Agnostic Strategies Modules beyond strategy resolution, such as to warn imports of Special Agnostic Modules. Does the same with Agnostic Conditions Modules, since they are the only other modules which cannot import themselves.
+    if (
+      currentFileCommentedDirective === USE_AGNOSTIC_STRATEGIES ||
+      currentFileCommentedDirective === USE_AGNOSTIC_CONDITIONS
+    ) {
+      // Basically, all modules need to do reexports that correspond to their own modules, but not Agnostic Strategies Modules and Agnostic Conditions Modules, the latter which are in fact NOT allowed to do re-exports.
+      if (
+        isImportBlocked(
+          currentFileCommentedDirective,
+          importedFileCommentedDirective
+        )
+      ) {
+        context.report({
+          node,
+          messageId: importBreaksCommentedImportRulesMessageId,
+          data: {
+            [commentedDirectiveMessage]:
+              makeMessageFromCurrentFileCommentedDirective(
+                currentFileCommentedDirective
+              ),
+            [specificViolationMessage]: findSpecificViolationMessage(
+              currentFileCommentedDirective,
+              importedFileCommentedDirective
+            ),
+          },
+        });
+      }
+    } else if (
+      currentFileCommentedDirective !== importedFileCommentedDirective
+    ) {
       context.report({
         node,
         messageId: reExportNotSameMessageId,

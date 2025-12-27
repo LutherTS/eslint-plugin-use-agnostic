@@ -338,7 +338,7 @@ export const addressDirectiveIfAgnosticStrategies = (
   //   });
   // }
 
-  return exportStrategizedDirective; // null indicates failure
+  return exportStrategizedDirective ?? currentFileCommentedDirective; // null indicates failure, but now that Agnostic Strategies Modules are regularly linted like any other modules, they need to surface
 };
 
 /* isImportBlocked */
