@@ -192,13 +192,12 @@ export const currentFileFlow = (context) => {
     }
 
     // NEW
-    // do not report if the module is a non-Extra JavaScript Agnostic Strategies Module, in order to allow them the freedom of doing whatever they want so they can behave in any which way they need to as convention files
-    if (
-      !(
-        fileIsRegularJavaScript(context.filename) &&
-        verifiedCommentedDirective === USE_AGNOSTIC_STRATEGIES
-      )
-    )
+    const isRegularJavaScriptAgnosticStrategies =
+      fileIsRegularJavaScript(context.filename) &&
+      verifiedCommentedDirective === USE_AGNOSTIC_STRATEGIES;
+
+    // do not report if the module is a non-Extra JavaScript Agnostic Strategies Module, in order to allow them the freedom of doing whatever they want so they can behave in any which way they need to as convention files (JSX extension still required though)
+    if (!isRegularJavaScriptAgnosticStrategies)
       context.report({
         loc: highlightFirstLineOfCode(context),
         messageId: commentedDirectiveReactDirectiveFailedMessageId,
@@ -446,8 +445,8 @@ export const importsFlow = (context, node, currentFileCommentedDirective) => {
   if (result.skip) return;
   const { importedFileCommentedDirective } = result;
 
-  // returns early is the current file is an Agnostic Strategies Module
-  if (currentFileCommentedDirective === USE_AGNOSTIC_STRATEGIES) return;
+  // returns early is the current file is an Agnostic Strategies Module // not anymore
+  // if (currentFileCommentedDirective === USE_AGNOSTIC_STRATEGIES) return;
 
   if (
     isImportBlocked(
@@ -522,8 +521,8 @@ export const importsFlowRequire = (
   if (result.skip) return;
   const { importedFileCommentedDirective } = result;
 
-  // returns early is the current file is an Agnostic Strategies Module
-  if (currentFileCommentedDirective === USE_AGNOSTIC_STRATEGIES) return;
+  // returns early is the current file is an Agnostic Strategies Module // not anymore
+  // if (currentFileCommentedDirective === USE_AGNOSTIC_STRATEGIES) return;
 
   if (
     isImportBlocked(

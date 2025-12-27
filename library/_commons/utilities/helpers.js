@@ -5,12 +5,12 @@ import {
 
 /**
  * @typedef {import('../../../types/_commons/typedefs').Context<string, readonly unknown[]>} Context
- * @typedef {import('../../../types/_commons/typedefs').ResolvedDirectiveWithoutUseAgnosticStrategies} ResolvedDirectiveWithoutUseAgnosticStrategies
+ * @typedef {import('../../../types/_commons/typedefs').ResolvedDirective} ResolvedDirective
  */
 
 /**
- * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} T
- * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} U
+ * @template {ResolvedDirective} T
+ * @template {ResolvedDirective} U
  * @typedef {import('../../../types/_commons/typedefs').ResolvedDirectives_BlockedImports<T, U>} ResolvedDirectives_BlockedImports
  */
 
@@ -30,8 +30,8 @@ export const highlightFirstLineOfCode = (context) => ({
 
 /**
  * $COMMENT#JSDOC#DEFINITIONS#ISIMPORTBLOCKED
- * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} T
- * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} U
+ * @template {ResolvedDirective} T
+ * @template {ResolvedDirective} U
  * @param {ResolvedDirectives_BlockedImports<T, U>} resolvedDirectives_blockedImports $COMMENT#JSDOC#PARAMS#RESOLVEDDIRECTIVES_BLOCKEDIMPORTS
  * @param {T} currentFileResolvedDirective $COMMENT#JSDOC#PARAMS#CURRENTFILERESOLVEDDIRECTIVEA
  * @param {U} importedFileResolvedDirective $COMMENT#JSDOC#PARAMS#IMPORTEDFILERESOLVEDDIRECTIVE
@@ -51,8 +51,8 @@ export const isImportBlocked = (
 
 /**
  * $COMMENT#JSDOC#DEFINITIONS#MAKEINTROFORSPECIFICVIOLATIONMESSAGE
- * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} T
- * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} U
+ * @template {ResolvedDirective} T
+ * @template {ResolvedDirective} U
  * @param {T} currentFileResolvedDirective $COMMENT#JSDOC#PARAMS#CURRENTFILERESOLVEDDIRECTIVEA
  * @param {U} importedFileResolvedDirective $COMMENT#JSDOC#PARAMS#IMPORTEDFILERESOLVEDDIRECTIVE
  * @returns $COMMENT#JSDOC#RETURNS#MAKEINTROFORSPECIFICVIOLATIONMESSAGE
@@ -71,8 +71,8 @@ export const makeIntroForSpecificViolationMessage = (
 
 /**
  * $COMMENT#JSDOC#DEFINITIONS#MAKEMESSAGEFROMCURRENTFILERESOLVEDDIRECTIVE
- * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} T
- * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} U
+ * @template {ResolvedDirective} T
+ * @template {ResolvedDirective} U
  * @param {ResolvedDirectives_BlockedImports<T, U>} resolvedDirectives_blockedImports $COMMENT#JSDOC#PARAMS#RESOLVEDDIRECTIVES_BLOCKEDIMPORTS
  * @param {T} currentFileResolvedDirective $COMMENT#JSDOC#PARAMS#CURRENTFILERESOLVEDDIRECTIVEB
  * @returns $COMMENT#JSDOC#RETURNS#MAKEMESSAGEFROMCURRENTFILERESOLVEDDIRECTIVE
@@ -112,8 +112,8 @@ export const makeMessageFromCurrentFileResolvedDirective = (
 
 /**
  * $COMMENT#JSDOC#DEFINITIONS#FINDSPECIFICVIOLATIONMESSAGE
- * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} T
- * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} U
+ * @template {ResolvedDirective} T
+ * @template {ResolvedDirective} U
  * @param {ResolvedDirectives_BlockedImports<T, U>} resolvedDirectives_blockedImports $COMMENT#JSDOC#PARAMS#RESOLVEDDIRECTIVES_BLOCKEDIMPORTS
  * @param {T} currentFileResolvedDirective $COMMENT#JSDOC#PARAMS#CURRENTFILERESOLVEDDIRECTIVEA
  * @param {U} importedFileResolvedDirective $COMMENT#JSDOC#PARAMS#IMPORTEDFILERESOLVEDDIRECTIVE

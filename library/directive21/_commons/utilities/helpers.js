@@ -345,8 +345,8 @@ export const addressDirectiveIfAgnosticStrategies = (
 
 /**
  * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#ISIMPORTBLOCKED
- * @param {CommentedDirectiveWithoutUseAgnosticStrategies} currentFileCommentedDirective $COMMENT#JSDOC#PARAMS#DIRECTIVE21#CURRENTFILECOMMENTEDDIRECTIVE
- * @param {CommentedDirectiveWithoutUseAgnosticStrategies} importedFileCommentedDirective $COMMENT#JSDOC#PARAMS#DIRECTIVE21#IMPORTEDFILECOMMENTEDDIRECTIVE
+ * @param {CommentedDirective} currentFileCommentedDirective $COMMENT#JSDOC#PARAMS#DIRECTIVE21#CURRENTFILECOMMENTEDDIRECTIVE
+ * @param {CommentedDirective} importedFileCommentedDirective $COMMENT#JSDOC#PARAMS#DIRECTIVE21#IMPORTEDFILECOMMENTEDDIRECTIVE
  * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#ISIMPORTBLOCKED
  */
 export const isImportBlocked = (
@@ -378,8 +378,8 @@ export const makeMessageFromCurrentFileCommentedDirective = (
 
 /**
  * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#FINDSPECIFICVIOLATIONMESSAGE
- * @param {CommentedDirectiveWithoutUseAgnosticStrategies} currentFileCommentedDirective $COMMENT#JSDOC#PARAMS#DIRECTIVE21#CURRENTFILECOMMENTEDDIRECTIVE
- * @param {CommentedDirectiveWithoutUseAgnosticStrategies} importedFileCommentedDirective $COMMENT#JSDOC#PARAMS#DIRECTIVE21#IMPORTEDFILECOMMENTEDDIRECTIVE
+ * @param {CommentedDirective} currentFileCommentedDirective $COMMENT#JSDOC#PARAMS#DIRECTIVE21#CURRENTFILECOMMENTEDDIRECTIVE
+ * @param {CommentedDirective} importedFileCommentedDirective $COMMENT#JSDOC#PARAMS#DIRECTIVE21#IMPORTEDFILECOMMENTEDDIRECTIVE
  * @returns $COMMENT#JSDOC#RETURNS#FINDSPECIFICVIOLATIONMESSAGE
  */
 export const findSpecificViolationMessage = (

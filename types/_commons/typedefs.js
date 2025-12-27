@@ -53,12 +53,12 @@ import {
  */
 
 /**
- * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} U
+ * @template {ResolvedDirective} U
  * @typedef {Readonly<{blockedImport: U; message: string;}>[]} BlockedImports
  */
 /**
- * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} T
- * @template {ResolvedDirectiveWithoutUseAgnosticStrategies} U
+ * @template {ResolvedDirective} T
+ * @template {ResolvedDirective} U
  * @typedef {Readonly<Record<T, BlockedImports<U>>>} ResolvedDirectives_BlockedImports
  */
 
