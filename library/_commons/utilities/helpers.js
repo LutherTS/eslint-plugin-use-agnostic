@@ -17,9 +17,9 @@ import {
 /* highlightFirstLineOfCode */
 
 /**
- * $COMMENT#JSDOC#DEFINITIONS#HIGHLIGHTFIRSTLINEOFCODE
- * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTA
- * @returns $COMMENT#JSDOC#RETURNS#HIGHLIGHTFIRSTLINEOFCODE
+ * Gets the coordinates for the first line of code of a file.
+ * @param {Context} context An ESLint rule's `context` object.
+ * @returns The `context.report` `loc`-compatible coordinates for the first line of code of a file.
  */
 export const highlightFirstLineOfCode = (context) => ({
   start: { line: 1, column: 0 },
@@ -29,13 +29,13 @@ export const highlightFirstLineOfCode = (context) => ({
 /* isImportBlocked */
 
 /**
- * $COMMENT#JSDOC#DEFINITIONS#ISIMPORTBLOCKED
+ * Returns a boolean deciding if an imported file's "resolved" directive is incompatible with the current file's "resolved" directive.
  * @template {ResolvedDirective} T
  * @template {ResolvedDirective} U
- * @param {ResolvedDirectives_BlockedImports<T, U>} resolvedDirectives_blockedImports $COMMENT#JSDOC#PARAMS#RESOLVEDDIRECTIVES_BLOCKEDIMPORTS
- * @param {T} currentFileResolvedDirective $COMMENT#JSDOC#PARAMS#CURRENTFILERESOLVEDDIRECTIVEA
- * @param {U} importedFileResolvedDirective $COMMENT#JSDOC#PARAMS#IMPORTEDFILERESOLVEDDIRECTIVE
- * @returns $COMMENT#JSDOC#RETURNS#ISIMPORTBLOCKED
+ * @param {ResolvedDirectives_BlockedImports<T, U>} resolvedDirectives_blockedImports The blocked imports object, either for agnostic20 or for directive21.
+ * @param {T} currentFileResolvedDirective The current file's "resolved" directive.
+ * @param {U} importedFileResolvedDirective The imported file's "resolved" directive.
+ * @returns `true` if the import is blocked, as established in respective `resolvedDirectives_blockedImports`.
  */
 export const isImportBlocked = (
   // Note: "Blocked" here is preferred over "not allowed" because a specific message will be shared for each of the blocked situations, explaining their reasons and the solutions needed.
@@ -50,12 +50,12 @@ export const isImportBlocked = (
 /* makeIntroForSpecificViolationMessage */
 
 /**
- * $COMMENT#JSDOC#DEFINITIONS#MAKEINTROFORSPECIFICVIOLATIONMESSAGE
+ * Makes the intro for each specific import rule violation messages.
  * @template {ResolvedDirective} T
  * @template {ResolvedDirective} U
- * @param {T} currentFileResolvedDirective $COMMENT#JSDOC#PARAMS#CURRENTFILERESOLVEDDIRECTIVEA
- * @param {U} importedFileResolvedDirective $COMMENT#JSDOC#PARAMS#IMPORTEDFILERESOLVEDDIRECTIVE
- * @returns $COMMENT#JSDOC#RETURNS#MAKEINTROFORSPECIFICVIOLATIONMESSAGE
+ * @param {T} currentFileResolvedDirective The current file's "resolved" directive.
+ * @param {U} importedFileResolvedDirective The imported file's "resolved" directive.
+ * @returns "[Current file 'resolved' modules] are not allowed to import [imported file 'resolved' modules]."
  */
 export const makeIntroForSpecificViolationMessage = (
   currentFileResolvedDirective,
@@ -70,12 +70,12 @@ export const makeIntroForSpecificViolationMessage = (
 /* makeMessageFromCurrentFileResolvedDirective */
 
 /**
- * $COMMENT#JSDOC#DEFINITIONS#MAKEMESSAGEFROMCURRENTFILERESOLVEDDIRECTIVE
+ * Lists in an message the "resolved" modules incompatible with a "resolved" module based on its "resolved" directive.
  * @template {ResolvedDirective} T
  * @template {ResolvedDirective} U
- * @param {ResolvedDirectives_BlockedImports<T, U>} resolvedDirectives_blockedImports $COMMENT#JSDOC#PARAMS#RESOLVEDDIRECTIVES_BLOCKEDIMPORTS
- * @param {T} currentFileResolvedDirective $COMMENT#JSDOC#PARAMS#CURRENTFILERESOLVEDDIRECTIVEB
- * @returns $COMMENT#JSDOC#RETURNS#MAKEMESSAGEFROMCURRENTFILERESOLVEDDIRECTIVE
+ * @param {ResolvedDirectives_BlockedImports<T, U>} resolvedDirectives_blockedImports The blocked imports object, either for agnostic20 or for directive21.
+ * @param {T} currentFileResolvedDirective The "resolved" directive of the "resolved" module.
+ * @returns The message listing the incompatible "resolved" modules.
  */
 export const makeMessageFromCurrentFileResolvedDirective = (
   resolvedDirectives_blockedImports,
@@ -111,13 +111,13 @@ export const makeMessageFromCurrentFileResolvedDirective = (
 /* findSpecificViolationMessage */
 
 /**
- * $COMMENT#JSDOC#DEFINITIONS#FINDSPECIFICVIOLATIONMESSAGE
+ * Finds the `message` for the specific violation of "resolved" directives import rules based on `resolvedDirectives_blockedImports`.
  * @template {ResolvedDirective} T
  * @template {ResolvedDirective} U
- * @param {ResolvedDirectives_BlockedImports<T, U>} resolvedDirectives_blockedImports $COMMENT#JSDOC#PARAMS#RESOLVEDDIRECTIVES_BLOCKEDIMPORTS
- * @param {T} currentFileResolvedDirective $COMMENT#JSDOC#PARAMS#CURRENTFILERESOLVEDDIRECTIVEA
- * @param {U} importedFileResolvedDirective $COMMENT#JSDOC#PARAMS#IMPORTEDFILERESOLVEDDIRECTIVE
- * @returns $COMMENT#JSDOC#RETURNS#FINDSPECIFICVIOLATIONMESSAGE
+ * @param {ResolvedDirectives_BlockedImports<T, U>} resolvedDirectives_blockedImports The blocked imports object, either for agnostic20 or for directive21.
+ * @param {T} currentFileResolvedDirective The current file's "resolved" directive.
+ * @param {U} importedFileResolvedDirective The imported file's "resolved" directive.
+ * @returns The corresponding `message`.
  */
 export const findSpecificViolationMessage = (
   resolvedDirectives_blockedImports,

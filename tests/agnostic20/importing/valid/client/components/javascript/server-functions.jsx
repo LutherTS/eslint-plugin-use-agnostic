@@ -1,11 +1,11 @@
 "use client";
-// $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#THATSAMODULE
+// That's a Client Components Module.
 
-// $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#IMPORTINGWITHEXTENSION
+// ...Importing a Server Functions Module (with extension).
 import serverFunctions from "../../../../../imported/javascript/server-functions.js";
 
-// $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#IMPORTINGBYAFOLDER
+// ...Importing a Server Functions Module by a folder.
 import serverFunctionsFolder from "../../../../../imported/javascript/server-functions-js";
 
-// $COMMENT#TESTS#VALID
-// $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_SERVER_FUNCTIONS
+// Valid.
+// Server Functions can specifically be triggered by Client Components.

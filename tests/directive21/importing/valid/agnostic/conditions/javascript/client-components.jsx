@@ -1,20 +1,20 @@
 // "use agnostic conditions"
 
-// $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#IMPORTINGAMODULE
+// ...Importing a Lineal Client Components Module.
 import clientComponents from "../../../../../imported/javascript/client-components.jsx";
 
-// $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#IMPORTINGBYAFOLDER
+// ...Importing a Lineal Client Components Module by a folder.
 import clientComponentsFolder from "../../../../../imported/javascript/client-components-jsx";
 
-// $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#IMPORTINGVIASTRATEGY
+// ...Importing Lineal Client Components via Special Agnostic Strategy.
 import {
   /* @clientComponents */ clientComponentsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#IMPORTINGVIASTRATEGYBYAFOLDER
+// ...Importing Lineal Client Components via Special Agnostic Strategy by a folder.
 import {
   /* @clientComponents */ clientLogicsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// $COMMENT#TESTS#VALID
-// $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#KINDS are to be paired as `ComponentForClient` components with `ComponentForServer` components to form $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#SPECIALSPERIOD
+// Valid.
+// Lineal Client Components are to be paired as `ComponentForClient` components with `ComponentForServer` components to form (Special) Agnostic Conditions Components.

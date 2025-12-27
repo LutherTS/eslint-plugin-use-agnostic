@@ -1,18 +1,18 @@
-// $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#THATSAMODULE
+// That's a Server Logics Module.
 
-// $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#IMPORTINGWITHEXTENSION
+// ...Importing a Server Components Module (with extension).
 import serverComponents from "../../../../../imported/typescript/server.tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import serverComponentsAlias from "@/tests/agnostic20/imported/typescript/server.tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import serverComponentsBaseUrl from "tests/agnostic20/imported/typescript/server.tsx";
 
-// $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#IMPORTINGBYAFOLDER
+// ...Importing a Server Components Module by a folder.
 import serverComponentsFolder from "../../../../../imported/typescript/server-tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import serverComponentsFolderAlias from "@/tests/agnostic20/imported/typescript/server-tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import serverComponentsFolderBaseUrl from "tests/agnostic20/imported/typescript/server-tsx";
 
-// $COMMENT#TESTS#VALID
-// $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#USE_SERVER_COMPONENTS
+// Valid.
+// Server Components are OK to be composed with Server Logics as long as the Server Logics Module, by convention, does not export React components.
