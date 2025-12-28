@@ -522,7 +522,7 @@ export const getStrategizedDirective: (
   | "use agnostic components"
   | "use server functions"
   | "use client contexts"
-  | "use agnostic conditions"
+  // | "use agnostic conditions"
   | null;
 
 /**
@@ -541,7 +541,8 @@ export const isImportBlockedDirective21: (
     | "use agnostic components"
     | "use server functions"
     | "use client contexts"
-    | "use agnostic conditions",
+    | "use agnostic conditions"
+    | "use agnostic strategies",
   importedFileCommentedDirective:
     | "use server logics"
     | "use client logics"
@@ -552,4 +553,5 @@ export const isImportBlockedDirective21: (
     | "use server functions"
     | "use client contexts"
     | "use agnostic conditions"
+    | "use agnostic strategies"
 ) => boolean;
