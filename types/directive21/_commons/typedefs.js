@@ -26,7 +26,7 @@ import {
   AT_AGNOSTIC_COMPONENTS,
   AT_SERVER_FUNCTIONS,
   AT_CLIENT_CONTEXTS,
-  AT_AGNOSTIC_CONDITIONS,
+  // AT_AGNOSTIC_CONDITIONS,
   SERVER,
   CLIENT,
   AGNOSTIC,
@@ -49,8 +49,8 @@ import {
  * @typedef {Exclude<CommentedDirective, UseAgnosticStrategies>} CommentedDirectiveWithoutUseAgnosticStrategies
  * @typedef {readonly [typeof USE_SERVER_LOGICS, typeof USE_CLIENT_LOGICS, typeof USE_AGNOSTIC_LOGICS, typeof USE_SERVER_COMPONENTS, typeof USE_CLIENT_COMPONENTS, typeof USE_AGNOSTIC_COMPONENTS, typeof USE_SERVER_FUNCTIONS, typeof USE_CLIENT_CONTEXTS, typeof USE_AGNOSTIC_CONDITIONS, typeof USE_AGNOSTIC_STRATEGIES]} CommentedDirectives
  *
- * @typedef {typeof AT_SERVER_LOGICS | typeof AT_CLIENT_LOGICS | typeof AT_AGNOSTIC_LOGICS | typeof AT_SERVER_COMPONENTS | typeof AT_CLIENT_COMPONENTS | typeof AT_AGNOSTIC_COMPONENTS | typeof AT_SERVER_FUNCTIONS | typeof AT_CLIENT_CONTEXTS | typeof AT_AGNOSTIC_CONDITIONS} CommentedStrategy
- * @typedef {readonly [typeof AT_SERVER_LOGICS, typeof AT_CLIENT_LOGICS, typeof AT_AGNOSTIC_LOGICS, typeof AT_SERVER_COMPONENTS, typeof AT_CLIENT_COMPONENTS, typeof AT_AGNOSTIC_COMPONENTS, typeof AT_SERVER_FUNCTIONS, typeof AT_CLIENT_CONTEXTS, typeof AT_AGNOSTIC_CONDITIONS]} CommentedStrategies
+ * @typedef {typeof AT_SERVER_LOGICS | typeof AT_CLIENT_LOGICS | typeof AT_AGNOSTIC_LOGICS | typeof AT_SERVER_COMPONENTS | typeof AT_CLIENT_COMPONENTS | typeof AT_AGNOSTIC_COMPONENTS | typeof AT_SERVER_FUNCTIONS | typeof AT_CLIENT_CONTEXTS} CommentedStrategy // removed ` | typeof AT_AGNOSTIC_CONDITIONS`
+ * @typedef {readonly [typeof AT_SERVER_LOGICS, typeof AT_CLIENT_LOGICS, typeof AT_AGNOSTIC_LOGICS, typeof AT_SERVER_COMPONENTS, typeof AT_CLIENT_COMPONENTS, typeof AT_AGNOSTIC_COMPONENTS, typeof AT_SERVER_FUNCTIONS, typeof AT_CLIENT_CONTEXTS]} CommentedStrategies // removed `, typeof AT_AGNOSTIC_CONDITIONS`
  *
  * @typedef {typeof SERVER | typeof CLIENT | typeof AGNOSTIC} Environment
  *

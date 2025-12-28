@@ -94,8 +94,8 @@ export const AT_SERVER_FUNCTIONS =
   commentVariablesData.directive21["use server functions"].atStrategy.value;
 export const AT_CLIENT_CONTEXTS =
   commentVariablesData.directive21["use client contexts"].atStrategy.value;
-export const AT_AGNOSTIC_CONDITIONS =
-  commentVariablesData.directive21["use agnostic conditions"].atStrategy.value;
+// export const AT_AGNOSTIC_CONDITIONS =
+//   commentVariablesData.directive21["use agnostic conditions"].atStrategy.value; // Agnostic Conditions Modules no longer output from Agnostic Strategies Modules.
 
 // commented strategies array
 /** @type {CommentedStrategies} */
@@ -108,7 +108,7 @@ export const commentedStrategiesArray = Object.freeze([
   AT_AGNOSTIC_COMPONENTS,
   AT_SERVER_FUNCTIONS,
   AT_CLIENT_CONTEXTS,
-  AT_AGNOSTIC_CONDITIONS,
+  // AT_AGNOSTIC_CONDITIONS,
 ]);
 
 // commented strategies set
@@ -125,7 +125,7 @@ export const commentedStrategies_commentedDirectives = Object.freeze({
   [AT_AGNOSTIC_COMPONENTS]: USE_AGNOSTIC_COMPONENTS,
   [AT_SERVER_FUNCTIONS]: USE_SERVER_FUNCTIONS,
   [AT_CLIENT_CONTEXTS]: USE_CLIENT_CONTEXTS,
-  [AT_AGNOSTIC_CONDITIONS]: USE_AGNOSTIC_CONDITIONS,
+  // [AT_AGNOSTIC_CONDITIONS]: USE_AGNOSTIC_CONDITIONS,
 });
 
 // message placeholders

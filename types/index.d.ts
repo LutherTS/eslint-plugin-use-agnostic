@@ -278,7 +278,7 @@ export const AT_CLIENT_COMPONENTS: "@clientComponents";
 export const AT_AGNOSTIC_COMPONENTS: "@agnosticComponents";
 export const AT_SERVER_FUNCTIONS: "@serverFunctions";
 export const AT_CLIENT_CONTEXTS: "@clientContexts";
-export const AT_AGNOSTIC_CONDITIONS: "@agnosticConditions";
+// export const AT_AGNOSTIC_CONDITIONS: "@agnosticConditions";
 
 // commented strategies array
 export const commentedStrategiesArray: readonly [
@@ -289,8 +289,8 @@ export const commentedStrategiesArray: readonly [
   typeof AT_CLIENT_COMPONENTS,
   typeof AT_AGNOSTIC_COMPONENTS,
   typeof AT_SERVER_FUNCTIONS,
-  typeof AT_CLIENT_CONTEXTS,
-  typeof AT_AGNOSTIC_CONDITIONS
+  typeof AT_CLIENT_CONTEXTS
+  // typeof AT_AGNOSTIC_CONDITIONS
 ];
 
 // commented strategies set
@@ -303,7 +303,7 @@ export const commentedStrategiesSet: ReadonlySet<
   | typeof AT_AGNOSTIC_COMPONENTS
   | typeof AT_SERVER_FUNCTIONS
   | typeof AT_CLIENT_CONTEXTS
-  | typeof AT_AGNOSTIC_CONDITIONS
+  // | typeof AT_AGNOSTIC_CONDITIONS
 >;
 
 // mapped commented strategies to their commented directives
@@ -316,7 +316,7 @@ export const commentedStrategies_commentedDirectives: Readonly<{
   [AT_AGNOSTIC_COMPONENTS]: "use agnostic components";
   [AT_SERVER_FUNCTIONS]: "use server functions";
   [AT_CLIENT_CONTEXTS]: "use client contexts";
-  [AT_AGNOSTIC_CONDITIONS]: "use agnostic conditions";
+  // [AT_AGNOSTIC_CONDITIONS]: "use agnostic conditions";
 }>;
 
 // environments
