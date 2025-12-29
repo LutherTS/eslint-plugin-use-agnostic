@@ -21,6 +21,8 @@ export const jsDocComments = Object.freeze({
       "Recursively visits an AST node with a given callback." /* $COMMENT#JSDOC#DEFINITIONS#VISITNODE */,
     analyzeExportsForReExports:
       "Analyzes a source code's exports to detect re-exports." /* $COMMENT#JSDOC#DEFINITIONS#ANALYZEEXPORTSFORREEXPORTS */,
+    getEnvironmentFromResolvedDirective:
+      'Gets the environment from a resolved directive (like `"use server logics"` -> `"server"`). This can either be one of the Concrete Environments (the Server Environment or the Client Environment), or the Abstract Environment (the Agnostic Environment).' /* $COMMENT#JSDOC#DEFINITIONS#GETENVIRONMENTFROMRESOLVEDDIRECTIVE */,
     agnostic20: Object.freeze({
       makeAgnostic20Config:
         "$COMMENT#JSDOC#FORCOMPOSEDVARIABLES#MAKESTHE $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#AGNOSTIC20 $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#CONFIGFORPLUGIN" /* $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#MAKEAGNOSTIC20CONFIG */,
@@ -147,6 +149,7 @@ export const jsDocComments = Object.freeze({
       "The visitor keys of the node being visited." /* $COMMENT#JSDOC#PARAMS#VISITORKEYS */,
     sourceCodeB:
       "The `SourceCode` to analyze." /* $COMMENT#JSDOC#PARAMS#SOURCECODEB */,
+    resolvedDirective: "The resolved directive at hand." /* $COMMENT#JSDOC#PARAMS#RESOLVEDDIRECTIVE */,
     agnostic20: Object.freeze({
       currentFileEffectiveDirective:
         "$COMMENT#JSDOC#FORCOMPOSEDVARIABLES#THECURRENTFILE $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#EFFECTIVE $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#DIRECTIVEPERIOD" /* $COMMENT#JSDOC#PARAMS#AGNOSTIC20#CURRENTFILEEFFECTIVEDIRECTIVE */,
@@ -268,6 +271,8 @@ export const jsDocComments = Object.freeze({
       "The corresponding `message`." /* $COMMENT#JSDOC#RETURNS#FINDSPECIFICVIOLATIONMESSAGE */,
     analyzeExportsForReExports:
       "An object with the `reExportsWithSource` key tracking the direct re-exports from an imported source in an array and the `reExportsViaLocal` key tracking the indirect re-exports from an imported source in an array." /* $COMMENT#JSDOC#RETURNS#ANALYZEEXPORTSFORREEXPORTS */,
+    getEnvironmentFromResolvedDirective:
+      'Either `"server"`, `"client"`, or `"agnostic"`.' /* $COMMENT#JSDOC#RETURNS#GETENVIRONMENTFROMRESOLVEDDIRECTIVE */,
     agnostic20: Object.freeze({
       makeAgnostic20Config:
         "$COMMENT#JSDOC#FORCOMPOSEDVARIABLES#INITIALTHE $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#AGNOSTIC20 $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#CONFIGSNAME" /* $COMMENT#JSDOC#RETURNS#AGNOSTIC20#MAKEAGNOSTIC20CONFIG */,

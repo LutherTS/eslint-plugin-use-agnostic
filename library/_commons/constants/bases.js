@@ -180,3 +180,7 @@ export const typeScriptAndJSXCompatible = {
     },
   },
 };
+
+export const SERVER = "server";
+export const CLIENT = "client";
+export const AGNOSTIC = "agnostic";

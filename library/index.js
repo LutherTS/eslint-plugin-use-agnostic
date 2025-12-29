@@ -53,7 +53,10 @@ export {
   commentedDirectives_commentedModules,
 } from "./_commons/constants/bases.js";
 
-export { highlightFirstLineOfCode } from "./_commons/utilities/helpers.js";
+export {
+  highlightFirstLineOfCode,
+  getEnvironmentFromResolvedDirective,
+} from "./_commons/utilities/helpers.js";
 
 // agnostic20
 
@@ -99,6 +102,8 @@ export {
   commentedDirectivesSet,
   // mapped commented directives to their extension rules
   commentedDirectives_extensionRules,
+  // mapped commented directives to their React directives
+  commentedDirectives_reactDirectives,
   // commented strategies
   AT_SERVER_LOGICS,
   AT_CLIENT_LOGICS,
@@ -108,7 +113,6 @@ export {
   AT_AGNOSTIC_COMPONENTS,
   AT_SERVER_FUNCTIONS,
   AT_CLIENT_CONTEXTS,
-  // AT_AGNOSTIC_CONDITIONS,
   // commented strategies array
   commentedStrategiesArray,
   // commented strategies set
@@ -119,9 +123,32 @@ export {
   SERVER,
   CLIENT,
   AGNOSTIC,
+  // mapped environments to their allowed chain-import environments
   environments_allowedChainImportEnvironments,
-  // mapped commented directives to their React directives
-  commentedDirectives_reactDirectives,
+  // strategized extensions
+  DOT_SERVER_LOGICS,
+  DOT_CLIENT_LOGICS,
+  DOT_AGNOSTIC_LOGICS,
+  DOT_SERVER_COMPONENTS,
+  DOT_CLIENT_COMPONENTS,
+  DOT_AGNOSTIC_COMPONENTS,
+  DOT_SERVER_FUNCTIONS,
+  DOT_CLIENT_CONTEXTS,
+  // strategized extensions array
+  strategizedExtensionsArray,
+  // strategized extensions set
+  strategizedExtensionsSet,
+  // mapped commented directives to their strategized extensions
+  commentedDirectives_strategizedExtensions,
+  // conditioned extensions
+  DOT_AGNOSTIC_SERVER,
+  DOT_AGNOSTIC_CLIENT,
+  // conditioned extensions array
+  conditionedExtensionsArray,
+  // conditioned extensions set
+  conditionedExtensionsSet,
+  // mapped environments to their conditioned extensions
+  environments_conditionedExtensions,
 } from "./directive21/_commons/constants/bases.js";
 
 export {

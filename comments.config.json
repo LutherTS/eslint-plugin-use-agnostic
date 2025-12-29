@@ -37,6 +37,10 @@
         "value": "Analyzes a source code's exports to detect re-exports.",
         "key": "JSDOC#DEFINITIONS#ANALYZEEXPORTSFORREEXPORTS"
       },
+      "getEnvironmentFromResolvedDirective": {
+        "value": "Gets the environment from a resolved directive (like `\"use server logics\"` -> `\"server\"`). This can either be one of the Concrete Environments (the Server Environment or the Client Environment), or the Abstract Environment (the Agnostic Environment).",
+        "key": "JSDOC#DEFINITIONS#GETENVIRONMENTFROMRESOLVEDDIRECTIVE"
+      },
       "agnostic20": {
         "makeAgnostic20Config": {
           "value": "Makes the agnostic20 config for the use-agnostic ESLint plugin.",
@@ -285,6 +289,10 @@
         "value": "The `SourceCode` to analyze.",
         "key": "JSDOC#PARAMS#SOURCECODEB"
       },
+      "resolvedDirective": {
+        "value": "The resolved directive at hand.",
+        "key": "JSDOC#PARAMS#RESOLVEDDIRECTIVE"
+      },
       "agnostic20": {
         "currentFileEffectiveDirective": {
           "value": "The current file's effective directive.",
@@ -514,6 +522,10 @@
       "analyzeExportsForReExports": {
         "value": "An object with the `reExportsWithSource` key tracking the direct re-exports from an imported source in an array and the `reExportsViaLocal` key tracking the indirect re-exports from an imported source in an array.",
         "key": "JSDOC#RETURNS#ANALYZEEXPORTSFORREEXPORTS"
+      },
+      "getEnvironmentFromResolvedDirective": {
+        "value": "Either `\"server\"`, `\"client\"`, or `\"agnostic\"`.",
+        "key": "JSDOC#RETURNS#GETENVIRONMENTFROMRESOLVEDDIRECTIVE"
       },
       "agnostic20": {
         "makeAgnostic20Config": {

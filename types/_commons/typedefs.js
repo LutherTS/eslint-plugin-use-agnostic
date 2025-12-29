@@ -21,6 +21,9 @@ import {
   USE_CLIENT_CONTEXTS,
   USE_AGNOSTIC_CONDITIONS,
   USE_AGNOSTIC_STRATEGIES,
+  SERVER,
+  CLIENT,
+  AGNOSTIC,
 } from "../../library/_commons/constants/bases";
 
 /**
@@ -36,8 +39,7 @@ import {
  * @typedef {EffectiveDirective | typeof USE_CLIENT_CONTEXTS | typeof USE_AGNOSTIC_CONDITIONS | typeof USE_AGNOSTIC_STRATEGIES} CommentedDirective
  * @typedef {EffectiveDirective | CommentedDirective} ResolvedDirective
  *
- * @typedef {typeof USE_AGNOSTIC_STRATEGIES} UseAgnosticStrategies
- * @typedef {Exclude<ResolvedDirective, UseAgnosticStrategies>} ResolvedDirectiveWithoutUseAgnosticStrategies
+ * @typedef {typeof SERVER | typeof CLIENT | typeof AGNOSTIC} Environment
  *
  * @typedef {import('@typescript-eslint/utils').TSESLint.SourceCode.Program} AST
  * @typedef {import('@typescript-eslint/utils').TSESLint.SourceCode.VisitorKeys} VisitorKeys
