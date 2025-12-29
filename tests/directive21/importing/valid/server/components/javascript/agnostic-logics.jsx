@@ -1,20 +1,20 @@
 // "use server components"
 
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#IMPORTINGAMODULE
+// ...Importing a Prime Agnostic Logics Module.
 import agnosticLogics from "../../../../../imported/javascript/agnostic-logics.js";
 
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#IMPORTINGBYAFOLDER
+// ...Importing a Prime Agnostic Logics Module by a folder.
 import agnosticLogicsFolder from "../../../../../imported/javascript/agnostic-logics-js";
 
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#IMPORTINGVIASTRATEGY
+// ...Importing Prime Agnostic Logics via Special Agnostic Strategy.
 import {
   /* @agnosticLogics */ agnosticLogicsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#IMPORTINGVIASTRATEGYBYAFOLDER
+// ...Importing Prime Agnostic Logics via Special Agnostic Strategy by a folder.
 import {
   /* @agnosticLogics */ agnosticLogicsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// $COMMENT#TESTS#VALID
-// $COMMENT#DIRECTIVE21#FORALIASVARIABLES#AGNOSTICCANSERVERCLIENT
+// Valid.
+// Prime Agnostic Logics can run safely on the server just like they can on the client.

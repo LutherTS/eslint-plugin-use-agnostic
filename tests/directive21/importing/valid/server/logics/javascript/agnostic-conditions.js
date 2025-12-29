@@ -1,20 +1,20 @@
 // "use server logics"
 
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#IMPORTINGAMODULE
+// ...Importing a Special Agnostic Conditions Module.
 import agnosticConditions from "../../../../../imported/javascript/agnostic-conditions.jsx";
 
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#IMPORTINGBYAFOLDER
+// ...Importing a Special Agnostic Conditions Module by a folder.
 import agnosticConditionsFolder from "../../../../../imported/javascript/agnostic-conditions-jsx";
 
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#IMPORTINGVIASTRATEGY
+// ...Importing (Special) Agnostic Conditions Components via Special Agnostic Strategy.
 import {
   /* @agnosticConditions */ agnosticConditionsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#IMPORTINGVIASTRATEGYBYAFOLDER
+// ...Importing (Special) Agnostic Conditions Components via Special Agnostic Strategy by a folder.
 import {
   /* @agnosticConditions */ agnosticConditionsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// $COMMENT#TESTS#VALID
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#SPECIALS are able to safely render on the server, guaranteeing that only their `ComponentForServer` will be effectively involved in $COMMENT#DIRECTIVE21#USE_SERVER_LOGICS#KINDS Modules.
+// Valid.
+// (Special) Agnostic Conditions Components are able to safely render on the server, guaranteeing that only their `ComponentForServer` will be effectively involved in Prime Server Logics Modules.
