@@ -1,6 +1,8 @@
 import fs from "fs";
 
 import {
+  useAgnosticPluginName,
+  directive21ConfigName,
   enforceEffectiveDirectivesRuleName,
   enforceCommentedDirectivesRuleName,
 } from "./_commons/constants/bases.js";
@@ -161,6 +163,36 @@ export {
 } from "./directive21/_commons/utilities/helpers.js";
 
 export { directive21Data } from "../jscomments/_commons/constants/data.js";
+
+/**
+ * Creates the ESLint config object required as the basis for the Directive-First Architecture, linting server-client-agnostic imports based on their commented directives. (Defaults to `"warn"`. You can import and use ```[`${useAgnosticPluginName}/${directive21ConfigName}`]``` later in a further ESLint config object to modify that value.)
+ * @template {string} T
+ * @param {T} reactFolder The path of the project's React folder where everything React lives, relative to the root of the project. This is, for example, the app directory when using the Next.js App Router, as `"app"`.
+ * @returns An ESLint config object that applies `eslint-plugin-use-agnostic`'s `directive21` config by using the provided `reactFolder` as the basis for JavaScript/TypeScript glob patterns.
+ */
+export const defineDirective21 = (reactFolder) => {
+  /** @type {[`${T}/*\*\/*.tsx`, `${T}/*\*\/*.ts`, `${T}/*\*\/*.jsx`, `${T}/*\*\/*.js`, `${T}/*\*\/*.mjs`, `${T}/*\*\/*.cjs`]} */
+  const files = [
+    `${reactFolder}/**/*.tsx`,
+    `${reactFolder}/**/*.ts`,
+    `${reactFolder}/**/*.jsx`,
+    `${reactFolder}/**/*.js`,
+    `${reactFolder}/**/*.mjs`,
+    `${reactFolder}/**/*.cjs`,
+  ];
+
+  const extendsArrayValue = `${useAgnosticPluginName}/${directive21ConfigName}`;
+  /** @type {[typeof extendsArrayValue]} */
+  const extendsValue = [extendsArrayValue];
+
+  return {
+    files,
+    plugins: {
+      [useAgnosticPluginName]: plugin,
+    },
+    extends: extendsValue,
+  };
+};
 
 /**
  * Defines the config settings for the eXtra JSX VS Code extension as a means to configure `eXtra JSX` directly from ESLint, given the fact that `eslint-plugin-use-agnostic` and `eXtra JSX` have to work together in making the Directive-First Architecture.

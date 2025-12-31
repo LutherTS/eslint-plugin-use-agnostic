@@ -639,6 +639,28 @@ export const isImportBlockedDirective21: (
 ) => boolean;
 
 /**
+ * Creates the ESLint config object required as the basis for the Directive-First Architecture, linting server-client-agnostic imports based on their commented directives. (Defaults to `"warn"`. You can import and use ```[`${useAgnosticPluginName}/${directive21ConfigName}`]``` later in a further ESLint config object to modify that value.)
+ * @param reactFolder The path of the project's React folder where everything React lives, relative to the root of the project. This is, for example, the app directory when using the Next.js App Router, as `"app"`.
+ * @returns An ESLint config object that applies `eslint-plugin-use-agnostic`'s `directive21` config by using the provided `reactFolder` as the basis for JavaScript/TypeScript glob patterns.
+ */
+export const defineDirective21: <T extends string>(
+  reactFolder: T
+) => {
+  files: [
+    `${T}/**/*.tsx`,
+    `${T}/**/*.ts`,
+    `${T}/**/*.jsx`,
+    `${T}/**/*.js`,
+    `${T}/**/*.mjs`,
+    `${T}/**/*.cjs`
+  ];
+  plugins: {
+    "use-agnostic": ESLint.Plugin;
+  };
+  extends: ["use-agnostic/directive21"];
+};
+
+/**
  * Defines the config settings for the eXtra JSX VS Code extension as a means to configure `eXtra JSX` directly from ESLint, given the fact that `eslint-plugin-use-agnostic` and `eXtra JSX` have to work together in making the Directive-First Architecture.
  * @param settings The settings as follows:
  * @param settings.reactFolder The path of the project's React folder where everything React lives, relative to the root of the project. This is, for example, the app directory when using the Next.js App Router, as `"app"`.
