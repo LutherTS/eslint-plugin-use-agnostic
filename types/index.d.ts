@@ -671,7 +671,7 @@ export const defineConfigSettings: <T extends string>({
 }: {
   reactFolder: T;
 }) => {
-  files: readonly ["**/*.js"];
+  files: ["**/*.js"];
   settings: {
     eXtraJSX: {
       reactFolder: T;

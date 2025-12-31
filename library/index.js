@@ -203,7 +203,7 @@ export const defineDirective21 = (reactFolder) => {
  */
 export const defineConfigSettings = ({ reactFolder }) => {
   /**
-   * @type {readonly ["**\/*.js"]}
+   * @type {["**\/*.js"]}
    * The dummy file paths used by the eXtra JSX VS Code extension are JavaScript file paths, therefore this glob pattern is enough to work in recognizing the dummy file paths in order to retrieve the settings.
    */
   const files = ["**/*.js"];
