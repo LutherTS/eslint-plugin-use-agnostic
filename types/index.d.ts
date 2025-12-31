@@ -666,15 +666,15 @@ export const defineDirective21: <T extends string>(
  * @param settings.reactFolder The path of the project's React folder where everything React lives, relative to the root of the project. This is, for example, the app directory when using the Next.js App Router, as `"app"`.
  * @returns The config object responsible for the settings retrieved by the eXtra JSX VS Code extension.
  */
-export const defineConfigSettings: ({
+export const defineConfigSettings: <T extends string>({
   reactFolder,
 }: {
-  reactFolder: string;
+  reactFolder: T;
 }) => {
   files: readonly ["**/*.js"];
   settings: {
     eXtraJSX: {
-      reactFolder: string;
+      reactFolder: T;
     };
   };
 };

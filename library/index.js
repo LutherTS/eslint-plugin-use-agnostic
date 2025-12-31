@@ -196,8 +196,9 @@ export const defineDirective21 = (reactFolder) => {
 
 /**
  * Defines the config settings for the eXtra JSX VS Code extension as a means to configure `eXtra JSX` directly from ESLint, given the fact that `eslint-plugin-use-agnostic` and `eXtra JSX` have to work together in making the Directive-First Architecture.
+ * @template {string} T
  * @param {Object} settings The settings as follows:
- * @param {string} settings.reactFolder The path of the project's React folder where everything React lives, relative to the root of the project. This is, for example, the app directory when using the Next.js App Router, as `"app"`.
+ * @param {T} settings.reactFolder The path of the project's React folder where everything React lives, relative to the root of the project. This is, for example, the app directory when using the Next.js App Router, as `"app"`.
  * @returns The config object responsible for the settings retrieved by the eXtra JSX VS Code extension.
  */
 export const defineConfigSettings = ({ reactFolder }) => {
