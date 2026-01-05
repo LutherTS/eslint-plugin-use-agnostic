@@ -54,6 +54,8 @@ export const commentedDirectiveReactDirectiveFailedMessageId =
 //   "export-from-use-agnostic-strategies-not-strategized";
 export const cantChainImportAcrossEnvironmentsMessageId =
   "cant-chain-import-across-environments";
+export const forbiddenChildrenMessageId = "forbidden-children";
+export const missingChildrenMessageId = "missing-children";
 
 // all "resolved" directives (from AIA/agnostic20 & DFA/directive21)
 // - AIA: Agnostic-Included Architecture (agnostic20)

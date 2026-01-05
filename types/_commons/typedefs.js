@@ -52,6 +52,8 @@ import {
  * @typedef {import('@typescript-eslint/types').TSESTree.ExportAllDeclaration} ExportAllDeclaration
  * @typedef {import('@typescript-eslint/types').TSESTree.ExportDefaultDeclaration} ExportDefaultDeclaration
  * @typedef {import('@typescript-eslint/types').TSESTree.CallExpression} CallExpression
+ * @typedef {import('@typescript-eslint/types').TSESTree.FunctionDeclaration} FunctionDeclaration
+ * @typedef {import('@typescript-eslint/types').TSESTree.Parameter} Parameter
  */
 
 /**

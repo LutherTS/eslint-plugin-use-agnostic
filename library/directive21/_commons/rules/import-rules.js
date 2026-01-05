@@ -7,6 +7,8 @@ import {
   // importNotStrategizedMessageId,
   // exportNotStrategizedMessageId,
   cantChainImportAcrossEnvironmentsMessageId,
+  forbiddenChildrenMessageId,
+  missingChildrenMessageId,
 } from "../../../_commons/constants/bases.js";
 import {
   currentFileCommentedDirective,
@@ -25,6 +27,7 @@ import {
   importsFlow,
   allExportsFlow,
   importsFlowRequire,
+  functionDeclarationFlow,
 } from "../utilities/flows.js";
 
 /**
@@ -55,6 +58,11 @@ In this context, {{ ${specificFailure} }} `,
       //       [exportNotStrategizedMessageId]: `Exports from Agnostic Strategies Modules must be strategized (\`/* @serverLogics */\`, etc.).
       // Please include a Strategy that corresponds to the kind of module this export would be mapped to. `,
       [cantChainImportAcrossEnvironmentsMessageId]: `Because imports are actually references instead of modules across environments, it is not possible to chain-import between the {{ ${currentFileEnvironment} }} environment and the {{ ${importedFileEnvironment} }} environment. In these cases, only direct imports apply. `,
+
+      [forbiddenChildrenMessageId]:
+        "Client Lineals Components (Lineal Client Components) must be child-free, meaning they must not declare a `children` prop. ",
+      [missingChildrenMessageId]:
+        "Client Contexts Components must be children-bearing, meaning they must explicitly declare a `children` prop. ",
     },
   },
   create: (context) => {
@@ -76,6 +84,9 @@ In this context, {{ ${specificFailure} }} `,
         allExportsFlow(context, node, verifiedCommentedDirective),
       CallExpression: (node) =>
         importsFlowRequire(context, node, verifiedCommentedDirective),
+
+      FunctionDeclaration: (node) =>
+        functionDeclarationFlow(context, node, verifiedCommentedDirective),
     };
   },
 };

@@ -48,6 +48,8 @@ import {
  * @typedef {import("../../_commons/typedefs.js").ExportAllDeclaration} ExportAllDeclaration
  * @typedef {import("../../_commons/typedefs.js").ExportDefaultDeclaration} ExportDefaultDeclaration
  * @typedef {import("../../_commons/typedefs.js").CallExpression} CallExpression
+ * @typedef {import("../../_commons/typedefs.js").FunctionDeclaration} FunctionDeclaration
+ * @typedef {import("../../_commons/typedefs.js").Parameter} Parameter
  *
  * @typedef {import("../../_commons/typedefs.js").Extension} Extension
  *

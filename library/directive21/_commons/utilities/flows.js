@@ -11,11 +11,15 @@ import {
   commentedDirectiveVerificationFailedMessageId,
   commentedDirectiveReactDirectiveFailedMessageId,
   // importNotStrategizedMessageId,
+  forbiddenChildrenMessageId,
+  missingChildrenMessageId,
   cantChainImportAcrossEnvironmentsMessageId,
   skip,
 } from "../../../_commons/constants/bases.js";
 import {
   USE_AGNOSTIC_STRATEGIES,
+  USE_CLIENT_COMPONENTS,
+  USE_CLIENT_CONTEXTS,
   commentedDirectives_verificationReports,
   // currentFileCommentedDirective,
   // importedFileCommentedDirective,
@@ -57,6 +61,8 @@ import { analyzeExportsForReExports } from "./analyze-exports-re.js";
  * @typedef {import('../../../../types/directive21/_commons/typedefs.js').ExportAllDeclaration} ExportAllDeclaration
  * @typedef {import('../../../../types/directive21/_commons/typedefs.js').ExportDefaultDeclaration} ExportDefaultDeclaration
  * @typedef {import('../../../../types/directive21/_commons/typedefs.js').CallExpression} CallExpression
+ * @typedef {import('../../../../types/directive21/_commons/typedefs.js').FunctionDeclaration} FunctionDeclaration
+ * @typedef {import('../../../../types/directive21/_commons/typedefs.js').Parameter} Parameter
  * @typedef {import('../../../../types/directive21/_commons/typedefs.js').Environment} Environment
  */
 
@@ -709,5 +715,84 @@ export const allExportsFlow = (
         }
       }
     }
+  }
+};
+
+/* functionDeclarationFlow */
+
+/**
+ * Checks if the name of an identifier is in PascalCase, as a cheap way to assess whether or not it is a React component.
+ * @param {string} name The name of the identifier at hand.
+ * @returns `true` if the name is recognized as PascalCase, `false` otherwise.
+ */
+const nameIsPascalCase = (name) => {
+  // PascalCase: starts with capital, no underscores, no hyphens
+  return /^[A-Z][a-zA-Z0-9]*$/.test(name);
+};
+
+/**
+ * Checks whether the parameters of a function (React component) include the `children` property.
+ * @param {Parameter[]} params The parameters at hand.
+ * @returns `true` if the parameters include the `children` property, `false` otherwise.
+ */
+const declaresChildrenProp = (params) => {
+  if (params.length === 0) return false;
+
+  const param = params[0];
+
+  // function Component({ children })
+  if (param.type === "ObjectPattern") {
+    return param.properties.some(
+      (prop) =>
+        prop.type === "Property" &&
+        prop.key.type === "Identifier" &&
+        prop.key.name === "children"
+    );
+  }
+
+  return false;
+};
+
+/**
+ * The flow for function declarations to ensure that Client Lineals Components are made in Client Components Modules and Client Contexts Components are made in Client Contexts Modules, based on the fact the former are child-free and the latter are children-bearing.
+ * @param {Context} context The ESLint rule's `context` object.
+ * @param {FunctionDeclaration} node The ESLint `node` of the rule's current traversal.
+ * @param {CommentedDirective} currentFileCommentedDirective The current file's commented directive.
+ * @returns Early if the flow needs to be interrupted.
+ */
+export const functionDeclarationFlow = (
+  context,
+  node,
+  currentFileCommentedDirective
+) => {
+  if (
+    currentFileCommentedDirective !== USE_CLIENT_COMPONENTS &&
+    currentFileCommentedDirective !== USE_CLIENT_CONTEXTS
+  )
+    return;
+
+  const name = node.id && node.id.name;
+  if (!name) return;
+  if (!nameIsPascalCase(name)) return;
+
+  const params = node.params;
+
+  if (
+    declaresChildrenProp(params) &&
+    currentFileCommentedDirective === USE_CLIENT_COMPONENTS
+  ) {
+    context.report({
+      node,
+      messageId: forbiddenChildrenMessageId,
+    });
+  }
+  if (
+    !declaresChildrenProp(params) &&
+    currentFileCommentedDirective === USE_CLIENT_CONTEXTS
+  ) {
+    context.report({
+      node,
+      messageId: missingChildrenMessageId,
+    });
   }
 };
