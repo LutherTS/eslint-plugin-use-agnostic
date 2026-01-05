@@ -41,6 +41,14 @@
         "value": "Gets the environment from a resolved directive (like `\"use server logics\"` -> `\"server\"`). This can either be one of the Concrete Environments (the Server Environment or the Client Environment), or the Abstract Environment (the Agnostic Environment).",
         "key": "JSDOC#DEFINITIONS#GETENVIRONMENTFROMRESOLVEDDIRECTIVE"
       },
+      "defineDirective21": {
+        "value": "Creates the ESLint config object required as the basis for the Directive-First Architecture, linting server-client-agnostic imports based on their commented directives. (Defaults to `\"warn\"`. You can import and use ```[`${useAgnosticPluginName}/${directive21ConfigName}`]``` later in a further ESLint config object to modify that value.)",
+        "key": "JSDOC#DEFINITIONS#DEFINEDIRECTIVE21"
+      },
+      "defineConfigSettings": {
+        "value": "Defines the config settings for the eXtra JSX VS Code extension as a means to configure `eXtra JSX` directly from ESLint, given the fact that `eslint-plugin-use-agnostic` and `eXtra JSX` have to work together in making the Directive-First Architecture.",
+        "key": "JSDOC#DEFINITIONS#DEFINECONFIGSETTINGS"
+      },
       "agnostic20": {
         "makeAgnostic20Config": {
           "value": "Makes the agnostic20 config for the use-agnostic ESLint plugin.",
@@ -191,6 +199,18 @@
         "allExportsFlow": {
           "value": "The full flow for export traversals, shared between `ExportNamedDeclaration`, `ExportAllDeclaration`, and `ExportDefaultDeclaration`, to ensure same commented directive re-exports in modules that aren't Agnostic Strategies Modules, and enforce strategized exports specifically in Agnostic Strategies modules.",
           "key": "JSDOC#DEFINITIONS#DIRECTIVE21#ALLEXPORTSFLOW"
+        },
+        "nameIsPascalCase": {
+          "value": "Checks if the name of an identifier is in PascalCase, as a cheap way to assess whether or not it is a React component.",
+          "key": "JSDOC#DEFINITIONS#DIRECTIVE21#NAMEISPASCALCASE"
+        },
+        "declaresChildrenProp": {
+          "value": "Checks whether the parameters of a function (React component) include the `children` property.",
+          "key": "JSDOC#DEFINITIONS#DIRECTIVE21#DECLARESCHILDRENPROP"
+        },
+        "functionDeclarationFlow": {
+          "value": "The flow for function declarations to ensure that Client Lineals Components are made in Client Components Modules and Client Contexts Components are made in Client Contexts Modules, based on the fact the former are child-free and the latter are children-bearing.",
+          "key": "JSDOC#DEFINITIONS#DIRECTIVE21#FUNCTIONDECLARATIONFLOW"
         }
       },
       "tests": {
@@ -293,6 +313,14 @@
         "value": "The resolved directive at hand.",
         "key": "JSDOC#PARAMS#RESOLVEDDIRECTIVE"
       },
+      "settings": {
+        "value": "The settings as follows:",
+        "key": "JSDOC#PARAMS#SETTINGS"
+      },
+      "reactFolder": {
+        "value": "The path of the project's React folder where everything React lives, relative to the root of the project. This is, for example, the app directory when using the Next.js App Router, as `\"app\"`.",
+        "key": "JSDOC#PARAMS#REACTFOLDER"
+      },
       "agnostic20": {
         "currentFileEffectiveDirective": {
           "value": "The current file's effective directive.",
@@ -339,6 +367,14 @@
         "commentedDirective": {
           "value": "The commented directive of the commented module.",
           "key": "JSDOC#PARAMS#DIRECTIVE21#COMMENTEDDIRECTIVE"
+        },
+        "name": {
+          "value": "The name of the identifier at hand.",
+          "key": "JSDOC#PARAMS#DIRECTIVE21#NAME"
+        },
+        "params": {
+          "value": "The parameters at hand.",
+          "key": "JSDOC#PARAMS#DIRECTIVE21#PARAMS"
         }
       },
       "tests": {
@@ -527,6 +563,14 @@
         "value": "Either `\"server\"`, `\"client\"`, or `\"agnostic\"`.",
         "key": "JSDOC#RETURNS#GETENVIRONMENTFROMRESOLVEDDIRECTIVE"
       },
+      "defineDirective21": {
+        "value": "An ESLint config object that applies `eslint-plugin-use-agnostic`'s `directive21` config by using the provided `reactFolder` as the basis for JavaScript/TypeScript glob patterns.",
+        "key": "JSDOC#RETURNS#DEFINEDIRECTIVE21"
+      },
+      "defineConfigSettings": {
+        "value": "The config object responsible for the settings retrieved by the eXtra JSX VS Code extension.",
+        "key": "JSDOC#RETURNS#DEFINECONFIGSETTINGS"
+      },
       "agnostic20": {
         "makeAgnostic20Config": {
           "value": "The agnostic20 config's name as a key and its config as its value.",
@@ -657,6 +701,14 @@
         "allExportsFlow": {
           "value": "Early if the flow needs to be interrupted.",
           "key": "JSDOC#RETURNS#DIRECTIVE21#ALLEXPORTSFLOW"
+        },
+        "nameIsPascalCase": {
+          "value": "`true` if the name is recognized as PascalCase, `false` otherwise.",
+          "key": "JSDOC#RETURNS#DIRECTIVE21#NAMEISPASCALCASE"
+        },
+        "declaresChildrenProp": {
+          "value": "`true` if the parameters include the `children` property, `false` otherwise.",
+          "key": "JSDOC#RETURNS#DIRECTIVE21#DECLARESCHILDRENPROP"
         }
       },
       "tests": {

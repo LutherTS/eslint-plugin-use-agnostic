@@ -1,4 +1,4 @@
-// That's a Server Components Module.
+// $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#THATSAMODULE
 
 const object: {} = {};
 

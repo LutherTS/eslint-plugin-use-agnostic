@@ -23,6 +23,10 @@ export const jsDocComments = Object.freeze({
       "Analyzes a source code's exports to detect re-exports." /* $COMMENT#JSDOC#DEFINITIONS#ANALYZEEXPORTSFORREEXPORTS */,
     getEnvironmentFromResolvedDirective:
       'Gets the environment from a resolved directive (like `"use server logics"` -> `"server"`). This can either be one of the Concrete Environments (the Server Environment or the Client Environment), or the Abstract Environment (the Agnostic Environment).' /* $COMMENT#JSDOC#DEFINITIONS#GETENVIRONMENTFROMRESOLVEDDIRECTIVE */,
+    defineDirective21:
+      'Creates the ESLint config object required as the basis for the Directive-First Architecture, linting server-client-agnostic imports based on their commented directives. (Defaults to `"warn"`. You can import and use ```[`${useAgnosticPluginName}/${directive21ConfigName}`]``` later in a further ESLint config object to modify that value.)' /* $COMMENT#JSDOC#DEFINITIONS#DEFINEDIRECTIVE21 */,
+    defineConfigSettings:
+      "Defines the config settings for the eXtra JSX VS Code extension as a means to configure `eXtra JSX` directly from ESLint, given the fact that `eslint-plugin-use-agnostic` and `eXtra JSX` have to work together in making the Directive-First Architecture." /* $COMMENT#JSDOC#DEFINITIONS#DEFINECONFIGSETTINGS */,
     agnostic20: Object.freeze({
       makeAgnostic20Config:
         "$COMMENT#JSDOC#FORCOMPOSEDVARIABLES#MAKESTHE $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#AGNOSTIC20 $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#CONFIGFORPLUGIN" /* $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#MAKEAGNOSTIC20CONFIG */,
@@ -100,6 +104,12 @@ export const jsDocComments = Object.freeze({
         "JSDOC#FORALIASVARIABLES#IMPORTSFLOW" /* $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#IMPORTSFLOW */,
       allExportsFlow:
         "The full flow for export traversals, shared between `ExportNamedDeclaration`, `ExportAllDeclaration`, and `ExportDefaultDeclaration`, to ensure same commented directive re-exports in modules that aren't Agnostic Strategies Modules, and enforce strategized exports specifically in Agnostic Strategies modules." /* $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#ALLEXPORTSFLOW */,
+      nameIsPascalCase:
+        "Checks if the name of an identifier is in PascalCase, as a cheap way to assess whether or not it is a React component." /* $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#NAMEISPASCALCASE */,
+      declaresChildrenProp:
+        "Checks whether the parameters of a function (React component) include the `children` property." /* $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#DECLARESCHILDRENPROP */,
+      functionDeclarationFlow:
+        "The flow for function declarations to ensure that Client Lineals Components are made in Client Components Modules and Client Contexts Components are made in Client Contexts Modules, based on the fact the former are child-free and the latter are children-bearing." /* $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#FUNCTIONDECLARATIONFLOW */,
     }),
     tests: Object.freeze({
       readFilesRecursively:
@@ -149,7 +159,11 @@ export const jsDocComments = Object.freeze({
       "The visitor keys of the node being visited." /* $COMMENT#JSDOC#PARAMS#VISITORKEYS */,
     sourceCodeB:
       "The `SourceCode` to analyze." /* $COMMENT#JSDOC#PARAMS#SOURCECODEB */,
-    resolvedDirective: "The resolved directive at hand." /* $COMMENT#JSDOC#PARAMS#RESOLVEDDIRECTIVE */,
+    resolvedDirective:
+      "The resolved directive at hand." /* $COMMENT#JSDOC#PARAMS#RESOLVEDDIRECTIVE */,
+    settings: "The settings as follows:" /* $COMMENT#JSDOC#PARAMS#SETTINGS */,
+    reactFolder:
+      'The path of the project\'s React folder where everything React lives, relative to the root of the project. This is, for example, the app directory when using the Next.js App Router, as `"app"`.' /* $COMMENT#JSDOC#PARAMS#REACTFOLDER */,
     agnostic20: Object.freeze({
       currentFileEffectiveDirective:
         "$COMMENT#JSDOC#FORCOMPOSEDVARIABLES#THECURRENTFILE $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#EFFECTIVE $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#DIRECTIVEPERIOD" /* $COMMENT#JSDOC#PARAMS#AGNOSTIC20#CURRENTFILEEFFECTIVEDIRECTIVE */,
@@ -174,6 +188,9 @@ export const jsDocComments = Object.freeze({
         "The commented directive as written on top of the file (cannot be `null` at that stage)." /* $COMMENT#JSDOC#PARAMS#DIRECTIVE21#DIRECTIVE */,
       commentedDirective:
         "The commented directive of the commented module." /* $COMMENT#JSDOC#PARAMS#DIRECTIVE21#COMMENTEDDIRECTIVE */,
+      name: "The name of the identifier at hand." /* $COMMENT#JSDOC#PARAMS#DIRECTIVE21#NAME */,
+      params:
+        "The parameters at hand." /* $COMMENT#JSDOC#PARAMS#DIRECTIVE21#PARAMS */,
     }),
     tests: Object.freeze({
       folderPath:
@@ -273,6 +290,10 @@ export const jsDocComments = Object.freeze({
       "An object with the `reExportsWithSource` key tracking the direct re-exports from an imported source in an array and the `reExportsViaLocal` key tracking the indirect re-exports from an imported source in an array." /* $COMMENT#JSDOC#RETURNS#ANALYZEEXPORTSFORREEXPORTS */,
     getEnvironmentFromResolvedDirective:
       'Either `"server"`, `"client"`, or `"agnostic"`.' /* $COMMENT#JSDOC#RETURNS#GETENVIRONMENTFROMRESOLVEDDIRECTIVE */,
+    defineDirective21:
+      "An ESLint config object that applies `eslint-plugin-use-agnostic`'s `directive21` config by using the provided `reactFolder` as the basis for JavaScript/TypeScript glob patterns." /* $COMMENT#JSDOC#RETURNS#DEFINEDIRECTIVE21 */,
+    defineConfigSettings:
+      "The config object responsible for the settings retrieved by the eXtra JSX VS Code extension." /* $COMMENT#JSDOC#RETURNS#DEFINECONFIGSETTINGS */,
     agnostic20: Object.freeze({
       makeAgnostic20Config:
         "$COMMENT#JSDOC#FORCOMPOSEDVARIABLES#INITIALTHE $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#AGNOSTIC20 $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#CONFIGSNAME" /* $COMMENT#JSDOC#RETURNS#AGNOSTIC20#MAKEAGNOSTIC20CONFIG */,
@@ -340,6 +361,10 @@ export const jsDocComments = Object.freeze({
         "JSDOC#FORALIASVARIABLES#FLOWRETURNSEARLY" /* $COMMENT#JSDOC#RETURNS#DIRECTIVE21#IMPORTSFLOW */,
       allExportsFlow:
         "JSDOC#FORALIASVARIABLES#FLOWRETURNSEARLY" /* $COMMENT#JSDOC#RETURNS#DIRECTIVE21#ALLEXPORTSFLOW */,
+      nameIsPascalCase:
+        "`true` if the name is recognized as PascalCase, `false` otherwise." /* $COMMENT#JSDOC#RETURNS#DIRECTIVE21#NAMEISPASCALCASE */,
+      declaresChildrenProp:
+        "`true` if the parameters include the `children` property, `false` otherwise." /* $COMMENT#JSDOC#RETURNS#DIRECTIVE21#DECLARESCHILDRENPROP */,
     }),
     tests: Object.freeze({
       readFilesRecursively:
