@@ -165,10 +165,10 @@ export {
 export { directive21Data } from "../jscomments/_commons/constants/data.js";
 
 /**
- * $COMMENT#JSDOC#DEFINITIONS#DEFINEDIRECTIVE21
+ * Creates the ESLint config object required as the basis for the Directive-First Architecture, linting server-client-agnostic imports based on their commented directives. (Defaults to `"warn"`. You can import and use ```[`${useAgnosticPluginName}/${directive21ConfigName}`]``` later in a further ESLint config object to modify that value.)
  * @template {string} T
- * @param {T} reactFolder $COMMENT#JSDOC#PARAMS#REACTFOLDER
- * @returns $COMMENT#JSDOC#RETURNS#DEFINEDIRECTIVE21
+ * @param {T} reactFolder The path of the project's React folder where everything React lives, relative to the root of the project. This is, for example, the app directory when using the Next.js App Router, as `"app"`.
+ * @returns An ESLint config object that applies `eslint-plugin-use-agnostic`'s `directive21` config by using the provided `reactFolder` as the basis for JavaScript/TypeScript glob patterns.
  */
 export const defineDirective21 = (reactFolder) => {
   /** @type {[`${T}/*\*\/*.tsx`, `${T}/*\*\/*.ts`, `${T}/*\*\/*.jsx`, `${T}/*\*\/*.js`, `${T}/*\*\/*.mjs`, `${T}/*\*\/*.cjs`]} */
@@ -195,11 +195,11 @@ export const defineDirective21 = (reactFolder) => {
 };
 
 /**
- * $COMMENT#JSDOC#DEFINITIONS#DEFINECONFIGSETTINGS
+ * Defines the config settings for the eXtra JSX VS Code extension as a means to configure `eXtra JSX` directly from ESLint, given the fact that `eslint-plugin-use-agnostic` and `eXtra JSX` have to work together in making the Directive-First Architecture.
  * @template {string} T
- * @param {Object} settings $COMMENT#JSDOC#PARAMS#SETTINGS
- * @param {T} settings.reactFolder $COMMENT#JSDOC#PARAMS#REACTFOLDER
- * @returns $COMMENT#JSDOC#RETURNS#DEFINECONFIGSETTINGS
+ * @param {Object} settings The settings as follows:
+ * @param {T} settings.reactFolder The path of the project's React folder where everything React lives, relative to the root of the project. This is, for example, the app directory when using the Next.js App Router, as `"app"`.
+ * @returns The config object responsible for the settings retrieved by the eXtra JSX VS Code extension.
  */
 export const defineConfigSettings = ({ reactFolder }) => {
   /**

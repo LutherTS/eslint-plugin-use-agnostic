@@ -129,9 +129,9 @@ export const fileIsRegularJavaScript = (filePath) =>
 //
 
 /**
- * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#CURRENTFILEFLOW
- * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
- * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#CURRENTFILEFLOW
+ * The flow that begins the import rules enforcement rule, retrieving the verified commented directive of the current file before comparing it to upcoming verified commented directives of the files it imports.
+ * @param {Context} context The ESLint rule's `context` object.
+ * @returns Either an object with `skip: true` to disregard or one with the non-null `verifiedCommentedDirective`.
  */
 export const currentFileFlow = (context) => {
   const skipTrue = { ...skip, verifiedCommentedDirective: undefined };
@@ -227,10 +227,10 @@ export const currentFileFlow = (context) => {
 /* importedFileFlow */
 
 /**
- * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#IMPORTEDFILEFLOW
- * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
- * @param {ImportDeclaration} node $COMMENT#JSDOC#PARAMS#NODE
- * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#IMPORTEDFILEFLOW
+ * The flow that is shared between import and re-export traversals to obtain the import file's commented directive.
+ * @param {Context} context The ESLint rule's `context` object.
+ * @param {ImportDeclaration} node The ESLint `node` of the rule's current traversal.
+ * @returns Either an object with `skip: true` to disregard or one with the non-null `importedFileCommentedDirective`. And now with the added results of `analyzeExportsForReExports`.
  */
 const importedFileFlow = (context, node) => {
   const skipTrue = {
@@ -267,7 +267,7 @@ const importedFileFlow = (context, node) => {
     // Now silencing the warning as superfluous, in order to not warn on imports of files without a commented directive that are outside of linting range.
 
     // console.warn(
-    //   `WARNING. The imported file ${resolvedImportPath}, whose path has been resolved from ${context.filename}, has no commented $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#DIRECTIVEPERIOD It is thus ignored since the report on that circumstance would be available on the imported file itself.`
+    //   `WARNING. The imported file ${resolvedImportPath}, whose path has been resolved from ${context.filename}, has no commented directive. It is thus ignored since the report on that circumstance would be available on the imported file itself.`
     // ); // The decision not to report has been taken to not inflate the number of warnings.
     return skipTrue;
   }
@@ -329,10 +329,10 @@ const importedFileFlow = (context, node) => {
 
 // NEW!! Currently strictly adapted from importedFileFlow
 /**
- * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#IMPORTEDFILEFLOWREQUIRE
- * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
- * @param {CallExpression} node $COMMENT#JSDOC#PARAMS#NODE
- * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#IMPORTEDFILEFLOW
+ * The `importedFileFlow` adapted for `require` calls to obtain the import file's commented directive.
+ * @param {Context} context The ESLint rule's `context` object.
+ * @param {CallExpression} node The ESLint `node` of the rule's current traversal.
+ * @returns Either an object with `skip: true` to disregard or one with the non-null `importedFileCommentedDirective`. And now with the added results of `analyzeExportsForReExports`.
  */
 const importedFileFlowRequire = (context, node) => {
   const skipTrue = {
@@ -379,7 +379,7 @@ const importedFileFlowRequire = (context, node) => {
       // Now silencing the warning as superfluous, in order to not warn on imports of files without a commented directive that are outside of linting range.
 
       // console.warn(
-      //   `WARNING. The imported file ${resolvedImportPath}, whose path has been resolved from ${context.filename}, has no commented $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#DIRECTIVEPERIOD It is thus ignored since the report on that circumstance would be available on the imported file itself.`
+      //   `WARNING. The imported file ${resolvedImportPath}, whose path has been resolved from ${context.filename}, has no commented directive. It is thus ignored since the report on that circumstance would be available on the imported file itself.`
       // ); // The decision not to report has been taken to not inflate the number of warnings.
       return skipTrue;
     }
@@ -440,11 +440,11 @@ const importedFileFlowRequire = (context, node) => {
 /* importsFlow */
 
 /**
- * $COMMENT#JSDOC#FORALIASVARIABLES#IMPORTSFLOWCOMMENTED
- * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
- * @param {ImportDeclaration} node $COMMENT#JSDOC#PARAMS#NODE
- * @param {CommentedDirective} currentFileCommentedDirective $COMMENT#JSDOC#PARAMS#DIRECTIVE21#CURRENTFILECOMMENTEDDIRECTIVE
- * @returns $COMMENT#JSDOC#FORALIASVARIABLES#FLOWRETURNSEARLY
+ * The full flow for import traversals to enforce commented directives import rules.
+ * @param {Context} context The ESLint rule's `context` object.
+ * @param {ImportDeclaration} node The ESLint `node` of the rule's current traversal.
+ * @param {CommentedDirective} currentFileCommentedDirective The current file's commented directive.
+ * @returns Early if the flow needs to be interrupted.
  */
 export const importsFlow = (context, node, currentFileCommentedDirective) => {
   // does not operate on `import type`
@@ -516,11 +516,11 @@ export const importsFlow = (context, node, currentFileCommentedDirective) => {
 
 // NEW!! Currently strictly adapted from importsFlow
 /**
- * $COMMENT#JSDOC#FORALIASVARIABLES#IMPORTSFLOWCOMMENTEDREQUIRE
- * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
- * @param {CallExpression} node $COMMENT#JSDOC#PARAMS#NODE
- * @param {CommentedDirective} currentFileCommentedDirective $COMMENT#JSDOC#PARAMS#DIRECTIVE21#CURRENTFILECOMMENTEDDIRECTIVE
- * @returns $COMMENT#JSDOC#FORALIASVARIABLES#FLOWRETURNSEARLY
+ * The `importsFlow` adapted for `require` calls to enforce commented directives import rules.
+ * @param {Context} context The ESLint rule's `context` object.
+ * @param {CallExpression} node The ESLint `node` of the rule's current traversal.
+ * @param {CommentedDirective} currentFileCommentedDirective The current file's commented directive.
+ * @returns Early if the flow needs to be interrupted.
  */
 export const importsFlowRequire = (
   context,
@@ -594,11 +594,11 @@ export const importsFlowRequire = (
 /* allExportsFlow */
 
 /**
- * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#ALLEXPORTSFLOW
- * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
- * @param {ExportNamedDeclaration | ExportAllDeclaration | ExportDefaultDeclaration} node $COMMENT#JSDOC#PARAMS#NODE
- * @param {CommentedDirective} currentFileCommentedDirective $COMMENT#JSDOC#PARAMS#DIRECTIVE21#CURRENTFILECOMMENTEDDIRECTIVE
- * @returns $COMMENT#JSDOC#FORALIASVARIABLES#FLOWRETURNSEARLY
+ * The full flow for export traversals, shared between `ExportNamedDeclaration`, `ExportAllDeclaration`, and `ExportDefaultDeclaration`, to ensure same commented directive re-exports in modules that aren't Agnostic Strategies Modules, and enforce strategized exports specifically in Agnostic Strategies modules.
+ * @param {Context} context The ESLint rule's `context` object.
+ * @param {ExportNamedDeclaration | ExportAllDeclaration | ExportDefaultDeclaration} node The ESLint `node` of the rule's current traversal.
+ * @param {CommentedDirective} currentFileCommentedDirective The current file's commented directive.
+ * @returns Early if the flow needs to be interrupted.
  */
 export const allExportsFlow = (
   context,
@@ -638,12 +638,12 @@ export const allExportsFlow = (
     // else
     currentFileCommentedDirective = addressedDirective; // to still keep compatibility with strategies
 
-    // Lints imports of Agnostic Strategies Modules beyond strategy resolution, such as to warn imports of Special Agnostic Modules. Does the same with $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#KINDSSIMPLE Modules, since they are the only other modules which cannot import themselves.
+    // Lints imports of Agnostic Strategies Modules beyond strategy resolution, such as to warn imports of Special Agnostic Modules. Does the same with Agnostic Conditions Modules, since they are the only other modules which cannot import themselves.
     if (
       currentFileCommentedDirective === USE_AGNOSTIC_STRATEGIES ||
       currentFileCommentedDirective === USE_AGNOSTIC_CONDITIONS
     ) {
-      // Basically, all modules need to do reexports that correspond to their own modules, but not Agnostic Strategies Modules and $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#KINDSSIMPLE Modules, the latter which are in fact NOT allowed to do re-exports.
+      // Basically, all modules need to do reexports that correspond to their own modules, but not Agnostic Strategies Modules and Agnostic Conditions Modules, the latter which are in fact NOT allowed to do re-exports.
       if (
         isImportBlocked(
           currentFileCommentedDirective,
@@ -721,9 +721,9 @@ export const allExportsFlow = (
 /* functionDeclarationFlow */
 
 /**
- * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#NAMEISPASCALCASE
- * @param {string} name $COMMENT#JSDOC#PARAMS#DIRECTIVE21#NAME
- * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#NAMEISPASCALCASE
+ * Checks if the name of an identifier is in PascalCase, as a cheap way to assess whether or not it is a React component.
+ * @param {string} name The name of the identifier at hand.
+ * @returns `true` if the name is recognized as PascalCase, `false` otherwise.
  */
 const nameIsPascalCase = (name) => {
   // PascalCase: starts with capital, no underscores, no hyphens
@@ -731,9 +731,9 @@ const nameIsPascalCase = (name) => {
 };
 
 /**
- * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#DECLARESCHILDRENPROP
- * @param {Parameter[]} params $COMMENT#JSDOC#PARAMS#DIRECTIVE21#PARAMS
- * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#DECLARESCHILDRENPROP
+ * Checks whether the parameters of a function (React component) include the `children` property.
+ * @param {Parameter[]} params The parameters at hand.
+ * @returns `true` if the parameters include the `children` property, `false` otherwise.
  */
 const declaresChildrenProp = (params) => {
   if (params.length === 0) return false;
@@ -754,11 +754,11 @@ const declaresChildrenProp = (params) => {
 };
 
 /**
- * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#FUNCTIONDECLARATIONFLOW
- * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
- * @param {FunctionDeclaration} node $COMMENT#JSDOC#PARAMS#NODE
- * @param {CommentedDirective} currentFileCommentedDirective $COMMENT#JSDOC#PARAMS#DIRECTIVE21#CURRENTFILECOMMENTEDDIRECTIVE
- * @returns $COMMENT#JSDOC#FORALIASVARIABLES#FLOWRETURNSEARLY
+ * The flow for function declarations to ensure that Client Lineals Components are made in Client Components Modules and Client Contexts Components are made in Client Contexts Modules, based on the fact the former are child-free and the latter are children-bearing.
+ * @param {Context} context The ESLint rule's `context` object.
+ * @param {FunctionDeclaration} node The ESLint `node` of the rule's current traversal.
+ * @param {CommentedDirective} currentFileCommentedDirective The current file's commented directive.
+ * @returns Early if the flow needs to be interrupted.
  */
 export const functionDeclarationFlow = (
   context,
