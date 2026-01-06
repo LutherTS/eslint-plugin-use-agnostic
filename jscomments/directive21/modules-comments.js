@@ -469,7 +469,7 @@ export const agnosticStrategiesComments = Object.freeze({
   "use agnostic strategies":
     /* invalid */ "DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#INVALID" /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#USE_AGNOSTIC_STRATEGIES */,
   valid:
-    "(Special) Agnostic Strategies Modules can import all known modules except Special Agnostic Modules, meaning themselves as file generators that should not be imported directly and (Special) Agnostic Conditions Modules which cannot be imported in the (Abstract) Agnostic Environment." /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#VALID */,
+    "(Special) Agnostic Strategies Modules can import all known modules except Special Agnostic Modules, meaning themselves as file generators that should not be imported directly, and (Special) Agnostic Conditions Modules, which cannot be imported in the (Abstract) Agnostic Environment." /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#VALID */,
   invalid:
     "(Special) Agnostic Strategies Modules cannot be imported by any of the known modules, since given that Agnostic Strategies Modules generate strategized files, they need to be imported via their strategized files (like those ending in `.serverLogics.ts`) instead." /* $COMMENT#DIRECTIVE21#USE_AGNOSTIC_STRATEGIES#INVALID */,
   kinds:
