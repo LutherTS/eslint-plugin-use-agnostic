@@ -86,6 +86,9 @@ const stripDoubleQuotes = (string) => {
  * @returns The commented directive, or lack thereof via `null`. Given the strictness of this architecture, the lack of a directive is considered a mistake. (Though rules may provide the opportunity to declare a default, and configs with preset defaults may become provided.)
  */
 export const getCommentedDirectiveFromSourceCode = (sourceCode) => {
+  // returns null IMMEDIATELY if the SourceCode is faulty (inexistent)
+  if (!sourceCode) return null;
+
   // gets all comments from the source code
   const allComments = sourceCode.getAllComments();
 
@@ -149,6 +152,9 @@ export const getCommentedDirectiveFromSourceCode = (sourceCode) => {
  */
 export const getCommentedDirectiveFromCurrentModule = (context) => {
   const sourceCode = context.sourceCode;
+  // returns null values IMMEDIATELY if the SourceCode is faulty (inexistent)
+  if (!sourceCode) return null;
+
   const commentedDirective = getCommentedDirectiveFromSourceCode(sourceCode);
 
   return commentedDirective;
@@ -175,6 +181,9 @@ export const getCommentedDirectiveFromCurrentModule = (context) => {
  */
 export const getCommentedDirectiveFromImportedModule = (resolvedPath) => {
   const sourceCode = getSourceCodeFromFilePath(resolvedPath);
+  // returns null values IMMEDIATELY if the SourceCode is faulty (inexistent)
+  if (!sourceCode) return { commentedDirective: null, sourceCode: null };
+
   const commentedDirective = getCommentedDirectiveFromSourceCode(sourceCode);
 
   return { commentedDirective, sourceCode };
