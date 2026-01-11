@@ -56,6 +56,7 @@ export const cantChainImportAcrossEnvironmentsMessageId =
   "cant-chain-import-across-environments";
 export const forbiddenChildrenMessageId = "forbidden-children";
 export const missingChildrenMessageId = "missing-children";
+export const noRenderPropMessageId = "no-render-prop";
 
 // all "resolved" directives (from AIA/agnostic20 & DFA/directive21)
 // - AIA: Agnostic-Included Architecture (agnostic20)

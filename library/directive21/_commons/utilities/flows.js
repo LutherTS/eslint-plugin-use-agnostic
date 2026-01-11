@@ -14,6 +14,7 @@ import {
   forbiddenChildrenMessageId,
   missingChildrenMessageId,
   cantChainImportAcrossEnvironmentsMessageId,
+  noRenderPropMessageId,
   skip,
 } from "../../../_commons/constants/bases.js";
 import {
@@ -62,6 +63,7 @@ import { analyzeExportsForReExports } from "./analyze-exports-re.js";
  * @typedef {import('../../../../types/directive21/_commons/typedefs.js').ExportDefaultDeclaration} ExportDefaultDeclaration
  * @typedef {import('../../../../types/directive21/_commons/typedefs.js').CallExpression} CallExpression
  * @typedef {import('../../../../types/directive21/_commons/typedefs.js').FunctionDeclaration} FunctionDeclaration
+ * @typedef {import('../../../../types/directive21/_commons/typedefs.js').JSXElement} JSXElement
  * @typedef {import('../../../../types/directive21/_commons/typedefs.js').Parameter} Parameter
  * @typedef {import('../../../../types/directive21/_commons/typedefs.js').Environment} Environment
  */
@@ -494,8 +496,9 @@ export const importsFlow = (context, node, currentFileCommentedDirective) => {
     const importedFileEnvironment = getEnvironmentFromResolvedDirective(
       importedFileCommentedDirective
     );
-
+    // To reduce complexity, only checks for the presence of direct re-exports at this time. And to be fair this is OK. It gives people room to try to circumvent the rule, so that they can experience for themselves exactly what the rule prevents.
     if (
+      reExportsWithSource.length > 0 &&
       !environments_allowedChainImportEnvironments[
         currentFileEnvironment
       ].includes(importedFileEnvironment)
@@ -573,6 +576,7 @@ export const importsFlowRequire = (
     );
 
     if (
+      reExportsWithSource.length > 0 &&
       !environments_allowedChainImportEnvironments[
         currentFileEnvironment
       ].includes(importedFileEnvironment)
@@ -680,7 +684,6 @@ export const allExportsFlow = (
       });
     }
 
-    // NEW
     if (result.analyzeExportsForReExportsResults) {
       const { reExportsWithSource, reExportsViaLocal } =
         result.analyzeExportsForReExportsResults;
@@ -698,6 +701,7 @@ export const allExportsFlow = (
         );
 
         if (
+          reExportsWithSource.length > 0 &&
           !environments_allowedChainImportEnvironments[
             currentFileEnvironment
           ].includes(importedFileEnvironment)
@@ -794,5 +798,40 @@ export const functionDeclarationFlow = (
       node,
       messageId: missingChildrenMessageId,
     });
+  }
+};
+
+/* jsxElementFlow */
+
+/**
+ * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#JSXELEMENTFLOW
+ * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
+ * @param {JSXElement} node $COMMENT#JSDOC#PARAMS#NODE
+ * @param {CommentedDirective} currentFileCommentedDirective $COMMENT#JSDOC#PARAMS#DIRECTIVE21#CURRENTFILECOMMENTEDDIRECTIVE
+ * @returns $COMMENT#JSDOC#FORALIASVARIABLES#FLOWRETURNSEARLY
+ */
+export const jsxElementFlow = (
+  context,
+  node,
+  currentFileCommentedDirective
+) => {
+  for (const child of node.children) {
+    if (!child) continue;
+
+    // only looks at top-level children
+    if (child.type === "JSXExpressionContainer") {
+      const expr = child.expression;
+
+      if (
+        (expr.type === "ArrowFunctionExpression" ||
+          expr.type === "FunctionExpression") &&
+        currentFileCommentedDirective !== USE_CLIENT_COMPONENTS
+      ) {
+        context.report({
+          node: child,
+          messageId: noRenderPropMessageId,
+        });
+      }
+    }
   }
 };

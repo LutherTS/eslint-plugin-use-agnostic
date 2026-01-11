@@ -9,6 +9,7 @@ import {
   cantChainImportAcrossEnvironmentsMessageId,
   forbiddenChildrenMessageId,
   missingChildrenMessageId,
+  noRenderPropMessageId,
 } from "../../../_commons/constants/bases.js";
 import {
   currentFileCommentedDirective,
@@ -28,6 +29,7 @@ import {
   allExportsFlow,
   importsFlowRequire,
   functionDeclarationFlow,
+  jsxElementFlow,
 } from "../utilities/flows.js";
 
 /**
@@ -63,6 +65,8 @@ In this context, {{ ${specificFailure} }} `,
         "Client Lineals Components (Lineal Client Components) must be child-free, meaning they must not declare a `children` prop. ",
       [missingChildrenMessageId]:
         "Client Contexts Components must be children-bearing, meaning they must explicitly declare a `children` prop. ",
+      [noRenderPropMessageId]:
+        'Render props should only be used inside (Lineal) Client Components Modules in order to avoid "Functions are not valid as a child of Client Components" errors. ',
     },
   },
   create: (context) => {
@@ -87,6 +91,8 @@ In this context, {{ ${specificFailure} }} `,
 
       FunctionDeclaration: (node) =>
         functionDeclarationFlow(context, node, verifiedCommentedDirective),
+      JSXElement: (node) =>
+        jsxElementFlow(context, node, verifiedCommentedDirective),
     };
   },
 };

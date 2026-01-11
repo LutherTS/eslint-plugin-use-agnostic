@@ -209,8 +209,12 @@
           "key": "JSDOC#DEFINITIONS#DIRECTIVE21#DECLARESCHILDRENPROP"
         },
         "functionDeclarationFlow": {
-          "value": "The flow for function declarations to ensure that Client Lineals Components are made in Client Components Modules and Client Contexts Components are made in Client Contexts Modules, based on the fact the former are child-free and the latter are children-bearing.",
+          "value": "The flow for function declarations to ensure that Client Lineals Components are made in Client Components Modules and Client Contexts Components are made in Client Contexts Modules, based on the fact that the former are child-free and the latter are children-bearing.",
           "key": "JSDOC#DEFINITIONS#DIRECTIVE21#FUNCTIONDECLARATIONFLOW"
+        },
+        "jsxElementFlow": {
+          "value": "The flow for JSX elements to ensure that render props are only used isolated inside a Client Components Module, where their execution would safely be happening exclusively on the client.",
+          "key": "JSDOC#DEFINITIONS#DIRECTIVE21#JSXELEMENTFLOW"
         }
       },
       "tests": {
