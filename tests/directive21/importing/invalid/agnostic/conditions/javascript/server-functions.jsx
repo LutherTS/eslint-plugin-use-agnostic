@@ -1,20 +1,20 @@
 // "use agnostic conditions"
 
-// ...Importing a Special Server Functions Module.
+// $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#IMPORTINGAMODULE
 import serverFunctions from "../../../../../imported/javascript/server-functions.js";
 
-// ...Importing a Special Server Functions Module by a folder.
+// $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#IMPORTINGBYAFOLDER
 import serverFunctionsFolder from "../../../../../imported/javascript/server-functions-js";
 
-// ...Importing (Special) Server Functions via Special Agnostic Strategy.
+// $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#IMPORTINGVIASTRATEGY
 import {
   /* @serverFunctions */ serverFunctionsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// ...Importing (Special) Server Functions via Special Agnostic Strategy by a folder.
+// $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#IMPORTINGVIASTRATEGYBYAFOLDER
 import {
   /* @serverFunctions */ serverFunctionsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// Invalid.
-// (Special) Server Functions are not accepted because (Special) Agnostic Conditions Components only take finite, imported components as arguments in their making. As such, assigning props to these components, including Server Functions, is not made within Agnostic Conditions Modules.
+// $COMMENT#TESTS#INVALID
+// $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#SPECIALS are not accepted because $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#SPECIALS only take finite, imported components as arguments in their making. As such, assigning props to these components, including $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#KINDSCOMMA is not made within $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#KINDSSIMPLE Modules.

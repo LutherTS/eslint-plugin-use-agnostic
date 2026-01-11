@@ -1,21 +1,21 @@
 // "use agnostic logics"
 "use agnostic";
 
-// ...Importing a Prime Agnostic Logics Module.
+// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#IMPORTINGAMODULE
 import agnosticLogics from "../../../../../imported/javascript/agnostic-logics.js";
 
-// ...Importing a Prime Agnostic Logics Module by a folder.
+// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#IMPORTINGBYAFOLDER
 import agnosticLogicsFolder from "../../../../../imported/javascript/agnostic-logics-js";
 
-// ...Importing Prime Agnostic Logics via Special Agnostic Strategy.
+// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#IMPORTINGVIASTRATEGY
 import {
   /* @agnosticLogics */ agnosticLogicsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// ...Importing Prime Agnostic Logics via Special Agnostic Strategy by a folder.
+// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#IMPORTINGVIASTRATEGYBYAFOLDER
 import {
   /* @agnosticLogics */ agnosticLogicsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// Valid.
-// Prime Agnostic Logics can compose with one another.
+// $COMMENT#TESTS#VALID
+// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#USE_AGNOSTIC_LOGICS

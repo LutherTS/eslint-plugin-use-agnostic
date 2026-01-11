@@ -30,9 +30,9 @@ import {
 /* getCommentedDirectiveFromSourceCode */
 
 /**
- * Detects whether a string is single- or double-quoted.
- * @param {string} string The original string.
- * @returns `true` if single-quoted, `false` if double-quoted, `null` if neither.
+ * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#DETECTQUOTETYPE
+ * @param {string} string $COMMENT#JSDOC#PARAMS#DIRECTIVE21#STRING
+ * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#DETECTQUOTETYPE
  */
 const detectQuoteType = (string) => {
   if (string.startsWith("'") && string.endsWith("'")) {
@@ -45,9 +45,9 @@ const detectQuoteType = (string) => {
 };
 
 /**
- * Removes single quotes from a string known to be single-quoted.
- * @param {string} string The original string.
- * @returns The string with quotes removed.
+ * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#STRIPSINGLEQUOTES
+ * @param {string} string $COMMENT#JSDOC#PARAMS#DIRECTIVE21#STRING
+ * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#STRIPSINGLEQUOTES
  */
 const stripSingleQuotes = (string) => {
   if (string.startsWith("'") && string.endsWith("'")) {
@@ -57,9 +57,9 @@ const stripSingleQuotes = (string) => {
 };
 
 /**
- * Removes double quotes from a string known to be double-quoted.
- * @param {string} string The original string.
- * @returns The string with quotes removed.
+ * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#STRIPDOUBLEQUOTES
+ * @param {string} string $COMMENT#JSDOC#PARAMS#DIRECTIVE21#STRING
+ * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#STRIPSINGLEQUOTES
  */
 const stripDoubleQuotes = (string) => {
   if (string.startsWith('"') && string.endsWith('"')) {
@@ -69,21 +69,21 @@ const stripDoubleQuotes = (string) => {
 };
 
 /**
- * Gets the commented directive of a module from its ESLint `SourceCode` object.
+ * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMSOURCECODE1
  *
- * Accepted directives for the default Directive-First Architecture are (single or double quotes included):
- * - `'use server logics'`, `"use server logics"` denoting a Server Logics Module.
- * - `'use client logics'`, `"use client logics"` denoting a Client Logics Module.
- * - `'use agnostic logics'`, `"use agnostic logics"` denoting an Agnostic Logics Module.
- * - `'use server components'`, `"use server components"` denoting a Server Components Module.
- * - `'use client components'`, `"use client components"` denoting a Client Components Module.
- * - `'use agnostic components'`, `"use agnostic components"` denoting an Agnostic Components Module.
- * - `'use server functions'`, `"use server functions"` denoting a Server Functions Module.
- * - `'use client contexts'`, `"use client contexts"` denoting a Client Contexts Module.
- * - `'use agnostic conditions'`, `"use agnostic conditions"` denoting an Agnostic Conditions Module.
- * - `'use agnostic strategies'`, `"use agnostic strategies"` denoting an Agnostic Strategies Module.
- * @param {SourceCode} sourceCode The ESLint SourceCode object.
- * @returns The commented directive, or lack thereof via `null`. Given the strictness of this architecture, the lack of a directive is considered a mistake. (Though rules may provide the opportunity to declare a default, and configs with preset defaults may become provided.)
+ * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMSOURCECODE2
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USESERVERLOGICSA
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USECLIENTLOGICSA
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICLOGICSA
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USESERVERCOMPONENTSA
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USECLIENTCOMPONENTSA
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICCOMPONENTSA
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USESERVERFUNCTIONSA
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USECLIENTCONTEXTSA
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICCONDITIONSA
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICSTRATEGIESA
+ * @param {SourceCode} sourceCode $COMMENT#JSDOC#PARAMS#DIRECTIVE21#SOURCECODE
+ * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMSOURCECODE
  */
 export const getCommentedDirectiveFromSourceCode = (sourceCode) => {
   // returns null IMMEDIATELY if the SourceCode is faulty (inexistent)
@@ -134,21 +134,21 @@ export const getCommentedDirectiveFromSourceCode = (sourceCode) => {
 /* getCommentedDirectiveFromCurrentModule */
 
 /**
- * Gets the commented directive of the current module.
+ * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMCURRENTMODULE1
  *
- * Accepted directives for the default Directive-First Architecture are (single or double quotes included):
- * - `'use server logics'`, `"use server logics"` denoting a Server Logics Module.
- * - `'use client logics'`, `"use client logics"` denoting a Client Logics Module.
- * - `'use agnostic logics'`, `"use agnostic logics"` denoting an Agnostic Logics Module.
- * - `'use server components'`, `"use server components"` denoting a Server Components Module.
- * - `'use client components'`, `"use client components"` denoting a Client Components Module.
- * - `'use agnostic components'`, `"use agnostic components"` denoting an Agnostic Components Module.
- * - `'use server functions'`, `"use server functions"` denoting a Server Functions Module.
- * - `'use client contexts'`, `"use client contexts"` denoting a Client Contexts Module.
- * - `'use agnostic conditions'`, `"use agnostic conditions"` denoting an Agnostic Conditions Module.
- * - `'use agnostic strategies'`, `"use agnostic strategies"` denoting an Agnostic Strategies Module.
- * @param {Context} context The ESLint rule's `context` object.
- * @returns The commented directive, or lack thereof via `null`. Given the strictness of this architecture, the lack of a directive is considered a mistake. (Though rules may provide the opportunity to declare a default, and configs with preset defaults may become provided.)
+ * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMSOURCECODE2
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USESERVERLOGICSA
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USECLIENTLOGICSA
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICLOGICSA
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USESERVERCOMPONENTSA
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USECLIENTCOMPONENTSA
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICCOMPONENTSA
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USESERVERFUNCTIONSA
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USECLIENTCONTEXTSA
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICCONDITIONSA
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICSTRATEGIESA
+ * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
+ * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMSOURCECODE
  */
 export const getCommentedDirectiveFromCurrentModule = (context) => {
   const sourceCode = context.sourceCode;
@@ -163,21 +163,21 @@ export const getCommentedDirectiveFromCurrentModule = (context) => {
 /* getCommentedDirectiveFromImportedModule */
 
 /**
- * Gets the commented directive of the imported module.
+ * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMIMPORTEDMODULE1
  *
- * Accepted directives for the default Directive-First Architecture are (single or double quotes included):
- * - `'use server logics'`, `"use server logics"` denoting a Server Logics Module.
- * - `'use client logics'`, `"use client logics"` denoting a Client Logics Module.
- * - `'use agnostic logics'`, `"use agnostic logics"` denoting an Agnostic Logics Module.
- * - `'use server components'`, `"use server components"` denoting a Server Components Module.
- * - `'use client components'`, `"use client components"` denoting a Client Components Module.
- * - `'use agnostic components'`, `"use agnostic components"` denoting an Agnostic Components Module.
- * - `'use server functions'`, `"use server functions"` denoting a Server Functions Module.
- * - `'use client contexts'`, `"use client contexts"` denoting a Client Contexts Module.
- * - `'use agnostic conditions'`, `"use agnostic conditions"` denoting an Agnostic Conditions Module.
- * - `'use agnostic strategies'`, `"use agnostic strategies"` denoting an Agnostic Strategies Module.
- * @param {string} resolvedPath The resolved path of the imported module.
- * @returns The commented directive, or lack thereof via `null`. Now also provides the obtained `SourceCode` object. Given the strictness of this architecture, the lack of a directive is considered a mistake. (Though rules may provide the opportunity to declare a default, and configs with preset defaults may become provided.)
+ * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMSOURCECODE2
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USESERVERLOGICSA
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USECLIENTLOGICSA
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICLOGICSA
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USESERVERCOMPONENTSA
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USECLIENTCOMPONENTSA
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICCOMPONENTSA
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USESERVERFUNCTIONSA
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USECLIENTCONTEXTSA
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICCONDITIONSA
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICSTRATEGIESA
+ * @param {string} resolvedPath $COMMENT#JSDOC#PARAMS#RESOLVEDPATH
+ * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMIMPORTEDMODULE
  */
 export const getCommentedDirectiveFromImportedModule = (resolvedPath) => {
   const sourceCode = getSourceCodeFromFilePath(resolvedPath);
@@ -192,20 +192,20 @@ export const getCommentedDirectiveFromImportedModule = (resolvedPath) => {
 /* getVerifiedCommentedDirective */
 
 /**
- * Ensures that a module's commented directive is consistent with its file extension (depending on whether it ends with 'x' for JSX).
- * - `'use server logics'`: Server Logics Modules do NOT export JSX.
- * - `'use client logics'`: Client Logics Modules do NOT export JSX.
- * - `'use agnostic logics'`: Agnostic Logics Modules do NOT export JSX.
- * - `'use server components'`: Server Components Modules ONLY export JSX.
- * - `'use client components'`: Client Components Modules ONLY export JSX.
- * - `'use agnostic components'`: Agnostic Components Modules ONLY export JSX.
- * - `'use server functions'`: Server Functions Modules do NOT export JSX.
- * - `'use client contexts'`: Client Contexts Modules ONLY export JSX.
- * - `'use agnostic conditions'`: Agnostic Conditions Modules ONLY export JSX.
- * - `'use agnostic strategies'`: Agnostic Strategies Modules may export JSX.
- * @param {CommentedDirective} directive The commented directive as written on top of the file (cannot be `null` at that stage).
- * @param {Extension} extension The JavaScript (TypeScript) extension of the file.
- * @returns The verified commented directive, from which imports rules are applied. Returns `null` if the verification failed, upon which an error will be reported depending on the commented directive, since the error logic here is strictly binary.
+ * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#GETVERIFIEDCOMMENTEDDIRECTIVE
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USESERVERLOGICSB
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USECLIENTLOGICSB
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICLOGICSB
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USESERVERCOMPONENTSB
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USECLIENTCOMPONENTSB
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICCOMPONENTSB
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USESERVERFUNCTIONSB
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USECLIENTCONTEXTSB
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICCONDITIONSB
+ * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICSTRATEGIESB
+ * @param {CommentedDirective} directive $COMMENT#JSDOC#PARAMS#DIRECTIVE21#DIRECTIVE
+ * @param {Extension} extension $COMMENT#JSDOC#PARAMS#EXTENSION
+ * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#GETVERIFIEDCOMMENTEDDIRECTIVE
  */
 export const getVerifiedCommentedDirective = (directive, extension) => {
   const rule = commentedDirectives_extensionRules[directive];
@@ -222,10 +222,10 @@ export const getVerifiedCommentedDirective = (directive, extension) => {
 /* getStrategizedDirective */
 
 /**
- * Gets the interpreted directive from a specified commented Strategy (such as `@serverLogics`) nested inside the import (or export) declaration for an import (or export) from an Agnostic Strategies Module.
- * @param {Context} context The ESLint rule's `context` object.
- * @param {ImportDeclaration | ExportNamedDeclaration | ExportAllDeclaration | ExportDefaultDeclaration} node The ESLint `node` of the rule's current traversal.
- * @returns The interpreted directive, a.k.a. strategized directive, or lack thereof via `null`.
+ * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#GETSTRATEGIZEDDIRECTIVE
+ * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
+ * @param {ImportDeclaration | ExportNamedDeclaration | ExportAllDeclaration | ExportDefaultDeclaration} node $COMMENT#JSDOC#PARAMS#NODE
+ * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#GETSTRATEGIZEDDIRECTIVE
  */
 export const getStrategizedDirective = (context, node) => {
   // gets the first nested `/* */` comment inside the node
@@ -314,11 +314,11 @@ export const fileIsRegularJavaScript = (filePath) =>
 //
 
 /**
- * Verifies the current node's export strategy if the current commented directive is `"use agnostic strategies"` by reporting `exportNotStrategized` in case an export is not strategized in an Agnostic Strategies Module.
- * @param {Context} context The ESLint rule's `context` object.
- * @param {ExportNamedDeclaration | ExportAllDeclaration | ExportDefaultDeclaration} node The ESLint `node` of the rule's current traversal.
- * @param {CommentedDirective} currentFileCommentedDirective The current file's commented directive.
- * @returns The commented directive, the addressed strategy (as a commented directive) or `null` in case of failure.
+ * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#ADDRESSDIRECTIVEIFAGNOSTICSTRATEGIES
+ * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
+ * @param {ExportNamedDeclaration | ExportAllDeclaration | ExportDefaultDeclaration} node $COMMENT#JSDOC#PARAMS#NODE
+ * @param {CommentedDirective} currentFileCommentedDirective $COMMENT#JSDOC#PARAMS#DIRECTIVE21#CURRENTFILECOMMENTEDDIRECTIVE
+ * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#ADDRESSDIRECTIVEIFAGNOSTICSTRATEGIES
  */
 export const addressDirectiveIfAgnosticStrategies = (
   context,
@@ -352,10 +352,10 @@ export const addressDirectiveIfAgnosticStrategies = (
 /* isImportBlocked */
 
 /**
- * Returns a boolean deciding if an imported file's commented directive is incompatible with the current file's commented directive.
- * @param {CommentedDirective} currentFileCommentedDirective The current file's commented directive.
- * @param {CommentedDirective} importedFileCommentedDirective The imported file's commented directive.
- * @returns `true` if the import is blocked, as established in `commentedDirectives_BlockedImports`.
+ * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#ISIMPORTBLOCKED
+ * @param {CommentedDirective} currentFileCommentedDirective $COMMENT#JSDOC#PARAMS#DIRECTIVE21#CURRENTFILECOMMENTEDDIRECTIVE
+ * @param {CommentedDirective} importedFileCommentedDirective $COMMENT#JSDOC#PARAMS#DIRECTIVE21#IMPORTEDFILECOMMENTEDDIRECTIVE
+ * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#ISIMPORTBLOCKED
  */
 export const isImportBlocked = (
   currentFileCommentedDirective,
@@ -370,9 +370,9 @@ export const isImportBlocked = (
 /* makeMessageFromCurrentFileCommentedDirective */
 
 /**
- * Lists in an message the commented modules incompatible with a commented module based on its commented directive.
- * @param {CommentedDirective} commentedDirective The commented directive of the commented module.
- * @returns The message listing the incompatible commented modules.
+ * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#MAKEMESSAGEFROMCURRENTFILECOMMENTEDDIRECTIVE
+ * @param {CommentedDirective} commentedDirective $COMMENT#JSDOC#PARAMS#DIRECTIVE21#COMMENTEDDIRECTIVE
+ * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#MAKEMESSAGEFROMCURRENTFILECOMMENTEDDIRECTIVE
  */
 export const makeMessageFromCurrentFileCommentedDirective = (
   commentedDirective
@@ -385,10 +385,10 @@ export const makeMessageFromCurrentFileCommentedDirective = (
 /* findSpecificViolationMessage */
 
 /**
- * Finds the `message` for the specific violation of commented directives import rules based on `commentedDirectives_BlockedImports`.
- * @param {CommentedDirective} currentFileCommentedDirective The current file's commented directive.
- * @param {CommentedDirective} importedFileCommentedDirective The imported file's commented directive.
- * @returns The corresponding `message`.
+ * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#FINDSPECIFICVIOLATIONMESSAGE
+ * @param {CommentedDirective} currentFileCommentedDirective $COMMENT#JSDOC#PARAMS#DIRECTIVE21#CURRENTFILECOMMENTEDDIRECTIVE
+ * @param {CommentedDirective} importedFileCommentedDirective $COMMENT#JSDOC#PARAMS#DIRECTIVE21#IMPORTEDFILECOMMENTEDDIRECTIVE
+ * @returns $COMMENT#JSDOC#RETURNS#FINDSPECIFICVIOLATIONMESSAGE
  */
 export const findSpecificViolationMessage = (
   currentFileCommentedDirective,
