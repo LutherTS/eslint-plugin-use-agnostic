@@ -1,63 +1,63 @@
 // "use agnostic components"
 "use agnostic";
 
-// $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#IMPORTINGAMODULE
+// ...Importing a Special Server Functions Module.
 import serverFunctions from "../../../../../imported/typescript/server-functions";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import serverFunctionsExtension from "../../../../../imported/typescript/server-functions.ts";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import serverFunctionsAlias from "@/tests/directive21/imported/typescript/server-functions";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import serverFunctionsAliasExtension from "@/tests/directive21/imported/typescript/server-functions.ts";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import serverFunctionsBaseUrl from "tests/directive21/imported/typescript/server-functions";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import serverFunctionsBaseUrlExtension from "tests/directive21/imported/typescript/server-functions.ts";
 
-// $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#IMPORTINGBYAFOLDER
+// ...Importing a Special Server Functions Module by a folder.
 import serverFunctionsFolder from "../../../../../imported/typescript/server-functions-ts";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import serverFunctionsFolderAlias from "@/tests/directive21/imported/typescript/server-functions-ts";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import serverFunctionsFolderBaseUrl from "tests/directive21/imported/typescript/server-functions-ts";
 
-// $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#IMPORTINGVIASTRATEGY
+// ...Importing (Special) Server Functions via Special Agnostic Strategy.
 import {
   /* @serverFunctions */ serverFunctionsStrategized,
 } from "../../../../../imported/typescript/agnostic-strategies";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import {
   /* @serverFunctions */ serverFunctionsStrategized as serverFunctionsStrategizedExtension,
 } from "../../../../../imported/typescript/agnostic-strategies.tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import {
   /* @serverFunctions */ serverFunctionsStrategized as serverFunctionsStrategizedAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import {
   /* @serverFunctions */ serverFunctionsStrategized as serverFunctionsStrategizedAliasExtension,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies.tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import {
   /* @serverFunctions */ serverFunctionsStrategized as serverFunctionsStrategizedBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import {
   /* @serverFunctions */ serverFunctionsStrategized as serverFunctionsStrategizedBaseUrlExtension,
 } from "tests/directive21/imported/typescript/agnostic-strategies.tsx";
 
-// $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#IMPORTINGVIASTRATEGYBYAFOLDER
+// ...Importing (Special) Server Functions via Special Agnostic Strategy by a folder.
 import {
   /* @serverFunctions */ serverFunctionsStrategized as serverFunctionsStrategizedFolder,
 } from "../../../../../imported/typescript/agnostic-strategies-tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import {
   /* @serverFunctions */ serverFunctionsStrategized as serverFunctionsStrategizedFolderAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies-tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import {
   /* @serverFunctions */ serverFunctionsStrategized as serverFunctionsStrategizedFolderBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
-// $COMMENT#TESTS#VALID
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#USE_SERVER_FUNCTIONS
+// Valid.
+// (Special) Server Functions can be passed to Client Components as props when Client Components are also legally imported into Agnostic Components Modules.

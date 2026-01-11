@@ -1,20 +1,20 @@
 // "use agnostic conditions"
 
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#IMPORTINGAMODULE
+// ...Importing a Prime Agnostic Logics Module.
 import agnosticLogics from "../../../../../imported/javascript/agnostic-logics.js";
 
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#IMPORTINGBYAFOLDER
+// ...Importing a Prime Agnostic Logics Module by a folder.
 import agnosticLogicsFolder from "../../../../../imported/javascript/agnostic-logics-js";
 
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#IMPORTINGVIASTRATEGY
+// ...Importing Prime Agnostic Logics via Special Agnostic Strategy.
 import {
   /* @agnosticLogics */ agnosticLogicsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#IMPORTINGVIASTRATEGYBYAFOLDER
+// ...Importing Prime Agnostic Logics via Special Agnostic Strategy by a folder.
 import {
   /* @agnosticLogics */ agnosticLogicsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// $COMMENT#TESTS#VALID
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_LOGICS#KINDSCOMMA $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#BEINGLOGICAGNOSTIC $COMMENT#AGNOSTIC20#FORCOMPOSEDVARIABLES#CANSAFELYSUPPORT any $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#KINDSCOMMA including $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#SPECIALSPERIOD (In this case this is necessary for the import of the `conditionAgnosticComponent` function needed to make $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#KINDSSIMPLE Components.)
+// Valid.
+// Prime Agnostic Logics, being environment-agnostic logic, can safely support any Agnostic Components, including (Special) Agnostic Conditions Components. (In this case this is necessary for the import of the `conditionAgnosticComponent` function needed to make Agnostic Conditions Components.)

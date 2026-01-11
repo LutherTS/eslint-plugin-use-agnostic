@@ -1,63 +1,63 @@
 // "use client logics"
 "use client";
 
-// $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#IMPORTINGAMODULE
+// ...Importing a Prime Client Logics Module.
 import clientLogics from "../../../../../imported/typescript/client-logics";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import clientLogicsExtension from "../../../../../imported/typescript/client-logics.ts";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import clientLogicsAlias from "@/tests/directive21/imported/typescript/client-logics";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import clientLogicsAliasExtension from "@/tests/directive21/imported/typescript/client-logics.ts";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import clientLogicsBaseUrl from "tests/directive21/imported/typescript/client-logics";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import clientLogicsBaseUrlExtension from "tests/directive21/imported/typescript/client-logics.ts";
 
-// $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#IMPORTINGBYAFOLDER
+// ...Importing a Prime Client Logics Module by a folder.
 import clientLogicsFolder from "../../../../../imported/typescript/client-logics-ts";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import clientLogicsFolderAlias from "@/tests/directive21/imported/typescript/client-logics-ts";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import clientLogicsFolderBaseUrl from "tests/directive21/imported/typescript/client-logics-ts";
 
-// $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#IMPORTINGVIASTRATEGY
+// ...Importing Prime Client Logics via Special Agnostic Strategy.
 import {
   /* @clientLogics */ clientLogicsStrategized,
 } from "../../../../../imported/typescript/agnostic-strategies";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import {
   /* @clientLogics */ clientLogicsStrategized as clientLogicsStrategizedExtension,
 } from "../../../../../imported/typescript/agnostic-strategies.tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import {
   /* @clientLogics */ clientLogicsStrategized as clientLogicsStrategizedAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import {
   /* @clientLogics */ clientLogicsStrategized as clientLogicsStrategizedAliasExtension,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies.tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import {
   /* @clientLogics */ clientLogicsStrategized as clientLogicsStrategizedBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import {
   /* @clientLogics */ clientLogicsStrategized as clientLogicsStrategizedBaseUrlExtension,
 } from "tests/directive21/imported/typescript/agnostic-strategies.tsx";
 
-// $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#IMPORTINGVIASTRATEGYBYAFOLDER
+// ...Importing Prime Client Logics via Special Agnostic Strategy by a folder.
 import {
   /* @clientLogics */ clientLogicsStrategized as clientLogicsStrategizedFolder,
 } from "../../../../../imported/typescript/agnostic-strategies-tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import {
   /* @clientLogics */ clientLogicsStrategized as clientLogicsStrategizedFolderAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies-tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import {
   /* @clientLogics */ clientLogicsStrategized as clientLogicsStrategizedFolderBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
-// $COMMENT#TESTS#VALID
-// $COMMENT#DIRECTIVE21#USE_CLIENT_LOGICS#USE_CLIENT_LOGICS
+// Valid.
+// Prime Client Logics can compose with one another.
