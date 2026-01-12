@@ -54,6 +54,7 @@ import {
  * @typedef {import('@typescript-eslint/types').TSESTree.CallExpression} CallExpression
  * @typedef {import('@typescript-eslint/types').TSESTree.FunctionDeclaration} FunctionDeclaration
  * @typedef {import('@typescript-eslint/types').TSESTree.JSXElement} JSXElement
+ * @typedef {import('@typescript-eslint/types').TSESTree.JSXOpeningElement} JSXOpeningElement
  * @typedef {import('@typescript-eslint/types').TSESTree.Parameter} Parameter
  */
 

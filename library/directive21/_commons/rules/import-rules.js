@@ -10,6 +10,7 @@ import {
   forbiddenChildrenMessageId,
   missingChildrenMessageId,
   noRenderPropMessageId,
+  noOnOnIntrinsicsMessageId,
 } from "../../../_commons/constants/bases.js";
 import {
   currentFileCommentedDirective,
@@ -30,6 +31,7 @@ import {
   importsFlowRequire,
   functionDeclarationFlow,
   jsxElementFlow,
+  jsxOpeningElementFlow,
 } from "../utilities/flows.js";
 
 /**
@@ -67,6 +69,8 @@ In this context, {{ ${specificFailure} }} `,
         "Client Contexts Components must be children-bearing, meaning they must explicitly declare a `children` prop. ",
       [noRenderPropMessageId]:
         'Render props should only be used inside (Lineal) Client Components Modules in order to avoid "Functions are not valid as a child of Client Components" errors. ',
+      [noOnOnIntrinsicsMessageId]:
+        'Event handlers (onXxx props) on intrinsic elements are only allowed within Client Components Modules, Client Contexts Modules, and all-purpose Agnostic Strategies Modules in order to avoid "Event handlers cannot be passed to Client Component props" errors. ',
     },
   },
   create: (context) => {
@@ -93,6 +97,8 @@ In this context, {{ ${specificFailure} }} `,
         functionDeclarationFlow(context, node, verifiedCommentedDirective),
       JSXElement: (node) =>
         jsxElementFlow(context, node, verifiedCommentedDirective),
+      JSXOpeningElement: (node) =>
+        jsxOpeningElementFlow(context, node, verifiedCommentedDirective),
     };
   },
 };

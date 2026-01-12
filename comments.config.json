@@ -215,6 +215,10 @@
         "jsxElementFlow": {
           "value": "The flow for JSX elements to ensure that render props are only used isolated inside a Client Components Module, where their execution would safely be happening exclusively on the client.",
           "key": "JSDOC#DEFINITIONS#DIRECTIVE21#JSXELEMENTFLOW"
+        },
+        "jsxOpeningElementFlow": {
+          "value": "The flow for JSX opening elements to ensure that event handler props on intrinsic elements are only used in modules that can safely create Client Components.",
+          "key": "JSDOC#DEFINITIONS#DIRECTIVE21#JSXOPENINGELEMENTFLOW"
         }
       },
       "tests": {

@@ -112,6 +112,8 @@ export const jsDocComments = Object.freeze({
         "The flow for function declarations to ensure that Client Lineals Components are made in Client Components Modules and Client Contexts Components are made in Client Contexts Modules, based on the fact that the former are child-free and the latter are children-bearing." /* $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#FUNCTIONDECLARATIONFLOW */,
       jsxElementFlow:
         "The flow for JSX elements to ensure that render props are only used isolated inside a Client Components Module, where their execution would safely be happening exclusively on the client." /* $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#JSXELEMENTFLOW */,
+      jsxOpeningElementFlow:
+        "The flow for JSX opening elements to ensure that event handler props on intrinsic elements are only used in modules that can safely create Client Components." /* $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#JSXOPENINGELEMENTFLOW */,
     }),
     tests: Object.freeze({
       readFilesRecursively:

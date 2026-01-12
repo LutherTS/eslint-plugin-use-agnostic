@@ -15,6 +15,7 @@ import {
   missingChildrenMessageId,
   cantChainImportAcrossEnvironmentsMessageId,
   noRenderPropMessageId,
+  noOnOnIntrinsicsMessageId,
   skip,
 } from "../../../_commons/constants/bases.js";
 import {
@@ -64,6 +65,7 @@ import { analyzeExportsForReExports } from "./analyze-exports-re.js";
  * @typedef {import('../../../../types/directive21/_commons/typedefs.js').CallExpression} CallExpression
  * @typedef {import('../../../../types/directive21/_commons/typedefs.js').FunctionDeclaration} FunctionDeclaration
  * @typedef {import('../../../../types/directive21/_commons/typedefs.js').JSXElement} JSXElement
+ * @typedef {import('../../../../types/directive21/_commons/typedefs.js').JSXOpeningElement} JSXOpeningElement
  * @typedef {import('../../../../types/directive21/_commons/typedefs.js').Parameter} Parameter
  * @typedef {import('../../../../types/directive21/_commons/typedefs.js').Environment} Environment
  */
@@ -832,6 +834,53 @@ export const jsxElementFlow = (
           messageId: noRenderPropMessageId,
         });
       }
+    }
+  }
+};
+
+/* jsxOpeningElementFlow */
+
+/**
+ * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#JSXOPENINGELEMENTFLOW
+ * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
+ * @param {JSXOpeningElement} node $COMMENT#JSDOC#PARAMS#NODE
+ * @param {CommentedDirective} currentFileCommentedDirective $COMMENT#JSDOC#PARAMS#DIRECTIVE21#CURRENTFILECOMMENTEDDIRECTIVE
+ * @returns $COMMENT#JSDOC#FORALIASVARIABLES#FLOWRETURNSEARLY
+ */
+export const jsxOpeningElementFlow = (
+  context,
+  node,
+  currentFileCommentedDirective
+) => {
+  const { name, attributes } = node;
+
+  // Only intrinsic elements: <div>, <button>, etc.
+  if (
+    name.type !== "JSXIdentifier" ||
+    name.name[0] !== name.name[0].toLowerCase()
+  ) {
+    return;
+  }
+
+  for (const attr of attributes) {
+    if (attr.type !== "JSXAttribute") continue;
+    if (attr.name.type !== "JSXIdentifier") continue;
+
+    const propName = attr.name.name;
+
+    // matches onXxx where X is capitalized
+    if (
+      /^on[A-Z]/.test(propName) &&
+      ![
+        USE_CLIENT_COMPONENTS,
+        USE_CLIENT_CONTEXTS,
+        USE_AGNOSTIC_STRATEGIES,
+      ].includes(currentFileCommentedDirective)
+    ) {
+      context.report({
+        node: attr,
+        messageId: noOnOnIntrinsicsMessageId,
+      });
     }
   }
 };
