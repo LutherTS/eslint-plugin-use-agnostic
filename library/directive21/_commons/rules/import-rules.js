@@ -10,7 +10,7 @@ import {
   forbiddenChildrenMessageId,
   missingChildrenMessageId,
   noRenderPropMessageId,
-  noOnOnIntrinsicsMessageId,
+  noOnOnElementsMessageId,
 } from "../../../_commons/constants/bases.js";
 import {
   currentFileCommentedDirective,
@@ -69,8 +69,8 @@ In this context, {{ ${specificFailure} }} `,
         "Client Contexts Components must be children-bearing, meaning they must explicitly declare a `children` prop. ",
       [noRenderPropMessageId]:
         'Render props should only be used inside (Lineal) Client Components Modules in order to avoid "Functions are not valid as a child of Client Components" errors. ',
-      [noOnOnIntrinsicsMessageId]:
-        'Event handlers (onXxx props) on intrinsic elements are only allowed within Client Components Modules, Client Contexts Modules, and all-purpose Agnostic Strategies Modules in order to avoid "Event handlers cannot be passed to Client Component props" errors. ',
+      [noOnOnElementsMessageId]:
+        'Event handlers (onXxx props) on React elements are only allowed within Client Components Modules, Client Contexts Modules, and all-purpose Agnostic Strategies Modules in order to avoid "Event handlers cannot be passed to Client Component props" errors. ',
     },
   },
   create: (context) => {

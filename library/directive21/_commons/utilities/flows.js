@@ -15,7 +15,7 @@ import {
   missingChildrenMessageId,
   cantChainImportAcrossEnvironmentsMessageId,
   noRenderPropMessageId,
-  noOnOnIntrinsicsMessageId,
+  noOnOnElementsMessageId,
   skip,
 } from "../../../_commons/constants/bases.js";
 import {
@@ -145,11 +145,11 @@ export const currentFileFlow = (context) => {
 
   // fails if the file is not JavaScript (TypeScript)
   const iscurrentFileJS = EXTENSIONS.some(
-    (ext) => currentFileExtension === ext
+    (ext) => currentFileExtension === ext,
   );
   if (!iscurrentFileJS) {
     console.error(
-      "ERROR. Linted files for this rule should only be in JavaScript (TypeScript)."
+      "ERROR. Linted files for this rule should only be in JavaScript (TypeScript).",
     );
     return skipTrue;
   }
@@ -169,7 +169,7 @@ export const currentFileFlow = (context) => {
   // verifies the commented directive from the current file
   const verifiedCommentedDirective = getVerifiedCommentedDirective(
     commentedDirective,
-    currentFileExtension
+    currentFileExtension,
   );
 
   // reports if the verification failed
@@ -195,12 +195,12 @@ export const currentFileFlow = (context) => {
     const expectedReactDirective =
       commentedDirectives_reactDirectives[verifiedCommentedDirective];
     const expectedReactDirectiveAsText = reactDirectives_asTexts.get(
-      expectedReactDirective
+      expectedReactDirective,
     );
 
     if (!expectedReactDirectiveAsText) {
       console.warn(
-        `Somehow, expectedReactDirectiveAsText for ${expectedReactDirective} is undefined.`
+        `Somehow, expectedReactDirectiveAsText for ${expectedReactDirective} is undefined.`,
       );
       return { skip: undefined, verifiedCommentedDirective }; // at this time, behaves as if the new implementation didn't exist yet
     }
@@ -249,14 +249,14 @@ const importedFileFlow = (context, node) => {
     node.source.value,
     findUpSync("tsconfig.json", {
       cwd: path.dirname(context.filename),
-    }) ?? context.cwd
+    }) ?? context.cwd,
   );
 
   // does not operate on paths it did not resolve
   if (resolvedImportPath === null) return skipTrue;
   // does not operate on non-JS files
   const isImportedFileJS = EXTENSIONS.some((ext) =>
-    resolvedImportPath.endsWith(ext)
+    resolvedImportPath.endsWith(ext),
   );
   if (!isImportedFileJS) return skipTrue;
 
@@ -311,7 +311,7 @@ const importedFileFlow = (context, node) => {
   // you never know
   if (!importedFileSourceCode) {
     console.warn(
-      `Somehow, file "${resolvedImportPath}" does not have a SourceCode object obtainable.`
+      `Somehow, file "${resolvedImportPath}" does not have a SourceCode object obtainable.`,
     );
     return {
       skip: undefined,
@@ -321,7 +321,7 @@ const importedFileFlow = (context, node) => {
   }
 
   const analyzeExportsForReExportsResults = analyzeExportsForReExports(
-    importedFileSourceCode
+    importedFileSourceCode,
   );
 
   return {
@@ -361,14 +361,14 @@ const importedFileFlowRequire = (context, node) => {
       importPath,
       findUpSync("tsconfig.json", {
         cwd: path.dirname(context.filename),
-      }) ?? context.cwd
+      }) ?? context.cwd,
     );
 
     // does not operate on paths it did not resolve
     if (resolvedImportPath === null) return skipTrue;
     // does not operate on non-JS files
     const isImportedFileJS = EXTENSIONS.some((ext) =>
-      resolvedImportPath.endsWith(ext)
+      resolvedImportPath.endsWith(ext),
     );
     if (!isImportedFileJS) return skipTrue;
 
@@ -420,7 +420,7 @@ const importedFileFlowRequire = (context, node) => {
     // you never know
     if (!importedFileSourceCode) {
       console.warn(
-        `Somehow, file "${resolvedImportPath}" does not have a SourceCode object obtainable.`
+        `Somehow, file "${resolvedImportPath}" does not have a SourceCode object obtainable.`,
       );
       return {
         skip: undefined,
@@ -430,7 +430,7 @@ const importedFileFlowRequire = (context, node) => {
     }
 
     const analyzeExportsForReExportsResults = analyzeExportsForReExports(
-      importedFileSourceCode
+      importedFileSourceCode,
     );
 
     return {
@@ -465,7 +465,7 @@ export const importsFlow = (context, node, currentFileCommentedDirective) => {
   if (
     isImportBlocked(
       currentFileCommentedDirective,
-      importedFileCommentedDirective
+      importedFileCommentedDirective,
     )
   ) {
     context.report({
@@ -474,11 +474,11 @@ export const importsFlow = (context, node, currentFileCommentedDirective) => {
       data: {
         [commentedDirectiveMessage]:
           makeMessageFromCurrentFileCommentedDirective(
-            currentFileCommentedDirective
+            currentFileCommentedDirective,
           ),
         [specificViolationMessage]: findSpecificViolationMessage(
           currentFileCommentedDirective,
-          importedFileCommentedDirective
+          importedFileCommentedDirective,
         ),
       },
     });
@@ -493,10 +493,10 @@ export const importsFlow = (context, node, currentFileCommentedDirective) => {
       return;
 
     const currentFileEnvironment = getEnvironmentFromResolvedDirective(
-      currentFileCommentedDirective
+      currentFileCommentedDirective,
     );
     const importedFileEnvironment = getEnvironmentFromResolvedDirective(
-      importedFileCommentedDirective
+      importedFileCommentedDirective,
     );
     // To reduce complexity, only checks for the presence of direct re-exports at this time. And to be fair this is OK. It gives people room to try to circumvent the rule, so that they can experience for themselves exactly what the rule prevents.
     if (
@@ -530,7 +530,7 @@ export const importsFlow = (context, node, currentFileCommentedDirective) => {
 export const importsFlowRequire = (
   context,
   node,
-  currentFileCommentedDirective
+  currentFileCommentedDirective,
 ) => {
   const result = importedFileFlowRequire(context, node);
 
@@ -543,7 +543,7 @@ export const importsFlowRequire = (
   if (
     isImportBlocked(
       currentFileCommentedDirective,
-      importedFileCommentedDirective
+      importedFileCommentedDirective,
     )
   ) {
     context.report({
@@ -552,11 +552,11 @@ export const importsFlowRequire = (
       data: {
         [commentedDirectiveMessage]:
           makeMessageFromCurrentFileCommentedDirective(
-            currentFileCommentedDirective
+            currentFileCommentedDirective,
           ),
         [specificViolationMessage]: findSpecificViolationMessage(
           currentFileCommentedDirective,
-          importedFileCommentedDirective
+          importedFileCommentedDirective,
         ),
       },
     });
@@ -571,10 +571,10 @@ export const importsFlowRequire = (
       return;
 
     const currentFileEnvironment = getEnvironmentFromResolvedDirective(
-      currentFileCommentedDirective
+      currentFileCommentedDirective,
     );
     const importedFileEnvironment = getEnvironmentFromResolvedDirective(
-      importedFileCommentedDirective
+      importedFileCommentedDirective,
     );
 
     if (
@@ -609,7 +609,7 @@ export const importsFlowRequire = (
 export const allExportsFlow = (
   context,
   node,
-  currentFileCommentedDirective
+  currentFileCommentedDirective,
 ) => {
   // saving the original commented directive (speficially for "use agnostic strategies")
   const originalCurrentFileCommentedDirective = currentFileCommentedDirective;
@@ -622,7 +622,7 @@ export const allExportsFlow = (
     addressDirectiveIfAgnosticStrategies(
       context,
       node,
-      currentFileCommentedDirective
+      currentFileCommentedDirective,
     );
   }
   // re-exports scenarios
@@ -635,7 +635,7 @@ export const allExportsFlow = (
     const addressedDirective = addressDirectiveIfAgnosticStrategies(
       context,
       node,
-      currentFileCommentedDirective
+      currentFileCommentedDirective,
     );
 
     // // returns early if an address has been made
@@ -653,7 +653,7 @@ export const allExportsFlow = (
       if (
         isImportBlocked(
           currentFileCommentedDirective,
-          importedFileCommentedDirective
+          importedFileCommentedDirective,
         )
       ) {
         context.report({
@@ -662,11 +662,11 @@ export const allExportsFlow = (
           data: {
             [commentedDirectiveMessage]:
               makeMessageFromCurrentFileCommentedDirective(
-                currentFileCommentedDirective
+                currentFileCommentedDirective,
               ),
             [specificViolationMessage]: findSpecificViolationMessage(
               currentFileCommentedDirective,
-              importedFileCommentedDirective
+              importedFileCommentedDirective,
             ),
           },
         });
@@ -696,10 +696,10 @@ export const allExportsFlow = (
 
       if (originalCurrentFileCommentedDirective !== USE_AGNOSTIC_STRATEGIES) {
         const currentFileEnvironment = getEnvironmentFromResolvedDirective(
-          currentFileCommentedDirective
+          currentFileCommentedDirective,
         );
         const importedFileEnvironment = getEnvironmentFromResolvedDirective(
-          importedFileCommentedDirective
+          importedFileCommentedDirective,
         );
 
         if (
@@ -752,7 +752,7 @@ const declaresChildrenProp = (params) => {
       (prop) =>
         prop.type === "Property" &&
         prop.key.type === "Identifier" &&
-        prop.key.name === "children"
+        prop.key.name === "children",
     );
   }
 
@@ -769,7 +769,7 @@ const declaresChildrenProp = (params) => {
 export const functionDeclarationFlow = (
   context,
   node,
-  currentFileCommentedDirective
+  currentFileCommentedDirective,
 ) => {
   if (
     currentFileCommentedDirective !== USE_CLIENT_COMPONENTS &&
@@ -815,7 +815,7 @@ export const functionDeclarationFlow = (
 export const jsxElementFlow = (
   context,
   node,
-  currentFileCommentedDirective
+  currentFileCommentedDirective,
 ) => {
   for (const child of node.children) {
     if (!child) continue;
@@ -850,19 +850,9 @@ export const jsxElementFlow = (
 export const jsxOpeningElementFlow = (
   context,
   node,
-  currentFileCommentedDirective
+  currentFileCommentedDirective,
 ) => {
-  const { name, attributes } = node;
-
-  // Only intrinsic elements: <div>, <button>, etc.
-  if (
-    name.type !== "JSXIdentifier" ||
-    name.name[0] !== name.name[0].toLowerCase()
-  ) {
-    return;
-  }
-
-  for (const attr of attributes) {
+  for (const attr of node.attributes) {
     if (attr.type !== "JSXAttribute") continue;
     if (attr.name.type !== "JSXIdentifier") continue;
 
@@ -879,7 +869,7 @@ export const jsxOpeningElementFlow = (
     ) {
       context.report({
         node: attr,
-        messageId: noOnOnIntrinsicsMessageId,
+        messageId: noOnOnElementsMessageId,
       });
     }
   }
