@@ -18,9 +18,9 @@ import {
 /* highlightFirstLineOfCode */
 
 /**
- * Gets the coordinates for the first line of code of a file.
- * @param {Context} context An ESLint rule's `context` object.
- * @returns The `context.report` `loc`-compatible coordinates for the first line of code of a file.
+ * $COMMENT#JSDOC#DEFINITIONS#HIGHLIGHTFIRSTLINEOFCODE
+ * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTA
+ * @returns $COMMENT#JSDOC#RETURNS#HIGHLIGHTFIRSTLINEOFCODE
  */
 export const highlightFirstLineOfCode = (context) => ({
   start: { line: 1, column: 0 },
@@ -30,13 +30,13 @@ export const highlightFirstLineOfCode = (context) => ({
 /* isImportBlocked */
 
 /**
- * Returns a boolean deciding if an imported file's "resolved" directive is incompatible with the current file's "resolved" directive.
+ * $COMMENT#JSDOC#DEFINITIONS#ISIMPORTBLOCKED
  * @template {ResolvedDirective} T
  * @template {ResolvedDirective} U
- * @param {ResolvedDirectives_BlockedImports<T, U>} resolvedDirectives_blockedImports The blocked imports object, either for agnostic20 or for directive21.
- * @param {T} currentFileResolvedDirective The current file's "resolved" directive.
- * @param {U} importedFileResolvedDirective The imported file's "resolved" directive.
- * @returns `true` if the import is blocked, as established in respective `resolvedDirectives_blockedImports`.
+ * @param {ResolvedDirectives_BlockedImports<T, U>} resolvedDirectives_blockedImports $COMMENT#JSDOC#PARAMS#RESOLVEDDIRECTIVES_BLOCKEDIMPORTS
+ * @param {T} currentFileResolvedDirective $COMMENT#JSDOC#PARAMS#CURRENTFILERESOLVEDDIRECTIVEA
+ * @param {U} importedFileResolvedDirective $COMMENT#JSDOC#PARAMS#IMPORTEDFILERESOLVEDDIRECTIVE
+ * @returns $COMMENT#JSDOC#RETURNS#ISIMPORTBLOCKED
  */
 export const isImportBlocked = (
   // Note: "Blocked" here is preferred over "not allowed" because a specific message will be shared for each of the blocked situations, explaining their reasons and the solutions needed.
@@ -51,12 +51,12 @@ export const isImportBlocked = (
 /* makeIntroForSpecificViolationMessage */
 
 /**
- * Makes the intro for each specific import rule violation messages.
+ * $COMMENT#JSDOC#DEFINITIONS#MAKEINTROFORSPECIFICVIOLATIONMESSAGE
  * @template {ResolvedDirective} T
  * @template {ResolvedDirective} U
- * @param {T} currentFileResolvedDirective The current file's "resolved" directive.
- * @param {U} importedFileResolvedDirective The imported file's "resolved" directive.
- * @returns "[Current file 'resolved' modules] are not allowed to import [imported file 'resolved' modules]."
+ * @param {T} currentFileResolvedDirective $COMMENT#JSDOC#PARAMS#CURRENTFILERESOLVEDDIRECTIVEA
+ * @param {U} importedFileResolvedDirective $COMMENT#JSDOC#PARAMS#IMPORTEDFILERESOLVEDDIRECTIVE
+ * @returns $COMMENT#JSDOC#RETURNS#MAKEINTROFORSPECIFICVIOLATIONMESSAGE
  */
 export const makeIntroForSpecificViolationMessage = (
   currentFileResolvedDirective,
@@ -71,12 +71,12 @@ export const makeIntroForSpecificViolationMessage = (
 /* makeMessageFromCurrentFileResolvedDirective */
 
 /**
- * Lists in an message the "resolved" modules incompatible with a "resolved" module based on its "resolved" directive.
+ * $COMMENT#JSDOC#DEFINITIONS#MAKEMESSAGEFROMCURRENTFILERESOLVEDDIRECTIVE
  * @template {ResolvedDirective} T
  * @template {ResolvedDirective} U
- * @param {ResolvedDirectives_BlockedImports<T, U>} resolvedDirectives_blockedImports The blocked imports object, either for agnostic20 or for directive21.
- * @param {T} currentFileResolvedDirective The "resolved" directive of the "resolved" module.
- * @returns The message listing the incompatible "resolved" modules.
+ * @param {ResolvedDirectives_BlockedImports<T, U>} resolvedDirectives_blockedImports $COMMENT#JSDOC#PARAMS#RESOLVEDDIRECTIVES_BLOCKEDIMPORTS
+ * @param {T} currentFileResolvedDirective $COMMENT#JSDOC#PARAMS#CURRENTFILERESOLVEDDIRECTIVEB
+ * @returns $COMMENT#JSDOC#RETURNS#MAKEMESSAGEFROMCURRENTFILERESOLVEDDIRECTIVE
  */
 export const makeMessageFromCurrentFileResolvedDirective = (
   resolvedDirectives_blockedImports,
@@ -112,13 +112,13 @@ export const makeMessageFromCurrentFileResolvedDirective = (
 /* findSpecificViolationMessage */
 
 /**
- * Finds the `message` for the specific violation of "resolved" directives import rules based on `resolvedDirectives_blockedImports`.
+ * $COMMENT#JSDOC#DEFINITIONS#FINDSPECIFICVIOLATIONMESSAGE
  * @template {ResolvedDirective} T
  * @template {ResolvedDirective} U
- * @param {ResolvedDirectives_BlockedImports<T, U>} resolvedDirectives_blockedImports The blocked imports object, either for agnostic20 or for directive21.
- * @param {T} currentFileResolvedDirective The current file's "resolved" directive.
- * @param {U} importedFileResolvedDirective The imported file's "resolved" directive.
- * @returns The corresponding `message`.
+ * @param {ResolvedDirectives_BlockedImports<T, U>} resolvedDirectives_blockedImports $COMMENT#JSDOC#PARAMS#RESOLVEDDIRECTIVES_BLOCKEDIMPORTS
+ * @param {T} currentFileResolvedDirective $COMMENT#JSDOC#PARAMS#CURRENTFILERESOLVEDDIRECTIVEA
+ * @param {U} importedFileResolvedDirective $COMMENT#JSDOC#PARAMS#IMPORTEDFILERESOLVEDDIRECTIVE
+ * @returns $COMMENT#JSDOC#RETURNS#FINDSPECIFICVIOLATIONMESSAGE
  */
 export const findSpecificViolationMessage = (
   resolvedDirectives_blockedImports,
@@ -132,9 +132,9 @@ export const findSpecificViolationMessage = (
 /* getEnvironmentFromResolvedDirective */
 
 /**
- * Gets the environment from a resolved directive (like `"use server logics"` -> `"server"`). This can either be one of the Concrete Environments (the Server Environment or the Client Environment), or the Abstract Environment (the Agnostic Environment).
- * @param {ResolvedDirective} resolvedDirective The resolved directive at hand.
- * @returns Either `"server"`, `"client"`, or `"agnostic"`.
+ * $COMMENT#JSDOC#DEFINITIONS#GETENVIRONMENTFROMRESOLVEDDIRECTIVE
+ * @param {ResolvedDirective} resolvedDirective $COMMENT#JSDOC#PARAMS#RESOLVEDDIRECTIVE
+ * @returns $COMMENT#JSDOC#RETURNS#GETENVIRONMENTFROMRESOLVEDDIRECTIVE
  */
 export const getEnvironmentFromResolvedDirective = (resolvedDirective) =>
   /** @type {Environment} */ (resolvedDirective.split(" ")[1]);
