@@ -115,8 +115,8 @@ export const getEffectiveDirective = (directive, extension) => {
   const moduleKind = extension.endsWith("x")
     ? COMPONENTS
     : directive === USE_SERVER
-    ? FUNCTIONS
-    : LOGICS;
+      ? FUNCTIONS
+      : LOGICS;
 
   return directives_effectiveDirectives[directive][moduleKind];
 };
@@ -131,12 +131,12 @@ export const getEffectiveDirective = (directive, extension) => {
  */
 export const isImportBlocked = (
   currentFileEffectiveDirective,
-  importedFileEffectiveDirective
+  importedFileEffectiveDirective,
 ) =>
   commonsIsImportBlocked(
     effectiveDirectives_blockedImports,
     currentFileEffectiveDirective,
-    importedFileEffectiveDirective
+    importedFileEffectiveDirective,
   );
 
 /* makeMessageFromCurrentFileEffectiveDirective */
@@ -147,11 +147,11 @@ export const isImportBlocked = (
  * @returns $COMMENT#JSDOC#RETURNS#AGNOSTIC20#MAKEMESSAGEFROMCURRENTFILEEFFECTIVEDIRECTIVE
  */
 export const makeMessageFromCurrentFileEffectiveDirective = (
-  effectiveDirective
+  effectiveDirective,
 ) =>
   makeMessageFromCurrentFileResolvedDirective(
     effectiveDirectives_blockedImports,
-    effectiveDirective
+    effectiveDirective,
   );
 
 /* findSpecificViolationMessage */
@@ -164,10 +164,10 @@ export const makeMessageFromCurrentFileEffectiveDirective = (
  */
 export const findSpecificViolationMessage = (
   currentFileEffectiveDirective,
-  importedFileEffectiveDirective
+  importedFileEffectiveDirective,
 ) =>
   commonsFindSpecificViolationMessage(
     effectiveDirectives_blockedImports,
     currentFileEffectiveDirective,
-    importedFileEffectiveDirective
+    importedFileEffectiveDirective,
   );

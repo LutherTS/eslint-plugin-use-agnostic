@@ -29,7 +29,7 @@ export const EXTENSIONS: readonly [
   ".mjsx",
   ".mjs",
   ".cjsx",
-  ".cjs"
+  ".cjs",
 ];
 
 export const commentedDirectives_commentedModules: Readonly<{
@@ -51,7 +51,7 @@ export const commentedDirectives_commentedModules: Readonly<{
  * @returns $COMMENT#JSDOC#RETURNS#HIGHLIGHTFIRSTLINEOFCODE
  */
 export const highlightFirstLineOfCode: (
-  context: RuleContext<string, readonly unknown[]>
+  context: RuleContext<string, readonly unknown[]>,
 ) => {
   start: {
     line: number;
@@ -79,7 +79,7 @@ export const getEnvironmentFromResolvedDirective: (
     | "use server functions"
     | "use client contexts"
     | "use agnostic conditions"
-    | "use agnostic strategies"
+    | "use agnostic strategies",
 ) => "server" | "client" | "agnostic";
 
 // agnostic20
@@ -94,7 +94,7 @@ export const USE_AGNOSTIC: "use agnostic";
 export const directivesArray: readonly [
   typeof USE_SERVER,
   typeof USE_CLIENT,
-  typeof USE_AGNOSTIC
+  typeof USE_AGNOSTIC,
 ];
 
 // directives set
@@ -136,7 +136,7 @@ export const directives_effectiveDirectives: Readonly<{
  * @returns $COMMENT#JSDOC#RETURNS#AGNOSTIC20#GETDIRECTIVEFROMMODULE
  */
 export const getDirectiveFromModule: (
-  ast: TSESLintSourceCode.Program
+  ast: TSESLintSourceCode.Program,
 ) => "use server" | "use client" | "use agnostic" | null;
 
 /**
@@ -149,7 +149,7 @@ export const getDirectiveFromModule: (
  * @returns $COMMENT#JSDOC#RETURNS#AGNOSTIC20#GETDIRECTIVEFROMMODULE
  */
 export const getDirectiveFromCurrentModule: (
-  context: RuleContext<string, readonly unknown[]>
+  context: RuleContext<string, readonly unknown[]>,
 ) => "use server" | "use client" | "use agnostic" | null;
 
 /**
@@ -162,7 +162,7 @@ export const getDirectiveFromCurrentModule: (
  * @returns $COMMENT#JSDOC#RETURNS#AGNOSTIC20#GETDIRECTIVEFROMMODULE
  */
 export const getDirectiveFromImportedModule: (
-  resolvedPath: string
+  resolvedPath: string,
 ) => "use server" | "use client" | "use agnostic" | null;
 
 /**
@@ -192,7 +192,7 @@ export const getEffectiveDirective: (
     | ".mjsx"
     | ".mjs"
     | ".cjsx"
-    | ".cjs"
+    | ".cjs",
 ) =>
   | "use server logics"
   | "use server components"
@@ -225,7 +225,7 @@ export const isImportBlockedAgnostic20: (
     | "use client logics"
     | "use client components"
     | "use agnostic logics"
-    | "use agnostic components"
+    | "use agnostic components",
 ) => boolean;
 
 // directive21
@@ -253,7 +253,7 @@ export const commentedDirectivesArray: readonly [
   typeof USE_SERVER_FUNCTIONS,
   typeof USE_CLIENT_CONTEXTS,
   typeof USE_AGNOSTIC_CONDITIONS,
-  typeof USE_AGNOSTIC_STRATEGIES
+  typeof USE_AGNOSTIC_STRATEGIES,
 ];
 
 // commented directives set
@@ -307,7 +307,7 @@ export const commentedStrategiesArray: readonly [
   typeof AT_CLIENT_COMPONENTS,
   typeof AT_AGNOSTIC_COMPONENTS,
   typeof AT_SERVER_FUNCTIONS,
-  typeof AT_CLIENT_CONTEXTS
+  typeof AT_CLIENT_CONTEXTS,
 ];
 
 // commented strategies set
@@ -378,7 +378,7 @@ export const strategizedExtensionsArray: readonly [
   typeof DOT_CLIENT_COMPONENTS,
   typeof DOT_AGNOSTIC_COMPONENTS,
   typeof DOT_SERVER_FUNCTIONS,
-  typeof DOT_CLIENT_CONTEXTS
+  typeof DOT_CLIENT_CONTEXTS,
 ];
 
 // strategized extensions set
@@ -412,7 +412,7 @@ export const DOT_AGNOSTIC_CLIENT: ".agnosticClient";
 // conditioned extensions array
 export const conditionedExtensionsArray: readonly [
   typeof DOT_AGNOSTIC_SERVER,
-  typeof DOT_AGNOSTIC_CLIENT
+  typeof DOT_AGNOSTIC_CLIENT,
 ];
 
 // conditioned extensions set
@@ -447,7 +447,7 @@ export const directive21Data: object;
  * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMSOURCECODE
  */
 export const getCommentedDirectiveFromSourceCode: (
-  sourceCode: ESLintSourceCode
+  sourceCode: ESLintSourceCode,
 ) =>
   | "use server logics"
   | "use client logics"
@@ -479,7 +479,7 @@ export const getCommentedDirectiveFromSourceCode: (
  * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMSOURCECODE
  */
 export const getCommentedDirectiveFromCurrentModule: (
-  context: RuleContext<string, readonly unknown[]>
+  context: RuleContext<string, readonly unknown[]>,
 ) =>
   | "use server logics"
   | "use client logics"
@@ -511,7 +511,7 @@ export const getCommentedDirectiveFromCurrentModule: (
  * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMIMPORTEDMODULE
  */
 export const getCommentedDirectiveFromImportedModule: (
-  resolvedPath: string
+  resolvedPath: string,
 ) => {
   commentedDirective:
     | "use server logics"
@@ -568,7 +568,7 @@ export const getVerifiedCommentedDirective: (
     | ".mjsx"
     | ".mjs"
     | ".cjsx"
-    | ".cjs"
+    | ".cjs",
 ) =>
   | "use server logics"
   | "use client logics"
@@ -594,7 +594,7 @@ export const getStrategizedDirective: (
     | TSESTree.ImportDeclaration
     | TSESTree.ExportNamedDeclaration
     | TSESTree.ExportAllDeclaration
-    | TSESTree.ExportDefaultDeclaration
+    | TSESTree.ExportDefaultDeclaration,
 ) =>
   | "use server logics"
   | "use client logics"
@@ -635,7 +635,7 @@ export const isImportBlockedDirective21: (
     | "use server functions"
     | "use client contexts"
     | "use agnostic conditions"
-    | "use agnostic strategies"
+    | "use agnostic strategies",
 ) => boolean;
 
 /**
@@ -644,7 +644,7 @@ export const isImportBlockedDirective21: (
  * @returns $COMMENT#JSDOC#RETURNS#DEFINEDIRECTIVE21
  */
 export const defineDirective21: <T extends string>(
-  reactFolder: T
+  reactFolder: T,
 ) => {
   files: [
     `${T}/**/*.tsx`,
@@ -652,7 +652,7 @@ export const defineDirective21: <T extends string>(
     `${T}/**/*.jsx`,
     `${T}/**/*.js`,
     `${T}/**/*.mjs`,
-    `${T}/**/*.cjs`
+    `${T}/**/*.cjs`,
   ];
   plugins: {
     "use-agnostic": ESLint.Plugin;

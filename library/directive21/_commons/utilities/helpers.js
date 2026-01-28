@@ -323,7 +323,7 @@ export const fileIsRegularJavaScript = (filePath) =>
 export const addressDirectiveIfAgnosticStrategies = (
   context,
   node,
-  currentFileCommentedDirective
+  currentFileCommentedDirective,
 ) => {
   // ignores if not addressing an Agnostic Strategies Module
   if (currentFileCommentedDirective !== USE_AGNOSTIC_STRATEGIES)
@@ -359,12 +359,12 @@ export const addressDirectiveIfAgnosticStrategies = (
  */
 export const isImportBlocked = (
   currentFileCommentedDirective,
-  importedFileCommentedDirective
+  importedFileCommentedDirective,
 ) =>
   commonsIsImportBlocked(
     commentedDirectives_blockedImports,
     currentFileCommentedDirective,
-    importedFileCommentedDirective
+    importedFileCommentedDirective,
   );
 
 /* makeMessageFromCurrentFileCommentedDirective */
@@ -375,11 +375,11 @@ export const isImportBlocked = (
  * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#MAKEMESSAGEFROMCURRENTFILECOMMENTEDDIRECTIVE
  */
 export const makeMessageFromCurrentFileCommentedDirective = (
-  commentedDirective
+  commentedDirective,
 ) =>
   makeMessageFromCurrentFileResolvedDirective(
     commentedDirectives_blockedImports,
-    commentedDirective
+    commentedDirective,
   );
 
 /* findSpecificViolationMessage */
@@ -392,10 +392,10 @@ export const makeMessageFromCurrentFileCommentedDirective = (
  */
 export const findSpecificViolationMessage = (
   currentFileCommentedDirective,
-  importedFileCommentedDirective
+  importedFileCommentedDirective,
 ) =>
   commonsFindSpecificViolationMessage(
     commentedDirectives_blockedImports,
     currentFileCommentedDirective,
-    importedFileCommentedDirective
+    importedFileCommentedDirective,
   );

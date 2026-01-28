@@ -20,7 +20,7 @@ import { makeDirective21Config } from "./directive21/config.js";
 
 /** @type {PackageJson} */
 const packageJSON = JSON.parse(
-  fs.readFileSync(new URL("../package.json", import.meta.url), "utf8")
+  fs.readFileSync(new URL("../package.json", import.meta.url), "utf8"),
 );
 
 /** @type {Plugin} */

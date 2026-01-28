@@ -53,11 +53,11 @@ export const currentFileFlow = (context) => {
 
   // fails if the file is not JavaScript (TypeScript)
   const iscurrentFileJS = EXTENSIONS.some(
-    (ext) => currentFileExtension === ext
+    (ext) => currentFileExtension === ext,
   );
   if (!iscurrentFileJS) {
     console.error(
-      "ERROR. Linted files for this rule should only be in JavaScript (TypeScript)."
+      "ERROR. Linted files for this rule should only be in JavaScript (TypeScript).",
     );
     return skipTrue;
   }
@@ -81,7 +81,7 @@ export const currentFileFlow = (context) => {
   // GETTING THE EFFECTIVE DIRECTIVE (no lack thereof) OF THE CURRENT FILE
   const currentFileEffectiveDirective = getEffectiveDirective(
     currentFileDirective,
-    currentFileExtension
+    currentFileExtension,
   );
 
   // fails if one of the seven effective directives has not been obtained
@@ -110,14 +110,14 @@ const importedFileFlow = (context, node) => {
     node.source.value,
     findUpSync("tsconfig.json", {
       cwd: path.dirname(context.filename),
-    }) ?? context.cwd
+    }) ?? context.cwd,
   );
 
   // does not operate on paths it did not resolve
   if (resolvedImportPath === null) return skipTrue;
   // does not operate on non-JS files
   const isImportedFileJS = EXTENSIONS.some((ext) =>
-    resolvedImportPath.endsWith(ext)
+    resolvedImportPath.endsWith(ext),
   );
   if (!isImportedFileJS) return skipTrue;
 
@@ -131,7 +131,7 @@ const importedFileFlow = (context, node) => {
   // GETTING THE EFFECTIVE DIRECTIVE (no lack thereof) OF THE IMPORTED FILE
   const importedFileEffectiveDirective = getEffectiveDirective(
     importedFileDirective,
-    importedFileFileExtension
+    importedFileFileExtension,
   );
 
   // also fails if one of the seven effective directives has not been obtained
@@ -171,14 +171,14 @@ const importedFileFlowRequire = (context, node) => {
       importPath,
       findUpSync("tsconfig.json", {
         cwd: path.dirname(context.filename),
-      }) ?? context.cwd
+      }) ?? context.cwd,
     );
 
     // does not operate on paths it did not resolve
     if (resolvedImportPath === null) return skipTrue;
     // does not operate on non-JS files
     const isImportedFileJS = EXTENSIONS.some((ext) =>
-      resolvedImportPath.endsWith(ext)
+      resolvedImportPath.endsWith(ext),
     );
     if (!isImportedFileJS) return skipTrue;
 
@@ -192,7 +192,7 @@ const importedFileFlowRequire = (context, node) => {
     // GETTING THE EFFECTIVE DIRECTIVE (no lack thereof) OF THE IMPORTED FILE
     const importedFileEffectiveDirective = getEffectiveDirective(
       importedFileDirective,
-      importedFileFileExtension
+      importedFileFileExtension,
     );
 
     // also fails if one of the seven effective directives has not been obtained
@@ -227,7 +227,7 @@ export const importsFlow = (context, node, currentFileEffectiveDirective) => {
   if (
     isImportBlocked(
       currentFileEffectiveDirective,
-      importedFileEffectiveDirective
+      importedFileEffectiveDirective,
     )
   ) {
     context.report({
@@ -236,11 +236,11 @@ export const importsFlow = (context, node, currentFileEffectiveDirective) => {
       data: {
         [effectiveDirectiveMessage]:
           makeMessageFromCurrentFileEffectiveDirective(
-            currentFileEffectiveDirective
+            currentFileEffectiveDirective,
           ),
         [specificViolationMessage]: findSpecificViolationMessage(
           currentFileEffectiveDirective,
-          importedFileEffectiveDirective
+          importedFileEffectiveDirective,
         ),
       },
     });
@@ -257,7 +257,7 @@ export const importsFlow = (context, node, currentFileEffectiveDirective) => {
 export const importsFlowRequire = (
   context,
   node,
-  currentFileEffectiveDirective
+  currentFileEffectiveDirective,
 ) => {
   const result = importedFileFlowRequire(context, node);
 
@@ -267,7 +267,7 @@ export const importsFlowRequire = (
   if (
     isImportBlocked(
       currentFileEffectiveDirective,
-      importedFileEffectiveDirective
+      importedFileEffectiveDirective,
     )
   ) {
     context.report({
@@ -276,11 +276,11 @@ export const importsFlowRequire = (
       data: {
         [effectiveDirectiveMessage]:
           makeMessageFromCurrentFileEffectiveDirective(
-            currentFileEffectiveDirective
+            currentFileEffectiveDirective,
           ),
         [specificViolationMessage]: findSpecificViolationMessage(
           currentFileEffectiveDirective,
-          importedFileEffectiveDirective
+          importedFileEffectiveDirective,
         ),
       },
     });

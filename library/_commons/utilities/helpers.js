@@ -42,7 +42,7 @@ export const isImportBlocked = (
   // Note: "Blocked" here is preferred over "not allowed" because a specific message will be shared for each of the blocked situations, explaining their reasons and the solutions needed.
   resolvedDirectives_blockedImports,
   currentFileResolvedDirective,
-  importedFileResolvedDirective
+  importedFileResolvedDirective,
 ) =>
   resolvedDirectives_blockedImports[currentFileResolvedDirective]
     .map((e) => e.blockedImport)
@@ -60,7 +60,7 @@ export const isImportBlocked = (
  */
 export const makeIntroForSpecificViolationMessage = (
   currentFileResolvedDirective,
-  importedFileResolvedDirective
+  importedFileResolvedDirective,
 ) => {
   /** @type {`${typeof resolvedDirectives_resolvedModules[T]}s ${typeof ARE_NOT_ALLOWED_TO_IMPORT} ${typeof resolvedDirectives_resolvedModules[U]}s.`} */
   const introForSpecificViolationMessage = `${resolvedDirectives_resolvedModules[currentFileResolvedDirective]}s ${ARE_NOT_ALLOWED_TO_IMPORT} ${resolvedDirectives_resolvedModules[importedFileResolvedDirective]}s.`;
@@ -80,7 +80,7 @@ export const makeIntroForSpecificViolationMessage = (
  */
 export const makeMessageFromCurrentFileResolvedDirective = (
   resolvedDirectives_blockedImports,
-  currentFileResolvedDirective
+  currentFileResolvedDirective,
 ) => {
   const effectiveModule =
     resolvedDirectives_resolvedModules[currentFileResolvedDirective];
@@ -88,7 +88,7 @@ export const makeMessageFromCurrentFileResolvedDirective = (
 
   const blockedImports =
     resolvedDirectives_blockedImports[currentFileResolvedDirective].map(
-      (e) => e.blockedImport
+      (e) => e.blockedImport,
     ) || [];
 
   if (blockedImports.length === 0) {
@@ -96,7 +96,7 @@ export const makeMessageFromCurrentFileResolvedDirective = (
   }
 
   const blockedEffectiveModules = blockedImports.map(
-    (e) => resolvedDirectives_resolvedModules[e] + "s" // plural
+    (e) => resolvedDirectives_resolvedModules[e] + "s", // plural
   );
 
   const blockedEffectiveModulesString =
@@ -123,10 +123,10 @@ export const makeMessageFromCurrentFileResolvedDirective = (
 export const findSpecificViolationMessage = (
   resolvedDirectives_blockedImports,
   currentFileResolvedDirective,
-  importedFileResolvedDirective
+  importedFileResolvedDirective,
 ) =>
   resolvedDirectives_blockedImports[currentFileResolvedDirective].find(
-    (e) => e.blockedImport === importedFileResolvedDirective
+    (e) => e.blockedImport === importedFileResolvedDirective,
   ).message;
 
 /* getEnvironmentFromResolvedDirective */
