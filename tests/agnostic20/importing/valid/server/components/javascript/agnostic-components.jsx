@@ -1,10 +1,10 @@
-// $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#THATSAMODULE
+// That's a Server Components Module.
 
-// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#IMPORTINGWITHEXTENSION
+// ...Importing an Agnostic Components Module (with extension).
 import agnosticComponents from "../../../../../imported/javascript/agnostic.jsx";
 
-// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#IMPORTINGBYAFOLDER
+// ...Importing an Agnostic Components Module by a folder.
 import agnosticComponentsFolder from "../../../../../imported/javascript/agnostic-jsx";
 
-// $COMMENT#TESTS#VALID
-// $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_AGNOSTIC_COMPONENTS
+// Valid.
+// Agnostic Components can render safely on the server just like they can on the client.

@@ -46,9 +46,9 @@ export const commentedDirectives_commentedModules: Readonly<{
 }>;
 
 /**
- * $COMMENT#JSDOC#DEFINITIONS#HIGHLIGHTFIRSTLINEOFCODE
- * @param context $COMMENT#JSDOC#PARAMS#CONTEXTA
- * @returns $COMMENT#JSDOC#RETURNS#HIGHLIGHTFIRSTLINEOFCODE
+ * Gets the coordinates for the first line of code of a file.
+ * @param context An ESLint rule's `context` object.
+ * @returns The `context.report` `loc`-compatible coordinates for the first line of code of a file.
  */
 export const highlightFirstLineOfCode: (
   context: RuleContext<string, readonly unknown[]>,
@@ -64,9 +64,9 @@ export const highlightFirstLineOfCode: (
 };
 
 /**
- * $COMMENT#JSDOC#DEFINITIONS#GETENVIRONMENTFROMRESOLVEDDIRECTIVE
- * @param {ResolvedDirective} resolvedDirective $COMMENT#JSDOC#PARAMS#RESOLVEDDIRECTIVE
- * @returns $COMMENT#JSDOC#RETURNS#GETENVIRONMENTFROMRESOLVEDDIRECTIVE
+ * Gets the environment from a resolved directive (like `"use server logics"` -> `"server"`). This can either be one of the Concrete Environments (the Server Environment or the Client Environment), or the Abstract Environment (the Agnostic Environment).
+ * @param {ResolvedDirective} resolvedDirective The resolved directive at hand.
+ * @returns Either `"server"`, `"client"`, or `"agnostic"`.
  */
 export const getEnvironmentFromResolvedDirective: (
   resolvedDirective:
@@ -127,56 +127,56 @@ export const directives_effectiveDirectives: Readonly<{
 }>;
 
 /**
- * $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#GETDIRECTIVEFROMMODULE
- * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#NULLDIRECTIVE
- * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#USESERVER
- * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#USECLIENT
- * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#USEAGNOSTIC
- * @param ast $COMMENT#JSDOC#PARAMS#AGNOSTIC20#AST
- * @returns $COMMENT#JSDOC#RETURNS#AGNOSTIC20#GETDIRECTIVEFROMMODULE
+ * Gets the directive of a module from its Abstract Syntax Tree.
+ * - `null` denotes a server-by-default module, ideally a Server Module.
+ * - `'use server'` denotes a Server Functions Module.
+ * - `'use client'` denotes a Client Module.
+ * - `'use agnostic'` denotes an Agnostic Module (formerly Shared Module).
+ * @param ast The module's AST (Abstract Syntax Tree).
+ * @returns The directive, or lack thereof via `null`. The lack of a directive is considered server-by-default.
  */
 export const getDirectiveFromModule: (
   ast: TSESLintSourceCode.Program,
 ) => "use server" | "use client" | "use agnostic" | null;
 
 /**
- * $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#GETDIRECTIVEFROMCURRENTMODULE
- * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#NULLDIRECTIVE
- * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#USESERVER
- * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#USECLIENT
- * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#USEAGNOSTIC
- * @param context $COMMENT#JSDOC#PARAMS#CONTEXTB
- * @returns $COMMENT#JSDOC#RETURNS#AGNOSTIC20#GETDIRECTIVEFROMMODULE
+ * Gets the directive of the current module.
+ * - `null` denotes a server-by-default module, ideally a Server Module.
+ * - `'use server'` denotes a Server Functions Module.
+ * - `'use client'` denotes a Client Module.
+ * - `'use agnostic'` denotes an Agnostic Module (formerly Shared Module).
+ * @param context The ESLint rule's `context` object.
+ * @returns The directive, or lack thereof via `null`. The lack of a directive is considered server-by-default.
  */
 export const getDirectiveFromCurrentModule: (
   context: RuleContext<string, readonly unknown[]>,
 ) => "use server" | "use client" | "use agnostic" | null;
 
 /**
- * $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#GETDIRECTIVEFROMIMPORTEDMODULE
- * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#NULLDIRECTIVE
- * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#USESERVER
- * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#USECLIENT
- * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#USEAGNOSTIC
- * @param resolvedPath $COMMENT#JSDOC#PARAMS#RESOLVEDPATH
- * @returns $COMMENT#JSDOC#RETURNS#AGNOSTIC20#GETDIRECTIVEFROMMODULE
+ * Gets the directive of the imported module.
+ * - `null` denotes a server-by-default module, ideally a Server Module.
+ * - `'use server'` denotes a Server Functions Module.
+ * - `'use client'` denotes a Client Module.
+ * - `'use agnostic'` denotes an Agnostic Module (formerly Shared Module).
+ * @param resolvedPath The resolved path of the imported module.
+ * @returns The directive, or lack thereof via `null`. The lack of a directive is considered server-by-default.
  */
 export const getDirectiveFromImportedModule: (
   resolvedPath: string,
 ) => "use server" | "use client" | "use agnostic" | null;
 
 /**
- * $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#GETEFFECTIVEDIRECTIVE
- * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#USESERVERLOGICS
- * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#USESERVERCOMPONENTS
- * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#USESERVERFUNCTIONS
- * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#USECLIENTLOGICS
- * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#USECLIENTCOMPONENTS
- * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#USEAGNOSTICLOGICS
- * - $COMMENT#JSDOC#DETAILS#AGNOSTIC20#USEAGNOSTICCOMPONENTS
- * @param directive $COMMENT#JSDOC#PARAMS#AGNOSTIC20#DIRECTIVE
- * @param extension $COMMENT#JSDOC#PARAMS#EXTENSION
- * @returns $COMMENT#JSDOC#RETURNS#AGNOSTIC20#GETEFFECTIVEDIRECTIVE
+ * Gets the effective directive of a module, based on the combination of its directive (or lack thereof) and its extension (depending on whether it ends with 'x' for JSX).
+ * - `'use server logics'` denotes a Server Logics Module.
+ * - `'use server components'` denotes a Server Components Module.
+ * - `'use server functions'` denotes a Server Functions Module.
+ * - `'use client logics'` denotes a Client Logics Module.
+ * - `'use client components'` denotes a Client Components Module.
+ * - `'use agnostic logics'` denotes an Agnostic Logics Module.
+ * - `'use agnostic components'` denotes an Agnostic Components Module.
+ * @param directive The directive as written on top of the file (`"no directive"` if no valid directive).
+ * @param extension The JavaScript (TypeScript) extension of the file.
+ * @returns The effective directive, from which imports rules are applied.
  */
 export const getEffectiveDirective: (
   directive: "use server" | "use client" | "use agnostic" | "no directive",
@@ -204,10 +204,10 @@ export const getEffectiveDirective: (
   | null;
 
 /**
- * $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#ISIMPORTBLOCKED
- * @param currentFileEffectiveDirective $COMMENT#JSDOC#PARAMS#AGNOSTIC20#CURRENTFILEEFFECTIVEDIRECTIVE
- * @param importedFileEffectiveDirective $COMMENT#JSDOC#PARAMS#AGNOSTIC20#IMPORTEDFILEEFFECTIVEDIRECTIVE
- * @returns $COMMENT#JSDOC#RETURNS#AGNOSTIC20#ISIMPORTBLOCKED
+ * Returns a boolean deciding if an imported file's effective directive is incompatible with the current file's effective directive.
+ * @param currentFileEffectiveDirective The current file's effective directive.
+ * @param importedFileEffectiveDirective The imported file's effective directive.
+ * @returns `true` if the import is blocked, as established in `effectiveDirectives_BlockedImports`.
  */
 export const isImportBlockedAgnostic20: (
   currentFileEffectiveDirective:
@@ -430,21 +430,21 @@ export const environments_conditionedExtensions: Readonly<{
 export const directive21Data: object;
 
 /**
- * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMSOURCECODE1
+ * Gets the commented directive of a module from its ESLint `SourceCode` object.
  *
- * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMSOURCECODE2
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USESERVERLOGICSA
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USECLIENTLOGICSA
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICLOGICSA
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USESERVERCOMPONENTSA
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USECLIENTCOMPONENTSA
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICCOMPONENTSA
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USESERVERFUNCTIONSA
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USECLIENTCONTEXTSA
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICCONDITIONSA
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICSTRATEGIESA
- * @param sourceCode $COMMENT#JSDOC#PARAMS#DIRECTIVE21#SOURCECODE
- * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMSOURCECODE
+ * Accepted directives for the default Directive-First Architecture are (single or double quotes included):
+ * - `'use server logics'`, `"use server logics"` denoting a Server Logics Module.
+ * - `'use client logics'`, `"use client logics"` denoting a Client Logics Module.
+ * - `'use agnostic logics'`, `"use agnostic logics"` denoting an Agnostic Logics Module.
+ * - `'use server components'`, `"use server components"` denoting a Server Components Module.
+ * - `'use client components'`, `"use client components"` denoting a Client Components Module.
+ * - `'use agnostic components'`, `"use agnostic components"` denoting an Agnostic Components Module.
+ * - `'use server functions'`, `"use server functions"` denoting a Server Functions Module.
+ * - `'use client contexts'`, `"use client contexts"` denoting a Client Contexts Module.
+ * - `'use agnostic conditions'`, `"use agnostic conditions"` denoting an Agnostic Conditions Module.
+ * - `'use agnostic strategies'`, `"use agnostic strategies"` denoting an Agnostic Strategies Module.
+ * @param sourceCode The ESLint SourceCode object.
+ * @returns The commented directive, or lack thereof via `null`. Given the strictness of this architecture, the lack of a directive is considered a mistake. (Though rules may provide the opportunity to declare a default, and configs with preset defaults may become provided.)
  */
 export const getCommentedDirectiveFromSourceCode: (
   sourceCode: ESLintSourceCode,
@@ -462,21 +462,21 @@ export const getCommentedDirectiveFromSourceCode: (
   | null;
 
 /**
- * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMCURRENTMODULE1
+ * Gets the commented directive of the current module.
  *
- * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMSOURCECODE2
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USESERVERLOGICSA
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USECLIENTLOGICSA
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICLOGICSA
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USESERVERCOMPONENTSA
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USECLIENTCOMPONENTSA
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICCOMPONENTSA
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USESERVERFUNCTIONSA
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USECLIENTCONTEXTSA
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICCONDITIONSA
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICSTRATEGIESA
- * @param context $COMMENT#JSDOC#PARAMS#CONTEXTB
- * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMSOURCECODE
+ * Accepted directives for the default Directive-First Architecture are (single or double quotes included):
+ * - `'use server logics'`, `"use server logics"` denoting a Server Logics Module.
+ * - `'use client logics'`, `"use client logics"` denoting a Client Logics Module.
+ * - `'use agnostic logics'`, `"use agnostic logics"` denoting an Agnostic Logics Module.
+ * - `'use server components'`, `"use server components"` denoting a Server Components Module.
+ * - `'use client components'`, `"use client components"` denoting a Client Components Module.
+ * - `'use agnostic components'`, `"use agnostic components"` denoting an Agnostic Components Module.
+ * - `'use server functions'`, `"use server functions"` denoting a Server Functions Module.
+ * - `'use client contexts'`, `"use client contexts"` denoting a Client Contexts Module.
+ * - `'use agnostic conditions'`, `"use agnostic conditions"` denoting an Agnostic Conditions Module.
+ * - `'use agnostic strategies'`, `"use agnostic strategies"` denoting an Agnostic Strategies Module.
+ * @param context The ESLint rule's `context` object.
+ * @returns The commented directive, or lack thereof via `null`. Given the strictness of this architecture, the lack of a directive is considered a mistake. (Though rules may provide the opportunity to declare a default, and configs with preset defaults may become provided.)
  */
 export const getCommentedDirectiveFromCurrentModule: (
   context: RuleContext<string, readonly unknown[]>,
@@ -494,21 +494,21 @@ export const getCommentedDirectiveFromCurrentModule: (
   | null;
 
 /**
- * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMIMPORTEDMODULE1
+ * Gets the commented directive of the imported module.
  *
- * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMSOURCECODE2
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USESERVERLOGICSA
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USECLIENTLOGICSA
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICLOGICSA
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USESERVERCOMPONENTSA
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USECLIENTCOMPONENTSA
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICCOMPONENTSA
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USESERVERFUNCTIONSA
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USECLIENTCONTEXTSA
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICCONDITIONSA
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICSTRATEGIESA
- * @param resolvedPath $COMMENT#JSDOC#PARAMS#RESOLVEDPATH
- * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#GETCOMMENTEDDIRECTIVEFROMIMPORTEDMODULE
+ * Accepted directives for the default Directive-First Architecture are (single or double quotes included):
+ * - `'use server logics'`, `"use server logics"` denoting a Server Logics Module.
+ * - `'use client logics'`, `"use client logics"` denoting a Client Logics Module.
+ * - `'use agnostic logics'`, `"use agnostic logics"` denoting an Agnostic Logics Module.
+ * - `'use server components'`, `"use server components"` denoting a Server Components Module.
+ * - `'use client components'`, `"use client components"` denoting a Client Components Module.
+ * - `'use agnostic components'`, `"use agnostic components"` denoting an Agnostic Components Module.
+ * - `'use server functions'`, `"use server functions"` denoting a Server Functions Module.
+ * - `'use client contexts'`, `"use client contexts"` denoting a Client Contexts Module.
+ * - `'use agnostic conditions'`, `"use agnostic conditions"` denoting an Agnostic Conditions Module.
+ * - `'use agnostic strategies'`, `"use agnostic strategies"` denoting an Agnostic Strategies Module.
+ * @param resolvedPath The resolved path of the imported module.
+ * @returns The commented directive, or lack thereof via `null`. Now also provides the obtained `SourceCode` object. Given the strictness of this architecture, the lack of a directive is considered a mistake. (Though rules may provide the opportunity to declare a default, and configs with preset defaults may become provided.)
  */
 export const getCommentedDirectiveFromImportedModule: (
   resolvedPath: string,
@@ -529,20 +529,20 @@ export const getCommentedDirectiveFromImportedModule: (
 };
 
 /**
- * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#GETVERIFIEDCOMMENTEDDIRECTIVE
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USESERVERLOGICSB
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USECLIENTLOGICSB
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICLOGICSB
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USESERVERCOMPONENTSB
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USECLIENTCOMPONENTSB
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICCOMPONENTSB
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USESERVERFUNCTIONSB
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USECLIENTCONTEXTSB
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICCONDITIONSB
- * - $COMMENT#JSDOC#DETAILS#DIRECTIVE21#USEAGNOSTICSTRATEGIESB
- * @param directive $COMMENT#JSDOC#PARAMS#DIRECTIVE21#DIRECTIVE
- * @param extension $COMMENT#JSDOC#PARAMS#EXTENSION
- * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#GETVERIFIEDCOMMENTEDDIRECTIVE
+ * Ensures that a module's commented directive is consistent with its file extension (depending on whether it ends with 'x' for JSX).
+ * - `'use server logics'`: Server Logics Modules do NOT export JSX.
+ * - `'use client logics'`: Client Logics Modules do NOT export JSX.
+ * - `'use agnostic logics'`: Agnostic Logics Modules do NOT export JSX.
+ * - `'use server components'`: Server Components Modules ONLY export JSX.
+ * - `'use client components'`: Client Components Modules ONLY export JSX.
+ * - `'use agnostic components'`: Agnostic Components Modules ONLY export JSX.
+ * - `'use server functions'`: Server Functions Modules do NOT export JSX.
+ * - `'use client contexts'`: Client Contexts Modules ONLY export JSX.
+ * - `'use agnostic conditions'`: Agnostic Conditions Modules ONLY export JSX.
+ * - `'use agnostic strategies'`: Agnostic Strategies Modules may export JSX.
+ * @param directive The commented directive as written on top of the file (cannot be `null` at that stage).
+ * @param extension The JavaScript (TypeScript) extension of the file.
+ * @returns The verified commented directive, from which imports rules are applied. Returns `null` if the verification failed, upon which an error will be reported depending on the commented directive, since the error logic here is strictly binary.
  */
 export const getVerifiedCommentedDirective: (
   directive:
@@ -583,10 +583,10 @@ export const getVerifiedCommentedDirective: (
   | null;
 
 /**
- * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#GETSTRATEGIZEDDIRECTIVE
- * @param context $COMMENT#JSDOC#PARAMS#CONTEXTB
- * @param node $COMMENT#JSDOC#PARAMS#NODE
- * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#GETSTRATEGIZEDDIRECTIVE
+ * Gets the interpreted directive from a specified commented Strategy (such as `@serverLogics`) nested inside the import (or export) declaration for an import (or export) from an Agnostic Strategies Module.
+ * @param context The ESLint rule's `context` object.
+ * @param node The ESLint `node` of the rule's current traversal.
+ * @returns The interpreted directive, a.k.a. strategized directive, or lack thereof via `null`.
  */
 export const getStrategizedDirective: (
   context: RuleContext<string, readonly unknown[]>,
@@ -608,10 +608,10 @@ export const getStrategizedDirective: (
   | null;
 
 /**
- * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#ISIMPORTBLOCKED
- * @param currentFileCommentedDirective $COMMENT#JSDOC#PARAMS#DIRECTIVE21#CURRENTFILECOMMENTEDDIRECTIVE
- * @param importedFileCommentedDirective $COMMENT#JSDOC#PARAMS#DIRECTIVE21#IMPORTEDFILECOMMENTEDDIRECTIVE
- * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#ISIMPORTBLOCKED
+ * Returns a boolean deciding if an imported file's commented directive is incompatible with the current file's commented directive.
+ * @param currentFileCommentedDirective The current file's commented directive.
+ * @param importedFileCommentedDirective The imported file's commented directive.
+ * @returns `true` if the import is blocked, as established in `commentedDirectives_BlockedImports`.
  */
 export const isImportBlockedDirective21: (
   currentFileCommentedDirective:
@@ -639,9 +639,9 @@ export const isImportBlockedDirective21: (
 ) => boolean;
 
 /**
- * $COMMENT#JSDOC#DEFINITIONS#DEFINEDIRECTIVE21
- * @param reactFolder $COMMENT#JSDOC#PARAMS#REACTFOLDER
- * @returns $COMMENT#JSDOC#RETURNS#DEFINEDIRECTIVE21
+ * Creates the ESLint config object required as the basis for the Directive-First Architecture, linting server-client-agnostic imports based on their commented directives. (Defaults to `"warn"`. You can import and use ```[`${useAgnosticPluginName}/${directive21ConfigName}`]``` later in a further ESLint config object to modify that value.)
+ * @param reactFolder The path of the project's React folder where everything React lives, relative to the root of the project. This is, for example, the app directory when using the Next.js App Router, as `"app"`.
+ * @returns An ESLint config object that applies `eslint-plugin-use-agnostic`'s `directive21` config by using the provided `reactFolder` as the basis for JavaScript/TypeScript glob patterns.
  */
 export const defineDirective21: <T extends string>(
   reactFolder: T,
@@ -661,10 +661,10 @@ export const defineDirective21: <T extends string>(
 };
 
 /**
- * $COMMENT#JSDOC#DEFINITIONS#DEFINECONFIGSETTINGS
- * @param settings $COMMENT#JSDOC#PARAMS#SETTINGS
- * @param settings.reactFolder $COMMENT#JSDOC#PARAMS#REACTFOLDER
- * @returns $COMMENT#JSDOC#RETURNS#DEFINECONFIGSETTINGS
+ * Defines the config settings for the eXtra JSX VS Code extension as a means to configure `eXtra JSX` directly from ESLint, given the fact that `eslint-plugin-use-agnostic` and `eXtra JSX` have to work together in making the Directive-First Architecture.
+ * @param settings The settings as follows:
+ * @param settings.reactFolder The path of the project's React folder where everything React lives, relative to the root of the project. This is, for example, the app directory when using the Next.js App Router, as `"app"`.
+ * @returns The config object responsible for the settings retrieved by the eXtra JSX VS Code extension.
  */
 export const defineConfigSettings: <T extends string>({
   reactFolder,
