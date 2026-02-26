@@ -1,42 +1,42 @@
 // "use server functions"
 "use server";
 
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#IMPORTINGAMODULE
+// ...Importing a Lineal Agnostic Components Module.
 import agnosticComponents from "../../../../../imported/typescript/agnostic-components";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import agnosticComponentsExtension from "../../../../../imported/typescript/agnostic-components.tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import agnosticComponentsAlias from "@/tests/directive21/imported/typescript/agnostic-components";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import agnosticComponentsAliasExtension from "@/tests/directive21/imported/typescript/agnostic-components.tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import agnosticComponentsBaseUrl from "tests/directive21/imported/typescript/agnostic-components";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import agnosticComponentsBaseUrlExtension from "tests/directive21/imported/typescript/agnostic-components.tsx";
 
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#IMPORTINGBYAFOLDER
+// ...Importing a Lineal Agnostic Components Module by a folder.
 import agnosticComponentsFolder from "../../../../../imported/typescript/agnostic-components-tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import agnosticComponentsFolderAlias from "@/tests/directive21/imported/typescript/agnostic-components-tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import agnosticComponentsFolderBaseUrl from "tests/directive21/imported/typescript/agnostic-components-tsx";
 
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#IMPORTINGVIASTRATEGY
+// ...Importing Lineal Agnostic Components via Special Agnostic Strategy.
 import {
   /* @agnosticComponents */ agnosticComponentsStrategized,
 } from "../../../../../imported/typescript/agnostic-strategies";
-// $COMMENT#TESTS#WITHEXTENSION
+// with extension
 import {
   /* @agnosticComponents */ agnosticComponentsStrategized as agnosticComponentsStrategizedExtension,
 } from "../../../../../imported/typescript/agnostic-strategies.tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import {
   /* @agnosticComponents */ agnosticComponentsStrategized as agnosticComponentsStrategizedAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies";
 import {
   /* @agnosticComponents */ agnosticComponentsStrategized as agnosticComponentsStrategizedAliasExtension,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies.tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import {
   /* @agnosticComponents */ agnosticComponentsStrategized as agnosticComponentsStrategizedBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies";
@@ -44,18 +44,18 @@ import {
   /* @agnosticComponents */ agnosticComponentsStrategized as agnosticComponentsStrategizedBaseUrlExtension,
 } from "tests/directive21/imported/typescript/agnostic-strategies.tsx";
 
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#IMPORTINGVIASTRATEGYBYAFOLDER
+// ...Importing Lineal Agnostic Components via Special Agnostic Strategy by a folder.
 import {
   /* @agnosticComponents */ agnosticComponentsStrategized as agnosticComponentsStrategizedFolder,
 } from "../../../../../imported/typescript/agnostic-strategies-tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import {
   /* @agnosticComponents */ agnosticComponentsStrategized as agnosticComponentsStrategizedFolderAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies-tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import {
   /* @agnosticComponents */ agnosticComponentsStrategized as agnosticComponentsStrategizedFolderBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
-// $COMMENT#TESTS#INVALID
-// $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#USE_AGNOSTIC_COMPONENTS
+// Invalid.
+// Lineal Agnostic Components aren't allowed because (Special) Server Functions have no business working with React Components.
