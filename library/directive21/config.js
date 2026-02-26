@@ -25,6 +25,16 @@ export const makeDirective21Config = (plugin) => ({
       rules: {
         [`${useAgnosticPluginName}/${enforceCommentedDirectivesRuleName}`]:
           "warn",
+        // new
+        "no-restricted-syntax": [
+          "warn",
+          {
+            selector:
+              "CallExpression[callee.object.name='Object'][callee.property.name='create'][arguments.0.value=null]",
+            message:
+              "Avoid using `Object.create(null)` within the React folder. Instead, use a plain object as the RSC model requires plain objects for serialization.",
+          },
+        ],
       },
       languageOptions: typeScriptAndJSXCompatible,
     },
