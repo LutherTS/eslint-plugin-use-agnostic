@@ -1,19 +1,19 @@
 "use agnostic";
-// That's an Agnostic Logics Module.
+// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#THATSAMODULE
 
-// ...Importing an Agnostic Logics Module (with extension).
+// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#IMPORTINGWITHEXTENSION
 import agnosticLogics from "../../../../../imported/typescript/agnostic.ts";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import agnosticLogicsAlias from "@/tests/agnostic20/imported/typescript/agnostic.ts";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import agnosticLogicsBaseUrl from "tests/agnostic20/imported/typescript/agnostic.ts";
 
-// ...Importing an Agnostic Logics Module by a folder.
+// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#IMPORTINGBYAFOLDER
 import agnosticLogicsFolder from "../../../../../imported/typescript/agnostic-ts";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import agnosticLogicsFolderAlias from "@/tests/agnostic20/imported/typescript/agnostic-ts";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import agnosticLogicsFolderBaseUrl from "tests/agnostic20/imported/typescript/agnostic-ts";
 
-// Valid.
-// Agnostic Logics can compose with one another.
+// $COMMENT#TESTS#VALID
+// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#USE_AGNOSTIC_LOGICS

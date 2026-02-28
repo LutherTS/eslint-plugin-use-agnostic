@@ -1,19 +1,19 @@
 "use server";
-// That's a Server Functions Module.
+// $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#THATSAMODULE
 
-// ...Importing a Client Components Module (with extension).
+// $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#IMPORTINGWITHEXTENSION
 import clientComponents from "../../../../../imported/typescript/client.tsx";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import clientComponentsAlias from "@/tests/agnostic20/imported/typescript/client.tsx";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import clientComponentsBaseUrl from "tests/agnostic20/imported/typescript/client.tsx";
 
-// ...Importing a Client Components Module by a folder.
+// $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#IMPORTINGBYAFOLDER
 import clientComponentsFolder from "../../../../../imported/typescript/client-tsx";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import clientComponentsFolderAlias from "@/tests/agnostic20/imported/typescript/client-tsx";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import clientComponentsFolderBaseUrl from "tests/agnostic20/imported/typescript/client-tsx";
 
-// Invalid.
-// Client Components aren't allowed because Server Functions have no business working with React Components.
+// $COMMENT#TESTS#INVALID
+// $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#USE_CLIENT_COMPONENTS
