@@ -1,11 +1,11 @@
 "use agnostic";
-// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#THATSAMODULE
+// That's an Agnostic Logics Module.
 
-// $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#IMPORTINGWITHEXTENSION
+// ...Importing a Client Logics Module (with extension).
 import clientLogics from "../../../../../imported/javascript/client.js";
 
-// $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#IMPORTINGBYAFOLDER
+// ...Importing a Client Logics Module by a folder.
 import clientLogicsFolder from "../../../../../imported/javascript/client-js";
 
-// $COMMENT#TESTS#INVALID
-// $COMMENT#AGNOSTIC20#FORALIASVARIABLES#CLIENTLOGICSCANTBOTH
+// Invalid.
+// Client Logics cannot run on both the server and the client.

@@ -1,21 +1,21 @@
 // "use agnostic components"
 "use agnostic";
 
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#IMPORTINGAMODULE
+// ...Importing a Lineal Agnostic Components Module.
 import agnosticComponents from "../../../../../imported/javascript/agnostic-components.jsx";
 
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#IMPORTINGBYAFOLDER
+// ...Importing a Lineal Agnostic Components Module by a folder.
 import agnosticComponentsFolder from "../../../../../imported/javascript/agnostic-components-jsx";
 
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#IMPORTINGVIASTRATEGY
+// ...Importing Lineal Agnostic Components via Special Agnostic Strategy.
 import {
   /* @agnosticComponents */ agnosticComponentsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#IMPORTINGVIASTRATEGYBYAFOLDER
+// ...Importing Lineal Agnostic Components via Special Agnostic Strategy by a folder.
 import {
   /* @agnosticComponents */ agnosticLogicsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// $COMMENT#TESTS#VALID
-// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#USE_AGNOSTIC_COMPONENTS
+// Valid.
+// Lineal Agnostic Components can compose with one another.

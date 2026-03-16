@@ -1,20 +1,20 @@
 // "use server components"
 
-// $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#IMPORTINGAMODULE
+// ...Importing a Lineal Client Components Module.
 import clientComponents from "../../../../../imported/javascript/client-components.jsx";
 
-// $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#IMPORTINGBYAFOLDER
+// ...Importing a Lineal Client Components Module by a folder.
 import clientComponentsFolder from "../../../../../imported/javascript/client-components-jsx";
 
-// $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#IMPORTINGVIASTRATEGY
+// ...Importing Lineal Client Components via Special Agnostic Strategy.
 import {
   /* @clientComponents */ clientComponentsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// $COMMENT#DIRECTIVE21#USE_CLIENT_COMPONENTS#IMPORTINGVIASTRATEGYBYAFOLDER
+// ...Importing Lineal Client Components via Special Agnostic Strategy by a folder.
 import {
   /* @clientComponents */ clientLogicsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// $COMMENT#TESTS#VALID
-// $COMMENT#DIRECTIVE21#USE_SERVER_COMPONENTS#USE_CLIENT_COMPONENTS
+// Valid.
+// Lineal Client Components can be nested inside Lineal Server Components to create client boundaries when the root of the application is planted on the server.

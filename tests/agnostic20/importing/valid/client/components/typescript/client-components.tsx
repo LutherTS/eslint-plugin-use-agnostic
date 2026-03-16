@@ -1,19 +1,19 @@
 "use client";
-// $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#THATSAMODULE
+// That's a Client Components Module.
 
-// $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#IMPORTINGWITHEXTENSION
+// ...Importing a Client Components Module (with extension).
 import clientComponents from "../../../../../imported/typescript/client.tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import clientComponentsAlias from "@/tests/agnostic20/imported/typescript/client.tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import clientComponentsBaseUrl from "tests/agnostic20/imported/typescript/client.tsx";
 
-// $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#IMPORTINGBYAFOLDER
+// ...Importing a Client Components Module by a folder.
 import clientComponentsFolder from "../../../../../imported/typescript/client-tsx";
-// $COMMENT#TESTS#VIAALIAS
+// Via alias.
 import clientComponentsFolderAlias from "@/tests/agnostic20/imported/typescript/client-tsx";
-// $COMMENT#TESTS#VIABASEURL
+// Via baseUrl.
 import clientComponentsFolderBaseUrl from "tests/agnostic20/imported/typescript/client-tsx";
 
-// $COMMENT#TESTS#VALID
-// $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_CLIENT_COMPONENTS
+// Valid.
+// Client Components can compose with one another.

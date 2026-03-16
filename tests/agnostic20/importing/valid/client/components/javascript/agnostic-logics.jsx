@@ -1,11 +1,11 @@
 "use client";
-// $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#THATSAMODULE
+// That's a Client Components Module.
 
-// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#IMPORTINGWITHEXTENSION
+// ...Importing an Agnostic Logics Module (with extension).
 import agnosticLogics from "../../../../../imported/javascript/agnostic.js";
 
-// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_LOGICS#IMPORTINGBYAFOLDER
+// ...Importing an Agnostic Logics Module by a folder.
 import agnosticLogicsFolder from "../../../../../imported/javascript/agnostic-js";
 
-// $COMMENT#TESTS#VALID
-// $COMMENT#AGNOSTIC20#FORALIASVARIABLES#AGNOSTICCANCLIENTSERVER
+// Valid.
+// Agnostic Logics can run safely on the client just like they can on the server.
