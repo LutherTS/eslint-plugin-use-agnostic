@@ -215,7 +215,7 @@ export const defineConfigSettings = ({ reactFolder, rootPath }) => {
     settings: {
       eXtraJSX: {
         reactFolder,
-        rootPath, // I should start with this and make sure the rootPath on ESLint and the rootPath on VS Code are the same.
+        rootPath, // Makes sure the rootPath on ESLint and the rootPath on VS Code are the same.
       },
     },
   };

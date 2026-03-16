@@ -74,7 +74,7 @@ export const directive21Comments = Object.freeze({
     agnosticComponentsCanAny:
       "Lineal Agnostic Components can be composed with any Prime Environment Logics agnostically, as long as the Prime Environment Logics Module," /* $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#AGNOSTICCOMPONENTSCANANY */,
     asIfLinealAgnostic:
-      "as if they were Lineal Agnostic Components themselves," /* $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#ASIFLINEALAGNOSTIC */,
+      "as if they were Lineal Agnostic Components and/or Prime Agnostic Logics themselves," /* $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#ASIFLINEALAGNOSTIC */,
     canAnyPrimeLogics:
       "can be composed with any Prime Environment Logics agnostically, as long as the Prime Environment Logics Module," /* $COMMENT#DIRECTIVE21#FORCOMPOSEDVARIABLES#CANANYPRIMELOGICS */,
     noExportComponents:

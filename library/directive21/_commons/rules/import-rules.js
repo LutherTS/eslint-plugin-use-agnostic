@@ -76,8 +76,13 @@ In this context, {{ ${specificFailure} }} `,
   create: (context) => {
     const result = currentFileFlow(context);
 
+    const reactFolder = /** @type {string} */ (context.settings.reactFolder);
+    const rootPath = /** @type {string} */ (context.settings.rootPath);
+    // make the resolver by resolving the TypeScript from the rootPath
+    // pass the resolver to importsFlow, allExportsFlow, importsFlowRequire
+
     if (result.skip) return {};
-    const { verifiedCommentedDirective } = result;
+    const { verifiedCommentedDirective } = result; // Leave untouched. Since this is the verifying process. Commented directives from imported modules however, don't need to be further verified, and can simply be obtained by the flat module index.
 
     return {
       ImportDeclaration: (node) =>
