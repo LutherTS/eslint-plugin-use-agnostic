@@ -7,10 +7,10 @@ import {
 } from "../../../library/_commons/constants/bases.js";
 
 /**
- * Reads file paths at any depths within a provided directory.
- * @param {string} folderPath The provided directory.
- * @param {string[]} allFiles The accumulator array of file paths. Defaults to an empty array on the initial call, and is passed through each recursive call to be mutated and collect results.
- * @returns All files at any depths within the provided directory.
+ * $COMMENT#JSDOC#DEFINITIONS#TESTS#READFILESRECURSIVELY
+ * @param {string} folderPath $COMMENT#JSDOC#PARAMS#TESTS#FOLDERPATH
+ * @param {string[]} allFiles $COMMENT#JSDOC#PARAMS#TESTS#ALLFILES
+ * @returns $COMMENT#JSDOC#RETURNS#TESTS#READFILESRECURSIVELY
  */
 const readFilesRecursively = (folderPath, allFiles = []) => {
   const items = fs.readdirSync(folderPath);
@@ -30,9 +30,9 @@ const readFilesRecursively = (folderPath, allFiles = []) => {
 };
 
 /**
- * Reads file paths at any depths within a provided valid files directory.
- * @param {string} folderPath The provided directory.
- * @returns The RuleTester's array of valid files with needed properties.
+ * $COMMENT#JSDOC#DEFINITIONS#TESTS#READVALIDFILESRECURSIVELY
+ * @param {string} folderPath $COMMENT#JSDOC#PARAMS#TESTS#FOLDERPATH
+ * @returns $COMMENT#JSDOC#RETURNS#TESTS#READVALIDFILESRECURSIVELY
  */
 export const readValidFilesRecursively = (folderPath) =>
   readFilesRecursively(folderPath).map((e) => ({
@@ -42,12 +42,12 @@ export const readValidFilesRecursively = (folderPath) =>
   }));
 
 /**
- * Reads file paths at any depths within a provided invalid files directory.
- * @param {string} folderPath The provided directory.
- * @param {number} javaScriptErrorsLength The number of errors expected on JavaScript files.
- * @param {number} typeScriptErrorsLength The number of errors expected on TypeScript files.
- * @param {string} messageId The messageId of the errors expected.
- * @returns The RuleTester's array of invalid files with needed properties.
+ * $COMMENT#JSDOC#DEFINITIONS#TESTS#READINVALIDFILESRECURSIVELY
+ * @param {string} folderPath $COMMENT#JSDOC#PARAMS#TESTS#FOLDERPATH
+ * @param {number} javaScriptErrorsLength $COMMENT#JSDOC#PARAMS#TESTS#JAVASCRIPTERRORSLENGTH
+ * @param {number} typeScriptErrorsLength $COMMENT#JSDOC#PARAMS#TESTS#TYPESCRIPTERRORSLENGTH
+ * @param {string} messageId $COMMENT#JSDOC#PARAMS#TESTS#MESSAGEID
+ * @returns $COMMENT#JSDOC#RETURNS#TESTS#READINVALIDFILESRECURSIVELY
  */
 const readInvalidFilesRecursively = (
   folderPath,
@@ -71,9 +71,9 @@ const readInvalidFilesRecursively = (
   });
 
 /**
- * Reads file paths at any depths within a provided invalid files for agnostic20.
- * @param {string} folderPath The provided directory.
- * @returns The RuleTester's array of invalid files with needed properties for agnostic20.
+ * $COMMENT#JSDOC#DEFINITIONS#TESTS#READINVALIDFILESRECURSIVELY20
+ * @param {string} folderPath $COMMENT#JSDOC#PARAMS#TESTS#FOLDERPATH
+ * @returns $COMMENT#JSDOC#RETURNS#TESTS#READINVALIDFILESRECURSIVELY20
  */
 export const readInvalidFilesRecursively20 = (folderPath) =>
   readInvalidFilesRecursively(
@@ -84,9 +84,9 @@ export const readInvalidFilesRecursively20 = (folderPath) =>
   );
 
 /**
- * Reads file paths at any depths within a provided invalid files for directive21.
- * @param {string} folderPath The provided directory.
- * @returns The RuleTester's array of invalid files with needed properties for directive21.
+ * $COMMENT#JSDOC#DEFINITIONS#TESTS#READINVALIDFILESRECURSIVELY21
+ * @param {string} folderPath $COMMENT#JSDOC#PARAMS#TESTS#FOLDERPATH
+ * @returns $COMMENT#JSDOC#RETURNS#TESTS#READINVALIDFILESRECURSIVELY21
  */
 export const readInvalidFilesRecursively21 = (folderPath) =>
   readInvalidFilesRecursively(

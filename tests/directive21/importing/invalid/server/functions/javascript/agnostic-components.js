@@ -1,21 +1,21 @@
 // "use server functions"
 "use server";
 
-// ...Importing a Lineal Agnostic Components Module.
+// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#IMPORTINGAMODULE
 import agnosticComponents from "../../../../../imported/javascript/agnostic-components.jsx";
 
-// ...Importing a Lineal Agnostic Components Module by a folder.
+// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#IMPORTINGBYAFOLDER
 import agnosticComponentsFolder from "../../../../../imported/javascript/agnostic-components-jsx";
 
-// ...Importing Lineal Agnostic Components via Special Agnostic Strategy.
+// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#IMPORTINGVIASTRATEGY
 import {
   /* @agnosticComponents */ agnosticComponentsStrategized,
 } from "../../../../../imported/javascript/agnostic-strategies.jsx";
 
-// ...Importing Lineal Agnostic Components via Special Agnostic Strategy by a folder.
+// $COMMENT#DIRECTIVE21#USE_AGNOSTIC_COMPONENTS#IMPORTINGVIASTRATEGYBYAFOLDER
 import {
   /* @agnosticComponents */ agnosticLogicsStrategizedFolder,
 } from "../../../../../imported/javascript/agnostic-strategies-jsx";
 
-// Invalid.
-// Lineal Agnostic Components aren't allowed because (Special) Server Functions have no business working with React Components.
+// $COMMENT#TESTS#INVALID
+// $COMMENT#DIRECTIVE21#USE_SERVER_FUNCTIONS#USE_AGNOSTIC_COMPONENTS
