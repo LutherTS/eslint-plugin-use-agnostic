@@ -329,6 +329,10 @@
         "value": "The path of the project's React folder where everything React lives, relative to the root of the project. This is, for example, the app directory when using the Next.js App Router, as `\"app\"`.",
         "key": "JSDOC#PARAMS#REACTFOLDER"
       },
+      "rootPath": {
+        "value": "The absolute path of the root of the project, from which the absolute path of the React folder can be easily obtained.",
+        "key": "JSDOC#PARAMS#ROOTPATH"
+      },
       "agnostic20": {
         "currentFileEffectiveDirective": {
           "value": "The current file's effective directive.",

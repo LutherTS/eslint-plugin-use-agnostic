@@ -197,11 +197,13 @@ export const defineDirective21 = (reactFolder) => {
 /**
  * $COMMENT#JSDOC#DEFINITIONS#DEFINECONFIGSETTINGS
  * @template {string} T
+ * @template {string} U
  * @param {Object} settings $COMMENT#JSDOC#PARAMS#SETTINGS
  * @param {T} settings.reactFolder $COMMENT#JSDOC#PARAMS#REACTFOLDER
+ * @param {U} settings.rootPath $COMMENT#JSDOC#PARAMS#ROOTPATH
  * @returns $COMMENT#JSDOC#RETURNS#DEFINECONFIGSETTINGS
  */
-export const defineConfigSettings = ({ reactFolder }) => {
+export const defineConfigSettings = ({ reactFolder, rootPath }) => {
   /**
    * @type {["**\/*.js"]}
    * The dummy file paths used by the eXtra JSX VS Code extension are JavaScript file paths, therefore this glob pattern is enough to work in recognizing the dummy file paths in order to retrieve the settings.
@@ -213,6 +215,7 @@ export const defineConfigSettings = ({ reactFolder }) => {
     settings: {
       eXtraJSX: {
         reactFolder,
+        rootPath, // I should start with this and make sure the rootPath on ESLint and the rootPath on VS Code are the same.
       },
     },
   };

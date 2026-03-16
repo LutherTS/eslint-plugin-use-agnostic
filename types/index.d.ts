@@ -664,17 +664,21 @@ export const defineDirective21: <T extends string>(
  * $COMMENT#JSDOC#DEFINITIONS#DEFINECONFIGSETTINGS
  * @param settings $COMMENT#JSDOC#PARAMS#SETTINGS
  * @param settings.reactFolder $COMMENT#JSDOC#PARAMS#REACTFOLDER
+ * @param settings.rootPath $COMMENT#JSDOC#PARAMS#ROOTPATH
  * @returns $COMMENT#JSDOC#RETURNS#DEFINECONFIGSETTINGS
  */
-export const defineConfigSettings: <T extends string>({
+export const defineConfigSettings: <T extends string, U extends string>({
   reactFolder,
+  rootPath,
 }: {
   reactFolder: T;
+  rootPath: U;
 }) => {
   files: ["**/*.js"];
   settings: {
     eXtraJSX: {
       reactFolder: T;
+      rootPath: U;
     };
   };
 };

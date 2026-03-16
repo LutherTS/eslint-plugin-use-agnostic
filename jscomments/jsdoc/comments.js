@@ -168,6 +168,8 @@ export const jsDocComments = Object.freeze({
     settings: "The settings as follows:" /* $COMMENT#JSDOC#PARAMS#SETTINGS */,
     reactFolder:
       'The path of the project\'s React folder where everything React lives, relative to the root of the project. This is, for example, the app directory when using the Next.js App Router, as `"app"`.' /* $COMMENT#JSDOC#PARAMS#REACTFOLDER */,
+    rootPath:
+      "The absolute path of the root of the project, from which the absolute path of the React folder can be easily obtained." /* $COMMENT#JSDOC#PARAMS#ROOTPATH */,
     agnostic20: Object.freeze({
       currentFileEffectiveDirective:
         "$COMMENT#JSDOC#FORCOMPOSEDVARIABLES#THECURRENTFILE $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#EFFECTIVE $COMMENT#JSDOC#FORCOMPOSEDVARIABLES#DIRECTIVEPERIOD" /* $COMMENT#JSDOC#PARAMS#AGNOSTIC20#CURRENTFILEEFFECTIVEDIRECTIVE */,
