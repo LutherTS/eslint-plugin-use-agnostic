@@ -1,62 +1,62 @@
 // "use agnostic conditions"
 
-// ...Importing a Special Client Contexts Module.
+// $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#IMPORTINGAMODULE
 import clientContexts from "../../../../../imported/typescript/client-contexts";
-// with extension
+// $COMMENT#TESTS#WITHEXTENSION
 import clientContextsExtension from "../../../../../imported/typescript/client-contexts.tsx";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import clientContextsAlias from "@/tests/directive21/imported/typescript/client-contexts";
-// with extension
+// $COMMENT#TESTS#WITHEXTENSION
 import clientContextsAliasExtension from "@/tests/directive21/imported/typescript/client-contexts.tsx";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import clientContextsBaseUrl from "tests/directive21/imported/typescript/client-contexts";
-// with extension
+// $COMMENT#TESTS#WITHEXTENSION
 import clientContextsBaseUrlExtension from "tests/directive21/imported/typescript/client-contexts.tsx";
 
-// ...Importing a Special Client Contexts Module by a folder.
+// $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#IMPORTINGBYAFOLDER
 import clientContextsFolder from "../../../../../imported/typescript/client-contexts-tsx";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import clientContextsFolderAlias from "@/tests/directive21/imported/typescript/client-contexts-tsx";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import clientContextsFolderBaseUrl from "tests/directive21/imported/typescript/client-contexts-tsx";
 
-// ...Importing (Special) Client Contexts Components via Special Agnostic Strategy.
+// $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#IMPORTINGVIASTRATEGY
 import {
   /* @clientContexts */ clientContextsStrategized,
 } from "../../../../../imported/typescript/agnostic-strategies";
-// with extension
+// $COMMENT#TESTS#WITHEXTENSION
 import {
   /* @clientContexts */ clientContextsStrategized as clientContextsStrategizedExtension,
 } from "../../../../../imported/typescript/agnostic-strategies.tsx";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import {
   /* @clientContexts */ clientContextsStrategized as clientContextsStrategizedAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies";
-// with extension
+// $COMMENT#TESTS#WITHEXTENSION
 import {
   /* @clientContexts */ clientContextsStrategized as clientContextsStrategizedAliasExtension,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies.tsx";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import {
   /* @clientContexts */ clientContextsStrategized as clientContextsStrategizedBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies";
-// with extension
+// $COMMENT#TESTS#WITHEXTENSION
 import {
   /* @clientContexts */ clientContextsStrategized as clientContextsStrategizedBaseUrlExtension,
 } from "tests/directive21/imported/typescript/agnostic-strategies.tsx";
 
-// ...Importing (Special) Client Contexts Components via Special Agnostic Strategy by a folder.
+// $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#IMPORTINGVIASTRATEGYBYAFOLDER
 import {
   /* @clientContexts */ clientContextsStrategized as clientContextsStrategizedFolder,
 } from "../../../../../imported/typescript/agnostic-strategies-tsx";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import {
   /* @clientContexts */ clientContextsStrategized as clientContextsStrategizedFolderAlias,
 } from "@/tests/directive21/imported/typescript/agnostic-strategies-tsx";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import {
   /* @clientContexts */ clientContextsStrategized as clientContextsStrategizedFolderBaseUrl,
 } from "tests/directive21/imported/typescript/agnostic-strategies-tsx";
 
-// Invalid.
-// (Special) Client Contexts Components cannot be used as component arguments for (Special) Agnostic Conditions Components since they only take Lineal Components as arguments in their making.
+// $COMMENT#TESTS#INVALID
+// $COMMENT#DIRECTIVE21#USE_CLIENT_CONTEXTS#SPECIALS cannot be used as component arguments for $COMMENT#DIRECTIVE21#USE_AGNOSTIC_CONDITIONS#SPECIALS since they only take Lineal Components as arguments in their making.
