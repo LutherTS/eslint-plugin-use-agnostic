@@ -1,19 +1,19 @@
 "use client";
-// That's a Client Components Module.
+// $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#THATSAMODULE
 
-// ...Importing a Server Components Module (with extension).
+// $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#IMPORTINGWITHEXTENSION
 import serverComponents from "../../../../../imported/typescript/server.tsx";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import serverComponentsAlias from "@/tests/agnostic20/imported/typescript/server.tsx";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import serverComponentsBaseUrl from "tests/agnostic20/imported/typescript/server.tsx";
 
-// ...Importing a Server Components Module by a folder.
+// $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#IMPORTINGBYAFOLDER
 import serverComponentsFolder from "../../../../../imported/typescript/server-tsx";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import serverComponentsFolderAlias from "@/tests/agnostic20/imported/typescript/server-tsx";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import serverComponentsFolderBaseUrl from "tests/agnostic20/imported/typescript/server-tsx";
 
-// Invalid.
-// Server Components may only pass through Client Components via the children prop within Server Components Modules.
+// $COMMENT#TESTS#INVALID
+// $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_SERVER_COMPONENTS
