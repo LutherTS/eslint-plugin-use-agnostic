@@ -12,9 +12,9 @@ import {
  */
 
 /**
- * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#MAKEDIRECTIVE21CONFIG
- * @param {Plugin} plugin $COMMENT#JSDOC#PARAMS#PLUGIN
- * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#MAKEDIRECTIVE21CONFIG
+ * Makes the directive21 config for the use-agnostic ESLint plugin.
+ * @param {Plugin} plugin The use-agnostic ESLint plugin itself.
+ * @returns The directive21 config's name as a key and its config as its value.
  */
 export const makeDirective21Config = (plugin) => ({
   [directive21ConfigName]: defineConfig([

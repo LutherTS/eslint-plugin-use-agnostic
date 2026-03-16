@@ -1,4 +1,4 @@
 "use server";
-// $COMMENT#AGNOSTIC20#USE_SERVER_FUNCTIONS#THATSAMODULE
+// That's a Server Functions Module.
 
 export default {};
