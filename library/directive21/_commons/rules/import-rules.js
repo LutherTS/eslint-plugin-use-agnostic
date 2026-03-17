@@ -101,6 +101,7 @@ In this context, {{ ${specificFailure} }} `,
       rootPath,
       tsConfigPaths,
     );
+    console.debug("absoluteTsConfigPaths is:", absoluteTsConfigPaths);
     const resolver = makeResolverFromAbsoluteTsConfigPaths(
       absoluteTsConfigPaths,
     );
@@ -111,17 +112,17 @@ In this context, {{ ${specificFailure} }} `,
 
     return {
       ImportDeclaration: (node) =>
-        importsFlow(context, node, verifiedCommentedDirective),
+        importsFlow(context, node, verifiedCommentedDirective, resolver),
       ImportExpression: (node) =>
-        importsFlow(context, node, verifiedCommentedDirective),
+        importsFlow(context, node, verifiedCommentedDirective, resolver),
       ExportNamedDeclaration: (node) =>
-        allExportsFlow(context, node, verifiedCommentedDirective),
+        allExportsFlow(context, node, verifiedCommentedDirective, resolver),
       ExportAllDeclaration: (node) =>
-        allExportsFlow(context, node, verifiedCommentedDirective),
+        allExportsFlow(context, node, verifiedCommentedDirective, resolver),
       ExportDefaultDeclaration: (node) =>
-        allExportsFlow(context, node, verifiedCommentedDirective),
+        allExportsFlow(context, node, verifiedCommentedDirective, resolver),
       CallExpression: (node) =>
-        importsFlowRequire(context, node, verifiedCommentedDirective),
+        importsFlowRequire(context, node, verifiedCommentedDirective, resolver),
 
       FunctionDeclaration: (node) =>
         functionDeclarationFlow(context, node, verifiedCommentedDirective),
@@ -135,14 +136,11 @@ In this context, {{ ${specificFailure} }} `,
 
 const getTsConfigPaths = (rootPath) => {
   const tsConfigJsonPath = path.join(rootPath, "tsconfig.json");
-  console.debug("tsConfigJsonPath is:", tsConfigJsonPath);
-
   const parsed = ts.getParsedCommandLineOfConfigFile(
     tsConfigJsonPath,
     {},
     ts.sys,
   );
-  console.debug(tsConfigJsonPath);
 
   if (!parsed) return {};
 

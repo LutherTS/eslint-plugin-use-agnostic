@@ -68,6 +68,7 @@ import { analyzeExportsForReExports } from "./analyze-exports-re.js";
  * @typedef {import('../../../../types/directive21/_commons/typedefs.js').JSXOpeningElement} JSXOpeningElement
  * @typedef {import('../../../../types/directive21/_commons/typedefs.js').Parameter} Parameter
  * @typedef {import('../../../../types/directive21/_commons/typedefs.js').Environment} Environment
+ * @typedef {import('../../../../types/directive21/_commons/typedefs.js').ResolverFactory} ResolverFactory
  */
 
 /* currentFileFlow */
@@ -234,9 +235,10 @@ export const currentFileFlow = (context) => {
  * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#IMPORTEDFILEFLOW
  * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
  * @param {ImportDeclaration} node $COMMENT#JSDOC#PARAMS#NODE
+ * @param {ResolverFactory} resolver
  * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#IMPORTEDFILEFLOW
  */
-const importedFileFlow = (context, node) => {
+const importedFileFlow = (context, node, resolver) => {
   const skipTrue = {
     ...skip,
     importedFileCommentedDirective: undefined,
@@ -244,13 +246,18 @@ const importedFileFlow = (context, node) => {
   };
 
   // finds the full path of the import
-  const resolvedImportPath = resolveImportingPath(
-    path.dirname(context.filename),
+  // const resolvedImportPath = resolveImportingPath(
+  //   path.dirname(context.filename),
+  //   node.source.value,
+  //   findUpSync("tsconfig.json", {
+  //     cwd: path.dirname(context.filename),
+  //   }) ?? context.cwd,
+  // );
+  const resolvedImportPath = resolver.resolveFileSync(
+    context.filename,
     node.source.value,
-    findUpSync("tsconfig.json", {
-      cwd: path.dirname(context.filename),
-    }) ?? context.cwd,
-  );
+  ).path;
+  console.debug("resolvedImportPath is:", resolvedImportPath);
 
   // does not operate on paths it did not resolve
   if (resolvedImportPath === null) return skipTrue;
@@ -336,9 +343,10 @@ const importedFileFlow = (context, node) => {
  * $COMMENT#JSDOC#DEFINITIONS#DIRECTIVE21#IMPORTEDFILEFLOWREQUIRE
  * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
  * @param {CallExpression} node $COMMENT#JSDOC#PARAMS#NODE
+ * @param {ResolverFactory} resolver
  * @returns $COMMENT#JSDOC#RETURNS#DIRECTIVE21#IMPORTEDFILEFLOW
  */
-const importedFileFlowRequire = (context, node) => {
+const importedFileFlowRequire = (context, node, resolver) => {
   const skipTrue = {
     ...skip,
     importedFileCommentedDirective: undefined,
@@ -356,13 +364,18 @@ const importedFileFlowRequire = (context, node) => {
     if (typeof importPath !== "string") return skipTrue;
 
     // finds the full path of the import
-    const resolvedImportPath = resolveImportingPath(
-      path.dirname(context.filename),
+    // const resolvedImportPath = resolveImportingPath(
+    //   path.dirname(context.filename),
+    //   importPath,
+    //   findUpSync("tsconfig.json", {
+    //     cwd: path.dirname(context.filename),
+    //   }) ?? context.cwd,
+    // );
+    const resolvedImportPath = resolver.resolveFileSync(
+      context.filename,
       importPath,
-      findUpSync("tsconfig.json", {
-        cwd: path.dirname(context.filename),
-      }) ?? context.cwd,
-    );
+    ).path;
+    console.debug("resolvedImportPath (require) is:", resolvedImportPath);
 
     // does not operate on paths it did not resolve
     if (resolvedImportPath === null) return skipTrue;
@@ -448,13 +461,19 @@ const importedFileFlowRequire = (context, node) => {
  * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
  * @param {ImportDeclaration} node $COMMENT#JSDOC#PARAMS#NODE
  * @param {CommentedDirective} currentFileCommentedDirective $COMMENT#JSDOC#PARAMS#DIRECTIVE21#CURRENTFILECOMMENTEDDIRECTIVE
+ * @param {ResolverFactory} resolver
  * @returns $COMMENT#JSDOC#FORALIASVARIABLES#FLOWRETURNSEARLY
  */
-export const importsFlow = (context, node, currentFileCommentedDirective) => {
+export const importsFlow = (
+  context,
+  node,
+  currentFileCommentedDirective,
+  resolver,
+) => {
   // does not operate on `import type`
   if (node.importKind === "type") return;
 
-  const result = importedFileFlow(context, node);
+  const result = importedFileFlow(context, node, resolver);
 
   if (result.skip) return;
   const { importedFileCommentedDirective } = result;
@@ -525,14 +544,16 @@ export const importsFlow = (context, node, currentFileCommentedDirective) => {
  * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
  * @param {CallExpression} node $COMMENT#JSDOC#PARAMS#NODE
  * @param {CommentedDirective} currentFileCommentedDirective $COMMENT#JSDOC#PARAMS#DIRECTIVE21#CURRENTFILECOMMENTEDDIRECTIVE
+ * @param {ResolverFactory} resolver
  * @returns $COMMENT#JSDOC#FORALIASVARIABLES#FLOWRETURNSEARLY
  */
 export const importsFlowRequire = (
   context,
   node,
   currentFileCommentedDirective,
+  resolver,
 ) => {
-  const result = importedFileFlowRequire(context, node);
+  const result = importedFileFlowRequire(context, node, resolver);
 
   if (result.skip) return;
   const { importedFileCommentedDirective } = result;
@@ -604,12 +625,14 @@ export const importsFlowRequire = (
  * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
  * @param {ExportNamedDeclaration | ExportAllDeclaration | ExportDefaultDeclaration} node $COMMENT#JSDOC#PARAMS#NODE
  * @param {CommentedDirective} currentFileCommentedDirective $COMMENT#JSDOC#PARAMS#DIRECTIVE21#CURRENTFILECOMMENTEDDIRECTIVE
+ * @param {ResolverFactory} resolver
  * @returns $COMMENT#JSDOC#FORALIASVARIABLES#FLOWRETURNSEARLY
  */
 export const allExportsFlow = (
   context,
   node,
   currentFileCommentedDirective,
+  resolver,
 ) => {
   // saving the original commented directive (speficially for "use agnostic strategies")
   const originalCurrentFileCommentedDirective = currentFileCommentedDirective;
@@ -627,7 +650,7 @@ export const allExportsFlow = (
   }
   // re-exports scenarios
   else {
-    const result = importedFileFlow(context, node);
+    const result = importedFileFlow(context, node, resolver);
 
     if (result.skip) return;
     const { importedFileCommentedDirective } = result;
