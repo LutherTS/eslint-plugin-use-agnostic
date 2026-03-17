@@ -88,6 +88,8 @@ In this context, {{ ${specificFailure} }} `,
     const rootPath = /** @type {string | undefined} */ (
       context.settings.eXtraJSX?.rootPath
     );
+    console.debug("context.settings are:", context.settings);
+    console.debug("context.settings.eXtraJSX are:", context.settings.eXtraJSX);
     console.debug("reactFolder is:", reactFolder);
     console.debug("rootPath is:", rootPath);
 
