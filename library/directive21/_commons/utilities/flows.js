@@ -253,10 +253,8 @@ const importedFileFlow = (context, node, resolver) => {
   //     cwd: path.dirname(context.filename),
   //   }) ?? context.cwd,
   // );
-  const resolvedImportPath = resolver.resolveFileSync(
-    context.filename,
-    node.source.value,
-  ).path;
+  const resolvedImportPath =
+    resolver.resolveFileSync(context.filename, node.source.value).path ?? null;
   console.debug("resolvedImportPath is:", resolvedImportPath);
 
   // does not operate on paths it did not resolve
@@ -371,10 +369,8 @@ const importedFileFlowRequire = (context, node, resolver) => {
     //     cwd: path.dirname(context.filename),
     //   }) ?? context.cwd,
     // );
-    const resolvedImportPath = resolver.resolveFileSync(
-      context.filename,
-      importPath,
-    ).path;
+    const resolvedImportPath =
+      resolver.resolveFileSync(context.filename, importPath).path ?? null;
     console.debug("resolvedImportPath (require) is:", resolvedImportPath);
 
     // does not operate on paths it did not resolve
