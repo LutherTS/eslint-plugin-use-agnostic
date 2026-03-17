@@ -197,6 +197,8 @@ export const jsDocComments = Object.freeze({
       name: "The name of the identifier at hand." /* $COMMENT#JSDOC#PARAMS#DIRECTIVE21#NAME */,
       params:
         "The parameters at hand." /* $COMMENT#JSDOC#PARAMS#DIRECTIVE21#PARAMS */,
+      resolver:
+        "The resolver generated with `oxc-resolver` to resolve the node's import path." /* $COMMENT#JSDOC#PARAMS#DIRECTIVE21#RESOLVER */,
     }),
     tests: Object.freeze({
       folderPath:

@@ -88,24 +88,19 @@ In this context, {{ ${specificFailure} }} `,
     const rootPath = /** @type {string | undefined} */ (
       context.settings.eXtraJSX?.rootPath
     );
-    console.debug("reactFolder is:", reactFolder);
-    console.debug("rootPath is:", rootPath);
 
     if (!reactFolder || !rootPath) return {};
-    // make the resolver by resolving the TypeScript from the rootPath (getTsConfigPaths, makeAbsoluteFromTsConfigPaths, makeResolverFromAbsoluteTsConfigPaths)
-    // pass the resolver to importsFlow, allExportsFlow, importsFlowRequire (resolver.resolveFileSync, getCommentedDirectiveFromModule)
+    // make the resolver by resolving TypeScript from the rootPath (getTsConfigPaths, makeAbsoluteFromTsConfigPaths, makeResolverFromAbsoluteTsConfigPaths) // DONE.
+    // pass the resolver to importsFlow, allExportsFlow, importsFlowRequire (resolver.resolveFileSync, getCommentedDirectiveFromModule) // DONE. getCommentedDirectiveFromModule CANCELLED.
 
     const tsConfigPaths = getTsConfigPaths(rootPath);
-    console.debug("tsConfigPaths is:", tsConfigPaths);
     const absoluteTsConfigPaths = makeAbsoluteFromTsConfigPaths(
       rootPath,
       tsConfigPaths,
     );
-    console.debug("absoluteTsConfigPaths is:", absoluteTsConfigPaths);
     const resolver = makeResolverFromAbsoluteTsConfigPaths(
       absoluteTsConfigPaths,
     );
-    console.debug("resolver is:", resolver);
 
     if (result.skip) return {};
     const { verifiedCommentedDirective } = result; // Leave untouched. Since this is the verifying process. Commented directives from imported modules however, don't need to be further verified, and can simply be obtained by the flat module index.
@@ -134,6 +129,11 @@ In this context, {{ ${specificFailure} }} `,
   },
 };
 
+/**
+ * (directly copied from Extra JavaScript, so trust me bro)
+ * @param {string} rootPath
+ * @returns
+ */
 const getTsConfigPaths = (rootPath) => {
   const tsConfigJsonPath = path.join(rootPath, "tsconfig.json");
   const parsed = ts.getParsedCommandLineOfConfigFile(
@@ -148,6 +148,12 @@ const getTsConfigPaths = (rootPath) => {
   return paths;
 };
 
+/**
+ * (directly copied from Extra JavaScript, so trust me bro)
+ * @param {string} rootPath
+ * @param {ts.MapLike<string[]>} tsConfigPaths
+ * @returns
+ */
 const makeAbsoluteFromTsConfigPaths = (rootPath, tsConfigPaths) => {
   /** @type {Record<string, string[]>} */
   const results = {};
@@ -161,6 +167,11 @@ const makeAbsoluteFromTsConfigPaths = (rootPath, tsConfigPaths) => {
   return results;
 };
 
+/**
+ * (directly copied from Extra JavaScript, so trust me bro)
+ * @param {Record<string, string[]>} absoluteTsConfigPaths
+ * @returns
+ */
 const makeResolverFromAbsoluteTsConfigPaths = (absoluteTsConfigPaths) =>
   new ResolverFactory({
     extensions: EXTENSIONS,

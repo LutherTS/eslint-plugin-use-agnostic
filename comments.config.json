@@ -387,6 +387,10 @@
         "params": {
           "value": "The parameters at hand.",
           "key": "JSDOC#PARAMS#DIRECTIVE21#PARAMS"
+        },
+        "resolver": {
+          "value": "The resolver generated with `oxc-resolver` to resolve the node's import path.",
+          "key": "JSDOC#PARAMS#DIRECTIVE21#RESOLVER"
         }
       },
       "tests": {
