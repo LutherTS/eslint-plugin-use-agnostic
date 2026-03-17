@@ -88,8 +88,6 @@ In this context, {{ ${specificFailure} }} `,
     const rootPath = /** @type {string | undefined} */ (
       context.settings.eXtraJSX?.rootPath
     );
-    console.debug("context.settings are:", context.settings);
-    console.debug("context.settings.eXtraJSX are:", context.settings.eXtraJSX);
     console.debug("reactFolder is:", reactFolder);
     console.debug("rootPath is:", rootPath);
 
@@ -98,7 +96,11 @@ In this context, {{ ${specificFailure} }} `,
     // pass the resolver to importsFlow, allExportsFlow, importsFlowRequire (resolver.resolveFileSync, getCommentedDirectiveFromModule)
 
     const tsConfigPaths = getTsConfigPaths(rootPath);
-    const absoluteTsConfigPaths = makeAbsoluteFromTsConfigPaths(tsConfigPaths);
+    console.debug("tsConfigPaths is:", tsConfigPaths);
+    const absoluteTsConfigPaths = makeAbsoluteFromTsConfigPaths(
+      rootPath,
+      tsConfigPaths,
+    );
     const resolver = makeResolverFromAbsoluteTsConfigPaths(
       absoluteTsConfigPaths,
     );
@@ -132,11 +134,15 @@ In this context, {{ ${specificFailure} }} `,
 };
 
 const getTsConfigPaths = (rootPath) => {
+  const tsConfigJsonPath = path.join(rootPath, "tsconfig.json");
+  console.debug("tsConfigJsonPath is:", tsConfigJsonPath);
+
   const parsed = ts.getParsedCommandLineOfConfigFile(
-    path.join(rootPath, "tsconfig.json"),
+    tsConfigJsonPath,
     {},
     ts.sys,
   );
+  console.debug(tsConfigJsonPath);
 
   if (!parsed) return {};
 
