@@ -1,3 +1,8 @@
+import path from "path";
+
+import ts from "typescript";
+import { ResolverFactory } from "oxc-resolver";
+
 import {
   reExportNotSameMessageId,
   importBreaksCommentedImportRulesMessageId,
@@ -11,6 +16,7 @@ import {
   missingChildrenMessageId,
   noRenderPropMessageId,
   noOnOnElementsMessageId,
+  EXTENSIONS,
 } from "../../../_commons/constants/bases.js";
 import {
   currentFileCommentedDirective,
@@ -76,10 +82,25 @@ In this context, {{ ${specificFailure} }} `,
   create: (context) => {
     const result = currentFileFlow(context);
 
-    const reactFolder = /** @type {string} */ (context.settings.reactFolder);
-    const rootPath = /** @type {string} */ (context.settings.rootPath);
-    // make the resolver by resolving the TypeScript from the rootPath
-    // pass the resolver to importsFlow, allExportsFlow, importsFlowRequire
+    const reactFolder = /** @type {string | undefined} */ (
+      context.settings.eXtraJSX?.reactFolder
+    );
+    const rootPath = /** @type {string | undefined} */ (
+      context.settings.eXtraJSX?.rootPath
+    );
+    console.debug("reactFolder is:", reactFolder);
+    console.debug("rootPath is:", rootPath);
+
+    if (!reactFolder || !rootPath) return {};
+    // make the resolver by resolving the TypeScript from the rootPath (getTsConfigPaths, makeAbsoluteFromTsConfigPaths, makeResolverFromAbsoluteTsConfigPaths)
+    // pass the resolver to importsFlow, allExportsFlow, importsFlowRequire (resolver.resolveFileSync, getCommentedDirectiveFromModule)
+
+    const tsConfigPaths = getTsConfigPaths(rootPath);
+    const absoluteTsConfigPaths = makeAbsoluteFromTsConfigPaths(tsConfigPaths);
+    const resolver = makeResolverFromAbsoluteTsConfigPaths(
+      absoluteTsConfigPaths,
+    );
+    console.debug("resolver is:", resolver);
 
     if (result.skip) return {};
     const { verifiedCommentedDirective } = result; // Leave untouched. Since this is the verifying process. Commented directives from imported modules however, don't need to be further verified, and can simply be obtained by the flat module index.
@@ -107,5 +128,38 @@ In this context, {{ ${specificFailure} }} `,
     };
   },
 };
+
+const getTsConfigPaths = (rootPath) => {
+  const parsed = ts.getParsedCommandLineOfConfigFile(
+    path.join(rootPath, "tsconfig.json"),
+    {},
+    ts.sys,
+  );
+
+  if (!parsed) return {};
+
+  const paths = parsed.options.paths ?? {};
+  return paths;
+};
+
+const makeAbsoluteFromTsConfigPaths = (rootPath, tsConfigPaths) => {
+  /** @type {Record<string, string[]>} */
+  const results = {};
+
+  for (const [alias, targets] of Object.entries(tsConfigPaths)) {
+    results[alias] = targets.map((p) =>
+      path.resolve(rootPath, p.replace(/^\.\//, "")),
+    );
+  }
+
+  return results;
+};
+
+const makeResolverFromAbsoluteTsConfigPaths = (absoluteTsConfigPaths) =>
+  new ResolverFactory({
+    extensions: EXTENSIONS,
+    alias: absoluteTsConfigPaths,
+    modules: [], // voluntarily ignoring "node_modules"
+  });
 
 export default rule; // enforce-commented-directives-import-rules
