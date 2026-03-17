@@ -205,10 +205,24 @@ export const defineDirective21 = (reactFolder) => {
  */
 export const defineConfigSettings = ({ reactFolder, rootPath }) => {
   /**
-   * @type {["**\/*.js"]}
+   * @type {["**\/*.tsx", "**\/*.ts", "**\/*.mtsx", "**\/*.mts", "**\/*.ctsx", "**\/*.cts", "**\/*.jsx", "**\/*.js", "**\/*.mjsx", "**\/*.mjs", "**\/*.cjsx", "**\/*.cjs"]}
    * The dummy file paths used by the eXtra JSX VS Code extension are JavaScript file paths, therefore this glob pattern is enough to work in recognizing the dummy file paths in order to retrieve the settings.
+   * Now that the settings are actually used in eslint-plugin-use-agnostic, they need to cover all JS/TS/JSX/TSX files.
    */
-  const files = ["**/*.js"];
+  const files = [
+    "**/*.tsx",
+    "**/*.ts",
+    "**/*.mtsx",
+    "**/*.mts",
+    "**/*.ctsx",
+    "**/*.cts",
+    "**/*.jsx",
+    "**/*.js",
+    "**/*.mjsx",
+    "**/*.mjs",
+    "**/*.cjsx",
+    "**/*.cjs",
+  ];
 
   return {
     files,
