@@ -11,9 +11,9 @@
 import { walkAST } from "../../../_commons/utilities/walk-ast.js";
 
 /**
- * $COMMENT#JSDOC#DEFINITIONS#ANALYZEEXPORTSFORREEXPORTS
- * @param {SourceCode} sourceCode $COMMENT#JSDOC#PARAMS#SOURCECODEB
- * @returns $COMMENT#JSDOC#RETURNS#ANALYZEEXPORTSFORREEXPORTS
+ * Analyzes a source code's exports to detect re-exports.
+ * @param {SourceCode} sourceCode The `SourceCode` to analyze.
+ * @returns An object with the `reExportsWithSource` key tracking the direct re-exports from an imported source in an array and the `reExportsViaLocal` key tracking the indirect re-exports from an imported source in an array.
  */
 export const analyzeExportsForReExports = (sourceCode) => {
   /** @type {Map<string, {source: string, importNode: ImportDeclaration}>} */
