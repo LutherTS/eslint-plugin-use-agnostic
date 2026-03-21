@@ -674,7 +674,20 @@ export const defineConfigSettings: <T extends string, U extends string>({
   reactFolder: T;
   rootPath: U;
 }) => {
-  files: ["**/*.js"];
+  files: [
+    "**/*.tsx",
+    "**/*.ts",
+    "**/*.mtsx",
+    "**/*.mts",
+    "**/*.ctsx",
+    "**/*.cts",
+    "**/*.jsx",
+    "**/*.js",
+    "**/*.mjsx",
+    "**/*.mjs",
+    "**/*.cjsx",
+    "**/*.cjs",
+  ];
   settings: {
     eXtraJSX: {
       reactFolder: T;
