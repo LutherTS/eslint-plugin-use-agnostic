@@ -234,6 +234,3 @@ export const defineConfigSettings = ({ reactFolder, rootPath }) => {
     },
   };
 };
-
-// Testing the new Comment Variables on their biggest project...
-// Idempotent. Let's go.
