@@ -1,19 +1,19 @@
 "use client";
-// That's a Client Components Module.
+// $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#THATSAMODULE
 
-// ...Importing a Client Logics Module (with extension).
+// $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#IMPORTINGWITHEXTENSION
 import clientLogics from "../../../../../imported/typescript/client.ts";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import clientLogicsAlias from "@/tests/agnostic20/imported/typescript/client.ts";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import clientLogicsBaseUrl from "tests/agnostic20/imported/typescript/client.ts";
 
-// ...Importing a Client Logics Module by a folder.
+// $COMMENT#AGNOSTIC20#USE_CLIENT_LOGICS#IMPORTINGBYAFOLDER
 import clientLogicsFolder from "../../../../../imported/typescript/client-ts";
-// Via alias.
+// $COMMENT#TESTS#VIAALIAS
 import clientLogicsFolderAlias from "@/tests/agnostic20/imported/typescript/client-ts";
-// Via baseUrl.
+// $COMMENT#TESTS#VIABASEURL
 import clientLogicsFolderBaseUrl from "tests/agnostic20/imported/typescript/client-ts";
 
-// Valid.
-// Client Logics, being logic from the client, can safely support Client Components.
+// $COMMENT#TESTS#VALID
+// $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_CLIENT_LOGICS

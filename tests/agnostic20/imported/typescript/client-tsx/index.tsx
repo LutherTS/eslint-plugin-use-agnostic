@@ -1,5 +1,5 @@
 "use client";
-// That's a Client Components Module.
+// $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#THATSAMODULE
 
 const object: {} = {};
 

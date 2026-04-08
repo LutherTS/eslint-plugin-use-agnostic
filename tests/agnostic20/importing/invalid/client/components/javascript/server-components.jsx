@@ -1,10 +1,10 @@
 "use client";
-// That's a Client Components Module.
+// $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#THATSAMODULE
 
 import serverComponents from "../../../../../imported/javascript/server.jsx";
 
-// ...Importing a Server Components Module by a folder.
+// $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#IMPORTINGBYAFOLDER
 import serverComponentsFolder from "../../../../../imported/javascript/server-jsx";
 
-// Invalid.
-// Server Components may only pass through Client Components via the children prop within Server Components Modules.
+// $COMMENT#TESTS#INVALID
+// $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_SERVER_COMPONENTS

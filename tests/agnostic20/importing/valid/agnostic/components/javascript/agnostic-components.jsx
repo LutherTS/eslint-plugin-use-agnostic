@@ -1,11 +1,11 @@
 "use agnostic";
-// That's an Agnostic Components Module.
+// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#THATSAMODULE
 
-// ...Importing an Agnostic Components Module (with extension).
+// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#IMPORTINGWITHEXTENSION
 import agnosticComponents from "../../../../../imported/javascript/agnostic.jsx";
 
-// ...Importing an Agnostic Components Module by a folder.
+// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#IMPORTINGBYAFOLDER
 import agnosticComponentsFolder from "../../../../../imported/javascript/agnostic-jsx";
 
-// Valid.
-// Agnostic Components can compose with one another.
+// $COMMENT#TESTS#VALID
+// $COMMENT#AGNOSTIC20#USE_AGNOSTIC_COMPONENTS#USE_AGNOSTIC_COMPONENTS

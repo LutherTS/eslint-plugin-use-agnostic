@@ -41,9 +41,9 @@ import {
 /* currentFileFlow */
 
 /**
- * The flow that begins the import rules enforcement rule, retrieving the effective directive of the current file before comparing it to upcoming effective directives of the files it imports.
- * @param {Context} context The ESLint rule's `context` object.
- * @returns Either an object with `skip: true` to disregard or one with the non-null `currentFileEffectiveDirective`.
+ * $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#CURRENTFILEFLOW
+ * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
+ * @returns $COMMENT#JSDOC#RETURNS#AGNOSTIC20#CURRENTFILEFLOW
  */
 export const currentFileFlow = (context) => {
   const skipTrue = { ...skip, currentFileEffectiveDirective: undefined };
@@ -96,10 +96,10 @@ export const currentFileFlow = (context) => {
 /* importedFileFlow */
 
 /**
- * The flow that is shared between import and re-export traversals to obtain the import file's effective directive.
- * @param {Context} context The ESLint rule's `context` object.
- * @param {ImportDeclaration} node The ESLint `node` of the rule's current traversal.
- * @returns Either an object with `skip: true` to disregard or one with the non-null `importedFileEffectiveDirective`.
+ * $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#IMPORTEDFILEFLOW
+ * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
+ * @param {ImportDeclaration} node $COMMENT#JSDOC#PARAMS#NODE
+ * @returns $COMMENT#JSDOC#RETURNS#AGNOSTIC20#IMPORTEDFILEFLOW
  */
 const importedFileFlow = (context, node) => {
   const skipTrue = { ...skip, importedFileEffectiveDirective: undefined };
@@ -147,10 +147,10 @@ const importedFileFlow = (context, node) => {
 
 // NEW!! Currently strictly adapted from importedFileFlow
 /**
- * The `importedFileFlow` adapted for `require` calls to obtain the import file's effective directive.
- * @param {Context} context The ESLint rule's `context` object.
- * @param {CallExpression} node The ESLint `node` of the rule's current traversal.
- * @returns Either an object with `skip: true` to disregard or one with the non-null `importedFileEffectiveDirective`.
+ * $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#IMPORTEDFILEFLOWREQUIRE
+ * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
+ * @param {CallExpression} node $COMMENT#JSDOC#PARAMS#NODE
+ * @returns $COMMENT#JSDOC#RETURNS#AGNOSTIC20#IMPORTEDFILEFLOW
  */
 const importedFileFlowRequire = (context, node) => {
   const skipTrue = { ...skip, importedFileEffectiveDirective: undefined };
@@ -209,11 +209,11 @@ const importedFileFlowRequire = (context, node) => {
 
 /* importsFlow */
 
-/** The full flow for import traversals to enforce effective directives import rules.
- * @param {Context} context The ESLint rule's `context` object.
- * @param {ImportDeclaration} node The ESLint `node` of the rule's current traversal.
- * @param {EffectiveDirective} currentFileEffectiveDirective The current file's effective directive.
- * @returns Early if the flow needs to be interrupted.
+/** $COMMENT#JSDOC#FORALIASVARIABLES#IMPORTSFLOW
+ * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
+ * @param {ImportDeclaration} node $COMMENT#JSDOC#PARAMS#NODE
+ * @param {EffectiveDirective} currentFileEffectiveDirective $COMMENT#JSDOC#PARAMS#AGNOSTIC20#CURRENTFILEEFFECTIVEDIRECTIVE
+ * @returns $COMMENT#JSDOC#FORALIASVARIABLES#FLOWRETURNSEARLY
  */
 export const importsFlow = (context, node, currentFileEffectiveDirective) => {
   // does not operate on `import type`
@@ -248,11 +248,11 @@ export const importsFlow = (context, node, currentFileEffectiveDirective) => {
 };
 
 // NEW!! Currently strictly adapted from importsFlow
-/** The `importsFlow` adapted for `require` calls to enforce effective directives import rules.
- * @param {Context} context The ESLint rule's `context` object.
- * @param {CallExpression} node The ESLint `node` of the rule's current traversal.
- * @param {EffectiveDirective} currentFileEffectiveDirective The current file's effective directive.
- * @returns Early if the flow needs to be interrupted.
+/** $COMMENT#JSDOC#FORALIASVARIABLES#IMPORTSFLOWREQUIRE
+ * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
+ * @param {CallExpression} node $COMMENT#JSDOC#PARAMS#NODE
+ * @param {EffectiveDirective} currentFileEffectiveDirective $COMMENT#JSDOC#PARAMS#AGNOSTIC20#CURRENTFILEEFFECTIVEDIRECTIVE
+ * @returns $COMMENT#JSDOC#FORALIASVARIABLES#FLOWRETURNSEARLY
  */
 export const importsFlowRequire = (
   context,
@@ -289,11 +289,11 @@ export const importsFlowRequire = (
 
 /* reExportsFlow */
 
-/** The full flow for export traversals, shared between `ExportNamedDeclaration` and `ExportAllDeclaration`, to ensure same effective directive re-exports.
- * @param {Context} context The ESLint rule's `context` object.
- * @param {ExportNamedDeclaration | ExportAllDeclaration} node The ESLint `node` of the rule's current traversal.
- * @param {EffectiveDirective} currentFileEffectiveDirective The current file's effective directive.
- * @returns Early if the flow needs to be interrupted.
+/** $COMMENT#JSDOC#DEFINITIONS#AGNOSTIC20#REEXPORTSFLOW
+ * @param {Context} context $COMMENT#JSDOC#PARAMS#CONTEXTB
+ * @param {ExportNamedDeclaration | ExportAllDeclaration} node $COMMENT#JSDOC#PARAMS#NODE
+ * @param {EffectiveDirective} currentFileEffectiveDirective $COMMENT#JSDOC#PARAMS#AGNOSTIC20#CURRENTFILEEFFECTIVEDIRECTIVE
+ * @returns $COMMENT#JSDOC#FORALIASVARIABLES#FLOWRETURNSEARLY
  */
 export const reExportsFlow = (context, node, currentFileEffectiveDirective) => {
   // does not operate on `export type`
