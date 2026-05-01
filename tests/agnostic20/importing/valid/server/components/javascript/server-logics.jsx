@@ -1,10 +1,10 @@
-// $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#THATSAMODULE
+// That's a Server Components Module.
 
-// $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#IMPORTINGWITHEXTENSION
+// ...Importing a Server Logics Module (with extension).
 import serverLogics from "../../../../../imported/javascript/server.js";
 
-// $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#IMPORTINGBYAFOLDER
+// ...Importing a Server Logics Module by a folder.
 import serverLogicsFolder from "../../../../../imported/javascript/server-js";
 
-// $COMMENT#TESTS#VALID
-// $COMMENT#AGNOSTIC20#USE_SERVER_COMPONENTS#USE_SERVER_LOGICS
+// Valid.
+// Server Logics, being logic from the server, can safely support Server Components.

@@ -1,4 +1,4 @@
-// $COMMENT#AGNOSTIC20#USE_SERVER_LOGICS#THATSAMODULE
+// That's a Server Logics Module.
 
 const object: {} = {};
 

@@ -1,11 +1,11 @@
 "use client";
-// $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#THATSAMODULE
+// That's a Client Components Module.
 
-// $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#IMPORTINGWITHEXTENSION
+// ...Importing a Client Components Module (with extension).
 import clientComponents from "../../../../../imported/javascript/client.jsx";
 
-// $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#IMPORTINGBYAFOLDER
+// ...Importing a Client Components Module by a folder.
 import clientComponentsFolder from "../../../../../imported/javascript/client-jsx";
 
-// $COMMENT#TESTS#VALID
-// $COMMENT#AGNOSTIC20#USE_CLIENT_COMPONENTS#USE_CLIENT_COMPONENTS
+// Valid.
+// Client Components can compose with one another.
