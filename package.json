@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "find-up": "^8.0.0",
-    "get-sourcecode-from-file-path": "^1.2.0",
+    "get-sourcecode-from-file-path": "^2.0.0",
     "oxc-resolver": "^11.19.1",
     "resolve-importing-path": "^1.0.4",
     "typescript": "^5.9.3",
